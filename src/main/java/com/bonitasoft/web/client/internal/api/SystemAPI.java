@@ -8,7 +8,7 @@
  */
 package com.bonitasoft.web.client.internal.api;
 
-import  com.bonitasoft.web.client.model.License;
+import com.bonitasoft.web.client.model.License;
 import com.github.zafarkhaja.semver.Version;
 import okhttp3.ResponseBody;
 import retrofit2.Call;

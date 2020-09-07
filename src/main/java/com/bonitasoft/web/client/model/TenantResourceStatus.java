@@ -8,13 +8,13 @@
  */
 package com.bonitasoft.web.client.model;
 
-import java.time.OffsetDateTime;
-import java.util.Objects;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.OffsetDateTime;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor

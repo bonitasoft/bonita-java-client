@@ -8,10 +8,6 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import static com.bonitasoft.web.client.internal.services.TestCall.successCall;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.doReturn;
-
 import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.SystemAPI;
 import com.bonitasoft.web.client.internal.converters.RestApiConverter;
@@ -22,6 +18,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import static com.bonitasoft.web.client.internal.services.TestCall.successCall;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.doReturn;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SystemServiceTest {

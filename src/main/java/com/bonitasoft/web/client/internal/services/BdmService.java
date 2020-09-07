@@ -8,14 +8,11 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import java.io.File;
-import java.io.IOException;
-
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.api.BdmAPI;
-import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import  com.bonitasoft.web.client.model.TenantResourceStatus;
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import com.bonitasoft.web.client.internal.api.BdmAPI;
+import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.model.TenantResourceStatus;
 import com.github.zafarkhaja.semver.Version;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -25,20 +22,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Response;
 
+import java.io.File;
+import java.io.IOException;
+
 public class BdmService extends ClientService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(BdmService.class);
     private final static String FILE_UPLOAD = "fileUpload";
     private final Version version7_7_0; // some API are only available since bonita 7.7.0
-
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
     private final BdmAPI bdmAPI;
     private final SystemService systemService;
     private final BdmAccessControlService bdmAccessControlService;
     private final RestApiConverter restApiConverter;
+    private BonitaCookieInterceptor bonitaCookieInterceptor;
 
     public BdmService(BonitaCookieInterceptor bonitaCookieInterceptor, SystemService systemService,
-            BdmAccessControlService bdmAccessControlService, BdmAPI bdmAPI, RestApiConverter restApiConverter) {
+                      BdmAccessControlService bdmAccessControlService, BdmAPI bdmAPI, RestApiConverter restApiConverter) {
         this.bonitaCookieInterceptor = bonitaCookieInterceptor;
         this.systemService = systemService;
         this.bdmAccessControlService = bdmAccessControlService;
@@ -75,7 +74,7 @@ public class BdmService extends ClientService {
 
     /**
      * @return {@link TenantResourceStatus} , containing the BDM state if the Bonita version is at least 7.7.0, or a
-     *         state UNKNOWN for other versions
+     * state UNKNOWN for other versions
      */
     public TenantResourceStatus getBdmStatus() throws IOException, UnauthorizedException {
         bonitaCookieInterceptor.checkLogged();

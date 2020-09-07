@@ -8,24 +8,15 @@
  */
 package com.bonitasoft.web.client.internal.api;
 
-import java.util.List;
-
-import  com.bonitasoft.web.client.model.Process;
-import  com.bonitasoft.web.client.model.ProcessParameter;
-import  com.bonitasoft.web.client.model.ProcessResolutionProblem;
+import com.bonitasoft.web.client.model.Process;
+import com.bonitasoft.web.client.model.ProcessParameter;
+import com.bonitasoft.web.client.model.ProcessResolutionProblem;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.HTTP;
-import retrofit2.http.Headers;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Part;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
+
+import java.util.List;
 
 /**
  * @author Laurent Leseigneur
@@ -50,7 +41,7 @@ public interface ProcessAPI {
 
     @GET("API/bpm/processResolutionProblem")
     Call<List<ProcessResolutionProblem>> processResolutionProblem(@Query("p") int page, @Query("c") int count,
-            @Query("f") String... filters);
+                                                                  @Query("f") String... filters);
 
     // https://stackoverflow.com/questions/37942474/delete-method-is-not-supportingnon-body-http-method-cannot-contain-body-or-t
     @HTTP(method = "DELETE", path = "API/bpm/process", hasBody = true)
@@ -62,6 +53,6 @@ public interface ProcessAPI {
 
     @GET("API/bpm/processParameter")
     Call<List<ProcessParameter>> searchParameters(@Query("p") int page, @Query("c") int count,
-            @Query("f") String... filters);
+                                                  @Query("f") String... filters);
 
 }

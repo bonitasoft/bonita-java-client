@@ -8,20 +8,20 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Objects;
-
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.api.SystemAPI;
-import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import  com.bonitasoft.web.client.model.License;
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import com.bonitasoft.web.client.internal.api.SystemAPI;
+import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.model.License;
 import com.github.zafarkhaja.semver.Version;
 import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Response;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class SystemService extends ClientService {
 
@@ -29,11 +29,11 @@ public class SystemService extends ClientService {
     private final static String PAUSED = "paused";
 
     private final RestApiConverter restApiConverter;
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
     private final SystemAPI systemAPI;
+    private BonitaCookieInterceptor bonitaCookieInterceptor;
 
     public SystemService(RestApiConverter restApiConverter, BonitaCookieInterceptor bonitaCookieInterceptor,
-            SystemAPI systemAPI) {
+                         SystemAPI systemAPI) {
         this.restApiConverter = restApiConverter;
         this.bonitaCookieInterceptor = bonitaCookieInterceptor;
         this.systemAPI = systemAPI;

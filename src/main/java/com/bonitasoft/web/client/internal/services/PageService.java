@@ -8,17 +8,11 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Properties;
-
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.api.PageAPI;
-import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import  com.bonitasoft.web.client.model.Page;
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import com.bonitasoft.web.client.internal.api.PageAPI;
+import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.model.Page;
 import com.bonitasoft.web.utils.FileUtils;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -26,6 +20,12 @@ import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Response;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Properties;
 
 public class PageService extends ClientService {
 
@@ -35,7 +35,7 @@ public class PageService extends ClientService {
     private final PageAPI pageAPI;
 
     public PageService(RestApiConverter restApiConverter, BonitaCookieInterceptor bonitaCookieInterceptor,
-            PageAPI pageAPI) {
+                       PageAPI pageAPI) {
         this.restApiConverter = restApiConverter;
         this.bonitaCookieInterceptor = bonitaCookieInterceptor;
         this.pageAPI = pageAPI;

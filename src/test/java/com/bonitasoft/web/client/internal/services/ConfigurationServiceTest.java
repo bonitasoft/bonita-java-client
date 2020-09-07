@@ -8,13 +8,6 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.Mockito.*;
-
-import java.io.IOException;
-
 import com.bonitasoft.web.client.event.ImportNotifier;
 import com.bonitasoft.web.client.event.ImportWarningEvent;
 import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
@@ -29,6 +22,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ConfigurationServiceTest {
@@ -47,6 +47,30 @@ public class ConfigurationServiceTest {
 
     @InjectMocks
     private ConfigurationService configurationService;
+
+    private static Version version(String version) {
+        return new Version.Builder(version).build();
+    }
+
+    private static License communityLicense() {
+        final License license = new License();
+        license.setEdition("Community");
+        return license;
+    }
+
+    private static License enterpriseLicense() {
+        final License license = new License();
+        license.setEdition("Enterprise");
+        return license;
+    }
+
+    private static ImportWarningEvent warningEventWithMsgContaining(String cs) {
+        return argThat(warningEvent -> warningEvent.getMessage().contains(cs));
+    }
+
+    // =================================================================================================================
+    // UTILS
+    // =================================================================================================================
 
     @Test
     public void should_not_perform_import_configuration_for_Bonita_community_edition() throws Exception {
@@ -108,30 +132,6 @@ public class ConfigurationServiceTest {
         assertThat(thrown).isInstanceOf(IOException.class)
                 .hasMessageStartingWith("Error happened server side")
                 .hasMessageEndingWith("error code: 500, response body: too much data");
-    }
-
-    // =================================================================================================================
-    // UTILS
-    // =================================================================================================================
-
-    private static Version version(String version) {
-        return new Version.Builder(version).build();
-    }
-
-    private static License communityLicense() {
-        final License license = new License();
-        license.setEdition("Community");
-        return license;
-    }
-
-    private static License enterpriseLicense() {
-        final License license = new License();
-        license.setEdition("Enterprise");
-        return license;
-    }
-
-    private static ImportWarningEvent warningEventWithMsgContaining(String cs) {
-        return argThat(warningEvent -> warningEvent.getMessage().contains(cs));
     }
 
 }

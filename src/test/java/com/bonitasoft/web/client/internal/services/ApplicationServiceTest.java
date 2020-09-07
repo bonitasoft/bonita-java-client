@@ -8,20 +8,6 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import static com.bonitasoft.web.client.policies.ApplicationImportPolicy.FAIL_ON_DUPLICATES;
-import static com.bonitasoft.web.client.policies.ApplicationImportPolicy.REPLACE_DUPLICATES;
-import static java.util.Collections.emptyList;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
-
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
-
 import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.ApplicationAPI;
 import com.bonitasoft.web.client.internal.converters.RestApiConverter;
@@ -36,6 +22,17 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import retrofit2.Call;
+
+import java.io.File;
+import java.util.Collections;
+import java.util.List;
+
+import static com.bonitasoft.web.client.policies.ApplicationImportPolicy.FAIL_ON_DUPLICATES;
+import static com.bonitasoft.web.client.policies.ApplicationImportPolicy.REPLACE_DUPLICATES;
+import static java.util.Collections.emptyList;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 /**
  * @author Baptiste Mesta.

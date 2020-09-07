@@ -8,9 +8,9 @@
  */
 package com.bonitasoft.web.client.internal.api;
 
-import  com.bonitasoft.web.client.internal.services.model.CreateProfileMembership;
-import  com.bonitasoft.web.client.model.Profile;
-import  com.bonitasoft.web.client.model.ProfileMembership;
+import com.bonitasoft.web.client.internal.services.model.CreateProfileMembership;
+import com.bonitasoft.web.client.model.Profile;
+import com.bonitasoft.web.client.model.ProfileMembership;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;

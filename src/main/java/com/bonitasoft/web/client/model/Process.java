@@ -8,27 +8,19 @@
  */
 package com.bonitasoft.web.client.model;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.util.Objects;
+
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Process {
-
-    public enum ConfigurationState {
-        UNRESOLVED, RESOLVED, DEACTIVATED, ACTIVATED
-    }
-
-    public enum ActivationState {
-        ENABLED, DISABLED
-    }
 
     private long id;
     private String name;
@@ -46,5 +38,12 @@ public class Process {
 
     public boolean isEnabled() {
         return Objects.equals(activationState, ActivationState.ENABLED);
+    }
+    public enum ConfigurationState {
+        UNRESOLVED, RESOLVED, DEACTIVATED, ACTIVATED
+    }
+
+    public enum ActivationState {
+        ENABLED, DISABLED
     }
 }

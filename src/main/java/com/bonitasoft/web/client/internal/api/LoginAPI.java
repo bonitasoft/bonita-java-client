@@ -26,7 +26,7 @@ public interface LoginAPI {
     @FormUrlEncoded
     @POST("loginservice")
     Call<ResponseBody> login(@Field("username") String username, @Field("password") String password,
-            @Field("redirect") Boolean redirect, @Field("tenantId") String tenantId);
+                             @Field("redirect") Boolean redirect, @Field("tenantId") String tenantId);
 
     @FormUrlEncoded
     @POST("logoutservice")
