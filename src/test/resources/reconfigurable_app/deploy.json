@@ -1,0 +1,22 @@
+{
+  "restAPIExtensions": [
+    {
+      "file": "extension/restApi.zip",
+      "reconfigure": [
+        {
+          "path": "page.properties",
+          "properties": [
+            "resourceRestApi.permissions",
+            "description"
+          ]
+        },
+        {
+          "path": "configuration.properties",
+          "properties": [
+            "myParameterKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

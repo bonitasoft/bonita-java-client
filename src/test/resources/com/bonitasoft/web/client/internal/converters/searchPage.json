@@ -1,0 +1,44 @@
+[
+  {
+    "processDefinitionId": "",
+    "updatedBy": "51",
+    "urlToken": "custompage_MyVacations",
+    "createdBy": "51",
+    "displayName": "MyVacations page",
+    "isProvided": "false",
+    "lastUpdateDate": "2016-11-24 15:52:19.178",
+    "description": "MyVacations page generated with Bonita BPM UI designer",
+    "id": "104",
+    "creationDate": "2016-03-25 14:19:34.647",
+    "contentType": "page",
+    "contentName": "page-MyVacations (12).zip"
+  },
+  {
+    "processDefinitionId": "",
+    "updatedBy": "51",
+    "urlToken": "custompage_VacationByMonthRestAPI",
+    "createdBy": "51",
+    "displayName": "VacationByMonth REST API",
+    "isProvided": "false",
+    "lastUpdateDate": "2016-11-24 14:52:04.067",
+    "description": "Rest API to query request vacation for a given month",
+    "id": "102",
+    "creationDate": "2016-03-25 14:19:11.486",
+    "contentType": "apiExtension",
+    "contentName": "VacationByMonthRestAPI-1.0.0-SNAPSHOT.zip"
+  },
+  {
+    "processDefinitionId": "",
+    "updatedBy": "-1",
+    "urlToken": "custompage_apiExtensionExample",
+    "createdBy": "",
+    "displayName": "REST API extension example",
+    "isProvided": "true",
+    "lastUpdateDate": "2016-03-24 09:06:42.229",
+    "description": "REST API extension example archive for Bonita BPM Portal. Included examples: Get/Post, how to use a logger, customize response, call SOAP web service.",
+    "id": "14",
+    "creationDate": "2016-03-24 09:06:42.229",
+    "contentType": "apiExtension",
+    "contentName": "api-extension-example.zip"
+  }
+]

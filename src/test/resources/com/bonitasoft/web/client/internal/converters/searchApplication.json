@@ -1,0 +1,36 @@
+[
+  {
+    "updatedBy": "-1",
+    "displayName": "Marketing",
+    "lastUpdateDate": "1498824507673",
+    "description": "",
+    "themeId": "3",
+    "homePageId": "-1",
+    "creationDate": "1498824507673",
+    "version": "2.0",
+    "layoutId": "2",
+    "token": "My",
+    "createdBy": "-1",
+    "profileId": "",
+    "id": "2",
+    "state": "ACTIVATED",
+    "iconPath": ""
+  },
+  {
+    "updatedBy": "-1",
+    "displayName": "My HR dashboard",
+    "lastUpdateDate": "1498824507586",
+    "description": "This is the HR dashboard.",
+    "themeId": "3",
+    "homePageId": "-1",
+    "creationDate": "1498824507586",
+    "version": "2.0",
+    "layoutId": "2",
+    "token": "HR-dashboard",
+    "createdBy": "-1",
+    "profileId": "1",
+    "id": "1",
+    "state": "ACTIVATED",
+    "iconPath": "/icon.jpg"
+  }
+]
