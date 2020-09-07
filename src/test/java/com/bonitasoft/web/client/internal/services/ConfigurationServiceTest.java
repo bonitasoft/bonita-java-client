@@ -14,27 +14,28 @@ import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.ConfigurationAPI;
 import com.bonitasoft.web.client.model.License;
 import com.github.zafarkhaja.semver.Version;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.io.TempDir;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ConfigurationServiceTest {
+@ExtendWith(MockitoExtension.class)
+class ConfigurationServiceTest {
 
-    @Rule
-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
+    @TempDir
+    File temporaryFolder;
 
     @Mock
     private SystemService systemService;
@@ -73,12 +74,12 @@ public class ConfigurationServiceTest {
     // =================================================================================================================
 
     @Test
-    public void should_not_perform_import_configuration_for_Bonita_community_edition() throws Exception {
+    void should_not_perform_import_configuration_for_Bonita_community_edition() throws Exception {
         //given:
         doReturn(communityLicense()).when(systemService).getLicense();
 
         //when:
-        configurationService.importBonitaConfiguration(temporaryFolder.newFile());
+        configurationService.importBonitaConfiguration(new File(temporaryFolder, UUID.randomUUID().toString()));
 
         //then:
         verify(bonitaCookieInterceptor).checkLogged();
@@ -87,13 +88,13 @@ public class ConfigurationServiceTest {
     }
 
     @Test
-    public void should_not_perform_import_configuration_for_lower_Bonita_7_8_0_versions() throws Exception {
+    void should_not_perform_import_configuration_for_lower_Bonita_7_8_0_versions() throws Exception {
         //given:
         doReturn(version("7.7.3")).when(systemService).getVersion();
         doReturn(enterpriseLicense()).when(systemService).getLicense();
 
         //when:
-        configurationService.importBonitaConfiguration(temporaryFolder.newFile());
+        configurationService.importBonitaConfiguration(new File(temporaryFolder, UUID.randomUUID().toString()));
 
         //then:
         verify(bonitaCookieInterceptor).checkLogged();
@@ -102,14 +103,14 @@ public class ConfigurationServiceTest {
     }
 
     @Test
-    public void should_perform_import_configuration_for_greater_Bonita_7_8_0_versions() throws Exception {
+    void should_perform_import_configuration_for_greater_Bonita_7_8_0_versions() throws Exception {
         //given:
         doReturn(version("7.8.0")).when(systemService).getVersion();
         doReturn(enterpriseLicense()).when(systemService).getLicense();
         Mockito.doReturn(TestCall.successCall(null)).when(configurationAPI).deployConfiguration(any());
 
         //when:
-        configurationService.importBonitaConfiguration(temporaryFolder.newFile());
+        configurationService.importBonitaConfiguration(new File(temporaryFolder, UUID.randomUUID().toString()));
 
         //then:
         verify(bonitaCookieInterceptor).checkLogged();
@@ -118,7 +119,7 @@ public class ConfigurationServiceTest {
     }
 
     @Test
-    public void should_import_fail_if_the_api_returns_an_error() throws Exception {
+    void should_import_fail_if_the_api_returns_an_error() throws Exception {
         //given:
         doReturn(version("7.8.2")).when(systemService).getVersion();
         doReturn(enterpriseLicense()).when(systemService).getLicense();
@@ -126,7 +127,7 @@ public class ConfigurationServiceTest {
 
         //when:
         Throwable thrown = catchThrowable(
-                () -> configurationService.importBonitaConfiguration(temporaryFolder.newFile()));
+                () -> configurationService.importBonitaConfiguration(new File(temporaryFolder, UUID.randomUUID().toString())));
 
         //then:
         assertThat(thrown).isInstanceOf(IOException.class)

@@ -8,8 +8,14 @@
  */
 package com.bonitasoft.web.client.internal.converters;
 
-import static java.util.Arrays.asList;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.bonitasoft.web.client.model.Process;
+import com.bonitasoft.web.client.model.*;
+import com.bonitasoft.web.client.model.Process.ConfigurationState;
+import com.github.zafarkhaja.semver.Version;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,27 +25,20 @@ import java.time.ZoneOffset;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.bonitasoft.web.client.model.Application;
-import com.bonitasoft.web.client.model.Page;
-import com.bonitasoft.web.client.model.Process;
-import com.bonitasoft.web.client.model.Process.ConfigurationState;
-import com.bonitasoft.web.client.model.ProcessResolutionProblem;
-import com.bonitasoft.web.client.model.Profile;
-import com.bonitasoft.web.client.model.TenantResourceStatus;
-import com.github.zafarkhaja.semver.Version;
-import org.assertj.core.api.JUnitSoftAssertions;
-import org.junit.Rule;
-import org.junit.Test;
+import static java.util.Arrays.asList;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class RestApiConverterTest {
-
-    @Rule
-    public JUnitSoftAssertions softly = new JUnitSoftAssertions();
+@ExtendWith(SoftAssertionsExtension.class)
+class RestApiConverterTest {
 
     private RestApiConverter restApiConverter = RestApiConverter.INSTANCE;
 
+    static String toDoubleQuote(String json) {
+        return json.replaceAll("'", "\"");
+    }
+
     @Test
-    public void should_convert_json_to_application_list() throws Exception {
+    void should_convert_json_to_application_list(SoftAssertions softly) throws Exception {
         //given
         String json = read("searchApplication.json");
 
@@ -57,7 +56,7 @@ public class RestApiConverterTest {
     }
 
     @Test
-    public void should_convert_json_to_Profile_list() throws Exception {
+    void should_convert_json_to_Profile_list(SoftAssertions softly) throws Exception {
         //given
         String json = read("searchProfile.json");
 
@@ -88,7 +87,7 @@ public class RestApiConverterTest {
     }
 
     @Test
-    public void should_convert_json_to_Page_list() throws Exception {
+    void should_convert_json_to_Page_list(SoftAssertions softly) throws Exception {
         //given
         String json = read("searchPage.json");
 
@@ -112,7 +111,7 @@ public class RestApiConverterTest {
     }
 
     @Test
-    public void should_convert_upload_response() throws Exception {
+    void should_convert_upload_response() throws Exception {
         //given
         String uploadResponse = "tmp_8795279717849311826.zip::page.zip";
 
@@ -124,7 +123,7 @@ public class RestApiConverterTest {
     }
 
     @Test
-    public void should_convert_tenant_resource_status_response() throws IOException {
+    void should_convert_tenant_resource_status_response(SoftAssertions softly) throws IOException {
         //given
         String json = "{" +
                 "'id':'3'" +
@@ -150,7 +149,7 @@ public class RestApiConverterTest {
     }
 
     @Test
-    public void should_convert_session_json_with_snapshot_version_to_version() throws Exception {
+    void should_convert_session_json_with_snapshot_version_to_version() throws Exception {
         //given
         Version versionToMatch = new Version.Builder("7.7.0").build();
         String response = "{" +
@@ -171,7 +170,7 @@ public class RestApiConverterTest {
     }
 
     @Test
-    public void should_convert_session_json_with_weekly_version_to_version() throws Exception {
+    void should_convert_session_json_with_weekly_version_to_version() throws Exception {
         //given
         Version versionToMatch = new Version.Builder("7.6.1").build();
         String response = "{" +
@@ -192,7 +191,7 @@ public class RestApiConverterTest {
     }
 
     @Test
-    public void should_convert_json_to_process_including_dates() throws Exception {
+    void should_convert_json_to_process_including_dates(SoftAssertions softly) throws Exception {
         //given
         String response = "{" +
                 "'id':'8216934689697197160'" +
@@ -224,8 +223,12 @@ public class RestApiConverterTest {
         softly.assertThat(process.getLastUpdateDate()).isEqualTo("2015-01-02T05:04:30.587");
     }
 
+    // =================================================================================================================
+    // UTILS
+    // =================================================================================================================
+
     @Test
-    public void should_convert_json_into_list_of_processActivationProblem() throws Exception {
+    void should_convert_json_into_list_of_processActivationProblem() throws Exception {
         //given
         String response = "[" +
                 "{" +
@@ -259,19 +262,11 @@ public class RestApiConverterTest {
                                 "BadEncoding', is not managed by the current version of the BDM");
     }
 
-    // =================================================================================================================
-    // UTILS
-    // =================================================================================================================
-
     private String read(String resourceName) throws IOException {
         try (BufferedReader buffer = new BufferedReader(
                 new InputStreamReader(this.getClass().getResourceAsStream(resourceName)))) {
             return buffer.lines().collect(Collectors.joining("\n"));
         }
-    }
-
-    static String toDoubleQuote(String json) {
-        return json.replaceAll("'", "\"");
     }
 
 }

@@ -8,33 +8,33 @@
  */
 package com.bonitasoft.web.client.internal;
 
-import static com.bonitasoft.web.client.internal.BonitaCookieInterceptor.CSRF_TOKEN_HEADER;
-import static okhttp3.Request.Builder;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static com.bonitasoft.web.client.internal.BonitaCookieInterceptor.CSRF_TOKEN_HEADER;
+import static okhttp3.Request.Builder;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by laurentleseigneur on 01/07/2017.
  */
-public class BonitaCookieInterceptorTest {
+class BonitaCookieInterceptorTest {
 
     private MockWebServer server;
 
-    @Before
-    public void setup() throws Exception {
+    @BeforeEach
+    void setup() throws Exception {
         server = new MockWebServer();
         server.start();
     }
 
     @Test
-    public void should_set_cookie() {
+    void should_set_cookie() {
         //given
         Headers headers = getHeaders();
         BonitaCookieInterceptor bonitaCookieInterceptor = new BonitaCookieInterceptor();
@@ -48,7 +48,7 @@ public class BonitaCookieInterceptorTest {
     }
 
     @Test
-    public void should_set_cookie_with_equals_character() {
+    void should_set_cookie_with_equals_character() {
         //given
         Headers headers = getHeaders("cookieWithEquals", "valueWithEquals==/; path=/");
         BonitaCookieInterceptor bonitaCookieInterceptor = new BonitaCookieInterceptor();
@@ -62,7 +62,7 @@ public class BonitaCookieInterceptorTest {
     }
 
     @Test
-    public void should_set_cookie_when_a_cookie_entry_appears_several_times() {
+    void should_set_cookie_when_a_cookie_entry_appears_several_times() {
         //given
         Headers headers = getHeaders("cookie1", "value1_duplicated");
         BonitaCookieInterceptor bonitaCookieInterceptor = new BonitaCookieInterceptor();
@@ -76,7 +76,7 @@ public class BonitaCookieInterceptorTest {
     }
 
     @Test
-    public void should_set_cookie_when_an_cookie_entry_has_multiple_values() {
+    void should_set_cookie_when_an_cookie_entry_has_multiple_values() {
         //given
         Headers headers = getHeaders("cookie3", "value31;value32");
         BonitaCookieInterceptor bonitaCookieInterceptor = new BonitaCookieInterceptor();
@@ -90,7 +90,7 @@ public class BonitaCookieInterceptorTest {
     }
 
     @Test
-    public void should_exclude_csrf_token() {
+    void should_exclude_csrf_token() {
         //given
         Headers headers = getHeaders(CSRF_TOKEN_HEADER, "abcd");
         BonitaCookieInterceptor bonitaCookieInterceptor = new BonitaCookieInterceptor();
@@ -105,7 +105,7 @@ public class BonitaCookieInterceptorTest {
     }
 
     @Test
-    public void should_reset_cookie() {
+    void should_reset_cookie() {
         //given
         Headers headers = getHeaders(CSRF_TOKEN_HEADER, "abcd");
         BonitaCookieInterceptor bonitaCookieInterceptor = new BonitaCookieInterceptor();
@@ -121,7 +121,7 @@ public class BonitaCookieInterceptorTest {
     }
 
     @Test
-    public void should_add_required_cookie_and_csrf_header() throws Exception {
+    void should_add_required_cookie_and_csrf_header() throws Exception {
         //given
         Headers headers = getHeaders(CSRF_TOKEN_HEADER, "secret");
         BonitaCookieInterceptor bonitaCookieInterceptor = new BonitaCookieInterceptor();

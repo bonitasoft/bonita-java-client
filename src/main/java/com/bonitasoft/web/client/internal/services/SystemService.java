@@ -13,6 +13,7 @@ import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.SystemAPI;
 import com.bonitasoft.web.client.internal.converters.RestApiConverter;
 import com.bonitasoft.web.client.model.License;
+import com.fasterxml.jackson.databind.type.MapLikeType;
 import com.github.zafarkhaja.semver.Version;
 import okhttp3.ResponseBody;
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class SystemService extends ClientService {
@@ -30,10 +32,9 @@ public class SystemService extends ClientService {
 
     private final RestApiConverter restApiConverter;
     private final SystemAPI systemAPI;
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
+    private final BonitaCookieInterceptor bonitaCookieInterceptor;
 
-    public SystemService(RestApiConverter restApiConverter, BonitaCookieInterceptor bonitaCookieInterceptor,
-                         SystemAPI systemAPI) {
+    public SystemService(RestApiConverter restApiConverter, BonitaCookieInterceptor bonitaCookieInterceptor, SystemAPI systemAPI) {
         this.restApiConverter = restApiConverter;
         this.bonitaCookieInterceptor = bonitaCookieInterceptor;
         this.systemAPI = systemAPI;
@@ -44,7 +45,8 @@ public class SystemService extends ClientService {
         bonitaCookieInterceptor.checkLogged();
         Response<ResponseBody> response = systemAPI.getCurrentTenant().execute();
         checkResponse(response);
-        HashMap<String, String> responseMap = objectMapper.readValue(response.body().string(), HashMap.class);
+        MapLikeType type = objectMapper.getTypeFactory().constructMapLikeType(Map.class, String.class, String.class);
+        HashMap<String, String> responseMap = objectMapper.readValue(response.body().string(), type);
         boolean tenantIsPaused = Objects.equals(responseMap.get(PAUSED), "true");
         LOGGER.debug("Tenant is {}.", tenantIsPaused ? "paused" : "not paused");
         return tenantIsPaused;
