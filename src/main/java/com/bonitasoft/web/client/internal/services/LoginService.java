@@ -10,9 +10,9 @@ package com.bonitasoft.web.client.internal.services;
 
 import java.io.IOException;
 
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.api.LoginAPI;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.api.LoginAPI;
 import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

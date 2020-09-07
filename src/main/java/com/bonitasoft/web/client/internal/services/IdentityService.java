@@ -8,11 +8,11 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.services.model.CreateUser;
-import com.bonitasoft.web.client.internal.api.IdentityAPI;
-import com.bonitasoft.web.client.model.User;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.services.model.CreateUser;
+import  com.bonitasoft.web.client.internal.api.IdentityAPI;
+import  com.bonitasoft.web.client.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Response;

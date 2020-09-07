@@ -10,7 +10,7 @@ package com.bonitasoft.web.client.internal.api;
 
 import java.util.List;
 
-import com.bonitasoft.web.client.model.UserTask;
+import  com.bonitasoft.web.client.model.UserTask;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

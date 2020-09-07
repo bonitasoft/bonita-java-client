@@ -14,11 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.api.UserTaskAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import com.bonitasoft.web.client.model.UserTask;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.api.UserTaskAPI;
+import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import  com.bonitasoft.web.client.model.UserTask;
 import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -8,19 +8,18 @@
  */
 package com.bonitasoft.web.client.internal.converters;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.MapLikeType;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.github.zafarkhaja.semver.Version;
+import static org.apache.commons.lang3.StringUtils.substringAfterLast;
+import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.apache.commons.lang3.StringUtils.substringAfterLast;
-import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.github.zafarkhaja.semver.Version;
 
 /**
  * @author Laurent Leseigneur
@@ -49,15 +48,14 @@ public class RestApiConverter {
     }
 
     public Version versionFromSessionJson(String json) throws IOException {
-        MapLikeType type = objectMapper.getTypeFactory().constructMapLikeType(Map.class, String.class, String.class);
-        Map<String, String> responseMap = objectMapper.readValue(json, type);
+        Map<String, String> responseMap = objectMapper.readValue(json, Map.class);
         String bonitaVersion = responseMap.get(VERSION);
         // manage our weekly versions. In that case, we do not always follow semver, versions look like 7.7.0.W07
         // semver compliant would be 7.7.0-W07. So without this extra step, we get the following error
         // "Unexpected character 'DOT(.)' at position '5', expecting '[HYPHEN, PLUS, EOI]'"
         String endOfTheVersion = substringAfterLast(bonitaVersion, ".");
         if (!endOfTheVersion.isEmpty()) {
-            char first = endOfTheVersion.charAt(0);
+            Character first = endOfTheVersion.charAt(0);
             if ((int) first < 48 || (int) first > 57) { // not between 0 and 9, i.e not a number -> .alpha, .W89 ...
                 bonitaVersion = substringBeforeLast(bonitaVersion, ".");
             }

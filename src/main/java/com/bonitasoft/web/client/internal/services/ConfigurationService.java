@@ -8,22 +8,22 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import com.bonitasoft.web.client.event.ImportNotifier;
-import com.bonitasoft.web.client.event.ImportWarningEvent;
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.api.ConfigurationAPI;
+import static java.lang.String.format;
+
+import java.io.File;
+import java.io.IOException;
+
+import  com.bonitasoft.web.client.event.ImportNotifier;
+import  com.bonitasoft.web.client.event.ImportWarningEvent;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.api.ConfigurationAPI;
 import com.github.zafarkhaja.semver.Version;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
-
-import java.io.File;
-import java.io.IOException;
-
-import static java.lang.String.format;
 
 @Slf4j
 public class ConfigurationService extends ClientService {
@@ -36,7 +36,7 @@ public class ConfigurationService extends ClientService {
     private final Version minBonitaVersionSupportingConfiguration = new Version.Builder("7.8.0").build();
 
     public ConfigurationService(BonitaCookieInterceptor bonitaCookieInterceptor, SystemService systemService,
-                                ConfigurationAPI configurationAPI, ImportNotifier importNotifier) {
+            ConfigurationAPI configurationAPI, ImportNotifier importNotifier) {
         this.bonitaCookieInterceptor = bonitaCookieInterceptor;
         this.systemService = systemService;
         this.configurationAPI = configurationAPI;
@@ -47,10 +47,6 @@ public class ConfigurationService extends ClientService {
      * Import a Bonita Application Configuration file.<p>
      * This feature has been introduced in Bonita 7.8.0 and is only available on 'Subscription' editions. Skip import
      * for other cases.
-     *
-     * @param configurationFile the configuration file to import
-     * @throws UnauthorizedException
-     * @throws IOException
      */
     public void importBonitaConfiguration(File configurationFile) throws IOException, UnauthorizedException {
         bonitaCookieInterceptor.checkLogged();
@@ -65,7 +61,7 @@ public class ConfigurationService extends ClientService {
         Version version = systemService.getVersion();
         if (version.lessThan(minBonitaVersionSupportingConfiguration)) {
             String message = format("Skipping the Bonita Configuration deployment: your current Bonita version is '%s'"
-                            + " and the Bonita Configuration feature is supported since Bonita '%s'.", version,
+                    + " and the Bonita Configuration feature is supported since Bonita '%s'.", version,
                     minBonitaVersionSupportingConfiguration);
             importNotifier.post(new ImportWarningEvent(message));
             return;

@@ -8,7 +8,7 @@
  */
 package com.bonitasoft.web.client.internal.api;
 
-import com.bonitasoft.web.client.model.TenantResourceStatus;
+import  com.bonitasoft.web.client.model.TenantResourceStatus;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;

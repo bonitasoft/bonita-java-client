@@ -8,19 +8,18 @@
  */
 package com.bonitasoft.web.client;
 
-import com.bonitasoft.web.client.exception.BdmAccessControlException;
-import com.bonitasoft.web.client.exception.ClientException;
-import com.bonitasoft.web.client.exception.NotFoundException;
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-
-import com.bonitasoft.web.client.internal.services.*;
-import com.bonitasoft.web.client.internal.services.model.CreateUser;
-import com.bonitasoft.web.client.model.*;
-import com.bonitasoft.web.client.model.Process;
-import com.bonitasoft.web.client.policies.ApplicationImportPolicy;
-import com.bonitasoft.web.client.policies.OrganizationImportPolicy;
-import com.bonitasoft.web.client.policies.ProcessImportPolicy;
-import com.bonitasoft.web.client.policies.ProfileImportPolicy;
+import  com.bonitasoft.web.client.exception.BdmAccessControlException;
+import  com.bonitasoft.web.client.exception.ClientException;
+import  com.bonitasoft.web.client.exception.NotFoundException;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.services.*;
+import  com.bonitasoft.web.client.internal.services.model.CreateUser;
+import  com.bonitasoft.web.client.model.Process;
+import  com.bonitasoft.web.client.model.*;
+import  com.bonitasoft.web.client.policies.ApplicationImportPolicy;
+import  com.bonitasoft.web.client.policies.OrganizationImportPolicy;
+import  com.bonitasoft.web.client.policies.ProcessImportPolicy;
+import  com.bonitasoft.web.client.policies.ProfileImportPolicy;
 import com.github.zafarkhaja.semver.Version;
 import lombok.Getter;
 import lombok.Setter;
@@ -195,7 +194,7 @@ public class BonitaClient {
     }
 
     public Process getProcess(String name, String version) throws IOException, NotFoundException {
-        Optional<Process> process = processService.getProcess(name, version);
+        Optional<com.bonitasoft.web.client.model.Process> process = processService.getProcess(name, version);
         if (!process.isPresent()) {
             throw new NotFoundException(format("Process '%s' in version '%s' does not exist", name, version));
         }

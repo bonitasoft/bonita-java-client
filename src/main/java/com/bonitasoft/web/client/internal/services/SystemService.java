@@ -12,11 +12,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.api.SystemAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import com.bonitasoft.web.client.model.License;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.api.SystemAPI;
+import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import  com.bonitasoft.web.client.model.License;
 import com.github.zafarkhaja.semver.Version;
 import okhttp3.ResponseBody;
 import org.slf4j.Logger;

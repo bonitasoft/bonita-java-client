@@ -10,9 +10,9 @@ package com.bonitasoft.web.client.internal.api;
 
 import java.util.List;
 
-import com.bonitasoft.web.client.model.Process;
-import com.bonitasoft.web.client.model.ProcessParameter;
-import com.bonitasoft.web.client.model.ProcessResolutionProblem;
+import  com.bonitasoft.web.client.model.Process;
+import  com.bonitasoft.web.client.model.ProcessParameter;
+import  com.bonitasoft.web.client.model.ProcessResolutionProblem;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -62,6 +62,6 @@ public interface ProcessAPI {
 
     @GET("API/bpm/processParameter")
     Call<List<ProcessParameter>> searchParameters(@Query("p") int page, @Query("c") int count,
-                                                  @Query("f") String... filters);
+            @Query("f") String... filters);
 
 }

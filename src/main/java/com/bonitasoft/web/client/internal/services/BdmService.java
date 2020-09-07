@@ -11,11 +11,11 @@ package com.bonitasoft.web.client.internal.services;
 import java.io.File;
 import java.io.IOException;
 
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.api.BdmAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import com.bonitasoft.web.client.model.TenantResourceStatus;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.api.BdmAPI;
+import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import  com.bonitasoft.web.client.model.TenantResourceStatus;
 import com.github.zafarkhaja.semver.Version;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -76,8 +76,6 @@ public class BdmService extends ClientService {
     /**
      * @return {@link TenantResourceStatus} , containing the BDM state if the Bonita version is at least 7.7.0, or a
      *         state UNKNOWN for other versions
-     * @throws IOException
-     * @throws UnauthorizedException
      */
     public TenantResourceStatus getBdmStatus() throws IOException, UnauthorizedException {
         bonitaCookieInterceptor.checkLogged();

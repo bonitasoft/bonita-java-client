@@ -11,7 +11,7 @@ package com.bonitasoft.web.client.internal.services;
 import java.io.IOException;
 import java.util.HashMap;
 
-import com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import retrofit2.Response;
 

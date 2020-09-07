@@ -8,17 +8,17 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import com.bonitasoft.web.client.event.ImportNotifier;
-import com.bonitasoft.web.client.event.ImportWarningEvent;
-import com.bonitasoft.web.client.exception.ClientException;
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.api.ProfileAPI;
-import com.bonitasoft.web.client.internal.services.model.CreateProfileMembership;
-import com.bonitasoft.web.client.model.Profile;
-import com.bonitasoft.web.client.model.ProfileMembership;
-import com.bonitasoft.web.client.model.User;
-import com.bonitasoft.web.client.policies.ProfileImportPolicy;
+import  com.bonitasoft.web.client.event.ImportNotifier;
+import  com.bonitasoft.web.client.event.ImportWarningEvent;
+import  com.bonitasoft.web.client.exception.ClientException;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.api.ProfileAPI;
+import  com.bonitasoft.web.client.internal.services.model.CreateProfileMembership;
+import  com.bonitasoft.web.client.model.Profile;
+import  com.bonitasoft.web.client.model.ProfileMembership;
+import  com.bonitasoft.web.client.model.User;
+import  com.bonitasoft.web.client.policies.ProfileImportPolicy;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;

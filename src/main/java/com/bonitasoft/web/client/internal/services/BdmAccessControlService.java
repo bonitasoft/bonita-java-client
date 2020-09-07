@@ -8,13 +8,18 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import com.bonitasoft.web.client.event.ImportNotifier;
-import com.bonitasoft.web.client.event.ImportWarningEvent;
-import com.bonitasoft.web.client.exception.BdmAccessControlException;
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.api.BdmAccessControlAPI;
-import com.bonitasoft.web.client.model.TenantResourceStatus;
+import static java.lang.String.format;
+
+import java.io.File;
+import java.io.IOException;
+
+import  com.bonitasoft.web.client.event.ImportNotifier;
+import  com.bonitasoft.web.client.event.ImportWarningEvent;
+import  com.bonitasoft.web.client.exception.BdmAccessControlException;
+import  com.bonitasoft.web.client.exception.UnauthorizedException;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.api.BdmAccessControlAPI;
+import  com.bonitasoft.web.client.model.TenantResourceStatus;
 import com.github.zafarkhaja.semver.Version;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -22,11 +27,6 @@ import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Response;
-
-import java.io.File;
-import java.io.IOException;
-
-import static java.lang.String.format;
 
 public class BdmAccessControlService extends ClientService {
 
@@ -39,7 +39,7 @@ public class BdmAccessControlService extends ClientService {
     private final ImportNotifier importNotifier;
 
     public BdmAccessControlService(BonitaCookieInterceptor bonitaCookieInterceptor, SystemService systemService,
-                                   BdmAccessControlAPI bdmAccessControlAPI, ImportNotifier importNotifier) {
+            BdmAccessControlAPI bdmAccessControlAPI, ImportNotifier importNotifier) {
         this.bonitaCookieInterceptor = bonitaCookieInterceptor;
         this.systemService = systemService;
         this.bdmAccessControlAPI = bdmAccessControlAPI;
@@ -50,10 +50,6 @@ public class BdmAccessControlService extends ClientService {
     /**
      * Imports an access control file if the Bonita version is at least 7.7.0 and edition is 'Subscription'. Skip
      * deployment for other cases.
-     *
-     * @param content the BDM file to import
-     * @throws IOException
-     * @throws BdmAccessControlException
      */
     public void importBdmAccessControl(File content)
             throws IOException, BdmAccessControlException {
@@ -69,7 +65,7 @@ public class BdmAccessControlService extends ClientService {
         Version version = systemService.getVersion();
         if (version.lessThan(minimumVersionWithBDMAccessControlSupport)) {
             String message = format("Skipping the BDM Access Control deployment: your current Bonita version is '%s'"
-                            + " and the BDM Access Control feature is supported since Bonita '%s'.", version,
+                    + " and the BDM Access Control feature is supported since Bonita '%s'.", version,
                     minimumVersionWithBDMAccessControlSupport);
             importNotifier.post(new ImportWarningEvent(message));
             return;
@@ -103,8 +99,6 @@ public class BdmAccessControlService extends ClientService {
     /**
      * Uninstall access control if the Bonita version is at least 7.7.0 and edition is 'Subscription'. Skip uninstalling
      * for other cases.
-     * @throws IOException
-     * @throws UnauthorizedException
      */
     public void uninstallBdmAccessControl() throws IOException, UnauthorizedException {
         bonitaCookieInterceptor.checkLogged();
@@ -118,7 +112,7 @@ public class BdmAccessControlService extends ClientService {
         Version version = systemService.getVersion();
         if (version.lessThan(minimumVersionWithBDMAccessControlSupport)) {
             LOGGER.debug("Skipping the BDM Access Control uninstall: your current Bonita version is '{}'"
-                            + " and the BDM Access Control feature is supported since Bonita '{}'.", version,
+                    + " and the BDM Access Control feature is supported since Bonita '{}'.", version,
                     minimumVersionWithBDMAccessControlSupport);
             return;
         }
@@ -130,7 +124,7 @@ public class BdmAccessControlService extends ClientService {
 
     /**
      * @return a {@link TenantResourceStatus} containing the access control status if the Bonita version is at least
-     * 7.7.0 or the UNKNOWN status for other cases.
+     *         7.7.0 or the UNKNOWN status for other cases.
      */
     public TenantResourceStatus getBdmAccessControlStatus() {
         try {
@@ -138,8 +132,8 @@ public class BdmAccessControlService extends ClientService {
             Version version = systemService.getVersion();
             if (systemService.getVersion().lessThan(minimumVersionWithBDMAccessControlSupport)) {
                 LOGGER.debug("It is not possible to retrieve the BDM Access Control status:"
-                                + " your current Bonita version is '{}' and the BDM Access Control feature is supported since"
-                                + " Bonita '{}'. Returning an UNKNOWN status.", version,
+                        + " your current Bonita version is '{}' and the BDM Access Control feature is supported since"
+                        + " Bonita '{}'. Returning an UNKNOWN status.", version,
                         minimumVersionWithBDMAccessControlSupport);
                 return TenantResourceStatus.UNKNOWN;
             }

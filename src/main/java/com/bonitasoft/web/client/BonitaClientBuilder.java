@@ -8,12 +8,12 @@
  */
 package com.bonitasoft.web.client;
 
-import com.bonitasoft.web.client.event.ImportNotifier;
-import com.bonitasoft.web.client.event.LogOnlyImportNotifier;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.api.*;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import com.bonitasoft.web.client.internal.services.*;
+import  com.bonitasoft.web.client.event.ImportNotifier;
+import  com.bonitasoft.web.client.event.LogOnlyImportNotifier;
+import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import  com.bonitasoft.web.client.internal.api.*;
+import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import  com.bonitasoft.web.client.internal.services.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Setter;
 import lombok.experimental.Accessors;

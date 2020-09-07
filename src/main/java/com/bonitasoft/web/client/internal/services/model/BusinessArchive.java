@@ -18,7 +18,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import com.bonitasoft.web.client.utils.FileUtils;
+import com.bonitasoft.web.utils.FileUtils;
 import lombok.Builder;
 import lombok.Data;
 import org.w3c.dom.Document;
