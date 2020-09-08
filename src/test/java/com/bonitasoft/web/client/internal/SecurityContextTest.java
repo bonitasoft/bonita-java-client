@@ -9,18 +9,21 @@
 package com.bonitasoft.web.client.internal;
 
 import com.bonitasoft.web.client.internal.security.OkHttpSecurityContextInterceptor;
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
+import com.github.tomakehurst.wiremock.stubbing.Scenario;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import okhttp3.internal.http.RealResponseBody;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import retrofit2.Response;
 
 import static com.bonitasoft.web.client.internal.security.OkHttpSecurityContextInterceptor.CSRF_TOKEN_HEADER;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static okhttp3.Request.Builder;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,12 +32,17 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class SecurityContextTest {
 
-    private MockWebServer server;
+    private WireMockServer server;
 
     @BeforeEach
-    void setup() throws Exception {
-        server = new MockWebServer();
+    void setUp() {
+        server = new WireMockServer(WireMockConfiguration.options().dynamicPort());
         server.start();
+    }
+
+    @AfterEach
+    void tearDown() {
+        server.stop();
     }
 
     @Test
@@ -131,9 +139,8 @@ class SecurityContextTest {
         OkHttpSecurityContextInterceptor interceptor = new OkHttpSecurityContextInterceptor();
         interceptor.authenticate(loginResponse);
 
-        server.enqueue(new MockResponse()
-                .setResponseCode(200)
-                .setBody("ok"));
+        server.stubFor(get(urlEqualTo("/"))
+                .willReturn(aResponse().withBody("ok")));
 
         //expect
         Interceptor checkInterceptor = chain -> {

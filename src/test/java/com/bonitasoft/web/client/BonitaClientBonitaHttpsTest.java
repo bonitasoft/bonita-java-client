@@ -32,9 +32,6 @@ class BonitaClientBonitaHttpsTest {
 
     private WireMockServer wireMockServer;
 
-    @Mock
-    private SecurityContext securityContext;
-
     @BeforeEach
     void setUp() {
         wireMockServer = new WireMockServer(WireMockConfiguration.options().dynamicPort().dynamicHttpsPort());
