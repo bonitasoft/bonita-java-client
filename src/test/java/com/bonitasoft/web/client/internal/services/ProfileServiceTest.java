@@ -14,17 +14,17 @@ import com.bonitasoft.web.client.internal.api.ProfileAPI;
 import com.bonitasoft.web.client.internal.converters.RestApiConverter;
 import com.bonitasoft.web.client.model.Profile;
 import com.bonitasoft.web.client.policies.ProfileImportPolicy;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.io.TempDir;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import retrofit2.Call;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 
@@ -34,11 +34,12 @@ import static java.util.Collections.singletonList;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ProfileServiceTest {
+@ExtendWith(MockitoExtension.class)
+class ProfileServiceTest {
 
-    @Rule
-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
+    @TempDir
+    File temporaryFolder;
+
     @Mock
     private ProfileAPI profileAPI;
     @Mock
@@ -47,6 +48,7 @@ public class ProfileServiceTest {
     private BonitaCookieInterceptor bonitaCookieInterceptor;
     @Mock
     private ImportNotifier importNotifier;
+
     @InjectMocks
     private ProfileService profileService;
 
@@ -62,7 +64,7 @@ public class ProfileServiceTest {
             "</profiles:profiles>";
 
     @Test
-    public void should_not_import_profile_if_some_already_exists_with_policy_IGNORE_IF_ANY_EXISTS() throws Exception {
+    void should_not_import_profile_if_some_already_exists_with_policy_IGNORE_IF_ANY_EXISTS() throws Exception {
         doReturn(successCall(emptyList())).when(profileAPI).search(0, 1, "name=P1");
         doReturn(aCallThatReturnAProfile(2L)).when(profileAPI).search(0, 1, "name=P2");
         doReturn(aCallThatReturnAProfile(3L)).when(profileAPI).search(0, 1, "name=P3");
@@ -75,7 +77,7 @@ public class ProfileServiceTest {
     }
 
     @Test
-    public void should_import_profile_if_none_already_exists_with_policy_IGNORE_IF_ANY_EXISTS() throws Exception {
+    void should_import_profile_if_none_already_exists_with_policy_IGNORE_IF_ANY_EXISTS() throws Exception {
         doReturn(successCall(emptyList())).when(profileAPI).search(0, 1, "name=P1");
         doReturn(successCall(emptyList())).when(profileAPI).search(0, 1, "name=P2");
         doReturn(successCall(emptyList())).when(profileAPI).search(0, 1, "name=P3");
@@ -89,7 +91,7 @@ public class ProfileServiceTest {
     }
 
     @Test
-    public void should_import_profile_even_if_some_already_exists_with_policy_REPLACE_DUPLICATES() throws Exception {
+    void should_import_profile_even_if_some_already_exists_with_policy_REPLACE_DUPLICATES() throws Exception {
         doReturn(successCall("uploaded")).when(profileAPI).uploadContent(any());
         doReturn(successCall("done")).when(profileAPI).importFromUploadedFile(any(), anyString());
 
@@ -101,8 +103,8 @@ public class ProfileServiceTest {
     }
 
     private File getTestFile() throws IOException {
-        File file = temporaryFolder.newFile("profiles.xml");
-        Files.write(file.toPath(), profileTestXmlFile.getBytes("UTF-8"));
+        File file = new File(temporaryFolder, "profiles.xml");
+        Files.write(file.toPath(), profileTestXmlFile.getBytes(StandardCharsets.UTF_8));
         return file;
     }
 

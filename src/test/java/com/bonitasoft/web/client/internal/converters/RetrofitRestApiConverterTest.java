@@ -8,38 +8,41 @@
  */
 package com.bonitasoft.web.client.internal.converters;
 
-import static com.bonitasoft.web.client.internal.converters.RestApiConverterTest.toDoubleQuote;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.bonitasoft.web.client.model.Application;
+import com.bonitasoft.web.client.model.Page;
+import com.bonitasoft.web.client.model.Process;
+import com.bonitasoft.web.client.model.Profile;
+import com.github.zafarkhaja.semver.Version;
+import okhttp3.MediaType;
+import okhttp3.ResponseBody;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import retrofit2.Converter;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import  com.bonitasoft.web.client.model.Application;
-import  com.bonitasoft.web.client.model.Page;
-import  com.bonitasoft.web.client.model.Process;
-import  com.bonitasoft.web.client.model.Profile;
-import com.github.zafarkhaja.semver.Version;
-import okhttp3.MediaType;
-import okhttp3.ResponseBody;
-import org.assertj.core.api.JUnitSoftAssertions;
-import org.junit.Rule;
-import org.junit.Test;
-import retrofit2.Converter;
+import static com.bonitasoft.web.client.internal.converters.RestApiConverterTest.toDoubleQuote;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Baptiste Mesta.
  */
-public class RetrofitRestApiConverterTest {
-
-    @Rule
-    public JUnitSoftAssertions softly = new JUnitSoftAssertions();
+@ExtendWith(SoftAssertionsExtension.class)
+class RetrofitRestApiConverterTest {
 
     private RetrofitRestApiConverter retrofitRestApiConverter = new RetrofitRestApiConverter();
 
+    private static ResponseBody newResponseBody(String singleQuoteJson) {
+        return ResponseBody.create(MediaType.parse("application/json"), toDoubleQuote(singleQuoteJson));
+    }
+
     @Test
-    public void should_convert_list_of_application() throws IOException {
+    void should_convert_list_of_application(SoftAssertions softly) throws IOException {
         Converter<ResponseBody, ?> responseBodyConverter = responseBodyConverter(
                 new ListParameterizedType(Application.class));
         List<Application> applications = (List<Application>) responseBodyConverter.convert(newResponseBody("[{" +
@@ -52,7 +55,7 @@ public class RetrofitRestApiConverterTest {
     }
 
     @Test
-    public void should_convert_list_of_profiles() throws IOException {
+    void should_convert_list_of_profiles(SoftAssertions softly) throws IOException {
         Converter<ResponseBody, ?> responseBodyConverter = responseBodyConverter(
                 new ListParameterizedType(Profile.class));
         List<Profile> profiles = (List<Profile>) responseBodyConverter.convert(newResponseBody("[{" +
@@ -64,7 +67,7 @@ public class RetrofitRestApiConverterTest {
     }
 
     @Test
-    public void should_convert_list_of_page() throws IOException {
+    void should_convert_list_of_page(SoftAssertions softly) throws IOException {
         Converter<ResponseBody, ?> responseBodyConverter = responseBodyConverter(new ListParameterizedType(Page.class));
         List<Page> pages = (List<Page>) responseBodyConverter.convert(newResponseBody("[{" +
                 "'description':'page description'" +
@@ -75,7 +78,7 @@ public class RetrofitRestApiConverterTest {
     }
 
     @Test
-    public void should_convert_process() throws IOException {
+    void should_convert_process(SoftAssertions softly) throws IOException {
         Converter<ResponseBody, ?> responseBodyConverter = responseBodyConverter(Process.class);
         Process process = (Process) responseBodyConverter.convert(newResponseBody("{" +
                 "'id':'8216934689697197160'" +
@@ -86,8 +89,12 @@ public class RetrofitRestApiConverterTest {
         softly.assertThat(process.getName()).isEqualTo("process name");
     }
 
+    // =================================================================================================================
+    // UTILS
+    // =================================================================================================================
+
     @Test
-    public void should_convert_session_to_version() throws IOException {
+    void should_convert_session_to_version() throws IOException {
         Converter<ResponseBody, ?> responseBodyConverter = responseBodyConverter(Version.class);
         Version version = (Version) responseBodyConverter.convert(newResponseBody("{" +
                 "'user_id':'4'" +
@@ -97,10 +104,6 @@ public class RetrofitRestApiConverterTest {
 
         assertThat(version).isEqualTo(Version.valueOf("7.5.4"));
     }
-
-    // =================================================================================================================
-    // UTILS
-    // =================================================================================================================
 
     private Converter<ResponseBody, ?> responseBodyConverter(Type type) {
         return retrofitRestApiConverter.responseBodyConverter(type, null, null);
@@ -116,7 +119,7 @@ public class RetrofitRestApiConverterTest {
 
         @Override
         public Type[] getActualTypeArguments() {
-            return new Type[] { listType };
+            return new Type[]{listType};
         }
 
         @Override
@@ -128,10 +131,6 @@ public class RetrofitRestApiConverterTest {
         public Type getOwnerType() {
             return null;
         }
-    }
-
-    private static ResponseBody newResponseBody(String singleQuoteJson) {
-        return ResponseBody.create(MediaType.parse("application/json"), toDoubleQuote(singleQuoteJson));
     }
 
 }
