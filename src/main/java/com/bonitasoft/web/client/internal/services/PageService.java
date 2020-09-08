@@ -14,7 +14,6 @@ import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.Page;
 import com.bonitasoft.web.client.utils.FileUtils;
 import com.bonitasoft.web.client.utils.Json;
-
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

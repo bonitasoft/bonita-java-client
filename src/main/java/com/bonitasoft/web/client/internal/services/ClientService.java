@@ -10,6 +10,7 @@ package com.bonitasoft.web.client.internal.services;
 
 import com.bonitasoft.web.client.exception.UnauthorizedException;
 import com.bonitasoft.web.client.internal.security.SecurityContext;
+import com.bonitasoft.web.client.utils.Json;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.MapLikeType;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public abstract class ClientService {
 
     protected final SecurityContext securityContext;
 
-    protected ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
+    protected ObjectMapper objectMapper = Json.DEFAULT_MAPPER;
 
     public <T extends ClientService> T setObjectMapper(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;

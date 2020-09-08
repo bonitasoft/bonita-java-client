@@ -13,7 +13,7 @@ import com.bonitasoft.web.client.event.LogOnlyImportNotifier;
 import com.bonitasoft.web.client.internal.api.*;
 import com.bonitasoft.web.client.internal.security.OkHttpSecurityContextInterceptor;
 import com.bonitasoft.web.client.internal.services.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.bonitasoft.web.client.utils.Json;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -71,29 +71,27 @@ public class BonitaClientBuilder {
         }
         OkHttpClient okHttpClient = builder.build();
 
-        ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
-
         String validUrl = addTrailingSlashIfNeeded(url);
         Retrofit retrofit = new Retrofit.Builder().baseUrl(validUrl)
                 .callFactory(okHttpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(JacksonConverterFactory.create(mapper))
+                .addConverterFactory(JacksonConverterFactory.create(Json.DEFAULT_MAPPER))
                 .build();
 
         importNotifier = ofNullable(importNotifier).orElseGet(LogOnlyImportNotifier::new);
 
-        LoginService loginService = new LoginService(securityContext, retrofit.create(LoginAPI.class)).setObjectMapper(mapper);
-        ApplicationService applicationService = new ApplicationService(securityContext, retrofit.create(ApplicationAPI.class)).setObjectMapper(mapper);
-        OrganizationService organizationService = new OrganizationService(securityContext, retrofit.create(OrganizationAPI.class)).setObjectMapper(mapper);
-        IdentityService identityService = new IdentityService(securityContext, retrofit.create(IdentityAPI.class)).setObjectMapper(mapper);
-        ProfileService profileService = new ProfileService(securityContext, retrofit.create(ProfileAPI.class), identityService, importNotifier).setObjectMapper(mapper);
-        PageService pageService = new PageService(securityContext, retrofit.create(PageAPI.class)).setObjectMapper(mapper);
-        ProcessService processService = new ProcessService(securityContext, retrofit.create(ProcessAPI.class), importNotifier).setObjectMapper(mapper);
-        SystemService systemService = new SystemService(securityContext, retrofit.create(SystemAPI.class)).setObjectMapper(mapper);
-        BdmAccessControlService bdmAccessControlService = new BdmAccessControlService(securityContext, retrofit.create(BdmAccessControlAPI.class), systemService, importNotifier).setObjectMapper(mapper);
-        BdmService bdmService = new BdmService(securityContext, retrofit.create(BdmAPI.class), systemService, bdmAccessControlService).setObjectMapper(mapper);
-        UserTaskService userTaskService = new UserTaskService(securityContext, retrofit.create(UserTaskAPI.class)).setObjectMapper(mapper);
-        ConfigurationService configurationService = new ConfigurationService(securityContext, systemService, retrofit.create(ConfigurationAPI.class), importNotifier).setObjectMapper(mapper);
+        LoginService loginService = new LoginService(securityContext, retrofit.create(LoginAPI.class));
+        ApplicationService applicationService = new ApplicationService(securityContext, retrofit.create(ApplicationAPI.class));
+        OrganizationService organizationService = new OrganizationService(securityContext, retrofit.create(OrganizationAPI.class));
+        IdentityService identityService = new IdentityService(securityContext, retrofit.create(IdentityAPI.class));
+        ProfileService profileService = new ProfileService(securityContext, retrofit.create(ProfileAPI.class), identityService, importNotifier);
+        PageService pageService = new PageService(securityContext, retrofit.create(PageAPI.class));
+        ProcessService processService = new ProcessService(securityContext, retrofit.create(ProcessAPI.class), importNotifier);
+        SystemService systemService = new SystemService(securityContext, retrofit.create(SystemAPI.class));
+        BdmAccessControlService bdmAccessControlService = new BdmAccessControlService(securityContext, retrofit.create(BdmAccessControlAPI.class), systemService, importNotifier);
+        BdmService bdmService = new BdmService(securityContext, retrofit.create(BdmAPI.class), systemService, bdmAccessControlService);
+        UserTaskService userTaskService = new UserTaskService(securityContext, retrofit.create(UserTaskAPI.class));
+        ConfigurationService configurationService = new ConfigurationService(securityContext, systemService, retrofit.create(ConfigurationAPI.class), importNotifier);
 
         BonitaClient bonitaClient = new BonitaClient(loginService,
                 applicationService,
