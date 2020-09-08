@@ -13,13 +13,13 @@ import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.Application;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import retrofit2.Call;
 
 import java.io.File;
@@ -36,19 +36,19 @@ import static org.mockito.Mockito.*;
 /**
  * @author Baptiste Mesta.
  */
-@RunWith(MockitoJUnitRunner.class)
-public class ApplicationServiceTest {
+@ExtendWith(MockitoExtension.class)
+class ApplicationServiceTest {
 
-    @Mock
+    @Mock(lenient = true)
     private ApplicationAPI applicationAPI;
-    @Mock
+    @Mock(lenient = true)
     private SecurityContext securityContext;
 
     @InjectMocks
     private ApplicationService applicationService;
 
-    @Before
-    public void before() {
+    @BeforeEach
+    void before() {
         Call<ResponseBody> ok = TestCall.successCall(ResponseBody.create(MediaType.parse("text/plain"), "ok"));
         doReturn(ok).when(applicationAPI).delete(anyLong());
         doReturn(ok).when(applicationAPI).importFromUploadedFile(anyString(), anyString());
@@ -56,7 +56,7 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void should_delete_existing_application_when_policy_is_REPLACE_DUPLICATES() throws Exception {
+    void should_delete_existing_application_when_policy_is_REPLACE_DUPLICATES() throws Exception {
         File file = getFile("/application.xml");
         doReturn(aCallThatReturnApplication(5L)).when(applicationAPI).search(0, 1, "token=MyApplication_Client_tests");
         doReturn(aCallThatReturnApplication(6L)).when(applicationAPI).search(0, 1, "token=HR-dashboard_Client_tests");
@@ -68,7 +68,7 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void should_call_api_with_FAIL_ON_DUPLICATES_policy_when_using_REPLACE_DUPLICATES() throws Exception {
+    void should_call_api_with_FAIL_ON_DUPLICATES_policy_when_using_REPLACE_DUPLICATES() throws Exception {
         File file = getFile("/application.xml");
         doReturn(aCallThatReturnApplication(5L)).when(applicationAPI).search(0, 1, "token=MyApplication_Client_tests");
         doReturn(aCallThatReturnApplication(6L)).when(applicationAPI).search(0, 1, "token=HR-dashboard_Client_tests");
@@ -79,7 +79,7 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void should_not_delete_application_with_policy_FAIL_ON_DUPLICATES() throws Exception {
+    void should_not_delete_application_with_policy_FAIL_ON_DUPLICATES() throws Exception {
         File file = getFile("/application.xml");
 
         applicationService.importApplications(file, FAIL_ON_DUPLICATES);
@@ -88,7 +88,7 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void should_return_the_application_having_token() throws Exception {
+    void should_return_the_application_having_token() throws Exception {
         Call<List<Application>> call = aCallThatReturnApplication(6L);
         doReturn(call).when(applicationAPI).search(0, 1, "token=tokenOfTheApp");
 
@@ -98,7 +98,7 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void should_return_null_if_application_do_not_exists() throws Exception {
+    void should_return_null_if_application_do_not_exists() throws Exception {
         Call<List<Application>> call = TestCall.successCall(Collections.emptyList());
         doReturn(call).when(applicationAPI).search(0, 1, "token=tokenOfTheApp");
 
@@ -108,7 +108,7 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void should_delete_unexisting_application() throws Exception {
+    void should_delete_unexisting_application() throws Exception {
         Mockito.doReturn(TestCall.successCall(emptyList())).when(applicationAPI).search(0, 1, "token=tokenOfTheApp");
 
         boolean result = applicationService.deleteApplication("tokenOfTheApp");
@@ -117,7 +117,7 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void should_delete_existing_application() throws Exception {
+    void should_delete_existing_application() throws Exception {
         doReturn(aCallThatReturnApplication(123L)).when(applicationAPI).search(0, 1, "token=tokenOfTheApp");
         Mockito.doReturn(TestCall.successCall("success")).when(applicationAPI).delete(123L);
 

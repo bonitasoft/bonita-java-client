@@ -16,8 +16,8 @@ import okhttp3.ResponseBody;
 import okhttp3.internal.http.RealResponseBody;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import retrofit2.Response;
 
 import static com.bonitasoft.web.client.internal.security.OkHttpSecurityContextInterceptor.CSRF_TOKEN_HEADER;
@@ -27,18 +27,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created by laurentleseigneur on 01/07/2017.
  */
-public class SecurityContextTest {
+class SecurityContextTest {
 
     private MockWebServer server;
 
-    @Before
-    public void setup() throws Exception {
+    @BeforeEach
+    void setup() throws Exception {
         server = new MockWebServer();
         server.start();
     }
 
     @Test
-    public void should_set_cookie() {
+    void should_set_cookie() {
         //given
         Response<ResponseBody> loginResponse = getResponse();
         OkHttpSecurityContextInterceptor interceptor = new OkHttpSecurityContextInterceptor();
@@ -52,7 +52,7 @@ public class SecurityContextTest {
     }
 
     @Test
-    public void should_set_cookie_with_equals_character() {
+    void should_set_cookie_with_equals_character() {
         //given
         Response<ResponseBody> loginResponse = getResponse("cookieWithEquals", "valueWithEquals==/; path=/");
         OkHttpSecurityContextInterceptor interceptor = new OkHttpSecurityContextInterceptor();
@@ -66,7 +66,7 @@ public class SecurityContextTest {
     }
 
     @Test
-    public void should_set_cookie_when_a_cookie_entry_appears_several_times() {
+    void should_set_cookie_when_a_cookie_entry_appears_several_times() {
         //given
         Response<ResponseBody> loginResponse = getResponse("cookie1", "value1_duplicated");
         OkHttpSecurityContextInterceptor interceptor = new OkHttpSecurityContextInterceptor();
@@ -80,7 +80,7 @@ public class SecurityContextTest {
     }
 
     @Test
-    public void should_set_cookie_when_an_cookie_entry_has_multiple_values() {
+    void should_set_cookie_when_an_cookie_entry_has_multiple_values() {
         //given
         Response<ResponseBody> loginResponse = getResponse("cookie3", "value31;value32");
         OkHttpSecurityContextInterceptor interceptor = new OkHttpSecurityContextInterceptor();
@@ -94,7 +94,7 @@ public class SecurityContextTest {
     }
 
     @Test
-    public void should_exclude_csrf_token() {
+    void should_exclude_csrf_token() {
         //given
         Response<ResponseBody> loginResponse = getResponse(CSRF_TOKEN_HEADER, "abcd");
         OkHttpSecurityContextInterceptor interceptor = new OkHttpSecurityContextInterceptor();
@@ -109,7 +109,7 @@ public class SecurityContextTest {
     }
 
     @Test
-    public void should_reset_cookie() {
+    void should_reset_cookie() {
         //given
         Response<ResponseBody> loginResponse = getResponse(CSRF_TOKEN_HEADER, "abcd");
         OkHttpSecurityContextInterceptor interceptor = new OkHttpSecurityContextInterceptor();
@@ -125,7 +125,7 @@ public class SecurityContextTest {
     }
 
     @Test
-    public void should_add_required_cookie_and_csrf_header() throws Exception {
+    void should_add_required_cookie_and_csrf_header() throws Exception {
         //given
         Response<ResponseBody> loginResponse = getResponse(CSRF_TOKEN_HEADER, "secret");
         OkHttpSecurityContextInterceptor interceptor = new OkHttpSecurityContextInterceptor();

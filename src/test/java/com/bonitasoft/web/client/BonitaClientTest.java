@@ -16,10 +16,10 @@ import com.bonitasoft.web.client.policies.OrganizationImportPolicy;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.io.File;
@@ -36,7 +36,7 @@ import static org.mockito.Mockito.mock;
 /**
  * @author Laurent Leseigneur
  */
-public class BonitaClientTest {
+class BonitaClientTest {
 
     private MockWebServer server;
 
@@ -44,15 +44,15 @@ public class BonitaClientTest {
     private int requestCountAfterLogin;
     private MockResponse mockedResponse;
 
-    @BeforeClass
+    @BeforeAll
     public static void classSetup() {
         // needed to redirect okhttp3.mockwebserver jul logs to slf4j
         SLF4JBridgeHandler.removeHandlersForRootLogger();
         SLF4JBridgeHandler.install();
     }
 
-    @Before
-    public void setup() throws Exception {
+    @BeforeEach
+    void setup() throws Exception {
         server = new MockWebServer();
         server.start();
         mockedResponse = new MockResponse();
@@ -60,26 +60,26 @@ public class BonitaClientTest {
         bonitaClient = bonitaClient(server.url("/").toString()).build();
     }
 
-    @After
-    public void cleanup() throws Exception {
+    @AfterEach
+    void cleanup() throws Exception {
         server.close();
     }
 
     @Test
-    public void should_not_fail_to_create_client_when_url_does_not_ends_with_a_slash() throws Exception {
+    void should_not_fail_to_create_client_when_url_does_not_ends_with_a_slash() {
         bonitaClient("http://not-ended-with-slash:8080/bonita").build();
 
         // expect no exception
     }
 
     @Test
-    public void should_platform_be_up_while_unauthorized() throws Exception {
+    void should_platform_be_up_while_unauthorized() throws Exception {
         //given
         checkPlatformIsUpAndRunning(401, "should be up, even if unauthorized, platform is up");
     }
 
     @Test
-    public void should_platform_be_up() throws Exception {
+    void should_platform_be_up() throws Exception {
         //given
         checkPlatformIsUpAndRunning(200, "should be up for already logged user");
     }
@@ -99,7 +99,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_not_platform_be_UpAndRunning() throws Exception {
+    void should_not_platform_be_UpAndRunning() throws Exception {
         //given
         server.enqueue(mockedResponse.setResponseCode(500));
 
@@ -115,7 +115,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_login() throws Exception {
+    void should_login() throws Exception {
         //when
         callLogin(false);
 
@@ -134,7 +134,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_logout() throws Exception {
+    void should_logout() throws Exception {
         //given
         callLogin(true);
         server.enqueue(mockedResponse);
@@ -150,7 +150,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_import_applications() throws Exception {
+    void should_import_applications() throws Exception {
         //given
         callLogin(true);
         server.enqueue(mockedResponse);
@@ -171,7 +171,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_import_profiles() throws Exception {
+    void should_import_profiles() throws Exception {
         //given
         callLogin(true);
         server.enqueue(mockedResponse);
@@ -192,7 +192,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_search_profiles() throws Exception {
+    void should_search_profiles() throws Exception {
         //given
         callLogin(true);
         server.enqueue(mockedResponse.setBody("[]"));
@@ -208,7 +208,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_search_applications() throws Exception {
+    void should_search_applications() throws Exception {
         //given
         callLogin(true);
         server.enqueue(mockedResponse.setBody("[]"));
@@ -224,7 +224,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_import_organization() throws Exception {
+    void should_import_organization() throws Exception {
         //given
         callLogin(true);
         server.enqueue(mockedResponse);
@@ -244,7 +244,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_search_pages() throws Exception {
+    void should_search_pages() throws Exception {
         //given
         callLogin(true);
         server.enqueue(mockedResponse.setBody("[]"));
@@ -260,7 +260,7 @@ public class BonitaClientTest {
     }
 
     @Test
-    public void should_search_process_throws_exception_if_process_does_not_exist() throws IOException {
+    void should_search_process_throws_exception_if_process_does_not_exist() throws IOException {
         //given:
         ProcessService processService = mock(ProcessService.class);
         BonitaClient client = new BonitaClient(null, null, null, null, null, processService, null, null, null, null,

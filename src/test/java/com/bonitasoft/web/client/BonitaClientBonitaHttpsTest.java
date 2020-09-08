@@ -10,30 +10,44 @@ package com.bonitasoft.web.client;
 
 import com.bonitasoft.web.client.exception.UnauthorizedException;
 import com.bonitasoft.web.client.internal.security.SecurityContext;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
-import org.junit.Rule;
-import org.junit.Test;
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.net.ssl.SSLHandshakeException;
 import java.io.IOException;
 
 import static com.bonitasoft.web.client.BonitaClientBuilder.bonitaClient;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class BonitaClientBonitaHttpsTest {
+@ExtendWith(MockitoExtension.class)
+class BonitaClientBonitaHttpsTest {
 
-    @Rule
-    public WireMockRule wireMock = new WireMockRule(wireMockConfig().dynamicPort().dynamicHttpsPort(), false);
+    private WireMockServer wireMockServer;
 
     @Mock
-    SecurityContext securityContext;
+    private SecurityContext securityContext;
+
+    @BeforeEach
+    void setUp() {
+        wireMockServer = new WireMockServer(WireMockConfiguration.options().dynamicPort().dynamicHttpsPort());
+        wireMockServer.start();
+    }
+
+    @AfterEach
+    void tearDown() {
+        wireMockServer.stop();
+    }
 
     @Test
-    public void should_fail_with_Bonita_using_https_and_self_signed_certificate() {
+    void should_fail_with_Bonita_using_https_and_self_signed_certificate() {
         //given:
         BonitaClient bonitaClient = bonitaClient(mockServerHttpsUrl()).build();
 
@@ -47,13 +61,13 @@ public class BonitaClientBonitaHttpsTest {
     }
 
     @Test
-    public void should_not_fail_using_https_and_self_signed_certificate_when_disableCertificateCheck_is_true()
+    void should_not_fail_using_https_and_self_signed_certificate_when_disableCertificateCheck_is_true()
             throws UnauthorizedException, IOException {
         //given:
         BonitaClient bonitaClient = bonitaClient(mockServerHttpsUrl()).disableCertificateCheck(true).build();
-        wireMock.stubFor(post(urlEqualTo("/loginservice"))
+        wireMockServer.stubFor(post(urlEqualTo("/loginservice"))
                 .willReturn(aResponse().withStatus(200).withHeader("set-cookie", "cookie1=value1;")));
-        wireMock.stubFor(get(urlEqualTo("/API/system/session/unusedId")).willReturn(aResponse().withStatus(200)));
+        wireMockServer.stubFor(get(urlEqualTo("/API/system/session/unusedId")).willReturn(aResponse().withStatus(200)));
 
         //when:
         bonitaClient.login("user", "password");
@@ -67,7 +81,7 @@ public class BonitaClientBonitaHttpsTest {
     // =================================================================================================================
 
     private String mockServerHttpsUrl() {
-        return "https://localhost:" + wireMock.httpsPort();
+        return "https://localhost:" + wireMockServer.httpsPort();
     }
 
 }
