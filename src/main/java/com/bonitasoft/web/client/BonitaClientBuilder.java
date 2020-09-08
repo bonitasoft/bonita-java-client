@@ -8,13 +8,14 @@
  */
 package com.bonitasoft.web.client;
 
-import  com.bonitasoft.web.client.event.ImportNotifier;
-import  com.bonitasoft.web.client.event.LogOnlyImportNotifier;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.api.*;
-import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import  com.bonitasoft.web.client.internal.services.*;
+import com.bonitasoft.web.client.event.ImportNotifier;
+import com.bonitasoft.web.client.event.LogOnlyImportNotifier;
+import com.bonitasoft.web.client.internal.api.*;
+import com.bonitasoft.web.client.internal.security.OkHttpSecurityContextInterceptor;
+import com.bonitasoft.web.client.internal.services.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
@@ -35,9 +36,12 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  * Note about timeouts: default values are the same as in OkHttpClient (10 seconds).
  */
 @Accessors(fluent = true)
+@RequiredArgsConstructor(staticName = "bonitaClient")
 public class BonitaClientBuilder {
 
+    @NonNull
     private final String url;
+
     @Setter
     private ImportNotifier importNotifier;
     @Setter
@@ -49,28 +53,16 @@ public class BonitaClientBuilder {
     @Setter
     private boolean disableCertificateCheck = false;
 
-    private BonitaClientBuilder(String url) {
-        if (url == null) {
-            throw new NullPointerException("url parameter cannot be null");
-        }
-        this.url = url;
-    }
-
-    // TODO use lombok instead (when activated compilation failed with gradle)
-    // on class @RequiredArgsConstructor(staticName = "bonitaClient")
-    // on field @NonNull
-    public static BonitaClientBuilder bonitaClient(String url) {
-        return new BonitaClientBuilder(url);
-    }
-
     private static String addTrailingSlashIfNeeded(String url) {
         return url.endsWith("/") ? url : url + "/";
     }
 
     public BonitaClient build() {
-        BonitaCookieInterceptor bonitaCookieInterceptor = new BonitaCookieInterceptor();
+
+        OkHttpSecurityContextInterceptor securityContext = new OkHttpSecurityContextInterceptor();
+
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.addInterceptor(bonitaCookieInterceptor)
+        builder.addInterceptor(securityContext)
                 .connectTimeout(connectTimeoutInSeconds, SECONDS)
                 .readTimeout(readTimeoutInSeconds, SECONDS)
                 .writeTimeout(writeTimeoutInSeconds, SECONDS);
@@ -81,29 +73,27 @@ public class BonitaClientBuilder {
 
         ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
 
-        RestApiConverter restApiConverter = RestApiConverter.INSTANCE;
         String validUrl = addTrailingSlashIfNeeded(url);
         Retrofit retrofit = new Retrofit.Builder().baseUrl(validUrl)
                 .callFactory(okHttpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
-//                .addConverterFactory(new RetrofitRestApiConverter())
                 .addConverterFactory(JacksonConverterFactory.create(mapper))
                 .build();
 
         importNotifier = ofNullable(importNotifier).orElseGet(LogOnlyImportNotifier::new);
 
-        LoginService loginService = new LoginService(retrofit.create(LoginAPI.class), bonitaCookieInterceptor);
-        ApplicationService applicationService = new ApplicationService(bonitaCookieInterceptor, retrofit.create(ApplicationAPI.class));
-        OrganizationService organizationService = new OrganizationService(bonitaCookieInterceptor, retrofit.create(OrganizationAPI.class));
-        IdentityService identityService = new IdentityService(bonitaCookieInterceptor, retrofit.create(IdentityAPI.class));
-        ProfileService profileService = new ProfileService(bonitaCookieInterceptor, retrofit.create(ProfileAPI.class), identityService, importNotifier);
-        PageService pageService = new PageService(restApiConverter, bonitaCookieInterceptor, retrofit.create(PageAPI.class));
-        ProcessService processService = new ProcessService(restApiConverter, bonitaCookieInterceptor, retrofit.create(ProcessAPI.class), importNotifier);
-        SystemService systemService = new SystemService(restApiConverter, bonitaCookieInterceptor, retrofit.create(SystemAPI.class));
-        BdmAccessControlService bdmAccessControlService = new BdmAccessControlService(bonitaCookieInterceptor, systemService, retrofit.create(BdmAccessControlAPI.class), importNotifier);
-        BdmService bdmService = new BdmService(bonitaCookieInterceptor, systemService, bdmAccessControlService, retrofit.create(BdmAPI.class), restApiConverter);
-        UserTaskService userTaskService = new UserTaskService(retrofit.create(UserTaskAPI.class), restApiConverter, bonitaCookieInterceptor);
-        ConfigurationService configurationService = new ConfigurationService(bonitaCookieInterceptor, systemService, retrofit.create(ConfigurationAPI.class), importNotifier);
+        LoginService loginService = new LoginService(securityContext, retrofit.create(LoginAPI.class)).setObjectMapper(mapper);
+        ApplicationService applicationService = new ApplicationService(securityContext, retrofit.create(ApplicationAPI.class)).setObjectMapper(mapper);
+        OrganizationService organizationService = new OrganizationService(securityContext, retrofit.create(OrganizationAPI.class)).setObjectMapper(mapper);
+        IdentityService identityService = new IdentityService(securityContext, retrofit.create(IdentityAPI.class)).setObjectMapper(mapper);
+        ProfileService profileService = new ProfileService(securityContext, retrofit.create(ProfileAPI.class), identityService, importNotifier).setObjectMapper(mapper);
+        PageService pageService = new PageService(securityContext, retrofit.create(PageAPI.class)).setObjectMapper(mapper);
+        ProcessService processService = new ProcessService(securityContext, retrofit.create(ProcessAPI.class), importNotifier).setObjectMapper(mapper);
+        SystemService systemService = new SystemService(securityContext, retrofit.create(SystemAPI.class)).setObjectMapper(mapper);
+        BdmAccessControlService bdmAccessControlService = new BdmAccessControlService(securityContext, retrofit.create(BdmAccessControlAPI.class), systemService, importNotifier).setObjectMapper(mapper);
+        BdmService bdmService = new BdmService(securityContext, retrofit.create(BdmAPI.class), systemService, bdmAccessControlService).setObjectMapper(mapper);
+        UserTaskService userTaskService = new UserTaskService(securityContext, retrofit.create(UserTaskAPI.class)).setObjectMapper(mapper);
+        ConfigurationService configurationService = new ConfigurationService(securityContext, systemService, retrofit.create(ConfigurationAPI.class), importNotifier).setObjectMapper(mapper);
 
         BonitaClient bonitaClient = new BonitaClient(loginService,
                 applicationService,

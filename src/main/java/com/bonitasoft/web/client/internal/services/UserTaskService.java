@@ -8,68 +8,62 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.api.UserTaskAPI;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
+import com.bonitasoft.web.client.model.UserTask;
+import lombok.extern.slf4j.Slf4j;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.api.UserTaskAPI;
-import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
-import  com.bonitasoft.web.client.model.UserTask;
-import okhttp3.ResponseBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import retrofit2.Response;
-
+@Slf4j
 public class UserTaskService extends ClientService {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(UserTaskService.class.getName());
-
-    private final RestApiConverter restApiConverter;
-    private final BonitaCookieInterceptor bonitaCookieInterceptor;
     private final UserTaskAPI userTaskAPI;
 
-    public UserTaskService(UserTaskAPI userTaskAPI, RestApiConverter restApiConverter,
-            BonitaCookieInterceptor bonitaCookieInterceptor) {
+    public UserTaskService(SecurityContext securityContext, UserTaskAPI userTaskAPI) {
+        super(securityContext);
         this.userTaskAPI = userTaskAPI;
-        this.restApiConverter = restApiConverter;
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
     }
 
+
     public UserTask get(long taskId) throws IOException, UnauthorizedException {
-        LOGGER.debug("Getting User Task {}", taskId);
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Getting User Task {}", taskId);
+        securityContext.isAuthenticated();
         Response<UserTask> response = userTaskAPI.get(taskId).execute();
         checkResponse(response);
         UserTask userTask = response.body();
-        LOGGER.debug("Retrieved User Task: {}", userTask);
+        log.debug("Retrieved User Task: {}", userTask);
         return userTask;
     }
 
     public List<UserTask> search(long rootContainerId) throws IOException, UnauthorizedException {
-        LOGGER.debug("Searching User Task for process instance {}", rootContainerId);
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Searching User Task for process instance {}", rootContainerId);
+        securityContext.isAuthenticated();
         Response<List<UserTask>> response = userTaskAPI.search("rootContainerId=" + rootContainerId).execute();
         checkResponse(response);
         List<UserTask> userTasks = response.body();
-        LOGGER.debug("Retrieved User Tasks: {}", userTasks);
+        log.debug("Retrieved User Tasks: {}", userTasks);
         return userTasks;
     }
 
     public void update(long taskId, long assignedUserId, String state) throws IOException, UnauthorizedException {
-        LOGGER.debug("Updating User Task {}. Assigned to {} in state {}", taskId, assignedUserId, state);
-        bonitaCookieInterceptor.checkLogged();
-        HashMap<String, String> parameters = new HashMap<>();
+        log.debug("Updating User Task {}. Assigned to {} in state {}", taskId, assignedUserId, state);
+        securityContext.isAuthenticated();
+        Map<String, Serializable> parameters = new HashMap<>();
         parameters.put("assigned_id", String.valueOf(assignedUserId));
         if (state != null) {
             parameters.put("state", state);
         }
-        Response<ResponseBody> response = userTaskAPI.update(taskId, restApiConverter.buildJson(parameters)).execute();
+        Response<ResponseBody> response = userTaskAPI.update(taskId, parameters).execute();
         checkResponse(response);
-        LOGGER.debug("User Task {} updated", taskId);
+        log.debug("User Task {} updated", taskId);
     }
 
     public void execute(long taskId) throws IOException, UnauthorizedException {
@@ -77,16 +71,16 @@ public class UserTaskService extends ClientService {
     }
 
     public void execute(long taskId, Map<String, Serializable> params) throws IOException, UnauthorizedException {
-        LOGGER.debug("Executing User Task {} with parameters {}", taskId, params);
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Executing User Task {} with parameters {}", taskId, params);
+        securityContext.isAuthenticated();
         Response<ResponseBody> response;
         if (params != null && !params.isEmpty()) {
-            response = userTaskAPI.execute(taskId, restApiConverter.buildJson(params)).execute();
+            response = userTaskAPI.execute(taskId, params).execute();
         } else {
             response = userTaskAPI.execute(taskId).execute();
         }
         checkResponse(response);
-        LOGGER.debug("User Task {} executed", taskId);
+        log.debug("User Task {} executed", taskId);
     }
 
 }

@@ -8,22 +8,21 @@
  */
 package com.bonitasoft.web.client;
 
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import org.junit.Rule;
+import org.junit.Test;
+import org.mockito.Mock;
+
+import javax.net.ssl.SSLHandshakeException;
+import java.io.IOException;
+
 import static com.bonitasoft.web.client.BonitaClientBuilder.bonitaClient;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-
-import java.io.IOException;
-
-import javax.net.ssl.SSLHandshakeException;
-
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
-import org.junit.Rule;
-import org.junit.Test;
-import org.mockito.Mock;
 
 public class BonitaClientBonitaHttpsTest {
 
@@ -31,7 +30,7 @@ public class BonitaClientBonitaHttpsTest {
     public WireMockRule wireMock = new WireMockRule(wireMockConfig().dynamicPort().dynamicHttpsPort(), false);
 
     @Mock
-    BonitaCookieInterceptor bonitaCookieInterceptor;
+    SecurityContext securityContext;
 
     @Test
     public void should_fail_with_Bonita_using_https_and_self_signed_certificate() {

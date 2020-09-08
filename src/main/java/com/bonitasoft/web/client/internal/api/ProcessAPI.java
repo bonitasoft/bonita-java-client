@@ -16,7 +16,9 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Laurent Leseigneur
@@ -28,10 +30,10 @@ public interface ProcessAPI {
     Call<String> uploadContent(@Part MultipartBody.Part file);
 
     @POST("API/bpm/process")
-    Call<Process> add(@Body String params);
+    Call<Process> add(@Body Map<String, Serializable> params);
 
     @PUT("API/bpm/process/{id}")
-    Call<ResponseBody> update(@Path("id") long id, @Body String params);
+    Call<ResponseBody> update(@Path("id") long id, @Body Map<String, Serializable> params);
 
     @GET("API/bpm/process")
     Call<List<Process>> search(@Query("p") int page, @Query("c") int count);
@@ -45,11 +47,11 @@ public interface ProcessAPI {
 
     // https://stackoverflow.com/questions/37942474/delete-method-is-not-supportingnon-body-http-method-cannot-contain-body-or-t
     @HTTP(method = "DELETE", path = "API/bpm/process", hasBody = true)
-    Call<ResponseBody> delete(@Body String params);
+    Call<ResponseBody> delete(@Body List<Long> params);
 
     @Headers("Content-Type: application/json")
     @POST("API/bpm/process/{id}/instantiation")
-    Call<ResponseBody> start(@Path("id") long id, @Body String params);
+    Call<ResponseBody> start(@Path("id") long id, @Body Map<String, Serializable> params);
 
     @GET("API/bpm/processParameter")
     Call<List<ProcessParameter>> searchParameters(@Query("p") int page, @Query("c") int count,

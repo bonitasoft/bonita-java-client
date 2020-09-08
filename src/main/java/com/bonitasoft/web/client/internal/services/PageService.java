@@ -9,64 +9,62 @@
 package com.bonitasoft.web.client.internal.services;
 
 import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.PageAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.Page;
+import com.bonitasoft.web.client.utils.Json;
 import com.bonitasoft.web.utils.FileUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import retrofit2.Response;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
+@Slf4j
 public class PageService extends ClientService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PageService.class);
-    private final RestApiConverter restApiConverter;
-    private final BonitaCookieInterceptor bonitaCookieInterceptor;
     private final PageAPI pageAPI;
 
-    public PageService(RestApiConverter restApiConverter, BonitaCookieInterceptor bonitaCookieInterceptor,
-                       PageAPI pageAPI) {
-        this.restApiConverter = restApiConverter;
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
+    public PageService(SecurityContext securityContext, PageAPI pageAPI) {
+        super(securityContext);
         this.pageAPI = pageAPI;
     }
 
     public String importPage(File content) throws IOException, UnauthorizedException {
-        LOGGER.info("Deploying page '{}'...", content.getName());
-        bonitaCookieInterceptor.checkLogged();
+        log.info("Deploying page '{}'...", content.getName());
+        securityContext.isAuthenticated();
         RequestBody requestFile = RequestBody.create(MultipartBody.FORM, content);
         MultipartBody.Part body = MultipartBody.Part.createFormData("page.zip", "page.zip",
                 requestFile);
 
-        LOGGER.debug("Uploading page file...");
+        log.debug("Uploading page file...");
         Response<String> responseUpload = pageAPI.uploadContent(body, "add").execute();
         checkResponse(responseUpload);
-        LOGGER.debug("Page file uploaded successfully.");
+        log.debug("Page file uploaded successfully.");
 
-        String uploadedPageZipName = restApiConverter.buildSimpleJson("pageZip", responseUpload.body());
+        Map<String, Serializable> uploadedPageZipName = Json.asMap("pageZip", responseUpload.body());
         Response<ResponseBody> responseImport;
         Page page = getPage(content);
         if (page != null) {
             //page already exists, we update it
-            LOGGER.debug("Updating existing page...");
+            log.debug("Updating existing page...");
             responseImport = pageAPI.update(page.getId(), uploadedPageZipName).execute();
         } else {
             //page do not exists, we create it
-            LOGGER.debug("Creating new page...");
+            log.debug("Creating new page...");
             responseImport = pageAPI.add(uploadedPageZipName).execute();
         }
         checkResponse(responseImport);
-        LOGGER.info("Page deployed successfully.");
+        log.info("Page deployed successfully.");
         return responseImport.body().string();
     }
 
@@ -88,23 +86,23 @@ public class PageService extends ClientService {
     }
 
     public List<Page> searchPages(int page, int count) throws IOException, UnauthorizedException {
-        bonitaCookieInterceptor.checkLogged();
+        securityContext.isAuthenticated();
         Response<List<Page>> response = pageAPI.search(page, count).execute();
         checkResponse(response);
         return response.body();
     }
 
     public Page getPage(String urlToken) throws UnauthorizedException, IOException {
-        LOGGER.debug("Retrieving page '{}'", urlToken);
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Retrieving page '{}'", urlToken);
+        securityContext.isAuthenticated();
         Response<List<Page>> response = pageAPI.search(0, 1, "urlToken=" + urlToken).execute();
         checkResponse(response);
         List<Page> body = response.body();
         if (body.isEmpty()) {
-            LOGGER.debug("Can't find any existing page with the token '{}'.", urlToken);
+            log.debug("Can't find any existing page with the token '{}'.", urlToken);
             return null;
         }
-        LOGGER.debug("Page '{}' retrieved successfully.", urlToken);
+        log.debug("Page '{}' retrieved successfully.", urlToken);
         return body.get(0);
     }
 

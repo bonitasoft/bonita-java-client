@@ -8,22 +8,21 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import  com.bonitasoft.web.client.event.ImportNotifier;
-import  com.bonitasoft.web.client.event.ImportWarningEvent;
-import  com.bonitasoft.web.client.exception.ClientException;
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.api.ProfileAPI;
-import  com.bonitasoft.web.client.internal.services.model.CreateProfileMembership;
-import  com.bonitasoft.web.client.model.Profile;
-import  com.bonitasoft.web.client.model.ProfileMembership;
-import  com.bonitasoft.web.client.model.User;
-import  com.bonitasoft.web.client.policies.ProfileImportPolicy;
+import com.bonitasoft.web.client.event.ImportNotifier;
+import com.bonitasoft.web.client.event.ImportWarningEvent;
+import com.bonitasoft.web.client.exception.ClientException;
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.api.ProfileAPI;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
+import com.bonitasoft.web.client.internal.services.model.CreateProfileMembership;
+import com.bonitasoft.web.client.model.Profile;
+import com.bonitasoft.web.client.model.ProfileMembership;
+import com.bonitasoft.web.client.model.User;
+import com.bonitasoft.web.client.policies.ProfileImportPolicy;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -40,17 +39,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class ProfileService extends ClientService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProfileService.class);
-    private final BonitaCookieInterceptor bonitaCookieInterceptor;
     private final ProfileAPI profileAPI;
     private final IdentityService identityService;
-    private ImportNotifier importNotifier;
+    private final ImportNotifier importNotifier;
 
-    public ProfileService(BonitaCookieInterceptor bonitaCookieInterceptor, ProfileAPI profileAPI, IdentityService identityService,
-                          ImportNotifier importNotifier) {
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
+    public ProfileService(SecurityContext securityContext, ProfileAPI profileAPI, IdentityService identityService, ImportNotifier importNotifier) {
+        super(securityContext);
         this.profileAPI = profileAPI;
         this.identityService = identityService;
         this.importNotifier = importNotifier;
@@ -58,23 +55,23 @@ public class ProfileService extends ClientService {
 
     public Profile getProfile(String name)
             throws UnauthorizedException, IOException {
-        LOGGER.debug("Retrieving profile '{}'", name);
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Retrieving profile '{}'", name);
+        securityContext.isAuthenticated();
         Response<List<Profile>> response = profileAPI.search(0, 1, "name=" + name).execute();
         checkResponse(response);
         List<Profile> body = response.body();
         if (body == null || body.isEmpty()) {
-            LOGGER.debug("Can't find any existing profile with the name '{}'.", name);
+            log.debug("Can't find any existing profile with the name '{}'.", name);
             return null;
         }
-        LOGGER.debug("Profile '{}' retrieved successfully.", name);
+        log.debug("Profile '{}' retrieved successfully.", name);
         return body.get(0);
     }
 
     public void importProfiles(File content, ProfileImportPolicy policy)
             throws IOException, UnauthorizedException {
-        LOGGER.info("Deploying profiles in '{}' using policy {} ...", content.getName(), policy.name());
-        bonitaCookieInterceptor.checkLogged();
+        log.info("Deploying profiles in '{}' using policy {} ...", content.getName(), policy.name());
+        securityContext.isAuthenticated();
         if (policy.equals(ProfileImportPolicy.IGNORE_IF_ANY_EXISTS)) {
             List<String> profilesNames = getProfilesNames(content);
             List<String> existingProfiles = new ArrayList<>();
@@ -96,16 +93,16 @@ public class ProfileService extends ClientService {
         MultipartBody.Part body = MultipartBody.Part.createFormData("Profile_Data.xml", "Profile_Data.xml",
                 requestFile);
 
-        LOGGER.debug("Uploading profile file...");
+        log.debug("Uploading profile file...");
         Response<String> responseUpload = profileAPI.uploadContent(body).execute();
         checkResponse(responseUpload);
-        LOGGER.debug("Profile file uploaded successfully.");
+        log.debug("Profile file uploaded successfully.");
         String uploadedFile = responseUpload.body();
 
         Response<ResponseBody> responseImport = profileAPI.importFromUploadedFile(uploadedFile, policy.name())
                 .execute();
         checkResponse(responseImport);
-        LOGGER.info("Profiles in '{}' deployed successfully.", content.getName());
+        log.info("Profiles in '{}' deployed successfully.", content.getName());
 
     }
 
@@ -131,7 +128,7 @@ public class ProfileService extends ClientService {
     }
 
     public List<Profile> searchProfiles(int page, int count) throws IOException, UnauthorizedException {
-        bonitaCookieInterceptor.checkLogged();
+        securityContext.isAuthenticated();
         Response<List<Profile>> response = profileAPI.search(page, count).execute();
         checkResponse(response);
         return response.body();
@@ -160,7 +157,7 @@ public class ProfileService extends ClientService {
     }
 
     public long addUserToProfile(String username, String profileName) throws IOException, ClientException {
-        bonitaCookieInterceptor.checkLogged();
+        securityContext.isAuthenticated();
         Profile profile = getProfile(profileName);
         User user = identityService.getUser(username);
         return addUserToProfile(user.getId(), profile.getId());

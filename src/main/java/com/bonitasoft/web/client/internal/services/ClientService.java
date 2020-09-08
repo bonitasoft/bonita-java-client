@@ -9,18 +9,29 @@
 package com.bonitasoft.web.client.internal.services;
 
 import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.MapLikeType;
+import lombok.RequiredArgsConstructor;
 import retrofit2.Response;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Baptiste Mesta.
  */
+@RequiredArgsConstructor
 public abstract class ClientService {
 
-    protected final static ObjectMapper objectMapper = new ObjectMapper();
+    protected final SecurityContext securityContext;
+
+    protected ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
+
+    public <T extends ClientService> T setObjectMapper(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+        return (T) this;
+    }
 
     protected void checkResponse(Response<?> response) throws UnauthorizedException, IOException {
         if (!response.isSuccessful()) {
@@ -36,7 +47,8 @@ public abstract class ClientService {
         String errorBody = null;
         try {
             errorBody = response.errorBody().string();
-            HashMap map = objectMapper.readValue(errorBody, HashMap.class);
+            MapLikeType type = objectMapper.getTypeFactory().constructMapLikeType(Map.class, String.class, String.class);
+            Map<String, String> map = objectMapper.readValue(errorBody, type);
             message = String.format(
                     "Error happened server side, error code: %s, message: %s (exception: %s)",
                     response.code(),

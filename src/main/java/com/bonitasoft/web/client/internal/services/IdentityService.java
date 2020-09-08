@@ -8,50 +8,48 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.services.model.CreateUser;
-import  com.bonitasoft.web.client.internal.api.IdentityAPI;
-import  com.bonitasoft.web.client.model.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.api.IdentityAPI;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
+import com.bonitasoft.web.client.internal.services.model.CreateUser;
+import com.bonitasoft.web.client.model.User;
+import lombok.extern.slf4j.Slf4j;
 import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 public class IdentityService extends ClientService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(IdentityService.class);
     private final IdentityAPI identityAPI;
-    private final BonitaCookieInterceptor bonitaCookieInterceptor;
 
-    public IdentityService(BonitaCookieInterceptor bonitaCookieInterceptor, IdentityAPI identityAPI) {
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
+    public IdentityService(SecurityContext securityContext, IdentityAPI identityAPI) {
+        super(securityContext);
         this.identityAPI = identityAPI;
     }
 
     public User getUser(String username) throws UnauthorizedException, IOException {
-        LOGGER.debug("Retrieving user '{}'...", username);
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Retrieving user '{}'...", username);
+        securityContext.isAuthenticated();
         Response<List<User>> response = identityAPI.searchUser(0, 1, "userName=" + username).execute();
         checkResponse(response);
         List<User> body = response.body();
         if (body != null && body.isEmpty()) {
-            LOGGER.debug("User '{}' can't be found.", username);
+            log.debug("User '{}' can't be found.", username);
             return null;
         }
-        LOGGER.debug("User '{}' retrieved successfully.", username);
+        log.debug("User '{}' retrieved successfully.", username);
         return body.get(0);
     }
 
     public User createUser(CreateUser user) throws UnauthorizedException, IOException {
-        LOGGER.debug("Create user '{}'...", user);
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Create user '{}'...", user);
+        securityContext.isAuthenticated();
         Response<User> response = identityAPI.createUser(user).execute();
         checkResponse(response);
         User body = response.body();
-        LOGGER.debug("User '{}' retrieved successfully.", body);
+        log.debug("User '{}' retrieved successfully.", body);
         return body;
     }
 

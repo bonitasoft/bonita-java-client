@@ -13,7 +13,9 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 public interface UserTaskAPI {
 
@@ -25,11 +27,11 @@ public interface UserTaskAPI {
     Call<List<UserTask>> search(@Query("f") String... filters);
 
     @PUT("API/bpm/userTask/{id}")
-    Call<ResponseBody> update(@Path("id") long id, @Body String payload);
+    Call<ResponseBody> update(@Path("id") long id, @Body Map<String, Serializable> params);
 
     @Headers("Content-Type: application/json")
     @POST("API/bpm/userTask/{id}/execution")
-    Call<ResponseBody> execute(@Path("id") long id, @Body String payload);
+    Call<ResponseBody> execute(@Path("id") long id, @Body Map<String, Serializable> params);
 
     @POST("API/bpm/userTask/{id}/execution")
     Call<ResponseBody> execute(@Path("id") long id);

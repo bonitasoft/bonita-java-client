@@ -13,14 +13,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
  * @author Laurent Leseigneur
  */
 
+@Data
+@Accessors(chain = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
 public class Profile {
 
     private long id;
@@ -28,38 +30,6 @@ public class Profile {
     private String description;
     @JsonProperty("is_default")
     private boolean isDefault;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
-    }
-
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
-    }
 
     /**
      * Profiles available as default in Bonita
@@ -75,9 +45,9 @@ public class Profile {
         ADMINISTRATOR("Administrator");
 
         @Getter
-        private String value;
+        private final String value;
 
-        private Profiles(String value) {
+        Profiles(String value) {
             this.value = value;
         }
     }

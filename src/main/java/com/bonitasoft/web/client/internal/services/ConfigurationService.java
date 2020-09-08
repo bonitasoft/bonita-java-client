@@ -8,16 +8,11 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import static java.lang.String.format;
-
-import java.io.File;
-import java.io.IOException;
-
-import  com.bonitasoft.web.client.event.ImportNotifier;
-import  com.bonitasoft.web.client.event.ImportWarningEvent;
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.api.ConfigurationAPI;
+import com.bonitasoft.web.client.event.ImportNotifier;
+import com.bonitasoft.web.client.event.ImportWarningEvent;
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.api.ConfigurationAPI;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.github.zafarkhaja.semver.Version;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
@@ -25,19 +20,22 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
 
+import java.io.File;
+import java.io.IOException;
+
+import static java.lang.String.format;
+
 @Slf4j
 public class ConfigurationService extends ClientService {
 
-    private final BonitaCookieInterceptor bonitaCookieInterceptor;
     private final SystemService systemService;
     private final ConfigurationAPI configurationAPI;
     private final ImportNotifier importNotifier;
 
     private final Version minBonitaVersionSupportingConfiguration = new Version.Builder("7.8.0").build();
 
-    public ConfigurationService(BonitaCookieInterceptor bonitaCookieInterceptor, SystemService systemService,
-            ConfigurationAPI configurationAPI, ImportNotifier importNotifier) {
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
+    public ConfigurationService(SecurityContext securityContext, SystemService systemService, ConfigurationAPI configurationAPI, ImportNotifier importNotifier) {
+        super(securityContext);
         this.systemService = systemService;
         this.configurationAPI = configurationAPI;
         this.importNotifier = importNotifier;
@@ -49,7 +47,7 @@ public class ConfigurationService extends ClientService {
      * for other cases.
      */
     public void importBonitaConfiguration(File configurationFile) throws IOException, UnauthorizedException {
-        bonitaCookieInterceptor.checkLogged();
+        securityContext.isAuthenticated();
 
         if (systemService.getLicense().isCommunityEdition()) {
             String message = "Skipping the Bonita Configuration deployment: your current Bonita license is 'Community'"
@@ -61,7 +59,7 @@ public class ConfigurationService extends ClientService {
         Version version = systemService.getVersion();
         if (version.lessThan(minBonitaVersionSupportingConfiguration)) {
             String message = format("Skipping the Bonita Configuration deployment: your current Bonita version is '%s'"
-                    + " and the Bonita Configuration feature is supported since Bonita '%s'.", version,
+                            + " and the Bonita Configuration feature is supported since Bonita '%s'.", version,
                     minBonitaVersionSupportingConfiguration);
             importNotifier.post(new ImportWarningEvent(message));
             return;

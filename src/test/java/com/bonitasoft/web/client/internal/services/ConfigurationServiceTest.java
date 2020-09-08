@@ -10,8 +10,8 @@ package com.bonitasoft.web.client.internal.services;
 
 import com.bonitasoft.web.client.event.ImportNotifier;
 import com.bonitasoft.web.client.event.ImportWarningEvent;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.ConfigurationAPI;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.License;
 import com.github.zafarkhaja.semver.Version;
 import org.junit.Rule;
@@ -39,7 +39,7 @@ public class ConfigurationServiceTest {
     @Mock
     private SystemService systemService;
     @Mock
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
+    private SecurityContext securityContext;
     @Mock
     private ConfigurationAPI configurationAPI;
     @Mock
@@ -81,9 +81,9 @@ public class ConfigurationServiceTest {
         configurationService.importBonitaConfiguration(temporaryFolder.newFile());
 
         //then:
-        verify(bonitaCookieInterceptor).checkLogged();
+        verify(securityContext).isAuthenticated();
         verify(importNotifier).post(warningEventWithMsgContaining("Community"));
-        verifyZeroInteractions(configurationAPI);
+        verifyNoInteractions(configurationAPI);
     }
 
     @Test
@@ -96,9 +96,9 @@ public class ConfigurationServiceTest {
         configurationService.importBonitaConfiguration(temporaryFolder.newFile());
 
         //then:
-        verify(bonitaCookieInterceptor).checkLogged();
+        verify(securityContext).isAuthenticated();
         verify(importNotifier).post(warningEventWithMsgContaining("7.7.3"));
-        verifyZeroInteractions(configurationAPI);
+        verifyNoInteractions(configurationAPI);
     }
 
     @Test
@@ -112,8 +112,8 @@ public class ConfigurationServiceTest {
         configurationService.importBonitaConfiguration(temporaryFolder.newFile());
 
         //then:
-        verify(bonitaCookieInterceptor).checkLogged();
-        verifyZeroInteractions(importNotifier);
+        verify(securityContext).isAuthenticated();
+        verifyNoInteractions(importNotifier);
         verify(configurationAPI).deployConfiguration(any());
     }
 

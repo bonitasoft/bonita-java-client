@@ -8,20 +8,22 @@
  */
 package com.bonitasoft.web.client;
 
-import  com.bonitasoft.web.client.exception.BdmAccessControlException;
-import  com.bonitasoft.web.client.exception.ClientException;
-import  com.bonitasoft.web.client.exception.NotFoundException;
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.services.*;
-import  com.bonitasoft.web.client.internal.services.model.CreateUser;
-import  com.bonitasoft.web.client.model.Process;
-import  com.bonitasoft.web.client.model.*;
-import  com.bonitasoft.web.client.policies.ApplicationImportPolicy;
-import  com.bonitasoft.web.client.policies.OrganizationImportPolicy;
-import  com.bonitasoft.web.client.policies.ProcessImportPolicy;
-import  com.bonitasoft.web.client.policies.ProfileImportPolicy;
+import com.bonitasoft.web.client.exception.BdmAccessControlException;
+import com.bonitasoft.web.client.exception.ClientException;
+import com.bonitasoft.web.client.exception.NotFoundException;
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.services.*;
+import com.bonitasoft.web.client.internal.services.model.CreateUser;
+import com.bonitasoft.web.client.model.Process;
+import com.bonitasoft.web.client.model.*;
+import com.bonitasoft.web.client.policies.ApplicationImportPolicy;
+import com.bonitasoft.web.client.policies.OrganizationImportPolicy;
+import com.bonitasoft.web.client.policies.ProcessImportPolicy;
+import com.bonitasoft.web.client.policies.ProfileImportPolicy;
 import com.github.zafarkhaja.semver.Version;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,6 +43,7 @@ import static java.lang.String.format;
  * @author Baptiste Mesta.
  */
 @Slf4j
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class BonitaClient {
 
     private final LoginService loginService;
@@ -57,27 +60,8 @@ public class BonitaClient {
     private final ConfigurationService configurationService;
 
     @Getter
-    @Setter
+    @Setter(AccessLevel.PACKAGE)
     private String url;
-
-    BonitaClient(LoginService loginService, ApplicationService applicationService,
-                 OrganizationService organizationService, PageService pageService, ProfileService profileService,
-                 ProcessService processService, BdmService bdmService, SystemService systemService,
-                 BdmAccessControlService bdmAccessControlService, IdentityService identityService,
-                 UserTaskService userTaskService, ConfigurationService configurationService) {
-        this.loginService = loginService;
-        this.applicationService = applicationService;
-        this.organizationService = organizationService;
-        this.pageService = pageService;
-        this.profileService = profileService;
-        this.processService = processService;
-        this.bdmService = bdmService;
-        this.systemService = systemService;
-        this.bdmAccessControlService = bdmAccessControlService;
-        this.identityService = identityService;
-        this.userTaskService = userTaskService;
-        this.configurationService = configurationService;
-    }
 
     public boolean isPlatformUpAndRunning() {
         return loginService.isPlatformUpAndRunning();

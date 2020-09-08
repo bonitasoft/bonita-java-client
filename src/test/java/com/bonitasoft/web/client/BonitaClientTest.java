@@ -11,8 +11,8 @@ package com.bonitasoft.web.client;
 import com.bonitasoft.web.client.exception.NotFoundException;
 import com.bonitasoft.web.client.internal.services.ProcessService;
 import com.bonitasoft.web.client.policies.ApplicationImportPolicy;
-import com.bonitasoft.web.client.policies.OrganizationImportPolicy;
 import com.bonitasoft.web.client.policies.DeploymentPolicies;
+import com.bonitasoft.web.client.policies.OrganizationImportPolicy;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -20,14 +20,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-//import org.slf4j.bridge.SLF4JBridgeHandler;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
 import static com.bonitasoft.web.client.BonitaClientBuilder.bonitaClient;
-import static com.bonitasoft.web.client.internal.BonitaCookieInterceptor.CSRF_TOKEN_HEADER;
+import static com.bonitasoft.web.client.internal.security.OkHttpSecurityContextInterceptor.CSRF_TOKEN_HEADER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.Mockito.doReturn;
@@ -44,12 +44,12 @@ public class BonitaClientTest {
     private int requestCountAfterLogin;
     private MockResponse mockedResponse;
 
-//    @BeforeClass
-//    public static void classSetup() {
-//        // needed to redirect okhttp3.mockwebserver jul logs to slf4j
-//        SLF4JBridgeHandler.removeHandlersForRootLogger();
-//        SLF4JBridgeHandler.install();
-//    }
+    @BeforeClass
+    public static void classSetup() {
+        // needed to redirect okhttp3.mockwebserver jul logs to slf4j
+        SLF4JBridgeHandler.removeHandlersForRootLogger();
+        SLF4JBridgeHandler.install();
+    }
 
     @Before
     public void setup() throws Exception {

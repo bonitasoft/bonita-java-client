@@ -8,9 +8,8 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.ApplicationAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.Application;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
@@ -43,9 +42,7 @@ public class ApplicationServiceTest {
     @Mock
     private ApplicationAPI applicationAPI;
     @Mock
-    private RestApiConverter restApiConverter;
-    @Mock
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
+    private SecurityContext securityContext;
 
     @InjectMocks
     private ApplicationService applicationService;

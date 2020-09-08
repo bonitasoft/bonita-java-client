@@ -23,7 +23,7 @@ import java.io.IOException;
  */
 public class TestCall<T> implements Call<T> {
 
-    private Response<T> response;
+    private final Response<T> response;
 
     public TestCall(Response<T> response) {
         this.response = response;

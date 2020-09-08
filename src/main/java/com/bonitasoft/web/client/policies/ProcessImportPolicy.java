@@ -9,7 +9,5 @@
 package com.bonitasoft.web.client.policies;
 
 public enum ProcessImportPolicy {
-
-    REPLACE_DUPLICATES, IGNORE_DUPLICATES, FAIL_ON_DUPLICATES;
-
+    REPLACE_DUPLICATES, IGNORE_DUPLICATES, FAIL_ON_DUPLICATES
 }

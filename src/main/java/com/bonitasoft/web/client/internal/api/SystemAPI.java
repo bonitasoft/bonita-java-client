@@ -16,13 +16,16 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.PUT;
 
+import java.io.Serializable;
+import java.util.Map;
+
 public interface SystemAPI {
 
     @GET("API/system/tenant/unusedid")
     Call<ResponseBody> getCurrentTenant();
 
     @PUT("API/system/tenant/unusedid")
-    Call<ResponseBody> pauseOrResumeCurrentTenant(@Body String pauseCurrentTenant);
+    Call<ResponseBody> pauseOrResumeCurrentTenant(@Body Map<String, Serializable> pauseCurrentTenant);
 
     @GET("API/system/session/unusedid")
     Call<Version> getVersion();

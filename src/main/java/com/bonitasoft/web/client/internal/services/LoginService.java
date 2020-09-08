@@ -9,24 +9,22 @@
 package com.bonitasoft.web.client.internal.services;
 
 import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.LoginAPI;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.ResponseBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import retrofit2.Response;
 
 import java.io.IOException;
 
+@Slf4j
 public class LoginService extends ClientService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginService.class);
-    private LoginAPI loginAPI;
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
+    private final LoginAPI loginAPI;
 
-    public LoginService(LoginAPI loginAPI, BonitaCookieInterceptor bonitaCookieInterceptor) {
+    public LoginService(SecurityContext securityContext, LoginAPI loginAPI) {
+        super(securityContext);
         this.loginAPI = loginAPI;
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
     }
 
     public boolean isPlatformUpAndRunning() {
@@ -40,22 +38,22 @@ public class LoginService extends ClientService {
 
     public void login(String username, String password) throws UnauthorizedException, IOException {
         final String defaultTenantId = "1";
-        LOGGER.debug("Login with user '{}' on tenant '{}'...", username, defaultTenantId);
+        log.debug("Login with user '{}' on tenant '{}'...", username, defaultTenantId);
         Response<ResponseBody> loginResponse = loginAPI.login(username, password, false, defaultTenantId).execute();
         checkResponse(loginResponse);
-        bonitaCookieInterceptor.setSessionCookies(loginResponse.headers());
+        securityContext.authenticate(loginResponse);
         //check the session is ok + it will trigger the loading of servlets
         Response<ResponseBody> checkSession = loginAPI.getSession().execute();
         checkResponse(checkSession);
-        LOGGER.debug("Login completed.");
+        log.debug("Login completed.");
     }
 
     public void logout() throws IOException, UnauthorizedException {
-        LOGGER.debug("Logout...");
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Logout...");
+        securityContext.isAuthenticated();
         Response<ResponseBody> execute = loginAPI.logout(false).execute();
         checkResponse(execute);
-        bonitaCookieInterceptor.clearSessionCookie();
-        LOGGER.debug("Logout completed.");
+        securityContext.clear();
+        log.debug("Logout completed.");
     }
 }

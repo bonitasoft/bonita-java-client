@@ -9,9 +9,8 @@
 package com.bonitasoft.web.client.internal.services;
 
 import com.bonitasoft.web.client.event.ImportNotifier;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.ProfileAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.Profile;
 import com.bonitasoft.web.client.policies.ProfileImportPolicy;
 import org.junit.Rule;
@@ -25,6 +24,7 @@ import retrofit2.Call;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 
@@ -42,15 +42,13 @@ public class ProfileServiceTest {
     @Mock
     private ProfileAPI profileAPI;
     @Mock
-    private RestApiConverter restApiConverter;
-    @Mock
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
+    private SecurityContext securityContext;
     @Mock
     private ImportNotifier importNotifier;
     @InjectMocks
     private ProfileService profileService;
 
-    private String profileTestXmlFile = "" +
+    private final String profileTestXmlFile = "" +
             "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
             "<profiles:profiles xmlns:profiles=\"http://www.bonitasoft.org/ns/profile/6.1\">\n" +
             "    <profile name=\"P1\">\n" +
@@ -102,7 +100,7 @@ public class ProfileServiceTest {
 
     private File getTestFile() throws IOException {
         File file = temporaryFolder.newFile("profiles.xml");
-        Files.write(file.toPath(), profileTestXmlFile.getBytes("UTF-8"));
+        Files.write(file.toPath(), profileTestXmlFile.getBytes(StandardCharsets.UTF_8));
         return file;
     }
 

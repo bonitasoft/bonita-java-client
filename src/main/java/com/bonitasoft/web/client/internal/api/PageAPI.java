@@ -14,7 +14,9 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Laurent Leseigneur
@@ -26,10 +28,10 @@ public interface PageAPI {
     Call<String> uploadContent(@Part MultipartBody.Part file, @Query("action") String action);
 
     @POST("API/portal/page")
-    Call<ResponseBody> add(@Body String params);
+    Call<ResponseBody> add(@Body Map<String, Serializable> params);
 
     @PUT("API/portal/page/{id}")
-    Call<ResponseBody> update(@Path("id") long id, @Body String params);
+    Call<ResponseBody> update(@Path("id") long id, @Body Map<String, Serializable> params);
 
     @GET("API/portal/page")
     Call<List<Page>> search(@Query("p") int page, @Query("c") int count);

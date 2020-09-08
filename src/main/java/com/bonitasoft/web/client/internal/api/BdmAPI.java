@@ -10,10 +10,12 @@ package com.bonitasoft.web.client.internal.api;
 
 import com.bonitasoft.web.client.model.TenantResourceStatus;
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
+
+import java.io.Serializable;
+import java.util.Map;
 
 public interface BdmAPI {
 
@@ -21,8 +23,9 @@ public interface BdmAPI {
     @POST("portal/fileUpload")
     Call<ResponseBody> uploadContent(@Part MultipartBody.Part file);
 
+    //JSON
     @POST("API/tenant/bdm")
-    Call<ResponseBody> importFromUploadedFile(@Body RequestBody body);
+    Call<ResponseBody> importFromUploadedFile(@Body Map<String, Serializable> body);
 
     /**
      * @return the tenant resource status if the Bonita version is at least 7.7.0, or error if the Bonita version is

@@ -8,10 +8,10 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.PageAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.Page;
+import com.bonitasoft.web.client.utils.Json;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import org.junit.Before;
@@ -19,6 +19,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import retrofit2.Call;
@@ -44,22 +45,23 @@ public class PageServiceTest {
 
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
+
     @Mock
     private PageAPI pageAPI;
     @Mock
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
-    private RestApiConverter restApiConverter = RestApiConverter.INSTANCE;
+    private SecurityContext securityContext;
+
+    @InjectMocks
     private PageService pageService;
 
     @Before
     public void before() throws Exception {
-        pageService = new PageService(restApiConverter, bonitaCookieInterceptor, pageAPI);
         doReturn(successCall(Collections.emptyList())).when(pageAPI).search(anyInt(), anyInt(), anyString());
         doReturn(successCall("uploadedFile")).when(pageAPI).uploadContent(any(), anyString());
         doReturn(successCall(ResponseBody.create(MediaType.parse("plain/test"), "ok"))).when(pageAPI)
-                .add(anyString());
+                .add(anyMap());
         doReturn(successCall(ResponseBody.create(MediaType.parse("plain/test"), "ok"))).when(pageAPI)
-                .update(anyLong(), anyString());
+                .update(anyLong(), anyMap());
     }
 
     @Test
@@ -69,9 +71,9 @@ public class PageServiceTest {
 
         pageService.importPage(pageFile);
 
-        verify(pageAPI).update(6L, "{\"pageZip\":\"uploadedFile\"}");
+        verify(pageAPI).update(6L, Json.asMap("pageZip", "uploadedFile"));
         verify(pageAPI).uploadContent(any(), anyString());
-        verify(pageAPI, never()).add(anyString());
+        verify(pageAPI, never()).add(anyMap());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -87,9 +89,9 @@ public class PageServiceTest {
 
         pageService.importPage(pageFile);
 
-        verify(pageAPI, never()).update(anyLong(), anyString());
+        verify(pageAPI, never()).update(anyLong(), anyMap());
         verify(pageAPI).uploadContent(any(), anyString());
-        verify(pageAPI).add("{\"pageZip\":\"uploadedFile\"}");
+        verify(pageAPI).add(Json.asMap("pageZip", "uploadedFile"));
     }
 
     @Test
@@ -99,7 +101,7 @@ public class PageServiceTest {
         pageService.importPage(pageFile);
 
         verify(pageAPI).uploadContent(any(), anyString());
-        verify(pageAPI).add("{\"pageZip\":\"uploadedFile\"}");
+        verify(pageAPI).add(Json.asMap("pageZip", "uploadedFile"));
     }
 
     @Test

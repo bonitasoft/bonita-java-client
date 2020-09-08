@@ -9,77 +9,75 @@
 package com.bonitasoft.web.client.internal.services;
 
 import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.SystemAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.License;
+import com.bonitasoft.web.client.utils.Json;
+import com.fasterxml.jackson.databind.type.MapLikeType;
 import com.github.zafarkhaja.semver.Version;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.ResponseBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import retrofit2.Response;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.io.Serializable;
+import java.util.Map;
 import java.util.Objects;
 
+@Slf4j
 public class SystemService extends ClientService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SystemService.class);
     private final static String PAUSED = "paused";
 
-    private final RestApiConverter restApiConverter;
     private final SystemAPI systemAPI;
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
 
-    public SystemService(RestApiConverter restApiConverter, BonitaCookieInterceptor bonitaCookieInterceptor,
-                         SystemAPI systemAPI) {
-        this.restApiConverter = restApiConverter;
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
+    public SystemService(SecurityContext securityContext, SystemAPI systemAPI) {
+        super(securityContext);
         this.systemAPI = systemAPI;
     }
 
     public boolean isTenantPaused() throws UnauthorizedException, IOException {
-        LOGGER.debug("Retrieving tenant status...");
-        bonitaCookieInterceptor.checkLogged();
+        log.debug("Retrieving tenant status...");
+        securityContext.isAuthenticated();
         Response<ResponseBody> response = systemAPI.getCurrentTenant().execute();
         checkResponse(response);
-        HashMap<String, String> responseMap = objectMapper.readValue(response.body().string(), HashMap.class);
+        MapLikeType type = objectMapper.getTypeFactory().constructMapLikeType(Map.class, String.class, String.class);
+        Map<String, String> responseMap = objectMapper.readValue(response.body().string(), type);
         boolean tenantIsPaused = Objects.equals(responseMap.get(PAUSED), "true");
-        LOGGER.debug("Tenant is {}.", tenantIsPaused ? "paused" : "not paused");
+        log.debug("Tenant is {}.", tenantIsPaused ? "paused" : "not paused");
         return tenantIsPaused;
     }
 
     public String pauseTenant() throws IOException, UnauthorizedException {
-        LOGGER.info("Pausing tenant...");
-        bonitaCookieInterceptor.checkLogged();
+        log.info("Pausing tenant...");
+        securityContext.isAuthenticated();
         Response<ResponseBody> response = systemAPI.pauseOrResumeCurrentTenant(generateJson(true)).execute();
         checkResponse(response);
-        LOGGER.info("Tenant is paused.");
+        log.info("Tenant is paused.");
         return response.body().toString();
     }
 
     public String resumeTenant() throws IOException, UnauthorizedException {
-        LOGGER.info("Resuming tenant...");
-        bonitaCookieInterceptor.checkLogged();
+        log.info("Resuming tenant...");
+        securityContext.isAuthenticated();
         Response<ResponseBody> response = systemAPI.pauseOrResumeCurrentTenant(generateJson(false)).execute();
         checkResponse(response);
-        LOGGER.info("Tenant is resumed.");
+        log.info("Tenant is resumed.");
         return response.body().toString();
     }
 
     public Version getVersion() throws IOException {
-        bonitaCookieInterceptor.checkLogged();
+        securityContext.isAuthenticated();
         return systemAPI.getVersion().execute().body();
     }
 
     public License getLicense() throws IOException {
-        bonitaCookieInterceptor.checkLogged();
+        securityContext.isAuthenticated();
         return systemAPI.getLicense().execute().body();
     }
 
-    private String generateJson(Boolean pauseTenant) throws IOException {
-        return restApiConverter.buildSimpleJson(PAUSED, pauseTenant.toString());
+    private Map<String, Serializable> generateJson(Boolean pauseTenant) throws IOException {
+        return Json.asMap(PAUSED, pauseTenant.toString());
     }
 
 }

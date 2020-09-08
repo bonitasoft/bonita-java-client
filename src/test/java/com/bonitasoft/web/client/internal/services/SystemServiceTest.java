@@ -8,9 +8,8 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
 import com.bonitasoft.web.client.internal.api.SystemAPI;
-import com.bonitasoft.web.client.internal.converters.RestApiConverter;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import org.junit.Test;
@@ -30,10 +29,7 @@ public class SystemServiceTest {
     private SystemAPI systemAPI;
 
     @Mock
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
-
-    @Mock
-    private RestApiConverter restApiConverter;
+    private SecurityContext securityContext;
 
     @InjectMocks
     private SystemService systemService;

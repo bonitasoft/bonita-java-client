@@ -8,43 +8,41 @@
  */
 package com.bonitasoft.web.client.internal.services;
 
-import java.io.File;
-import java.io.IOException;
-
-import  com.bonitasoft.web.client.exception.UnauthorizedException;
-import  com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import  com.bonitasoft.web.client.internal.api.OrganizationAPI;
-import  com.bonitasoft.web.client.policies.OrganizationImportPolicy;
+import com.bonitasoft.web.client.exception.UnauthorizedException;
+import com.bonitasoft.web.client.internal.api.OrganizationAPI;
+import com.bonitasoft.web.client.internal.security.SecurityContext;
+import com.bonitasoft.web.client.policies.OrganizationImportPolicy;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import retrofit2.Response;
 
+import java.io.File;
+import java.io.IOException;
+
+@Slf4j
 public class OrganizationService extends ClientService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationService.class);
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
     public final OrganizationAPI organizationAPI;
 
-    public OrganizationService(BonitaCookieInterceptor bonitaCookieInterceptor, OrganizationAPI organizationAPI) {
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
+    public OrganizationService(SecurityContext securityContext, OrganizationAPI organizationAPI) {
+        super(securityContext);
         this.organizationAPI = organizationAPI;
     }
 
     public String importOrganization(File content, OrganizationImportPolicy policy)
             throws IOException, UnauthorizedException {
-        LOGGER.info("Deploying organization '{}' using policy {}...", content.getName(), policy.name());
-        bonitaCookieInterceptor.checkLogged();
+        log.info("Deploying organization '{}' using policy {}...", content.getName(), policy.name());
+        securityContext.isAuthenticated();
         RequestBody requestFile = RequestBody.create(MultipartBody.FORM, content);
         MultipartBody.Part body = MultipartBody.Part.createFormData("Organization_Data.xml", "Organization_Data.xml",
                 requestFile);
 
-        LOGGER.debug("Uploading organization file...");
+        log.debug("Uploading organization file...");
         Response<ResponseBody> responseUpload = organizationAPI.uploadContent(body).execute();
         checkResponse(responseUpload);
-        LOGGER.debug("Organization file uploaded successfully.");
+        log.debug("Organization file uploaded successfully.");
 
         String uploadedFile = responseUpload.body().string();
 
@@ -52,7 +50,7 @@ public class OrganizationService extends ClientService {
                 .execute();
 
         checkResponse(responseImport);
-        LOGGER.info("Organization deployed successfully.");
+        log.info("Organization deployed successfully.");
         return responseImport.body().string();
     }
 }
