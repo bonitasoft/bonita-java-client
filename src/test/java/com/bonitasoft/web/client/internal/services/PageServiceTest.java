@@ -12,6 +12,8 @@ import com.bonitasoft.web.client.internal.api.PageAPI;
 import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.Page;
 import com.bonitasoft.web.client.utils.Json;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,17 +23,17 @@ import org.junit.jupiter.api.io.TempDir;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import retrofit2.Call;
+import retrofit2.mock.Calls;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Collections;
-import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
-import static com.bonitasoft.web.client.internal.services.TestCall.successCall;
-import static com.bonitasoft.web.client.tests.FileAndContentUtils.file;
-import static com.bonitasoft.web.client.tests.FileAndContentUtils.zip;
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.*;
@@ -56,12 +58,10 @@ class PageServiceTest {
 
     @BeforeEach
     public void before() throws Exception {
-        doReturn(successCall(Collections.emptyList())).when(pageAPI).search(anyInt(), anyInt(), anyString());
-        doReturn(successCall("uploadedFile")).when(pageAPI).uploadContent(any(), anyString());
-        doReturn(successCall(ResponseBody.create(MediaType.parse("plain/test"), "ok"))).when(pageAPI)
-                .add(anyMap());
-        doReturn(successCall(ResponseBody.create(MediaType.parse("plain/test"), "ok"))).when(pageAPI)
-                .update(anyLong(), anyMap());
+        when(pageAPI.search(anyInt(), anyInt(), anyString())).thenReturn(Calls.response(Collections.emptyList()));
+        when(pageAPI.uploadContent(any(), anyString())).thenReturn(Calls.response("uploadedFile"));
+        when(pageAPI.add(anyMap())).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("plain/test"), "ok")));
+        when(pageAPI.update(anyLong(), anyMap())).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("plain/test"), "ok")));
     }
 
     @Test
@@ -113,7 +113,7 @@ class PageServiceTest {
     @Test
     void should_delete_existing_page() throws Exception {
         havingPageOnServer(123L, "theToken");
-        doReturn(successCall("success")).when(pageAPI).delete(123L);
+        when(pageAPI.delete(eq(123L))).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("plain/test"), "success")));
 
         boolean result = pageService.deletePage("theToken");
 
@@ -121,9 +121,8 @@ class PageServiceTest {
         assertThat(result).isTrue();
     }
 
-    private Call<List<Page>> havingPageOnServer(long id, String urlToken) {
-        return doReturn(successCall(Collections.singletonList(aPage(id, urlToken)))).when(pageAPI).search(0, 1,
-                "urlToken=" + urlToken);
+    private void havingPageOnServer(long id, String urlToken) {
+        when(pageAPI.search(0, 1, "urlToken=" + urlToken)).thenReturn(Calls.response(singletonList(aPage(id, urlToken))));
     }
 
     private Page aPage(long id, String urlToken) {
@@ -138,6 +137,37 @@ class PageServiceTest {
         File pageFile = new File(temporaryFolder, fileName);
         Files.write(pageFile.toPath(), zip(file(fileName, content)));
         return pageFile;
+    }
+
+    private static byte[] zip(FileAndContent... files) throws IOException {
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        final ZipOutputStream zos = new ZipOutputStream(baos);
+        try {
+            for (FileAndContent file : files) {
+                ZipEntry e = new ZipEntry(file.getFileName());
+                zos.putNextEntry(e);
+                if (!e.isDirectory()) {
+                    zos.write(file.getContent());
+                }
+                zos.flush();
+                zos.closeEntry();
+            }
+        } finally {
+            zos.close();
+            baos.close();
+        }
+        return baos.toByteArray();
+    }
+
+    private static FileAndContent file(String fileName, String content) {
+        return new FileAndContent(fileName, content.getBytes());
+    }
+
+    @Getter
+    @AllArgsConstructor
+    private static class FileAndContent {
+        private final String fileName;
+        private final byte[] content;
     }
 
 }

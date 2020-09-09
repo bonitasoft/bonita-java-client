@@ -13,6 +13,8 @@ import com.bonitasoft.web.client.internal.api.ProfileAPI;
 import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.Profile;
 import com.bonitasoft.web.client.policies.ProfileImportPolicy;
+import okhttp3.MediaType;
+import okhttp3.ResponseBody;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;
@@ -20,6 +22,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import retrofit2.Call;
+import retrofit2.mock.Calls;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +30,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 
-import static com.bonitasoft.web.client.internal.services.TestCall.successCall;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.mockito.ArgumentMatchers.*;
@@ -35,19 +37,6 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ProfileServiceTest {
-
-    @TempDir
-    File temporaryFolder;
-
-    @Mock
-    private ProfileAPI profileAPI;
-    @Mock
-    private SecurityContext securityContext;
-    @Mock
-    private ImportNotifier importNotifier;
-
-    @InjectMocks
-    private ProfileService profileService;
 
     private final String profileTestXmlFile = "" +
             "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
@@ -59,12 +48,22 @@ class ProfileServiceTest {
             "    <profile name=\"P3\">\n" +
             "    </profile>\n" +
             "</profiles:profiles>";
+    @TempDir
+    File temporaryFolder;
+    @Mock
+    private ProfileAPI profileAPI;
+    @Mock
+    private SecurityContext securityContext;
+    @Mock
+    private ImportNotifier importNotifier;
+    @InjectMocks
+    private ProfileService profileService;
 
     @Test
     void should_not_import_profile_if_some_already_exists_with_policy_IGNORE_IF_ANY_EXISTS() throws Exception {
-        doReturn(successCall(emptyList())).when(profileAPI).search(0, 1, "name=P1");
-        doReturn(aCallThatReturnAProfile(2L)).when(profileAPI).search(0, 1, "name=P2");
-        doReturn(aCallThatReturnAProfile(3L)).when(profileAPI).search(0, 1, "name=P3");
+        when(profileAPI.search(0, 1, "name=P1")).thenReturn(Calls.response(emptyList()));
+        when(profileAPI.search(0, 1, "name=P2")).thenReturn(aCallThatReturnAProfile(2L));
+        when(profileAPI.search(0, 1, "name=P3")).thenReturn(aCallThatReturnAProfile(3L));
 
         profileService.importProfiles(getTestFile(), ProfileImportPolicy.IGNORE_IF_ANY_EXISTS);
 
@@ -75,11 +74,12 @@ class ProfileServiceTest {
 
     @Test
     void should_import_profile_if_none_already_exists_with_policy_IGNORE_IF_ANY_EXISTS() throws Exception {
-        doReturn(successCall(emptyList())).when(profileAPI).search(0, 1, "name=P1");
-        doReturn(successCall(emptyList())).when(profileAPI).search(0, 1, "name=P2");
-        doReturn(successCall(emptyList())).when(profileAPI).search(0, 1, "name=P3");
-        doReturn(successCall("uploaded")).when(profileAPI).uploadContent(any());
-        doReturn(successCall("done")).when(profileAPI).importFromUploadedFile(any(), anyString());
+        when(profileAPI.search(0, 1, "name=P1")).thenReturn(Calls.response(emptyList()));
+        when(profileAPI.search(0, 1, "name=P2")).thenReturn(Calls.response(emptyList()));
+        when(profileAPI.search(0, 1, "name=P3")).thenReturn(Calls.response(emptyList()));
+
+        when(profileAPI.uploadContent(any())).thenReturn(Calls.response("uploaded"));
+        when(profileAPI.importFromUploadedFile(any(), anyString())).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("plain/test"), "done")));
 
         profileService.importProfiles(getTestFile(), ProfileImportPolicy.IGNORE_IF_ANY_EXISTS);
 
@@ -89,8 +89,8 @@ class ProfileServiceTest {
 
     @Test
     void should_import_profile_even_if_some_already_exists_with_policy_REPLACE_DUPLICATES() throws Exception {
-        doReturn(successCall("uploaded")).when(profileAPI).uploadContent(any());
-        doReturn(successCall("done")).when(profileAPI).importFromUploadedFile(any(), anyString());
+        when(profileAPI.uploadContent(any())).thenReturn(Calls.response("uploaded"));
+        when(profileAPI.importFromUploadedFile(any(), anyString())).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("plain/test"), "done")));
 
         profileService.importProfiles(getTestFile(), ProfileImportPolicy.REPLACE_DUPLICATES);
 
@@ -108,7 +108,7 @@ class ProfileServiceTest {
     private Call<List<Profile>> aCallThatReturnAProfile(Long id) {
         Profile profile = new Profile();
         profile.setId(id);
-        return successCall(singletonList(profile));
+        return Calls.response(singletonList(profile));
     }
 
 }

@@ -14,13 +14,15 @@ import com.bonitasoft.web.client.internal.api.ConfigurationAPI;
 import com.bonitasoft.web.client.internal.security.SecurityContext;
 import com.bonitasoft.web.client.model.License;
 import com.github.zafarkhaja.semver.Version;
+import okhttp3.MediaType;
+import okhttp3.ResponseBody;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import retrofit2.mock.Calls;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,7 +78,7 @@ class ConfigurationServiceTest {
     @Test
     void should_not_perform_import_configuration_for_Bonita_community_edition() throws Exception {
         //given:
-        doReturn(communityLicense()).when(systemService).getLicense();
+        when(systemService.getLicense()).thenReturn(communityLicense());
 
         //when:
         configurationService.importBonitaConfiguration(new File(temporaryFolder, UUID.randomUUID().toString()));
@@ -90,8 +92,8 @@ class ConfigurationServiceTest {
     @Test
     void should_not_perform_import_configuration_for_lower_Bonita_7_8_0_versions() throws Exception {
         //given:
-        doReturn(version("7.7.3")).when(systemService).getVersion();
-        doReturn(enterpriseLicense()).when(systemService).getLicense();
+        when(systemService.getVersion()).thenReturn(version("7.7.3"));
+        when(systemService.getLicense()).thenReturn(enterpriseLicense());
 
         //when:
         configurationService.importBonitaConfiguration(new File(temporaryFolder, UUID.randomUUID().toString()));
@@ -105,9 +107,10 @@ class ConfigurationServiceTest {
     @Test
     void should_perform_import_configuration_for_greater_Bonita_7_8_0_versions() throws Exception {
         //given:
-        doReturn(version("7.8.0")).when(systemService).getVersion();
-        doReturn(enterpriseLicense()).when(systemService).getLicense();
-        Mockito.doReturn(TestCall.successCall(null)).when(configurationAPI).deployConfiguration(any());
+        when(systemService.getVersion()).thenReturn(version("7.8.0"));
+        when(systemService.getLicense()).thenReturn(enterpriseLicense());
+
+        when(configurationAPI.deployConfiguration(any())).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("plain/test"), "ok")));
 
         //when:
         configurationService.importBonitaConfiguration(new File(temporaryFolder, UUID.randomUUID().toString()));
@@ -121,9 +124,9 @@ class ConfigurationServiceTest {
     @Test
     void should_import_fail_if_the_api_returns_an_error() throws Exception {
         //given:
-        doReturn(version("7.8.2")).when(systemService).getVersion();
-        doReturn(enterpriseLicense()).when(systemService).getLicense();
-        Mockito.doReturn(TestCall.errorCall(500, "too much data")).when(configurationAPI).deployConfiguration(any());
+        when(systemService.getVersion()).thenReturn(version("7.8.2"));
+        when(systemService.getLicense()).thenReturn(enterpriseLicense());
+        when(configurationAPI.deployConfiguration(any())).thenReturn(Calls.failure(new IOException("too much data")));
 
         //when:
         Throwable thrown = catchThrowable(
@@ -131,8 +134,9 @@ class ConfigurationServiceTest {
 
         //then:
         assertThat(thrown).isInstanceOf(IOException.class)
-                .hasMessageStartingWith("Error happened server side")
-                .hasMessageEndingWith("error code: 500, response body: too much data");
+//                .hasMessageStartingWith("Error happened server side")
+//                .hasMessageEndingWith("error code: 500, response body: too much data");
+                .hasMessageEndingWith("too much data");
     }
 
 }

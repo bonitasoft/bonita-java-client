@@ -17,10 +17,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import retrofit2.mock.Calls;
 
-import static com.bonitasoft.web.client.internal.services.TestCall.successCall;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class SystemServiceTest {
@@ -36,15 +36,13 @@ class SystemServiceTest {
 
     @Test
     void should_return_false_if_tenant_is_not_in_pause() throws Exception {
-        doReturn(successCall(ResponseBody.create(MediaType.parse("plain/test"), "{\"paused\":\"false\",\"id\":\"1\"}")))
-                .when(systemAPI).getCurrentTenant();
+        when(systemAPI.getCurrentTenant()).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("plain/test"), "{\"paused\":\"false\",\"id\":\"1\"}")));
         assertThat(systemService.isTenantPaused()).isFalse();
     }
 
     @Test
     void should_return_true_if_tenant_is_in_pause() throws Exception {
-        doReturn(successCall(ResponseBody.create(MediaType.parse("plain/test"), "{\"paused\":\"true\",\"id\":\"1\"}")))
-                .when(systemAPI).getCurrentTenant();
+        when(systemAPI.getCurrentTenant()).thenReturn(Calls.response((ResponseBody.create(MediaType.parse("plain/test"), "{\"paused\":\"true\",\"id\":\"1\"}"))));
         assertThat(systemService.isTenantPaused()).isTrue();
     }
 

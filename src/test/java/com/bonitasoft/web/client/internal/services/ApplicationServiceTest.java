@@ -18,17 +18,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import retrofit2.Call;
+import retrofit2.mock.Calls;
 
 import java.io.File;
-import java.util.Collections;
 import java.util.List;
 
 import static com.bonitasoft.web.client.policies.ApplicationImportPolicy.FAIL_ON_DUPLICATES;
 import static com.bonitasoft.web.client.policies.ApplicationImportPolicy.REPLACE_DUPLICATES;
 import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
@@ -49,17 +49,19 @@ class ApplicationServiceTest {
 
     @BeforeEach
     void before() {
-        Call<ResponseBody> ok = TestCall.successCall(ResponseBody.create(MediaType.parse("text/plain"), "ok"));
-        doReturn(ok).when(applicationAPI).delete(anyLong());
-        doReturn(ok).when(applicationAPI).importFromUploadedFile(anyString(), anyString());
-        Mockito.doReturn(TestCall.successCall("uploadedContent")).when(applicationAPI).uploadContent(any());
+        Call<ResponseBody> ok = Calls.response(ResponseBody.create(MediaType.parse("text/plain"), "ok"));
+        when(applicationAPI.delete(anyLong())).thenReturn(ok);
+        when(applicationAPI.importFromUploadedFile(anyString(), anyString())).thenReturn(ok);
+        when(applicationAPI.uploadContent(any())).thenReturn(Calls.response("uploadedContent"));
     }
 
     @Test
     void should_delete_existing_application_when_policy_is_REPLACE_DUPLICATES() throws Exception {
         File file = getFile("/application.xml");
-        doReturn(aCallThatReturnApplication(5L)).when(applicationAPI).search(0, 1, "token=MyApplication_Client_tests");
-        doReturn(aCallThatReturnApplication(6L)).when(applicationAPI).search(0, 1, "token=HR-dashboard_Client_tests");
+        when(applicationAPI.search(0, 1, "token=MyApplication_Client_tests")).thenReturn(aCallThatReturnApplication(5L));
+        when(applicationAPI.search(0, 1, "token=HR-dashboard_Client_tests")).thenReturn(aCallThatReturnApplication(6L));
+        when(applicationAPI.delete(eq(5L))).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("text/plain"), "ok")));
+        when(applicationAPI.delete(eq(6L))).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("text/plain"), "ok")));
 
         applicationService.importApplications(file, REPLACE_DUPLICATES);
 
@@ -70,8 +72,10 @@ class ApplicationServiceTest {
     @Test
     void should_call_api_with_FAIL_ON_DUPLICATES_policy_when_using_REPLACE_DUPLICATES() throws Exception {
         File file = getFile("/application.xml");
-        doReturn(aCallThatReturnApplication(5L)).when(applicationAPI).search(0, 1, "token=MyApplication_Client_tests");
-        doReturn(aCallThatReturnApplication(6L)).when(applicationAPI).search(0, 1, "token=HR-dashboard_Client_tests");
+        when(applicationAPI.search(eq(0), eq(1), eq("token=MyApplication_Client_tests"))).thenReturn(aCallThatReturnApplication(5L));
+        when(applicationAPI.search(eq(0), eq(1), eq("token=HR-dashboard_Client_tests"))).thenReturn(aCallThatReturnApplication(6L));
+        when(applicationAPI.delete(eq(5L))).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("text/plain"), "ok")));
+        when(applicationAPI.delete(eq(6L))).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("text/plain"), "ok")));
 
         applicationService.importApplications(file, REPLACE_DUPLICATES);
 
@@ -89,18 +93,18 @@ class ApplicationServiceTest {
 
     @Test
     void should_return_the_application_having_token() throws Exception {
-        Call<List<Application>> call = aCallThatReturnApplication(6L);
-        doReturn(call).when(applicationAPI).search(0, 1, "token=tokenOfTheApp");
+        long id = 6L;
+        when(applicationAPI.search(0, 1, "token=tokenOfTheApp")).thenReturn(aCallThatReturnApplication(id));
 
         Application application = applicationService.getApplication("tokenOfTheApp");
 
-        assertThat(application).isEqualTo(call.execute().body().get(0));
+        assertThat(application.getId()).isEqualTo(id);
     }
 
     @Test
     void should_return_null_if_application_do_not_exists() throws Exception {
-        Call<List<Application>> call = TestCall.successCall(Collections.emptyList());
-        doReturn(call).when(applicationAPI).search(0, 1, "token=tokenOfTheApp");
+        Call<List<Application>> call = Calls.response(emptyList());
+        when(applicationAPI.search(0, 1, "token=tokenOfTheApp")).thenReturn(call);
 
         Application application = applicationService.getApplication("tokenOfTheApp");
 
@@ -109,7 +113,7 @@ class ApplicationServiceTest {
 
     @Test
     void should_delete_unexisting_application() throws Exception {
-        Mockito.doReturn(TestCall.successCall(emptyList())).when(applicationAPI).search(0, 1, "token=tokenOfTheApp");
+        when(applicationAPI.search(0, 1, "token=tokenOfTheApp")).thenReturn(Calls.response(emptyList()));
 
         boolean result = applicationService.deleteApplication("tokenOfTheApp");
 
@@ -118,8 +122,8 @@ class ApplicationServiceTest {
 
     @Test
     void should_delete_existing_application() throws Exception {
-        doReturn(aCallThatReturnApplication(123L)).when(applicationAPI).search(0, 1, "token=tokenOfTheApp");
-        Mockito.doReturn(TestCall.successCall("success")).when(applicationAPI).delete(123L);
+        when(applicationAPI.search(0, 1, "token=tokenOfTheApp")).thenReturn(aCallThatReturnApplication(123L));
+        when(applicationAPI.delete(123L)).thenReturn(Calls.response(ResponseBody.create(MediaType.parse("plain/test"), "success")));
 
         boolean result = applicationService.deleteApplication("tokenOfTheApp");
 
@@ -128,9 +132,7 @@ class ApplicationServiceTest {
     }
 
     private Call<List<Application>> aCallThatReturnApplication(Long id) {
-        Application application = new Application();
-        application.setId(id);
-        return TestCall.successCall(Collections.singletonList(application));
+        return Calls.response(singletonList(new Application().setId(id)));
     }
 
     private File getFile(String name) {
