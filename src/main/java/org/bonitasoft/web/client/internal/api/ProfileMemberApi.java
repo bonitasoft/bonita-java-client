@@ -1,20 +1,28 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject45;
-import org.bonitasoft.web.client.internal.model.ProfileMember;
-import retrofit2.Call;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.ProfileMember;
+import org.bonitasoft.web.client.internal.model.ProfileMemberCreateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ProfileMemberApi {
   /**
    * Create the ProfileMember
    * Create the ProfileMember 
-   * @param body  (required)
+   * @param body Partial ProfileMember description (required)
    * @return Call&lt;ProfileMember&gt;
    */
   @Headers({
@@ -22,7 +30,7 @@ public interface ProfileMemberApi {
   })
   @POST("API/portal/profileMember")
   Call<ProfileMember> createProfileMember(
-    @retrofit2.http.Body InlineObject45 body
+    @retrofit2.http.Body ProfileMemberCreateRequest body
   );
 
   /**

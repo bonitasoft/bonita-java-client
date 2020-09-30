@@ -1,13 +1,22 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.Activity;
-import org.bonitasoft.web.client.internal.model.InlineObject6;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.PUT;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Activity;
+import org.bonitasoft.web.client.internal.model.ActivityUpdateRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ActivityApi {
   /**
@@ -40,7 +49,7 @@ public interface ActivityApi {
    * Update the Activity by ID
    * Update the Activity for the given ID 
    * @param id ID of the Activity to return (required)
-   * @param inlineObject6  (required)
+   * @param activityUpdateRequest Partial Activity description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -48,7 +57,7 @@ public interface ActivityApi {
   })
   @PUT("API/bpm/activity/{id}")
   Call<Void> updateActivityById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject6 inlineObject6
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ActivityUpdateRequest activityUpdateRequest
   );
 
 }

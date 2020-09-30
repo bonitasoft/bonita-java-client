@@ -1,13 +1,22 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.CustomUserValue;
-import org.bonitasoft.web.client.internal.model.InlineObject24;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.PUT;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.CustomUserValue;
+import org.bonitasoft.web.client.internal.model.CustomUserValueUpdateRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface CustomUserValueApi {
   /**
@@ -28,7 +37,7 @@ public interface CustomUserValueApi {
    * Update the CustomUserValue for the given ID 
    * @param userId User ID (required)
    * @param definitionId definition ID (required)
-   * @param inlineObject24  (required)
+   * @param customUserValueUpdateRequest Custom user defition Value (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -36,7 +45,7 @@ public interface CustomUserValueApi {
   })
   @PUT("API/customuserinfo/value/{userId}/{definitionId}")
   Call<Void> updateCustomUserValueById(
-    @retrofit2.http.Path("userId") String userId, @retrofit2.http.Path("definitionId") String definitionId, @retrofit2.http.Body InlineObject24 inlineObject24
+    @retrofit2.http.Path("userId") String userId, @retrofit2.http.Path("definitionId") String definitionId, @retrofit2.http.Body CustomUserValueUpdateRequest customUserValueUpdateRequest
   );
 
 }

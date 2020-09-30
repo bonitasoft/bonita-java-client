@@ -13,13 +13,23 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.io.Serializable;
 import java.util.Objects;
+import java.util.Arrays;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import org.bonitasoft.web.client.internal.model.AbstractTask;
+import java.io.Serializable;
 
 /**
  * Task
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T11:56:08.520781+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
 public class Task extends AbstractTask implements Serializable {
   private static final long serialVersionUID = 1L;
 

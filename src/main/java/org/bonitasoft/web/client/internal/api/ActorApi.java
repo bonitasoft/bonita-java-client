@@ -1,13 +1,22 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.Actor;
-import org.bonitasoft.web.client.internal.model.InlineObject15;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.PUT;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Actor;
+import org.bonitasoft.web.client.internal.model.ActorUpdateRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ActorApi {
   /**
@@ -39,7 +48,7 @@ public interface ActorApi {
    * Update the Actor by ID
    * Update the Actor for the given ID 
    * @param id ID of the Actor to return (required)
-   * @param inlineObject15  (required)
+   * @param actorUpdateRequest Fields that can be upated are &#x60;displayName&#x60; and &#x60;description&#x60; (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -47,7 +56,7 @@ public interface ActorApi {
   })
   @PUT("API/bpm/actor/{id}")
   Call<Void> updateActorById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject15 inlineObject15
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ActorUpdateRequest actorUpdateRequest
   );
 
 }

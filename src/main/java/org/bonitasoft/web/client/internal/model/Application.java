@@ -13,23 +13,28 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import com.google.gson.annotations.SerializedName;
-import io.swagger.annotations.ApiModelProperty;
-import org.bonitasoft.web.client.internal.model.oas_any_type_not_mapped;
-
-import java.io.Serializable;
 import java.util.Objects;
+import java.util.Arrays;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Application
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T11:56:08.520781+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
 public class Application implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private oas_any_type_not_mapped createdBy = null;
+  private String createdBy;
 
   public static final String SERIALIZED_NAME_CREATION_DATE = "creationDate";
   @SerializedName(SERIALIZED_NAME_CREATION_DATE)
@@ -45,11 +50,11 @@ public class Application implements Serializable {
 
   public static final String SERIALIZED_NAME_HOME_PAGE_ID = "homePageId";
   @SerializedName(SERIALIZED_NAME_HOME_PAGE_ID)
-  private oas_any_type_not_mapped homePageId = null;
+  private String homePageId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private oas_any_type_not_mapped id = null;
+  private String id;
 
   public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "lastUpdateDate";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
@@ -57,7 +62,7 @@ public class Application implements Serializable {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private oas_any_type_not_mapped profileId = null;
+  private String profileId;
 
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
@@ -65,14 +70,14 @@ public class Application implements Serializable {
 
   public static final String SERIALIZED_NAME_UPDATED_BY = "updatedBy";
   @SerializedName(SERIALIZED_NAME_UPDATED_BY)
-  private oas_any_type_not_mapped updatedBy = null;
+  private String updatedBy;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private String version;
 
 
-  public Application createdBy(oas_any_type_not_mapped createdBy) {
+  public Application createdBy(String createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -85,12 +90,12 @@ public class Application implements Serializable {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Author user ID")
 
-  public oas_any_type_not_mapped getCreatedBy() {
+  public String getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(oas_any_type_not_mapped createdBy) {
+  public void setCreatedBy(String createdBy) {
     this.createdBy = createdBy;
   }
 
@@ -164,7 +169,7 @@ public class Application implements Serializable {
   }
 
 
-  public Application homePageId(oas_any_type_not_mapped homePageId) {
+  public Application homePageId(String homePageId) {
     
     this.homePageId = homePageId;
     return this;
@@ -177,17 +182,17 @@ public class Application implements Serializable {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the application page used as the home page")
 
-  public oas_any_type_not_mapped getHomePageId() {
+  public String getHomePageId() {
     return homePageId;
   }
 
 
-  public void setHomePageId(oas_any_type_not_mapped homePageId) {
+  public void setHomePageId(String homePageId) {
     this.homePageId = homePageId;
   }
 
 
-  public Application id(oas_any_type_not_mapped id) {
+  public Application id(String id) {
     
     this.id = id;
     return this;
@@ -200,12 +205,12 @@ public class Application implements Serializable {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the application")
 
-  public oas_any_type_not_mapped getId() {
+  public String getId() {
     return id;
   }
 
 
-  public void setId(oas_any_type_not_mapped id) {
+  public void setId(String id) {
     this.id = id;
   }
 
@@ -233,7 +238,7 @@ public class Application implements Serializable {
   }
 
 
-  public Application profileId(oas_any_type_not_mapped profileId) {
+  public Application profileId(String profileId) {
     
     this.profileId = profileId;
     return this;
@@ -246,12 +251,12 @@ public class Application implements Serializable {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "profile authorized to access this application")
 
-  public oas_any_type_not_mapped getProfileId() {
+  public String getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(oas_any_type_not_mapped profileId) {
+  public void setProfileId(String profileId) {
     this.profileId = profileId;
   }
 
@@ -279,7 +284,7 @@ public class Application implements Serializable {
   }
 
 
-  public Application updatedBy(oas_any_type_not_mapped updatedBy) {
+  public Application updatedBy(String updatedBy) {
     
     this.updatedBy = updatedBy;
     return this;
@@ -292,12 +297,12 @@ public class Application implements Serializable {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Last updating user ID")
 
-  public oas_any_type_not_mapped getUpdatedBy() {
+  public String getUpdatedBy() {
     return updatedBy;
   }
 
 
-  public void setUpdatedBy(oas_any_type_not_mapped updatedBy) {
+  public void setUpdatedBy(String updatedBy) {
     this.updatedBy = updatedBy;
   }
 

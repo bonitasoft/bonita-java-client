@@ -1,18 +1,29 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.ApplicationMenu;
-import org.bonitasoft.web.client.internal.model.InlineObject2;
-import org.bonitasoft.web.client.internal.model.InlineObject3;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.ApplicationMenu;
+import org.bonitasoft.web.client.internal.model.ApplicationMenuCreateRequest;
+import org.bonitasoft.web.client.internal.model.ApplicationMenuUpdateRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ApplicationMenuApi {
   /**
    * New application menu item
    * Create an application menu item 
-   * @param inlineObject2  (optional)
+   * @param applicationMenuCreateRequest A partial representation of an application menu in JSON (optional)
    * @return Call&lt;ApplicationMenu&gt;
    */
   @Headers({
@@ -20,7 +31,7 @@ public interface ApplicationMenuApi {
   })
   @POST("API/living/application-menu")
   Call<ApplicationMenu> createApplicationMenu(
-    @retrofit2.http.Body InlineObject2 inlineObject2
+    @retrofit2.http.Body ApplicationMenuCreateRequest applicationMenuCreateRequest
   );
 
   /**
@@ -64,7 +75,7 @@ public interface ApplicationMenuApi {
    * Update a application menu by ID
    * Update a application menu for the given ID
    * @param id ID of the application menu to return (required)
-   * @param inlineObject3  (required)
+   * @param applicationMenuUpdateRequest Partial application menu description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -72,7 +83,7 @@ public interface ApplicationMenuApi {
   })
   @PUT("API/living/application-menu/{id}")
   Call<Void> updateApplicationMenuById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject3 inlineObject3
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ApplicationMenuUpdateRequest applicationMenuUpdateRequest
   );
 
 }

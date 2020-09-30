@@ -1,18 +1,29 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject31;
-import org.bonitasoft.web.client.internal.model.InlineObject32;
-import org.bonitasoft.web.client.internal.model.User;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.User;
+import org.bonitasoft.web.client.internal.model.UserCreateRequest;
+import org.bonitasoft.web.client.internal.model.UserUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface UserApi {
   /**
    * Create the User
    * Create the User 
-   * @param body  (required)
+   * @param body Partial User description (required)
    * @return Call&lt;User&gt;
    */
   @Headers({
@@ -20,7 +31,7 @@ public interface UserApi {
   })
   @POST("API/identity/user")
   Call<User> createUser(
-    @retrofit2.http.Body InlineObject31 body
+    @retrofit2.http.Body UserCreateRequest body
   );
 
   /**
@@ -64,7 +75,7 @@ public interface UserApi {
    * Update the User by ID
    * Update the User for the given ID 
    * @param id ID of the User to return (required)
-   * @param inlineObject32  (required)
+   * @param userUpdateRequest Partial User description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -72,7 +83,7 @@ public interface UserApi {
   })
   @PUT("API/identity/user/{id}")
   Call<Void> updateUserById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject32 inlineObject32
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body UserUpdateRequest userUpdateRequest
   );
 
 }

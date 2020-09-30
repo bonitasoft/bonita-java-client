@@ -1,18 +1,29 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.CaseDocument;
-import org.bonitasoft.web.client.internal.model.InlineObject13;
-import org.bonitasoft.web.client.internal.model.InlineObject14;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.CaseDocument;
+import org.bonitasoft.web.client.internal.model.CaseDocumentCreateRequest;
+import org.bonitasoft.web.client.internal.model.CaseDocumentUpdateRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface CaseDocumentApi {
   /**
    * Create the CaseDocument
    * Create the CaseDocument.  Use a POST method to add a document to a case. You can upload a document from the local file system or by URL. Specify the case id and the document name in the payload. The document description is optional: if you do not specify a description, the description in the response is empty. The response contains a version, which is managed automatically. You cannot currently retrieve a specific version of a document, only the most recent version. To retrieve earlier versions of a caseDocument, use the archivedCaseDocument resource. 
-   * @param body  (required)
+   * @param body Partial CaseDocument description (required)
    * @return Call&lt;CaseDocument&gt;
    */
   @Headers({
@@ -20,7 +31,7 @@ public interface CaseDocumentApi {
   })
   @POST("API/bpm/caseDocument")
   Call<CaseDocument> createCaseDocument(
-    @retrofit2.http.Body InlineObject13 body
+    @retrofit2.http.Body CaseDocumentCreateRequest body
   );
 
   /**
@@ -63,7 +74,7 @@ public interface CaseDocumentApi {
    * Update the CaseDocument by ID
    * Update the CaseDocument for the given ID  You update a document in a case by uploading a new version of the document using a PUT method. You can upload a document version from the local file system or by URL. The document name will be used in all the cases of the process, but the combination of case id and document name is unique. In the URL, you specify to supply the document id. This is included in the response when you first add a document to a case. The response to PUT methods is the same as for POST methods. 
    * @param id ID of the CaseDocument to return (required)
-   * @param inlineObject14  (required)
+   * @param caseDocumentUpdateRequest Partial CaseDocument description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -71,7 +82,7 @@ public interface CaseDocumentApi {
   })
   @PUT("API/bpm/caseDocument/{id}")
   Call<Void> updateCaseDocumentById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject14 inlineObject14
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body CaseDocumentUpdateRequest caseDocumentUpdateRequest
   );
 
 }

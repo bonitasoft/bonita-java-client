@@ -1,20 +1,31 @@
 package org.bonitasoft.web.client.internal.api;
 
-import okhttp3.MultipartBody;
-import org.bonitasoft.web.client.internal.model.InlineObject39;
-import org.bonitasoft.web.client.internal.model.InlineObject40;
-import org.bonitasoft.web.client.internal.model.InlineResponse2002;
-import org.bonitasoft.web.client.internal.model.Page;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import java.io.File;
+import org.bonitasoft.web.client.internal.model.Page;
+import org.bonitasoft.web.client.internal.model.PageCreateRequest;
+import org.bonitasoft.web.client.internal.model.PageUpdateRequest;
+import org.bonitasoft.web.client.internal.model.PageUploadResponse;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface PageApi {
   /**
    * Create the Page
    * Upload the page content using the &#x60;portal/pageUpload&#x60; . This returns a temporary file name that can be used as input for this operation. 
-   * @param body  (required)
+   * @param body Zip name as named in the temp folder after upload (required)
    * @return Call&lt;Page&gt;
    */
   @Headers({
@@ -22,7 +33,7 @@ public interface PageApi {
   })
   @POST("API/portal/page")
   Call<Page> createPage(
-    @retrofit2.http.Body InlineObject39 body
+    @retrofit2.http.Body PageCreateRequest body
   );
 
   /**
@@ -66,7 +77,7 @@ public interface PageApi {
    * Update the Page by ID
    * Use the PUT method to update an existing custom page. To update a custom page, upload the new page content using the pageUpload servlet, which returns a temporary file name, and then call this API with the temporary file name. 
    * @param id ID of the Page to return (required)
-   * @param inlineObject40  (required)
+   * @param pageUpdateRequest Partial Page description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -74,18 +85,18 @@ public interface PageApi {
   })
   @PUT("API/portal/page/{id}")
   Call<Void> updatePageById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject40 inlineObject40
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body PageUpdateRequest pageUpdateRequest
   );
 
   /**
    * Upload a Page
    * Upload Page 
    * @param file  (optional)
-   * @return Call&lt;InlineResponse2002&gt;
+   * @return Call&lt;PageUploadResponse&gt;
    */
   @retrofit2.http.Multipart
   @POST("portal/pageUpload")
-  Call<InlineResponse2002> uploadPage(
+  Call<PageUploadResponse> uploadPage(
     @retrofit2.http.Part MultipartBody.Part file
   );
 

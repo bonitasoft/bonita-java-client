@@ -1,13 +1,24 @@
 package org.bonitasoft.web.client.internal.api;
 
-import okhttp3.MultipartBody;
-import org.bonitasoft.web.client.internal.model.Application;
-import org.bonitasoft.web.client.internal.model.CreateApplicationRequest;
-import org.bonitasoft.web.client.internal.model.InlineObject;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Application;
+import org.bonitasoft.web.client.internal.model.ApplicationUpdateRequest;
+import org.bonitasoft.web.client.internal.model.CreateApplicationRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+import java.io.File;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ApplicationApi {
   /**
@@ -78,7 +89,7 @@ public interface ApplicationApi {
    * Update a living application by ID
    * Update a single application for the given ID 
    * @param id ID of application to return (required)
-   * @param inlineObject  (required)
+   * @param applicationUpdateRequest Partial living application description (required)
    * @return Call&lt;Application&gt;
    */
   @Headers({
@@ -86,7 +97,7 @@ public interface ApplicationApi {
   })
   @PUT("API/living/application/{id}")
   Call<Application> updateApplicationById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject inlineObject
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ApplicationUpdateRequest applicationUpdateRequest
   );
 
   /**

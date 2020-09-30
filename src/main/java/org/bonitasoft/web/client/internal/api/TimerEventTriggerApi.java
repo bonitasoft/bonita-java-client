@@ -1,14 +1,23 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject22;
-import org.bonitasoft.web.client.internal.model.InlineResponse2001;
-import org.bonitasoft.web.client.internal.model.TimerEventTrigger;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.PUT;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.TimerEventTrigger;
+import org.bonitasoft.web.client.internal.model.TimerEventTriggerUpdateRequest;
+import org.bonitasoft.web.client.internal.model.TimerEventTriggerUpdateResponse;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface TimerEventTriggerApi {
   /**
@@ -42,15 +51,15 @@ public interface TimerEventTriggerApi {
    * Update the TimerEventTrigger by ID
    * Update the TimerEventTrigger for the given ID 
    * @param id ID of the TimerEventTrigger to return (required)
-   * @param inlineObject22  (required)
-   * @return Call&lt;InlineResponse2001&gt;
+   * @param timerEventTriggerUpdateRequest a long value with attribute name \&quot;executionDate\&quot; (required)
+   * @return Call&lt;TimerEventTriggerUpdateResponse&gt;
    */
   @Headers({
     "Content-Type:application/json"
   })
   @PUT("API/bpm/timerEventTrigger/{id}")
-  Call<InlineResponse2001> updateTimerEventTriggerById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject22 inlineObject22
+  Call<TimerEventTriggerUpdateResponse> updateTimerEventTriggerById(
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body TimerEventTriggerUpdateRequest timerEventTriggerUpdateRequest
   );
 
 }

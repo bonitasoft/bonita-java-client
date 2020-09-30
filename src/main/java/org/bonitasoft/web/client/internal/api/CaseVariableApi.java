@@ -1,13 +1,22 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.CaseVariable;
-import org.bonitasoft.web.client.internal.model.InlineObject12;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.PUT;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.CaseVariable;
+import org.bonitasoft.web.client.internal.model.CaseVariableUpdateRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface CaseVariableApi {
   /**
@@ -33,7 +42,7 @@ public interface CaseVariableApi {
    */
   @GET("API/bpm/caseVariable/{id}/{variableName}")
   Call<CaseVariable> getVariableByCaseId(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Path("variableName") oas_any_type_not_mapped variableName
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Path("variableName") String variableName
   );
 
   /**
@@ -41,7 +50,7 @@ public interface CaseVariableApi {
    * Update the variable for the given Case ID.  **Warning** : only following types are supported for javaTypeclassname: &#x60;java.lang.String&#x60;, &#x60;java.lang.Integer&#x60;, &#x60;java.lang.Double&#x60;, &#x60;java.lang.Long&#x60;, &#x60;java.lang.Boolean&#x60;, &#x60;java.util.Date&#x60; 
    * @param id The identifier of the case from which to retrieve the variable (required)
    * @param variableName The name of the variable to retrieve (required)
-   * @param inlineObject12  (required)
+   * @param caseVariableUpdateRequest Partial XXX description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -49,7 +58,7 @@ public interface CaseVariableApi {
   })
   @PUT("API/bpm/caseVariable/{id}/{variableName}")
   Call<Void> updateVariableByCaseId(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Path("variableName") oas_any_type_not_mapped variableName, @retrofit2.http.Body InlineObject12 inlineObject12
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Path("variableName") String variableName, @retrofit2.http.Body CaseVariableUpdateRequest caseVariableUpdateRequest
   );
 
 }

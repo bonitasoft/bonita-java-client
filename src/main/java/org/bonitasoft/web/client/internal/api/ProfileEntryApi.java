@@ -1,18 +1,29 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject43;
-import org.bonitasoft.web.client.internal.model.InlineObject44;
-import org.bonitasoft.web.client.internal.model.ProfileEntry;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.ProfileEntry;
+import org.bonitasoft.web.client.internal.model.ProfileEntryCreateRequest;
+import org.bonitasoft.web.client.internal.model.ProfileEntryUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ProfileEntryApi {
   /**
    * Create the ProfileEntry
    * Create the ProfileEntry 
-   * @param body  (required)
+   * @param body Partial ProfileEntry description (required)
    * @return Call&lt;ProfileEntry&gt;
    */
   @Headers({
@@ -20,7 +31,7 @@ public interface ProfileEntryApi {
   })
   @POST("API/portal/profileEntry")
   Call<ProfileEntry> createProfileEntry(
-    @retrofit2.http.Body InlineObject43 body
+    @retrofit2.http.Body ProfileEntryCreateRequest body
   );
 
   /**
@@ -63,7 +74,7 @@ public interface ProfileEntryApi {
    * Update the ProfileEntry by ID
    * Update the ProfileEntry for the given ID 
    * @param id ID of the ProfileEntry to return (required)
-   * @param inlineObject44  (required)
+   * @param profileEntryUpdateRequest Partial ProfileEntry description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -71,7 +82,7 @@ public interface ProfileEntryApi {
   })
   @PUT("API/portal/profileEntry/{id}")
   Call<Void> updateProfileEntryById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject44 inlineObject44
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ProfileEntryUpdateRequest profileEntryUpdateRequest
   );
 
 }

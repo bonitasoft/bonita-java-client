@@ -1,17 +1,28 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject46;
-import org.bonitasoft.web.client.internal.model.InlineObject47;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.ThemeCreateRequest;
+import org.bonitasoft.web.client.internal.model.ThemeRestoreRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface ThemeApi {
   /**
    * Create the Theme
    * Create the Theme 
-   * @param body  (required)
+   * @param body Partial Theme description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -19,21 +30,21 @@ public interface ThemeApi {
   })
   @POST("API/portal/theme")
   Call<Void> createTheme(
-    @retrofit2.http.Body InlineObject46 body
+    @retrofit2.http.Body ThemeCreateRequest body
   );
 
   /**
-   * Update the Theme by ID
-   * Restore a default theme 
-   * @param inlineObject47  (required)
+   * Restore default Theme
+   * Restore the default theme 
+   * @param themeRestoreRequest Partial Theme description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
     "Content-Type:application/json"
   })
   @PUT("API/portal/theme/unusedId")
-  Call<Void> updateTheme(
-    @retrofit2.http.Body InlineObject47 inlineObject47
+  Call<Void> restoreTheme(
+    @retrofit2.http.Body ThemeRestoreRequest themeRestoreRequest
   );
 
 }

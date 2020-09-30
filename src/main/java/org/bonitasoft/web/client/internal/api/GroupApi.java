@@ -1,18 +1,29 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.Group;
-import org.bonitasoft.web.client.internal.model.InlineObject26;
-import org.bonitasoft.web.client.internal.model.InlineObject27;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.Group;
+import org.bonitasoft.web.client.internal.model.GroupCreateRequest;
+import org.bonitasoft.web.client.internal.model.GroupUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface GroupApi {
   /**
    * Create the Group
    * Create the Group 
-   * @param body  (required)
+   * @param body Partial Group description (required)
    * @return Call&lt;Group&gt;
    */
   @Headers({
@@ -20,7 +31,7 @@ public interface GroupApi {
   })
   @POST("API/identity/group")
   Call<Group> createGroup(
-    @retrofit2.http.Body InlineObject26 body
+    @retrofit2.http.Body GroupCreateRequest body
   );
 
   /**
@@ -63,7 +74,7 @@ public interface GroupApi {
    * Update the Group by ID
    * Update the Group for the given ID 
    * @param id ID of the Group to return (required)
-   * @param inlineObject27  (required)
+   * @param groupUpdateRequest Partial Group description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -71,7 +82,7 @@ public interface GroupApi {
   })
   @PUT("API/identity/group/{id}")
   Call<Void> updateGroupById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject27 inlineObject27
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body GroupUpdateRequest groupUpdateRequest
   );
 
 }

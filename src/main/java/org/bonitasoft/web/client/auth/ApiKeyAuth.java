@@ -1,12 +1,12 @@
 package org.bonitasoft.web.client.auth;
 
-import okhttp3.Interceptor;
-import okhttp3.Request;
-import okhttp3.Response;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class ApiKeyAuth implements Interceptor {
     private final String location;

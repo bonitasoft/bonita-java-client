@@ -1,18 +1,29 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject29;
-import org.bonitasoft.web.client.internal.model.InlineObject30;
-import org.bonitasoft.web.client.internal.model.Role;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.Role;
+import org.bonitasoft.web.client.internal.model.RoleCreateRequest;
+import org.bonitasoft.web.client.internal.model.RoleUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface RoleApi {
   /**
    * Create the Role
    * Create the Role 
-   * @param body  (required)
+   * @param body Partial Role description (required)
    * @return Call&lt;Role&gt;
    */
   @Headers({
@@ -20,7 +31,7 @@ public interface RoleApi {
   })
   @POST("API/identity/role")
   Call<Role> createRole(
-    @retrofit2.http.Body InlineObject29 body
+    @retrofit2.http.Body RoleCreateRequest body
   );
 
   /**
@@ -64,7 +75,7 @@ public interface RoleApi {
    * Update the Role by ID
    * Update the Role for the given ID 
    * @param id ID of the Role to return (required)
-   * @param inlineObject30  (required)
+   * @param roleUpdateRequest Partial Role description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -72,7 +83,7 @@ public interface RoleApi {
   })
   @PUT("API/identity/role/{id}")
   Call<Void> updateRoleById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject30 inlineObject30
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body RoleUpdateRequest roleUpdateRequest
   );
 
 }

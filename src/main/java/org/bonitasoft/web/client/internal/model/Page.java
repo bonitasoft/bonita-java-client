@@ -13,23 +13,28 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import com.google.gson.annotations.SerializedName;
-import io.swagger.annotations.ApiModelProperty;
-import org.bonitasoft.web.client.internal.model.oas_any_type_not_mapped;
-
-import java.io.Serializable;
 import java.util.Objects;
+import java.util.Arrays;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Page
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T11:56:08.520781+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
 public class Page implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private oas_any_type_not_mapped id = null;
+  private String id;
 
   public static final String SERIALIZED_NAME_CREATION_DATE = "creationDate";
   @SerializedName(SERIALIZED_NAME_CREATION_DATE)
@@ -68,7 +73,7 @@ public class Page implements Serializable {
   private String urlToken;
 
 
-  public Page id(oas_any_type_not_mapped id) {
+  public Page id(String id) {
     
     this.id = id;
     return this;
@@ -81,12 +86,12 @@ public class Page implements Serializable {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "page id")
 
-  public oas_any_type_not_mapped getId() {
+  public String getId() {
     return id;
   }
 
 
-  public void setId(oas_any_type_not_mapped id) {
+  public void setId(String id) {
     this.id = id;
   }
 

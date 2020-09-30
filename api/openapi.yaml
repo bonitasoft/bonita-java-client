@@ -792,40 +792,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object'
         content:
           application/json:
-            example:
-              version: "1.0"
-              profileId: "2"
-              token: myapp
-              displayName: My app
-              description: My application description
             schema:
-              properties:
-                description:
-                  description: description of the application
-                  type: string
-                displayName:
-                  description: display name of the application
-                  type: string
-                profileId:
-                  description: profile authorized to access this application
-                  type: string
-                token:
-                  description: token of the application used to build the application
-                    URL
-                  type: string
-                version:
-                  description: version of the application
-                  type: string
-                themeId:
-                  description: |
-                    ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-                    theme id for the application
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ApplicationUpdateRequest'
         description: Partial living application description
         required: true
       responses:
@@ -934,7 +904,7 @@ paths:
         Upload application
       operationId: uploadApplication
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_1'
+        $ref: '#/components/requestBodies/inline_object'
         content:
           multipart/form-data:
             schema:
@@ -1080,37 +1050,10 @@ paths:
         Create an application menu item
       operationId: createApplicationMenu
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_2'
         content:
           application/json:
-            example:
-              displayName: menuLabel
-              applicationId: "1"
-              applicationPageId: "5"
-              menuIndex: "1"
-              parentMenuId: -1
             schema:
-              properties:
-                parentMenuId:
-                  description: id of the parent menu of this menu item, or -1 for
-                    a top-level item
-                  type: string
-                applicationPageId:
-                  description: id of the application page targeted by this menu item,
-                    or -1 if there is no targeted page (that is, the item is a parent
-                    menu)
-                  type: string
-                applicationId:
-                  description: id of the application related to this menu item
-                  type: string
-                menuIndex:
-                  description: index of the menu item
-                  type: string
-                displayName:
-                  description: label to display for this menu in the application navigation
-                    bar or menu
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ApplicationMenuCreateRequest'
         description: A partial representation of an application menu in JSON
       responses:
         "200":
@@ -1276,26 +1219,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_3'
         content:
           application/json:
-            example:
-              displayName: My updated label
             schema:
-              properties:
-                displayName:
-                  description: display name of the application menu
-                  type: string
-                applicationPageId:
-                  description: the application menu page ID
-                  type: string
-                menuIndex:
-                  description: the application menu index
-                  type: string
-                parentMenuId:
-                  description: the application parent menu ID
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ApplicationMenuUpdateRequest'
         description: Partial application menu description
         required: true
       responses:
@@ -1443,24 +1370,10 @@ paths:
         Create an application page
       operationId: createApplicationPage
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_4'
         content:
           application/json:
-            example:
-              token: myPage
-              applicationId: "1234"
-              pageId: "5678"
             schema:
-              properties:
-                token:
-                  description: 'token use to access the page using a URL : ../appName/pageToken/'
-                applicationId:
-                  description: id of the application related to this page
-                  type: string
-                pageId:
-                  description: id of the custom page to display
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ApplicationPageCreateRequest'
         description: Partial application page description
         required: true
       responses:
@@ -2027,7 +1940,7 @@ paths:
         Upload BDM Access Control
       operationId: uploadBDMAccessControl
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_5'
+        $ref: '#/components/requestBodies/inline_object_1'
         content:
           multipart/form-data:
             schema:
@@ -2040,10 +1953,8 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                fileUpload: tmp_accessControlFileToUpload.xml
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/BDMAccessControlUploadResponse'
           description: sucessful operation
         "400":
           content:
@@ -2303,31 +2214,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_6'
         content:
           application/json:
-            example:
-              variables: '[{"name":"foo","value":"bar"}]'
-              state: completed
             schema:
-              properties:
-                variables:
-                  description: |
-                    Activity variables to update.
-
-                    **Note**: if there is no data with the specified name in the activity,
-                    the update will be applied to the process data if a variable with the specified name exists.
-
-                    **Note**: if the task definition includes a connector that is executed on finish and updates the value of a variable, the value set by the REST API call is overwritten.
-                  type: string
-                state:
-                  description: |
-                    The target state of the activity
-                    - Execute a task: `completed`
-                    - Skip activity: `skipped` - Make this call after all failed connectors have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-                    - Replay activity: `replay`
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ActivityUpdateRequest'
         description: Partial Activity description
         required: true
       responses:
@@ -2708,21 +2598,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_7'
         content:
           application/json:
-            example:
-              assignedId: new_user_id
-              state: new_state
             schema:
-              properties:
-                assignedId:
-                  description: assignedId of the HumanTask
-                  type: string
-                state:
-                  description: state of the HumanTask
-                  type: string
-              type: object
+              $ref: '#/components/schemas/HumanTaskUpdateRequest'
         description: Fields that can be updated are `assignedId` and `state`. Specify
           only those fields that you want to change.
         required: true
@@ -2879,41 +2758,10 @@ paths:
         Use a POST method to create a new subtask. A subtask is attached to a parent task and it needs to be immediately assigned to a user.
       operationId: createManualTask
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_8'
         content:
           application/json:
-            example:
-              parentTaskId: "40001"
-              state: ready
-              name: My subtask
-              description: This is my subtask
-              priority: above_normal
-              dueDate: 2014-12-25 00:00:00.000
-              assigned_id: "1"
             schema:
-              properties:
-                parentTaskId:
-                  description: The parent task ID
-                  type: string
-                state:
-                  description: The task state
-                  type: string
-                name:
-                  description: The task name
-                  type: string
-                description:
-                  description: The task description
-                  type: string
-                priority:
-                  description: The task priority
-                  type: string
-                dueDate:
-                  description: The task due date
-                  type: string
-                assigned_id:
-                  description: 'The id of the user assigned to the task '
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ManualTaskCreateRequest'
         description: Partial ManualTask description
         required: true
       responses:
@@ -3026,21 +2874,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_9'
         content:
           application/json:
-            example:
-              state: completed
-              executedBy: "1"
             schema:
-              properties:
-                state:
-                  description: State of the ManualTask (completed)
-                  type: string
-                executedBy:
-                  description: Id of the task executor
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ManualTaskUpdateRequest'
         description: Partial ManualTask description
         required: true
       responses:
@@ -3402,65 +3239,6 @@ paths:
       tags:
       - UserTask
       x-accepts: application/json
-    post:
-      description: |
-        Create the UserTask
-      operationId: createUserTask
-      requestBody:
-        $ref: '#/components/requestBodies/inline_object_10'
-        content:
-          application/json:
-            example:
-              token: myapp
-              displayName: My app
-            schema:
-              properties:
-                displayName:
-                  description: display name of the UserTask
-                  type: string
-                token:
-                  description: token of the UserTask used to build the UserTask URL
-                  type: string
-              type: object
-        description: Partial UserTask description
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserTask'
-          description: successful operation
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Create the UserTask
-      tags:
-      - UserTask
-      x-codegen-request-body-name: body
-      x-contentType: application/json
-      x-accepts: application/json
   /API/bpm/userTask/{id}:
     get:
       description: |
@@ -3534,21 +3312,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_11'
         content:
           application/json:
-            example:
-              assignedId: "1"
-              state: skipped
             schema:
-              properties:
-                state:
-                  description: The UserTask state
-                  type: string
-                assignedId:
-                  description: The id of the user assign to  the UserTask
-                  type: string
-              type: object
+              $ref: '#/components/schemas/UserTaskUpdateRequest'
         description: Partial UserTask description
         required: true
       responses:
@@ -3755,7 +3522,8 @@ paths:
                   index: -1
                   contentFileName: TestCommunity-1.0.bos
               schema:
-                $ref: '#/components/schemas/AnyValue'
+                additionalProperties: true
+                type: object
           description: successful operation
         "400":
           content:
@@ -4418,7 +4186,7 @@ paths:
         name: variableName
         required: true
         schema:
-          format: string
+          type: string
         style: simple
       responses:
         "200":
@@ -4571,7 +4339,7 @@ paths:
         name: variableName
         required: true
         schema:
-          format: string
+          type: string
         style: simple
       responses:
         "200":
@@ -4637,24 +4405,13 @@ paths:
         name: variableName
         required: true
         schema:
-          format: string
+          type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_12'
         content:
           application/json:
-            example:
-              type: java.lang.String
-              value: My new value
             schema:
-              properties:
-                type:
-                  description: the java class name
-                  type: string
-                value:
-                  description: the new value
-                  type: string
-              type: object
+              $ref: '#/components/schemas/CaseVariableUpdateRequest'
         description: Partial XXX description
         required: true
       responses:
@@ -4803,37 +4560,10 @@ paths:
         To retrieve earlier versions of a caseDocument, use the archivedCaseDocument resource.
       operationId: createCaseDocument
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_13'
         content:
           application/json:
-            example:
-              caseId: "1"
-              file: doc.jpg
-              name: Doc 1
-              fileName: document_1.jpg
-              description: draft
             schema:
-              properties:
-                caseId:
-                  description: The case id
-                  type: string
-                file:
-                  description: The local file name to upload from (as from the temp
-                    upload folder)
-                  type: string
-                url:
-                  description: The remote url to upload from
-                  type: string
-                name:
-                  description: The file display name
-                  type: string
-                fileName:
-                  description: The target file name
-                  type: string
-                description:
-                  description: The document description
-                  type: string
-              type: object
+              $ref: '#/components/schemas/CaseDocumentCreateRequest'
         description: Partial CaseDocument description
         required: true
       responses:
@@ -5004,32 +4734,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_14'
         content:
           application/json:
-            example:
-              file: Expense policy rev2.pdf
-              description: updated version of document
-              fileName: revision2.pdf
             schema:
-              properties:
-                file:
-                  description: The local file name to upload from (as from the temp
-                    upload folder)
-                  type: string
-                url:
-                  description: The remote url to upload from
-                  type: string
-                name:
-                  description: The file display name
-                  type: string
-                fileName:
-                  description: The target file name
-                  type: string
-                description:
-                  description: The document description
-                  type: string
-              type: object
+              $ref: '#/components/schemas/CaseDocumentUpdateRequest'
         description: Partial CaseDocument description
         required: true
       responses:
@@ -5384,21 +5092,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_15'
         content:
           application/json:
-            example:
-              displayName: My actor
-              description: My actor description
             schema:
-              properties:
-                displayName:
-                  description: display name of the Actor
-                  type: string
-                description:
-                  description: description of the Actor
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ActorUpdateRequest'
         description: Fields that can be upated are `displayName` and `description`
         required: true
       responses:
@@ -5807,29 +5504,10 @@ paths:
         This way of creating a case using this method will only work for processes in which no contract is defined. To instantiate a process with a contract, check the process instantiation resource documentation.
       operationId: createCase
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_16'
         content:
           application/json:
-            example:
-              processDefinitionId: "5777042023671752656"
-              variables:
-              - name: stringVariable
-                value: aValue
-              - name: dateVariable
-                value: 349246800000
-              - name: numericVariable
-                value: 5
             schema:
-              properties:
-                processDefinitionId:
-                  description: the process definition Id
-                  type: string
-                variables:
-                  description: process variables initial values
-                  items:
-                    $ref: '#/components/schemas/_API_bpm_case_variables'
-                  type: array
-              type: object
+              $ref: '#/components/schemas/CaseCreateRequest'
         description: |
           **Warning**: The attribute `variables` on the request payload is used to initialize the process variables (not BDM variables). If you want to initialize BDM variables at process instantiation, add a contract on the process and map BDM variables to the contract data. See Start a process using an instantiation contract for usage.
         required: true
@@ -6030,7 +5708,8 @@ paths:
                   index: -1
                   contentFileName: TestCommunity-1.0.bos
               schema:
-                $ref: '#/components/schemas/AnyValue'
+                additionalProperties: true
+                type: object
           description: successful operation
         "400":
           content:
@@ -6316,7 +5995,8 @@ paths:
                   index: -1
                   contentFileName: TestCommunity-1.0.bos
               schema:
-                $ref: '#/components/schemas/AnyValue'
+                additionalProperties: true
+                type: object
           description: successful operation
         "400":
           content:
@@ -6507,22 +6187,10 @@ paths:
         Create the CaseComment
       operationId: createCaseComment
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_17'
         content:
           application/json:
-            example:
-              processInstanceId: "5777042023671752656"
-              content: The case has been started
             schema:
-              properties:
-                processInstanceId:
-                  description: the process instance(case) the comment is associated
-                    to
-                  type: string
-                content:
-                  description: the comment content
-                  type: string
-              type: object
+              $ref: '#/components/schemas/CaseCommentCreateRequest'
         description: The process instance (case) id and the comment content, in JSON
         required: true
       responses:
@@ -6822,18 +6490,10 @@ paths:
         A process resource is created using the content of a .bar file that has previously been uploaded, using the [processUpload servlet](#operation/uploadProcess), to get the process archive path.
       operationId: createProcess
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_18'
         content:
           application/json:
-            example:
-              fileupload: tmp_4431838172282406107.bar
             schema:
-              properties:
-                fileupload:
-                  description: the bar file to deploy (previously uploaded in tmp
-                    folder)
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ProcessCreateRequest'
         description: Partial Process description
         required: true
       responses:
@@ -7003,26 +6663,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_19'
         content:
           application/json:
-            example:
-              displayName: Leave booking process
             schema:
-              properties:
-                displaydescription:
-                  description: description of the Process
-                  type: string
-                displayName:
-                  description: display name of the Process
-                  type: string
-                activationState:
-                  description: activation state of the Process
-                  enum:
-                  - ENABLED
-                  - DISABLED
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ProcessUpdateRequest'
         description: Partial Process description
         required: true
       responses:
@@ -7209,10 +6853,8 @@ paths:
         "201":
           content:
             application/json:
-              example:
-                caseId: "12345678"
               schema:
-                $ref: '#/components/schemas/inline_response_201'
+                $ref: '#/components/schemas/ProcessInstantiationResponse'
           description: Return the created case ID
         "400":
           content:
@@ -7496,17 +7138,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_20'
         content:
           application/json:
-            example:
-              value: myNewValue
             schema:
-              properties:
-                value:
-                  description: value of the Process Parameter
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ProcessParameterUpdateRequest'
         description: You can update only a process parameter value using the API.
           If you specify values for other fields in the update request, they are ignored.
         required: true
@@ -8380,17 +8015,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_21'
         content:
           application/json:
-            example:
-              state: replay
             schema:
-              properties:
-                state:
-                  description: state of the FlowNode
-                  type: string
-              type: object
+              $ref: '#/components/schemas/FlowNodeUpdateRequest'
         description: Replay the flow node.
         required: true
       responses:
@@ -8769,29 +8397,20 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_22'
         content:
           application/json:
-            example:
-              executionDate: 1433980484194
             schema:
-              properties:
-                executionDate:
-                  description: executionDate of the TimerEventTrigger
-                  format: int64
-                  type: integer
-              type: object
+              $ref: '#/components/schemas/TimerEventTriggerUpdateRequest'
         description: a long value with attribute name "executionDate"
         required: true
       responses:
         "200":
           content:
             application/json:
-              example:
-                executionDate: 1433980484194
               schema:
-                $ref: '#/components/schemas/inline_response_200_1'
-          description: successful operation
+                $ref: '#/components/schemas/TimerEventTriggerUpdateResponse'
+          description: The actual long value corresponding to the next execution date
+            of the timer event trigger, as a long value
         "400":
           content:
             application/json:
@@ -8948,21 +8567,10 @@ paths:
         Create the CustomUserDefinition
       operationId: createCustomUserDefinition
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_23'
         content:
           application/json:
-            example:
-              name: skill
-              description: Team player
             schema:
-              properties:
-                name:
-                  description: definition name
-                  type: string
-                description:
-                  description: definition description
-                  type: string
-              type: object
+              $ref: '#/components/schemas/CustomUserDefinitionCreateRequest'
         description: Partial CustomUserDefinition description
         required: true
       responses:
@@ -9215,17 +8823,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_24'
         content:
           application/json:
-            example:
-              value: My new value
             schema:
-              properties:
-                value:
-                  description: new value to set
-                  type: string
-              type: object
+              $ref: '#/components/schemas/CustomUserValueUpdateRequest'
         description: Custom user defition Value
         required: true
       responses:
@@ -9464,21 +9065,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_25'
         content:
           application/json:
-            example:
-              pageId: "123"
-              url: http://somewhe.re/over/the/rainbow
             schema:
-              properties:
-                pageId:
-                  description: pageId of the FormMapping
-                  type: string
-                url:
-                  description: url of the FormMapping
-                  type: string
-              type: object
+              $ref: '#/components/schemas/FormMappingUpdateRequest'
         description: 'Representation of the form mapping attribute to update - {''pageId'':
           (long)} or {''url'': (string)} or {} to set the mapping type to NONE'
         required: true
@@ -10037,38 +9627,10 @@ paths:
         Create the Group
       operationId: createGroup
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_26'
         content:
           application/json:
-            example:
-              icon: ""
-              name: HR
-              displayName: Human Resources
-              description: Human resources department
             schema:
-              properties:
-                name:
-                  description: name
-                  type: string
-                displayName:
-                  description: display name
-                  type: string
-                parent_path:
-                  description: the path of the parent group of this group (empty if
-                    the group has no parent)
-                  type: string
-                path:
-                  description: the full path of the group (including its parent path)
-                  type: string
-                description:
-                  description: description
-                  type: string
-                icon:
-                  description: icon path
-                  type: string
-              required:
-              - name
-              type: object
+              $ref: '#/components/schemas/GroupCreateRequest'
         description: Partial Group description
         required: true
       responses:
@@ -10231,46 +9793,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_27'
         content:
           application/json:
-            example:
-              name: HR
-              displayName: Humman resources
             schema:
-              properties:
-                name:
-                  description: name
-                  type: string
-                displayName:
-                  description: display name
-                  type: string
-                parent_path:
-                  description: the path of the parent group of this group (empty if
-                    the group has no parent)
-                  type: string
-                path:
-                  description: the full path of the group (including its parent path)
-                  type: string
-                description:
-                  description: description
-                  type: string
-                creation_date:
-                  description: 'creation date (format: `2014-12-31 15:17:24.736`)'
-                  type: string
-                created_by_user_id:
-                  description: id of the user who created the group (-1 if the group
-                    was created by the tenant admin or by an organisation import)
-                  type: string
-                last_update_date:
-                  description: 'last update date (format: `2014-12-31 15:17:24.736`)'
-                  type: string
-                icon:
-                  description: icon path
-                  type: string
-              required:
-              - name
-              type: object
+              $ref: '#/components/schemas/GroupUpdateRequest'
         description: Partial Group description
         required: true
       responses:
@@ -10418,29 +9944,10 @@ paths:
         Create the Membership
       operationId: createMembership
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_28'
         content:
           application/json:
-            example:
-              user_id: "4"
-              group_id: "5"
-              role_id: "1"
             schema:
-              properties:
-                role_id:
-                  description: id of the role of this membership
-                  type: string
-                group_id:
-                  description: id of the group of this membership
-                  type: string
-                user_id:
-                  description: id of the user in this membership
-                  type: string
-              required:
-              - group_id
-              - role_id
-              - user_id
-              type: object
+              $ref: '#/components/schemas/MembershipCreateRequest'
         description: Partial Membership description
         required: true
       responses:
@@ -10653,31 +10160,10 @@ paths:
         Create the Role
       operationId: createRole
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_29'
         content:
           application/json:
-            example:
-              icon: ""
-              name: manager
-              displayName: department manager
-              description: manager of the department
             schema:
-              properties:
-                name:
-                  description: name
-                  type: string
-                displayName:
-                  description: display name
-                  type: string
-                description:
-                  description: description
-                  type: string
-                icon:
-                  description: icon path
-                  type: string
-              required:
-              - name
-              type: object
+              $ref: '#/components/schemas/RoleCreateRequest'
         description: Partial Role description
         required: true
       responses:
@@ -10840,26 +10326,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_30'
         content:
           application/json:
             schema:
-              properties:
-                name:
-                  description: name
-                  type: string
-                displayName:
-                  description: display name
-                  type: string
-                description:
-                  description: description
-                  type: string
-                icon:
-                  description: icon path
-                  type: string
-              required:
-              - name
-              type: object
+              $ref: '#/components/schemas/RoleUpdateRequest'
         description: Partial Role description
         required: true
       responses:
@@ -11007,21 +10477,10 @@ paths:
         Create the User
       operationId: createUser
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_31'
         content:
           application/json:
-            example:
-              token: myapp
-              displayName: My app
             schema:
-              properties:
-                displayName:
-                  description: display name of the User
-                  type: string
-                token:
-                  description: token of the User used to build the User URL
-                  type: string
-              type: object
+              $ref: '#/components/schemas/UserCreateRequest'
         description: Partial User description
         required: true
       responses:
@@ -11187,40 +10646,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_32'
         content:
           application/json:
             schema:
-              properties:
-                enabled:
-                  description: if "true", user will be activated.
-                  type: string
-                userName:
-                  description: user name
-                  type: string
-                firstname:
-                  description: user last name
-                  type: string
-                lastname:
-                  description: user last name
-                  type: string
-                password:
-                  description: user password
-                  format: password
-                  type: string
-                icon:
-                  description: ' bonita icon path (ie. /default/icon_user.png)'
-                  type: string
-                title:
-                  description: user title
-                  type: string
-                job_title:
-                  description: user job title
-                  type: string
-                manager_id:
-                  description: user manager id
-                  type: string
-              type: object
+              $ref: '#/components/schemas/UserUpdateRequest'
         description: Partial User description
         required: true
       responses:
@@ -11269,7 +10698,7 @@ paths:
         The username and password are in `bonita-platform-community-custom.properties` file.
       operationId: platformLogin
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_33'
+        $ref: '#/components/requestBodies/inline_object_2'
         content:
           application/x-www-form-urlencoded:
             example:
@@ -11429,20 +10858,10 @@ paths:
         Start or stop the current node, that is, start or stop all services of the current JVM.
       operationId: updatePlatformById
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_34'
         content:
           application/json:
-            example:
-              state: stop
             schema:
-              properties:
-                state:
-                  description: Platform state
-                  enum:
-                  - start
-                  - stop
-                  type: string
-              type: object
+              $ref: '#/components/schemas/PlatformUpdateRequest'
         description: Start or stop all services of the current JVM.
         required: true
       responses:
@@ -11594,29 +11013,10 @@ paths:
         Create the Tenant
       operationId: createTenant
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_35'
         content:
           application/json:
-            example:
-              name: MyTenant
-              description: My tenant
-              username: john
-              password: bpm
             schema:
-              properties:
-                name:
-                  description: the name of the tenant
-                  type: string
-                description:
-                  description: the description
-                  type: string
-                username:
-                  description: the username
-                  type: string
-                password:
-                  description: the password
-                  type: string
-              type: object
+              $ref: '#/components/schemas/TenantCreateRequest'
         description: Partial Tenant description
         required: true
       responses:
@@ -11785,29 +11185,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_36'
         content:
           application/json:
-            example:
-              name: MyTenant
-              description: My tenant
-              username: john
-              password: bpm
             schema:
-              properties:
-                name:
-                  description: the name of the tenant
-                  type: string
-                description:
-                  description: the description
-                  type: string
-                username:
-                  description: the username
-                  type: string
-                password:
-                  description: the password
-                  type: string
-              type: object
+              $ref: '#/components/schemas/TenantUpdateRequest'
         description: Partial Tenant description
         required: true
       responses:
@@ -11905,7 +11286,7 @@ paths:
         Upload a bar file
       operationId: uploadProcess
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_37'
+        $ref: '#/components/requestBodies/inline_object_3'
         content:
           multipart/form-data:
             schema:
@@ -11918,7 +11299,9 @@ paths:
         "200":
           content:
             text/plain:
-              example: tmp_11199343585454336281.bar
+              schema:
+                example: tmp_11199343585454336281.bar
+                type: string
           description: the temporary file name once uploaded on the server
         "400":
           content:
@@ -11955,7 +11338,7 @@ paths:
         Upload Page
       operationId: uploadPage
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_38'
+        $ref: '#/components/requestBodies/inline_object_4'
         content:
           multipart/form-data:
             schema:
@@ -11968,10 +11351,8 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                pageZip: tmp_113096560980259488.zip:bonita-angular-dashboard.zip
               schema:
-                $ref: '#/components/schemas/inline_response_200_2'
+                $ref: '#/components/schemas/PageUploadResponse'
           description: sucessful operation
         "400":
           content:
@@ -12106,17 +11487,10 @@ paths:
         Upload the page content using the `portal/pageUpload` . This returns a temporary file name that can be used as input for this operation.
       operationId: createPage
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_39'
         content:
           application/json:
             schema:
-              example:
-                pageZip: tmp_4338264789005487499.zip:new-bonita-angular-dashboard.zip
-              properties:
-                pageZip:
-                  description: Zip name as named in the temp folder after upload
-                  type: string
-              type: object
+              $ref: '#/components/schemas/PageCreateRequest'
         description: Zip name as named in the temp folder after upload
         required: true
       responses:
@@ -12279,17 +11653,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_40'
         content:
           application/json:
-            example:
-              pageZip: tmp_4338264789005487499.zip:new-bonita-angular-dashboard.zip
             schema:
-              properties:
-                pageZip:
-                  description: pageZip as named in the temp folder after upload
-                  type: string
-              type: object
+              $ref: '#/components/schemas/PageUpdateRequest'
         description: Partial Page description
         required: true
       responses:
@@ -12427,21 +11794,10 @@ paths:
         Create the Profile
       operationId: createProfile
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_41'
         content:
           application/json:
-            example:
-              name: MyCustomProfile
-              description: This is my custom profile
             schema:
-              properties:
-                description:
-                  description: a description of the profile
-                  type: string
-                name:
-                  description: profile name
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ProfileCreateRequest'
         description: Partial Profile description
         required: true
       responses:
@@ -12604,21 +11960,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_42'
         content:
           application/json:
-            example:
-              displayName: My app
-              description: My application description
             schema:
-              properties:
-                description:
-                  description: description of the Profile
-                  type: string
-                displayName:
-                  description: display name of the Profile
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ProfileUpdateRequest'
         description: Partial Profile description
         required: true
       responses:
@@ -12756,41 +12101,10 @@ paths:
         Create the ProfileEntry
       operationId: createProfileEntry
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_43'
         content:
           application/json:
-            example:
-              page: tasklistingadmin
-              parent_id: "0"
-              name: Test menu
-              profile_id: "102"
-              type: link
-              isCustom: false
             schema:
-              properties:
-                profile_id:
-                  description: id of the profile that contains this profileEntry
-                  type: string
-                page:
-                  description: pageToken (menu name or menu item name) used in a portal
-                    menu to identify the page associated with the profileEntry
-                  type: string
-                description:
-                  description: description
-                  type: string
-                name:
-                  description: name of the profileEntry
-                  type: string
-                type:
-                  description: link (if menu item) | folder (if menu)
-                  type: string
-                isCustom:
-                  description: ' true | false '
-                  type: boolean
-                parent_id:
-                  description: id or parent profileEntry if in a folder
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ProfileEntryCreateRequest'
         description: Partial ProfileEntry description
         required: true
       responses:
@@ -12953,41 +12267,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_44'
         content:
           application/json:
             schema:
-              example:
-                page: tasklistingadmin
-                parent_id: "0"
-                name: Test menu
-                profile_id: "102"
-                type: link
-                isCustom: false
-              properties:
-                profile_id:
-                  description: id of the profile that contains this profileEntry
-                  type: string
-                page:
-                  description: pageToken (menu name or menu item name) used in a portal
-                    menu to identify the page associated with the profileEntry
-                  type: string
-                description:
-                  description: description
-                  type: string
-                name:
-                  description: name of the profileEntry
-                  type: string
-                type:
-                  description: link (if menu item) | folder (if menu)
-                  type: string
-                isCustom:
-                  description: ' true | false '
-                  type: boolean
-                parent_id:
-                  description: id or parent profileEntry if in a folder
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ProfileEntryUpdateRequest'
         description: Partial ProfileEntry description
         required: true
       responses:
@@ -13118,35 +12401,10 @@ paths:
         Create the ProfileMember
       operationId: createProfileMember
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_45'
         content:
           application/json:
-            example:
-              profile_id: "2"
-              member_type: USER
-              user_id: "101"
             schema:
-              properties:
-                profile_id:
-                  description: id of the profile for this mapping
-                  type: string
-                role_id:
-                  description: id of role, or -1 if the member type is not role
-                  type: string
-                group_id:
-                  description: id of group, or -1 if the member type is not group
-                  type: string
-                user_id:
-                  description: id of user, or -1 if the member type is not user
-                  type: string
-                member_type:
-                  description: member type
-                  enum:
-                  - USER
-                  - ROLE
-                  - GROUP
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ProfileMemberCreateRequest'
         description: Partial ProfileMember description
         required: true
       responses:
@@ -13301,24 +12559,10 @@ paths:
         Create the Theme
       operationId: createTheme
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_46'
         content:
           application/json:
-            example:
-              type: portal
-              zipFilePathportal: tmp_1939634566964075173.zip
             schema:
-              properties:
-                type:
-                  description: theme type
-                  enum:
-                  - portal
-                  - mobile
-                  type: string
-                zipFilePathportal:
-                  description: tmp zip file Path as uploaded to portal
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ThemeCreateRequest'
         description: Partial Theme description
         required: true
       responses:
@@ -13357,23 +12601,13 @@ paths:
   /API/portal/theme/unusedId:
     put:
       description: |
-        Restore a default theme
-      operationId: updateTheme
+        Restore the default theme
+      operationId: restoreTheme
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_47'
         content:
           application/json:
-            example:
-              type: portal
             schema:
-              properties:
-                type:
-                  description: theme type
-                  enum:
-                  - portal
-                  - mobile
-                  type: string
-              type: object
+              $ref: '#/components/schemas/ThemeRestoreRequest'
         description: Partial Theme description
         required: true
       responses:
@@ -13411,7 +12645,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unexpected error.
-      summary: Update the Theme by ID
+      summary: Restore default Theme
       tags:
       - Theme
       x-contentType: application/json
@@ -13666,17 +12900,10 @@ paths:
         Pause or resume the current tenant.
       operationId: updateSystemTenant
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_48'
         content:
           application/json:
-            example:
-              paused: true
             schema:
-              properties:
-                paused:
-                  description: wether the system tenant should be paused or not
-                  type: boolean
-              type: object
+              $ref: '#/components/schemas/TenantPauseRequest'
         description: Partial SystemTenant description
         required: true
       responses:
@@ -13725,7 +12952,7 @@ paths:
         Upload BDM
       operationId: uploadBDM
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_49'
+        $ref: '#/components/requestBodies/inline_object_5'
         content:
           multipart/form-data:
             schema:
@@ -13738,10 +12965,8 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                fileUpload: tmp_uploaded_bdm.zip
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/BDMUploadResponse'
           description: sucessful operation
         "400":
           content:
@@ -13825,17 +13050,10 @@ paths:
         Install a BDM
       operationId: installBDM
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_50'
         content:
           application/json:
-            example:
-              fileUpload: tmp_uploaded_bdm.zip
             schema:
-              properties:
-                fileUpload:
-                  description: the temporary file name once uploaded on the server
-                  type: string
-              type: object
+              $ref: '#/components/schemas/BDMInstallRequest'
       responses:
         "200":
           description: OK
@@ -13874,7 +13092,7 @@ paths:
         Upload organization
       operationId: uploadOrganization
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_51'
+        $ref: '#/components/requestBodies/inline_object_6'
         content:
           multipart/form-data:
             schema:
@@ -13977,7 +13195,7 @@ paths:
         Upload profiles
       operationId: uploadprofiles
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_52'
+        $ref: '#/components/requestBodies/inline_object_7'
         content:
           multipart/form-data:
             schema:
@@ -14127,314 +13345,46 @@ components:
         type: string
       style: form
   requestBodies:
-    inline_object_50:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_50'
-    inline_object_52:
-      content:
-        multipart/form-data:
-          schema:
-            $ref: '#/components/schemas/inline_object_52'
-    inline_object_51:
-      content:
-        multipart/form-data:
-          schema:
-            $ref: '#/components/schemas/inline_object_51'
-    inline_object_10:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_10'
-      required: true
-    inline_object_12:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_12'
-      required: true
-    inline_object_11:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_11'
-      required: true
-    inline_object_14:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_14'
-      required: true
-    inline_object_13:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_13'
-      required: true
-    inline_object_16:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_16'
-      required: true
-    inline_object_15:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_15'
-      required: true
-    inline_object_41:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_41'
-      required: true
-    inline_object_40:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_40'
-      required: true
-    inline_object_43:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_43'
-      required: true
-    inline_object_42:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_42'
-      required: true
-    inline_object_45:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_45'
-      required: true
-    inline_object_44:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_44'
-      required: true
-    inline_object_47:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_47'
-      required: true
-    inline_object_46:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_46'
-      required: true
-    inline_object_49:
-      content:
-        multipart/form-data:
-          schema:
-            $ref: '#/components/schemas/inline_object_49'
-    inline_object_48:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_48'
-      required: true
-    inline_object_39:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_39'
-      required: true
-    inline_object_30:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_30'
-      required: true
-    inline_object_32:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_32'
-      required: true
-    inline_object_31:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_31'
-      required: true
-    inline_object_34:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_34'
-      required: true
-    inline_object_33:
-      content:
-        application/x-www-form-urlencoded:
-          schema:
-            $ref: '#/components/schemas/inline_object_33'
-    inline_object_36:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_36'
-      required: true
-    inline_object_35:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_35'
-      required: true
-    inline_object_38:
-      content:
-        multipart/form-data:
-          schema:
-            $ref: '#/components/schemas/inline_object_38'
-    inline_object_37:
-      content:
-        multipart/form-data:
-          schema:
-            $ref: '#/components/schemas/inline_object_37'
-    inline_object_29:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_29'
-      required: true
-    inline_object_28:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_28'
-      required: true
     inline_object_1:
       content:
         multipart/form-data:
           schema:
             $ref: '#/components/schemas/inline_object_1'
-    inline_object_9:
+    inline_object:
       content:
-        application/json:
+        multipart/form-data:
           schema:
-            $ref: '#/components/schemas/inline_object_9'
-      required: true
-    inline_object_21:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_21'
-      required: true
-    inline_object_8:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_8'
-      required: true
-    inline_object_20:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_20'
-      required: true
+            $ref: '#/components/schemas/inline_object'
     inline_object_7:
       content:
-        application/json:
+        multipart/form-data:
           schema:
             $ref: '#/components/schemas/inline_object_7'
-      required: true
-    inline_object_23:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_23'
-      required: true
     inline_object_6:
       content:
-        application/json:
+        multipart/form-data:
           schema:
             $ref: '#/components/schemas/inline_object_6'
-      required: true
-    inline_object_22:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_22'
-      required: true
     inline_object_5:
       content:
         multipart/form-data:
           schema:
             $ref: '#/components/schemas/inline_object_5'
-    inline_object_25:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_25'
-      required: true
     inline_object_4:
       content:
-        application/json:
+        multipart/form-data:
           schema:
             $ref: '#/components/schemas/inline_object_4'
-      required: true
-    inline_object_24:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_24'
-      required: true
     inline_object_3:
       content:
-        application/json:
+        multipart/form-data:
           schema:
             $ref: '#/components/schemas/inline_object_3'
-      required: true
-    inline_object_27:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_27'
-      required: true
     inline_object_2:
       content:
-        application/json:
+        application/x-www-form-urlencoded:
           schema:
             $ref: '#/components/schemas/inline_object_2'
-    inline_object_26:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_26'
-      required: true
-    inline_object_18:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_18'
-      required: true
-    inline_object_17:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_17'
-      required: true
-    inline_object_19:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_19'
-      required: true
-    inline_object:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object'
-      required: true
   responses:
     BadRequest:
       content:
@@ -14530,7 +13480,7 @@ components:
       properties:
         createdBy:
           description: Author user ID
-          format: string
+          type: string
         creationDate:
           description: creation date of the application
           type: string
@@ -14542,22 +13492,22 @@ components:
           type: string
         homePageId:
           description: id of the application page used as the home page
-          format: string
+          type: string
         id:
           description: id of the application
-          format: string
+          type: string
         lastUpdateDate:
           description: last update date of the application
           type: string
         profileId:
           description: profile authorized to access this application
-          format: string
+          type: string
         token:
           description: token of the application used to build the application URL
           type: string
         updatedBy:
           description: Last updating user ID
-          format: string
+          type: string
         version:
           description: version of the application
           type: string
@@ -14584,6 +13534,36 @@ components:
           type: string
         version:
           description: version of the application
+          type: string
+      type: object
+    ApplicationUpdateRequest:
+      example:
+        version: "1.0"
+        profileId: "2"
+        token: myapp
+        displayName: My app
+        description: My application description
+      properties:
+        description:
+          description: description of the application
+          type: string
+        displayName:
+          description: display name of the application
+          type: string
+        profileId:
+          description: profile authorized to access this application
+          type: string
+        token:
+          description: token of the application used to build the application URL
+          type: string
+        version:
+          description: version of the application
+          type: string
+        themeId:
+          description: |
+            ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+            theme id for the application
           type: string
       type: object
     ApplicationMenu:
@@ -14617,6 +13597,50 @@ components:
             bar or menu
           type: string
       type: object
+    ApplicationMenuCreateRequest:
+      example:
+        displayName: My updated label
+      properties:
+        displayName:
+          description: display name of the application menu
+          type: string
+        applicationPageId:
+          description: the application menu page ID
+          type: string
+        menuIndex:
+          description: the application menu index
+          type: string
+        parentMenuId:
+          description: the application parent menu ID
+          type: string
+      type: object
+    ApplicationMenuUpdateRequest:
+      example:
+        displayName: menuLabel
+        applicationId: "1"
+        applicationPageId: "5"
+        menuIndex: "1"
+        parentMenuId: -1
+      properties:
+        parentMenuId:
+          description: id of the parent menu of this menu item, or -1 for a top-level
+            item
+          type: string
+        applicationPageId:
+          description: id of the application page targeted by this menu item, or -1
+            if there is no targeted page (that is, the item is a parent menu)
+          type: string
+        applicationId:
+          description: id of the application related to this menu item
+          type: string
+        menuIndex:
+          description: index of the menu item
+          type: string
+        displayName:
+          description: label to display for this menu in the application navigation
+            bar or menu
+          type: string
+      type: object
     ApplicationPage:
       example:
         id: "9876"
@@ -14627,6 +13651,22 @@ components:
         id:
           description: id of the application page item
           type: string
+        token:
+          description: 'token use to access the page using a URL : ../appName/pageToken/'
+          type: string
+        applicationId:
+          description: id of the application related to this page
+          type: string
+        pageId:
+          description: id of the custom page to display
+          type: string
+      type: object
+    ApplicationPageCreateRequest:
+      example:
+        token: myPage
+        applicationId: "1234"
+        pageId: "5678"
+      properties:
         token:
           description: 'token use to access the page using a URL : ../appName/pageToken/'
           type: string
@@ -14738,6 +13778,14 @@ components:
           description: Last date when the access control were installed or updated.
           type: string
       type: object
+    BDMAccessControlUploadResponse:
+      example:
+        fileUpload: tmp_accessControlFileToUpload.xml
+      properties:
+        fileUpload:
+          description: the temporary file name once uploaded on the server
+          type: string
+      type: object
     ActivityTypeEnum:
       description: the activity type (string)
       enum:
@@ -14753,16 +13801,6 @@ components:
       description: the current state of the activity
       enum:
       - failed
-      - initializing
-      - ready
-      - executing
-      - completing
-      - completed
-      - waiting
-      - skipped
-      - cancelled
-      - aborted
-      - cancelling subtasksfailed
       - initializing
       - ready
       - executing
@@ -14876,6 +13914,28 @@ components:
         assigned_date:
           description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current activity
             was assigned, for example '2014-10-17 16:05:42.626'
+          type: string
+      type: object
+    ActivityUpdateRequest:
+      example:
+        variables: '[{"name":"foo","value":"bar"}]'
+        state: completed
+      properties:
+        variables:
+          description: |
+            Activity variables to update.
+
+            **Note**: if there is no data with the specified name in the activity,
+            the update will be applied to the process data if a variable with the specified name exists.
+
+            **Note**: if the task definition includes a connector that is executed on finish and updates the value of a variable, the value set by the REST API call is overwritten.
+          type: string
+        state:
+          description: |
+            The target state of the activity
+            - Execute a task: `completed`
+            - Skip activity: `skipped` - Make this call after all failed connectors have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+            - Replay activity: `replay`
           type: string
       type: object
     ArchivedActivity:
@@ -15112,6 +14172,18 @@ components:
           dueDate: 2014-09-05T12:11:30.775Z
           last_update_date: 2014-09-05T11:11:30.808Z
         type: object
+    HumanTaskUpdateRequest:
+      example:
+        assignedId: new_user_id
+        state: new_state
+      properties:
+        assignedId:
+          description: assignedId of the HumanTask
+          type: string
+        state:
+          description: state of the HumanTask
+          type: string
+      type: object
     ManualTask:
       allOf:
       - $ref: '#/components/schemas/AbstractTask'
@@ -15141,6 +14213,50 @@ components:
           dueDate: 2014-12-25T00:00:00.000Z
           last_update_date: 2014-12-01T17:39:53.784Z
         type: object
+    ManualTaskCreateRequest:
+      example:
+        parentTaskId: "40001"
+        state: ready
+        name: My subtask
+        description: This is my subtask
+        priority: above_normal
+        dueDate: 2014-12-25 00:00:00.000
+        assigned_id: "1"
+      properties:
+        parentTaskId:
+          description: The parent task ID
+          type: string
+        state:
+          description: The task state
+          type: string
+        name:
+          description: The task name
+          type: string
+        description:
+          description: The task description
+          type: string
+        priority:
+          description: The task priority
+          type: string
+        dueDate:
+          description: The task due date
+          type: string
+        assigned_id:
+          description: The id of the user assigned to the task
+          type: string
+      type: object
+    ManualTaskUpdateRequest:
+      example:
+        state: completed
+        executedBy: "1"
+      properties:
+        state:
+          description: State of the ManualTask (completed)
+          type: string
+        executedBy:
+          description: Id of the task executor
+          type: string
+      type: object
     Task:
       allOf:
       - $ref: '#/components/schemas/AbstractTask'
@@ -15193,6 +14309,18 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-05 11:11:30.808
         type: object
+    UserTaskUpdateRequest:
+      example:
+        assignedId: "1"
+        state: skipped
+      properties:
+        state:
+          description: The UserTask state
+          type: string
+        assignedId:
+          description: The id of the user assign to  the UserTask
+          type: string
+      type: object
     ContractInput:
       example:
         inputs:
@@ -15261,9 +14389,6 @@ components:
           items:
             $ref: '#/components/schemas/ContractInput'
           type: array
-      type: object
-    AnyValue:
-      additionalProperties: true
       type: object
     AbstractArchivedTask:
       allOf:
@@ -15471,6 +14596,18 @@ components:
           description: the Java type of the variable
           type: string
       type: object
+    CaseVariableUpdateRequest:
+      example:
+        type: java.lang.String
+        value: My new value
+      properties:
+        type:
+          description: the java class name
+          type: string
+        value:
+          description: the new value
+          type: string
+      type: object
     CaseDocument:
       description: A document in an active case
       example:
@@ -15535,6 +14672,57 @@ components:
           description: version
           type: string
       type: object
+    CaseDocumentCreateRequest:
+      example:
+        caseId: "1"
+        file: doc.jpg
+        name: Doc 1
+        fileName: document_1.jpg
+        description: draft
+      properties:
+        caseId:
+          description: The case id
+          type: string
+        file:
+          description: The local file name to upload from (as from the temp upload
+            folder)
+          type: string
+        url:
+          description: The remote url to upload from
+          type: string
+        name:
+          description: The file display name
+          type: string
+        fileName:
+          description: The target file name
+          type: string
+        description:
+          description: The document description
+          type: string
+      type: object
+    CaseDocumentUpdateRequest:
+      example:
+        file: Expense policy rev2.pdf
+        description: updated version of document
+        fileName: revision2.pdf
+      properties:
+        file:
+          description: The local file name to upload from (as from the temp upload
+            folder)
+          type: string
+        url:
+          description: The remote url to upload from
+          type: string
+        name:
+          description: The file display name
+          type: string
+        fileName:
+          description: The target file name
+          type: string
+        description:
+          description: The document description
+          type: string
+      type: object
     ArchivedCaseDocument:
       allOf:
       - $ref: '#/components/schemas/CaseDocument'
@@ -15564,6 +14752,18 @@ components:
           type: string
         displayName:
           description: the display name of the actor
+          type: string
+      type: object
+    ActorUpdateRequest:
+      example:
+        displayName: My actor
+        description: My actor description
+      properties:
+        displayName:
+          description: display name of the Actor
+          type: string
+        description:
+          description: description of the Actor
           type: string
       type: object
     ActorMember:
@@ -15700,6 +14900,31 @@ components:
             only)
           type: string
       type: object
+    CaseCreateRequest:
+      example:
+        processDefinitionId: "5777042023671752656"
+        variables:
+        - name: stringVariable
+          value: aValue
+        - name: dateVariable
+          value: 349246800000
+        - name: numericVariable
+          value: 55
+      properties:
+        processDefinitionId:
+          description: the process definition Id
+          type: string
+        variables:
+          description: process variables initial values
+          items:
+            additionalProperties: true
+            properties:
+              name:
+                description: variable name
+                type: string
+            type: object
+          type: array
+      type: object
     ArchivedCase:
       allOf:
       - $ref: '#/components/schemas/Case'
@@ -15755,6 +14980,18 @@ components:
           type: string
         userId:
           description: the user that created the comment
+          type: string
+      type: object
+    CaseCommentCreateRequest:
+      example:
+        processInstanceId: "5777042023671752656"
+        content: The case has been started
+      properties:
+        processInstanceId:
+          description: the process instance(case) the comment is associated to
+          type: string
+        content:
+          description: the comment content
           type: string
       type: object
     ArchivedCaseComment:
@@ -15815,6 +15052,31 @@ components:
           type: string
         version:
           description: the version of the process
+          type: string
+      type: object
+    ProcessCreateRequest:
+      example:
+        fileupload: tmp_4431838172282406107.bar
+      properties:
+        fileupload:
+          description: the bar file to deploy (previously uploaded in tmp folder)
+          type: string
+      type: object
+    ProcessUpdateRequest:
+      example:
+        displayName: Leave booking process
+      properties:
+        displaydescription:
+          description: description of the Process
+          type: string
+        displayName:
+          description: display name of the Process
+          type: string
+        activationState:
+          description: activation state of the Process
+          enum:
+          - ENABLED
+          - DISABLED
           type: string
       type: object
     FlowElementContainerDefinition:
@@ -16177,6 +15439,13 @@ components:
             $ref: '#/components/schemas/DesignProcessDefinition_context'
           type: array
       type: object
+    ProcessInstantiationResponse:
+      example:
+        caseId: "12345678"
+      properties:
+        caseId:
+          type: string
+      type: object
     ProcessParameter:
       example:
         process_id: 4880205209556179000
@@ -16207,6 +15476,14 @@ components:
           type: string
         type:
           description: the type of the parameter
+          type: string
+      type: object
+    ProcessParameterUpdateRequest:
+      example:
+        value: myNewValue
+      properties:
+        value:
+          description: value of the Process Parameter
           type: string
       type: object
     ProcessResolutionProblem:
@@ -16443,6 +15720,14 @@ components:
           description: 'in the case of a subtask, the parent task id '
           type: string
       type: object
+    FlowNodeUpdateRequest:
+      example:
+        state: replay
+      properties:
+        state:
+          description: state of the FlowNode
+          type: string
+      type: object
     ArchivedFlowNode:
       allOf:
       - $ref: '#/components/schemas/FlowNode'
@@ -16476,6 +15761,24 @@ components:
         eventInstanceName:
           description: the name of the event instance to which this trigger is related
           type: string
+      type: object
+    TimerEventTriggerUpdateRequest:
+      example:
+        executionDate: 1433980484194
+      properties:
+        executionDate:
+          description: executionDate of the TimerEventTrigger
+          format: int64
+          type: integer
+      type: object
+    TimerEventTriggerUpdateResponse:
+      example:
+        executionDate: 1433980484194
+      properties:
+        executionDate:
+          description: executionDate of the TimerEventTrigger
+          format: int64
+          type: integer
       type: object
     Message:
       description: Use this resource to send BPM message events. Message events are
@@ -16532,6 +15835,18 @@ components:
           description: definition name
           type: string
       type: object
+    CustomUserDefinitionCreateRequest:
+      example:
+        name: skill
+        description: Team player
+      properties:
+        name:
+          description: definition name
+          type: string
+        description:
+          description: definition description
+          type: string
+      type: object
     CustomUserValue:
       example:
         userId: userId
@@ -16546,6 +15861,14 @@ components:
           type: string
         definitionId:
           description: definition id
+          type: string
+      type: object
+    CustomUserValueUpdateRequest:
+      example:
+        value: My new value
+      properties:
+        value:
+          description: new value to set
           type: string
       type: object
     CustomUser:
@@ -16624,6 +15947,18 @@ components:
           type: string
         url:
           description: the external URL (string) when type is URL - null otherwise
+          type: string
+      type: object
+    FormMappingUpdateRequest:
+      example:
+        pageId: "123"
+        url: http://somewhe.re/over/the/rainbow
+      properties:
+        pageId:
+          description: pageId of the FormMapping
+          type: string
+        url:
+          description: url of the FormMapping
           type: string
       type: object
     ProfessionalContactData:
@@ -16734,6 +16069,72 @@ components:
       required:
       - name
       type: object
+    GroupCreateRequest:
+      example:
+        icon: ""
+        name: HR
+        displayName: Human Resources
+        description: Human resources department
+      properties:
+        name:
+          description: name
+          type: string
+        displayName:
+          description: display name
+          type: string
+        parent_path:
+          description: the path of the parent group of this group (empty if the group
+            has no parent)
+          type: string
+        path:
+          description: the full path of the group (including its parent path)
+          type: string
+        description:
+          description: description
+          type: string
+        icon:
+          description: icon path
+          type: string
+      required:
+      - name
+      type: object
+    GroupUpdateRequest:
+      example:
+        name: HR
+        displayName: Humman resources
+      properties:
+        name:
+          description: name
+          type: string
+        displayName:
+          description: display name
+          type: string
+        parent_path:
+          description: the path of the parent group of this group (empty if the group
+            has no parent)
+          type: string
+        path:
+          description: the full path of the group (including its parent path)
+          type: string
+        description:
+          description: description
+          type: string
+        creation_date:
+          description: 'creation date (format: `2014-12-31 15:17:24.736`)'
+          type: string
+        created_by_user_id:
+          description: id of the user who created the group (-1 if the group was created
+            by the tenant admin or by an organisation import)
+          type: string
+        last_update_date:
+          description: 'last update date (format: `2014-12-31 15:17:24.736`)'
+          type: string
+        icon:
+          description: icon path
+          type: string
+      required:
+      - name
+      type: object
     Membership:
       example:
         assigned_date: 2014-12-02 17:57:09.315
@@ -16759,6 +16160,26 @@ components:
         user_id:
           description: id of the user in this membership
           type: string
+      type: object
+    MembershipCreateRequest:
+      example:
+        user_id: "4"
+        group_id: "5"
+        role_id: "1"
+      properties:
+        role_id:
+          description: id of the role of this membership
+          type: string
+        group_id:
+          description: id of the group of this membership
+          type: string
+        user_id:
+          description: id of the user in this membership
+          type: string
+      required:
+      - group_id
+      - role_id
+      - user_id
       type: object
     Role:
       description: The role of a user in a group
@@ -16797,6 +16218,50 @@ components:
           description: 'last update date (format: `2014-12-31 15:17:24.736`)'
           type: string
       type: object
+    RoleCreateRequest:
+      example:
+        icon: ""
+        name: manager
+        displayName: department manager
+        description: manager of the department
+      properties:
+        name:
+          description: name
+          type: string
+        displayName:
+          description: display name
+          type: string
+        description:
+          description: description
+          type: string
+        icon:
+          description: icon path
+          type: string
+      required:
+      - name
+      type: object
+    RoleUpdateRequest:
+      example:
+        displayName: displayName
+        name: name
+        icon: icon
+        description: description
+      properties:
+        name:
+          description: name
+          type: string
+        displayName:
+          description: display name
+          type: string
+        description:
+          description: description
+          type: string
+        icon:
+          description: icon path
+          type: string
+      required:
+      - name
+      type: object
     User:
       example:
         firstname: firstname
@@ -16804,19 +16269,19 @@ components:
         creation_date: 0
         userName: userName
         title: title
-        created_by_user_id: ""
+        created_by_user_id: created_by_user_id
         enabled: enabled
         lastname: lastname
         last_connection: last_connection
         password: password
-        manager_id: ""
-        id: ""
+        manager_id: manager_id
+        id: id
         job_title: job_title
         last_update_date: last_update_date
       properties:
         id:
           description: user id
-          format: string
+          type: string
         enabled:
           description: if "true", user will be activated.
           type: string
@@ -16844,19 +16309,102 @@ components:
           type: string
         manager_id:
           description: user manager id
-          format: string
+          type: string
         last_connection:
           description: last connection date
           type: string
         created_by_user_id:
           description: created by
-          format: string
+          type: string
         creation_date:
           description: creation date
           format: int64
           type: integer
         last_update_date:
           description: user last update date
+          type: string
+      type: object
+    UserCreateRequest:
+      example:
+        userName: New.User
+        password: bpm
+        password_confirm: bpm
+        icon: ""
+        firstname: New
+        lastname: User
+        title: Mr
+        job_title: Human resources benefits
+        manager_id: "3"
+      properties:
+        userName:
+          description: user name
+          type: string
+        firstname:
+          description: user last name
+          type: string
+        lastname:
+          description: user last name
+          type: string
+        password:
+          description: user password
+          format: password
+          type: string
+        password_confirm:
+          description: user password confirmation
+          format: password
+          type: string
+        icon:
+          description: ' bonita icon path (ie. /default/icon_user.png)'
+          type: string
+        title:
+          description: user title
+          type: string
+        job_title:
+          description: user job title
+          type: string
+        manager_id:
+          description: user manager id
+          type: string
+      type: object
+    UserUpdateRequest:
+      example:
+        firstname: firstname
+        password: password
+        manager_id: manager_id
+        icon: icon
+        userName: userName
+        title: title
+        job_title: job_title
+        enabled: enabled
+        lastname: lastname
+      properties:
+        enabled:
+          description: if "true", user will be activated.
+          type: string
+        userName:
+          description: user name
+          type: string
+        firstname:
+          description: user last name
+          type: string
+        lastname:
+          description: user last name
+          type: string
+        password:
+          description: user password
+          format: password
+          type: string
+        icon:
+          description: ' bonita icon path (ie. /default/icon_user.png)'
+          type: string
+        title:
+          description: user title
+          type: string
+        job_title:
+          description: user job title
+          type: string
+        manager_id:
+          description: user manager id
           type: string
       type: object
     Platform:
@@ -16890,6 +16438,17 @@ components:
           type: string
         created:
           description: the creation date
+          type: string
+      type: object
+    PlatformUpdateRequest:
+      example:
+        state: stop
+      properties:
+        state:
+          description: Platform state
+          enum:
+          - start
+          - stop
           type: string
       type: object
     Tenant:
@@ -16929,6 +16488,46 @@ components:
           enum:
           - ACTIVATED
           - DEACTIVATED
+          type: string
+      type: object
+    TenantCreateRequest:
+      example:
+        name: MyTenant
+        description: My tenant
+        username: john
+        password: bpm
+      properties:
+        name:
+          description: the name of the tenant
+          type: string
+        description:
+          description: the description
+          type: string
+        username:
+          description: the username
+          type: string
+        password:
+          description: the password
+          type: string
+      type: object
+    TenantUpdateRequest:
+      example:
+        name: MyTenant
+        description: My tenant
+        username: john
+        password: bpm
+      properties:
+        name:
+          description: the name of the tenant
+          type: string
+        description:
+          description: the description
+          type: string
+        username:
+          description: the username
+          type: string
+        password:
+          description: the password
           type: string
       type: object
     License:
@@ -16989,6 +16588,14 @@ components:
           format: int64
           type: integer
       type: object
+    PageUploadResponse:
+      example:
+        pageZip: tmp_113096560980259488.zip:bonita-angular-dashboard.zip
+      properties:
+        pageZip:
+          description: the temporary file name once uploaded on the server
+          type: string
+      type: object
     Page:
       example:
         updatedBy: updatedBy
@@ -16998,13 +16605,13 @@ components:
         displayName: displayName
         lastUpdateDate: lastUpdateDate
         description: description
-        id: ""
+        id: id
         creationDate: creationDate
         contentName: contentName
       properties:
         id:
           description: page id
-          format: string
+          type: string
         creationDate:
           description: date and time
           type: string
@@ -17031,6 +16638,22 @@ components:
           type: string
         urlToken:
           description: custom page urlToken
+          type: string
+      type: object
+    PageCreateRequest:
+      example:
+        pageZip: tmp_4338264789005487499.zip:new-bonita-angular-dashboard.zip
+      properties:
+        pageZip:
+          description: Zip name as named in the temp folder after upload
+          type: string
+      type: object
+    PageUpdateRequest:
+      example:
+        pageZip: tmp_4338264789005487499.zip:new-bonita-angular-dashboard.zip
+      properties:
+        pageZip:
+          description: pageZip as named in the temp folder after upload
           type: string
       type: object
     Profile:
@@ -17072,6 +16695,30 @@ components:
           type: string
         updatedBy:
           description: the id of the user who last updated the profile
+          type: string
+      type: object
+    ProfileCreateRequest:
+      example:
+        name: MyCustomProfile
+        description: This is my custom profile
+      properties:
+        description:
+          description: a description of the profile
+          type: string
+        name:
+          description: profile name
+          type: string
+      type: object
+    ProfileUpdateRequest:
+      example:
+        displayName: My app
+        description: My application description
+      properties:
+        description:
+          description: description of the Profile
+          type: string
+        displayName:
+          description: display name of the Profile
           type: string
       type: object
     ProfileEntry:
@@ -17120,6 +16767,70 @@ components:
           description: id or parent profileEntry if in a folder
           type: string
       type: object
+    ProfileEntryCreateRequest:
+      example:
+        page: tasklistingadmin
+        parent_id: "0"
+        name: Test menu
+        profile_id: "102"
+        type: link
+        isCustom: false
+      properties:
+        profile_id:
+          description: id of the profile that contains this profileEntry
+          type: string
+        page:
+          description: pageToken (menu name or menu item name) used in a portal menu
+            to identify the page associated with the profileEntry
+          type: string
+        description:
+          description: description
+          type: string
+        name:
+          description: name of the profileEntry
+          type: string
+        type:
+          description: link (if menu item) | folder (if menu)
+          type: string
+        isCustom:
+          description: ' true | false '
+          type: boolean
+        parent_id:
+          description: id or parent profileEntry if in a folder
+          type: string
+      type: object
+    ProfileEntryUpdateRequest:
+      example:
+        page: tasklistingadmin
+        parent_id: "0"
+        name: Test menu
+        profile_id: "102"
+        type: link
+        isCustom: false
+      properties:
+        profile_id:
+          description: id of the profile that contains this profileEntry
+          type: string
+        page:
+          description: pageToken (menu name or menu item name) used in a portal menu
+            to identify the page associated with the profileEntry
+          type: string
+        description:
+          description: description
+          type: string
+        name:
+          description: name of the profileEntry
+          type: string
+        type:
+          description: link (if menu item) | folder (if menu)
+          type: string
+        isCustom:
+          description: ' true | false '
+          type: boolean
+        parent_id:
+          description: id or parent profileEntry if in a folder
+          type: string
+      type: object
     ProfileMember:
       description: Profile member
       example:
@@ -17143,6 +16854,58 @@ components:
           type: string
         user_id:
           description: id of user, or -1 if the member type is not user
+          type: string
+      type: object
+    ProfileMemberCreateRequest:
+      example:
+        profile_id: "2"
+        member_type: USER
+        user_id: "101"
+      properties:
+        profile_id:
+          description: id of the profile for this mapping
+          type: string
+        role_id:
+          description: id of role, or -1 if the member type is not role
+          type: string
+        group_id:
+          description: id of group, or -1 if the member type is not group
+          type: string
+        user_id:
+          description: id of user, or -1 if the member type is not user
+          type: string
+        member_type:
+          description: member type
+          enum:
+          - USER
+          - ROLE
+          - GROUP
+          type: string
+      type: object
+    ThemeCreateRequest:
+      example:
+        type: portal
+        zipFilePathportal: tmp_1939634566964075173.zip
+      properties:
+        type:
+          description: theme type
+          enum:
+          - portal
+          - mobile
+          type: string
+        zipFilePathportal:
+          description: tmp zip file Path as uploaded to portal
+          type: string
+      type: object
+    ThemeRestoreRequest:
+      example:
+        type: portal
+      properties:
+        type:
+          description: theme type
+          enum:
+          - portal
+          - mobile
           type: string
       type: object
     I18nlocale:
@@ -17212,6 +16975,22 @@ components:
           description: wether the system tenant is paused or not
           type: boolean
       type: object
+    TenantPauseRequest:
+      example:
+        paused: true
+      properties:
+        paused:
+          description: wether the system tenant should be paused or not
+          type: boolean
+      type: object
+    BDMUploadResponse:
+      example:
+        fileUpload: tmp_uploaded_bdm.zip
+      properties:
+        fileUpload:
+          description: the temporary file name once uploaded on the server
+          type: string
+      type: object
     Bdm:
       example:
         id: "309"
@@ -17238,34 +17017,23 @@ components:
         lastUpdatedBy:
           description: This value is always -1 because only the tenant_technical_user
             can install BDM.
-          format: string
           type: integer
         lastUpdateDate:
           description: Last date when the BDM was installed or updated.
           type: string
       type: object
+    BDMInstallRequest:
+      example:
+        fileUpload: tmp_uploaded_bdm.zip
+      properties:
+        fileUpload:
+          description: the temporary file name once uploaded on the server
+          type: string
+      type: object
     inline_object:
       properties:
-        description:
-          description: description of the application
-          type: string
-        displayName:
-          description: display name of the application
-          type: string
-        profileId:
-          description: profile authorized to access this application
-          type: string
-        token:
-          description: token of the application used to build the application URL
-          type: string
-        version:
-          description: version of the application
-          type: string
-        themeId:
-          description: |
-            ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-            theme id for the application
+        file:
+          format: binary
           type: string
       type: object
     inline_object_1:
@@ -17275,460 +17043,6 @@ components:
           type: string
       type: object
     inline_object_2:
-      properties:
-        parentMenuId:
-          description: id of the parent menu of this menu item, or -1 for a top-level
-            item
-          type: string
-        applicationPageId:
-          description: id of the application page targeted by this menu item, or -1
-            if there is no targeted page (that is, the item is a parent menu)
-          type: string
-        applicationId:
-          description: id of the application related to this menu item
-          type: string
-        menuIndex:
-          description: index of the menu item
-          type: string
-        displayName:
-          description: label to display for this menu in the application navigation
-            bar or menu
-          type: string
-      type: object
-    inline_object_3:
-      properties:
-        displayName:
-          description: display name of the application menu
-          type: string
-        applicationPageId:
-          description: the application menu page ID
-          type: string
-        menuIndex:
-          description: the application menu index
-          type: string
-        parentMenuId:
-          description: the application parent menu ID
-          type: string
-      type: object
-    inline_object_4:
-      properties:
-        token:
-          description: 'token use to access the page using a URL : ../appName/pageToken/'
-        applicationId:
-          description: id of the application related to this page
-          type: string
-        pageId:
-          description: id of the custom page to display
-          type: string
-      type: object
-    inline_object_5:
-      properties:
-        file:
-          format: binary
-          type: string
-      type: object
-    inline_response_200:
-      example:
-        fileUpload: fileUpload
-      properties:
-        fileUpload:
-          description: the temporary file name once uploaded on the server
-          type: string
-    inline_object_6:
-      properties:
-        variables:
-          description: |
-            Activity variables to update.
-
-            **Note**: if there is no data with the specified name in the activity,
-            the update will be applied to the process data if a variable with the specified name exists.
-
-            **Note**: if the task definition includes a connector that is executed on finish and updates the value of a variable, the value set by the REST API call is overwritten.
-          type: string
-        state:
-          description: |
-            The target state of the activity
-            - Execute a task: `completed`
-            - Skip activity: `skipped` - Make this call after all failed connectors have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-            - Replay activity: `replay`
-          type: string
-      type: object
-    inline_object_7:
-      properties:
-        assignedId:
-          description: assignedId of the HumanTask
-          type: string
-        state:
-          description: state of the HumanTask
-          type: string
-      type: object
-    inline_object_8:
-      properties:
-        parentTaskId:
-          description: The parent task ID
-          type: string
-        state:
-          description: The task state
-          type: string
-        name:
-          description: The task name
-          type: string
-        description:
-          description: The task description
-          type: string
-        priority:
-          description: The task priority
-          type: string
-        dueDate:
-          description: The task due date
-          type: string
-        assigned_id:
-          description: 'The id of the user assigned to the task '
-          type: string
-      type: object
-    inline_object_9:
-      properties:
-        state:
-          description: State of the ManualTask (completed)
-          type: string
-        executedBy:
-          description: Id of the task executor
-          type: string
-      type: object
-    inline_object_10:
-      properties:
-        displayName:
-          description: display name of the UserTask
-          type: string
-        token:
-          description: token of the UserTask used to build the UserTask URL
-          type: string
-      type: object
-    inline_object_11:
-      properties:
-        state:
-          description: The UserTask state
-          type: string
-        assignedId:
-          description: The id of the user assign to  the UserTask
-          type: string
-      type: object
-    inline_object_12:
-      properties:
-        type:
-          description: the java class name
-          type: string
-        value:
-          description: the new value
-          type: string
-      type: object
-    inline_object_13:
-      properties:
-        caseId:
-          description: The case id
-          type: string
-        file:
-          description: The local file name to upload from (as from the temp upload
-            folder)
-          type: string
-        url:
-          description: The remote url to upload from
-          type: string
-        name:
-          description: The file display name
-          type: string
-        fileName:
-          description: The target file name
-          type: string
-        description:
-          description: The document description
-          type: string
-      type: object
-    inline_object_14:
-      properties:
-        file:
-          description: The local file name to upload from (as from the temp upload
-            folder)
-          type: string
-        url:
-          description: The remote url to upload from
-          type: string
-        name:
-          description: The file display name
-          type: string
-        fileName:
-          description: The target file name
-          type: string
-        description:
-          description: The document description
-          type: string
-      type: object
-    inline_object_15:
-      properties:
-        displayName:
-          description: display name of the Actor
-          type: string
-        description:
-          description: description of the Actor
-          type: string
-      type: object
-    _API_bpm_case_variables:
-      properties:
-        name:
-          description: variable name
-          type: string
-        value:
-          additionalProperties: true
-          type: object
-    inline_object_16:
-      properties:
-        processDefinitionId:
-          description: the process definition Id
-          type: string
-        variables:
-          description: process variables initial values
-          items:
-            $ref: '#/components/schemas/_API_bpm_case_variables'
-          type: array
-      type: object
-    inline_object_17:
-      properties:
-        processInstanceId:
-          description: the process instance(case) the comment is associated to
-          type: string
-        content:
-          description: the comment content
-          type: string
-      type: object
-    inline_object_18:
-      properties:
-        fileupload:
-          description: the bar file to deploy (previously uploaded in tmp folder)
-          type: string
-      type: object
-    inline_object_19:
-      properties:
-        displaydescription:
-          description: description of the Process
-          type: string
-        displayName:
-          description: display name of the Process
-          type: string
-        activationState:
-          description: activation state of the Process
-          enum:
-          - ENABLED
-          - DISABLED
-          type: string
-      type: object
-    inline_response_201:
-      example:
-        caseId: caseId
-      properties:
-        caseId:
-          type: string
-    inline_object_20:
-      properties:
-        value:
-          description: value of the Process Parameter
-          type: string
-      type: object
-    inline_object_21:
-      properties:
-        state:
-          description: state of the FlowNode
-          type: string
-      type: object
-    inline_object_22:
-      properties:
-        executionDate:
-          description: executionDate of the TimerEventTrigger
-          format: int64
-          type: integer
-      type: object
-    inline_response_200_1:
-      description: The actual long value corresponding to the next execution date
-        of the timer event trigger, as a long value
-      example:
-        executionDate: 0
-      properties:
-        executionDate:
-          description: executionDate of the TimerEventTrigger
-          format: int64
-          type: integer
-    inline_object_23:
-      properties:
-        name:
-          description: definition name
-          type: string
-        description:
-          description: definition description
-          type: string
-      type: object
-    inline_object_24:
-      properties:
-        value:
-          description: new value to set
-          type: string
-      type: object
-    inline_object_25:
-      properties:
-        pageId:
-          description: pageId of the FormMapping
-          type: string
-        url:
-          description: url of the FormMapping
-          type: string
-      type: object
-    inline_object_26:
-      properties:
-        name:
-          description: name
-          type: string
-        displayName:
-          description: display name
-          type: string
-        parent_path:
-          description: the path of the parent group of this group (empty if the group
-            has no parent)
-          type: string
-        path:
-          description: the full path of the group (including its parent path)
-          type: string
-        description:
-          description: description
-          type: string
-        icon:
-          description: icon path
-          type: string
-      required:
-      - name
-      type: object
-    inline_object_27:
-      properties:
-        name:
-          description: name
-          type: string
-        displayName:
-          description: display name
-          type: string
-        parent_path:
-          description: the path of the parent group of this group (empty if the group
-            has no parent)
-          type: string
-        path:
-          description: the full path of the group (including its parent path)
-          type: string
-        description:
-          description: description
-          type: string
-        creation_date:
-          description: 'creation date (format: `2014-12-31 15:17:24.736`)'
-          type: string
-        created_by_user_id:
-          description: id of the user who created the group (-1 if the group was created
-            by the tenant admin or by an organisation import)
-          type: string
-        last_update_date:
-          description: 'last update date (format: `2014-12-31 15:17:24.736`)'
-          type: string
-        icon:
-          description: icon path
-          type: string
-      required:
-      - name
-      type: object
-    inline_object_28:
-      properties:
-        role_id:
-          description: id of the role of this membership
-          type: string
-        group_id:
-          description: id of the group of this membership
-          type: string
-        user_id:
-          description: id of the user in this membership
-          type: string
-      required:
-      - group_id
-      - role_id
-      - user_id
-      type: object
-    inline_object_29:
-      properties:
-        name:
-          description: name
-          type: string
-        displayName:
-          description: display name
-          type: string
-        description:
-          description: description
-          type: string
-        icon:
-          description: icon path
-          type: string
-      required:
-      - name
-      type: object
-    inline_object_30:
-      properties:
-        name:
-          description: name
-          type: string
-        displayName:
-          description: display name
-          type: string
-        description:
-          description: description
-          type: string
-        icon:
-          description: icon path
-          type: string
-      required:
-      - name
-      type: object
-    inline_object_31:
-      properties:
-        displayName:
-          description: display name of the User
-          type: string
-        token:
-          description: token of the User used to build the User URL
-          type: string
-      type: object
-    inline_object_32:
-      properties:
-        enabled:
-          description: if "true", user will be activated.
-          type: string
-        userName:
-          description: user name
-          type: string
-        firstname:
-          description: user last name
-          type: string
-        lastname:
-          description: user last name
-          type: string
-        password:
-          description: user password
-          format: password
-          type: string
-        icon:
-          description: ' bonita icon path (ie. /default/icon_user.png)'
-          type: string
-        title:
-          description: user title
-          type: string
-        job_title:
-          description: user job title
-          type: string
-        manager_id:
-          description: user manager id
-          type: string
-      type: object
-    inline_object_33:
       properties:
         username:
           description: the username
@@ -17743,221 +17057,31 @@ components:
             page (after a login failure).'
           type: string
       type: object
-    inline_object_34:
-      properties:
-        state:
-          description: Platform state
-          enum:
-          - start
-          - stop
-          type: string
-      type: object
-    inline_object_35:
-      properties:
-        name:
-          description: the name of the tenant
-          type: string
-        description:
-          description: the description
-          type: string
-        username:
-          description: the username
-          type: string
-        password:
-          description: the password
-          type: string
-      type: object
-    inline_object_36:
-      properties:
-        name:
-          description: the name of the tenant
-          type: string
-        description:
-          description: the description
-          type: string
-        username:
-          description: the username
-          type: string
-        password:
-          description: the password
-          type: string
-      type: object
-    inline_object_37:
+    inline_object_3:
       properties:
         file:
           format: binary
           type: string
       type: object
-    inline_object_38:
+    inline_object_4:
       properties:
         file:
           format: binary
           type: string
       type: object
-    inline_response_200_2:
-      example:
-        pageZip: pageZip
-      properties:
-        pageZip:
-          description: the temporary file name once uploaded on the server
-          type: string
-    inline_object_39:
-      example:
-        pageZip: tmp_4338264789005487499.zip:new-bonita-angular-dashboard.zip
-      properties:
-        pageZip:
-          description: Zip name as named in the temp folder after upload
-          type: string
-      type: object
-    inline_object_40:
-      properties:
-        pageZip:
-          description: pageZip as named in the temp folder after upload
-          type: string
-      type: object
-    inline_object_41:
-      properties:
-        description:
-          description: a description of the profile
-          type: string
-        name:
-          description: profile name
-          type: string
-      type: object
-    inline_object_42:
-      properties:
-        description:
-          description: description of the Profile
-          type: string
-        displayName:
-          description: display name of the Profile
-          type: string
-      type: object
-    inline_object_43:
-      properties:
-        profile_id:
-          description: id of the profile that contains this profileEntry
-          type: string
-        page:
-          description: pageToken (menu name or menu item name) used in a portal menu
-            to identify the page associated with the profileEntry
-          type: string
-        description:
-          description: description
-          type: string
-        name:
-          description: name of the profileEntry
-          type: string
-        type:
-          description: link (if menu item) | folder (if menu)
-          type: string
-        isCustom:
-          description: ' true | false '
-          type: boolean
-        parent_id:
-          description: id or parent profileEntry if in a folder
-          type: string
-      type: object
-    inline_object_44:
-      example:
-        page: tasklistingadmin
-        parent_id: "0"
-        name: Test menu
-        profile_id: "102"
-        type: link
-        isCustom: false
-      properties:
-        profile_id:
-          description: id of the profile that contains this profileEntry
-          type: string
-        page:
-          description: pageToken (menu name or menu item name) used in a portal menu
-            to identify the page associated with the profileEntry
-          type: string
-        description:
-          description: description
-          type: string
-        name:
-          description: name of the profileEntry
-          type: string
-        type:
-          description: link (if menu item) | folder (if menu)
-          type: string
-        isCustom:
-          description: ' true | false '
-          type: boolean
-        parent_id:
-          description: id or parent profileEntry if in a folder
-          type: string
-      type: object
-    inline_object_45:
-      properties:
-        profile_id:
-          description: id of the profile for this mapping
-          type: string
-        role_id:
-          description: id of role, or -1 if the member type is not role
-          type: string
-        group_id:
-          description: id of group, or -1 if the member type is not group
-          type: string
-        user_id:
-          description: id of user, or -1 if the member type is not user
-          type: string
-        member_type:
-          description: member type
-          enum:
-          - USER
-          - ROLE
-          - GROUP
-          type: string
-      type: object
-    inline_object_46:
-      properties:
-        type:
-          description: theme type
-          enum:
-          - portal
-          - mobile
-          type: string
-        zipFilePathportal:
-          description: tmp zip file Path as uploaded to portal
-          type: string
-      type: object
-    inline_object_47:
-      properties:
-        type:
-          description: theme type
-          enum:
-          - portal
-          - mobile
-          type: string
-      type: object
-    inline_object_48:
-      properties:
-        paused:
-          description: wether the system tenant should be paused or not
-          type: boolean
-      type: object
-    inline_object_49:
+    inline_object_5:
       properties:
         file:
           format: binary
           type: string
       type: object
-    inline_object_50:
-      properties:
-        fileUpload:
-          description: the temporary file name once uploaded on the server
-          type: string
-      type: object
-    inline_object_51:
+    inline_object_6:
       properties:
         file:
           format: binary
           type: string
       type: object
-    inline_object_52:
+    inline_object_7:
       properties:
         file:
           format: binary

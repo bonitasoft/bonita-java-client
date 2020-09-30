@@ -1,20 +1,28 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject28;
-import org.bonitasoft.web.client.internal.model.Membership;
-import retrofit2.Call;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.Membership;
+import org.bonitasoft.web.client.internal.model.MembershipCreateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface MembershipApi {
   /**
    * Create the Membership
    * Create the Membership 
-   * @param body  (required)
+   * @param body Partial Membership description (required)
    * @return Call&lt;Membership&gt;
    */
   @Headers({
@@ -22,7 +30,7 @@ public interface MembershipApi {
   })
   @POST("API/identity/membership")
   Call<Membership> createMembership(
-    @retrofit2.http.Body InlineObject28 body
+    @retrofit2.http.Body MembershipCreateRequest body
   );
 
   /**

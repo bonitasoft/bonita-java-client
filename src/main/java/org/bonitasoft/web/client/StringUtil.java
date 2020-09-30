@@ -13,7 +13,7 @@
 
 package org.bonitasoft.web.client;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T11:56:08.520781+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

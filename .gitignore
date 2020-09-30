@@ -17,7 +17,9 @@ hs_err_pid*
 # build files
 **/target
 target
-.gradle
-build
+gradle/
 
-.idea
+# eclipse files
+.classpath
+.settings
+.project

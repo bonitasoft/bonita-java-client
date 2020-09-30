@@ -1,16 +1,25 @@
 package org.bonitasoft.web.client.internal.api;
 
+import org.bonitasoft.web.client.CollectionFormats.*;
+
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.BDMInstallRequest;
+import org.bonitasoft.web.client.internal.model.BDMUploadResponse;
 import org.bonitasoft.web.client.internal.model.Bdm;
 import org.bonitasoft.web.client.internal.model.BusinessData;
-import org.bonitasoft.web.client.internal.model.InlineObject50;
-import org.bonitasoft.web.client.internal.model.InlineResponse200;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
+import org.bonitasoft.web.client.internal.model.Error;
+import java.io.File;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface BdmApi {
   /**
@@ -62,7 +71,7 @@ public interface BdmApi {
   /**
    * Install a BDM
    * Install a BDM 
-   * @param inlineObject50  (optional)
+   * @param bdMInstallRequest  (optional)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -70,18 +79,18 @@ public interface BdmApi {
   })
   @POST("API/tenant/bdm")
   Call<Void> installBDM(
-    @retrofit2.http.Body InlineObject50 inlineObject50
+    @retrofit2.http.Body BDMInstallRequest bdMInstallRequest
   );
 
   /**
    * Upload a BDM
    * Upload BDM 
    * @param file  (optional)
-   * @return Call&lt;InlineResponse200&gt;
+   * @return Call&lt;BDMUploadResponse&gt;
    */
   @retrofit2.http.Multipart
   @POST("portal/fileUpload")
-  Call<InlineResponse200> uploadBDM(
+  Call<BDMUploadResponse> uploadBDM(
     @retrofit2.http.Part MultipartBody.Part file
   );
 

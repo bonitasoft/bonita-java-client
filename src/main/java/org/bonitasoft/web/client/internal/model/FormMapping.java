@@ -13,6 +13,8 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,16 +22,14 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * Form Mapping specifies the mapping of a form to a process or a task. The mapping indicates the technology used to create the form, in the &#x60;target&#x60; attribute.
  */
 @ApiModel(description = "Form Mapping specifies the mapping of a form to a process or a task. The mapping indicates the technology used to create the form, in the `target` attribute.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T11:56:08.520781+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
 public class FormMapping implements Serializable {
   private static final long serialVersionUID = 1L;
 

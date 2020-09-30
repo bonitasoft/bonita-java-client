@@ -2,17 +2,18 @@ package org.bonitasoft.web.client;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonElement;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import org.bonitasoft.web.client.auth.ApiKeyAuth;
-import org.bonitasoft.web.client.auth.HttpBasicAuth;
-import org.bonitasoft.web.client.auth.HttpBearerAuth;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+import org.bonitasoft.web.client.auth.HttpBasicAuth;
+import org.bonitasoft.web.client.auth.HttpBearerAuth;
+import org.bonitasoft.web.client.auth.ApiKeyAuth;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -21,6 +22,7 @@ import java.text.DateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 public class ApiClient {
 

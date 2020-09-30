@@ -1,11 +1,22 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject48;
-import org.bonitasoft.web.client.internal.model.SystemTenant;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.PUT;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.SystemTenant;
+import org.bonitasoft.web.client.internal.model.TenantPauseRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface SystemTenantApi {
   /**
@@ -20,7 +31,7 @@ public interface SystemTenantApi {
   /**
    * Update the current Tenant
    * Pause or resume the current tenant. 
-   * @param inlineObject48  (required)
+   * @param tenantPauseRequest Partial SystemTenant description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -28,7 +39,7 @@ public interface SystemTenantApi {
   })
   @PUT("API/system/tenant/unusedid")
   Call<Void> updateSystemTenant(
-    @retrofit2.http.Body InlineObject48 inlineObject48
+    @retrofit2.http.Body TenantPauseRequest tenantPauseRequest
   );
 
 }

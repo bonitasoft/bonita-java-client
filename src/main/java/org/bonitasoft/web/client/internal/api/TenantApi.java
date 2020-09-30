@@ -1,18 +1,29 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject35;
-import org.bonitasoft.web.client.internal.model.InlineObject36;
-import org.bonitasoft.web.client.internal.model.Tenant;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.Tenant;
+import org.bonitasoft.web.client.internal.model.TenantCreateRequest;
+import org.bonitasoft.web.client.internal.model.TenantUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface TenantApi {
   /**
    * Create the Tenant
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Create the Tenant 
-   * @param body  (required)
+   * @param body Partial Tenant description (required)
    * @return Call&lt;Tenant&gt;
    */
   @Headers({
@@ -20,7 +31,7 @@ public interface TenantApi {
   })
   @POST("API/platform/tenant")
   Call<Tenant> createTenant(
-    @retrofit2.http.Body InlineObject35 body
+    @retrofit2.http.Body TenantCreateRequest body
   );
 
   /**
@@ -64,7 +75,7 @@ public interface TenantApi {
    * Update the Tenant by ID
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Update the Tenant for the given ID 
    * @param id ID of the Tenant to return (required)
-   * @param inlineObject36  (required)
+   * @param tenantUpdateRequest Partial Tenant description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -72,7 +83,7 @@ public interface TenantApi {
   })
   @PUT("API/platform/tenant/{id}")
   Call<Void> updateTenantById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject36 inlineObject36
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body TenantUpdateRequest tenantUpdateRequest
   );
 
 }

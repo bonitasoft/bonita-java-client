@@ -1,11 +1,25 @@
 package org.bonitasoft.web.client.internal.api;
 
-import okhttp3.MultipartBody;
-import org.bonitasoft.web.client.internal.model.Process;
-import org.bonitasoft.web.client.internal.model.*;
+import org.bonitasoft.web.client.CollectionFormats.*;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Contract;
+import org.bonitasoft.web.client.internal.model.DesignProcessDefinition;
+import org.bonitasoft.web.client.internal.model.Error;
+import java.io.File;
+import org.bonitasoft.web.client.internal.model.Process;
+import org.bonitasoft.web.client.internal.model.ProcessCreateRequest;
+import org.bonitasoft.web.client.internal.model.ProcessInstantiationResponse;
+import org.bonitasoft.web.client.internal.model.ProcessUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +27,7 @@ public interface ProcessApi {
   /**
    * Create the Process
    * Create the Process. A process resource is created using the content of a .bar file that has previously been uploaded, using the [processUpload servlet](#operation/uploadProcess), to get the process archive path. 
-   * @param body  (required)
+   * @param body Partial Process description (required)
    * @return Call&lt;Process&gt;
    */
   @Headers({
@@ -21,7 +35,7 @@ public interface ProcessApi {
   })
   @POST("API/bpm/process")
   Call<Process> createProcess(
-    @retrofit2.http.Body InlineObject18 body
+    @retrofit2.http.Body ProcessCreateRequest body
   );
 
   /**
@@ -102,13 +116,13 @@ public interface ProcessApi {
    * Instanciate the process with the provided contract values. 
    * @param id ID of the process to instanciate (required)
    * @param body A JSON object matching process contract. (required)
-   * @return Call&lt;InlineResponse201&gt;
+   * @return Call&lt;ProcessInstantiationResponse&gt;
    */
   @Headers({
     "Content-Type:application/json"
   })
   @POST("API/bpm/process/{id}/instantiation")
-  Call<InlineResponse201> instanciateProcess(
+  Call<ProcessInstantiationResponse> instanciateProcess(
     @retrofit2.http.Path("id") String id, @retrofit2.http.Body Map<String, Object> body
   );
 
@@ -116,7 +130,7 @@ public interface ProcessApi {
    * Update the Process by ID
    * Update the Process for the given ID 
    * @param id ID of the Process to return (required)
-   * @param inlineObject19  (required)
+   * @param processUpdateRequest Partial Process description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -124,18 +138,18 @@ public interface ProcessApi {
   })
   @PUT("API/bpm/process/{id}")
   Call<Void> updateProcessById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject19 inlineObject19
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ProcessUpdateRequest processUpdateRequest
   );
 
   /**
    * Upload a bar file
    * Upload a bar file 
    * @param file  (optional)
-   * @return Call&lt;Void&gt;
+   * @return Call&lt;String&gt;
    */
   @retrofit2.http.Multipart
   @POST("portal/processUpload")
-  Call<Void> uploadProcess(
+  Call<String> uploadProcess(
     @retrofit2.http.Part MultipartBody.Part file
   );
 

@@ -1,13 +1,20 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject16;
-import org.bonitasoft.web.client.internal.model.ModelCase;
-import retrofit2.Call;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.CaseCreateRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.ModelCase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +22,7 @@ public interface CaseApi {
   /**
    * Create the Case
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)  Create the Case This way of creating a case using this method will only work for processes in which no contract is defined. To instantiate a process with a contract, check the process instantiation resource documentation. 
-   * @param body  (required)
+   * @param body **Warning**: The attribute &#x60;variables&#x60; on the request payload is used to initialize the process variables (not BDM variables). If you want to initialize BDM variables at process instantiation, add a contract on the process and map BDM variables to the contract data. See Start a process using an instantiation contract for usage.  (required)
    * @return Call&lt;ModelCase&gt;
    */
   @Headers({
@@ -23,7 +30,7 @@ public interface CaseApi {
   })
   @POST("API/bpm/case")
   Call<ModelCase> createCase(
-    @retrofit2.http.Body InlineObject16 body
+    @retrofit2.http.Body CaseCreateRequest body
   );
 
   /**

@@ -1,10 +1,10 @@
 package org.bonitasoft.web.client.auth;
 
+import java.io.IOException;
+
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import java.io.IOException;
 
 public class HttpBearerAuth implements Interceptor {
     private final String scheme;

@@ -1,19 +1,28 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.CaseComment;
-import org.bonitasoft.web.client.internal.model.InlineObject17;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.CaseComment;
+import org.bonitasoft.web.client.internal.model.CaseCommentCreateRequest;
+import org.bonitasoft.web.client.internal.model.Error;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface CaseCommentApi {
   /**
    * Create the CaseComment
    * Create the CaseComment 
-   * @param body  (required)
+   * @param body The process instance (case) id and the comment content, in JSON (required)
    * @return Call&lt;CaseComment&gt;
    */
   @Headers({
@@ -21,7 +30,7 @@ public interface CaseCommentApi {
   })
   @POST("API/bpm/comment")
   Call<CaseComment> createCaseComment(
-    @retrofit2.http.Body InlineObject17 body
+    @retrofit2.http.Body CaseCommentCreateRequest body
   );
 
   /**

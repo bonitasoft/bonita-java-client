@@ -1,13 +1,22 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject20;
-import org.bonitasoft.web.client.internal.model.ProcessParameter;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.PUT;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.ProcessParameter;
+import org.bonitasoft.web.client.internal.model.ProcessParameterUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ProcessParameterApi {
   /**
@@ -42,7 +51,7 @@ public interface ProcessParameterApi {
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Update the ProcessParameter for the given ID 
    * @param id ID of the process to get parameter from (required)
    * @param name Name of the process parameter to return (required)
-   * @param inlineObject20  (required)
+   * @param processParameterUpdateRequest You can update only a process parameter value using the API. If you specify values for other fields in the update request, they are ignored. (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -50,7 +59,7 @@ public interface ProcessParameterApi {
   })
   @PUT("API/bpm/processParameter/{id}/{name}")
   Call<Void> updateProcessParameterById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Path("name") String name, @retrofit2.http.Body InlineObject20 inlineObject20
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Path("name") String name, @retrofit2.http.Body ProcessParameterUpdateRequest processParameterUpdateRequest
   );
 
 }

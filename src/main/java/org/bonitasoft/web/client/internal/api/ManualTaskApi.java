@@ -1,21 +1,29 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.InlineObject8;
-import org.bonitasoft.web.client.internal.model.InlineObject9;
-import org.bonitasoft.web.client.internal.model.ManualTask;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.ManualTask;
+import org.bonitasoft.web.client.internal.model.ManualTaskCreateRequest;
+import org.bonitasoft.web.client.internal.model.ManualTaskUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ManualTaskApi {
   /**
    * Create the ManualTask
    * Create the ManualTask. Use a POST method to create a new subtask. A subtask is attached to a parent task and it needs to be immediately assigned to a user. 
-   * @param body  (required)
+   * @param body Partial ManualTask description (required)
    * @return Call&lt;ManualTask&gt;
    */
   @Headers({
@@ -23,7 +31,7 @@ public interface ManualTaskApi {
   })
   @POST("API/bpm/manualTask")
   Call<ManualTask> createManualTask(
-    @retrofit2.http.Body InlineObject8 body
+    @retrofit2.http.Body ManualTaskCreateRequest body
   );
 
   /**
@@ -56,7 +64,7 @@ public interface ManualTaskApi {
    * Update the ManualTask by ID
    * Update the ManualTask for the given ID. Use a PUT method to execute a subtask. Executing a subtask basically means changing its state to completed and providing an executedBy value. 
    * @param id ID of the ManualTask to return (required)
-   * @param inlineObject9  (required)
+   * @param manualTaskUpdateRequest Partial ManualTask description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -64,7 +72,7 @@ public interface ManualTaskApi {
   })
   @PUT("API/bpm/manualTask/{id}")
   Call<Void> updateManualTaskById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject9 inlineObject9
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ManualTaskUpdateRequest manualTaskUpdateRequest
   );
 
 }

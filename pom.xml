@@ -382,6 +382,10 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                        	<generateApiTests>false</generateApiTests>
+                        	<generateModelTests>false</generateModelTests>
+                        	<generateApiDocumentation>false</generateApiDocumentation>
+                        	<generateModelDocumentation>false</generateModelDocumentation>
                             <output>${project.basedir}</output>
                             <inputSpec>http://localhost:8080/openapi.json</inputSpec>
                             <generatorName>java</generatorName>

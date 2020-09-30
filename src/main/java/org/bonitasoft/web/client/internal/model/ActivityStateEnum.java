@@ -13,12 +13,17 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
+import io.swagger.annotations.ApiModel;
+import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
+
+import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-
-import java.io.IOException;
 
 /**
  * the current state of the activity
@@ -27,26 +32,6 @@ import java.io.IOException;
 public enum ActivityStateEnum {
   
   FAILED("failed"),
-  
-  INITIALIZING("initializing"),
-  
-  READY("ready"),
-  
-  EXECUTING("executing"),
-  
-  COMPLETING("completing"),
-  
-  COMPLETED("completed"),
-  
-  WAITING("waiting"),
-  
-  SKIPPED("skipped"),
-  
-  CANCELLED("cancelled"),
-  
-  ABORTED("aborted"),
-  
-  CANCELLING_SUBTASKSFAILED("cancelling subtasksfailed"),
   
   INITIALIZING("initializing"),
   

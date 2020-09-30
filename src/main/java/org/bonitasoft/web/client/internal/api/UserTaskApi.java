@@ -1,33 +1,25 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.internal.model.Contract;
-import org.bonitasoft.web.client.internal.model.InlineObject10;
-import org.bonitasoft.web.client.internal.model.InlineObject11;
-import org.bonitasoft.web.client.internal.model.UserTask;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
+import org.bonitasoft.web.client.CollectionFormats.*;
 
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import okhttp3.MultipartBody;
+
+import org.bonitasoft.web.client.internal.model.Contract;
+import org.bonitasoft.web.client.internal.model.Error;
+import org.bonitasoft.web.client.internal.model.UserTask;
+import org.bonitasoft.web.client.internal.model.UserTaskUpdateRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public interface UserTaskApi {
-  /**
-   * Create the UserTask
-   * Create the UserTask 
-   * @param body  (required)
-   * @return Call&lt;UserTask&gt;
-   */
-  @Headers({
-    "Content-Type:application/json"
-  })
-  @POST("API/bpm/userTask")
-  Call<UserTask> createUserTask(
-    @retrofit2.http.Body InlineObject10 body
-  );
-
   /**
    * Execute the UserTask
    * Execute the UserTask. In order to execute a task, the task contract values have to be provided. 
@@ -96,7 +88,7 @@ public interface UserTaskApi {
    * Update the UserTask by ID
    * Update the UserTask for the given ID.  Fields that can be updated are assignedId and state. The only value that can be set for the state is \&quot;skipped\&quot;. You only need to specify the fields that are to be updated. 
    * @param id ID of the UserTask to return (required)
-   * @param inlineObject11  (required)
+   * @param userTaskUpdateRequest Partial UserTask description (required)
    * @return Call&lt;Void&gt;
    */
   @Headers({
@@ -104,7 +96,7 @@ public interface UserTaskApi {
   })
   @PUT("API/bpm/userTask/{id}")
   Call<Void> updateUserTaskById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body InlineObject11 inlineObject11
+    @retrofit2.http.Path("id") String id, @retrofit2.http.Body UserTaskUpdateRequest userTaskUpdateRequest
   );
 
 }
