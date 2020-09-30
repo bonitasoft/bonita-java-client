@@ -15,6 +15,7 @@ import  com.bonitasoft.web.client.internal.api.*;
 import  com.bonitasoft.web.client.internal.converters.RestApiConverter;
 import  com.bonitasoft.web.client.internal.services.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AccessLevel;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
@@ -37,7 +38,9 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @Accessors(fluent = true)
 public class BonitaClientBuilder {
 
+    @Setter(AccessLevel.NONE)
     private final String url;
+
     @Setter
     private ImportNotifier importNotifier;
     @Setter
