@@ -13,43 +13,41 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * CreateApplicationRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  CreateApplicationRequest.JSON_PROPERTY_DESCRIPTION,
+  CreateApplicationRequest.JSON_PROPERTY_DISPLAY_NAME,
+  CreateApplicationRequest.JSON_PROPERTY_PROFILE_ID,
+  CreateApplicationRequest.JSON_PROPERTY_TOKEN,
+  CreateApplicationRequest.JSON_PROPERTY_VERSION
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class CreateApplicationRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
-  @SerializedName(SERIALIZED_NAME_PROFILE_ID)
+  public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
   private String profileId;
 
-  public static final String SERIALIZED_NAME_TOKEN = "token";
-  @SerializedName(SERIALIZED_NAME_TOKEN)
+  public static final String JSON_PROPERTY_TOKEN = "token";
   private String token;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
 
 
@@ -65,6 +63,8 @@ public class CreateApplicationRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "description of the application")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -88,6 +88,8 @@ public class CreateApplicationRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "display name of the application")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -111,6 +113,8 @@ public class CreateApplicationRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "profile authorized to access this application")
+  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProfileId() {
     return profileId;
@@ -134,6 +138,8 @@ public class CreateApplicationRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "token of the application used to build the application URL")
+  @JsonProperty(JSON_PROPERTY_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getToken() {
     return token;
@@ -157,6 +163,8 @@ public class CreateApplicationRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "version of the application")
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVersion() {
     return version;

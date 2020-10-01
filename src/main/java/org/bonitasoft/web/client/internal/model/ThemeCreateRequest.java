@@ -13,29 +13,26 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ThemeCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ThemeCreateRequest.JSON_PROPERTY_TYPE,
+  ThemeCreateRequest.JSON_PROPERTY_ZIP_FILE_PATHPORTAL
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ThemeCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
   /**
    * theme type
    */
-  @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     PORTAL("portal"),
     
@@ -47,6 +44,7 @@ public class ThemeCreateRequest implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -56,6 +54,7 @@ public class ThemeCreateRequest implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static TypeEnum fromValue(String value) {
       for (TypeEnum b : TypeEnum.values()) {
         if (b.value.equals(value)) {
@@ -64,27 +63,12 @@ public class ThemeCreateRequest implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_ZIP_FILE_PATHPORTAL = "zipFilePathportal";
-  @SerializedName(SERIALIZED_NAME_ZIP_FILE_PATHPORTAL)
+  public static final String JSON_PROPERTY_ZIP_FILE_PATHPORTAL = "zipFilePathportal";
   private String zipFilePathportal;
 
 
@@ -100,6 +84,8 @@ public class ThemeCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "theme type")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public TypeEnum getType() {
     return type;
@@ -123,6 +109,8 @@ public class ThemeCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "tmp zip file Path as uploaded to portal")
+  @JsonProperty(JSON_PROPERTY_ZIP_FILE_PATHPORTAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getZipFilePathportal() {
     return zipFilePathportal;

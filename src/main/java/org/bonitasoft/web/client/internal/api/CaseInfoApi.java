@@ -1,32 +1,24 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
-
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
+import feign.Headers;
+import feign.Param;
+import feign.RequestLine;
+import org.bonitasoft.web.client.ApiClient;
 import org.bonitasoft.web.client.internal.model.CaseInfo;
-import org.bonitasoft.web.client.internal.model.Error;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface CaseInfoApi extends ApiClient.Api {
 
-public interface CaseInfoApi {
+
   /**
    * Finds the CaseInfo by ID
    * Returns the single CaseInfo for the given ID 
    * @param id ID of the CaseInfo to return (required)
-   * @return Call&lt;CaseInfo&gt;
+   * @return CaseInfo
    */
-  @GET("API/bpm/caseInfo/{id}")
-  Call<CaseInfo> getCaseInfoById(
-    @retrofit2.http.Path("id") String id
-  );
-
+  @RequestLine("GET /API/bpm/caseInfo/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  CaseInfo getCaseInfoById(@Param("id") String id);
 }

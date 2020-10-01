@@ -13,35 +13,31 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import org.bonitasoft.web.client.internal.model.ContractConstraints;
-import org.bonitasoft.web.client.internal.model.ContractInput;
-import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Contract
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Contract.JSON_PROPERTY_CONSTRAINTS,
+  Contract.JSON_PROPERTY_INPUTS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Contract implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_CONSTRAINTS = "constraints";
-  @SerializedName(SERIALIZED_NAME_CONSTRAINTS)
+  public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
   private List<ContractConstraints> constraints = null;
 
-  public static final String SERIALIZED_NAME_INPUTS = "inputs";
-  @SerializedName(SERIALIZED_NAME_INPUTS)
+  public static final String JSON_PROPERTY_INPUTS = "inputs";
   private List<ContractInput> inputs = null;
 
 
@@ -65,6 +61,8 @@ public class Contract implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ContractConstraints> getConstraints() {
     return constraints;
@@ -96,6 +94,8 @@ public class Contract implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INPUTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ContractInput> getInputs() {
     return inputs;

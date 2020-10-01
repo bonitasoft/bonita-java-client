@@ -13,55 +13,53 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Session
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Session.JSON_PROPERTY_USER_ID,
+  Session.JSON_PROPERTY_USER_NAME,
+  Session.JSON_PROPERTY_SESSION_ID,
+  Session.JSON_PROPERTY_CONF,
+  Session.JSON_PROPERTY_IS_TECHNICAL_USER,
+  Session.JSON_PROPERTY_IS_GUEST_USER,
+  Session.JSON_PROPERTY_VERSION,
+  Session.JSON_PROPERTY_COPYRIGHT
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Session implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_USER_ID = "user_id";
-  @SerializedName(SERIALIZED_NAME_USER_ID)
+  public static final String JSON_PROPERTY_USER_ID = "user_id";
   private String userId;
 
-  public static final String SERIALIZED_NAME_USER_NAME = "user_name";
-  @SerializedName(SERIALIZED_NAME_USER_NAME)
+  public static final String JSON_PROPERTY_USER_NAME = "user_name";
   private String userName;
 
-  public static final String SERIALIZED_NAME_SESSION_ID = "session_id";
-  @SerializedName(SERIALIZED_NAME_SESSION_ID)
+  public static final String JSON_PROPERTY_SESSION_ID = "session_id";
   private String sessionId;
 
-  public static final String SERIALIZED_NAME_CONF = "conf";
-  @SerializedName(SERIALIZED_NAME_CONF)
+  public static final String JSON_PROPERTY_CONF = "conf";
   private String conf;
 
-  public static final String SERIALIZED_NAME_IS_TECHNICAL_USER = "is_technical_user";
-  @SerializedName(SERIALIZED_NAME_IS_TECHNICAL_USER)
+  public static final String JSON_PROPERTY_IS_TECHNICAL_USER = "is_technical_user";
   private Boolean isTechnicalUser;
 
-  public static final String SERIALIZED_NAME_IS_GUEST_USER = "is_guest_user";
-  @SerializedName(SERIALIZED_NAME_IS_GUEST_USER)
+  public static final String JSON_PROPERTY_IS_GUEST_USER = "is_guest_user";
   private Boolean isGuestUser;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
 
-  public static final String SERIALIZED_NAME_COPYRIGHT = "copyright";
-  @SerializedName(SERIALIZED_NAME_COPYRIGHT)
+  public static final String JSON_PROPERTY_COPYRIGHT = "copyright";
   private String copyright;
 
 
@@ -77,6 +75,8 @@ public class Session implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user id")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -100,6 +100,8 @@ public class Session implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user name")
+  @JsonProperty(JSON_PROPERTY_USER_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserName() {
     return userName;
@@ -123,6 +125,8 @@ public class Session implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the session id")
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSessionId() {
     return sessionId;
@@ -146,6 +150,8 @@ public class Session implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "conf")
+  @JsonProperty(JSON_PROPERTY_CONF)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConf() {
     return conf;
@@ -169,6 +175,8 @@ public class Session implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "is technical user: true|false")
+  @JsonProperty(JSON_PROPERTY_IS_TECHNICAL_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getIsTechnicalUser() {
     return isTechnicalUser;
@@ -192,6 +200,8 @@ public class Session implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "is technical user: true|false")
+  @JsonProperty(JSON_PROPERTY_IS_GUEST_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getIsGuestUser() {
     return isGuestUser;
@@ -215,6 +225,8 @@ public class Session implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "bonita version")
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVersion() {
     return version;
@@ -238,6 +250,8 @@ public class Session implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "bonita copyright")
+  @JsonProperty(JSON_PROPERTY_COPYRIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCopyright() {
     return copyright;

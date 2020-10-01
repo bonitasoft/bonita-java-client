@@ -13,48 +13,47 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * BPM timer event triggers
  */
 @ApiModel(description = "BPM timer event triggers")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  TimerEventTrigger.JSON_PROPERTY_ID,
+  TimerEventTrigger.JSON_PROPERTY_ID_STRING,
+  TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_ID,
+  TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_ID_STRING,
+  TimerEventTrigger.JSON_PROPERTY_EXECUTION_DATE,
+  TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_NAME
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class TimerEventTrigger implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_ID_STRING = "id_string";
-  @SerializedName(SERIALIZED_NAME_ID_STRING)
+  public static final String JSON_PROPERTY_ID_STRING = "id_string";
   private String idString;
 
-  public static final String SERIALIZED_NAME_EVENT_INSTANCE_ID = "eventInstanceId";
-  @SerializedName(SERIALIZED_NAME_EVENT_INSTANCE_ID)
+  public static final String JSON_PROPERTY_EVENT_INSTANCE_ID = "eventInstanceId";
   private String eventInstanceId;
 
-  public static final String SERIALIZED_NAME_EVENT_INSTANCE_ID_STRING = "eventInstanceId_string";
-  @SerializedName(SERIALIZED_NAME_EVENT_INSTANCE_ID_STRING)
+  public static final String JSON_PROPERTY_EVENT_INSTANCE_ID_STRING = "eventInstanceId_string";
   private String eventInstanceIdString;
 
-  public static final String SERIALIZED_NAME_EXECUTION_DATE = "executionDate";
-  @SerializedName(SERIALIZED_NAME_EXECUTION_DATE)
+  public static final String JSON_PROPERTY_EXECUTION_DATE = "executionDate";
   private String executionDate;
 
-  public static final String SERIALIZED_NAME_EVENT_INSTANCE_NAME = "eventInstanceName";
-  @SerializedName(SERIALIZED_NAME_EVENT_INSTANCE_NAME)
+  public static final String JSON_PROPERTY_EVENT_INSTANCE_NAME = "eventInstanceName";
   private String eventInstanceName;
 
 
@@ -70,6 +69,8 @@ public class TimerEventTrigger implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the ID of the timer returned")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -93,6 +94,8 @@ public class TimerEventTrigger implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the ID of the timer returned")
+  @JsonProperty(JSON_PROPERTY_ID_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIdString() {
     return idString;
@@ -116,6 +119,8 @@ public class TimerEventTrigger implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the ID of the event instance to which this trigger is related")
+  @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEventInstanceId() {
     return eventInstanceId;
@@ -139,6 +144,8 @@ public class TimerEventTrigger implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the ID of the event instance to which this trigger is related")
+  @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_ID_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEventInstanceIdString() {
     return eventInstanceIdString;
@@ -162,6 +169,8 @@ public class TimerEventTrigger implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the long value of the next execution date (number of milliseconds from January 1st, 1970 00:00:00)")
+  @JsonProperty(JSON_PROPERTY_EXECUTION_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExecutionDate() {
     return executionDate;
@@ -185,6 +194,8 @@ public class TimerEventTrigger implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the name of the event instance to which this trigger is related")
+  @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEventInstanceName() {
     return eventInstanceName;

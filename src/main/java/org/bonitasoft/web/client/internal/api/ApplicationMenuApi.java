@@ -1,49 +1,46 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
-
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
+import org.bonitasoft.web.client.ApiClient;
+import org.bonitasoft.web.client.EncodingUtils;
 import org.bonitasoft.web.client.internal.model.ApplicationMenu;
 import org.bonitasoft.web.client.internal.model.ApplicationMenuCreateRequest;
 import org.bonitasoft.web.client.internal.model.ApplicationMenuUpdateRequest;
-import org.bonitasoft.web.client.internal.model.Error;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public interface ApplicationMenuApi {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface ApplicationMenuApi extends ApiClient.Api {
+
+
   /**
    * New application menu item
    * Create an application menu item 
    * @param applicationMenuCreateRequest A partial representation of an application menu in JSON (optional)
-   * @return Call&lt;ApplicationMenu&gt;
+   * @return ApplicationMenu
    */
+  @RequestLine("POST /API/living/application-menu")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @POST("API/living/application-menu")
-  Call<ApplicationMenu> createApplicationMenu(
-    @retrofit2.http.Body ApplicationMenuCreateRequest applicationMenuCreateRequest
-  );
+  ApplicationMenu createApplicationMenu(ApplicationMenuCreateRequest applicationMenuCreateRequest);
 
   /**
    * Delete an application menu by ID
    * Delete a single application menu for the given ID
    * @param id ID of the application menu to delete (required)
-   * @return Call&lt;Void&gt;
    */
-  @DELETE("API/living/application-menu/{id}")
-  Call<Void> deleteApplicationMenuById(
-    @retrofit2.http.Path("id") String id
-  );
+  @RequestLine("DELETE /API/living/application-menu/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  void deleteApplicationMenuById(@Param("id") String id);
 
   /**
    * Finds application menus
@@ -53,37 +50,88 @@ public interface ApplicationMenuApi {
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param o can order on attributes (optional)
    * @param s can search on attributes (optional)
-   * @return Call&lt;List&lt;ApplicationMenu&gt;&gt;
+   * @return List&lt;ApplicationMenu&gt;
    */
-  @GET("API/living/application-menu")
-  Call<List<ApplicationMenu>> findApplicationMenus(
-    @retrofit2.http.Query("p") Integer p, @retrofit2.http.Query("c") Integer c, @retrofit2.http.Query("f") String f, @retrofit2.http.Query("o") String o, @retrofit2.http.Query("s") String s
-  );
+  @RequestLine("GET /API/living/application-menu?p={p}&c={c}&f={f}&o={o}&s={s}")
+  @Headers({
+    "Accept: application/json",
+  })
+  List<ApplicationMenu> findApplicationMenus(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+
+  /**
+   * Finds application menus
+   * Returns application menus with pagination params and filters  - can order on &#x60;id&#x60;, &#x60;displayName&#x60;, &#x60;applicationId&#x60;, &#x60;applicationPageId&#x60;, &#x60;menuIndex&#x60;, &#x60;parentMenuId&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;id&#x60;, &#x60;displayName&#x60;, &#x60;applicationId&#x60;, &#x60;applicationPageId&#x60;, &#x60;menuIndex&#x60;, &#x60;parentMenuId&#x60; 
+   * Note, this is equivalent to the other <code>findApplicationMenus</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link FindApplicationMenusQueryParams} class that allows for
+   * building up this map in a fluent style.
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>p - index of the page to display (required)</li>
+   *   <li>c - maximum number of elements to retrieve (required)</li>
+   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
+   *   <li>o - can order on attributes (optional)</li>
+   *   <li>s - can search on attributes (optional)</li>
+   *   </ul>
+   * @return List&lt;ApplicationMenu&gt;
+   */
+  @RequestLine("GET /API/living/application-menu?p={p}&c={c}&f={f}&o={o}&s={s}")
+  @Headers({
+  "Accept: application/json",
+  })
+  List<ApplicationMenu> findApplicationMenus(@QueryMap(encoded=true) Map<String, Object> queryParams);
+
+  /**
+   * A convenience class for generating query parameters for the
+   * <code>findApplicationMenus</code> method in a fluent style.
+   */
+  public static class FindApplicationMenusQueryParams extends HashMap<String, Object> {
+    public FindApplicationMenusQueryParams p(final Integer value) {
+      put("p", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindApplicationMenusQueryParams c(final Integer value) {
+      put("c", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindApplicationMenusQueryParams f(final String value) {
+      put("f", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindApplicationMenusQueryParams o(final String value) {
+      put("o", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindApplicationMenusQueryParams s(final String value) {
+      put("s", EncodingUtils.encode(value));
+      return this;
+    }
+  }
 
   /**
    * Finds a application menu by ID
    * Returns a single application menu for the given ID 
    * @param id ID of application menu to return (required)
-   * @return Call&lt;ApplicationMenu&gt;
+   * @return ApplicationMenu
    */
-  @GET("API/living/application-menu/{id}")
-  Call<ApplicationMenu> geApplicationMenuById(
-    @retrofit2.http.Path("id") String id
-  );
+  @RequestLine("GET /API/living/application-menu/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ApplicationMenu geApplicationMenuById(@Param("id") String id);
 
   /**
    * Update a application menu by ID
    * Update a application menu for the given ID
    * @param id ID of the application menu to return (required)
    * @param applicationMenuUpdateRequest Partial application menu description (required)
-   * @return Call&lt;Void&gt;
    */
+  @RequestLine("PUT /API/living/application-menu/{id}")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @PUT("API/living/application-menu/{id}")
-  Call<Void> updateApplicationMenuById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ApplicationMenuUpdateRequest applicationMenuUpdateRequest
-  );
-
+  void updateApplicationMenuById(@Param("id") String id, ApplicationMenuUpdateRequest applicationMenuUpdateRequest);
 }

@@ -1,36 +1,33 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
-
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
-import org.bonitasoft.web.client.internal.model.Error;
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
+import org.bonitasoft.web.client.ApiClient;
+import org.bonitasoft.web.client.EncodingUtils;
 import org.bonitasoft.web.client.internal.model.ProfessionalContactData;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public interface ProfessionalContactDataApi {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface ProfessionalContactDataApi extends ApiClient.Api {
+
+
   /**
    * Create the ProfessionalContactData
    * Create the ProfessionalContactData 
    * @param body Partial ProfessionalContactData description including the user ID (required)
-   * @return Call&lt;ProfessionalContactData&gt;
+   * @return ProfessionalContactData
    */
+  @RequestLine("POST /API/identity/professionalcontactdata")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @POST("API/identity/professionalcontactdata")
-  Call<ProfessionalContactData> createProfessionalContactData(
-    @retrofit2.http.Body ProfessionalContactData body
-  );
+  ProfessionalContactData createProfessionalContactData(ProfessionalContactData body);
 
   /**
    * Finds ProfessionalContactData
@@ -40,63 +37,113 @@ public interface ProfessionalContactDataApi {
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param o can order on attributes (optional)
    * @param s can search on attributes (optional)
-   * @return Call&lt;List&lt;ProfessionalContactData&gt;&gt;
+   * @return List&lt;ProfessionalContactData&gt;
    */
-  @GET("API/identity/professionalcontactdata")
-  Call<List<ProfessionalContactData>> findProfessionalContactDatas(
-    @retrofit2.http.Query("p") Integer p, @retrofit2.http.Query("c") Integer c, @retrofit2.http.Query("f") String f, @retrofit2.http.Query("o") String o, @retrofit2.http.Query("s") String s
-  );
+  @RequestLine("GET /API/identity/professionalcontactdata?p={p}&c={c}&f={f}&o={o}&s={s}")
+  @Headers({
+    "Accept: application/json",
+  })
+  List<ProfessionalContactData> findProfessionalContactDatas(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+
+  /**
+   * Finds ProfessionalContactData
+   * Finds ProfessionalContactData with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
+   * Note, this is equivalent to the other <code>findProfessionalContactDatas</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link FindProfessionalContactDatasQueryParams} class that allows for
+   * building up this map in a fluent style.
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>p - index of the page to display (required)</li>
+   *   <li>c - maximum number of elements to retrieve (required)</li>
+   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
+   *   <li>o - can order on attributes (optional)</li>
+   *   <li>s - can search on attributes (optional)</li>
+   *   </ul>
+   * @return List&lt;ProfessionalContactData&gt;
+   */
+  @RequestLine("GET /API/identity/professionalcontactdata?p={p}&c={c}&f={f}&o={o}&s={s}")
+  @Headers({
+  "Accept: application/json",
+  })
+  List<ProfessionalContactData> findProfessionalContactDatas(@QueryMap(encoded=true) Map<String, Object> queryParams);
+
+  /**
+   * A convenience class for generating query parameters for the
+   * <code>findProfessionalContactDatas</code> method in a fluent style.
+   */
+  public static class FindProfessionalContactDatasQueryParams extends HashMap<String, Object> {
+    public FindProfessionalContactDatasQueryParams p(final Integer value) {
+      put("p", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindProfessionalContactDatasQueryParams c(final Integer value) {
+      put("c", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindProfessionalContactDatasQueryParams f(final String value) {
+      put("f", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindProfessionalContactDatasQueryParams o(final String value) {
+      put("o", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindProfessionalContactDatasQueryParams s(final String value) {
+      put("s", EncodingUtils.encode(value));
+      return this;
+    }
+  }
 
   /**
    * Finds the PersonalContactData by ID
    * Returns the single PersonalContactData for the given ID 
    * @param userId User ID of the PersonalContactData to return (required)
-   * @return Call&lt;ProfessionalContactData&gt;
+   * @return ProfessionalContactData
    */
-  @GET("API/identity/personalcontactdata/{userId}")
-  Call<ProfessionalContactData> getPersonalContactDataById(
-    @retrofit2.http.Path("userId") String userId
-  );
+  @RequestLine("GET /API/identity/personalcontactdata/{userId}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ProfessionalContactData getPersonalContactDataById(@Param("userId") String userId);
 
   /**
    * Finds the ProfessionalContactData by ID
    * Returns the single ProfessionalContactData for the given ID 
    * @param userId User ID of the ProfessionalContactData to return (required)
-   * @return Call&lt;ProfessionalContactData&gt;
+   * @return ProfessionalContactData
    */
-  @GET("API/identity/professionalcontactdata/{userId}")
-  Call<ProfessionalContactData> getProfessionalContactDataById(
-    @retrofit2.http.Path("userId") String userId
-  );
+  @RequestLine("GET /API/identity/professionalcontactdata/{userId}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ProfessionalContactData getProfessionalContactDataById(@Param("userId") String userId);
 
   /**
    * Update the PersonalContactData by ID
    * Update the PersonalContactData for the given ID 
    * @param userId User ID of the PersonalContactData to update (required)
    * @param professionalContactData Partial PersonalContactData description including the user ID (required)
-   * @return Call&lt;Void&gt;
    */
+  @RequestLine("PUT /API/identity/personalcontactdata/{userId}")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @PUT("API/identity/personalcontactdata/{userId}")
-  Call<Void> updatePersonalContactDataById(
-    @retrofit2.http.Path("userId") String userId, @retrofit2.http.Body ProfessionalContactData professionalContactData
-  );
+  void updatePersonalContactDataById(@Param("userId") String userId, ProfessionalContactData professionalContactData);
 
   /**
    * Update the ProfessionalContactData by ID
    * Update the ProfessionalContactData for the given ID 
    * @param userId User ID of the ProfessionalContactData to update (required)
    * @param professionalContactData Partial ProfessionalContactData description including the user ID (required)
-   * @return Call&lt;Void&gt;
    */
+  @RequestLine("PUT /API/identity/professionalcontactdata/{userId}")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @PUT("API/identity/professionalcontactdata/{userId}")
-  Call<Void> updateProfessionalContactDataById(
-    @retrofit2.http.Path("userId") String userId, @retrofit2.http.Body ProfessionalContactData professionalContactData
-  );
-
+  void updateProfessionalContactDataById(@Param("userId") String userId, ProfessionalContactData professionalContactData);
 }

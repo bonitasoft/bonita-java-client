@@ -13,34 +13,32 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Retrieve business data value. Depending on the object attribute loading policy, the API returns either the full object in JSON representation or the HATEOAS links to the object attributes.  Long attributes use a string representation added in 7.0.1 as a workaround for the JavaScript integer spectrum issue.  Representation of object attributes with an _always load_ policy:  &#x60;&#x60;&#x60;json {   \&quot;persistenceId\&quot;: _number_, // &lt;-- deprecated   \&quot;persistenceId_string\&quot;: \&quot;_number_\&quot;   \&quot;persistenceVersion\&quot;: _number_, // &lt;-- deprecated   \&quot;persistenceVersion_string\&quot;: \&quot;_number_\&quot;   \&quot;attributeName\&quot;:_attributeType_   ... } &#x60;&#x60;&#x60;  The string representation added in 7.0.1 for Long attributes is a workaround for the JavaScript integer spectrum issue.  HATEOAS representation of object attribute with a _load when needed_ policy: &#x60;&#x60;&#x60;json \&quot;links\&quot;:[    {    \&quot;rel\&quot;:_string_    \&quot;href\&quot;:_uri_    } ] &#x60;&#x60;&#x60; 
  */
 @ApiModel(description = "Retrieve business data value. Depending on the object attribute loading policy, the API returns either the full object in JSON representation or the HATEOAS links to the object attributes.  Long attributes use a string representation added in 7.0.1 as a workaround for the JavaScript integer spectrum issue.  Representation of object attributes with an _always load_ policy:  ```json {   \"persistenceId\": _number_, // <-- deprecated   \"persistenceId_string\": \"_number_\"   \"persistenceVersion\": _number_, // <-- deprecated   \"persistenceVersion_string\": \"_number_\"   \"attributeName\":_attributeType_   ... } ```  The string representation added in 7.0.1 for Long attributes is a workaround for the JavaScript integer spectrum issue.  HATEOAS representation of object attribute with a _load when needed_ policy: ```json \"links\":[    {    \"rel\":_string_    \"href\":_uri_    } ] ``` ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  BusinessData.JSON_PROPERTY_PERSISTENCE_ID_STRING,
+  BusinessData.JSON_PROPERTY_PERSISTENCE_VERSION_STRING
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class BusinessData extends HashMap<String, Object> implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_PERSISTENCE_ID_STRING = "persistenceId_string";
-  @SerializedName(SERIALIZED_NAME_PERSISTENCE_ID_STRING)
+  public static final String JSON_PROPERTY_PERSISTENCE_ID_STRING = "persistenceId_string";
   private String persistenceIdString;
 
-  public static final String SERIALIZED_NAME_PERSISTENCE_VERSION_STRING = "persistenceVersion_string";
-  @SerializedName(SERIALIZED_NAME_PERSISTENCE_VERSION_STRING)
+  public static final String JSON_PROPERTY_PERSISTENCE_VERSION_STRING = "persistenceVersion_string";
   private String persistenceVersionString;
 
 
@@ -56,6 +54,8 @@ public class BusinessData extends HashMap<String, Object> implements Serializabl
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Id of the business data object")
+  @JsonProperty(JSON_PROPERTY_PERSISTENCE_ID_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPersistenceIdString() {
     return persistenceIdString;
@@ -79,6 +79,8 @@ public class BusinessData extends HashMap<String, Object> implements Serializabl
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Version of the business data object instance")
+  @JsonProperty(JSON_PROPERTY_PERSISTENCE_VERSION_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPersistenceVersionString() {
     return persistenceVersionString;

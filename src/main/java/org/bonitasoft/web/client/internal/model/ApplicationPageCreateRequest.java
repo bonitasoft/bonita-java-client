@@ -13,35 +13,33 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ApplicationPageCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ApplicationPageCreateRequest.JSON_PROPERTY_TOKEN,
+  ApplicationPageCreateRequest.JSON_PROPERTY_APPLICATION_ID,
+  ApplicationPageCreateRequest.JSON_PROPERTY_PAGE_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ApplicationPageCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_TOKEN = "token";
-  @SerializedName(SERIALIZED_NAME_TOKEN)
+  public static final String JSON_PROPERTY_TOKEN = "token";
   private String token;
 
-  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
   private String applicationId;
 
-  public static final String SERIALIZED_NAME_PAGE_ID = "pageId";
-  @SerializedName(SERIALIZED_NAME_PAGE_ID)
+  public static final String JSON_PROPERTY_PAGE_ID = "pageId";
   private String pageId;
 
 
@@ -57,6 +55,8 @@ public class ApplicationPageCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "token use to access the page using a URL : ../appName/pageToken/")
+  @JsonProperty(JSON_PROPERTY_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getToken() {
     return token;
@@ -80,6 +80,8 @@ public class ApplicationPageCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the application related to this page")
+  @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getApplicationId() {
     return applicationId;
@@ -103,6 +105,8 @@ public class ApplicationPageCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the custom page to display")
+  @JsonProperty(JSON_PROPERTY_PAGE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPageId() {
     return pageId;

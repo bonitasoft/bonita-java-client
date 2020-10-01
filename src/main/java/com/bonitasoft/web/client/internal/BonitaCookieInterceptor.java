@@ -8,21 +8,18 @@
  */
 package com.bonitasoft.web.client.internal;
 
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+
+import static java.util.Collections.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toMap;
 
-import java.io.IOException;
-import java.util.Map;
-
-import okhttp3.Headers;
-import okhttp3.Interceptor;
-import okhttp3.Request;
-import okhttp3.Response;
-
-/**
- * Created by laurentleseigneur on 29/06/2017.
- */
-public class BonitaCookieInterceptor implements Interceptor {
+public class BonitaCookieInterceptor implements RequestInterceptor {
 
     public static final String CSRF_TOKEN_HEADER = "X-Bonita-API-Token";
 
@@ -43,22 +40,8 @@ public class BonitaCookieInterceptor implements Interceptor {
         this.csrfHeader = null;
     }
 
-    @Override
-    public Response intercept(Chain chain) throws IOException {
-        Request request = chain.request();
-        Request.Builder builder = request.newBuilder();
-        if (this.cookie != null) {
-            builder.header("Cookie", cookie);
-        }
-        if (this.csrfHeader != null) {
-            builder.header(CSRF_TOKEN_HEADER, csrfHeader);
-        }
-        request = builder.build();
-        return chain.proceed(request);
-    }
-
-    public void setSessionCookies(Headers loginHeaders) {
-        Map<String, String> cookies = loginHeaders.toMultimap().get("set-cookie")
+    public void setSessionCookies(Map<String, Collection<String>> loginHeaders) {
+        Map<String, String> cookies = loginHeaders.getOrDefault("set-cookie", emptyList())
                 .stream()
                 .map(item -> item.split("=", 2))
                 .collect(
@@ -75,9 +58,13 @@ public class BonitaCookieInterceptor implements Interceptor {
                 .collect(joining(";"));
     }
 
-    public void checkLogged() {
-        if (cookie == null) {
-            throw new IllegalStateException("Not logged");
+    @Override
+    public void apply(RequestTemplate requestTemplate) {
+        if (this.cookie != null) {
+            requestTemplate.header("Cookie", cookie);
+        }
+        if (this.csrfHeader != null) {
+            requestTemplate.header(CSRF_TOKEN_HEADER, csrfHeader);
         }
     }
 }

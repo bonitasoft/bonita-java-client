@@ -13,40 +13,39 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * The process supervisor has management rights over a process. He can configure and monitor it. You can give the ProcessSupervisor rights to some users by specifying a role and or a group, or a specific user. In order to be able to manage the processes he supervises in the portal, a user should also have the profile &#x60;Process Manager&#x60;
  */
 @ApiModel(description = "The process supervisor has management rights over a process. He can configure and monitor it. You can give the ProcessSupervisor rights to some users by specifying a role and or a group, or a specific user. In order to be able to manage the processes he supervises in the portal, a user should also have the profile `Process Manager`")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ProcessSupervisor.JSON_PROPERTY_PROCESS_ID,
+  ProcessSupervisor.JSON_PROPERTY_ROLE_ID,
+  ProcessSupervisor.JSON_PROPERTY_GROUP_ID,
+  ProcessSupervisor.JSON_PROPERTY_USER_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ProcessSupervisor implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_PROCESS_ID = "process_id";
-  @SerializedName(SERIALIZED_NAME_PROCESS_ID)
+  public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
   private String processId;
 
-  public static final String SERIALIZED_NAME_ROLE_ID = "role_id";
-  @SerializedName(SERIALIZED_NAME_ROLE_ID)
+  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
   private String roleId;
 
-  public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
-  @SerializedName(SERIALIZED_NAME_GROUP_ID)
+  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
   private String groupId;
 
-  public static final String SERIALIZED_NAME_USER_ID = "user_id";
-  @SerializedName(SERIALIZED_NAME_USER_ID)
+  public static final String JSON_PROPERTY_USER_ID = "user_id";
   private String userId;
 
 
@@ -62,6 +61,8 @@ public class ProcessSupervisor implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Id of the process")
+  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProcessId() {
     return processId;
@@ -85,6 +86,8 @@ public class ProcessSupervisor implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Id of role, or -1 if the supervisor type is not role or membership")
+  @JsonProperty(JSON_PROPERTY_ROLE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRoleId() {
     return roleId;
@@ -108,6 +111,8 @@ public class ProcessSupervisor implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Id of group, or -1 if the supervisor type is not group or membership")
+  @JsonProperty(JSON_PROPERTY_GROUP_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGroupId() {
     return groupId;
@@ -131,6 +136,8 @@ public class ProcessSupervisor implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Id of user, or -1 if the supervisor type is not user")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;

@@ -13,67 +13,65 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * License
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  License.JSON_PROPERTY_LICENSE_START_DATE,
+  License.JSON_PROPERTY_DURATION,
+  License.JSON_PROPERTY_LICENSE_EXPIRATION_DATE,
+  License.JSON_PROPERTY_NUMBER_OF_C_P_U_CORES,
+  License.JSON_PROPERTY_EDITION,
+  License.JSON_PROPERTY_LICENSE_MODE,
+  License.JSON_PROPERTY_REQUEST_KEY,
+  License.JSON_PROPERTY_SUBSCRIPTION_START_PERIOD,
+  License.JSON_PROPERTY_SUBSCRIPTION_END_PERIOD,
+  License.JSON_PROPERTY_CASE_COUNTER_LIMIT,
+  License.JSON_PROPERTY_CASE_COUNTER
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class License implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_LICENSE_START_DATE = "licenseStartDate";
-  @SerializedName(SERIALIZED_NAME_LICENSE_START_DATE)
+  public static final String JSON_PROPERTY_LICENSE_START_DATE = "licenseStartDate";
   private String licenseStartDate;
 
-  public static final String SERIALIZED_NAME_DURATION = "duration";
-  @SerializedName(SERIALIZED_NAME_DURATION)
+  public static final String JSON_PROPERTY_DURATION = "duration";
   private String duration;
 
-  public static final String SERIALIZED_NAME_LICENSE_EXPIRATION_DATE = "licenseExpirationDate";
-  @SerializedName(SERIALIZED_NAME_LICENSE_EXPIRATION_DATE)
+  public static final String JSON_PROPERTY_LICENSE_EXPIRATION_DATE = "licenseExpirationDate";
   private String licenseExpirationDate;
 
-  public static final String SERIALIZED_NAME_NUMBER_OF_C_P_U_CORES = "numberOfCPUCores";
-  @SerializedName(SERIALIZED_NAME_NUMBER_OF_C_P_U_CORES)
+  public static final String JSON_PROPERTY_NUMBER_OF_C_P_U_CORES = "numberOfCPUCores";
   private String numberOfCPUCores;
 
-  public static final String SERIALIZED_NAME_EDITION = "edition";
-  @SerializedName(SERIALIZED_NAME_EDITION)
+  public static final String JSON_PROPERTY_EDITION = "edition";
   private String edition;
 
-  public static final String SERIALIZED_NAME_LICENSE_MODE = "licenseMode";
-  @SerializedName(SERIALIZED_NAME_LICENSE_MODE)
+  public static final String JSON_PROPERTY_LICENSE_MODE = "licenseMode";
   private String licenseMode;
 
-  public static final String SERIALIZED_NAME_REQUEST_KEY = "requestKey";
-  @SerializedName(SERIALIZED_NAME_REQUEST_KEY)
+  public static final String JSON_PROPERTY_REQUEST_KEY = "requestKey";
   private String requestKey;
 
-  public static final String SERIALIZED_NAME_SUBSCRIPTION_START_PERIOD = "subscriptionStartPeriod";
-  @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_START_PERIOD)
+  public static final String JSON_PROPERTY_SUBSCRIPTION_START_PERIOD = "subscriptionStartPeriod";
   private String subscriptionStartPeriod;
 
-  public static final String SERIALIZED_NAME_SUBSCRIPTION_END_PERIOD = "subscriptionEndPeriod";
-  @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_END_PERIOD)
+  public static final String JSON_PROPERTY_SUBSCRIPTION_END_PERIOD = "subscriptionEndPeriod";
   private String subscriptionEndPeriod;
 
-  public static final String SERIALIZED_NAME_CASE_COUNTER_LIMIT = "caseCounterLimit";
-  @SerializedName(SERIALIZED_NAME_CASE_COUNTER_LIMIT)
+  public static final String JSON_PROPERTY_CASE_COUNTER_LIMIT = "caseCounterLimit";
   private Long caseCounterLimit;
 
-  public static final String SERIALIZED_NAME_CASE_COUNTER = "caseCounter";
-  @SerializedName(SERIALIZED_NAME_CASE_COUNTER)
+  public static final String JSON_PROPERTY_CASE_COUNTER = "caseCounter";
   private Long caseCounter;
 
 
@@ -89,6 +87,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date with format `yyyy-MM-dd` - first day (included) of license file validity")
+  @JsonProperty(JSON_PROPERTY_LICENSE_START_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLicenseStartDate() {
     return licenseStartDate;
@@ -112,6 +112,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number of days for license file validity")
+  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDuration() {
     return duration;
@@ -135,6 +137,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date with format `yyyy-MM-dd` - last day (included) of license file validity")
+  @JsonProperty(JSON_PROPERTY_LICENSE_EXPIRATION_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLicenseExpirationDate() {
     return licenseExpirationDate;
@@ -158,6 +162,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number of CPUs")
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_C_P_U_CORES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getNumberOfCPUCores() {
     return numberOfCPUCores;
@@ -181,6 +187,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "name of the Bonita edition enabled by the license")
+  @JsonProperty(JSON_PROPERTY_EDITION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEdition() {
     return edition;
@@ -204,6 +212,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "available mode enabled by the license")
+  @JsonProperty(JSON_PROPERTY_LICENSE_MODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLicenseMode() {
     return licenseMode;
@@ -227,6 +237,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "request key to use to generate a new license on the customer portal If you have a subscription that specifies case-counter licensing, additional fields are present: ")
+  @JsonProperty(JSON_PROPERTY_REQUEST_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRequestKey() {
     return requestKey;
@@ -250,6 +262,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date with format `yyyy-MM-dd` - first day (included) of current period for number of cases provisioned")
+  @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_START_PERIOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSubscriptionStartPeriod() {
     return subscriptionStartPeriod;
@@ -273,6 +287,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date with format `yyyy-MM-dd` - last day (included) of current period for number of cases provisioned")
+  @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_END_PERIOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSubscriptionEndPeriod() {
     return subscriptionEndPeriod;
@@ -296,6 +312,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number of cases provisioned for period between `subscriptionStartPeriod` and `subscriptionEndPeriod`")
+  @JsonProperty(JSON_PROPERTY_CASE_COUNTER_LIMIT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getCaseCounterLimit() {
     return caseCounterLimit;
@@ -319,6 +337,8 @@ public class License implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number of consumed cases for period between `subscriptionStartPeriod` and `subscriptionEndPeriod`")
+  @JsonProperty(JSON_PROPERTY_CASE_COUNTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getCaseCounter() {
     return caseCounter;

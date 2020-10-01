@@ -13,75 +13,73 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Process
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Process.JSON_PROPERTY_ID,
+  Process.JSON_PROPERTY_ICON,
+  Process.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+  Process.JSON_PROPERTY_DEPLOYMENT_DATE,
+  Process.JSON_PROPERTY_DESCRIPTION,
+  Process.JSON_PROPERTY_ACTIVATION_STATE,
+  Process.JSON_PROPERTY_NAME,
+  Process.JSON_PROPERTY_DEPLOYED_BY,
+  Process.JSON_PROPERTY_DISPLAY_NAME,
+  Process.JSON_PROPERTY_ACTORINITIATORID,
+  Process.JSON_PROPERTY_LAST_UPDATE_DATE,
+  Process.JSON_PROPERTY_CONFIGURATION_STATE,
+  Process.JSON_PROPERTY_VERSION
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Process implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_ICON = "icon";
-  @SerializedName(SERIALIZED_NAME_ICON)
+  public static final String JSON_PROPERTY_ICON = "icon";
   private String icon;
 
-  public static final String SERIALIZED_NAME_DISPLAY_DESCRIPTION = "displayDescription";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_DESCRIPTION)
+  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
   private String displayDescription;
 
-  public static final String SERIALIZED_NAME_DEPLOYMENT_DATE = "deploymentDate";
-  @SerializedName(SERIALIZED_NAME_DEPLOYMENT_DATE)
+  public static final String JSON_PROPERTY_DEPLOYMENT_DATE = "deploymentDate";
   private String deploymentDate;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_ACTIVATION_STATE = "activationState";
-  @SerializedName(SERIALIZED_NAME_ACTIVATION_STATE)
+  public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
   private String activationState;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DEPLOYED_BY = "deployedBy";
-  @SerializedName(SERIALIZED_NAME_DEPLOYED_BY)
+  public static final String JSON_PROPERTY_DEPLOYED_BY = "deployedBy";
   private String deployedBy;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  public static final String SERIALIZED_NAME_ACTORINITIATORID = "actorinitiatorid";
-  @SerializedName(SERIALIZED_NAME_ACTORINITIATORID)
+  public static final String JSON_PROPERTY_ACTORINITIATORID = "actorinitiatorid";
   private String actorinitiatorid;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "last_update_date";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_CONFIGURATION_STATE = "configurationState";
-  @SerializedName(SERIALIZED_NAME_CONFIGURATION_STATE)
+  public static final String JSON_PROPERTY_CONFIGURATION_STATE = "configurationState";
   private String configurationState;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
 
 
@@ -97,6 +95,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the identifier of the process definition (long)")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -120,6 +120,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "icon path")
+  @JsonProperty(JSON_PROPERTY_ICON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIcon() {
     return icon;
@@ -143,6 +145,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the human readable activity description")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayDescription() {
     return displayDescription;
@@ -166,6 +170,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date when the process definition was deployed")
+  @JsonProperty(JSON_PROPERTY_DEPLOYMENT_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDeploymentDate() {
     return deploymentDate;
@@ -189,6 +195,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the process description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -212,6 +220,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the state of the process definition (ENABLED or DISABLED)")
+  @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getActivationState() {
     return activationState;
@@ -235,6 +245,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the process name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -258,6 +270,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the user who deployed the process")
+  @JsonProperty(JSON_PROPERTY_DEPLOYED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDeployedBy() {
     return deployedBy;
@@ -281,6 +295,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the human readable process description")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -304,6 +320,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the actor that can initiate cases of the process")
+  @JsonProperty(JSON_PROPERTY_ACTORINITIATORID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getActorinitiatorid() {
     return actorinitiatorid;
@@ -327,6 +345,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date when the process definition was last updated")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -350,6 +370,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the configuration state of the process (UNRESOLVED or RESOLVED)")
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConfigurationState() {
     return configurationState;
@@ -373,6 +395,8 @@ public class Process implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the version of the process")
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVersion() {
     return version;

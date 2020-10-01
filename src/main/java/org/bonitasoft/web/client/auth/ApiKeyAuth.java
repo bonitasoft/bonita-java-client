@@ -1,14 +1,9 @@
 package org.bonitasoft.web.client.auth;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
 
-import okhttp3.Interceptor;
-import okhttp3.Request;
-import okhttp3.Response;
-
-public class ApiKeyAuth implements Interceptor {
+public class ApiKeyAuth implements RequestInterceptor {
     private final String location;
     private final String paramName;
 
@@ -36,37 +31,13 @@ public class ApiKeyAuth implements Interceptor {
     }
 
     @Override
-    public Response intercept(Chain chain) throws IOException {
-        String paramValue;
-        Request request = chain.request();
-
+    public void apply(RequestTemplate template) {
         if ("query".equals(location)) {
-            String newQuery = request.url().uri().getQuery();
-            paramValue = paramName + "=" + apiKey;
-            if (newQuery == null) {
-                newQuery = paramValue;
-            } else {
-                newQuery += "&" + paramValue;
-            }
-
-            URI newUri;
-            try {
-                newUri = new URI(request.url().uri().getScheme(), request.url().uri().getAuthority(),
-                    request.url().uri().getPath(), newQuery, request.url().uri().getFragment());
-            } catch (URISyntaxException e) {
-                throw new IOException(e);
-            }
-
-            request = request.newBuilder().url(newUri.toURL()).build();
+            template.query(paramName, apiKey);
         } else if ("header".equals(location)) {
-            request = request.newBuilder()
-                    .addHeader(paramName, apiKey)
-                    .build();
+            template.header(paramName, apiKey);
         } else if ("cookie".equals(location)) {
-            request = request.newBuilder()
-                    .addHeader("Cookie", String.format("%s=%s", paramName, apiKey))
-                    .build();
+            template.header("Cookie", String.format("%s=%s", paramName, apiKey));
         }
-        return chain.proceed(request);
     }
 }

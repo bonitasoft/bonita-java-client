@@ -13,51 +13,49 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ManualTaskCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ManualTaskCreateRequest.JSON_PROPERTY_PARENT_TASK_ID,
+  ManualTaskCreateRequest.JSON_PROPERTY_STATE,
+  ManualTaskCreateRequest.JSON_PROPERTY_NAME,
+  ManualTaskCreateRequest.JSON_PROPERTY_DESCRIPTION,
+  ManualTaskCreateRequest.JSON_PROPERTY_PRIORITY,
+  ManualTaskCreateRequest.JSON_PROPERTY_DUE_DATE,
+  ManualTaskCreateRequest.JSON_PROPERTY_ASSIGNED_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ManualTaskCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_PARENT_TASK_ID = "parentTaskId";
-  @SerializedName(SERIALIZED_NAME_PARENT_TASK_ID)
+  public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
   private String parentTaskId;
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_PRIORITY = "priority";
-  @SerializedName(SERIALIZED_NAME_PRIORITY)
+  public static final String JSON_PROPERTY_PRIORITY = "priority";
   private String priority;
 
-  public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
-  @SerializedName(SERIALIZED_NAME_DUE_DATE)
+  public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
   private String dueDate;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_ID = "assigned_id";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_ID)
+  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
   private String assignedId;
 
 
@@ -73,6 +71,8 @@ public class ManualTaskCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The parent task ID")
+  @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentTaskId() {
     return parentTaskId;
@@ -96,6 +96,8 @@ public class ManualTaskCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The task state")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getState() {
     return state;
@@ -119,6 +121,8 @@ public class ManualTaskCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The task name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -142,6 +146,8 @@ public class ManualTaskCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The task description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -165,6 +171,8 @@ public class ManualTaskCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The task priority")
+  @JsonProperty(JSON_PROPERTY_PRIORITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPriority() {
     return priority;
@@ -188,6 +196,8 @@ public class ManualTaskCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The task due date")
+  @JsonProperty(JSON_PROPERTY_DUE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDueDate() {
     return dueDate;
@@ -211,6 +221,8 @@ public class ManualTaskCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The id of the user assigned to the task")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedId() {
     return assignedId;

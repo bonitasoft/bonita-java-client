@@ -1,38 +1,35 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
-
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
-import org.bonitasoft.web.client.internal.model.Error;
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
+import org.bonitasoft.web.client.ApiClient;
+import org.bonitasoft.web.client.EncodingUtils;
 import org.bonitasoft.web.client.internal.model.ManualTask;
 import org.bonitasoft.web.client.internal.model.ManualTaskCreateRequest;
 import org.bonitasoft.web.client.internal.model.ManualTaskUpdateRequest;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public interface ManualTaskApi {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface ManualTaskApi extends ApiClient.Api {
+
+
   /**
    * Create the ManualTask
    * Create the ManualTask. Use a POST method to create a new subtask. A subtask is attached to a parent task and it needs to be immediately assigned to a user. 
    * @param body Partial ManualTask description (required)
-   * @return Call&lt;ManualTask&gt;
+   * @return ManualTask
    */
+  @RequestLine("POST /API/bpm/manualTask")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @POST("API/bpm/manualTask")
-  Call<ManualTask> createManualTask(
-    @retrofit2.http.Body ManualTaskCreateRequest body
-  );
+  ManualTask createManualTask(ManualTaskCreateRequest body);
 
   /**
    * Finds ManualTasks
@@ -42,37 +39,88 @@ public interface ManualTaskApi {
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param o can order on attributes (optional)
    * @param s can search on attributes (optional)
-   * @return Call&lt;List&lt;ManualTask&gt;&gt;
+   * @return List&lt;ManualTask&gt;
    */
-  @GET("API/bpm/manualTask")
-  Call<List<ManualTask>> findManualTasks(
-    @retrofit2.http.Query("p") Integer p, @retrofit2.http.Query("c") Integer c, @retrofit2.http.Query("f") String f, @retrofit2.http.Query("o") String o, @retrofit2.http.Query("s") String s
-  );
+  @RequestLine("GET /API/bpm/manualTask?p={p}&c={c}&f={f}&o={o}&s={s}")
+  @Headers({
+    "Accept: application/json",
+  })
+  List<ManualTask> findManualTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+
+  /**
+   * Finds ManualTasks
+   * Finds ManualTasks with pagination params and filters  You can filter on:  * &#x60;assigned_id&#x3D;{user_id}&#x60;: retrieve only the manual tasks assigned to the specified user. For example, retrieve the manual tasks assigned to user with id 1: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;assigned_id%3d1&#x60;. * &#x60;state&#x3D;skipped | ready | completed | failed&#x60; : retrieve only the manual tasks with the specified state. For example, retrieve the ready tasks: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;state%3dready&#x60;. * &#x60;caseId&#x3D;{case_id}&#x60;: retrieve only the manual tasks created in the specified case. For example, retrieve the manual tasks for the case\\_id 2: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;caseId%3d2&#x60;. * &#x60;parentTaskId&#x3D;{parentTask_id}&#x60;: retrieve only the manual tasks for a specific parentTask. For example, retrieve the manual tasks for the parentTask\\_id 40001: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;parentTaskId%3d40001&#x60;.  You can search on:  * name: search all manual tasks with a name that starts with the search string. For example, search for all manual tasks that have a name that starts with MySubTask: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;s&#x3D;MySubTask&#x60;. 
+   * Note, this is equivalent to the other <code>findManualTasks</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link FindManualTasksQueryParams} class that allows for
+   * building up this map in a fluent style.
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>p - index of the page to display (required)</li>
+   *   <li>c - maximum number of elements to retrieve (required)</li>
+   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
+   *   <li>o - can order on attributes (optional)</li>
+   *   <li>s - can search on attributes (optional)</li>
+   *   </ul>
+   * @return List&lt;ManualTask&gt;
+   */
+  @RequestLine("GET /API/bpm/manualTask?p={p}&c={c}&f={f}&o={o}&s={s}")
+  @Headers({
+  "Accept: application/json",
+  })
+  List<ManualTask> findManualTasks(@QueryMap(encoded=true) Map<String, Object> queryParams);
+
+  /**
+   * A convenience class for generating query parameters for the
+   * <code>findManualTasks</code> method in a fluent style.
+   */
+  public static class FindManualTasksQueryParams extends HashMap<String, Object> {
+    public FindManualTasksQueryParams p(final Integer value) {
+      put("p", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindManualTasksQueryParams c(final Integer value) {
+      put("c", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindManualTasksQueryParams f(final String value) {
+      put("f", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindManualTasksQueryParams o(final String value) {
+      put("o", EncodingUtils.encode(value));
+      return this;
+    }
+    public FindManualTasksQueryParams s(final String value) {
+      put("s", EncodingUtils.encode(value));
+      return this;
+    }
+  }
 
   /**
    * Finds the ManualTask by ID
    * Returns the single ManualTask for the given ID 
    * @param id ID of the ManualTask to return (required)
-   * @return Call&lt;ManualTask&gt;
+   * @return ManualTask
    */
-  @GET("API/bpm/manualTask/{id}")
-  Call<ManualTask> getManualTaskById(
-    @retrofit2.http.Path("id") String id
-  );
+  @RequestLine("GET /API/bpm/manualTask/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ManualTask getManualTaskById(@Param("id") String id);
 
   /**
    * Update the ManualTask by ID
    * Update the ManualTask for the given ID. Use a PUT method to execute a subtask. Executing a subtask basically means changing its state to completed and providing an executedBy value. 
    * @param id ID of the ManualTask to return (required)
    * @param manualTaskUpdateRequest Partial ManualTask description (required)
-   * @return Call&lt;Void&gt;
    */
+  @RequestLine("PUT /API/bpm/manualTask/{id}")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @PUT("API/bpm/manualTask/{id}")
-  Call<Void> updateManualTaskById(
-    @retrofit2.http.Path("id") String id, @retrofit2.http.Body ManualTaskUpdateRequest manualTaskUpdateRequest
-  );
-
+  void updateManualTaskById(@Param("id") String id, ManualTaskUpdateRequest manualTaskUpdateRequest);
 }

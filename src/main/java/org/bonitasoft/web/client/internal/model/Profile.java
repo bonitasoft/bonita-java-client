@@ -13,60 +13,59 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Profile
  */
 @ApiModel(description = "Profile")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Profile.JSON_PROPERTY_ID,
+  Profile.JSON_PROPERTY_CREATION_DATE,
+  Profile.JSON_PROPERTY_ICON,
+  Profile.JSON_PROPERTY_CREATED_BY,
+  Profile.JSON_PROPERTY_DESCRIPTION,
+  Profile.JSON_PROPERTY_NAME,
+  Profile.JSON_PROPERTY_ISDEFAULT,
+  Profile.JSON_PROPERTY_LAST_UPDATE_DATE,
+  Profile.JSON_PROPERTY_UPDATED_BY
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Profile implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATION_DATE = "creationDate";
-  @SerializedName(SERIALIZED_NAME_CREATION_DATE)
+  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
   private String creationDate;
 
-  public static final String SERIALIZED_NAME_ICON = "icon";
-  @SerializedName(SERIALIZED_NAME_ICON)
+  public static final String JSON_PROPERTY_ICON = "icon";
   private String icon;
 
-  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_ISDEFAULT = "isdefault";
-  @SerializedName(SERIALIZED_NAME_ISDEFAULT)
+  public static final String JSON_PROPERTY_ISDEFAULT = "isdefault";
   private Boolean isdefault;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "lastUpdateDate";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_UPDATED_BY = "updatedBy";
-  @SerializedName(SERIALIZED_NAME_UPDATED_BY)
+  public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
   private String updatedBy;
 
 
@@ -82,6 +81,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "profile id")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -105,6 +106,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date and time of profile creation")
+  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreationDate() {
     return creationDate;
@@ -128,6 +131,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "icon used in the portal to represent the profile")
+  @JsonProperty(JSON_PROPERTY_ICON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIcon() {
     return icon;
@@ -151,6 +156,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the uer who created the profile")
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreatedBy() {
     return createdBy;
@@ -174,6 +181,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "a description of the profile")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -197,6 +206,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "profile name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -220,6 +231,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "true | false ")
+  @JsonProperty(JSON_PROPERTY_ISDEFAULT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getIsdefault() {
     return isdefault;
@@ -243,6 +256,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date and time of the last update to the profile")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -266,6 +281,8 @@ public class Profile implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the user who last updated the profile")
+  @JsonProperty(JSON_PROPERTY_UPDATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUpdatedBy() {
     return updatedBy;

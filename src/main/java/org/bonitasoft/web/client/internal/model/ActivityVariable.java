@@ -13,70 +13,68 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * This resource enables you to retrieve the value of a specific variable name for a specific case (or process instance). Only persistent variables are concerned by this resource, not transient variables.
  */
 @ApiModel(description = "This resource enables you to retrieve the value of a specific variable name for a specific case (or process instance). Only persistent variables are concerned by this resource, not transient variables.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ActivityVariable.JSON_PROPERTY_TENANT_ID,
+  ActivityVariable.JSON_PROPERTY_TENANT_ID_STRING,
+  ActivityVariable.JSON_PROPERTY_ID,
+  ActivityVariable.JSON_PROPERTY_ID_STRING,
+  ActivityVariable.JSON_PROPERTY_NAME,
+  ActivityVariable.JSON_PROPERTY_DESCRIPTION,
+  ActivityVariable.JSON_PROPERTY_TRANSIENT_DATA,
+  ActivityVariable.JSON_PROPERTY_CLASS_NAME,
+  ActivityVariable.JSON_PROPERTY_CONTAINER_ID,
+  ActivityVariable.JSON_PROPERTY_CONTAINER_ID_STRING,
+  ActivityVariable.JSON_PROPERTY_CONTAINER_TYPE,
+  ActivityVariable.JSON_PROPERTY_VALUE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ActivityVariable implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_TENANT_ID = "tenantId";
-  @SerializedName(SERIALIZED_NAME_TENANT_ID)
+  public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   private String tenantId;
 
-  public static final String SERIALIZED_NAME_TENANT_ID_STRING = "tenantId_string";
-  @SerializedName(SERIALIZED_NAME_TENANT_ID_STRING)
+  public static final String JSON_PROPERTY_TENANT_ID_STRING = "tenantId_string";
   private String tenantIdString;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_ID_STRING = "id_string";
-  @SerializedName(SERIALIZED_NAME_ID_STRING)
+  public static final String JSON_PROPERTY_ID_STRING = "id_string";
   private String idString;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_TRANSIENT_DATA = "transientData";
-  @SerializedName(SERIALIZED_NAME_TRANSIENT_DATA)
+  public static final String JSON_PROPERTY_TRANSIENT_DATA = "transientData";
   private String transientData;
 
-  public static final String SERIALIZED_NAME_CLASS_NAME = "className";
-  @SerializedName(SERIALIZED_NAME_CLASS_NAME)
+  public static final String JSON_PROPERTY_CLASS_NAME = "className";
   private String className;
 
-  public static final String SERIALIZED_NAME_CONTAINER_ID = "containerId";
-  @SerializedName(SERIALIZED_NAME_CONTAINER_ID)
+  public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
   private String containerId;
 
-  public static final String SERIALIZED_NAME_CONTAINER_ID_STRING = "containerId_string";
-  @SerializedName(SERIALIZED_NAME_CONTAINER_ID_STRING)
+  public static final String JSON_PROPERTY_CONTAINER_ID_STRING = "containerId_string";
   private String containerIdString;
 
   /**
    * ACTIVITY_INSTANCE | PROCESS_INSTANCE depending on whether the variable is defined at activity or process level.
    */
-  @JsonAdapter(ContainerTypeEnum.Adapter.class)
   public enum ContainerTypeEnum {
     ACTIVITY_INSTANCE("ACTIVITY_INSTANCE"),
     
@@ -88,6 +86,7 @@ public class ActivityVariable implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -97,6 +96,7 @@ public class ActivityVariable implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static ContainerTypeEnum fromValue(String value) {
       for (ContainerTypeEnum b : ContainerTypeEnum.values()) {
         if (b.value.equals(value)) {
@@ -105,27 +105,12 @@ public class ActivityVariable implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<ContainerTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ContainerTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ContainerTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ContainerTypeEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_CONTAINER_TYPE = "containerType";
-  @SerializedName(SERIALIZED_NAME_CONTAINER_TYPE)
+  public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
   private ContainerTypeEnum containerType;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private String value;
 
 
@@ -141,6 +126,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the tenant where the current user is logged in (technical information)")
+  @JsonProperty(JSON_PROPERTY_TENANT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTenantId() {
     return tenantId;
@@ -164,6 +151,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number (since 7.0.1)")
+  @JsonProperty(JSON_PROPERTY_TENANT_ID_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTenantIdString() {
     return tenantIdString;
@@ -187,6 +176,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The identifier of the variable")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -210,6 +201,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number (since 7.0.1)")
+  @JsonProperty(JSON_PROPERTY_ID_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIdString() {
     return idString;
@@ -233,6 +226,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of the activity variable")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -256,6 +251,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The description of the variable if any")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -279,6 +276,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "FALSE")
+  @JsonProperty(JSON_PROPERTY_TRANSIENT_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTransientData() {
     return transientData;
@@ -302,6 +301,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The fully qualified class name of the variable type")
+  @JsonProperty(JSON_PROPERTY_CLASS_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getClassName() {
     return className;
@@ -325,6 +326,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the activity containing this variable (same as the one passed as parameter) if the variable is defined at activity level or ID of the process instance if the variable is defined on the process")
+  @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContainerId() {
     return containerId;
@@ -348,6 +351,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number (since 7.0.1)")
+  @JsonProperty(JSON_PROPERTY_CONTAINER_ID_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContainerIdString() {
     return containerIdString;
@@ -371,6 +376,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "ACTIVITY_INSTANCE | PROCESS_INSTANCE depending on whether the variable is defined at activity or process level.")
+  @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ContainerTypeEnum getContainerType() {
     return containerType;
@@ -394,6 +401,8 @@ public class ActivityVariable implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the value of this variable. The format of the value depends on the type of the variable")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getValue() {
     return value;

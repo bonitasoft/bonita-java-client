@@ -13,45 +13,41 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ProfileMemberCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ProfileMemberCreateRequest.JSON_PROPERTY_PROFILE_ID,
+  ProfileMemberCreateRequest.JSON_PROPERTY_ROLE_ID,
+  ProfileMemberCreateRequest.JSON_PROPERTY_GROUP_ID,
+  ProfileMemberCreateRequest.JSON_PROPERTY_USER_ID,
+  ProfileMemberCreateRequest.JSON_PROPERTY_MEMBER_TYPE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ProfileMemberCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_PROFILE_ID = "profile_id";
-  @SerializedName(SERIALIZED_NAME_PROFILE_ID)
+  public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
   private String profileId;
 
-  public static final String SERIALIZED_NAME_ROLE_ID = "role_id";
-  @SerializedName(SERIALIZED_NAME_ROLE_ID)
+  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
   private String roleId;
 
-  public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
-  @SerializedName(SERIALIZED_NAME_GROUP_ID)
+  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
   private String groupId;
 
-  public static final String SERIALIZED_NAME_USER_ID = "user_id";
-  @SerializedName(SERIALIZED_NAME_USER_ID)
+  public static final String JSON_PROPERTY_USER_ID = "user_id";
   private String userId;
 
   /**
    * member type
    */
-  @JsonAdapter(MemberTypeEnum.Adapter.class)
   public enum MemberTypeEnum {
     USER("USER"),
     
@@ -65,6 +61,7 @@ public class ProfileMemberCreateRequest implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -74,6 +71,7 @@ public class ProfileMemberCreateRequest implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static MemberTypeEnum fromValue(String value) {
       for (MemberTypeEnum b : MemberTypeEnum.values()) {
         if (b.value.equals(value)) {
@@ -82,23 +80,9 @@ public class ProfileMemberCreateRequest implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<MemberTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MemberTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MemberTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MemberTypeEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_MEMBER_TYPE = "member_type";
-  @SerializedName(SERIALIZED_NAME_MEMBER_TYPE)
+  public static final String JSON_PROPERTY_MEMBER_TYPE = "member_type";
   private MemberTypeEnum memberType;
 
 
@@ -114,6 +98,8 @@ public class ProfileMemberCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the profile for this mapping")
+  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProfileId() {
     return profileId;
@@ -137,6 +123,8 @@ public class ProfileMemberCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of role, or -1 if the member type is not role")
+  @JsonProperty(JSON_PROPERTY_ROLE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRoleId() {
     return roleId;
@@ -160,6 +148,8 @@ public class ProfileMemberCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of group, or -1 if the member type is not group")
+  @JsonProperty(JSON_PROPERTY_GROUP_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGroupId() {
     return groupId;
@@ -183,6 +173,8 @@ public class ProfileMemberCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of user, or -1 if the member type is not user")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -206,6 +198,8 @@ public class ProfileMemberCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "member type")
+  @JsonProperty(JSON_PROPERTY_MEMBER_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public MemberTypeEnum getMemberType() {
     return memberType;

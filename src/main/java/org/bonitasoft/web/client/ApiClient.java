@@ -1,62 +1,59 @@
 package org.bonitasoft.web.client;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonElement;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import retrofit2.Converter;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import feign.Feign;
+import feign.RequestInterceptor;
+import feign.form.FormEncoder;
+import feign.jackson.JacksonDecoder;
+import feign.jackson.JacksonEncoder;
+import feign.slf4j.Slf4jLogger;
+import org.bonitasoft.web.client.auth.ApiKeyAuth;
 import org.bonitasoft.web.client.auth.HttpBasicAuth;
 import org.bonitasoft.web.client.auth.HttpBearerAuth;
-import org.bonitasoft.web.client.auth.ApiKeyAuth;
+import org.openapitools.jackson.nullable.JsonNullableModule;
 
-import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Type;
-import java.text.DateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.HashMap;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ApiClient {
+  public interface Api {}
 
-  private Map<String, Interceptor> apiAuthorizations;
-  private OkHttpClient.Builder okBuilder;
-  private Retrofit.Builder adapterBuilder;
-  private JSON json;
+  protected ObjectMapper objectMapper;
+  private String basePath = "http://localhost:8080/bonita";
+  private Map<String, RequestInterceptor> apiAuthorizations;
+  private Feign.Builder feignBuilder;
 
   public ApiClient() {
-    apiAuthorizations = new LinkedHashMap<String, Interceptor>();
-    createDefaultAdapter();
+    objectMapper = createObjectMapper();
+    apiAuthorizations = new LinkedHashMap<String, RequestInterceptor>();
+    feignBuilder = Feign.builder()
+                .encoder(new FormEncoder(new JacksonEncoder(objectMapper)))
+                .decoder(new JacksonDecoder(objectMapper))
+                .logger(new Slf4jLogger());
   }
 
   public ApiClient(String[] authNames) {
     this();
     for(String authName : authNames) {
-      Interceptor auth;
+      RequestInterceptor auth;
       if ("bonita_auth".equals(authName)) {
-        
         auth = new ApiKeyAuth("cookie", "JSESSIONID");
       } else if ("bonita_token".equals(authName)) {
-        
         auth = new ApiKeyAuth("header", "X-Bonita-API-Token");
       } else {
         throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
       }
-
       addAuthorization(authName, auth);
     }
   }
 
   /**
    * Basic constructor for single auth name
-   * @param authName Authentication name
+   * @param authName
    */
   public ApiClient(String authName) {
     this(new String[]{authName});
@@ -64,8 +61,8 @@ public class ApiClient {
 
   /**
    * Helper constructor for single api key
-   * @param authName Authentication name
-   * @param apiKey API key
+   * @param authName
+   * @param apiKey
    */
   public ApiClient(String authName, String apiKey) {
     this(authName);
@@ -74,211 +71,171 @@ public class ApiClient {
 
   /**
    * Helper constructor for single basic auth or password oauth2
-   * @param authName Authentication name
-   * @param username Username
-   * @param password Password
+   * @param authName
+   * @param username
+   * @param password
    */
   public ApiClient(String authName, String username, String password) {
     this(authName);
     this.setCredentials(username,  password);
   }
 
-  public void createDefaultAdapter() {
-    json = new JSON();
-    okBuilder = new OkHttpClient.Builder();
-
-    String baseUrl = "http://localhost:8080/bonita";
-    if (!baseUrl.endsWith("/"))
-      baseUrl = baseUrl + "/";
-
-    adapterBuilder = new Retrofit
-      .Builder()
-      .baseUrl(baseUrl)
-      .addConverterFactory(ScalarsConverterFactory.create())
-      .addConverterFactory(GsonCustomConverterFactory.create(json.getGson()));
+  public String getBasePath() {
+    return basePath;
   }
 
-  public <S> S createService(Class<S> serviceClass) {
-    return adapterBuilder
-      .client(okBuilder.build())
-      .build()
-      .create(serviceClass);
-  }
-
-  public ApiClient setDateFormat(DateFormat dateFormat) {
-    this.json.setDateFormat(dateFormat);
+  public ApiClient setBasePath(String basePath) {
+    this.basePath = basePath;
     return this;
   }
 
-  public ApiClient setSqlDateFormat(DateFormat dateFormat) {
-    this.json.setSqlDateFormat(dateFormat);
+  public Map<String, RequestInterceptor> getApiAuthorizations() {
+    return apiAuthorizations;
+  }
+
+  public void setApiAuthorizations(Map<String, RequestInterceptor> apiAuthorizations) {
+    this.apiAuthorizations = apiAuthorizations;
+  }
+
+  public Feign.Builder getFeignBuilder() {
+    return feignBuilder;
+  }
+
+  public ApiClient setFeignBuilder(Feign.Builder feignBuilder) {
+    this.feignBuilder = feignBuilder;
     return this;
   }
 
-  public ApiClient setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
-    this.json.setOffsetDateTimeFormat(dateFormat);
-    return this;
+  private ObjectMapper createObjectMapper() {
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
+    objectMapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
+    objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+    objectMapper.disable(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE);
+    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    objectMapper.setDateFormat(new RFC3339DateFormat());
+    objectMapper.registerModule(new JavaTimeModule());
+    JsonNullableModule jnm = new JsonNullableModule();
+    objectMapper.registerModule(jnm);
+    return objectMapper;
   }
 
-  public ApiClient setLocalDateFormat(DateTimeFormatter dateFormat) {
-    this.json.setLocalDateFormat(dateFormat);
-    return this;
+  public ObjectMapper getObjectMapper(){
+    return objectMapper;
   }
 
+  /**
+   * Creates a feign client for given API interface.
+   *
+   * Usage:
+   *    ApiClient apiClient = new ApiClient();
+   *    apiClient.setBasePath("http://localhost:8080");
+   *    XYZApi api = apiClient.buildClient(XYZApi.class);
+   *    XYZResponse response = api.someMethod(...);
+   * @param <T> Type
+   * @param clientClass Client class
+   * @return The Client
+   */
+  public <T extends Api> T buildClient(Class<T> clientClass) {
+    return feignBuilder.target(clientClass, basePath);
+  }
+
+  /**
+   * Select the Accept header's value from the given accepts array:
+   *   if JSON exists in the given array, use it;
+   *   otherwise use all of them (joining into a string)
+   *
+   * @param accepts The accepts array to select from
+   * @return The Accept header to use. If the given array is empty,
+   *   null will be returned (not to set the Accept header explicitly).
+   */
+  public String selectHeaderAccept(String[] accepts) {
+    if (accepts.length == 0) return null;
+    if (StringUtil.containsIgnoreCase(accepts, "application/json")) return "application/json";
+    return StringUtil.join(accepts, ",");
+  }
+
+  /**
+   * Select the Content-Type header's value from the given array:
+   *   if JSON exists in the given array, use it;
+   *   otherwise use the first one of the array.
+   *
+   * @param contentTypes The Content-Type array to select from
+   * @return The Content-Type header to use. If the given array is empty,
+   *   JSON will be used.
+   */
+  public String selectHeaderContentType(String[] contentTypes) {
+    if (contentTypes.length == 0) return "application/json";
+    if (StringUtil.containsIgnoreCase(contentTypes, "application/json")) return "application/json";
+    return contentTypes[0];
+  }
+
+
+  /**
+   * Helper method to configure the bearer token.
+   * @param bearerToken the bearer token.
+   */
+  public void setBearerToken(String bearerToken) {
+    for(RequestInterceptor apiAuthorization : apiAuthorizations.values()) {
+      if (apiAuthorization instanceof HttpBearerAuth) {
+        ((HttpBearerAuth) apiAuthorization).setBearerToken(bearerToken);
+        return;
+      }
+    }
+    throw new RuntimeException("No Bearer authentication configured!");
+  }
 
   /**
    * Helper method to configure the first api key found
    * @param apiKey API key
-   * @return ApiClient
    */
-  public ApiClient setApiKey(String apiKey) {
-    for(Interceptor apiAuthorization : apiAuthorizations.values()) {
+  public void setApiKey(String apiKey) {
+    for(RequestInterceptor apiAuthorization : apiAuthorizations.values()) {
       if (apiAuthorization instanceof ApiKeyAuth) {
         ApiKeyAuth keyAuth = (ApiKeyAuth) apiAuthorization;
         keyAuth.setApiKey(apiKey);
-        return this;
+        return ;
       }
     }
-    return this;
+    throw new RuntimeException("No API key authentication configured!");
   }
 
   /**
-   * Helper method to set token for the first Http Bearer authentication found.
-   * @param bearerToken Bearer token
-   * @return ApiClient
-   */
-  public ApiClient setBearerToken(String bearerToken) {
-    for (Interceptor apiAuthorization : apiAuthorizations.values()) {
-      if (apiAuthorization instanceof HttpBearerAuth) {
-        ((HttpBearerAuth) apiAuthorization).setBearerToken(bearerToken);
-        return this;
-      }
-    }
-    return this;
-  }
-
-  /**
-   * Helper method to configure the username/password for basic auth or password oauth
+   * Helper method to configure the username/password for basic auth or password OAuth
    * @param username Username
    * @param password Password
-   * @return ApiClient
    */
-  public ApiClient setCredentials(String username, String password) {
-    for(Interceptor apiAuthorization : apiAuthorizations.values()) {
+  public void setCredentials(String username, String password) {
+    for(RequestInterceptor apiAuthorization : apiAuthorizations.values()) {
       if (apiAuthorization instanceof HttpBasicAuth) {
         HttpBasicAuth basicAuth = (HttpBasicAuth) apiAuthorization;
         basicAuth.setCredentials(username, password);
-        return this;
+        return;
       }
     }
-    return this;
+    throw new RuntimeException("No Basic authentication or OAuth configured!");
   }
 
+  /**
+   * Gets request interceptor based on authentication name
+   * @param authName Authentiation name
+   * @return Request Interceptor
+   */
+  public RequestInterceptor getAuthorization(String authName) {
+    return apiAuthorizations.get(authName);
+  }
 
   /**
    * Adds an authorization to be used by the client
    * @param authName Authentication name
-   * @param authorization Authorization interceptor
-   * @return ApiClient
+   * @param authorization Request interceptor
    */
-  public ApiClient addAuthorization(String authName, Interceptor authorization) {
+  public void addAuthorization(String authName, RequestInterceptor authorization) {
     if (apiAuthorizations.containsKey(authName)) {
       throw new RuntimeException("auth name \"" + authName + "\" already in api authorizations");
     }
     apiAuthorizations.put(authName, authorization);
-    okBuilder.addInterceptor(authorization);
-    return this;
+    feignBuilder.requestInterceptor(authorization);
   }
 
-  public Map<String, Interceptor> getApiAuthorizations() {
-    return apiAuthorizations;
-  }
-
-  public ApiClient setApiAuthorizations(Map<String, Interceptor> apiAuthorizations) {
-    this.apiAuthorizations = apiAuthorizations;
-    return this;
-  }
-
-  public Retrofit.Builder getAdapterBuilder() {
-    return adapterBuilder;
-  }
-
-  public ApiClient setAdapterBuilder(Retrofit.Builder adapterBuilder) {
-    this.adapterBuilder = adapterBuilder;
-    return this;
-  }
-
-  public OkHttpClient.Builder getOkBuilder() {
-    return okBuilder;
-  }
-
-  public void addAuthsToOkBuilder(OkHttpClient.Builder okBuilder) {
-    for(Interceptor apiAuthorization : apiAuthorizations.values()) {
-      okBuilder.addInterceptor(apiAuthorization);
-    }
-  }
-
-  /**
-   * Clones the okBuilder given in parameter, adds the auth interceptors and uses it to configure the Retrofit
-   * @param okClient An instance of OK HTTP client
-   */
-  public void configureFromOkclient(OkHttpClient okClient) {
-    this.okBuilder = okClient.newBuilder();
-    addAuthsToOkBuilder(this.okBuilder);
-  }
-}
-
-/**
- * This wrapper is to take care of this case:
- * when the deserialization fails due to JsonParseException and the
- * expected type is String, then just return the body string.
- */
-class GsonResponseBodyConverterToString<T> implements Converter<ResponseBody, T> {
-  private final Gson gson;
-  private final Type type;
-
-  GsonResponseBodyConverterToString(Gson gson, Type type) {
-    this.gson = gson;
-    this.type = type;
-  }
-
-  @Override public T convert(ResponseBody value) throws IOException {
-    String returned = value.string();
-    try {
-      return gson.fromJson(returned, type);
-    }
-    catch (JsonParseException e) {
-      return (T) returned;
-    }
-  }
-}
-
-class GsonCustomConverterFactory extends Converter.Factory
-{
-  private final Gson gson;
-  private final GsonConverterFactory gsonConverterFactory;
-
-  public static GsonCustomConverterFactory create(Gson gson) {
-    return new GsonCustomConverterFactory(gson);
-  }
-
-  private GsonCustomConverterFactory(Gson gson) {
-    if (gson == null)
-      throw new NullPointerException("gson == null");
-    this.gson = gson;
-    this.gsonConverterFactory = GsonConverterFactory.create(gson);
-  }
-
-  @Override
-  public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
-    if (type.equals(String.class))
-      return new GsonResponseBodyConverterToString<Object>(gson, type);
-    else
-      return gsonConverterFactory.responseBodyConverter(type, annotations, retrofit);
-  }
-
-  @Override
-  public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
-    return gsonConverterFactory.requestBodyConverter(type, parameterAnnotations, methodAnnotations, retrofit);
-  }
 }

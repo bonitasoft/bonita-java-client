@@ -13,61 +13,57 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import org.bonitasoft.web.client.internal.model.ArchivedConnectorInstanceAllOf;
-import org.bonitasoft.web.client.internal.model.ConnectorInstance;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ArchivedConnectorInstance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ArchivedConnectorInstance.JSON_PROPERTY_CONTAINER_TYPE,
+  ArchivedConnectorInstance.JSON_PROPERTY_CONNECTOR_ID,
+  ArchivedConnectorInstance.JSON_PROPERTY_ID,
+  ArchivedConnectorInstance.JSON_PROPERTY_NAME,
+  ArchivedConnectorInstance.JSON_PROPERTY_ACTIVATION_EVENT,
+  ArchivedConnectorInstance.JSON_PROPERTY_STATE,
+  ArchivedConnectorInstance.JSON_PROPERTY_CONTAINER_ID,
+  ArchivedConnectorInstance.JSON_PROPERTY_VERSION,
+  ArchivedConnectorInstance.JSON_PROPERTY_ARCHIVED_DATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ArchivedConnectorInstance implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_CONTAINER_TYPE = "containerType";
-  @SerializedName(SERIALIZED_NAME_CONTAINER_TYPE)
+  public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
   private String containerType;
 
-  public static final String SERIALIZED_NAME_CONNECTOR_ID = "connectorId";
-  @SerializedName(SERIALIZED_NAME_CONNECTOR_ID)
+  public static final String JSON_PROPERTY_CONNECTOR_ID = "connectorId";
   private String connectorId;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private Long id;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_ACTIVATION_EVENT = "activationEvent";
-  @SerializedName(SERIALIZED_NAME_ACTIVATION_EVENT)
+  public static final String JSON_PROPERTY_ACTIVATION_EVENT = "activationEvent";
   private String activationEvent;
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
-  public static final String SERIALIZED_NAME_CONTAINER_ID = "containerId";
-  @SerializedName(SERIALIZED_NAME_CONTAINER_ID)
+  public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
   private String containerId;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
 
-  public static final String SERIALIZED_NAME_ARCHIVED_DATE = "archivedDate";
-  @SerializedName(SERIALIZED_NAME_ARCHIVED_DATE)
+  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
   private String archivedDate;
 
 
@@ -83,6 +79,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the type of the containing activity")
+  @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContainerType() {
     return containerType;
@@ -106,6 +104,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the connector id")
+  @JsonProperty(JSON_PROPERTY_CONNECTOR_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConnectorId() {
     return connectorId;
@@ -129,6 +129,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the connector instance id ")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getId() {
     return id;
@@ -152,6 +154,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the connector name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -175,6 +179,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the name of hte event that activated the connector instance")
+  @JsonProperty(JSON_PROPERTY_ACTIVATION_EVENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getActivationEvent() {
     return activationEvent;
@@ -198,6 +204,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the connector state")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getState() {
     return state;
@@ -221,6 +229,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the containing activity instance id")
+  @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContainerId() {
     return containerId;
@@ -244,6 +254,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the connector version")
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVersion() {
     return version;
@@ -267,6 +279,8 @@ public class ArchivedConnectorInstance implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getArchivedDate() {
     return archivedDate;

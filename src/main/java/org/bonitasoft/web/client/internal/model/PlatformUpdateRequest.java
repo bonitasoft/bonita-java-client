@@ -13,29 +13,25 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * PlatformUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  PlatformUpdateRequest.JSON_PROPERTY_STATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class PlatformUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
   /**
    * Platform state
    */
-  @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     START("start"),
     
@@ -47,6 +43,7 @@ public class PlatformUpdateRequest implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -56,6 +53,7 @@ public class PlatformUpdateRequest implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static StateEnum fromValue(String value) {
       for (StateEnum b : StateEnum.values()) {
         if (b.value.equals(value)) {
@@ -64,23 +62,9 @@ public class PlatformUpdateRequest implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<StateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StateEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private StateEnum state;
 
 
@@ -96,6 +80,8 @@ public class PlatformUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Platform state")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public StateEnum getState() {
     return state;

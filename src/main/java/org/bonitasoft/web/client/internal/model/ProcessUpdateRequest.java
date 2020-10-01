@@ -13,37 +13,33 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ProcessUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ProcessUpdateRequest.JSON_PROPERTY_DISPLAYDESCRIPTION,
+  ProcessUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
+  ProcessUpdateRequest.JSON_PROPERTY_ACTIVATION_STATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ProcessUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_DISPLAYDESCRIPTION = "displaydescription";
-  @SerializedName(SERIALIZED_NAME_DISPLAYDESCRIPTION)
+  public static final String JSON_PROPERTY_DISPLAYDESCRIPTION = "displaydescription";
   private String displaydescription;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
   /**
    * activation state of the Process
    */
-  @JsonAdapter(ActivationStateEnum.Adapter.class)
   public enum ActivationStateEnum {
     ENABLED("ENABLED"),
     
@@ -55,6 +51,7 @@ public class ProcessUpdateRequest implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -64,6 +61,7 @@ public class ProcessUpdateRequest implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static ActivationStateEnum fromValue(String value) {
       for (ActivationStateEnum b : ActivationStateEnum.values()) {
         if (b.value.equals(value)) {
@@ -72,23 +70,9 @@ public class ProcessUpdateRequest implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<ActivationStateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ActivationStateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ActivationStateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ActivationStateEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_ACTIVATION_STATE = "activationState";
-  @SerializedName(SERIALIZED_NAME_ACTIVATION_STATE)
+  public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
   private ActivationStateEnum activationState;
 
 
@@ -104,6 +88,8 @@ public class ProcessUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "description of the Process")
+  @JsonProperty(JSON_PROPERTY_DISPLAYDESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplaydescription() {
     return displaydescription;
@@ -127,6 +113,8 @@ public class ProcessUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "display name of the Process")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -150,6 +138,8 @@ public class ProcessUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "activation state of the Process")
+  @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ActivationStateEnum getActivationState() {
     return activationState;

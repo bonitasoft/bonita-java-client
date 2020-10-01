@@ -13,22 +13,12 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.annotations.ApiModel;
-import com.google.gson.annotations.SerializedName;
-import java.io.Serializable;
-
-import java.io.IOException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * the activity type (string)
  */
-@JsonAdapter(ActivityTypeEnum.Adapter.class)
 public enum ActivityTypeEnum {
   
   AUTOMATIC_TASK("AUTOMATIC_TASK"),
@@ -51,6 +41,7 @@ public enum ActivityTypeEnum {
     this.value = value;
   }
 
+  @JsonValue
   public String getValue() {
     return value;
   }
@@ -60,6 +51,7 @@ public enum ActivityTypeEnum {
     return String.valueOf(value);
   }
 
+  @JsonCreator
   public static ActivityTypeEnum fromValue(String value) {
     for (ActivityTypeEnum b : ActivityTypeEnum.values()) {
       if (b.value.equals(value)) {
@@ -67,19 +59,6 @@ public enum ActivityTypeEnum {
       }
     }
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
-
-  public static class Adapter extends TypeAdapter<ActivityTypeEnum> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final ActivityTypeEnum enumeration) throws IOException {
-      jsonWriter.value(enumeration.getValue());
-    }
-
-    @Override
-    public ActivityTypeEnum read(final JsonReader jsonReader) throws IOException {
-      String value = jsonReader.nextString();
-      return ActivityTypeEnum.fromValue(value);
-    }
   }
 }
 

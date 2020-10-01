@@ -13,35 +13,33 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * CustomUserValue
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  CustomUserValue.JSON_PROPERTY_USER_ID,
+  CustomUserValue.JSON_PROPERTY_VALUE,
+  CustomUserValue.JSON_PROPERTY_DEFINITION_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class CustomUserValue implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_USER_ID = "userId";
-  @SerializedName(SERIALIZED_NAME_USER_ID)
+  public static final String JSON_PROPERTY_USER_ID = "userId";
   private String userId;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private String value;
 
-  public static final String SERIALIZED_NAME_DEFINITION_ID = "definitionId";
-  @SerializedName(SERIALIZED_NAME_DEFINITION_ID)
+  public static final String JSON_PROPERTY_DEFINITION_ID = "definitionId";
   private String definitionId;
 
 
@@ -57,6 +55,8 @@ public class CustomUserValue implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user id")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -80,6 +80,8 @@ public class CustomUserValue implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "definition value")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getValue() {
     return value;
@@ -103,6 +105,8 @@ public class CustomUserValue implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "definition id")
+  @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDefinitionId() {
     return definitionId;

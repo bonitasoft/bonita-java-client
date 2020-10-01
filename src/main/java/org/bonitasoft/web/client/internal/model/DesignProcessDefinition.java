@@ -13,72 +13,65 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import org.bonitasoft.web.client.internal.model.ActorDefinition;
-import org.bonitasoft.web.client.internal.model.DesignProcessDefinitionContext;
-import org.bonitasoft.web.client.internal.model.DesignProcessDefinitionContract;
-import org.bonitasoft.web.client.internal.model.DesignProcessDefinitionParameters;
-import org.bonitasoft.web.client.internal.model.Expression;
-import org.bonitasoft.web.client.internal.model.FlowElementContainerDefinition;
-import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Represents the Design Definition of a process. It gives access to process attributes.
  */
 @ApiModel(description = "Represents the Design Definition of a process. It gives access to process attributes.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  DesignProcessDefinition.JSON_PROPERTY_DISPLAY_NAME,
+  DesignProcessDefinition.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+  DesignProcessDefinition.JSON_PROPERTY_FLOW_ELEMENT_CONTAINER,
+  DesignProcessDefinition.JSON_PROPERTY_PARAMETERS,
+  DesignProcessDefinition.JSON_PROPERTY_ACTORS_LIST,
+  DesignProcessDefinition.JSON_PROPERTY_ACTOR_INITIATOR,
+  DesignProcessDefinition.JSON_PROPERTY_STRING_INDEX_LABELS,
+  DesignProcessDefinition.JSON_PROPERTY_STRING_INDEX_VALUES,
+  DesignProcessDefinition.JSON_PROPERTY_CONTRACT,
+  DesignProcessDefinition.JSON_PROPERTY_CONTEXT
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class DesignProcessDefinition implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  public static final String SERIALIZED_NAME_DISPLAY_DESCRIPTION = "displayDescription";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_DESCRIPTION)
+  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
   private String displayDescription;
 
-  public static final String SERIALIZED_NAME_FLOW_ELEMENT_CONTAINER = "flowElementContainer";
-  @SerializedName(SERIALIZED_NAME_FLOW_ELEMENT_CONTAINER)
+  public static final String JSON_PROPERTY_FLOW_ELEMENT_CONTAINER = "flowElementContainer";
   private FlowElementContainerDefinition flowElementContainer;
 
-  public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
-  @SerializedName(SERIALIZED_NAME_PARAMETERS)
+  public static final String JSON_PROPERTY_PARAMETERS = "parameters";
   private List<DesignProcessDefinitionParameters> parameters = null;
 
-  public static final String SERIALIZED_NAME_ACTORS_LIST = "actorsList";
-  @SerializedName(SERIALIZED_NAME_ACTORS_LIST)
+  public static final String JSON_PROPERTY_ACTORS_LIST = "actorsList";
   private List<ActorDefinition> actorsList = null;
 
-  public static final String SERIALIZED_NAME_ACTOR_INITIATOR = "actorInitiator";
-  @SerializedName(SERIALIZED_NAME_ACTOR_INITIATOR)
+  public static final String JSON_PROPERTY_ACTOR_INITIATOR = "actorInitiator";
   private ActorDefinition actorInitiator;
 
-  public static final String SERIALIZED_NAME_STRING_INDEX_LABELS = "stringIndexLabels";
-  @SerializedName(SERIALIZED_NAME_STRING_INDEX_LABELS)
+  public static final String JSON_PROPERTY_STRING_INDEX_LABELS = "stringIndexLabels";
   private List<String> stringIndexLabels = null;
 
-  public static final String SERIALIZED_NAME_STRING_INDEX_VALUES = "stringIndexValues";
-  @SerializedName(SERIALIZED_NAME_STRING_INDEX_VALUES)
+  public static final String JSON_PROPERTY_STRING_INDEX_VALUES = "stringIndexValues";
   private List<Expression> stringIndexValues = null;
 
-  public static final String SERIALIZED_NAME_CONTRACT = "contract";
-  @SerializedName(SERIALIZED_NAME_CONTRACT)
+  public static final String JSON_PROPERTY_CONTRACT = "contract";
   private DesignProcessDefinitionContract contract;
 
-  public static final String SERIALIZED_NAME_CONTEXT = "context";
-  @SerializedName(SERIALIZED_NAME_CONTEXT)
+  public static final String JSON_PROPERTY_CONTEXT = "context";
   private List<DesignProcessDefinitionContext> context = null;
 
 
@@ -94,6 +87,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The process definition display name")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -117,6 +112,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The process definition display description name")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayDescription() {
     return displayDescription;
@@ -140,6 +137,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_FLOW_ELEMENT_CONTAINER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public FlowElementContainerDefinition getFlowElementContainer() {
     return flowElementContainer;
@@ -171,6 +170,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The process parameter definitions")
+  @JsonProperty(JSON_PROPERTY_PARAMETERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<DesignProcessDefinitionParameters> getParameters() {
     return parameters;
@@ -202,6 +203,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The list of process actor definitions")
+  @JsonProperty(JSON_PROPERTY_ACTORS_LIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ActorDefinition> getActorsList() {
     return actorsList;
@@ -225,6 +228,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ACTOR_INITIATOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ActorDefinition getActorInitiator() {
     return actorInitiator;
@@ -256,6 +261,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The process definition labels")
+  @JsonProperty(JSON_PROPERTY_STRING_INDEX_LABELS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getStringIndexLabels() {
     return stringIndexLabels;
@@ -287,6 +294,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The process definition expressions")
+  @JsonProperty(JSON_PROPERTY_STRING_INDEX_VALUES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Expression> getStringIndexValues() {
     return stringIndexValues;
@@ -310,6 +319,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_CONTRACT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public DesignProcessDefinitionContract getContract() {
     return contract;
@@ -341,6 +352,8 @@ public class DesignProcessDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The process definition expressions")
+  @JsonProperty(JSON_PROPERTY_CONTEXT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<DesignProcessDefinitionContext> getContext() {
     return context;

@@ -1,35 +1,23 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
-
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
-import org.bonitasoft.web.client.internal.model.Error;
+import feign.Headers;
+import feign.RequestLine;
+import org.bonitasoft.web.client.ApiClient;
 import org.bonitasoft.web.client.internal.model.Message;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface MessageApi extends ApiClient.Api {
 
-public interface MessageApi {
+
   /**
    * Send BPM message events
    * Use this resource to send BPM message events. Message events are caught by processes using &#x60;catch message event&#x60; flow nodes (Start, intermediate, boundary or receive tasks). 
    * @param body A Message event (required)
-   * @return Call&lt;Void&gt;
    */
+  @RequestLine("POST /API/bpm/message")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @POST("API/bpm/message")
-  Call<Void> createMessage(
-    @retrofit2.http.Body Message body
-  );
-
+  void createMessage(Message body);
 }

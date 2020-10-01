@@ -13,57 +13,53 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Tenant
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Tenant.JSON_PROPERTY_ID,
+  Tenant.JSON_PROPERTY_CREATION,
+  Tenant.JSON_PROPERTY_ICON,
+  Tenant.JSON_PROPERTY_NAME,
+  Tenant.JSON_PROPERTY_DESCRIPTION,
+  Tenant.JSON_PROPERTY_USERNAME,
+  Tenant.JSON_PROPERTY_PASSWORD,
+  Tenant.JSON_PROPERTY_STATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Tenant implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATION = "creation";
-  @SerializedName(SERIALIZED_NAME_CREATION)
+  public static final String JSON_PROPERTY_CREATION = "creation";
   private String creation;
 
-  public static final String SERIALIZED_NAME_ICON = "icon";
-  @SerializedName(SERIALIZED_NAME_ICON)
+  public static final String JSON_PROPERTY_ICON = "icon";
   private String icon;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_USERNAME = "username";
-  @SerializedName(SERIALIZED_NAME_USERNAME)
+  public static final String JSON_PROPERTY_USERNAME = "username";
   private String username;
 
-  public static final String SERIALIZED_NAME_PASSWORD = "password";
-  @SerializedName(SERIALIZED_NAME_PASSWORD)
+  public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
 
   /**
    * the tenant state
    */
-  @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     ACTIVATED("ACTIVATED"),
     
@@ -75,6 +71,7 @@ public class Tenant implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -84,6 +81,7 @@ public class Tenant implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static StateEnum fromValue(String value) {
       for (StateEnum b : StateEnum.values()) {
         if (b.value.equals(value)) {
@@ -92,23 +90,9 @@ public class Tenant implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<StateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StateEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private StateEnum state;
 
 
@@ -124,6 +108,8 @@ public class Tenant implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the tenant")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -147,6 +133,8 @@ public class Tenant implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the creation date")
+  @JsonProperty(JSON_PROPERTY_CREATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreation() {
     return creation;
@@ -170,6 +158,8 @@ public class Tenant implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the path of the icon")
+  @JsonProperty(JSON_PROPERTY_ICON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIcon() {
     return icon;
@@ -193,6 +183,8 @@ public class Tenant implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the name of the tenant")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -216,6 +208,8 @@ public class Tenant implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -239,6 +233,8 @@ public class Tenant implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the username")
+  @JsonProperty(JSON_PROPERTY_USERNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUsername() {
     return username;
@@ -262,6 +258,8 @@ public class Tenant implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the password")
+  @JsonProperty(JSON_PROPERTY_PASSWORD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPassword() {
     return password;
@@ -285,6 +283,8 @@ public class Tenant implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the tenant state")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public StateEnum getState() {
     return state;

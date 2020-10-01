@@ -13,36 +13,33 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.bonitasoft.web.client.internal.model.CaseInfoFlowNodeStatesCounters;
+
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Retrieves information about a case. It returns counters for each flow node in the case, showing the number of flow node instances that are in completed, ready, or failed state. If there are no flow node instances in a given state, no counter is returned for that state for the flow node.
  */
 @ApiModel(description = "Retrieves information about a case. It returns counters for each flow node in the case, showing the number of flow node instances that are in completed, ready, or failed state. If there are no flow node instances in a given state, no counter is returned for that state for the flow node.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  CaseInfo.JSON_PROPERTY_ID,
+  CaseInfo.JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class CaseInfo implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_FLOW_NODE_STATES_COUNTERS = "flowNodeStatesCounters";
-  @SerializedName(SERIALIZED_NAME_FLOW_NODE_STATES_COUNTERS)
+  public static final String JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS = "flowNodeStatesCounters";
   private Map<String, CaseInfoFlowNodeStatesCounters> flowNodeStatesCounters = null;
 
 
@@ -58,6 +55,8 @@ public class CaseInfo implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "case identifier")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -89,6 +88,8 @@ public class CaseInfo implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "flow nodes counters")
+  @JsonProperty(JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, CaseInfoFlowNodeStatesCounters> getFlowNodeStatesCounters() {
     return flowNodeStatesCounters;

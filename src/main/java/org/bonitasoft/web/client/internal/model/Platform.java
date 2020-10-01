@@ -13,30 +13,32 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * The bonita platform
  */
 @ApiModel(description = "The bonita platform")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Platform.JSON_PROPERTY_STATE,
+  Platform.JSON_PROPERTY_VERSION,
+  Platform.JSON_PROPERTY_INITIAL_VERSION,
+  Platform.JSON_PROPERTY_PREVIOUS_VERSION,
+  Platform.JSON_PROPERTY_CREATED_BY,
+  Platform.JSON_PROPERTY_CREATED
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Platform implements Serializable {
   private static final long serialVersionUID = 1L;
 
   /**
    * platform state
    */
-  @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     STARTED("STARTED"),
     
@@ -48,6 +50,7 @@ public class Platform implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -57,6 +60,7 @@ public class Platform implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static StateEnum fromValue(String value) {
       for (StateEnum b : StateEnum.values()) {
         if (b.value.equals(value)) {
@@ -65,43 +69,24 @@ public class Platform implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<StateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StateEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private StateEnum state;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
 
-  public static final String SERIALIZED_NAME_INITIAL_VERSION = "initialVersion";
-  @SerializedName(SERIALIZED_NAME_INITIAL_VERSION)
+  public static final String JSON_PROPERTY_INITIAL_VERSION = "initialVersion";
   private String initialVersion;
 
-  public static final String SERIALIZED_NAME_PREVIOUS_VERSION = "previousVersion";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_VERSION)
+  public static final String JSON_PROPERTY_PREVIOUS_VERSION = "previousVersion";
   private String previousVersion;
 
-  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
 
-  public static final String SERIALIZED_NAME_CREATED = "created";
-  @SerializedName(SERIALIZED_NAME_CREATED)
+  public static final String JSON_PROPERTY_CREATED = "created";
   private String created;
 
 
@@ -117,6 +102,8 @@ public class Platform implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "platform state")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public StateEnum getState() {
     return state;
@@ -140,6 +127,8 @@ public class Platform implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the current version of the platform")
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVersion() {
     return version;
@@ -163,6 +152,8 @@ public class Platform implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the version in which the platform was created")
+  @JsonProperty(JSON_PROPERTY_INITIAL_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getInitialVersion() {
     return initialVersion;
@@ -186,6 +177,8 @@ public class Platform implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the previous version the platform was in or empty if there is none")
+  @JsonProperty(JSON_PROPERTY_PREVIOUS_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPreviousVersion() {
     return previousVersion;
@@ -209,6 +202,8 @@ public class Platform implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the user name of the platform administrator")
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreatedBy() {
     return createdBy;
@@ -232,6 +227,8 @@ public class Platform implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the creation date")
+  @JsonProperty(JSON_PROPERTY_CREATED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreated() {
     return created;

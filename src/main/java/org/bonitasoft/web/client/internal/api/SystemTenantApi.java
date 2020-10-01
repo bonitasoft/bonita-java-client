@@ -1,45 +1,35 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
-
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
-import org.bonitasoft.web.client.internal.model.Error;
+import feign.Headers;
+import feign.RequestLine;
+import org.bonitasoft.web.client.ApiClient;
 import org.bonitasoft.web.client.internal.model.SystemTenant;
 import org.bonitasoft.web.client.internal.model.TenantPauseRequest;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface SystemTenantApi extends ApiClient.Api {
 
-public interface SystemTenantApi {
+
   /**
    * Get the current Tenant
    * Pause and resume tenant services in order to do maintenance on a tenant. 
-   * @return Call&lt;SystemTenant&gt;
+   * @return SystemTenant
    */
-  @GET("API/system/tenant/unusedid")
-  Call<SystemTenant> getSystemTenant();
-    
+  @RequestLine("GET /API/system/tenant/unusedid")
+  @Headers({
+    "Accept: application/json",
+  })
+  SystemTenant getSystemTenant();
 
   /**
    * Update the current Tenant
    * Pause or resume the current tenant. 
    * @param tenantPauseRequest Partial SystemTenant description (required)
-   * @return Call&lt;Void&gt;
    */
+  @RequestLine("PUT /API/system/tenant/unusedid")
   @Headers({
-    "Content-Type:application/json"
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  @PUT("API/system/tenant/unusedid")
-  Call<Void> updateSystemTenant(
-    @retrofit2.http.Body TenantPauseRequest tenantPauseRequest
-  );
-
+  void updateSystemTenant(TenantPauseRequest tenantPauseRequest);
 }

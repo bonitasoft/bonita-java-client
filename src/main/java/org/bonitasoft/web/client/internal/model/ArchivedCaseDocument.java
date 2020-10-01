@@ -13,89 +13,85 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import org.bonitasoft.web.client.internal.model.ArchivedCaseDocumentAllOf;
-import org.bonitasoft.web.client.internal.model.CaseDocument;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ArchivedCaseDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ArchivedCaseDocument.JSON_PROPERTY_ID,
+  ArchivedCaseDocument.JSON_PROPERTY_CREATION_DATE,
+  ArchivedCaseDocument.JSON_PROPERTY_AUTHOR,
+  ArchivedCaseDocument.JSON_PROPERTY_INDEX,
+  ArchivedCaseDocument.JSON_PROPERTY_CONTENT_MIMETYPE,
+  ArchivedCaseDocument.JSON_PROPERTY_CASE_ID,
+  ArchivedCaseDocument.JSON_PROPERTY_CONTENT_STORAGE_ID,
+  ArchivedCaseDocument.JSON_PROPERTY_IS_INTERNAL,
+  ArchivedCaseDocument.JSON_PROPERTY_DESCRIPTION,
+  ArchivedCaseDocument.JSON_PROPERTY_NAME,
+  ArchivedCaseDocument.JSON_PROPERTY_FILE_NAME,
+  ArchivedCaseDocument.JSON_PROPERTY_SUBMITTED_BY,
+  ArchivedCaseDocument.JSON_PROPERTY_URL,
+  ArchivedCaseDocument.JSON_PROPERTY_VERSION,
+  ArchivedCaseDocument.JSON_PROPERTY_SOURCE_OBJECT_ID,
+  ArchivedCaseDocument.JSON_PROPERTY_ARCHIVED_DATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ArchivedCaseDocument implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATION_DATE = "creationDate";
-  @SerializedName(SERIALIZED_NAME_CREATION_DATE)
+  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
   private String creationDate;
 
-  public static final String SERIALIZED_NAME_AUTHOR = "author";
-  @SerializedName(SERIALIZED_NAME_AUTHOR)
+  public static final String JSON_PROPERTY_AUTHOR = "author";
   private String author;
 
-  public static final String SERIALIZED_NAME_INDEX = "index";
-  @SerializedName(SERIALIZED_NAME_INDEX)
+  public static final String JSON_PROPERTY_INDEX = "index";
   private String index;
 
-  public static final String SERIALIZED_NAME_CONTENT_MIMETYPE = "contentMimetype";
-  @SerializedName(SERIALIZED_NAME_CONTENT_MIMETYPE)
+  public static final String JSON_PROPERTY_CONTENT_MIMETYPE = "contentMimetype";
   private String contentMimetype;
 
-  public static final String SERIALIZED_NAME_CASE_ID = "caseId";
-  @SerializedName(SERIALIZED_NAME_CASE_ID)
+  public static final String JSON_PROPERTY_CASE_ID = "caseId";
   private String caseId;
 
-  public static final String SERIALIZED_NAME_CONTENT_STORAGE_ID = "contentStorageId";
-  @SerializedName(SERIALIZED_NAME_CONTENT_STORAGE_ID)
+  public static final String JSON_PROPERTY_CONTENT_STORAGE_ID = "contentStorageId";
   private String contentStorageId;
 
-  public static final String SERIALIZED_NAME_IS_INTERNAL = "isInternal";
-  @SerializedName(SERIALIZED_NAME_IS_INTERNAL)
+  public static final String JSON_PROPERTY_IS_INTERNAL = "isInternal";
   private Boolean isInternal;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_FILE_NAME = "fileName";
-  @SerializedName(SERIALIZED_NAME_FILE_NAME)
+  public static final String JSON_PROPERTY_FILE_NAME = "fileName";
   private String fileName;
 
-  public static final String SERIALIZED_NAME_SUBMITTED_BY = "submittedBy";
-  @SerializedName(SERIALIZED_NAME_SUBMITTED_BY)
+  public static final String JSON_PROPERTY_SUBMITTED_BY = "submittedBy";
   private String submittedBy;
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
+  public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
 
-  public static final String SERIALIZED_NAME_SOURCE_OBJECT_ID = "sourceObjectId";
-  @SerializedName(SERIALIZED_NAME_SOURCE_OBJECT_ID)
+  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
   private String sourceObjectId;
 
-  public static final String SERIALIZED_NAME_ARCHIVED_DATE = "archivedDate";
-  @SerializedName(SERIALIZED_NAME_ARCHIVED_DATE)
+  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
   private String archivedDate;
 
 
@@ -111,6 +107,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "documentId")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -134,6 +132,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date and time")
+  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreationDate() {
     return creationDate;
@@ -157,6 +157,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "submittorUserId")
+  @JsonProperty(JSON_PROPERTY_AUTHOR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAuthor() {
     return author;
@@ -180,6 +182,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "index in a list of documents, or -1 for a single document")
+  @JsonProperty(JSON_PROPERTY_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIndex() {
     return index;
@@ -203,6 +207,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "MIME type")
+  @JsonProperty(JSON_PROPERTY_CONTENT_MIMETYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContentMimetype() {
     return contentMimetype;
@@ -226,6 +232,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "caseId")
+  @JsonProperty(JSON_PROPERTY_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCaseId() {
     return caseId;
@@ -249,6 +257,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "storageId")
+  @JsonProperty(JSON_PROPERTY_CONTENT_STORAGE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContentStorageId() {
     return contentStorageId;
@@ -272,6 +282,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "`true` if  the the document object contains the content directly. `false` if the document is specified by URL so the document object contains a reference to the content, not the content itself.")
+  @JsonProperty(JSON_PROPERTY_IS_INTERNAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getIsInternal() {
     return isInternal;
@@ -295,6 +307,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -318,6 +332,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -341,6 +357,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "filename")
+  @JsonProperty(JSON_PROPERTY_FILE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFileName() {
     return fileName;
@@ -364,6 +382,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "submittorUserId")
+  @JsonProperty(JSON_PROPERTY_SUBMITTED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSubmittedBy() {
     return submittedBy;
@@ -387,6 +407,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "urlForDownload")
+  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUrl() {
     return url;
@@ -410,6 +432,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "version")
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVersion() {
     return version;
@@ -433,6 +457,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "original document id")
+  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSourceObjectId() {
     return sourceObjectId;
@@ -456,6 +482,8 @@ public class ArchivedCaseDocument implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getArchivedDate() {
     return archivedDate;

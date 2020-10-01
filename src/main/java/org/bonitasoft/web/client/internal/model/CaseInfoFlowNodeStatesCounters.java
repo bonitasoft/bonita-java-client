@@ -13,39 +13,37 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * CaseInfoFlowNodeStatesCounters
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  CaseInfoFlowNodeStatesCounters.JSON_PROPERTY_COMPLETED,
+  CaseInfoFlowNodeStatesCounters.JSON_PROPERTY_READY,
+  CaseInfoFlowNodeStatesCounters.JSON_PROPERTY_FAILED,
+  CaseInfoFlowNodeStatesCounters.JSON_PROPERTY_EXECUTING
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class CaseInfoFlowNodeStatesCounters implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_COMPLETED = "completed";
-  @SerializedName(SERIALIZED_NAME_COMPLETED)
+  public static final String JSON_PROPERTY_COMPLETED = "completed";
   private Long completed;
 
-  public static final String SERIALIZED_NAME_READY = "ready";
-  @SerializedName(SERIALIZED_NAME_READY)
+  public static final String JSON_PROPERTY_READY = "ready";
   private Long ready;
 
-  public static final String SERIALIZED_NAME_FAILED = "failed";
-  @SerializedName(SERIALIZED_NAME_FAILED)
+  public static final String JSON_PROPERTY_FAILED = "failed";
   private Long failed;
 
-  public static final String SERIALIZED_NAME_EXECUTING = "executing";
-  @SerializedName(SERIALIZED_NAME_EXECUTING)
+  public static final String JSON_PROPERTY_EXECUTING = "executing";
   private Long executing;
 
 
@@ -61,6 +59,8 @@ public class CaseInfoFlowNodeStatesCounters implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number of instance of the given Flow Node in completed state")
+  @JsonProperty(JSON_PROPERTY_COMPLETED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getCompleted() {
     return completed;
@@ -84,6 +84,8 @@ public class CaseInfoFlowNodeStatesCounters implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number of instance of the given Flow Node in ready state")
+  @JsonProperty(JSON_PROPERTY_READY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getReady() {
     return ready;
@@ -107,6 +109,8 @@ public class CaseInfoFlowNodeStatesCounters implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number of instance of the given Flow Node in failed state")
+  @JsonProperty(JSON_PROPERTY_FAILED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getFailed() {
     return failed;
@@ -130,6 +134,8 @@ public class CaseInfoFlowNodeStatesCounters implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "number of instance of the given Flow Node in executing state")
+  @JsonProperty(JSON_PROPERTY_EXECUTING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getExecuting() {
     return executing;

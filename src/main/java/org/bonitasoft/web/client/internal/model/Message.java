@@ -13,48 +13,45 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.bonitasoft.web.client.internal.model.MessageMessageContent;
+
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Use this resource to send BPM message events. Message events are caught by processes using &#x60;catch message event&#x60; flow nodes (Start, intermediate, boundary or receive tasks).
  */
 @ApiModel(description = "Use this resource to send BPM message events. Message events are caught by processes using `catch message event` flow nodes (Start, intermediate, boundary or receive tasks).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Message.JSON_PROPERTY_MESSAGE_NAME,
+  Message.JSON_PROPERTY_TARGET_PROCESS,
+  Message.JSON_PROPERTY_TARGET_FLOW_NODE,
+  Message.JSON_PROPERTY_MESSAGE_CONTENT,
+  Message.JSON_PROPERTY_CORRELATIONS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Message implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_MESSAGE_NAME = "messageName";
-  @SerializedName(SERIALIZED_NAME_MESSAGE_NAME)
+  public static final String JSON_PROPERTY_MESSAGE_NAME = "messageName";
   private String messageName;
 
-  public static final String SERIALIZED_NAME_TARGET_PROCESS = "targetProcess";
-  @SerializedName(SERIALIZED_NAME_TARGET_PROCESS)
+  public static final String JSON_PROPERTY_TARGET_PROCESS = "targetProcess";
   private String targetProcess;
 
-  public static final String SERIALIZED_NAME_TARGET_FLOW_NODE = "targetFlowNode";
-  @SerializedName(SERIALIZED_NAME_TARGET_FLOW_NODE)
+  public static final String JSON_PROPERTY_TARGET_FLOW_NODE = "targetFlowNode";
   private String targetFlowNode;
 
-  public static final String SERIALIZED_NAME_MESSAGE_CONTENT = "messageContent";
-  @SerializedName(SERIALIZED_NAME_MESSAGE_CONTENT)
+  public static final String JSON_PROPERTY_MESSAGE_CONTENT = "messageContent";
   private Map<String, MessageMessageContent> messageContent = null;
 
-  public static final String SERIALIZED_NAME_CORRELATIONS = "correlations";
-  @SerializedName(SERIALIZED_NAME_CORRELATIONS)
+  public static final String JSON_PROPERTY_CORRELATIONS = "correlations";
   private Map<String, MessageMessageContent> correlations = null;
 
 
@@ -70,6 +67,8 @@ public class Message implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the message name")
+  @JsonProperty(JSON_PROPERTY_MESSAGE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMessageName() {
     return messageName;
@@ -93,6 +92,8 @@ public class Message implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the target process name")
+  @JsonProperty(JSON_PROPERTY_TARGET_PROCESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTargetProcess() {
     return targetProcess;
@@ -116,6 +117,8 @@ public class Message implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the target FlowNode name")
+  @JsonProperty(JSON_PROPERTY_TARGET_FLOW_NODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTargetFlowNode() {
     return targetFlowNode;
@@ -147,6 +150,8 @@ public class Message implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the message content")
+  @JsonProperty(JSON_PROPERTY_MESSAGE_CONTENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, MessageMessageContent> getMessageContent() {
     return messageContent;
@@ -178,6 +183,8 @@ public class Message implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the message correlations")
+  @JsonProperty(JSON_PROPERTY_CORRELATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, MessageMessageContent> getCorrelations() {
     return correlations;

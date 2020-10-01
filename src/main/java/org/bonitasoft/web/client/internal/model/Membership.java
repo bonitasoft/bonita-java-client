@@ -13,43 +13,41 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Membership
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Membership.JSON_PROPERTY_ASSIGNED_DATE,
+  Membership.JSON_PROPERTY_ROLE_ID,
+  Membership.JSON_PROPERTY_ASSIGNED_BY_USER_ID,
+  Membership.JSON_PROPERTY_GROUP_ID,
+  Membership.JSON_PROPERTY_USER_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Membership implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_DATE = "assigned_date";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_DATE)
+  public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
   private String assignedDate;
 
-  public static final String SERIALIZED_NAME_ROLE_ID = "role_id";
-  @SerializedName(SERIALIZED_NAME_ROLE_ID)
+  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
   private Long roleId;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_BY_USER_ID = "assigned_by_user_id";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_BY_USER_ID)
+  public static final String JSON_PROPERTY_ASSIGNED_BY_USER_ID = "assigned_by_user_id";
   private String assignedByUserId;
 
-  public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
-  @SerializedName(SERIALIZED_NAME_GROUP_ID)
+  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
   private String groupId;
 
-  public static final String SERIALIZED_NAME_USER_ID = "user_id";
-  @SerializedName(SERIALIZED_NAME_USER_ID)
+  public static final String JSON_PROPERTY_USER_ID = "user_id";
   private String userId;
 
 
@@ -65,6 +63,8 @@ public class Membership implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "creation date (format: `2014-12-31 15:17:24.736`)")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedDate() {
     return assignedDate;
@@ -88,6 +88,8 @@ public class Membership implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the role of this membership")
+  @JsonProperty(JSON_PROPERTY_ROLE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getRoleId() {
     return roleId;
@@ -111,6 +113,8 @@ public class Membership implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the user who created the membership (-1 if the role was created by the tenant admin or by an organisation import)")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_BY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedByUserId() {
     return assignedByUserId;
@@ -134,6 +138,8 @@ public class Membership implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the group of this membership")
+  @JsonProperty(JSON_PROPERTY_GROUP_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGroupId() {
     return groupId;
@@ -157,6 +163,8 @@ public class Membership implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the user in this membership")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;

@@ -1,14 +1,13 @@
 package org.bonitasoft.web.client.auth;
 
-import java.io.IOException;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
+import feign.auth.BasicAuthRequestInterceptor;
 
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.Credentials;
-
-public class HttpBasicAuth implements Interceptor {
+/**
+ * An interceptor that adds the request header needed to use HTTP basic authentication.
+ */
+public class HttpBasicAuth implements RequestInterceptor {
 
     private String username;
     private String password;
@@ -34,17 +33,9 @@ public class HttpBasicAuth implements Interceptor {
         this.password = password;
     }
 
-    @Override
-    public Response intercept(Chain chain) throws IOException {
-        Request request = chain.request();
-
-        // If the request already have an authorization (eg. Basic auth), do nothing
-        if (request.header("Authorization") == null) {
-            String credentials = Credentials.basic(username, password);
-            request = request.newBuilder()
-                    .addHeader("Authorization", credentials)
-                    .build();
-        }
-        return chain.proceed(request);
-    }
+  @Override
+  public void apply(RequestTemplate template) {
+      RequestInterceptor requestInterceptor = new BasicAuthRequestInterceptor(username, password);
+      requestInterceptor.apply(template);
+  }
 }

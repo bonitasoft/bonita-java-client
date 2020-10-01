@@ -13,107 +13,103 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import org.bonitasoft.web.client.internal.model.ActivityPriorityEnum;
-import org.bonitasoft.web.client.internal.model.ActivityStateEnum;
-import org.bonitasoft.web.client.internal.model.ActivityTypeEnum;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Use this resource to retrieve activities (human or service tasks), call activities, and subprocesses currently running on the platform. It enables you to perform maintenance tasks like skipping or replaying a failed task and modifying variables. 
  */
 @ApiModel(description = "Use this resource to retrieve activities (human or service tasks), call activities, and subprocesses currently running on the platform. It enables you to perform maintenance tasks like skipping or replaying a failed task and modifying variables. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Activity.JSON_PROPERTY_ID,
+  Activity.JSON_PROPERTY_TYPE,
+  Activity.JSON_PROPERTY_NAME,
+  Activity.JSON_PROPERTY_DISPLAY_NAME,
+  Activity.JSON_PROPERTY_DESCRIPTION,
+  Activity.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+  Activity.JSON_PROPERTY_STATE,
+  Activity.JSON_PROPERTY_REACHED_STATE_DATE,
+  Activity.JSON_PROPERTY_LAST_UPDATE_DATE,
+  Activity.JSON_PROPERTY_DUE_DATE,
+  Activity.JSON_PROPERTY_PRIORITY,
+  Activity.JSON_PROPERTY_PROCESS_ID,
+  Activity.JSON_PROPERTY_PARENT_CASE_ID,
+  Activity.JSON_PROPERTY_ROOT_CASE_ID,
+  Activity.JSON_PROPERTY_ROOT_CONTAINER_ID,
+  Activity.JSON_PROPERTY_EXECUTED_BY,
+  Activity.JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE,
+  Activity.JSON_PROPERTY_ACTOR_ID,
+  Activity.JSON_PROPERTY_ASSIGNED_ID,
+  Activity.JSON_PROPERTY_ASSIGNED_DATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Activity implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private ActivityTypeEnum type;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_DISPLAY_DESCRIPTION = "displayDescription";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_DESCRIPTION)
+  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
   private String displayDescription;
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private ActivityStateEnum state;
 
-  public static final String SERIALIZED_NAME_REACHED_STATE_DATE = "reached_state_date";
-  @SerializedName(SERIALIZED_NAME_REACHED_STATE_DATE)
+  public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
   private String reachedStateDate;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "last_update_date";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
-  @SerializedName(SERIALIZED_NAME_DUE_DATE)
+  public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
   private String dueDate;
 
-  public static final String SERIALIZED_NAME_PRIORITY = "priority";
-  @SerializedName(SERIALIZED_NAME_PRIORITY)
+  public static final String JSON_PROPERTY_PRIORITY = "priority";
   private ActivityPriorityEnum priority;
 
-  public static final String SERIALIZED_NAME_PROCESS_ID = "processId";
-  @SerializedName(SERIALIZED_NAME_PROCESS_ID)
+  public static final String JSON_PROPERTY_PROCESS_ID = "processId";
   private String processId;
 
-  public static final String SERIALIZED_NAME_PARENT_CASE_ID = "parentCaseId";
-  @SerializedName(SERIALIZED_NAME_PARENT_CASE_ID)
+  public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
   private String parentCaseId;
 
-  public static final String SERIALIZED_NAME_ROOT_CASE_ID = "rootCaseId";
-  @SerializedName(SERIALIZED_NAME_ROOT_CASE_ID)
+  public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
   private String rootCaseId;
 
-  public static final String SERIALIZED_NAME_ROOT_CONTAINER_ID = "rootContainerId";
-  @SerializedName(SERIALIZED_NAME_ROOT_CONTAINER_ID)
+  public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
   private String rootContainerId;
 
-  public static final String SERIALIZED_NAME_EXECUTED_BY = "executedBy";
-  @SerializedName(SERIALIZED_NAME_EXECUTED_BY)
+  public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
   private String executedBy;
 
-  public static final String SERIALIZED_NAME_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
-  @SerializedName(SERIALIZED_NAME_EXECUTED_BY_SUBSTITUTE)
+  public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
   private String executedBySubstitute;
 
-  public static final String SERIALIZED_NAME_ACTOR_ID = "actorId";
-  @SerializedName(SERIALIZED_NAME_ACTOR_ID)
+  public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
   private String actorId;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_ID = "assigned_id";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_ID)
+  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
   private String assignedId;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_DATE = "assigned_date";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_DATE)
+  public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
   private String assignedDate;
 
 
@@ -129,6 +125,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the activity id")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -152,6 +150,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ActivityTypeEnum getType() {
     return type;
@@ -175,6 +175,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the activity technical name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -198,6 +200,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the human readable activity name")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -221,6 +225,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the activity description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -244,6 +250,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the human readable activity description")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayDescription() {
     return displayDescription;
@@ -267,6 +275,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ActivityStateEnum getState() {
     return state;
@@ -290,6 +300,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity reached the current state, for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getReachedStateDate() {
     return reachedStateDate;
@@ -313,6 +325,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity was last updated, for example '2014-10-17 16:05:42.626)")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -336,6 +350,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity is due, for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_DUE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDueDate() {
     return dueDate;
@@ -359,6 +375,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_PRIORITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ActivityPriorityEnum getPriority() {
     return priority;
@@ -382,6 +400,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the process definition id of the case which define this activity")
+  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProcessId() {
     return processId;
@@ -405,6 +425,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the immediate containing case id (long, a.k.a process instance id)")
+  @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentCaseId() {
     return parentCaseId;
@@ -428,6 +450,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the top/root case id (long, a.k.a process instance id). In the case of an event sub process, parentCaseId will the id of the case called while rootCaseId will be the one from the caller case")
+  @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRootCaseId() {
     return rootCaseId;
@@ -451,6 +475,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "same as rootCaseId")
+  @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRootContainerId() {
     return rootContainerId;
@@ -474,6 +500,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the user who performed this activity. The activity has to be a human task otherwise its value will be 0")
+  @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExecutedBy() {
     return executedBy;
@@ -497,6 +525,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the user who did actually performed the activity in the case of has been done in the name of someone else. Value is 0 otherwise")
+  @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExecutedBySubstitute() {
     return executedBySubstitute;
@@ -520,6 +550,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the actor that can execute this activity, null otherwise")
+  @JsonProperty(JSON_PROPERTY_ACTOR_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getActorId() {
     return actorId;
@@ -543,6 +575,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the user id that this activity is assigned to, or 0 if it is unassigned")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedId() {
     return assignedId;
@@ -566,6 +600,8 @@ public class Activity implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current activity was assigned, for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedDate() {
     return assignedDate;

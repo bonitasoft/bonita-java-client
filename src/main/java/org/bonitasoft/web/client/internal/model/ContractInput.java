@@ -13,45 +13,43 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ContractInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ContractInput.JSON_PROPERTY_DESCRIPTION,
+  ContractInput.JSON_PROPERTY_NAME,
+  ContractInput.JSON_PROPERTY_MULTIPLE,
+  ContractInput.JSON_PROPERTY_TYPE,
+  ContractInput.JSON_PROPERTY_INPUTS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ContractInput implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_MULTIPLE = "multiple";
-  @SerializedName(SERIALIZED_NAME_MULTIPLE)
+  public static final String JSON_PROPERTY_MULTIPLE = "multiple";
   private String multiple;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
-  public static final String SERIALIZED_NAME_INPUTS = "inputs";
-  @SerializedName(SERIALIZED_NAME_INPUTS)
+  public static final String JSON_PROPERTY_INPUTS = "inputs";
   private List<ContractInput> inputs = null;
 
 
@@ -67,6 +65,8 @@ public class ContractInput implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "input description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -90,6 +90,8 @@ public class ContractInput implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "input name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -113,6 +115,8 @@ public class ContractInput implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "true if input contains multiple values")
+  @JsonProperty(JSON_PROPERTY_MULTIPLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMultiple() {
     return multiple;
@@ -136,6 +140,8 @@ public class ContractInput implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "input type")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getType() {
     return type;
@@ -167,6 +173,8 @@ public class ContractInput implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INPUTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ContractInput> getInputs() {
     return inputs;

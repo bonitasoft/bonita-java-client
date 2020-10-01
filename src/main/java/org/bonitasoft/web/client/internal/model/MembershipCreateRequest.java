@@ -13,35 +13,33 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * MembershipCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  MembershipCreateRequest.JSON_PROPERTY_ROLE_ID,
+  MembershipCreateRequest.JSON_PROPERTY_GROUP_ID,
+  MembershipCreateRequest.JSON_PROPERTY_USER_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class MembershipCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ROLE_ID = "role_id";
-  @SerializedName(SERIALIZED_NAME_ROLE_ID)
+  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
   private String roleId;
 
-  public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
-  @SerializedName(SERIALIZED_NAME_GROUP_ID)
+  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
   private String groupId;
 
-  public static final String SERIALIZED_NAME_USER_ID = "user_id";
-  @SerializedName(SERIALIZED_NAME_USER_ID)
+  public static final String JSON_PROPERTY_USER_ID = "user_id";
   private String userId;
 
 
@@ -56,6 +54,8 @@ public class MembershipCreateRequest implements Serializable {
    * @return roleId
   **/
   @ApiModelProperty(required = true, value = "id of the role of this membership")
+  @JsonProperty(JSON_PROPERTY_ROLE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getRoleId() {
     return roleId;
@@ -78,6 +78,8 @@ public class MembershipCreateRequest implements Serializable {
    * @return groupId
   **/
   @ApiModelProperty(required = true, value = "id of the group of this membership")
+  @JsonProperty(JSON_PROPERTY_GROUP_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getGroupId() {
     return groupId;
@@ -100,6 +102,8 @@ public class MembershipCreateRequest implements Serializable {
    * @return userId
   **/
   @ApiModelProperty(required = true, value = "id of the user in this membership")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUserId() {
     return userId;

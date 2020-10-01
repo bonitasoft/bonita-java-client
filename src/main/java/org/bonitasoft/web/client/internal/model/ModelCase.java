@@ -13,108 +13,107 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Case is an instance of a process. When you start a process, it creates a case.
  */
 @ApiModel(description = "Case is an instance of a process. When you start a process, it creates a case.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ModelCase.JSON_PROPERTY_ID,
+  ModelCase.JSON_PROPERTY_END_DATE,
+  ModelCase.JSON_PROPERTY_FAILED_FLOW_NODES,
+  ModelCase.JSON_PROPERTY_STARTED_BY_SUBSTITUTE,
+  ModelCase.JSON_PROPERTY_START,
+  ModelCase.JSON_PROPERTY_ACTIVE_FLOW_NODES,
+  ModelCase.JSON_PROPERTY_STATE,
+  ModelCase.JSON_PROPERTY_ROOT_CASE_ID,
+  ModelCase.JSON_PROPERTY_STARTED_BY,
+  ModelCase.JSON_PROPERTY_PROCESS_DEFINITION_ID,
+  ModelCase.JSON_PROPERTY_LAST_UPDATE_DATE,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX1_LABEL,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX2_LABEL,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX3_LABEL,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX4_LABEL,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX5_LABEL,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX1_VALUE,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX2_VALUE,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX3_VALUE,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX4_VALUE,
+  ModelCase.JSON_PROPERTY_SEARCH_INDEX5_VALUE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ModelCase implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_END_DATE = "end_date";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
+  public static final String JSON_PROPERTY_END_DATE = "end_date";
   private String endDate;
 
-  public static final String SERIALIZED_NAME_FAILED_FLOW_NODES = "failedFlowNodes";
-  @SerializedName(SERIALIZED_NAME_FAILED_FLOW_NODES)
+  public static final String JSON_PROPERTY_FAILED_FLOW_NODES = "failedFlowNodes";
   private String failedFlowNodes;
 
-  public static final String SERIALIZED_NAME_STARTED_BY_SUBSTITUTE = "startedBySubstitute";
-  @SerializedName(SERIALIZED_NAME_STARTED_BY_SUBSTITUTE)
+  public static final String JSON_PROPERTY_STARTED_BY_SUBSTITUTE = "startedBySubstitute";
   private String startedBySubstitute;
 
-  public static final String SERIALIZED_NAME_START = "start";
-  @SerializedName(SERIALIZED_NAME_START)
+  public static final String JSON_PROPERTY_START = "start";
   private String start;
 
-  public static final String SERIALIZED_NAME_ACTIVE_FLOW_NODES = "activeFlowNodes";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_FLOW_NODES)
+  public static final String JSON_PROPERTY_ACTIVE_FLOW_NODES = "activeFlowNodes";
   private String activeFlowNodes;
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
-  public static final String SERIALIZED_NAME_ROOT_CASE_ID = "rootCaseId";
-  @SerializedName(SERIALIZED_NAME_ROOT_CASE_ID)
+  public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
   private String rootCaseId;
 
-  public static final String SERIALIZED_NAME_STARTED_BY = "started_by";
-  @SerializedName(SERIALIZED_NAME_STARTED_BY)
+  public static final String JSON_PROPERTY_STARTED_BY = "started_by";
   private String startedBy;
 
-  public static final String SERIALIZED_NAME_PROCESS_DEFINITION_ID = "processDefinitionId";
-  @SerializedName(SERIALIZED_NAME_PROCESS_DEFINITION_ID)
+  public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
   private String processDefinitionId;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "last_update_date";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX1_LABEL = "searchIndex1Label";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX1_LABEL)
+  public static final String JSON_PROPERTY_SEARCH_INDEX1_LABEL = "searchIndex1Label";
   private String searchIndex1Label;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX2_LABEL = "searchIndex2Label";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX2_LABEL)
+  public static final String JSON_PROPERTY_SEARCH_INDEX2_LABEL = "searchIndex2Label";
   private String searchIndex2Label;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX3_LABEL = "searchIndex3Label";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX3_LABEL)
+  public static final String JSON_PROPERTY_SEARCH_INDEX3_LABEL = "searchIndex3Label";
   private String searchIndex3Label;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX4_LABEL = "searchIndex4Label";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX4_LABEL)
+  public static final String JSON_PROPERTY_SEARCH_INDEX4_LABEL = "searchIndex4Label";
   private String searchIndex4Label;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX5_LABEL = "searchIndex5Label";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX5_LABEL)
+  public static final String JSON_PROPERTY_SEARCH_INDEX5_LABEL = "searchIndex5Label";
   private String searchIndex5Label;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX1_VALUE = "searchIndex1Value";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX1_VALUE)
+  public static final String JSON_PROPERTY_SEARCH_INDEX1_VALUE = "searchIndex1Value";
   private String searchIndex1Value;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX2_VALUE = "searchIndex2Value";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX2_VALUE)
+  public static final String JSON_PROPERTY_SEARCH_INDEX2_VALUE = "searchIndex2Value";
   private String searchIndex2Value;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX3_VALUE = "searchIndex3Value";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX3_VALUE)
+  public static final String JSON_PROPERTY_SEARCH_INDEX3_VALUE = "searchIndex3Value";
   private String searchIndex3Value;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX4_VALUE = "searchIndex4Value";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX4_VALUE)
+  public static final String JSON_PROPERTY_SEARCH_INDEX4_VALUE = "searchIndex4Value";
   private String searchIndex4Value;
 
-  public static final String SERIALIZED_NAME_SEARCH_INDEX5_VALUE = "searchIndex5Value";
-  @SerializedName(SERIALIZED_NAME_SEARCH_INDEX5_VALUE)
+  public static final String JSON_PROPERTY_SEARCH_INDEX5_VALUE = "searchIndex5Value";
   private String searchIndex5Value;
 
 
@@ -130,6 +129,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the identifier of the case")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -153,6 +154,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date set when the case is closed")
+  @JsonProperty(JSON_PROPERTY_END_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEndDate() {
     return endDate;
@@ -176,6 +179,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "count of failed flow nodes if parameter n=failedFlowNodes is given")
+  @JsonProperty(JSON_PROPERTY_FAILED_FLOW_NODES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFailedFlowNodes() {
     return failedFlowNodes;
@@ -199,6 +204,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the identifier of the substitute user (as Process manager or Administrator) who started the process. It can be also the substitute user if d=startedBySubstitute is given.")
+  @JsonProperty(JSON_PROPERTY_STARTED_BY_SUBSTITUTE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getStartedBySubstitute() {
     return startedBySubstitute;
@@ -222,6 +229,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the starting date of the case")
+  @JsonProperty(JSON_PROPERTY_START)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getStart() {
     return start;
@@ -245,6 +254,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "count of active flow nodes if parameter n=activeFlowNodes is given")
+  @JsonProperty(JSON_PROPERTY_ACTIVE_FLOW_NODES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getActiveFlowNodes() {
     return activeFlowNodes;
@@ -268,6 +279,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "state: an enum that represent the state of the case, it can be INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR, ABORTING")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getState() {
     return state;
@@ -291,6 +304,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the identifier of the container of the case")
+  @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRootCaseId() {
     return rootCaseId;
@@ -314,6 +329,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the identifier of the user who started the case")
+  @JsonProperty(JSON_PROPERTY_STARTED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getStartedBy() {
     return startedBy;
@@ -337,6 +354,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the identifier of the process related of the case")
+  @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProcessDefinitionId() {
     return processDefinitionId;
@@ -360,6 +379,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date of the last update done on the case")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -383,6 +404,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 1st search index label (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex1Label() {
     return searchIndex1Label;
@@ -406,6 +429,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 2nd search index label (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex2Label() {
     return searchIndex2Label;
@@ -429,6 +454,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 3rd search index label (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex3Label() {
     return searchIndex3Label;
@@ -452,6 +479,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 4th search index label (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex4Label() {
     return searchIndex4Label;
@@ -475,6 +504,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 5th search index label (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_LABEL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex5Label() {
     return searchIndex5Label;
@@ -498,6 +529,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 1st search index value (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex1Value() {
     return searchIndex1Value;
@@ -521,6 +554,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 2nd search index value (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex2Value() {
     return searchIndex2Value;
@@ -544,6 +579,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 3rd search index value (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex3Value() {
     return searchIndex3Value;
@@ -567,6 +604,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 4th search index value (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex4Value() {
     return searchIndex4Value;
@@ -590,6 +629,8 @@ public class ModelCase implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the 5th search index value (from 6.5, in Subscription editions only)")
+  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSearchIndex5Value() {
     return searchIndex5Value;

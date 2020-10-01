@@ -13,38 +13,42 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Form Mapping specifies the mapping of a form to a process or a task. The mapping indicates the technology used to create the form, in the &#x60;target&#x60; attribute.
  */
 @ApiModel(description = "Form Mapping specifies the mapping of a form to a process or a task. The mapping indicates the technology used to create the form, in the `target` attribute.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  FormMapping.JSON_PROPERTY_ID,
+  FormMapping.JSON_PROPERTY_PROCESS_DEFINITION_ID,
+  FormMapping.JSON_PROPERTY_TYPE,
+  FormMapping.JSON_PROPERTY_TARGET,
+  FormMapping.JSON_PROPERTY_TASK,
+  FormMapping.JSON_PROPERTY_PAGE_ID,
+  FormMapping.JSON_PROPERTY_PAGE_MAPPING_KEY,
+  FormMapping.JSON_PROPERTY_LAST_UPDATE_BY,
+  FormMapping.JSON_PROPERTY_LAST_UPDATE_DATE,
+  FormMapping.JSON_PROPERTY_URL
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class FormMapping implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_PROCESS_DEFINITION_ID = "processDefinitionId";
-  @SerializedName(SERIALIZED_NAME_PROCESS_DEFINITION_ID)
+  public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
   private String processDefinitionId;
 
   /**
    * the form mapping type
    */
-  @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     PROCESSSTART("PROCESSSTART"),
     
@@ -58,6 +62,7 @@ public class FormMapping implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -67,6 +72,7 @@ public class FormMapping implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static TypeEnum fromValue(String value) {
       for (TypeEnum b : TypeEnum.values()) {
         if (b.value.equals(value)) {
@@ -75,29 +81,14 @@ public class FormMapping implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private TypeEnum type;
 
   /**
    * the target
    */
-  @JsonAdapter(TargetEnum.Adapter.class)
   public enum TargetEnum {
     URL("URL"),
     
@@ -115,6 +106,7 @@ public class FormMapping implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -124,6 +116,7 @@ public class FormMapping implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static TargetEnum fromValue(String value) {
       for (TargetEnum b : TargetEnum.values()) {
         if (b.value.equals(value)) {
@@ -132,47 +125,27 @@ public class FormMapping implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<TargetEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TargetEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TargetEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TargetEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_TARGET = "target";
-  @SerializedName(SERIALIZED_NAME_TARGET)
+  public static final String JSON_PROPERTY_TARGET = "target";
   private TargetEnum target;
 
-  public static final String SERIALIZED_NAME_TASK = "task";
-  @SerializedName(SERIALIZED_NAME_TASK)
+  public static final String JSON_PROPERTY_TASK = "task";
   private String task;
 
-  public static final String SERIALIZED_NAME_PAGE_ID = "pageId";
-  @SerializedName(SERIALIZED_NAME_PAGE_ID)
+  public static final String JSON_PROPERTY_PAGE_ID = "pageId";
   private String pageId;
 
-  public static final String SERIALIZED_NAME_PAGE_MAPPING_KEY = "pageMappingKey";
-  @SerializedName(SERIALIZED_NAME_PAGE_MAPPING_KEY)
+  public static final String JSON_PROPERTY_PAGE_MAPPING_KEY = "pageMappingKey";
   private String pageMappingKey;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_BY = "lastUpdateBy";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_BY)
+  public static final String JSON_PROPERTY_LAST_UPDATE_BY = "lastUpdateBy";
   private String lastUpdateBy;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "lastUpdateDate";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
+  public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
 
@@ -188,6 +161,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the form mapping identifier")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -211,6 +186,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the process identifier related to this form mapping")
+  @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProcessDefinitionId() {
     return processDefinitionId;
@@ -234,6 +211,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the form mapping type")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public TypeEnum getType() {
     return type;
@@ -257,6 +236,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the target")
+  @JsonProperty(JSON_PROPERTY_TARGET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public TargetEnum getTarget() {
     return target;
@@ -280,6 +261,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the task name when type is TASK - null otherwise")
+  @JsonProperty(JSON_PROPERTY_TASK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTask() {
     return task;
@@ -303,6 +286,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the custom page identifier when type is INTERNAL - null otherwise")
+  @JsonProperty(JSON_PROPERTY_PAGE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPageId() {
     return pageId;
@@ -326,6 +311,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the page mapping key part used to generate the form URL")
+  @JsonProperty(JSON_PROPERTY_PAGE_MAPPING_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPageMappingKey() {
     return pageMappingKey;
@@ -349,6 +336,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the identifier of the user who last updated this form mapping - 0 if no update has been done yet")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateBy() {
     return lastUpdateBy;
@@ -372,6 +361,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the last update date in milliseconds - null if no update has been done yet")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -395,6 +386,8 @@ public class FormMapping implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the external URL (string) when type is URL - null otherwise")
+  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUrl() {
     return url;

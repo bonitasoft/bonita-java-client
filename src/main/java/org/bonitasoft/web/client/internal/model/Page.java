@@ -13,63 +13,61 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Page
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Page.JSON_PROPERTY_ID,
+  Page.JSON_PROPERTY_CREATION_DATE,
+  Page.JSON_PROPERTY_CREATED_BY,
+  Page.JSON_PROPERTY_IS_PROVIDED,
+  Page.JSON_PROPERTY_DESCRIPTION,
+  Page.JSON_PROPERTY_CONTENT_NAME,
+  Page.JSON_PROPERTY_DISPLAY_NAME,
+  Page.JSON_PROPERTY_UPDATED_BY,
+  Page.JSON_PROPERTY_LAST_UPDATE_DATE,
+  Page.JSON_PROPERTY_URL_TOKEN
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Page implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_CREATION_DATE = "creationDate";
-  @SerializedName(SERIALIZED_NAME_CREATION_DATE)
+  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
   private String creationDate;
 
-  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
   private String createdBy;
 
-  public static final String SERIALIZED_NAME_IS_PROVIDED = "isProvided";
-  @SerializedName(SERIALIZED_NAME_IS_PROVIDED)
+  public static final String JSON_PROPERTY_IS_PROVIDED = "isProvided";
   private Boolean isProvided;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_CONTENT_NAME = "contentName";
-  @SerializedName(SERIALIZED_NAME_CONTENT_NAME)
+  public static final String JSON_PROPERTY_CONTENT_NAME = "contentName";
   private String contentName;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  public static final String SERIALIZED_NAME_UPDATED_BY = "updatedBy";
-  @SerializedName(SERIALIZED_NAME_UPDATED_BY)
+  public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
   private String updatedBy;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "lastUpdateDate";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_URL_TOKEN = "urlToken";
-  @SerializedName(SERIALIZED_NAME_URL_TOKEN)
+  public static final String JSON_PROPERTY_URL_TOKEN = "urlToken";
   private String urlToken;
 
 
@@ -85,6 +83,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "page id")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -108,6 +108,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date and time")
+  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreationDate() {
     return creationDate;
@@ -131,6 +133,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "created by user id")
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreatedBy() {
     return createdBy;
@@ -154,6 +158,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "is provided")
+  @JsonProperty(JSON_PROPERTY_IS_PROVIDED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getIsProvided() {
     return isProvided;
@@ -177,6 +183,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -200,6 +208,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "content name")
+  @JsonProperty(JSON_PROPERTY_CONTENT_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContentName() {
     return contentName;
@@ -223,6 +233,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "custom page display name")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -246,6 +258,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "updated by user id")
+  @JsonProperty(JSON_PROPERTY_UPDATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUpdatedBy() {
     return updatedBy;
@@ -269,6 +283,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "date and time")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -292,6 +308,8 @@ public class Page implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "custom page urlToken")
+  @JsonProperty(JSON_PROPERTY_URL_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUrlToken() {
     return urlToken;

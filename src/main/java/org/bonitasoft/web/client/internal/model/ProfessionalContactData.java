@@ -13,75 +13,73 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ProfessionalContactData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ProfessionalContactData.JSON_PROPERTY_ID,
+  ProfessionalContactData.JSON_PROPERTY_FAX_NUMBER,
+  ProfessionalContactData.JSON_PROPERTY_BUILDING,
+  ProfessionalContactData.JSON_PROPERTY_PHONE_NUMBER,
+  ProfessionalContactData.JSON_PROPERTY_WEBSITE,
+  ProfessionalContactData.JSON_PROPERTY_ZIPCODE,
+  ProfessionalContactData.JSON_PROPERTY_STATE,
+  ProfessionalContactData.JSON_PROPERTY_CITY,
+  ProfessionalContactData.JSON_PROPERTY_COUNTRY,
+  ProfessionalContactData.JSON_PROPERTY_MOBILE_NUMBER,
+  ProfessionalContactData.JSON_PROPERTY_ADDRESS,
+  ProfessionalContactData.JSON_PROPERTY_ROOM,
+  ProfessionalContactData.JSON_PROPERTY_EMAIL
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ProfessionalContactData implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_FAX_NUMBER = "fax_number";
-  @SerializedName(SERIALIZED_NAME_FAX_NUMBER)
+  public static final String JSON_PROPERTY_FAX_NUMBER = "fax_number";
   private String faxNumber;
 
-  public static final String SERIALIZED_NAME_BUILDING = "building";
-  @SerializedName(SERIALIZED_NAME_BUILDING)
+  public static final String JSON_PROPERTY_BUILDING = "building";
   private String building;
 
-  public static final String SERIALIZED_NAME_PHONE_NUMBER = "phone_number";
-  @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
+  public static final String JSON_PROPERTY_PHONE_NUMBER = "phone_number";
   private String phoneNumber;
 
-  public static final String SERIALIZED_NAME_WEBSITE = "website";
-  @SerializedName(SERIALIZED_NAME_WEBSITE)
+  public static final String JSON_PROPERTY_WEBSITE = "website";
   private String website;
 
-  public static final String SERIALIZED_NAME_ZIPCODE = "zipcode";
-  @SerializedName(SERIALIZED_NAME_ZIPCODE)
+  public static final String JSON_PROPERTY_ZIPCODE = "zipcode";
   private String zipcode;
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
-  public static final String SERIALIZED_NAME_CITY = "city";
-  @SerializedName(SERIALIZED_NAME_CITY)
+  public static final String JSON_PROPERTY_CITY = "city";
   private String city;
 
-  public static final String SERIALIZED_NAME_COUNTRY = "country";
-  @SerializedName(SERIALIZED_NAME_COUNTRY)
+  public static final String JSON_PROPERTY_COUNTRY = "country";
   private String country;
 
-  public static final String SERIALIZED_NAME_MOBILE_NUMBER = "mobile_number";
-  @SerializedName(SERIALIZED_NAME_MOBILE_NUMBER)
+  public static final String JSON_PROPERTY_MOBILE_NUMBER = "mobile_number";
   private String mobileNumber;
 
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_ROOM = "room";
-  @SerializedName(SERIALIZED_NAME_ROOM)
+  public static final String JSON_PROPERTY_ROOM = "room";
   private String room;
 
-  public static final String SERIALIZED_NAME_EMAIL = "email";
-  @SerializedName(SERIALIZED_NAME_EMAIL)
+  public static final String JSON_PROPERTY_EMAIL = "email";
   private String email;
 
 
@@ -96,6 +94,8 @@ public class ProfessionalContactData implements Serializable {
    * @return id
   **/
   @ApiModelProperty(required = true, value = "user ID")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
     return id;
@@ -119,6 +119,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "fax number")
+  @JsonProperty(JSON_PROPERTY_FAX_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFaxNumber() {
     return faxNumber;
@@ -142,6 +144,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "building")
+  @JsonProperty(JSON_PROPERTY_BUILDING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBuilding() {
     return building;
@@ -165,6 +169,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "phone number")
+  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPhoneNumber() {
     return phoneNumber;
@@ -188,6 +194,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "website")
+  @JsonProperty(JSON_PROPERTY_WEBSITE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getWebsite() {
     return website;
@@ -211,6 +219,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "zipcode")
+  @JsonProperty(JSON_PROPERTY_ZIPCODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getZipcode() {
     return zipcode;
@@ -234,6 +244,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "state")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getState() {
     return state;
@@ -257,6 +269,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "city")
+  @JsonProperty(JSON_PROPERTY_CITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCity() {
     return city;
@@ -280,6 +294,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "country")
+  @JsonProperty(JSON_PROPERTY_COUNTRY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCountry() {
     return country;
@@ -303,6 +319,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "mobile phone number")
+  @JsonProperty(JSON_PROPERTY_MOBILE_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMobileNumber() {
     return mobileNumber;
@@ -326,6 +344,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "address")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -349,6 +369,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "room")
+  @JsonProperty(JSON_PROPERTY_ROOM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRoom() {
     return room;
@@ -372,6 +394,8 @@ public class ProfessionalContactData implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "email")
+  @JsonProperty(JSON_PROPERTY_EMAIL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEmail() {
     return email;

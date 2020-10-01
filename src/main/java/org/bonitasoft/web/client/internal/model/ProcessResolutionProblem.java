@@ -13,36 +13,35 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * This resource represents a problem in a process that needs to be resolved for the process to run. It can be an actor, a connector implementation, or a parameter (in the Enterprise, Performance, Efficiency, or Teamwork edition).
  */
 @ApiModel(description = "This resource represents a problem in a process that needs to be resolved for the process to run. It can be an actor, a connector implementation, or a parameter (in the Enterprise, Performance, Efficiency, or Teamwork edition).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ProcessResolutionProblem.JSON_PROPERTY_MESSAGE,
+  ProcessResolutionProblem.JSON_PROPERTY_RESOURCE_ID,
+  ProcessResolutionProblem.JSON_PROPERTY_TARGET_TYPE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ProcessResolutionProblem implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
-  public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
-  @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
+  public static final String JSON_PROPERTY_RESOURCE_ID = "resource_id";
   private String resourceId;
 
-  public static final String SERIALIZED_NAME_TARGET_TYPE = "target_type";
-  @SerializedName(SERIALIZED_NAME_TARGET_TYPE)
+  public static final String JSON_PROPERTY_TARGET_TYPE = "target_type";
   private String targetType;
 
 
@@ -58,6 +57,8 @@ public class ProcessResolutionProblem implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "resolution problem")
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMessage() {
     return message;
@@ -81,6 +82,8 @@ public class ProcessResolutionProblem implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the unresolved resource")
+  @JsonProperty(JSON_PROPERTY_RESOURCE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getResourceId() {
     return resourceId;
@@ -104,6 +107,8 @@ public class ProcessResolutionProblem implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the type of the unresolved resource (parameter, actor, or connector)")
+  @JsonProperty(JSON_PROPERTY_TARGET_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTargetType() {
     return targetType;

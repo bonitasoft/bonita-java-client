@@ -1,42 +1,43 @@
 package org.bonitasoft.web.client.auth;
 
-import java.io.IOException;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
 
-import okhttp3.Interceptor;
-import okhttp3.Request;
-import okhttp3.Response;
+/**
+ * An interceptor that adds the request header needed to use HTTP bearer authentication.
+ */
+public class HttpBearerAuth implements RequestInterceptor {
+  private final String scheme;
+  private String bearerToken;
 
-public class HttpBearerAuth implements Interceptor {
-    private final String scheme;
-    private String bearerToken;
+  public HttpBearerAuth(String scheme) {
+    this.scheme = scheme;
+  }
 
-    public HttpBearerAuth(String scheme) {
-        this.scheme = scheme;
+  /**
+   * Gets the token, which together with the scheme, will be sent as the value of the Authorization header.
+   */
+  public String getBearerToken() {
+    return bearerToken;
+  }
+
+  /**
+   * Sets the token, which together with the scheme, will be sent as the value of the Authorization header.
+   */
+  public void setBearerToken(String bearerToken) {
+    this.bearerToken = bearerToken;
+  }
+
+  @Override
+  public void apply(RequestTemplate template) {
+    if(bearerToken == null) {
+      return;
     }
 
-    public String getBearerToken() {
-        return bearerToken;
-    }
+    template.header("Authorization", (scheme != null ? upperCaseBearer(scheme) + " " : "") + bearerToken);
+  }
 
-    public void setBearerToken(String bearerToken) {
-        this.bearerToken = bearerToken;
-    }
-
-    @Override
-    public Response intercept(Chain chain) throws IOException {
-        Request request = chain.request();
-
-        // If the request already have an authorization (eg. Basic auth), do nothing
-        if (request.header("Authorization") == null && bearerToken != null) {
-            request = request.newBuilder()
-                    .addHeader("Authorization", (scheme != null ? upperCaseBearer(scheme) + " " : "") + bearerToken)
-                    .build();
-        }
-        return chain.proceed(request);
-    }
-
-    private static String upperCaseBearer(String scheme) {
-        return ("bearer".equalsIgnoreCase(scheme)) ? "Bearer" : scheme;
-    }
-
+  private static String upperCaseBearer(String scheme) {
+    return ("bearer".equalsIgnoreCase(scheme)) ? "Bearer" : scheme;
+  }
 }

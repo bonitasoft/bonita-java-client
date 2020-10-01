@@ -13,42 +13,41 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A constraint when executing the task instance
  */
 @ApiModel(description = "A constraint when executing the task instance")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  DesignProcessDefinitionContractConstraints.JSON_PROPERTY_NAME,
+  DesignProcessDefinitionContractConstraints.JSON_PROPERTY_EXPRESSION,
+  DesignProcessDefinitionContractConstraints.JSON_PROPERTY_EXPLANATION,
+  DesignProcessDefinitionContractConstraints.JSON_PROPERTY_INPUT_NAMES
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class DesignProcessDefinitionContractConstraints implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_EXPRESSION = "expression";
-  @SerializedName(SERIALIZED_NAME_EXPRESSION)
+  public static final String JSON_PROPERTY_EXPRESSION = "expression";
   private String expression;
 
-  public static final String SERIALIZED_NAME_EXPLANATION = "explanation";
-  @SerializedName(SERIALIZED_NAME_EXPLANATION)
+  public static final String JSON_PROPERTY_EXPLANATION = "explanation";
   private String explanation;
 
-  public static final String SERIALIZED_NAME_INPUT_NAMES = "inputNames";
-  @SerializedName(SERIALIZED_NAME_INPUT_NAMES)
+  public static final String JSON_PROPERTY_INPUT_NAMES = "inputNames";
   private List<String> inputNames = null;
 
 
@@ -64,6 +63,8 @@ public class DesignProcessDefinitionContractConstraints implements Serializable 
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -87,6 +88,8 @@ public class DesignProcessDefinitionContractConstraints implements Serializable 
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_EXPRESSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExpression() {
     return expression;
@@ -110,6 +113,8 @@ public class DesignProcessDefinitionContractConstraints implements Serializable 
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_EXPLANATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExplanation() {
     return explanation;
@@ -141,6 +146,8 @@ public class DesignProcessDefinitionContractConstraints implements Serializable 
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INPUT_NAMES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getInputNames() {
     return inputNames;

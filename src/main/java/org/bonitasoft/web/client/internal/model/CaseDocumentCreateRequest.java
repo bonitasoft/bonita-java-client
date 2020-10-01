@@ -13,47 +13,45 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * CaseDocumentCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  CaseDocumentCreateRequest.JSON_PROPERTY_CASE_ID,
+  CaseDocumentCreateRequest.JSON_PROPERTY_FILE,
+  CaseDocumentCreateRequest.JSON_PROPERTY_URL,
+  CaseDocumentCreateRequest.JSON_PROPERTY_NAME,
+  CaseDocumentCreateRequest.JSON_PROPERTY_FILE_NAME,
+  CaseDocumentCreateRequest.JSON_PROPERTY_DESCRIPTION
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class CaseDocumentCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_CASE_ID = "caseId";
-  @SerializedName(SERIALIZED_NAME_CASE_ID)
+  public static final String JSON_PROPERTY_CASE_ID = "caseId";
   private String caseId;
 
-  public static final String SERIALIZED_NAME_FILE = "file";
-  @SerializedName(SERIALIZED_NAME_FILE)
+  public static final String JSON_PROPERTY_FILE = "file";
   private String file;
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
+  public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_FILE_NAME = "fileName";
-  @SerializedName(SERIALIZED_NAME_FILE_NAME)
+  public static final String JSON_PROPERTY_FILE_NAME = "fileName";
   private String fileName;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
 
@@ -69,6 +67,8 @@ public class CaseDocumentCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The case id")
+  @JsonProperty(JSON_PROPERTY_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCaseId() {
     return caseId;
@@ -92,6 +92,8 @@ public class CaseDocumentCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The local file name to upload from (as from the temp upload folder)")
+  @JsonProperty(JSON_PROPERTY_FILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFile() {
     return file;
@@ -115,6 +117,8 @@ public class CaseDocumentCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The remote url to upload from")
+  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUrl() {
     return url;
@@ -138,6 +142,8 @@ public class CaseDocumentCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The file display name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -161,6 +167,8 @@ public class CaseDocumentCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The target file name")
+  @JsonProperty(JSON_PROPERTY_FILE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFileName() {
     return fileName;
@@ -184,6 +192,8 @@ public class CaseDocumentCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The document description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;

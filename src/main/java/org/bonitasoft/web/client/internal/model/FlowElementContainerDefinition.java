@@ -13,75 +13,74 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Allows to access all flow elements (activities, gateways, events and transitions) of a process or sub-process.
  */
 @ApiModel(description = "Allows to access all flow elements (activities, gateways, events and transitions) of a process or sub-process.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  FlowElementContainerDefinition.JSON_PROPERTY_ACTIVITIES,
+  FlowElementContainerDefinition.JSON_PROPERTY_TRANSITIONS,
+  FlowElementContainerDefinition.JSON_PROPERTY_GATEWAYS_LIST,
+  FlowElementContainerDefinition.JSON_PROPERTY_START_EVENTS,
+  FlowElementContainerDefinition.JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS,
+  FlowElementContainerDefinition.JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS,
+  FlowElementContainerDefinition.JSON_PROPERTY_END_EVENTS,
+  FlowElementContainerDefinition.JSON_PROPERTY_DATA_DEFINITIONS,
+  FlowElementContainerDefinition.JSON_PROPERTY_DOCUMENT_DEFINITIONS,
+  FlowElementContainerDefinition.JSON_PROPERTY_CONNECTORS,
+  FlowElementContainerDefinition.JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS,
+  FlowElementContainerDefinition.JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class FlowElementContainerDefinition implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ACTIVITIES = "activities";
-  @SerializedName(SERIALIZED_NAME_ACTIVITIES)
+  public static final String JSON_PROPERTY_ACTIVITIES = "activities";
   private List<Map<String, Object>> activities = null;
 
-  public static final String SERIALIZED_NAME_TRANSITIONS = "transitions";
-  @SerializedName(SERIALIZED_NAME_TRANSITIONS)
+  public static final String JSON_PROPERTY_TRANSITIONS = "transitions";
   private List<Map<String, Object>> transitions = null;
 
-  public static final String SERIALIZED_NAME_GATEWAYS_LIST = "gatewaysList";
-  @SerializedName(SERIALIZED_NAME_GATEWAYS_LIST)
+  public static final String JSON_PROPERTY_GATEWAYS_LIST = "gatewaysList";
   private List<Map<String, Object>> gatewaysList = null;
 
-  public static final String SERIALIZED_NAME_START_EVENTS = "startEvents";
-  @SerializedName(SERIALIZED_NAME_START_EVENTS)
+  public static final String JSON_PROPERTY_START_EVENTS = "startEvents";
   private List<Map<String, Object>> startEvents = null;
 
-  public static final String SERIALIZED_NAME_INTERMEDIATE_CATCH_EVENTS = "intermediateCatchEvents";
-  @SerializedName(SERIALIZED_NAME_INTERMEDIATE_CATCH_EVENTS)
+  public static final String JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS = "intermediateCatchEvents";
   private List<Map<String, Object>> intermediateCatchEvents = null;
 
-  public static final String SERIALIZED_NAME_INTERMEDIATE_THROW_EVENTS = "intermediateThrowEvents";
-  @SerializedName(SERIALIZED_NAME_INTERMEDIATE_THROW_EVENTS)
+  public static final String JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS = "intermediateThrowEvents";
   private List<Map<String, Object>> intermediateThrowEvents = null;
 
-  public static final String SERIALIZED_NAME_END_EVENTS = "endEvents";
-  @SerializedName(SERIALIZED_NAME_END_EVENTS)
+  public static final String JSON_PROPERTY_END_EVENTS = "endEvents";
   private List<Map<String, Object>> endEvents = null;
 
-  public static final String SERIALIZED_NAME_DATA_DEFINITIONS = "dataDefinitions";
-  @SerializedName(SERIALIZED_NAME_DATA_DEFINITIONS)
+  public static final String JSON_PROPERTY_DATA_DEFINITIONS = "dataDefinitions";
   private List<Map<String, Object>> dataDefinitions = null;
 
-  public static final String SERIALIZED_NAME_DOCUMENT_DEFINITIONS = "documentDefinitions";
-  @SerializedName(SERIALIZED_NAME_DOCUMENT_DEFINITIONS)
+  public static final String JSON_PROPERTY_DOCUMENT_DEFINITIONS = "documentDefinitions";
   private List<Map<String, Object>> documentDefinitions = null;
 
-  public static final String SERIALIZED_NAME_CONNECTORS = "connectors";
-  @SerializedName(SERIALIZED_NAME_CONNECTORS)
+  public static final String JSON_PROPERTY_CONNECTORS = "connectors";
   private List<Map<String, Object>> connectors = null;
 
-  public static final String SERIALIZED_NAME_BUSINESS_DATA_DEFINITIONS = "businessDataDefinitions";
-  @SerializedName(SERIALIZED_NAME_BUSINESS_DATA_DEFINITIONS)
+  public static final String JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS = "businessDataDefinitions";
   private List<Map<String, Object>> businessDataDefinitions = null;
 
-  public static final String SERIALIZED_NAME_DOCUMENT_LIST_DEFINITIONS = "documentListDefinitions";
-  @SerializedName(SERIALIZED_NAME_DOCUMENT_LIST_DEFINITIONS)
+  public static final String JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS = "documentListDefinitions";
   private List<Map<String, Object>> documentListDefinitions = null;
 
 
@@ -105,6 +104,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ACTIVITIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getActivities() {
     return activities;
@@ -136,6 +137,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TRANSITIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getTransitions() {
     return transitions;
@@ -167,6 +170,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_GATEWAYS_LIST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getGatewaysList() {
     return gatewaysList;
@@ -198,6 +203,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_START_EVENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getStartEvents() {
     return startEvents;
@@ -229,6 +236,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getIntermediateCatchEvents() {
     return intermediateCatchEvents;
@@ -260,6 +269,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getIntermediateThrowEvents() {
     return intermediateThrowEvents;
@@ -291,6 +302,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_END_EVENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getEndEvents() {
     return endEvents;
@@ -322,6 +335,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DATA_DEFINITIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getDataDefinitions() {
     return dataDefinitions;
@@ -353,6 +368,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DOCUMENT_DEFINITIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getDocumentDefinitions() {
     return documentDefinitions;
@@ -384,6 +401,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_CONNECTORS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getConnectors() {
     return connectors;
@@ -415,6 +434,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getBusinessDataDefinitions() {
     return businessDataDefinitions;
@@ -446,6 +467,8 @@ public class FlowElementContainerDefinition implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getDocumentListDefinitions() {
     return documentListDefinitions;

@@ -13,64 +13,63 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Group
  */
 @ApiModel(description = "Group")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Group.JSON_PROPERTY_ID,
+  Group.JSON_PROPERTY_NAME,
+  Group.JSON_PROPERTY_DISPLAY_NAME,
+  Group.JSON_PROPERTY_PARENT_PATH,
+  Group.JSON_PROPERTY_PATH,
+  Group.JSON_PROPERTY_DESCRIPTION,
+  Group.JSON_PROPERTY_CREATION_DATE,
+  Group.JSON_PROPERTY_CREATED_BY_USER_ID,
+  Group.JSON_PROPERTY_LAST_UPDATE_DATE,
+  Group.JSON_PROPERTY_ICON
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Group implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  public static final String SERIALIZED_NAME_PARENT_PATH = "parent_path";
-  @SerializedName(SERIALIZED_NAME_PARENT_PATH)
+  public static final String JSON_PROPERTY_PARENT_PATH = "parent_path";
   private String parentPath;
 
-  public static final String SERIALIZED_NAME_PATH = "path";
-  @SerializedName(SERIALIZED_NAME_PATH)
+  public static final String JSON_PROPERTY_PATH = "path";
   private String path;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_CREATION_DATE = "creation_date";
-  @SerializedName(SERIALIZED_NAME_CREATION_DATE)
+  public static final String JSON_PROPERTY_CREATION_DATE = "creation_date";
   private String creationDate;
 
-  public static final String SERIALIZED_NAME_CREATED_BY_USER_ID = "created_by_user_id";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY_USER_ID)
+  public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
   private String createdByUserId;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "last_update_date";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_ICON = "icon";
-  @SerializedName(SERIALIZED_NAME_ICON)
+  public static final String JSON_PROPERTY_ICON = "icon";
   private String icon;
 
 
@@ -86,6 +85,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "group ID")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -108,6 +109,8 @@ public class Group implements Serializable {
    * @return name
   **/
   @ApiModelProperty(required = true, value = "name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
     return name;
@@ -131,6 +134,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "display name")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -154,6 +159,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the path of the parent group of this group (empty if the group has no parent)")
+  @JsonProperty(JSON_PROPERTY_PARENT_PATH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentPath() {
     return parentPath;
@@ -177,6 +184,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the full path of the group (including its parent path)")
+  @JsonProperty(JSON_PROPERTY_PATH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPath() {
     return path;
@@ -200,6 +209,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -223,6 +234,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "creation date (format: `2014-12-31 15:17:24.736`)")
+  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreationDate() {
     return creationDate;
@@ -246,6 +259,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the user who created the group (-1 if the group was created by the tenant admin or by an organisation import)")
+  @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreatedByUserId() {
     return createdByUserId;
@@ -269,6 +284,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "last update date (format: `2014-12-31 15:17:24.736`)")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -292,6 +309,8 @@ public class Group implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "icon path")
+  @JsonProperty(JSON_PROPERTY_ICON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIcon() {
     return icon;

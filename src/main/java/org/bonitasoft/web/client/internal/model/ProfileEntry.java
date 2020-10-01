@@ -13,64 +13,63 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Profile entry
  */
 @ApiModel(description = "Profile entry")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ProfileEntry.JSON_PROPERTY_ID,
+  ProfileEntry.JSON_PROPERTY_ICON,
+  ProfileEntry.JSON_PROPERTY_INDEX,
+  ProfileEntry.JSON_PROPERTY_PROFILE_ID,
+  ProfileEntry.JSON_PROPERTY_PAGE,
+  ProfileEntry.JSON_PROPERTY_DESCRIPTION,
+  ProfileEntry.JSON_PROPERTY_NAME,
+  ProfileEntry.JSON_PROPERTY_TYPE,
+  ProfileEntry.JSON_PROPERTY_IS_CUSTOM,
+  ProfileEntry.JSON_PROPERTY_PARENT_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ProfileEntry implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_ICON = "icon";
-  @SerializedName(SERIALIZED_NAME_ICON)
+  public static final String JSON_PROPERTY_ICON = "icon";
   private String icon;
 
-  public static final String SERIALIZED_NAME_INDEX = "index";
-  @SerializedName(SERIALIZED_NAME_INDEX)
+  public static final String JSON_PROPERTY_INDEX = "index";
   private String index;
 
-  public static final String SERIALIZED_NAME_PROFILE_ID = "profile_id";
-  @SerializedName(SERIALIZED_NAME_PROFILE_ID)
+  public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
   private String profileId;
 
-  public static final String SERIALIZED_NAME_PAGE = "page";
-  @SerializedName(SERIALIZED_NAME_PAGE)
+  public static final String JSON_PROPERTY_PAGE = "page";
   private String page;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
-  public static final String SERIALIZED_NAME_IS_CUSTOM = "isCustom";
-  @SerializedName(SERIALIZED_NAME_IS_CUSTOM)
+  public static final String JSON_PROPERTY_IS_CUSTOM = "isCustom";
   private Boolean isCustom;
 
-  public static final String SERIALIZED_NAME_PARENT_ID = "parent_id";
-  @SerializedName(SERIALIZED_NAME_PARENT_ID)
+  public static final String JSON_PROPERTY_PARENT_ID = "parent_id";
   private String parentId;
 
 
@@ -86,6 +85,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "profileEntry id")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -109,6 +110,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "icon used in the portal to represent a profileEntry")
+  @JsonProperty(JSON_PROPERTY_ICON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIcon() {
     return icon;
@@ -132,6 +135,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "position in a menu")
+  @JsonProperty(JSON_PROPERTY_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIndex() {
     return index;
@@ -155,6 +160,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the profile that contains this profileEntry")
+  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProfileId() {
     return profileId;
@@ -178,6 +185,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "pageToken (menu name or menu item name) used in a portal menu to identify the page associated with the profileEntry")
+  @JsonProperty(JSON_PROPERTY_PAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPage() {
     return page;
@@ -201,6 +210,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -224,6 +235,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "name of the profileEntry")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -247,6 +260,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "link (if menu item) | folder (if menu)")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getType() {
     return type;
@@ -270,6 +285,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = " true | false ")
+  @JsonProperty(JSON_PROPERTY_IS_CUSTOM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getIsCustom() {
     return isCustom;
@@ -293,6 +310,8 @@ public class ProfileEntry implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id or parent profileEntry if in a folder")
+  @JsonProperty(JSON_PROPERTY_PARENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentId() {
     return parentId;

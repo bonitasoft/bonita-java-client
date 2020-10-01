@@ -13,53 +13,64 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * AbstractTask
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  AbstractTask.JSON_PROPERTY_ID,
+  AbstractTask.JSON_PROPERTY_TYPE,
+  AbstractTask.JSON_PROPERTY_NAME,
+  AbstractTask.JSON_PROPERTY_DISPLAY_NAME,
+  AbstractTask.JSON_PROPERTY_DESCRIPTION,
+  AbstractTask.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+  AbstractTask.JSON_PROPERTY_STATE,
+  AbstractTask.JSON_PROPERTY_REACHED_STATE_DATE,
+  AbstractTask.JSON_PROPERTY_LAST_UPDATE_DATE,
+  AbstractTask.JSON_PROPERTY_DUE_DATE,
+  AbstractTask.JSON_PROPERTY_PRIORITY,
+  AbstractTask.JSON_PROPERTY_PROCESS_ID,
+  AbstractTask.JSON_PROPERTY_PARENT_CASE_ID,
+  AbstractTask.JSON_PROPERTY_PARENT_TASK_ID,
+  AbstractTask.JSON_PROPERTY_ROOT_CASE_ID,
+  AbstractTask.JSON_PROPERTY_ROOT_CONTAINER_ID,
+  AbstractTask.JSON_PROPERTY_EXECUTED_BY,
+  AbstractTask.JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE,
+  AbstractTask.JSON_PROPERTY_ACTOR_ID,
+  AbstractTask.JSON_PROPERTY_ASSIGNED_ID,
+  AbstractTask.JSON_PROPERTY_ASSIGNED_DATE,
+  AbstractTask.JSON_PROPERTY_IS_TERMINAL
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class AbstractTask implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_DISPLAY_DESCRIPTION = "displayDescription";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_DESCRIPTION)
+  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
   private String displayDescription;
 
   /**
    * the current state of the task
    */
-  @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     READY_COMPLETED_FAILED("ready completed failed");
 
@@ -69,6 +80,7 @@ public class AbstractTask implements Serializable {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -78,6 +90,7 @@ public class AbstractTask implements Serializable {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static StateEnum fromValue(String value) {
       for (StateEnum b : StateEnum.values()) {
         if (b.value.equals(value)) {
@@ -86,83 +99,54 @@ public class AbstractTask implements Serializable {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<StateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StateEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private StateEnum state;
 
-  public static final String SERIALIZED_NAME_REACHED_STATE_DATE = "reached_state_date";
-  @SerializedName(SERIALIZED_NAME_REACHED_STATE_DATE)
+  public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
   private String reachedStateDate;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "last_update_date";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
-  @SerializedName(SERIALIZED_NAME_DUE_DATE)
+  public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
   private String dueDate;
 
-  public static final String SERIALIZED_NAME_PRIORITY = "priority";
-  @SerializedName(SERIALIZED_NAME_PRIORITY)
+  public static final String JSON_PROPERTY_PRIORITY = "priority";
   private String priority;
 
-  public static final String SERIALIZED_NAME_PROCESS_ID = "processId";
-  @SerializedName(SERIALIZED_NAME_PROCESS_ID)
+  public static final String JSON_PROPERTY_PROCESS_ID = "processId";
   private String processId;
 
-  public static final String SERIALIZED_NAME_PARENT_CASE_ID = "parentCaseId";
-  @SerializedName(SERIALIZED_NAME_PARENT_CASE_ID)
+  public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
   private String parentCaseId;
 
-  public static final String SERIALIZED_NAME_PARENT_TASK_ID = "parentTaskId";
-  @SerializedName(SERIALIZED_NAME_PARENT_TASK_ID)
+  public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
   private String parentTaskId;
 
-  public static final String SERIALIZED_NAME_ROOT_CASE_ID = "rootCaseId";
-  @SerializedName(SERIALIZED_NAME_ROOT_CASE_ID)
+  public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
   private String rootCaseId;
 
-  public static final String SERIALIZED_NAME_ROOT_CONTAINER_ID = "rootContainerId";
-  @SerializedName(SERIALIZED_NAME_ROOT_CONTAINER_ID)
+  public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
   private String rootContainerId;
 
-  public static final String SERIALIZED_NAME_EXECUTED_BY = "executedBy";
-  @SerializedName(SERIALIZED_NAME_EXECUTED_BY)
+  public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
   private String executedBy;
 
-  public static final String SERIALIZED_NAME_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
-  @SerializedName(SERIALIZED_NAME_EXECUTED_BY_SUBSTITUTE)
+  public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
   private String executedBySubstitute;
 
-  public static final String SERIALIZED_NAME_ACTOR_ID = "actorId";
-  @SerializedName(SERIALIZED_NAME_ACTOR_ID)
+  public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
   private String actorId;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_ID = "assigned_id";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_ID)
+  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
   private String assignedId;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_DATE = "assigned_date";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_DATE)
+  public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
   private String assignedDate;
 
-  public static final String SERIALIZED_NAME_IS_TERMINAL = "isTerminal";
-  @SerializedName(SERIALIZED_NAME_IS_TERMINAL)
+  public static final String JSON_PROPERTY_IS_TERMINAL = "isTerminal";
   private Boolean isTerminal;
 
 
@@ -178,6 +162,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the task id")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -201,6 +187,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the task type")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getType() {
     return type;
@@ -224,6 +212,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the task technical name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -247,6 +237,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the human readable task name")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -270,6 +262,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the task description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -293,6 +287,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the human readable task description")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayDescription() {
     return displayDescription;
@@ -316,6 +312,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the current state of the task")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public StateEnum getState() {
     return state;
@@ -339,6 +337,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this task reached the current state for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getReachedStateDate() {
     return reachedStateDate;
@@ -362,6 +362,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this task was last updated for example '2014-10-17 16:05:42.626)")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -385,6 +387,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this task is due for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_DUE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDueDate() {
     return dueDate;
@@ -408,6 +412,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the priority (string) of the current task")
+  @JsonProperty(JSON_PROPERTY_PRIORITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPriority() {
     return priority;
@@ -431,6 +437,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the process definition id of the case which define this task")
+  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProcessId() {
     return processId;
@@ -454,6 +462,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the immediate containing case id (process instance id)")
+  @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentCaseId() {
     return parentCaseId;
@@ -477,6 +487,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the parent Task id")
+  @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentTaskId() {
     return parentTaskId;
@@ -500,6 +512,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the top/root case id (process instance id). In the case of an event sub process parentCaseId will the id of the case called while rootCaseId will be the one from the caller case")
+  @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRootCaseId() {
     return rootCaseId;
@@ -523,6 +537,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "same as rootCaseId")
+  @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRootContainerId() {
     return rootContainerId;
@@ -546,6 +562,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the user who performed this task. The task has to be a human task otherwise its value will be 0")
+  @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExecutedBy() {
     return executedBy;
@@ -569,6 +587,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the user who did actually performed the task in the case of has been done in the name of someone else. Value is 0 otherwise")
+  @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExecutedBySubstitute() {
     return executedBySubstitute;
@@ -592,6 +612,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the actor that can execute this task null otherwise")
+  @JsonProperty(JSON_PROPERTY_ACTOR_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getActorId() {
     return actorId;
@@ -615,6 +637,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the user id that this task is assigned to or 0 if it is unassigned")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedId() {
     return assignedId;
@@ -638,6 +662,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedDate() {
     return assignedDate;
@@ -661,6 +687,8 @@ public class AbstractTask implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "True if the task is the last one in a flow")
+  @JsonProperty(JSON_PROPERTY_IS_TERMINAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getIsTerminal() {
     return isTerminal;

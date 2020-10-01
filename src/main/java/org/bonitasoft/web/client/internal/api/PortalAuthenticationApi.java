@@ -1,46 +1,73 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
+import feign.*;
+import org.bonitasoft.web.client.ApiClient;
+import org.bonitasoft.web.client.EncodingUtils;
 
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
-import org.bonitasoft.web.client.internal.model.Error;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public interface PortalAuthenticationApi {
-  /**
-   * Login
-   * A call to the &#x60;/loginservice&#x60; will generates a set-cookie header in the response.  The &#x60;JSESSIONID&#x60; cookie must be transfered with each subsequent calls. (If the REST API is used in an application running in a web browser, this is handled automatically by the web browser just like any cookies).  Additional protection agains CSRF attacks is enabled by default for all fresh installations This security relies on &#x60;X-Bonita-API-Token&#x60; information. The &#x60;X-Bonita-API-Token&#x60; value can be found in the cookie named: &#x60;X-Bonita-API-Token&#x60;.  All the subsequence REST API calls performing changes in the system using DELETE, POST, or PUT HTTP methods must contain the **HTTP header** below:  &#x60;&#x60;&#x60; X-Bonita-API-Token: example-dummy-not-be-used-value &#x60;&#x60;&#x60; 
-   * @param username the username (optional)
-   * @param password the password (optional)
-   * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal (after a successful login) or to the login page (after a login failure). (optional)
-   * @param redirectURL the URL of the page to be displayed after login (optional)
-   * @return Call&lt;Void&gt;
-   */
-  @retrofit2.http.FormUrlEncoded
-  @POST("loginservice")
-  Call<Void> login(
-    @retrofit2.http.Field("username") String username, @retrofit2.http.Field("password") String password, @retrofit2.http.Field("redirect") String redirect, @retrofit2.http.Field("redirectURL") String redirectURL
-  );
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface PortalAuthenticationApi extends ApiClient.Api {
 
-  /**
-   * Logout the current user
-   * Logout the current user from the system 
-   * @param redirect Setting the redirect parameter to false indicates that the service should not redirect to the login page after logging out. (optional)
-   * @return Call&lt;Void&gt;
-   */
-  @GET("logoutservice")
-  Call<Void> logout(
-    @retrofit2.http.Query("redirect") String redirect
-  );
 
+    /**
+     * Login
+     * A call to the &#x60;/loginservice&#x60; will generates a set-cookie header in the response.  The &#x60;JSESSIONID&#x60; cookie must be transfered with each subsequent calls. (If the REST API is used in an application running in a web browser, this is handled automatically by the web browser just like any cookies).  Additional protection agains CSRF attacks is enabled by default for all fresh installations This security relies on &#x60;X-Bonita-API-Token&#x60; information. The &#x60;X-Bonita-API-Token&#x60; value can be found in the cookie named: &#x60;X-Bonita-API-Token&#x60;.  All the subsequence REST API calls performing changes in the system using DELETE, POST, or PUT HTTP methods must contain the **HTTP header** below:  &#x60;&#x60;&#x60; X-Bonita-API-Token: example-dummy-not-be-used-value &#x60;&#x60;&#x60;
+     *
+     * @param username    the username (required)
+     * @param password    the password (required)
+     * @param redirect    \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal (after a successful login) or to the login page (after a login failure). (optional, default to &quot;false&quot;)
+     * @param redirectURL the URL of the page to be displayed after login (optional, default to &quot;&quot;)
+     */
+    @RequestLine("POST /loginservice")
+    @Headers({
+            "Content-Type: application/x-www-form-urlencoded",
+            "Accept: application/json",
+    })
+    Response login(@Param("username") String username, @Param("password") String password, @Param("redirect") String redirect, @Param("redirectURL") String redirectURL, @Param("tenant") String tenant);
+
+    /**
+     * Logout the current user
+     * Logout the current user from the system
+     *
+     * @param redirect Setting the redirect parameter to false indicates that the service should not redirect to the login page after logging out. (optional)
+     */
+    @RequestLine("GET /logoutservice?redirect={redirect}")
+    @Headers({
+            "Accept: application/json",
+    })
+    void logout(@Param("redirect") String redirect);
+
+    /**
+     * Logout the current user
+     * Logout the current user from the system
+     * Note, this is equivalent to the other <code>logout</code> method,
+     * but with the query parameters collected into a single Map parameter. This
+     * is convenient for services with optional query parameters, especially when
+     * used with the {@link LogoutQueryParams} class that allows for
+     * building up this map in a fluent style.
+     *
+     * @param queryParams Map of query parameters as name-value pairs
+     *                    <p>The following elements may be specified in the query map:</p>
+     *                    <ul>
+     *                    <li>redirect - Setting the redirect parameter to false indicates that the service should not redirect to the login page after logging out. (optional)</li>
+     *                    </ul>
+     */
+    @RequestLine("GET /logoutservice?redirect={redirect}")
+    @Headers({
+            "Accept: application/json",
+    })
+    void logout(@QueryMap(encoded = true) Map<String, Object> queryParams);
+
+    /**
+     * A convenience class for generating query parameters for the
+     * <code>logout</code> method in a fluent style.
+     */
+    public static class LogoutQueryParams extends HashMap<String, Object> {
+        public LogoutQueryParams redirect(final String value) {
+            put("redirect", EncodingUtils.encode(value));
+            return this;
+        }
+    }
 }

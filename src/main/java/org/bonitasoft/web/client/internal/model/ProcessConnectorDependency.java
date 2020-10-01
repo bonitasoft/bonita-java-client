@@ -13,40 +13,39 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Use the processConnectorDependency resource to access connector dependencies.
  */
 @ApiModel(description = "Use the processConnectorDependency resource to access connector dependencies.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_VERSION,
+  ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_PROCESS_ID,
+  ProcessConnectorDependency.JSON_PROPERTY_FILENAME,
+  ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_NAME
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ProcessConnectorDependency implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_CONNECTOR_VERSION = "connector_version";
-  @SerializedName(SERIALIZED_NAME_CONNECTOR_VERSION)
+  public static final String JSON_PROPERTY_CONNECTOR_VERSION = "connector_version";
   private String connectorVersion;
 
-  public static final String SERIALIZED_NAME_CONNECTOR_PROCESS_ID = "connector_process_id";
-  @SerializedName(SERIALIZED_NAME_CONNECTOR_PROCESS_ID)
+  public static final String JSON_PROPERTY_CONNECTOR_PROCESS_ID = "connector_process_id";
   private String connectorProcessId;
 
-  public static final String SERIALIZED_NAME_FILENAME = "filename";
-  @SerializedName(SERIALIZED_NAME_FILENAME)
+  public static final String JSON_PROPERTY_FILENAME = "filename";
   private String filename;
 
-  public static final String SERIALIZED_NAME_CONNECTOR_NAME = "connector_name";
-  @SerializedName(SERIALIZED_NAME_CONNECTOR_NAME)
+  public static final String JSON_PROPERTY_CONNECTOR_NAME = "connector_name";
   private String connectorName;
 
 
@@ -62,6 +61,8 @@ public class ProcessConnectorDependency implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "<connector version>")
+  @JsonProperty(JSON_PROPERTY_CONNECTOR_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConnectorVersion() {
     return connectorVersion;
@@ -85,6 +86,8 @@ public class ProcessConnectorDependency implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "<process id>")
+  @JsonProperty(JSON_PROPERTY_CONNECTOR_PROCESS_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConnectorProcessId() {
     return connectorProcessId;
@@ -108,6 +111,8 @@ public class ProcessConnectorDependency implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "<filename representing the connector>")
+  @JsonProperty(JSON_PROPERTY_FILENAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFilename() {
     return filename;
@@ -131,6 +136,8 @@ public class ProcessConnectorDependency implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "<connector name>")
+  @JsonProperty(JSON_PROPERTY_CONNECTOR_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConnectorName() {
     return connectorName;

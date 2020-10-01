@@ -13438,14 +13438,19 @@ components:
           format: password
           type: string
         redirect:
+          default: "false"
           description: '"true" or "false". "false" indicates that the service should
             not redirect to Bonita Portal (after a successful login) or to the login
             page (after a login failure).'
           type: string
         redirectURL:
+          default: ""
           description: the URL of the page to be displayed after login
           nullable: true
           type: string
+      required:
+      - password
+      - username
       type: object
     Error:
       additionalProperties: true

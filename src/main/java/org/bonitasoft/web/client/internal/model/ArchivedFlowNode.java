@@ -13,121 +13,117 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
-import org.bonitasoft.web.client.internal.model.ArchivedFlowNodeAllOf;
-import org.bonitasoft.web.client.internal.model.FlowNode;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ArchivedFlowNode
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ArchivedFlowNode.JSON_PROPERTY_ID,
+  ArchivedFlowNode.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+  ArchivedFlowNode.JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE,
+  ArchivedFlowNode.JSON_PROPERTY_CASE_ID,
+  ArchivedFlowNode.JSON_PROPERTY_PARENT_CASE_ID,
+  ArchivedFlowNode.JSON_PROPERTY_ROOT_CASE_ID,
+  ArchivedFlowNode.JSON_PROPERTY_PROCESS_ID,
+  ArchivedFlowNode.JSON_PROPERTY_ROOT_CONTAINER_ID,
+  ArchivedFlowNode.JSON_PROPERTY_STATE,
+  ArchivedFlowNode.JSON_PROPERTY_TYPE,
+  ArchivedFlowNode.JSON_PROPERTY_ASSIGNED_ID,
+  ArchivedFlowNode.JSON_PROPERTY_ASSIGNED_DATE,
+  ArchivedFlowNode.JSON_PROPERTY_EXECUTED_BY,
+  ArchivedFlowNode.JSON_PROPERTY_PRIORITY,
+  ArchivedFlowNode.JSON_PROPERTY_ACTOR_ID,
+  ArchivedFlowNode.JSON_PROPERTY_DESCRIPTION,
+  ArchivedFlowNode.JSON_PROPERTY_NAME,
+  ArchivedFlowNode.JSON_PROPERTY_REACHED_STATE_DATE,
+  ArchivedFlowNode.JSON_PROPERTY_DISPLAY_NAME,
+  ArchivedFlowNode.JSON_PROPERTY_DUE_DATE,
+  ArchivedFlowNode.JSON_PROPERTY_LAST_UPDATE_DATE,
+  ArchivedFlowNode.JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE,
+  ArchivedFlowNode.JSON_PROPERTY_SOURCE_OBJECT_ID,
+  ArchivedFlowNode.JSON_PROPERTY_ARCHIVED_DATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ArchivedFlowNode implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_DISPLAY_DESCRIPTION = "displayDescription";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_DESCRIPTION)
+  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
   private String displayDescription;
 
-  public static final String SERIALIZED_NAME_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
-  @SerializedName(SERIALIZED_NAME_EXECUTED_BY_SUBSTITUTE)
+  public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
   private String executedBySubstitute;
 
-  public static final String SERIALIZED_NAME_CASE_ID = "caseId";
-  @SerializedName(SERIALIZED_NAME_CASE_ID)
+  public static final String JSON_PROPERTY_CASE_ID = "caseId";
   private String caseId;
 
-  public static final String SERIALIZED_NAME_PARENT_CASE_ID = "parentCaseId";
-  @SerializedName(SERIALIZED_NAME_PARENT_CASE_ID)
+  public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
   private String parentCaseId;
 
-  public static final String SERIALIZED_NAME_ROOT_CASE_ID = "rootCaseId";
-  @SerializedName(SERIALIZED_NAME_ROOT_CASE_ID)
+  public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
   private String rootCaseId;
 
-  public static final String SERIALIZED_NAME_PROCESS_ID = "processId";
-  @SerializedName(SERIALIZED_NAME_PROCESS_ID)
+  public static final String JSON_PROPERTY_PROCESS_ID = "processId";
   private String processId;
 
-  public static final String SERIALIZED_NAME_ROOT_CONTAINER_ID = "rootContainerId";
-  @SerializedName(SERIALIZED_NAME_ROOT_CONTAINER_ID)
+  public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
   private String rootContainerId;
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_ID = "assigned_id";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_ID)
+  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
   private String assignedId;
 
-  public static final String SERIALIZED_NAME_ASSIGNED_DATE = "assigned_date";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_DATE)
+  public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
   private String assignedDate;
 
-  public static final String SERIALIZED_NAME_EXECUTED_BY = "executedBy";
-  @SerializedName(SERIALIZED_NAME_EXECUTED_BY)
+  public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
   private String executedBy;
 
-  public static final String SERIALIZED_NAME_PRIORITY = "priority";
-  @SerializedName(SERIALIZED_NAME_PRIORITY)
+  public static final String JSON_PROPERTY_PRIORITY = "priority";
   private String priority;
 
-  public static final String SERIALIZED_NAME_ACTOR_ID = "actorId";
-  @SerializedName(SERIALIZED_NAME_ACTOR_ID)
+  public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
   private String actorId;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_REACHED_STATE_DATE = "reached_state_date";
-  @SerializedName(SERIALIZED_NAME_REACHED_STATE_DATE)
+  public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
   private String reachedStateDate;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
-  @SerializedName(SERIALIZED_NAME_DUE_DATE)
+  public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
   private String dueDate;
 
-  public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "last_update_date";
-  @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
   private String lastUpdateDate;
 
-  public static final String SERIALIZED_NAME_PARENT_TASK_ID_DOUBLE_QUOTE = "parentTaskId&quot;";
-  @SerializedName(SERIALIZED_NAME_PARENT_TASK_ID_DOUBLE_QUOTE)
+  public static final String JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE = "parentTaskId&quot;";
   private String parentTaskIdDoubleQuote;
 
-  public static final String SERIALIZED_NAME_SOURCE_OBJECT_ID = "sourceObjectId";
-  @SerializedName(SERIALIZED_NAME_SOURCE_OBJECT_ID)
+  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
   private String sourceObjectId;
 
-  public static final String SERIALIZED_NAME_ARCHIVED_DATE = "archivedDate";
-  @SerializedName(SERIALIZED_NAME_ARCHIVED_DATE)
+  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
   private String archivedDate;
 
 
@@ -143,6 +139,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the flow node id ")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -166,6 +164,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the human readable flow node description ")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayDescription() {
     return displayDescription;
@@ -189,6 +189,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the user who really performed this flow node in case where a substitute did it, or 0 if the flow node was not performed by a substitute")
+  @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExecutedBySubstitute() {
     return executedBySubstitute;
@@ -212,6 +214,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the case id that is associated with this flow node")
+  @JsonProperty(JSON_PROPERTY_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCaseId() {
     return caseId;
@@ -235,6 +239,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the parent case id that is associated with this flow node's case")
+  @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentCaseId() {
     return parentCaseId;
@@ -258,6 +264,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the root case initiator id that is associated with this flow node's case")
+  @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRootCaseId() {
     return rootCaseId;
@@ -281,6 +289,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the process id that is associated with this flow node")
+  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProcessId() {
     return processId;
@@ -304,6 +314,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the root process id of the root case that is associated with this flow node")
+  @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRootContainerId() {
     return rootContainerId;
@@ -327,6 +339,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the current state of the flow node (ready, completed, failed)")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getState() {
     return state;
@@ -350,6 +364,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the flow node type ")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getType() {
     return type;
@@ -373,6 +389,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the user id that this flow node is assigned to, or 0 if it is unassigned")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedId() {
     return assignedId;
@@ -396,6 +414,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current flow node was assigned, for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAssignedDate() {
     return assignedDate;
@@ -419,6 +439,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the user who executed the flow node, or 0 if the flow node has not been executed")
+  @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExecutedBy() {
     return executedBy;
@@ -442,6 +464,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the priority of the current flow node")
+  @JsonProperty(JSON_PROPERTY_PRIORITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPriority() {
     return priority;
@@ -465,6 +489,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the id of the actor that can execute this flow node, null otherwise")
+  @JsonProperty(JSON_PROPERTY_ACTOR_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getActorId() {
     return actorId;
@@ -488,6 +514,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the flow node description ")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -511,6 +539,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the flow node name ")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -534,6 +564,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node reached the current state, for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getReachedStateDate() {
     return reachedStateDate;
@@ -557,6 +589,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the display name of this flow node")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;
@@ -580,6 +614,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node is due, for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_DUE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDueDate() {
     return dueDate;
@@ -603,6 +639,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node was last updated, for example '2014-10-17 16:05:42.626)")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastUpdateDate() {
     return lastUpdateDate;
@@ -626,6 +664,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "in the case of a subtask, the parent task id ")
+  @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentTaskIdDoubleQuote() {
     return parentTaskIdDoubleQuote;
@@ -649,6 +689,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the original id of the flowNode before it was archived")
+  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSourceObjectId() {
     return sourceObjectId;
@@ -672,6 +714,8 @@ public class ArchivedFlowNode implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getArchivedDate() {
     return archivedDate;

@@ -13,43 +13,41 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ApplicationMenuUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ApplicationMenuUpdateRequest.JSON_PROPERTY_PARENT_MENU_ID,
+  ApplicationMenuUpdateRequest.JSON_PROPERTY_APPLICATION_PAGE_ID,
+  ApplicationMenuUpdateRequest.JSON_PROPERTY_APPLICATION_ID,
+  ApplicationMenuUpdateRequest.JSON_PROPERTY_MENU_INDEX,
+  ApplicationMenuUpdateRequest.JSON_PROPERTY_DISPLAY_NAME
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ApplicationMenuUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_PARENT_MENU_ID = "parentMenuId";
-  @SerializedName(SERIALIZED_NAME_PARENT_MENU_ID)
+  public static final String JSON_PROPERTY_PARENT_MENU_ID = "parentMenuId";
   private String parentMenuId;
 
-  public static final String SERIALIZED_NAME_APPLICATION_PAGE_ID = "applicationPageId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_PAGE_ID)
+  public static final String JSON_PROPERTY_APPLICATION_PAGE_ID = "applicationPageId";
   private String applicationPageId;
 
-  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
-  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
   private String applicationId;
 
-  public static final String SERIALIZED_NAME_MENU_INDEX = "menuIndex";
-  @SerializedName(SERIALIZED_NAME_MENU_INDEX)
+  public static final String JSON_PROPERTY_MENU_INDEX = "menuIndex";
   private String menuIndex;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
 
@@ -65,6 +63,8 @@ public class ApplicationMenuUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the parent menu of this menu item, or -1 for a top-level item")
+  @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentMenuId() {
     return parentMenuId;
@@ -88,6 +88,8 @@ public class ApplicationMenuUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the application page targeted by this menu item, or -1 if there is no targeted page (that is, the item is a parent menu)")
+  @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getApplicationPageId() {
     return applicationPageId;
@@ -111,6 +113,8 @@ public class ApplicationMenuUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "id of the application related to this menu item")
+  @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getApplicationId() {
     return applicationId;
@@ -134,6 +138,8 @@ public class ApplicationMenuUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "index of the menu item")
+  @JsonProperty(JSON_PROPERTY_MENU_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMenuIndex() {
     return menuIndex;
@@ -157,6 +163,8 @@ public class ApplicationMenuUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "label to display for this menu in the application navigation bar or menu")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDisplayName() {
     return displayName;

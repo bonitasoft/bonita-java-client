@@ -1,30 +1,22 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
-
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
-import org.bonitasoft.web.client.internal.model.Error;
+import feign.Headers;
+import feign.RequestLine;
+import org.bonitasoft.web.client.ApiClient;
 import org.bonitasoft.web.client.internal.model.Session;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface SessionApi extends ApiClient.Api {
 
-public interface SessionApi {
+
   /**
    * Get the current user session
    * Returns session information for the current user 
-   * @return Call&lt;Session&gt;
+   * @return Session
    */
-  @GET("API/system/session/unusedId")
-  Call<Session> getSession();
-    
-
+  @RequestLine("GET /API/system/session/unusedId")
+  @Headers({
+    "Accept: application/json",
+  })
+  Session getSession();
 }

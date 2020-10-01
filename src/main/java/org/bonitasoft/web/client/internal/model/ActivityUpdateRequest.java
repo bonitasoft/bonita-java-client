@@ -13,31 +13,29 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ActivityUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ActivityUpdateRequest.JSON_PROPERTY_VARIABLES,
+  ActivityUpdateRequest.JSON_PROPERTY_STATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ActivityUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_VARIABLES = "variables";
-  @SerializedName(SERIALIZED_NAME_VARIABLES)
+  public static final String JSON_PROPERTY_VARIABLES = "variables";
   private String variables;
 
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
 
@@ -53,6 +51,8 @@ public class ActivityUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Activity variables to update.  **Note**: if there is no data with the specified name in the activity, the update will be applied to the process data if a variable with the specified name exists.  **Note**: if the task definition includes a connector that is executed on finish and updates the value of a variable, the value set by the REST API call is overwritten. ")
+  @JsonProperty(JSON_PROPERTY_VARIABLES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVariables() {
     return variables;
@@ -76,6 +76,8 @@ public class ActivityUpdateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The target state of the activity - Execute a task: `completed` - Skip activity: `skipped` - Make this call after all failed connectors have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue) - Replay activity: `replay` ")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getState() {
     return state;

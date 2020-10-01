@@ -13,59 +13,57 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * UserCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  UserCreateRequest.JSON_PROPERTY_USER_NAME,
+  UserCreateRequest.JSON_PROPERTY_FIRSTNAME,
+  UserCreateRequest.JSON_PROPERTY_LASTNAME,
+  UserCreateRequest.JSON_PROPERTY_PASSWORD,
+  UserCreateRequest.JSON_PROPERTY_PASSWORD_CONFIRM,
+  UserCreateRequest.JSON_PROPERTY_ICON,
+  UserCreateRequest.JSON_PROPERTY_TITLE,
+  UserCreateRequest.JSON_PROPERTY_JOB_TITLE,
+  UserCreateRequest.JSON_PROPERTY_MANAGER_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class UserCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_USER_NAME = "userName";
-  @SerializedName(SERIALIZED_NAME_USER_NAME)
+  public static final String JSON_PROPERTY_USER_NAME = "userName";
   private String userName;
 
-  public static final String SERIALIZED_NAME_FIRSTNAME = "firstname";
-  @SerializedName(SERIALIZED_NAME_FIRSTNAME)
+  public static final String JSON_PROPERTY_FIRSTNAME = "firstname";
   private String firstname;
 
-  public static final String SERIALIZED_NAME_LASTNAME = "lastname";
-  @SerializedName(SERIALIZED_NAME_LASTNAME)
+  public static final String JSON_PROPERTY_LASTNAME = "lastname";
   private String lastname;
 
-  public static final String SERIALIZED_NAME_PASSWORD = "password";
-  @SerializedName(SERIALIZED_NAME_PASSWORD)
+  public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
 
-  public static final String SERIALIZED_NAME_PASSWORD_CONFIRM = "password_confirm";
-  @SerializedName(SERIALIZED_NAME_PASSWORD_CONFIRM)
+  public static final String JSON_PROPERTY_PASSWORD_CONFIRM = "password_confirm";
   private String passwordConfirm;
 
-  public static final String SERIALIZED_NAME_ICON = "icon";
-  @SerializedName(SERIALIZED_NAME_ICON)
+  public static final String JSON_PROPERTY_ICON = "icon";
   private String icon;
 
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
+  public static final String JSON_PROPERTY_TITLE = "title";
   private String title;
 
-  public static final String SERIALIZED_NAME_JOB_TITLE = "job_title";
-  @SerializedName(SERIALIZED_NAME_JOB_TITLE)
+  public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
   private String jobTitle;
 
-  public static final String SERIALIZED_NAME_MANAGER_ID = "manager_id";
-  @SerializedName(SERIALIZED_NAME_MANAGER_ID)
+  public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
   private String managerId;
 
 
@@ -81,6 +79,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user name")
+  @JsonProperty(JSON_PROPERTY_USER_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserName() {
     return userName;
@@ -104,6 +104,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user last name")
+  @JsonProperty(JSON_PROPERTY_FIRSTNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFirstname() {
     return firstname;
@@ -127,6 +129,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user last name")
+  @JsonProperty(JSON_PROPERTY_LASTNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastname() {
     return lastname;
@@ -150,6 +154,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user password")
+  @JsonProperty(JSON_PROPERTY_PASSWORD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPassword() {
     return password;
@@ -173,6 +179,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user password confirmation")
+  @JsonProperty(JSON_PROPERTY_PASSWORD_CONFIRM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPasswordConfirm() {
     return passwordConfirm;
@@ -196,6 +204,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = " bonita icon path (ie. /default/icon_user.png)")
+  @JsonProperty(JSON_PROPERTY_ICON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIcon() {
     return icon;
@@ -219,6 +229,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user title")
+  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTitle() {
     return title;
@@ -242,6 +254,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user job title")
+  @JsonProperty(JSON_PROPERTY_JOB_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getJobTitle() {
     return jobTitle;
@@ -265,6 +279,8 @@ public class UserCreateRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "user manager id")
+  @JsonProperty(JSON_PROPERTY_MANAGER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getManagerId() {
     return managerId;

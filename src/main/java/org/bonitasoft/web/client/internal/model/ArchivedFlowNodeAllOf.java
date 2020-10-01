@@ -13,32 +13,31 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A flow node (gateway or event or task) in an archived instance of a process.
  */
 @ApiModel(description = "A flow node (gateway or event or task) in an archived instance of a process.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  ArchivedFlowNodeAllOf.JSON_PROPERTY_SOURCE_OBJECT_ID,
+  ArchivedFlowNodeAllOf.JSON_PROPERTY_ARCHIVED_DATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ArchivedFlowNodeAllOf implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_SOURCE_OBJECT_ID = "sourceObjectId";
-  @SerializedName(SERIALIZED_NAME_SOURCE_OBJECT_ID)
+  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
   private String sourceObjectId;
 
-  public static final String SERIALIZED_NAME_ARCHIVED_DATE = "archivedDate";
-  @SerializedName(SERIALIZED_NAME_ARCHIVED_DATE)
+  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
   private String archivedDate;
 
 
@@ -54,6 +53,8 @@ public class ArchivedFlowNodeAllOf implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the original id of the flowNode before it was archived")
+  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSourceObjectId() {
     return sourceObjectId;
@@ -77,6 +78,8 @@ public class ArchivedFlowNodeAllOf implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getArchivedDate() {
     return archivedDate;

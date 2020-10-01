@@ -1,46 +1,40 @@
 package org.bonitasoft.web.client.internal.api;
 
-import org.bonitasoft.web.client.CollectionFormats.*;
+import feign.Headers;
+import feign.Param;
+import feign.RequestLine;
+import org.bonitasoft.web.client.ApiClient;
 
-import retrofit2.Call;
-import retrofit2.http.*;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okhttp3.MultipartBody;
-
-import org.bonitasoft.web.client.internal.model.Error;
 import java.io.File;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+public interface OrganizationApi extends ApiClient.Api {
 
-public interface OrganizationApi {
-  /**
-   * Import an organization
-   * Import an organization 
-   * @param organizationDataUpload Uploaded file (optional)
-   * @param importPolicy Import policy (optional)
-   * @return Call&lt;Void&gt;
-   */
-  @retrofit2.http.FormUrlEncoded
-  @POST("services/organization/import")
-  Call<Void> importOrganization(
-    @retrofit2.http.Field("organizationDataUpload") String organizationDataUpload, @retrofit2.http.Field("importPolicy") String importPolicy
-  );
 
-  /**
-   * Import an organization
-   * Upload organization 
-   * @param file  (optional)
-   * @return Call&lt;Void&gt;
-   */
-  @retrofit2.http.Multipart
-  @POST("portal/organizationUpload")
-  Call<Void> uploadOrganization(
-    @retrofit2.http.Part MultipartBody.Part file
-  );
+    /**
+     * Import an organization
+     * Import an organization
+     *
+     * @param organizationDataUpload Uploaded file (optional)
+     * @param importPolicy           Import policy (optional)
+     */
+    @RequestLine("POST /services/organization/import")
+    @Headers({
+            "Content-Type: application/x-www-form-urlencoded",
+            "Accept: text/plain",
+    })
+    String importOrganization(@Param("organizationDataUpload") String organizationDataUpload, @Param("importPolicy") String importPolicy);
 
+    /**
+     * Import an organization
+     * Upload organization
+     *
+     * @param file (optional)
+     */
+    @RequestLine("POST /portal/organizationUpload")
+    @Headers({
+            "Content-Type: multipart/form-data",
+            "Accept: text/plain",
+    })
+    String uploadOrganization(@Param("file") File file);
 }

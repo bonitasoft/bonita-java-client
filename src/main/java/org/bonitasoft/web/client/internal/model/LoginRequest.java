@@ -13,40 +13,40 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * LoginRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  LoginRequest.JSON_PROPERTY_USERNAME,
+  LoginRequest.JSON_PROPERTY_PASSWORD,
+  LoginRequest.JSON_PROPERTY_REDIRECT,
+  LoginRequest.JSON_PROPERTY_REDIRECT_U_R_L
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class LoginRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_USERNAME = "username";
-  @SerializedName(SERIALIZED_NAME_USERNAME)
+  public static final String JSON_PROPERTY_USERNAME = "username";
   private String username;
 
-  public static final String SERIALIZED_NAME_PASSWORD = "password";
-  @SerializedName(SERIALIZED_NAME_PASSWORD)
+  public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
 
-  public static final String SERIALIZED_NAME_REDIRECT = "redirect";
-  @SerializedName(SERIALIZED_NAME_REDIRECT)
-  private String redirect;
+  public static final String JSON_PROPERTY_REDIRECT = "redirect";
+  private String redirect = "false";
 
-  public static final String SERIALIZED_NAME_REDIRECT_U_R_L = "redirectURL";
-  @SerializedName(SERIALIZED_NAME_REDIRECT_U_R_L)
-  private String redirectURL;
+  public static final String JSON_PROPERTY_REDIRECT_U_R_L = "redirectURL";
+  private JsonNullable<String> redirectURL = JsonNullable.<String>of("");
 
 
   public LoginRequest username(String username) {
@@ -59,8 +59,9 @@ public class LoginRequest implements Serializable {
    * the username
    * @return username
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the username")
+  @ApiModelProperty(required = true, value = "the username")
+  @JsonProperty(JSON_PROPERTY_USERNAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUsername() {
     return username;
@@ -82,8 +83,9 @@ public class LoginRequest implements Serializable {
    * the password
    * @return password
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the password")
+  @ApiModelProperty(required = true, value = "the password")
+  @JsonProperty(JSON_PROPERTY_PASSWORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPassword() {
     return password;
@@ -107,6 +109,8 @@ public class LoginRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "\"true\" or \"false\". \"false\" indicates that the service should not redirect to Bonita Portal (after a successful login) or to the login page (after a login failure).")
+  @JsonProperty(JSON_PROPERTY_REDIRECT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRedirect() {
     return redirect;
@@ -119,8 +123,8 @@ public class LoginRequest implements Serializable {
 
 
   public LoginRequest redirectURL(String redirectURL) {
+    this.redirectURL = JsonNullable.<String>of(redirectURL);
     
-    this.redirectURL = redirectURL;
     return this;
   }
 
@@ -130,14 +134,26 @@ public class LoginRequest implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the URL of the page to be displayed after login")
+  @JsonIgnore
 
   public String getRedirectURL() {
-    return redirectURL;
+        return redirectURL.orElse(null);
   }
 
+  @JsonProperty(JSON_PROPERTY_REDIRECT_U_R_L)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getRedirectURL_JsonNullable() {
+    return redirectURL;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_REDIRECT_U_R_L)
+  public void setRedirectURL_JsonNullable(JsonNullable<String> redirectURL) {
+    this.redirectURL = redirectURL;
+  }
 
   public void setRedirectURL(String redirectURL) {
-    this.redirectURL = redirectURL;
+    this.redirectURL = JsonNullable.<String>of(redirectURL);
   }
 
 

@@ -13,53 +13,51 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Expression
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-09-30T18:19:33.829914+02:00[Europe/Paris]")
+@JsonPropertyOrder({
+  Expression.JSON_PROPERTY_ID,
+  Expression.JSON_PROPERTY_NAME,
+  Expression.JSON_PROPERTY_CONTENT,
+  Expression.JSON_PROPERTY_EXPRESSION_TYPE,
+  Expression.JSON_PROPERTY_RETURN_TYPE,
+  Expression.JSON_PROPERTY_INTERPRETER,
+  Expression.JSON_PROPERTY_DEPENDENCIES
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class Expression implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_CONTENT = "content";
-  @SerializedName(SERIALIZED_NAME_CONTENT)
+  public static final String JSON_PROPERTY_CONTENT = "content";
   private String content;
 
-  public static final String SERIALIZED_NAME_EXPRESSION_TYPE = "expressionType";
-  @SerializedName(SERIALIZED_NAME_EXPRESSION_TYPE)
+  public static final String JSON_PROPERTY_EXPRESSION_TYPE = "expressionType";
   private String expressionType;
 
-  public static final String SERIALIZED_NAME_RETURN_TYPE = "returnType";
-  @SerializedName(SERIALIZED_NAME_RETURN_TYPE)
+  public static final String JSON_PROPERTY_RETURN_TYPE = "returnType";
   private String returnType;
 
-  public static final String SERIALIZED_NAME_INTERPRETER = "interpreter";
-  @SerializedName(SERIALIZED_NAME_INTERPRETER)
+  public static final String JSON_PROPERTY_INTERPRETER = "interpreter";
   private String interpreter;
 
-  public static final String SERIALIZED_NAME_DEPENDENCIES = "dependencies";
-  @SerializedName(SERIALIZED_NAME_DEPENDENCIES)
+  public static final String JSON_PROPERTY_DEPENDENCIES = "dependencies";
   private List<Expression> dependencies = null;
 
 
@@ -75,6 +73,8 @@ public class Expression implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the expression id")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -98,6 +98,8 @@ public class Expression implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the expression name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -121,6 +123,8 @@ public class Expression implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the expression content")
+  @JsonProperty(JSON_PROPERTY_CONTENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContent() {
     return content;
@@ -144,6 +148,8 @@ public class Expression implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the expression type")
+  @JsonProperty(JSON_PROPERTY_EXPRESSION_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExpressionType() {
     return expressionType;
@@ -167,6 +173,8 @@ public class Expression implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the expression return type")
+  @JsonProperty(JSON_PROPERTY_RETURN_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getReturnType() {
     return returnType;
@@ -190,6 +198,8 @@ public class Expression implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the expression interpreter")
+  @JsonProperty(JSON_PROPERTY_INTERPRETER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getInterpreter() {
     return interpreter;
@@ -221,6 +231,8 @@ public class Expression implements Serializable {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "the expression dependencies")
+  @JsonProperty(JSON_PROPERTY_DEPENDENCIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Expression> getDependencies() {
     return dependencies;
