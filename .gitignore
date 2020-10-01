@@ -23,3 +23,7 @@ gradle/
 .classpath
 .settings
 .project
+
+# Idea
+.idea
+*.iml
