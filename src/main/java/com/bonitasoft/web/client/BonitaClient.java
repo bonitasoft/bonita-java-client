@@ -12,6 +12,7 @@ import com.bonitasoft.web.client.exception.UnauthorizedException;
 import com.bonitasoft.web.client.internal.services.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.ApiClient;
+import org.bonitasoft.web.client.internal.api.PortalAuthenticationApi;
 
 import java.io.IOException;
 
@@ -54,6 +55,9 @@ public class BonitaClient {
     }
 
     public <T extends ApiClient.Api> T service(Class<T> serviceClass) {
+        if (serviceClass.isAssignableFrom(PortalAuthenticationApi.class)) {
+            throw new RuntimeException("Direct use of PortalAuthenticationApi is not allowed. Use BonitaClient#login method instead");
+        }
         return apiClient.buildClient(serviceClass);
     }
 }
