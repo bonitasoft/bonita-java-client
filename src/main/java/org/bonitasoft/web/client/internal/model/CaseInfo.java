@@ -13,16 +13,20 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+import org.bonitasoft.web.client.internal.model.CaseInfoFlowNodeStatesCounters;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Retrieves information about a case. It returns counters for each flow node in the case, showing the number of flow node instances that are in completed, ready, or failed state. If there are no flow node instances in a given state, no counter is returned for that state for the flow node.
@@ -32,7 +36,7 @@ import java.util.Objects;
   CaseInfo.JSON_PROPERTY_ID,
   CaseInfo.JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class CaseInfo implements Serializable {
   private static final long serialVersionUID = 1L;
 

@@ -13,14 +13,19 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import org.bonitasoft.web.client.internal.model.ActivityPriorityEnum;
+import org.bonitasoft.web.client.internal.model.ActivityStateEnum;
+import org.bonitasoft.web.client.internal.model.ActivityTypeEnum;
 import java.io.Serializable;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Use this resource to retrieve finished activities (human or service tasks), call activities, and subprocesses.
@@ -50,7 +55,7 @@ import java.util.Objects;
   ArchivedActivity.JSON_PROPERTY_SOURCE_OBJECT_ID,
   ArchivedActivity.JSON_PROPERTY_ARCHIVED_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class ArchivedActivity implements Serializable {
   private static final long serialVersionUID = 1L;
 

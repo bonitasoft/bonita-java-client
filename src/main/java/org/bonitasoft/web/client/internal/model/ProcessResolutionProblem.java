@@ -13,14 +13,16 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * This resource represents a problem in a process that needs to be resolved for the process to run. It can be an actor, a connector implementation, or a parameter (in the Enterprise, Performance, Efficiency, or Teamwork edition).
@@ -31,7 +33,7 @@ import java.util.Objects;
   ProcessResolutionProblem.JSON_PROPERTY_RESOURCE_ID,
   ProcessResolutionProblem.JSON_PROPERTY_TARGET_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class ProcessResolutionProblem implements Serializable {
   private static final long serialVersionUID = 1L;
 

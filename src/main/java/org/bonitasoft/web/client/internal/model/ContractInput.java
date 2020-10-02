@@ -13,15 +13,18 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * ContractInput
@@ -33,7 +36,7 @@ import java.util.Objects;
   ContractInput.JSON_PROPERTY_TYPE,
   ContractInput.JSON_PROPERTY_INPUTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class ContractInput implements Serializable {
   private static final long serialVersionUID = 1L;
 

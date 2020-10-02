@@ -44,15 +44,21 @@ public class LoginService {
         }
     }
 
-    public void login(String username, String password) {
-        final String defaultTenantId = "1";
-        log.debug("Login with user '{}' on tenant '{}'...", username, defaultTenantId);
-        Response loginResponse = loginApi.login(username, password, "false", "", defaultTenantId);
+    public Session login(String username, String password, String tenant) {
+        log.debug("Login with user '{}' on tenant '{}'...", username, tenant);
+        Response loginResponse = loginApi.login(username, password, tenant, "false", "");
         bonitaCookieInterceptor.setSessionCookies(loginResponse.headers());
 
         //check the session is ok + it will trigger the loading of servlets
         Session session = sessionApi.getSession();
         log.debug("Login completed. Session id: {}", session.getSessionId());
+
+        return session;
+    }
+
+    public Session login(String username, String password) {
+        final String defaultTenant = "1";
+        return login(username, password, defaultTenant);
     }
 
     public void logout() throws IOException, UnauthorizedException {

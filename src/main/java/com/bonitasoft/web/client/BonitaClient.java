@@ -13,6 +13,7 @@ import com.bonitasoft.web.client.internal.services.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.ApiClient;
 import org.bonitasoft.web.client.internal.api.PortalAuthenticationApi;
+import org.bonitasoft.web.client.internal.model.Session;
 
 import java.io.IOException;
 
@@ -37,9 +38,14 @@ public class BonitaClient {
         return loginService.isPlatformUpAndRunning();
     }
 
-    public void login(String username, String password) {
+    public Session login(String username, String password) {
         //check the session is ok + it will trigger the loading of servlets
-        loginService.login(username, password);
+        return loginService.login(username, password);
+    }
+
+    public Session login(String username, String password, String tenant) {
+        //check the session is ok + it will trigger the loading of servlets
+        return loginService.login(username, password, tenant);
     }
 
     public void logout() throws IOException, UnauthorizedException {

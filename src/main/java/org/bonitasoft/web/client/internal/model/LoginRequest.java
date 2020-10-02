@@ -13,15 +13,19 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
-
+import java.util.NoSuchElementException;
 import java.io.Serializable;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * LoginRequest
@@ -29,10 +33,11 @@ import java.util.Objects;
 @JsonPropertyOrder({
   LoginRequest.JSON_PROPERTY_USERNAME,
   LoginRequest.JSON_PROPERTY_PASSWORD,
+  LoginRequest.JSON_PROPERTY_TENANT,
   LoginRequest.JSON_PROPERTY_REDIRECT,
   LoginRequest.JSON_PROPERTY_REDIRECT_U_R_L
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class LoginRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -41,6 +46,9 @@ public class LoginRequest implements Serializable {
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
   private String password;
+
+  public static final String JSON_PROPERTY_TENANT = "tenant";
+  private String tenant;
 
   public static final String JSON_PROPERTY_REDIRECT = "redirect";
   private String redirect = "false";
@@ -94,6 +102,31 @@ public class LoginRequest implements Serializable {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+
+  public LoginRequest tenant(String tenant) {
+    
+    this.tenant = tenant;
+    return this;
+  }
+
+   /**
+   * the user tenant
+   * @return tenant
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the user tenant")
+  @JsonProperty(JSON_PROPERTY_TENANT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getTenant() {
+    return tenant;
+  }
+
+
+  public void setTenant(String tenant) {
+    this.tenant = tenant;
   }
 
 
@@ -168,13 +201,14 @@ public class LoginRequest implements Serializable {
     LoginRequest loginRequest = (LoginRequest) o;
     return Objects.equals(this.username, loginRequest.username) &&
         Objects.equals(this.password, loginRequest.password) &&
+        Objects.equals(this.tenant, loginRequest.tenant) &&
         Objects.equals(this.redirect, loginRequest.redirect) &&
         Objects.equals(this.redirectURL, loginRequest.redirectURL);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, password, redirect, redirectURL);
+    return Objects.hash(username, password, tenant, redirect, redirectURL);
   }
 
 
@@ -184,6 +218,7 @@ public class LoginRequest implements Serializable {
     sb.append("class LoginRequest {\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    tenant: ").append(toIndentedString(tenant)).append("\n");
     sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
     sb.append("    redirectURL: ").append(toIndentedString(redirectURL)).append("\n");
     sb.append("}");

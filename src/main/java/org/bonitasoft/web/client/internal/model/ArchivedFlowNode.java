@@ -13,13 +13,18 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import org.bonitasoft.web.client.internal.model.ArchivedFlowNodeAllOf;
+import org.bonitasoft.web.client.internal.model.FlowNode;
 import java.io.Serializable;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * ArchivedFlowNode
@@ -50,7 +55,7 @@ import java.util.Objects;
   ArchivedFlowNode.JSON_PROPERTY_SOURCE_OBJECT_ID,
   ArchivedFlowNode.JSON_PROPERTY_ARCHIVED_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class ArchivedFlowNode implements Serializable {
   private static final long serialVersionUID = 1L;
 

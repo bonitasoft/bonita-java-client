@@ -1,16 +1,17 @@
 package org.bonitasoft.web.client.internal.api;
 
-import feign.Headers;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
 import org.bonitasoft.web.client.ApiClient;
 import org.bonitasoft.web.client.EncodingUtils;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.bonitasoft.web.client.internal.model.Error;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import feign.*;
+
+
 public interface AuthenticationApi extends ApiClient.Api {
 
 
@@ -19,15 +20,17 @@ public interface AuthenticationApi extends ApiClient.Api {
    * A call to the &#x60;/loginservice&#x60; will generates a set-cookie header in the response.  The &#x60;JSESSIONID&#x60; cookie must be transfered with each subsequent calls. (If the REST API is used in an application running in a web browser, this is handled automatically by the web browser just like any cookies).  Additional protection agains CSRF attacks is enabled by default for all fresh installations This security relies on &#x60;X-Bonita-API-Token&#x60; information. The &#x60;X-Bonita-API-Token&#x60; value can be found in the cookie named: &#x60;X-Bonita-API-Token&#x60;.  All the subsequence REST API calls performing changes in the system using DELETE, POST, or PUT HTTP methods must contain the **HTTP header** below:  &#x60;&#x60;&#x60; X-Bonita-API-Token: example-dummy-not-be-used-value &#x60;&#x60;&#x60; 
    * @param username the username (required)
    * @param password the password (required)
+   * @param tenant the user tenant (optional)
    * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal (after a successful login) or to the login page (after a login failure). (optional, default to &quot;false&quot;)
    * @param redirectURL the URL of the page to be displayed after login (optional, default to &quot;&quot;)
+   * @return String
    */
   @RequestLine("POST /loginservice")
   @Headers({
     "Content-Type: application/x-www-form-urlencoded",
     "Accept: application/json",
   })
-  void login(@Param("username") String username, @Param("password") String password, @Param("redirect") String redirect, @Param("redirectURL") String redirectURL);
+  String login(@Param("username") String username, @Param("password") String password, @Param("tenant") String tenant, @Param("redirect") String redirect, @Param("redirectURL") String redirectURL);
 
   /**
    * Logout the current user

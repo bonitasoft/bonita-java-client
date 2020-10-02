@@ -13,11 +13,18 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import com.fasterxml.jackson.annotation.*;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.io.Serializable;
 import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.bonitasoft.web.client.internal.model.AbstractArchivedTaskAllOf;
+import org.bonitasoft.web.client.internal.model.AbstractTask;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * AbstractArchivedTask
@@ -47,7 +54,7 @@ import java.util.Objects;
   AbstractArchivedTask.JSON_PROPERTY_IS_TERMINAL,
   AbstractArchivedTask.JSON_PROPERTY_ARCHIVED_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class AbstractArchivedTask implements Serializable {
   private static final long serialVersionUID = 1L;
 

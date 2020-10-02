@@ -13,12 +13,16 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import com.fasterxml.jackson.annotation.*;
+import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Form Mapping specifies the mapping of a form to a process or a task. The mapping indicates the technology used to create the form, in the &#x60;target&#x60; attribute.
@@ -36,7 +40,7 @@ import java.util.Objects;
   FormMapping.JSON_PROPERTY_LAST_UPDATE_DATE,
   FormMapping.JSON_PROPERTY_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class FormMapping implements Serializable {
   private static final long serialVersionUID = 1L;
 

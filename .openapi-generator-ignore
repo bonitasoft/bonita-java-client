@@ -23,17 +23,21 @@
 #!docs/README.md
 
 **/org/bonitasoft/web/client/internal/model/Inline*.java
-
+**/org/bonitasoft/web/client/internal/model/Inline*.java
+**/org/bonitasoft/web/client/internal/api/PortalAuthenticationApi.java
+src/main/AndroidManifest.xml
 
 gradle/wrapper/
-
 gradle.properties
 gradlew
 gradlew.bat
 settings.gradle
 build.gradle
 build.sbt
+
 docs/Inline*.md
+
 .travis.yml
+
 git_push.sh
 .gitignore

@@ -392,7 +392,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <skip>true</skip>
+<!--                            <skip>true</skip>-->
                         	<generateApiTests>false</generateApiTests>
                         	<generateModelTests>false</generateModelTests>
                         	<generateApiDocumentation>false</generateApiDocumentation>
@@ -409,6 +409,7 @@
                                 <serializableModel>true</serializableModel>
                                 <serializationLibrary>jackson</serializationLibrary>
                                 <library>feign</library>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
                             </configOptions>
                         </configuration>
                     </execution>

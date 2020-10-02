@@ -2,6 +2,7 @@ package com.bonitasoft.web.client;
 
 import com.bonitasoft.web.client.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.internal.api.OrganizationApi;
+import org.bonitasoft.web.client.internal.model.Session;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,8 +42,9 @@ class BonitaClientIT {
     void should_be_running() throws Exception {
         assertThat(bonitaContainer.isRunning()).isTrue();
 
-        bonitaClient.login("install", "install");
-        assertThat(bonitaClient.isPlatformUpAndRunning()).isTrue();
+        Session session = bonitaClient.login("install", "install");
+        assertThat(session).isNotNull();
+        assertThat(session.getUserName()).isEqualTo("install");
 
         OrganizationApi organizationApi = bonitaClient.service(OrganizationApi.class);
 

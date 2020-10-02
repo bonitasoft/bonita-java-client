@@ -13,11 +13,16 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import com.fasterxml.jackson.annotation.*;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.io.Serializable;
 import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * MessageMessageContent
@@ -26,7 +31,7 @@ import java.util.Objects;
   MessageMessageContent.JSON_PROPERTY_VALUE,
   MessageMessageContent.JSON_PROPERTY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class MessageMessageContent implements Serializable {
   private static final long serialVersionUID = 1L;
 

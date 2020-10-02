@@ -13,13 +13,18 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import org.bonitasoft.web.client.internal.model.ArchivedCaseCommentAllOf;
+import org.bonitasoft.web.client.internal.model.CaseComment;
 import java.io.Serializable;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * ArchivedCaseComment
@@ -33,7 +38,7 @@ import java.util.Objects;
   ArchivedCaseComment.JSON_PROPERTY_USER_ID,
   ArchivedCaseComment.JSON_PROPERTY_ARCHIVED_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class ArchivedCaseComment implements Serializable {
   private static final long serialVersionUID = 1L;
 

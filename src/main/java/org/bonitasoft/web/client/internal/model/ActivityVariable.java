@@ -13,12 +13,16 @@
 
 package org.bonitasoft.web.client.internal.model;
 
-import com.fasterxml.jackson.annotation.*;
+import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * This resource enables you to retrieve the value of a specific variable name for a specific case (or process instance). Only persistent variables are concerned by this resource, not transient variables.
@@ -38,7 +42,7 @@ import java.util.Objects;
   ActivityVariable.JSON_PROPERTY_CONTAINER_TYPE,
   ActivityVariable.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class ActivityVariable implements Serializable {
   private static final long serialVersionUID = 1L;
 

@@ -1,20 +1,24 @@
 package org.bonitasoft.web.client.internal.api;
 
-import feign.Headers;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
 import org.bonitasoft.web.client.ApiClient;
 import org.bonitasoft.web.client.EncodingUtils;
-import org.bonitasoft.web.client.internal.model.Process;
-import org.bonitasoft.web.client.internal.model.*;
 
+import org.bonitasoft.web.client.internal.model.Contract;
+import org.bonitasoft.web.client.internal.model.DesignProcessDefinition;
+import org.bonitasoft.web.client.internal.model.Error;
 import java.io.File;
+import org.bonitasoft.web.client.internal.model.Process;
+import org.bonitasoft.web.client.internal.model.ProcessCreateRequest;
+import org.bonitasoft.web.client.internal.model.ProcessInstantiationResponse;
+import org.bonitasoft.web.client.internal.model.ProcessUpdateRequest;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import feign.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public interface ProcessApi extends ApiClient.Api {
 
 

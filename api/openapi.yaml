@@ -409,6 +409,10 @@ paths:
               $ref: '#/components/schemas/LoginRequest'
       responses:
         "200":
+          content:
+            text/plain:
+              schema:
+                type: string
           description: Login success
           headers:
             Set-Cookie:
@@ -915,6 +919,11 @@ paths:
               type: object
       responses:
         "200":
+          content:
+            text/plain:
+              schema:
+                example: tmp_application_data.xml
+                type: string
           description: sucessful operation
         "400":
           content:
@@ -13103,6 +13112,11 @@ paths:
               type: object
       responses:
         "200":
+          content:
+            text/plain:
+              schema:
+                example: tmp_organization_data.xml
+                type: string
           description: sucessful operation
         "400":
           content:
@@ -13206,6 +13220,11 @@ paths:
               type: object
       responses:
         "200":
+          content:
+            text/plain:
+              schema:
+                example: tmp_profiles_data.xml
+                type: string
           description: sucessful operation
         "400":
           content:
@@ -13436,6 +13455,9 @@ components:
         password:
           description: the password
           format: password
+          type: string
+        tenant:
+          description: the user tenant
           type: string
         redirect:
           default: "false"

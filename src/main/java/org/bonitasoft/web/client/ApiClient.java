@@ -1,24 +1,25 @@
 package org.bonitasoft.web.client;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.openapitools.jackson.nullable.JsonNullableModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import feign.Feign;
 import feign.RequestInterceptor;
 import feign.form.FormEncoder;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import feign.slf4j.Slf4jLogger;
-import org.bonitasoft.web.client.auth.ApiKeyAuth;
-import org.bonitasoft.web.client.auth.HttpBasicAuth;
-import org.bonitasoft.web.client.auth.HttpBearerAuth;
-import org.openapitools.jackson.nullable.JsonNullableModule;
+import org.bonitasoft.web.client.auth.*;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
 public class ApiClient {
   public interface Api {}
 

@@ -13,15 +13,18 @@
 
 package org.bonitasoft.web.client.internal.model;
 
+import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Objects;
+import java.util.Map;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Retrieve business data value. Depending on the object attribute loading policy, the API returns either the full object in JSON representation or the HATEOAS links to the object attributes.  Long attributes use a string representation added in 7.0.1 as a workaround for the JavaScript integer spectrum issue.  Representation of object attributes with an _always load_ policy:  &#x60;&#x60;&#x60;json {   \&quot;persistenceId\&quot;: _number_, // &lt;-- deprecated   \&quot;persistenceId_string\&quot;: \&quot;_number_\&quot;   \&quot;persistenceVersion\&quot;: _number_, // &lt;-- deprecated   \&quot;persistenceVersion_string\&quot;: \&quot;_number_\&quot;   \&quot;attributeName\&quot;:_attributeType_   ... } &#x60;&#x60;&#x60;  The string representation added in 7.0.1 for Long attributes is a workaround for the JavaScript integer spectrum issue.  HATEOAS representation of object attribute with a _load when needed_ policy: &#x60;&#x60;&#x60;json \&quot;links\&quot;:[    {    \&quot;rel\&quot;:_string_    \&quot;href\&quot;:_uri_    } ] &#x60;&#x60;&#x60; 
@@ -31,7 +34,7 @@ import java.util.Objects;
   BusinessData.JSON_PROPERTY_PERSISTENCE_ID_STRING,
   BusinessData.JSON_PROPERTY_PERSISTENCE_VERSION_STRING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-10-01T10:13:11.246508+02:00[Europe/Paris]")
+
 public class BusinessData extends HashMap<String, Object> implements Serializable {
   private static final long serialVersionUID = 1L;
 

@@ -8,7 +8,7 @@
  */
 package com.bonitasoft.web.client.internal.services.model;
 
-import com.bonitasoft.web.utils.FileUtils;
+import com.bonitasoft.web.client.utils.FileUtils;
 import lombok.Builder;
 import lombok.Data;
 import org.w3c.dom.Document;
