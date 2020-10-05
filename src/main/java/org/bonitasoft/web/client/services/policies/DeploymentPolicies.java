@@ -1,4 +1,4 @@
-package com.bonitasoft.web.client.policies;
+package org.bonitasoft.web.client.services.policies;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

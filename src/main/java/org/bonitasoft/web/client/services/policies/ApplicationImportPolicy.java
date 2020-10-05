@@ -6,7 +6,7 @@
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  */
-package com.bonitasoft.web.client.policies;
+package org.bonitasoft.web.client.services.policies;
 
 /**
  * Created by laurentleseigneur on 06/07/2017.

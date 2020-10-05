@@ -6,14 +6,15 @@
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  */
-package com.bonitasoft.web.client;
+package org.bonitasoft.web.client;
 
-import com.bonitasoft.web.client.exception.UnauthorizedException;
-import com.bonitasoft.web.client.internal.services.LoginService;
 import lombok.extern.slf4j.Slf4j;
-import org.bonitasoft.web.client.ApiClient;
 import org.bonitasoft.web.client.api.PortalAuthenticationApi;
+import org.bonitasoft.web.client.exception.UnauthorizedException;
+import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.model.Session;
+import org.bonitasoft.web.client.services.DeploymentService;
+import org.bonitasoft.web.client.services.LoginService;
 
 import java.io.IOException;
 
@@ -28,10 +29,12 @@ public class BonitaClient {
 
     private final LoginService loginService;
     private final ApiClient apiClient;
+    private final DeploymentService deploymentService;
 
     BonitaClient(ApiClient apiClient, LoginService loginService) {
         this.loginService = loginService;
         this.apiClient = apiClient;
+        this.deploymentService = new DeploymentService(apiClient);
     }
 
     public boolean isPlatformUpAndRunning() {
@@ -63,6 +66,9 @@ public class BonitaClient {
     public <T extends ApiClient.Api> T service(Class<T> serviceClass) {
         if (serviceClass.isAssignableFrom(PortalAuthenticationApi.class)) {
             throw new RuntimeException("Direct use of PortalAuthenticationApi is not allowed. Use BonitaClient#login method instead");
+        }
+        if (serviceClass.isAssignableFrom(DeploymentService.class)) {
+            return (T) this.deploymentService;
         }
         return apiClient.buildClient(serviceClass);
     }

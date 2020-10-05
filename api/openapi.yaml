@@ -19,18 +19,16 @@ info:
 
     ### Create a resource
 
-    | | |
-    |:-|:-|
     | Request URL | `http://.../API/{API_name}/{resource_name}/  `|
+    |:-|:-|
     | Request Method | POST|
     | Request Payload | an item in JSON|
     | Response | the same item in JSON, containing the values provided in the posted item, completed with default values and identifiers provided by Bonita Engine.|
 
     ### Read a resource
 
-    | | |
-    |:-|:-|
     | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `|
+    |:-|:-|
     | Request Method | GET|
     | Response | an item in JSON|
 
@@ -50,9 +48,8 @@ info:
 
     The order of the identifier parts for each resource type is given in the table above.
 
-    | | |
-    |:-|:-|
     | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `|
+    |:-|:-|
     | Request Method | GET|
     | Response | an item in JSON|
 
@@ -60,9 +57,8 @@ info:
 
     ### Update a resource
 
-    | | |
-    |:-|:-|
     | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `|
+    |:-|:-|
     | Request Method | PUT|
     | Request Payload | a map in JSON containing the new values for the attributes you want to change.|
     | Response | the corresponding item in JSON with new values where you requested a modification|
@@ -73,9 +69,8 @@ info:
 
     Response: the corresponding item in JSON with new values where you requested a modification.
 
-    | | |
-    |:-|:-|
     | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `|
+    |:-|:-|
     | Request Method | PUT|
     | Request Payload | ` a map in JSON containing the new values for the attributes you want to change `|
     | Response | ` the corresponding item in JSON with new values where you requested a modification`|
@@ -87,9 +82,8 @@ info:
 
     Use the DELETE request to remove multiple resources.
 
-    | | |
-    |:-|:-|
     | Request URL | `http://.../API/{API_name}/{resource_name}/ `|
+    |:-|:-|
     | Request Method | DELETE|
     | Request Payload | A list of identifiers in JSON, for example `["id1","id2","id3"]`. Compound identifiers are separated by '/' characters.|
     | Response | `empty `|
@@ -107,9 +101,8 @@ info:
 
     The available filters are the attributes of the item plus some specific filters defined by each item.
 
-    | | |
-    |:-|:-|
     | Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=... `|
+    |:-|:-|
     | Request Method | GET|
     | Response | an array of items in JSON|
 
@@ -226,8 +219,9 @@ tags:
     Show status or install or update the Business Data Model.
 
     Installing or updating a BDM on your tenant needs to be done in two successive steps:
-    1 - Upload a BDM file
-    2 - Install/Update the previously uploaded file
+
+    1. Upload a BDM file
+    2. Install/Update the previously uploaded file
 
     **To do this, your tenant services need to be paused.**
 
@@ -491,7 +485,7 @@ paths:
         style: form
       responses:
         "200":
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -542,6 +536,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -551,6 +547,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -588,7 +586,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Application'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -642,7 +640,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Application'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -689,7 +687,7 @@ paths:
         style: simple
       responses:
         "200":
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -745,7 +743,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Application'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -808,7 +806,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Application'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -864,7 +862,7 @@ paths:
                   type: string
       responses:
         "200":
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -924,7 +922,7 @@ paths:
               schema:
                 example: tmp_application_data.xml
                 type: string
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -971,6 +969,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -980,6 +980,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -1017,7 +1019,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ApplicationMenu'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -1070,7 +1072,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApplicationMenu'
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1115,7 +1117,7 @@ paths:
         style: simple
       responses:
         "200":
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1178,7 +1180,7 @@ paths:
                 parentMenuId: -1
               schema:
                 $ref: '#/components/schemas/ApplicationMenu'
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1291,6 +1293,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -1300,6 +1304,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -1337,7 +1343,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ApplicationPage'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -1391,7 +1397,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApplicationPage'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1494,7 +1500,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApplicationPage'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1580,6 +1586,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -1589,6 +1597,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -1609,7 +1619,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/BusinessData'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -1686,7 +1696,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/BusinessData'
                 type: array
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1745,7 +1755,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BusinessData'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1825,7 +1835,7 @@ paths:
                 company: The Big Company
               schema:
                 $ref: '#/components/schemas/BusinessData'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1912,7 +1922,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BDMAccessControl'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -1964,7 +1974,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BDMAccessControlUploadResponse'
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -2069,6 +2079,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -2078,6 +2090,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -2115,7 +2129,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Activity'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -2172,7 +2186,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Activity'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -2296,6 +2310,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -2305,6 +2321,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -2342,7 +2360,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedActivity'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -2399,7 +2417,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchivedActivity'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -2441,9 +2459,9 @@ paths:
       description: |
         Finds HumanTasks with pagination params and filters
 
-        - can order on `name`, `priority`, `dueDate`, `state`, `userId`, `groupId`, `roleId`, `processDefinitionId`, `processInstanceId`, `parentActivityInstanceId`, `assigneeId`, `parentContainerId`, `displayName`, `reachedStateDate`
+        - can order on `name`, `priority`, `dueDate`, `state`, `processDefinitionId`, `processInstanceId`, `parentActivityInstanceId`, `assigneeId`, `parentContainerId`, `displayName`, `reachedStateDate`
         - can search on any field that can be used to order results
-        - can filter on `assigned_id`, `state`, `name`, `displayName`, `processDefinitionId`, `parentContainerId`
+        - can filter on `assigned_id`, `state`, `name`, `displayName`, `processDefinitionId`, `parentContainerId`, `userId`, `groupId`, `roleId`
       operationId: findHumanTasks
       parameters:
       - description: index of the page to display
@@ -2453,6 +2471,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -2462,6 +2482,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -2499,7 +2521,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/HumanTask'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -2556,7 +2578,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HumanTask'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -2678,6 +2700,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -2687,6 +2711,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -2724,7 +2750,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ManualTask'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -2779,7 +2805,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManualTask'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -2830,7 +2856,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManualTask'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -2945,6 +2971,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -2954,6 +2982,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -2983,7 +3013,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Task'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -3040,7 +3070,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Task'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -3165,6 +3195,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -3174,6 +3206,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -3211,7 +3245,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/UserTask'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -3268,7 +3302,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserTask'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -3387,7 +3421,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Contract'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -3533,7 +3567,7 @@ paths:
               schema:
                 additionalProperties: true
                 type: object
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -3590,6 +3624,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -3599,6 +3635,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -3628,7 +3666,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedHumanTask'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -3685,7 +3723,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchivedHumanTask'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -3742,6 +3780,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -3751,6 +3791,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -3780,7 +3822,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedManualTask'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -3837,7 +3879,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchivedManualTask'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -3895,6 +3937,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -3904,6 +3948,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -3933,7 +3979,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedUserTask'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -3990,7 +4036,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchivedUserTask'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -4043,6 +4089,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -4052,6 +4100,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -4081,7 +4131,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedTask'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -4138,7 +4188,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchivedTask'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -4203,7 +4253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivityVariable'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -4253,6 +4303,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -4262,6 +4314,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -4291,7 +4345,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CaseVariable'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -4356,7 +4410,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CaseVariable'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -4484,6 +4538,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -4493,6 +4549,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -4522,7 +4580,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CaseDocument'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -4581,7 +4639,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CaseDocument'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -4686,7 +4744,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CaseDocument'
           description: |
-            successful operation.
+            "Success ".
             The response includes the "url" to use to download the content. Call the documentDownload servlet with this URL: /portal/documentDownload?fileName=doc.jpg&contentStorageId=4. Note: Since Bonita 7.10, document url fileName is now URL encoded. This will avoid errors when a document to be downloaded contains special characters in its name.
             In the previous versions, a workaround was necessary client-side using the javascript native function "encodeURI" to generate document download url. You can now remove this workaround.
         "400":
@@ -4814,6 +4872,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -4823,6 +4883,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -4852,7 +4914,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedCaseDocument'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -4955,6 +5017,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -4964,6 +5028,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -4993,7 +5059,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Actor'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -5050,7 +5116,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Actor'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -5171,6 +5237,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -5180,6 +5248,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -5209,7 +5279,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ActorMember'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -5318,7 +5388,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActorMember'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -5430,6 +5500,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -5439,6 +5511,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -5468,7 +5542,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Case'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -5526,7 +5600,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Case'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -5640,7 +5714,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Case'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -5719,7 +5793,7 @@ paths:
               schema:
                 additionalProperties: true
                 type: object
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -5780,6 +5854,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -5789,6 +5865,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -5818,7 +5896,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedCase'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -5927,7 +6005,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchivedCase'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6006,7 +6084,7 @@ paths:
               schema:
                 additionalProperties: true
                 type: object
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6063,7 +6141,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CaseInfo'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6116,6 +6194,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -6125,6 +6205,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -6154,7 +6236,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CaseComment'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -6208,7 +6290,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CaseComment'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6256,6 +6338,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -6265,6 +6349,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -6302,7 +6388,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedCaseComment'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -6410,6 +6496,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -6419,6 +6507,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -6456,7 +6546,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Process'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -6511,7 +6601,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Process'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6621,7 +6711,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Process'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6738,7 +6828,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DesignProcessDefinition'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6795,7 +6885,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Contract'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6925,7 +7015,7 @@ paths:
                 additionalProperties: true
                 description: Raw XML file containing the diagram definition
                 type: object
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -6975,6 +7065,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -6984,6 +7076,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -7021,7 +7115,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ProcessParameter'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -7086,7 +7180,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessParameter'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -7209,6 +7303,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -7218,6 +7314,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -7255,7 +7353,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ProcessResolutionProblem'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -7368,6 +7466,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -7377,6 +7477,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -7414,7 +7516,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ProcessSupervisor'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -7472,7 +7574,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessSupervisor'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -7518,6 +7620,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -7527,6 +7631,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -7564,7 +7670,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ProcessConnectorDependency'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -7621,7 +7727,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConnectorFailure'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -7672,6 +7778,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -7681,6 +7789,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -7718,7 +7828,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ConnectorInstance'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -7768,6 +7878,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -7777,6 +7889,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -7814,7 +7928,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedConnectorInstance'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -7868,6 +7982,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -7877,6 +7993,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -7914,7 +8032,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/FlowNode'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -7971,7 +8089,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FlowNode'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -8087,6 +8205,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -8096,6 +8216,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -8133,7 +8255,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ArchivedFlowNode'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -8190,7 +8312,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchivedFlowNode'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -8244,6 +8366,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -8253,6 +8377,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -8298,7 +8424,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/TimerEventTrigger'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -8355,7 +8481,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TimerEventTrigger'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -8515,6 +8641,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -8524,6 +8652,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       responses:
@@ -8534,7 +8664,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CustomUserDefinition'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -8588,7 +8718,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomUserDefinition'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -8691,7 +8821,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomUserDefinition'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -8743,6 +8873,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -8752,6 +8884,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -8772,7 +8906,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CustomUserValue'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -8893,6 +9027,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -8902,6 +9038,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -8922,7 +9060,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CustomUser'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -8974,6 +9112,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -8983,6 +9123,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -9020,7 +9162,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/FormMapping'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -9138,6 +9280,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -9147,6 +9291,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -9184,7 +9330,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ProfessionalContactData'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -9250,7 +9396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfessionalContactData'
-          description: Successful operation
+          description: '"Success "'
         "400":
           content:
             application/json:
@@ -9303,7 +9449,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfessionalContactData'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -9432,7 +9578,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfessionalContactData'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -9556,6 +9702,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -9565,6 +9713,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -9594,7 +9744,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Group'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -9648,7 +9798,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Group'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -9751,7 +9901,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Group'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -9865,6 +10015,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -9874,6 +10026,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -9911,7 +10065,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Membership'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -9965,7 +10119,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Membership'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -10081,6 +10235,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -10090,6 +10246,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -10127,7 +10285,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Role'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -10181,7 +10339,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Role'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -10284,7 +10442,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Role'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -10398,6 +10556,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -10407,6 +10567,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -10444,7 +10606,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -10498,7 +10660,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -10604,7 +10766,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -10825,7 +10987,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Platform'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -10932,6 +11094,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -10941,6 +11105,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -10978,7 +11144,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tenant'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -11034,7 +11200,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Tenant'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -11141,7 +11307,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Tenant'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -11252,7 +11418,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/License'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -11362,7 +11528,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PageUploadResponse'
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -11408,6 +11574,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -11417,6 +11585,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -11454,7 +11624,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Page'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -11508,7 +11678,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Page'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -11611,7 +11781,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Page'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -11724,6 +11894,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -11733,6 +11905,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -11761,7 +11935,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Profile'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -11815,7 +11989,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Profile'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -11918,7 +12092,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Profile'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -12031,6 +12205,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -12040,6 +12216,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -12068,7 +12246,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ProfileEntry'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -12122,7 +12300,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfileEntry'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -12225,7 +12403,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfileEntry'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -12339,6 +12517,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -12348,6 +12528,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -12368,7 +12550,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ProfileMember'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -12422,7 +12604,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfileMember'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -12525,7 +12707,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfileMember'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -12672,6 +12854,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -12681,6 +12865,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       responses:
@@ -12691,7 +12877,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/I18nlocale'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -12745,6 +12931,8 @@ paths:
         name: p
         required: true
         schema:
+          default: 0
+          minimum: 0
           type: integer
         style: form
       - description: maximum number of elements to retrieve
@@ -12754,6 +12942,8 @@ paths:
         name: c
         required: true
         schema:
+          default: 20
+          minimum: 1
           type: integer
         style: form
       - description: can filter on attributes with the format f={filter\_name}={filter\_value}
@@ -12774,7 +12964,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/I18ntranslation'
                 type: array
-          description: successful operation
+          description: 'Success '
           headers:
             Content-Range:
               description: The total number of matching items
@@ -12822,7 +13012,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Session'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -12856,18 +13046,27 @@ paths:
         source: |
           curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/session/unusedId'
       x-accepts: application/json
-  /API/system/tenant/unusedid:
+  /API/system/tenant/{id}:
     get:
       description: |
         Pause and resume tenant services in order to do maintenance on a tenant.
       operationId: getSystemTenant
+      parameters:
+      - description: ID of the tenant
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/SystemTenant'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -12908,6 +13107,15 @@ paths:
       description: |
         Pause or resume the current tenant.
       operationId: updateSystemTenant
+      parameters:
+      - description: ID of the tenant
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -12958,7 +13166,11 @@ paths:
   /portal/fileUpload:
     post:
       description: |
-        Upload BDM
+        Upload BDM.
+
+        **NOTE:** To do this, your tenant services need to be paused.
+
+        In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.
       operationId: uploadBDM
       requestBody:
         $ref: '#/components/requestBodies/inline_object_5'
@@ -12973,10 +13185,10 @@ paths:
       responses:
         "200":
           content:
-            application/json:
+            text/plain:
               schema:
-                $ref: '#/components/schemas/BDMUploadResponse'
-          description: sucessful operation
+                type: string
+          description: 'Success: the temp file name as present on the server'
         "400":
           content:
             application/json:
@@ -13017,7 +13229,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Bdm'
-          description: successful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -13117,7 +13329,7 @@ paths:
               schema:
                 example: tmp_organization_data.xml
                 type: string
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -13165,7 +13377,7 @@ paths:
                   type: string
       responses:
         "200":
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -13225,7 +13437,7 @@ paths:
               schema:
                 example: tmp_profiles_data.xml
                 type: string
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -13273,7 +13485,7 @@ paths:
                   type: string
       responses:
         "200":
-          description: sucessful operation
+          description: 'Success '
         "400":
           content:
             application/json:
@@ -13321,6 +13533,8 @@ components:
       name: p
       required: true
       schema:
+        default: 0
+        minimum: 0
         type: integer
       style: form
     pageCount:
@@ -13331,6 +13545,8 @@ components:
       name: c
       required: true
       schema:
+        default: 20
+        minimum: 1
         type: integer
       style: form
     pageFilter:
@@ -16293,7 +16509,7 @@ components:
       example:
         firstname: firstname
         icon: icon
-        creation_date: 0
+        creation_date: creation_date
         userName: userName
         title: title
         created_by_user_id: created_by_user_id
@@ -16345,8 +16561,7 @@ components:
           type: string
         creation_date:
           description: creation date
-          format: int64
-          type: integer
+          type: string
         last_update_date:
           description: user last update date
           type: string
@@ -17008,14 +17223,6 @@ components:
       properties:
         paused:
           description: wether the system tenant should be paused or not
-          type: boolean
-      type: object
-    BDMUploadResponse:
-      example:
-        fileUpload: tmp_uploaded_bdm.zip
-      properties:
-        fileUpload:
-          description: the temporary file name once uploaded on the server
           type: string
       type: object
     Bdm:

@@ -6,24 +6,21 @@
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  */
-package com.bonitasoft.web.client;
+package org.bonitasoft.web.client;
 
-import com.bonitasoft.web.client.decoder.DelegatingDecoder;
-import com.bonitasoft.web.client.internal.BonitaCharsetBugInterceptor;
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
-import com.bonitasoft.web.client.internal.services.LoginService;
-import feign.Response;
-import feign.codec.ErrorDecoder;
 import feign.jackson.JacksonDecoder;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import org.bonitasoft.web.client.ApiClient;
+import org.bonitasoft.web.client.auth.BonitaCookieInterceptor;
+import org.bonitasoft.web.client.feign.BonitaCharsetBugInterceptor;
+import org.bonitasoft.web.client.feign.DelegatingDecoder;
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.services.LoginService;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
@@ -65,7 +62,7 @@ public class BonitaClientBuilder {
 
         // OkHttp
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
-        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder okHttpClientbuilder = new OkHttpClient.Builder()
                 .addInterceptor(logInterceptor)
 //                .addInterceptor(new BonitaCharsetBugInterceptor())

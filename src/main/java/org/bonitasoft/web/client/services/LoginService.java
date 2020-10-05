@@ -6,11 +6,11 @@
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  */
-package com.bonitasoft.web.client.internal.services;
+package org.bonitasoft.web.client.services;
 
-import com.bonitasoft.web.client.internal.BonitaCookieInterceptor;
+import org.bonitasoft.web.client.auth.BonitaCookieInterceptor;
 import feign.Response;
-import org.bonitasoft.web.client.ApiClient;
+import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.api.PortalAuthenticationApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.model.Session;

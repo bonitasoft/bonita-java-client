@@ -392,7 +392,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-<!--                            <skip>true</skip>-->
+                            <skip>true</skip>
                         	<generateApiTests>false</generateApiTests>
                         	<generateModelTests>false</generateModelTests>
                         	<generateApiDocumentation>false</generateApiDocumentation>
@@ -400,9 +400,9 @@
                             <output>${project.basedir}</output>
                             <inputSpec>http://localhost:8080/openapi.json</inputSpec>
                             <generatorName>java</generatorName>
-                            <apiPackage>org.bonitasoft.web.client.internal.api</apiPackage>
-                            <invokerPackage>org.bonitasoft.web.client</invokerPackage>
-                            <modelPackage>org.bonitasoft.web.client.internal.model</modelPackage>
+                            <invokerPackage>org.bonitasoft.web.client.invoker</invokerPackage>
+                            <apiPackage>org.bonitasoft.web.client.api</apiPackage>
+                            <modelPackage>org.bonitasoft.web.client.model</modelPackage>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <java8>true</java8>

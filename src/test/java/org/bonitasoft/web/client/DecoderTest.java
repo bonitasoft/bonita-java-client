@@ -1,11 +1,12 @@
-package com.bonitasoft.web.client;
+package org.bonitasoft.web.client;
 
-import com.bonitasoft.web.client.decoder.DelegatingDecoder;
 import feign.Request;
+import feign.RequestTemplate;
 import feign.Response;
 import feign.Util;
 import feign.codec.Decoder;
 import feign.jackson.JacksonDecoder;
+import org.bonitasoft.web.client.feign.DelegatingDecoder;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -35,7 +36,15 @@ class DecoderTest {
                 .status(200)
                 .reason("OK")
                 .headers(headers)
-                .request(Request.create(Request.HttpMethod.GET, "/api", Collections.emptyMap(), null, Util.UTF_8))
+                .request(Request.create
+                        (Request.HttpMethod.GET,
+                                "/api",
+                                Collections.emptyMap(),
+                                null,
+                                Util.UTF_8,
+                                new RequestTemplate()
+                        )
+                )
                 .body(inputStream, content.length())
                 .build();
     }

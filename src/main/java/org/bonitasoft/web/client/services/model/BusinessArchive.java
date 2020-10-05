@@ -6,9 +6,9 @@
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  */
-package com.bonitasoft.web.client.internal.services.model;
+package org.bonitasoft.web.client.services.model;
 
-import com.bonitasoft.web.client.utils.FileUtils;
+import org.bonitasoft.web.client.services.utils.FileUtils;
 import lombok.Builder;
 import lombok.Data;
 import org.w3c.dom.Document;

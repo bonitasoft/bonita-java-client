@@ -1,4 +1,4 @@
-package com.bonitasoft.web.client.internal.services.model;
+package org.bonitasoft.web.client.services.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
