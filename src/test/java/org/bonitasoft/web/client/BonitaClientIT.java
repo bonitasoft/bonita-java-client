@@ -1,5 +1,6 @@
 package org.bonitasoft.web.client;
 
+import org.bonitasoft.testcontainers.BonitaContainer;
 import org.bonitasoft.web.client.api.BdmApi;
 import org.bonitasoft.web.client.api.UserApi;
 import org.bonitasoft.web.client.model.Bdm;
@@ -30,7 +31,7 @@ class BonitaClientIT {
     @BeforeEach
     void setUp() {
         String portalUrl = BONITA_CONTAINER.getPortalUrl();
-        bonitaClient = BonitaClientBuilder.bonitaClient(portalUrl).build();
+        bonitaClient = BonitaClient.newBuilder(portalUrl).build();
     }
 
     @Test

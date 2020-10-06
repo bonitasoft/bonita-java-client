@@ -24,6 +24,8 @@
 
 **/org/bonitasoft/web/client/model/Inline*.java
 **/org/bonitasoft/web/client/api/PortalAuthenticationApi.java
+**/org/bonitasoft/web/client/invoker/ServerConfiguration.java
+**/org/bonitasoft/web/client/invoker/ServerVariable.java
 src/main/AndroidManifest.xml
 
 gradle/wrapper/

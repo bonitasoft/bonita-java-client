@@ -1,4 +1,4 @@
-package org.bonitasoft.web.client;
+package org.bonitasoft.testcontainers;
 
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
