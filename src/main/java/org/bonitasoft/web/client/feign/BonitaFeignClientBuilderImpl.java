@@ -6,8 +6,9 @@
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  */
-package org.bonitasoft.web.client;
+package org.bonitasoft.web.client.feign;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
@@ -18,9 +19,13 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.auth.BonitaCookieInterceptor;
-import org.bonitasoft.web.client.feign.BonitaCharsetBugInterceptor;
-import org.bonitasoft.web.client.feign.DelegatingDecoder;
+import org.bonitasoft.web.client.exception.ClientException;
+import org.bonitasoft.web.client.exception.NotFoundException;
+import org.bonitasoft.web.client.exception.UnauthorizedException;
+import org.bonitasoft.web.client.feign.decoder.DelegatingDecoder;
+import org.bonitasoft.web.client.feign.interceptor.BonitaCharsetBugInterceptor;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.services.LoginService;
 
@@ -30,6 +35,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateException;
 
+import static feign.FeignException.errorStatus;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
@@ -37,7 +43,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 @Accessors(fluent = true)
 @RequiredArgsConstructor
-public class FeignBonitaClientBuilder implements BonitaClientBuilder {
+public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
     @NonNull
     @Setter(AccessLevel.NONE)
@@ -72,22 +78,23 @@ public class FeignBonitaClientBuilder implements BonitaClientBuilder {
 
         // OkHttp
         if (okHttpClient == null) {
-            OkHttpClient.Builder okHttpClientbuilder = new OkHttpClient.Builder()
+            OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder()
                     .connectTimeout(connectTimeoutInSeconds, SECONDS)
                     .readTimeout(readTimeoutInSeconds, SECONDS)
                     .writeTimeout(writeTimeoutInSeconds, SECONDS);
             if (disableCertificateCheck) {
-                addTrustAllCertificateManager(okHttpClientbuilder);
+                addTrustAllCertificateManager(okHttpClientBuilder);
             }
             if (logInterceptor != null) {
-                okHttpClientbuilder.addInterceptor(logInterceptor);
+                okHttpClientBuilder.addInterceptor(logInterceptor);
             }
-            okHttpClient = okHttpClientbuilder.build();
+            okHttpClient = okHttpClientBuilder.build();
         }
 
         // Jackson
         if (objectMapper == null) {
-            objectMapper = apiClient.getObjectMapper().findAndRegisterModules();
+            objectMapper = apiClient.getObjectMapper().findAndRegisterModules()
+                    .setSerializationInclusion(JsonInclude.Include.NON_NULL);
         }
 
         // Decoder
@@ -95,7 +102,21 @@ public class FeignBonitaClientBuilder implements BonitaClientBuilder {
             feignBuilder = apiClient.getFeignBuilder()
                     .client(new feign.okhttp.OkHttpClient(okHttpClient))
                     .decode404()
-                    .decoder(new DelegatingDecoder().register("application/json", new JacksonDecoder(objectMapper)));
+                    .decoder(new DelegatingDecoder().register("application/json", new JacksonDecoder(objectMapper)))
+                    // Map feign exception to ours
+                    .errorDecoder((methodKey, response) -> {
+                        switch (response.status()) {
+                            case 401:
+                                return new UnauthorizedException();
+                            case 404:
+                                return new NotFoundException(response.reason());
+                        }
+                        if (response.status() >= 400 && response.status() <= 599) {
+                            return new ClientException(String.format("status: %s %s", response.status(), response.reason()));
+                        }
+                        return errorStatus(methodKey, response);
+                    })
+            ;
         } else {
             apiClient.setFeignBuilder(feignBuilder);
         }
@@ -110,8 +131,9 @@ public class FeignBonitaClientBuilder implements BonitaClientBuilder {
         apiClient.addAuthorization("bonita", authorization);
 
         LoginService loginService = new LoginService(apiClient, authorization);
+        ApiLocator apiLocator = new CachingApiLocator(apiClient);
 
-        return new FeignBonitaClient(apiClient, loginService);
+        return new BonitaFeignClient(loginService, apiLocator, objectMapper);
     }
 
     private void addTrustAllCertificateManager(OkHttpClient.Builder builder) {

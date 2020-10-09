@@ -6,7 +6,7 @@ import feign.Response;
 import feign.Util;
 import feign.codec.Decoder;
 import feign.jackson.JacksonDecoder;
-import org.bonitasoft.web.client.feign.DelegatingDecoder;
+import org.bonitasoft.web.client.feign.decoder.DelegatingDecoder;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

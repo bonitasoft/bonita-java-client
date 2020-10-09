@@ -25,418 +25,331 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * User
+ * PlatformLicense
  */
 @JsonPropertyOrder({
-  User.JSON_PROPERTY_ID,
-  User.JSON_PROPERTY_ENABLED,
-  User.JSON_PROPERTY_USER_NAME,
-  User.JSON_PROPERTY_FIRSTNAME,
-  User.JSON_PROPERTY_LASTNAME,
-  User.JSON_PROPERTY_PASSWORD,
-  User.JSON_PROPERTY_ICON,
-  User.JSON_PROPERTY_TITLE,
-  User.JSON_PROPERTY_JOB_TITLE,
-  User.JSON_PROPERTY_MANAGER_ID,
-  User.JSON_PROPERTY_LAST_CONNECTION,
-  User.JSON_PROPERTY_CREATED_BY_USER_ID,
-  User.JSON_PROPERTY_CREATION_DATE,
-  User.JSON_PROPERTY_LAST_UPDATE_DATE
+  PlatformLicense.JSON_PROPERTY_LICENSE_START_DATE,
+  PlatformLicense.JSON_PROPERTY_DURATION,
+  PlatformLicense.JSON_PROPERTY_LICENSE_EXPIRATION_DATE,
+  PlatformLicense.JSON_PROPERTY_NUMBER_OF_C_P_U_CORES,
+  PlatformLicense.JSON_PROPERTY_EDITION,
+  PlatformLicense.JSON_PROPERTY_LICENSE_MODE,
+  PlatformLicense.JSON_PROPERTY_REQUEST_KEY,
+  PlatformLicense.JSON_PROPERTY_SUBSCRIPTION_START_PERIOD,
+  PlatformLicense.JSON_PROPERTY_SUBSCRIPTION_END_PERIOD,
+  PlatformLicense.JSON_PROPERTY_CASE_COUNTER_LIMIT,
+  PlatformLicense.JSON_PROPERTY_CASE_COUNTER
 })
 
-public class User implements Serializable {
+public class PlatformLicense implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+  public static final String JSON_PROPERTY_LICENSE_START_DATE = "licenseStartDate";
+  private String licenseStartDate;
 
-  public static final String JSON_PROPERTY_ENABLED = "enabled";
-  private String enabled;
+  public static final String JSON_PROPERTY_DURATION = "duration";
+  private String duration;
 
-  public static final String JSON_PROPERTY_USER_NAME = "userName";
-  private String userName;
+  public static final String JSON_PROPERTY_LICENSE_EXPIRATION_DATE = "licenseExpirationDate";
+  private String licenseExpirationDate;
 
-  public static final String JSON_PROPERTY_FIRSTNAME = "firstname";
-  private String firstname;
+  public static final String JSON_PROPERTY_NUMBER_OF_C_P_U_CORES = "numberOfCPUCores";
+  private String numberOfCPUCores;
 
-  public static final String JSON_PROPERTY_LASTNAME = "lastname";
-  private String lastname;
+  public static final String JSON_PROPERTY_EDITION = "edition";
+  private String edition;
 
-  public static final String JSON_PROPERTY_PASSWORD = "password";
-  private String password;
+  public static final String JSON_PROPERTY_LICENSE_MODE = "licenseMode";
+  private String licenseMode;
 
-  public static final String JSON_PROPERTY_ICON = "icon";
-  private String icon;
+  public static final String JSON_PROPERTY_REQUEST_KEY = "requestKey";
+  private String requestKey;
 
-  public static final String JSON_PROPERTY_TITLE = "title";
-  private String title;
+  public static final String JSON_PROPERTY_SUBSCRIPTION_START_PERIOD = "subscriptionStartPeriod";
+  private String subscriptionStartPeriod;
 
-  public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
-  private String jobTitle;
+  public static final String JSON_PROPERTY_SUBSCRIPTION_END_PERIOD = "subscriptionEndPeriod";
+  private String subscriptionEndPeriod;
 
-  public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
-  private String managerId;
+  public static final String JSON_PROPERTY_CASE_COUNTER_LIMIT = "caseCounterLimit";
+  private Long caseCounterLimit;
 
-  public static final String JSON_PROPERTY_LAST_CONNECTION = "last_connection";
-  private String lastConnection;
-
-  public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
-  private String createdByUserId;
-
-  public static final String JSON_PROPERTY_CREATION_DATE = "creation_date";
-  private String creationDate;
-
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
-  private String lastUpdateDate;
+  public static final String JSON_PROPERTY_CASE_COUNTER = "caseCounter";
+  private Long caseCounter;
 
 
-  public User id(String id) {
+  public PlatformLicense licenseStartDate(String licenseStartDate) {
     
-    this.id = id;
+    this.licenseStartDate = licenseStartDate;
     return this;
   }
 
    /**
-   * user id
-   * @return id
+   * date with format &#x60;yyyy-MM-dd&#x60; - first day (included) of license file validity
+   * @return licenseStartDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "user id")
-  @JsonProperty(JSON_PROPERTY_ID)
+  @ApiModelProperty(value = "date with format `yyyy-MM-dd` - first day (included) of license file validity")
+  @JsonProperty(JSON_PROPERTY_LICENSE_START_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getId() {
-    return id;
+  public String getLicenseStartDate() {
+    return licenseStartDate;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
+  public void setLicenseStartDate(String licenseStartDate) {
+    this.licenseStartDate = licenseStartDate;
   }
 
 
-  public User enabled(String enabled) {
+  public PlatformLicense duration(String duration) {
     
-    this.enabled = enabled;
+    this.duration = duration;
     return this;
   }
 
    /**
-   * if \&quot;true\&quot;, user is active.
-   * @return enabled
+   * number of days for license file validity
+   * @return duration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "if \"true\", user is active.")
-  @JsonProperty(JSON_PROPERTY_ENABLED)
+  @ApiModelProperty(value = "number of days for license file validity")
+  @JsonProperty(JSON_PROPERTY_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getEnabled() {
-    return enabled;
+  public String getDuration() {
+    return duration;
   }
 
 
-  public void setEnabled(String enabled) {
-    this.enabled = enabled;
+  public void setDuration(String duration) {
+    this.duration = duration;
   }
 
 
-  public User userName(String userName) {
+  public PlatformLicense licenseExpirationDate(String licenseExpirationDate) {
     
-    this.userName = userName;
+    this.licenseExpirationDate = licenseExpirationDate;
     return this;
   }
 
    /**
-   * user name
-   * @return userName
+   * date with format &#x60;yyyy-MM-dd&#x60; - last day (included) of license file validity
+   * @return licenseExpirationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "user name")
-  @JsonProperty(JSON_PROPERTY_USER_NAME)
+  @ApiModelProperty(value = "date with format `yyyy-MM-dd` - last day (included) of license file validity")
+  @JsonProperty(JSON_PROPERTY_LICENSE_EXPIRATION_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getUserName() {
-    return userName;
+  public String getLicenseExpirationDate() {
+    return licenseExpirationDate;
   }
 
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setLicenseExpirationDate(String licenseExpirationDate) {
+    this.licenseExpirationDate = licenseExpirationDate;
   }
 
 
-  public User firstname(String firstname) {
+  public PlatformLicense numberOfCPUCores(String numberOfCPUCores) {
     
-    this.firstname = firstname;
+    this.numberOfCPUCores = numberOfCPUCores;
     return this;
   }
 
    /**
-   * user last name
-   * @return firstname
+   * number of CPUs
+   * @return numberOfCPUCores
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "user last name")
-  @JsonProperty(JSON_PROPERTY_FIRSTNAME)
+  @ApiModelProperty(value = "number of CPUs")
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_C_P_U_CORES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getFirstname() {
-    return firstname;
+  public String getNumberOfCPUCores() {
+    return numberOfCPUCores;
   }
 
 
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
+  public void setNumberOfCPUCores(String numberOfCPUCores) {
+    this.numberOfCPUCores = numberOfCPUCores;
   }
 
 
-  public User lastname(String lastname) {
+  public PlatformLicense edition(String edition) {
     
-    this.lastname = lastname;
+    this.edition = edition;
     return this;
   }
 
    /**
-   * user last name
-   * @return lastname
+   * name of the Bonita edition enabled by the license
+   * @return edition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "user last name")
-  @JsonProperty(JSON_PROPERTY_LASTNAME)
+  @ApiModelProperty(value = "name of the Bonita edition enabled by the license")
+  @JsonProperty(JSON_PROPERTY_EDITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getLastname() {
-    return lastname;
+  public String getEdition() {
+    return edition;
   }
 
 
-  public void setLastname(String lastname) {
-    this.lastname = lastname;
+  public void setEdition(String edition) {
+    this.edition = edition;
   }
 
 
-  public User password(String password) {
+  public PlatformLicense licenseMode(String licenseMode) {
     
-    this.password = password;
+    this.licenseMode = licenseMode;
     return this;
   }
 
    /**
-   * user password
-   * @return password
+   * available mode enabled by the license
+   * @return licenseMode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "user password")
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
+  @ApiModelProperty(value = "available mode enabled by the license")
+  @JsonProperty(JSON_PROPERTY_LICENSE_MODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getPassword() {
-    return password;
+  public String getLicenseMode() {
+    return licenseMode;
   }
 
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setLicenseMode(String licenseMode) {
+    this.licenseMode = licenseMode;
   }
 
 
-  public User icon(String icon) {
+  public PlatformLicense requestKey(String requestKey) {
     
-    this.icon = icon;
+    this.requestKey = requestKey;
     return this;
   }
 
    /**
-   *  bonita icon path (ie. /default/icon_user.png)
-   * @return icon
+   * request key to use to generate a new license on the customer portal If you have a subscription that specifies case-counter licensing, additional fields are present: 
+   * @return requestKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = " bonita icon path (ie. /default/icon_user.png)")
-  @JsonProperty(JSON_PROPERTY_ICON)
+  @ApiModelProperty(value = "request key to use to generate a new license on the customer portal If you have a subscription that specifies case-counter licensing, additional fields are present: ")
+  @JsonProperty(JSON_PROPERTY_REQUEST_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getIcon() {
-    return icon;
+  public String getRequestKey() {
+    return requestKey;
   }
 
 
-  public void setIcon(String icon) {
-    this.icon = icon;
+  public void setRequestKey(String requestKey) {
+    this.requestKey = requestKey;
   }
 
 
-  public User title(String title) {
+  public PlatformLicense subscriptionStartPeriod(String subscriptionStartPeriod) {
     
-    this.title = title;
+    this.subscriptionStartPeriod = subscriptionStartPeriod;
     return this;
   }
 
    /**
-   * user title
-   * @return title
+   * date with format &#x60;yyyy-MM-dd&#x60; - first day (included) of current period for number of cases provisioned
+   * @return subscriptionStartPeriod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "user title")
-  @JsonProperty(JSON_PROPERTY_TITLE)
+  @ApiModelProperty(value = "date with format `yyyy-MM-dd` - first day (included) of current period for number of cases provisioned")
+  @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_START_PERIOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getTitle() {
-    return title;
+  public String getSubscriptionStartPeriod() {
+    return subscriptionStartPeriod;
   }
 
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setSubscriptionStartPeriod(String subscriptionStartPeriod) {
+    this.subscriptionStartPeriod = subscriptionStartPeriod;
   }
 
 
-  public User jobTitle(String jobTitle) {
+  public PlatformLicense subscriptionEndPeriod(String subscriptionEndPeriod) {
     
-    this.jobTitle = jobTitle;
+    this.subscriptionEndPeriod = subscriptionEndPeriod;
     return this;
   }
 
    /**
-   * user job title
-   * @return jobTitle
+   * date with format &#x60;yyyy-MM-dd&#x60; - last day (included) of current period for number of cases provisioned
+   * @return subscriptionEndPeriod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "user job title")
-  @JsonProperty(JSON_PROPERTY_JOB_TITLE)
+  @ApiModelProperty(value = "date with format `yyyy-MM-dd` - last day (included) of current period for number of cases provisioned")
+  @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_END_PERIOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getJobTitle() {
-    return jobTitle;
+  public String getSubscriptionEndPeriod() {
+    return subscriptionEndPeriod;
   }
 
 
-  public void setJobTitle(String jobTitle) {
-    this.jobTitle = jobTitle;
+  public void setSubscriptionEndPeriod(String subscriptionEndPeriod) {
+    this.subscriptionEndPeriod = subscriptionEndPeriod;
   }
 
 
-  public User managerId(String managerId) {
+  public PlatformLicense caseCounterLimit(Long caseCounterLimit) {
     
-    this.managerId = managerId;
+    this.caseCounterLimit = caseCounterLimit;
     return this;
   }
 
    /**
-   * user manager id
-   * @return managerId
+   * number of cases provisioned for period between &#x60;subscriptionStartPeriod&#x60; and &#x60;subscriptionEndPeriod&#x60;
+   * @return caseCounterLimit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "user manager id")
-  @JsonProperty(JSON_PROPERTY_MANAGER_ID)
+  @ApiModelProperty(value = "number of cases provisioned for period between `subscriptionStartPeriod` and `subscriptionEndPeriod`")
+  @JsonProperty(JSON_PROPERTY_CASE_COUNTER_LIMIT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getManagerId() {
-    return managerId;
+  public Long getCaseCounterLimit() {
+    return caseCounterLimit;
   }
 
 
-  public void setManagerId(String managerId) {
-    this.managerId = managerId;
+  public void setCaseCounterLimit(Long caseCounterLimit) {
+    this.caseCounterLimit = caseCounterLimit;
   }
 
 
-  public User lastConnection(String lastConnection) {
+  public PlatformLicense caseCounter(Long caseCounter) {
     
-    this.lastConnection = lastConnection;
+    this.caseCounter = caseCounter;
     return this;
   }
 
    /**
-   * last connection date
-   * @return lastConnection
+   * number of consumed cases for period between &#x60;subscriptionStartPeriod&#x60; and &#x60;subscriptionEndPeriod&#x60;
+   * @return caseCounter
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "last connection date")
-  @JsonProperty(JSON_PROPERTY_LAST_CONNECTION)
+  @ApiModelProperty(value = "number of consumed cases for period between `subscriptionStartPeriod` and `subscriptionEndPeriod`")
+  @JsonProperty(JSON_PROPERTY_CASE_COUNTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getLastConnection() {
-    return lastConnection;
+  public Long getCaseCounter() {
+    return caseCounter;
   }
 
 
-  public void setLastConnection(String lastConnection) {
-    this.lastConnection = lastConnection;
-  }
-
-
-  public User createdByUserId(String createdByUserId) {
-    
-    this.createdByUserId = createdByUserId;
-    return this;
-  }
-
-   /**
-   * created by
-   * @return createdByUserId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "created by")
-  @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCreatedByUserId() {
-    return createdByUserId;
-  }
-
-
-  public void setCreatedByUserId(String createdByUserId) {
-    this.createdByUserId = createdByUserId;
-  }
-
-
-  public User creationDate(String creationDate) {
-    
-    this.creationDate = creationDate;
-    return this;
-  }
-
-   /**
-   * creation date
-   * @return creationDate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "creation date")
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCreationDate() {
-    return creationDate;
-  }
-
-
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
-
-
-  public User lastUpdateDate(String lastUpdateDate) {
-    
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
-
-   /**
-   * user last update date
-   * @return lastUpdateDate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user last update date")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
-
-
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
+  public void setCaseCounter(Long caseCounter) {
+    this.caseCounter = caseCounter;
   }
 
 
@@ -448,47 +361,41 @@ public class User implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
-    return Objects.equals(this.id, user.id) &&
-        Objects.equals(this.enabled, user.enabled) &&
-        Objects.equals(this.userName, user.userName) &&
-        Objects.equals(this.firstname, user.firstname) &&
-        Objects.equals(this.lastname, user.lastname) &&
-        Objects.equals(this.password, user.password) &&
-        Objects.equals(this.icon, user.icon) &&
-        Objects.equals(this.title, user.title) &&
-        Objects.equals(this.jobTitle, user.jobTitle) &&
-        Objects.equals(this.managerId, user.managerId) &&
-        Objects.equals(this.lastConnection, user.lastConnection) &&
-        Objects.equals(this.createdByUserId, user.createdByUserId) &&
-        Objects.equals(this.creationDate, user.creationDate) &&
-        Objects.equals(this.lastUpdateDate, user.lastUpdateDate);
+    PlatformLicense platformLicense = (PlatformLicense) o;
+    return Objects.equals(this.licenseStartDate, platformLicense.licenseStartDate) &&
+        Objects.equals(this.duration, platformLicense.duration) &&
+        Objects.equals(this.licenseExpirationDate, platformLicense.licenseExpirationDate) &&
+        Objects.equals(this.numberOfCPUCores, platformLicense.numberOfCPUCores) &&
+        Objects.equals(this.edition, platformLicense.edition) &&
+        Objects.equals(this.licenseMode, platformLicense.licenseMode) &&
+        Objects.equals(this.requestKey, platformLicense.requestKey) &&
+        Objects.equals(this.subscriptionStartPeriod, platformLicense.subscriptionStartPeriod) &&
+        Objects.equals(this.subscriptionEndPeriod, platformLicense.subscriptionEndPeriod) &&
+        Objects.equals(this.caseCounterLimit, platformLicense.caseCounterLimit) &&
+        Objects.equals(this.caseCounter, platformLicense.caseCounter);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, enabled, userName, firstname, lastname, password, icon, title, jobTitle, managerId, lastConnection, createdByUserId, creationDate, lastUpdateDate);
+    return Objects.hash(licenseStartDate, duration, licenseExpirationDate, numberOfCPUCores, edition, licenseMode, requestKey, subscriptionStartPeriod, subscriptionEndPeriod, caseCounterLimit, caseCounter);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
-    sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
-    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    jobTitle: ").append(toIndentedString(jobTitle)).append("\n");
-    sb.append("    managerId: ").append(toIndentedString(managerId)).append("\n");
-    sb.append("    lastConnection: ").append(toIndentedString(lastConnection)).append("\n");
-    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+    sb.append("class PlatformLicense {\n");
+    sb.append("    licenseStartDate: ").append(toIndentedString(licenseStartDate)).append("\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    licenseExpirationDate: ").append(toIndentedString(licenseExpirationDate)).append("\n");
+    sb.append("    numberOfCPUCores: ").append(toIndentedString(numberOfCPUCores)).append("\n");
+    sb.append("    edition: ").append(toIndentedString(edition)).append("\n");
+    sb.append("    licenseMode: ").append(toIndentedString(licenseMode)).append("\n");
+    sb.append("    requestKey: ").append(toIndentedString(requestKey)).append("\n");
+    sb.append("    subscriptionStartPeriod: ").append(toIndentedString(subscriptionStartPeriod)).append("\n");
+    sb.append("    subscriptionEndPeriod: ").append(toIndentedString(subscriptionEndPeriod)).append("\n");
+    sb.append("    caseCounterLimit: ").append(toIndentedString(caseCounterLimit)).append("\n");
+    sb.append("    caseCounter: ").append(toIndentedString(caseCounter)).append("\n");
     sb.append("}");
     return sb.toString();
   }

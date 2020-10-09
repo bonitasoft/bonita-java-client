@@ -36,7 +36,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserCreateRequest.JSON_PROPERTY_ICON,
   UserCreateRequest.JSON_PROPERTY_TITLE,
   UserCreateRequest.JSON_PROPERTY_JOB_TITLE,
-  UserCreateRequest.JSON_PROPERTY_MANAGER_ID
+  UserCreateRequest.JSON_PROPERTY_MANAGER_ID,
+  UserCreateRequest.JSON_PROPERTY_ENABLED
 })
 
 public class UserCreateRequest implements Serializable {
@@ -69,6 +70,9 @@ public class UserCreateRequest implements Serializable {
   public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
   private String managerId;
 
+  public static final String JSON_PROPERTY_ENABLED = "enabled";
+  private String enabled;
+
 
   public UserCreateRequest userName(String userName) {
     
@@ -80,10 +84,9 @@ public class UserCreateRequest implements Serializable {
    * user name
    * @return userName
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user name")
+  @ApiModelProperty(required = true, value = "user name")
   @JsonProperty(JSON_PROPERTY_USER_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUserName() {
     return userName;
@@ -105,10 +108,9 @@ public class UserCreateRequest implements Serializable {
    * user last name
    * @return firstname
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user last name")
+  @ApiModelProperty(required = true, value = "user last name")
   @JsonProperty(JSON_PROPERTY_FIRSTNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getFirstname() {
     return firstname;
@@ -130,10 +132,9 @@ public class UserCreateRequest implements Serializable {
    * user last name
    * @return lastname
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user last name")
+  @ApiModelProperty(required = true, value = "user last name")
   @JsonProperty(JSON_PROPERTY_LASTNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLastname() {
     return lastname;
@@ -155,10 +156,9 @@ public class UserCreateRequest implements Serializable {
    * user password
    * @return password
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user password")
+  @ApiModelProperty(required = true, value = "user password")
   @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPassword() {
     return password;
@@ -180,10 +180,9 @@ public class UserCreateRequest implements Serializable {
    * user password confirmation
    * @return passwordConfirm
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user password confirmation")
+  @ApiModelProperty(required = true, value = "user password confirmation")
   @JsonProperty(JSON_PROPERTY_PASSWORD_CONFIRM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPasswordConfirm() {
     return passwordConfirm;
@@ -295,6 +294,30 @@ public class UserCreateRequest implements Serializable {
   }
 
 
+  public UserCreateRequest enabled(String enabled) {
+    
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * true|false if the user is enabled or not
+   * @return enabled
+  **/
+  @ApiModelProperty(required = true, value = "true|false if the user is enabled or not")
+  @JsonProperty(JSON_PROPERTY_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getEnabled() {
+    return enabled;
+  }
+
+
+  public void setEnabled(String enabled) {
+    this.enabled = enabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -312,12 +335,13 @@ public class UserCreateRequest implements Serializable {
         Objects.equals(this.icon, userCreateRequest.icon) &&
         Objects.equals(this.title, userCreateRequest.title) &&
         Objects.equals(this.jobTitle, userCreateRequest.jobTitle) &&
-        Objects.equals(this.managerId, userCreateRequest.managerId);
+        Objects.equals(this.managerId, userCreateRequest.managerId) &&
+        Objects.equals(this.enabled, userCreateRequest.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userName, firstname, lastname, password, passwordConfirm, icon, title, jobTitle, managerId);
+    return Objects.hash(userName, firstname, lastname, password, passwordConfirm, icon, title, jobTitle, managerId, enabled);
   }
 
 
@@ -334,6 +358,7 @@ public class UserCreateRequest implements Serializable {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    jobTitle: ").append(toIndentedString(jobTitle)).append("\n");
     sb.append("    managerId: ").append(toIndentedString(managerId)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

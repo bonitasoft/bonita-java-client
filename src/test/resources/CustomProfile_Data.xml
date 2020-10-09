@@ -108,11 +108,108 @@
         </profileEntries>
         <profileMapping>
             <users>
+                <user>romana.baxter@acme.com</user>
                 <user>walter.bates</user>
             </users>
             <groups/>
             <memberships/>
             <roles/>
+        </profileMapping>
+    </profile>
+    <profile name="HR" isDefault="false">
+        <description></description>
+        <profileEntries/>
+        <profileMapping>
+            <users>
+                <user>dovie.curry@acme.com</user>
+                <user>romana.baxter@acme.com</user>
+                <user>lynna.penn@acme.com</user>
+            </users>
+            <groups/>
+            <memberships/>
+            <roles/>
+        </profileMapping>
+    </profile>
+    <profile name="HRManager" isDefault="false">
+        <description></description>
+        <profileEntries/>
+        <profileMapping>
+            <users>
+                <user>hiram.ferguson@acme.com</user>
+                <user>romana.baxter@acme.com</user>
+                <user>lynna.penn@acme.com</user>
+            </users>
+            <groups/>
+            <memberships>
+                <membership>
+                    <group>/bonitasoft/ga/rh</group>
+                    <role>manager</role>
+                </membership>
+            </memberships>
+            <roles/>
+        </profileMapping>
+    </profile>
+    <profile name="Process manager" isDefault="true">
+        <description>The Process manager can supervise designated processes, and manage cases and tasks of those processes.</description>
+        <profileEntries>
+            <parentProfileEntry name="Monitoring" isCustom="false">
+                <index>0</index>
+                <description>Monitoring of my processes</description>
+                <type>link</type>
+                <page>monitoringpm</page>
+                <childrenEntries/>
+            </parentProfileEntry>
+            <parentProfileEntry name="Processes" isCustom="false">
+                <index>2</index>
+                <description>My processes</description>
+                <type>link</type>
+                <page>processlistingpm</page>
+                <childrenEntries/>
+            </parentProfileEntry>
+            <parentProfileEntry name="Cases" isCustom="false">
+                <index>4</index>
+                <description>My cases</description>
+                <type>link</type>
+                <page>caselistingpm</page>
+                <childrenEntries/>
+            </parentProfileEntry>
+            <parentProfileEntry name="Tasks" isCustom="false">
+                <index>6</index>
+                <description>My tasks</description>
+                <type>link</type>
+                <page>tasklistingpm</page>
+                <childrenEntries/>
+            </parentProfileEntry>
+        </profileEntries>
+        <profileMapping>
+            <users/>
+            <groups/>
+            <memberships/>
+            <roles/>
+        </profileMapping>
+    </profile>
+    <profile name="TahitiUser" isDefault="false">
+        <description></description>
+        <profileEntries/>
+        <profileMapping>
+            <users/>
+            <groups/>
+            <memberships/>
+            <roles>
+                <role>member</role>
+            </roles>
+        </profileMapping>
+    </profile>
+    <profile name="TeamManager" isDefault="false">
+        <description></description>
+        <profileEntries/>
+        <profileMapping>
+            <users/>
+            <groups/>
+            <memberships/>
+            <roles>
+                <role>manager</role>
+            </roles>
         </profileMapping>
     </profile>
     <profile name="User" isDefault="true">
@@ -142,27 +239,7 @@
         </profileEntries>
         <profileMapping>
             <users>
-                <user>anthony.nichols</user>
-                <user>april.sanchez</user>
-                <user>daniela.angelo</user>
-                <user>favio.riviera</user>
-                <user>giovanna.almeida</user>
-                <user>helen.kelly</user>
-                <user>isabel.bleasdale</user>
-                <user>jan.fisher</user>
-                <user>joseph.hovell</user>
-                <user>marc.marseau</user>
-                <user>mauro.zetticci</user>
-                <user>michael.morrison</user>
-                <user>misa.kumaga</user>
-                <user>inorio.yamazaki</user>
-                <user>patrick.gardenier</user>
-                <user>studio</user>
-                <user>thorsten.hartmann</user>
-                <user>virginie.jomphe</user>
-                <user>walter.bates</user>
-                <user>william.jobs</user>
-                <user>zachary.williamson</user>
+                <user>lynna.penn@acme.com</user>
             </users>
             <groups/>
             <memberships/>

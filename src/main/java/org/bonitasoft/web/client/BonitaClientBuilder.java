@@ -1,13 +1,24 @@
 package org.bonitasoft.web.client;
 
-public interface BonitaClientBuilder {
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+
+public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
+
     BonitaClient build();
 
-    BonitaClientBuilder connectTimeoutInSeconds(int connectTimeoutInSeconds);
+    T connectTimeoutInSeconds(int connectTimeoutInSeconds);
 
-    BonitaClientBuilder readTimeoutInSeconds(int readTimeoutInSeconds);
+    T readTimeoutInSeconds(int readTimeoutInSeconds);
 
-    BonitaClientBuilder writeTimeoutInSeconds(int writeTimeoutInSeconds);
+    T writeTimeoutInSeconds(int writeTimeoutInSeconds);
 
-    BonitaClientBuilder disableCertificateCheck(boolean disableCertificateCheck);
+    T disableCertificateCheck(boolean disableCertificateCheck);
+
+    T okHttpClient(OkHttpClient okHttpClient);
+
+    T objectMapper(ObjectMapper objectMapper);
+
+    T logInterceptor(HttpLoggingInterceptor loggingInterceptor);
 }

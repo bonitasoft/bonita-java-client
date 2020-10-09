@@ -1,4 +1,4 @@
-package org.bonitasoft.web.client.feign;
+package org.bonitasoft.web.client.feign.decoder;
 
 import feign.FeignException;
 import feign.Response;

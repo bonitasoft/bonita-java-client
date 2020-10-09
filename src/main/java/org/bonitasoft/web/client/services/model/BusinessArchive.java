@@ -8,9 +8,9 @@
  */
 package org.bonitasoft.web.client.services.model;
 
-import org.bonitasoft.web.client.services.utils.FileUtils;
 import lombok.Builder;
 import lombok.Data;
+import org.bonitasoft.web.client.services.utils.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.xml.sax.SAXException;

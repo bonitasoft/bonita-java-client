@@ -1915,7 +1915,7 @@ paths:
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Get the BDM access control status.
-      operationId: getDBMAccessControlStatus
+      operationId: getBDMAccessControlStatus
       responses:
         "200":
           content:
@@ -1971,9 +1971,10 @@ paths:
       responses:
         "200":
           content:
-            application/json:
+            text/plain:
+              example: tmp_accessControlFileToUpload.xml
               schema:
-                $ref: '#/components/schemas/BDMAccessControlUploadResponse'
+                type: string
           description: 'Success '
         "400":
           content:
@@ -6482,12 +6483,12 @@ paths:
       x-accepts: application/json
     get:
       description: |
-        Finds Processs with pagination params and filters
+        Finds Processes with pagination params and filters
 
         - can order (default is ASC) on `name`, `version`, `deploymentDate`, `deployedBy`, `activationState`, `configurationState`, `processId`, `displayName`, `lastUpdateDate`, `categoryId`, `label`
         - can search on `name`, `displayName` or `version`
         - can filter on `name`, `version`, `deploymentDate`, `deployedBy`, `activationState` with the value DISABLED or ENABLED, `configurationState` with the value UNRESOLVED, or RESOLVED, `processId`, `displayName`, `lastUpdateDate`, `categoryId`, `label`, `supervisor_id`
-      operationId: findProcesss
+      operationId: findProcesses
       parameters:
       - description: index of the page to display
         example: "0"
@@ -6579,7 +6580,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unexpected error.
-      summary: Finds Processs
+      summary: Finds Processes
       tags:
       - Process
       x-accepts: application/json
@@ -7608,10 +7609,10 @@ paths:
   /API/bpm/processConnectorDependency:
     get:
       description: |
-        Finds ProcessConnectorDependencys with pagination params and filters
+        Finds ProcessConnectorDependencies with pagination params and filters
 
         **Mandatory filters: `connector_process_id`, `connector_name`, `connector_version`**
-      operationId: findProcessConnectorDependencys
+      operationId: findProcessConnectorDependencies
       parameters:
       - description: index of the page to display
         example: "0"
@@ -7703,7 +7704,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unexpected error.
-      summary: Finds ProcessConnectorDependencys
+      summary: Finds ProcessConnectorDependencies
       tags:
       - ProcessConnectorDependency
       x-accepts: application/json
@@ -10677,6 +10678,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          description: Not allowed to perform operation or resource already exists
         "5XX":
           content:
             application/json:
@@ -11411,13 +11414,13 @@ paths:
       description: |
         Returns the current platform License.
         This requires a platform session. Log in using the platform login service.
-      operationId: getLicense
+      operationId: getPlatformLicense
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/License'
+                $ref: '#/components/schemas/PlatformLicense'
           description: 'Success '
         "400":
           content:
@@ -13163,6 +13166,46 @@ paths:
       - SystemTenant
       x-contentType: application/json
       x-accepts: application/json
+  /API/system/license/unusedid:
+    get:
+      description: |
+        Returns license information for the current server
+      operationId: getLicense
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Get the current server license
+      tags:
+      - License
+      x-accepts: application/json
   /portal/fileUpload:
     post:
       description: |
@@ -13993,6 +14036,12 @@ components:
           description: Version of the business data object instance
           type: string
       type: object
+    TenantResourceState:
+      description: Tenant resource state (BDM, BDM access control, ...)
+      enum:
+      - INSTALLING
+      - INSTALLED
+      type: string
     BDMAccessControl:
       example:
         id: 4090
@@ -14009,24 +14058,13 @@ components:
           description: BDM access control name
           type: string
         state:
-          description: BDM access control
-          enum:
-          - INSTALLED
-          type: string
+          $ref: '#/components/schemas/TenantResourceState'
         lastUpdatedBy:
           description: 'If `lastUpdatedBy: -1` it means that the access control were
             last installed or updated by tenant_technical_user.'
           type: string
         lastUpdateDate:
           description: Last date when the access control were installed or updated.
-          type: string
-      type: object
-    BDMAccessControlUploadResponse:
-      example:
-        fileUpload: tmp_accessControlFileToUpload.xml
-      properties:
-        fileUpload:
-          description: the temporary file name once uploaded on the server
           type: string
       type: object
     ActivityTypeEnum:
@@ -16526,7 +16564,7 @@ components:
           description: user id
           type: string
         enabled:
-          description: if "true", user will be activated.
+          description: if "true", user is active.
           type: string
         userName:
           description: user name
@@ -16577,6 +16615,7 @@ components:
         title: Mr
         job_title: Human resources benefits
         manager_id: "3"
+        enabled: "true"
       properties:
         userName:
           description: user name
@@ -16607,6 +16646,16 @@ components:
         manager_id:
           description: user manager id
           type: string
+        enabled:
+          description: true|false if the user is enabled or not
+          type: string
+      required:
+      - enabled
+      - firstname
+      - lastname
+      - password
+      - password_confirm
+      - userName
       type: object
     UserUpdateRequest:
       example:
@@ -16772,7 +16821,7 @@ components:
           description: the password
           type: string
       type: object
-    License:
+    PlatformLicense:
       example:
         duration: duration
         subscriptionStartPeriod: subscriptionStartPeriod
@@ -17225,6 +17274,28 @@ components:
           description: wether the system tenant should be paused or not
           type: string
       type: object
+    License:
+      description: Bonita license
+      example:
+        owner: owner
+        edition: edition
+        nb_cpu_cores: nb_cpu_cores
+        expirationDate: 0
+      properties:
+        owner:
+          description: Owner of the license
+          type: string
+        edition:
+          description: name of the Bonita edition enabled by the license (Community,...)
+          type: string
+        nb_cpu_cores:
+          description: number of CPUs
+          type: string
+        expirationDate:
+          description: 'License expiration date with format: `yyyy-MM-dd HH:mm:ss.SSS`'
+          format: int64
+          type: integer
+      type: object
     Bdm:
       example:
         id: "309"
@@ -17244,10 +17315,7 @@ components:
           description: BDM type
           type: string
         state:
-          description: BDM state
-          enum:
-          - INSTALLED
-          type: string
+          $ref: '#/components/schemas/TenantResourceState'
         lastUpdatedBy:
           description: This value is always -1 because only the tenant_technical_user
             can install BDM.
