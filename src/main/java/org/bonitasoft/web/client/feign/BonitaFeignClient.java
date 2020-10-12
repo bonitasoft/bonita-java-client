@@ -40,8 +40,8 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Optional.ofNullable;
-import static org.bonitasoft.web.client.api.ApplicationApi.FindApplicationsQueryParams;
-import static org.bonitasoft.web.client.api.UserApi.FindUsersQueryParams;
+import static org.bonitasoft.web.client.api.ApplicationApi.SearchApplicationsQueryParams;
+import static org.bonitasoft.web.client.api.UserApi.SearchUsersQueryParams;
 
 /**
  * Entry point to interact with the REST API of bonita. <br>
@@ -181,7 +181,7 @@ class BonitaFeignClient implements BonitaClient {
         log.info("Get user with username: {}", username);
         UserApi userApi = apiLocator.getApi(UserApi.class);
         String filter = "userName=" + username;
-        return userApi.findUsers(new FindUsersQueryParams().p(0).c(1).f(filter)).stream().findFirst()
+        return userApi.searchUsers(new SearchUsersQueryParams().p(0).c(1).f(filter)).stream().findFirst()
                 .orElseThrow(() -> new NotFoundException("No user found for the username: " + username));
     }
 
@@ -193,10 +193,10 @@ class BonitaFeignClient implements BonitaClient {
     }
 
     @Override
-    public List<User> findUsers(FindUsersQueryParams params) {
+    public List<User> searchUsers(SearchUsersQueryParams params) {
         log.info("Find users with params: {}", params);
         UserApi userApi = apiLocator.getApi(UserApi.class);
-        return userApi.findUsers(params);
+        return userApi.searchUsers(params);
     }
 
     @Override
@@ -241,6 +241,7 @@ class BonitaFeignClient implements BonitaClient {
 
     private boolean isCommunity() {
         if (community == null) {
+            // Get licence only once and cache result
             community = COMMUNITY.equalsIgnoreCase(getLicense().getEdition());
         }
         return community;
@@ -303,20 +304,20 @@ class BonitaFeignClient implements BonitaClient {
     public Application getApplication(String applicationToken) {
         log.debug("Retrieving application '{}'", applicationToken);
         return apiLocator.getApi(ApplicationApi.class)
-                .findApplications(new FindApplicationsQueryParams().p(0).c(1).f("token=" + applicationToken))
+                .searchApplications(new SearchApplicationsQueryParams().p(0).c(1).f("token=" + applicationToken))
                 .stream().findFirst().orElse(null);
     }
 
     @Override
     public List<Application> searchApplications(int page, int count) {
-        return findApplications(new FindApplicationsQueryParams().p(page).c(count));
+        return searchApplications(new SearchApplicationsQueryParams().p(page).c(count));
     }
 
     @Override
-    public List<Application> findApplications(FindApplicationsQueryParams params) {
+    public List<Application> searchApplications(SearchApplicationsQueryParams params) {
         log.debug("Findings applications with request params {}", params);
         return apiLocator.getApi(ApplicationApi.class)
-                .findApplications(params);
+                .searchApplications(params);
     }
 
     @Override
@@ -420,19 +421,60 @@ class BonitaFeignClient implements BonitaClient {
 
     @Override
     public List<Profile> searchProfiles(int page, int count) {
-        ProfileApi.FindProfilesQueryParams params = new ProfileApi.FindProfilesQueryParams().p(0).c(0);
+        ProfileApi.SearchProfilesQueryParams params = new ProfileApi.SearchProfilesQueryParams()
+                .p(page).c(count)
+                .o("name ASC");
+        return searchProfiles(params);
+    }
+
+    @Override
+    public Role getRoleByName(String name) {
+        return searchRoles(new RoleApi.SearchRolesQueryParams()
+                .p(0).c(1)
+                .f("name=" + name)
+        ).stream().findFirst().orElseThrow(() -> new NotFoundException("Role with name '" + name + "' not found"));
+    }
+
+    @Override
+    public Profile getProfileByName(String name) {
+        return searchProfiles(new ProfileApi.SearchProfilesQueryParams()
+                .p(0).c(1)
+                .f("name=" + name)
+        ).stream().findFirst().orElseThrow(() -> new NotFoundException("Profile with name  '" + name + "' not found"));
+    }
+
+    @Override
+    public List<Role> searchRoles(RoleApi.SearchRolesQueryParams params) {
+        log.info("Finding roles with params: {}", params);
+        return apiLocator.getApi(RoleApi.class).searchRoles(params);
+    }
+
+    public List<Profile> searchProfiles(ProfileApi.SearchProfilesQueryParams params) {
         log.info("Finding profiles with params: {}", params);
-        return apiLocator.getApi(ProfileApi.class).findProfiles(params);
+        return apiLocator.getApi(ProfileApi.class).searchProfiles(params);
     }
 
     @Override
-    public long addUserToProfile(long userId, long profileId) {
-        return 0;
+    public String addUserToProfile(String userId, String profileId) {
+        return "0";
     }
 
     @Override
-    public long addUserToProfile(String username, String profileName) {
-        return 0;
+    public String addRoleToProfile(String roleId, String profileId) {
+        log.info("Add role {} to profile {}...", roleId, profileId);
+        ProfileMemberApi profileMemberApi = apiLocator.getApi(ProfileMemberApi.class);
+        ProfileMember profileMember = profileMemberApi.createProfileMember(new ProfileMemberCreateRequest()
+                .memberType(ProfileMemberCreateRequest.MemberTypeEnum.ROLE)
+                .roleId(roleId)
+                .profileId(profileId)
+        );
+        log.info("Role membership add to profile {}. Membership: {}", profileId, profileMember);
+        return profileMember.getId();
+    }
+
+    @Override
+    public String addUserToProfileByNames(String username, String profileName) {
+        return "0";
     }
 
     @Override

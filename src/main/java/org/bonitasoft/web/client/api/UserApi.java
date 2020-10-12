@@ -43,6 +43,18 @@ public interface UserApi extends ApiClient.Api {
   void deleteUserById(@Param("id") String id);
 
   /**
+   * Finds the User by ID
+   * Returns the single User for the given ID 
+   * @param id ID of the User to return (required)
+   * @return User
+   */
+  @RequestLine("GET /API/identity/user/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  User getUserById(@Param("id") String id);
+
+  /**
    * Finds Users
    * Finds Users with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
    * @param p index of the page to display (required)
@@ -56,15 +68,15 @@ public interface UserApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<User> findUsers(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<User> searchUsers(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Users
    * Finds Users with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
-   * Note, this is equivalent to the other <code>findUsers</code> method,
+   * Note, this is equivalent to the other <code>searchUsers</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindUsersQueryParams} class that allows for
+   * used with the {@link SearchUsersQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -81,46 +93,34 @@ public interface UserApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<User> findUsers(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<User> searchUsers(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findUsers</code> method in a fluent style.
+   * <code>searchUsers</code> method in a fluent style.
    */
-  public static class FindUsersQueryParams extends HashMap<String, Object> {
-    public FindUsersQueryParams p(final Integer value) {
+  public static class SearchUsersQueryParams extends HashMap<String, Object> {
+    public SearchUsersQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindUsersQueryParams c(final Integer value) {
+    public SearchUsersQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindUsersQueryParams f(final String value) {
+    public SearchUsersQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindUsersQueryParams o(final String value) {
+    public SearchUsersQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindUsersQueryParams s(final String value) {
+    public SearchUsersQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the User by ID
-   * Returns the single User for the given ID 
-   * @param id ID of the User to return (required)
-   * @return User
-   */
-  @RequestLine("GET /API/identity/user/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  User getUserById(@Param("id") String id);
 
   /**
    * Update the User by ID

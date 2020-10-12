@@ -18,6 +18,18 @@ public interface ActivityApi extends ApiClient.Api {
 
 
   /**
+   * Finds the Activity by ID
+   * Returns the single Activity for the given ID 
+   * @param id ID of the Activity to return (required)
+   * @return Activity
+   */
+  @RequestLine("GET /API/bpm/activity/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  Activity getActivityById(@Param("id") String id);
+
+  /**
    * Finds Activities
    * Finds Activities with pagination params and filters. Activities in states completed, cancelled, or aborted are not retrieved. The search returns an array of activities.  - can order on &#x60;name&#x60;, &#x60;displayName&#x60;, &#x60;state&#x60;, &#x60;processDefinitionId&#x60;, &#x60;parentProcessInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60; (order by parent activity id), &#x60;rootProcessInstanceId&#x60;, &#x60;lastUpdateDate&#x60; - can search on &#x60;name&#x60;, &#x60;displayName&#x60;, &#x60;state&#x60;, &#x60;processDefinitionId&#x60;, &#x60;parentProcessInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60; (order by parent activity id), &#x60;rootProcessInstanceId&#x60;, &#x60;lastUpdateDate&#x60; - can filter on &#x60;name&#x60;, &#x60;state&#x60;, &#x60;processId&#x60;, &#x60;parentCaseId&#x60;, &#x60;rootCaseId&#x60;, &#x60;last_update_date&#x60;, &#x60;supervisor_id&#x60; (only in Enterprise editions) 
    * @param p index of the page to display (required)
@@ -31,15 +43,15 @@ public interface ActivityApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Activity> findActivities(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Activity> searchActivities(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Activities
    * Finds Activities with pagination params and filters. Activities in states completed, cancelled, or aborted are not retrieved. The search returns an array of activities.  - can order on &#x60;name&#x60;, &#x60;displayName&#x60;, &#x60;state&#x60;, &#x60;processDefinitionId&#x60;, &#x60;parentProcessInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60; (order by parent activity id), &#x60;rootProcessInstanceId&#x60;, &#x60;lastUpdateDate&#x60; - can search on &#x60;name&#x60;, &#x60;displayName&#x60;, &#x60;state&#x60;, &#x60;processDefinitionId&#x60;, &#x60;parentProcessInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60; (order by parent activity id), &#x60;rootProcessInstanceId&#x60;, &#x60;lastUpdateDate&#x60; - can filter on &#x60;name&#x60;, &#x60;state&#x60;, &#x60;processId&#x60;, &#x60;parentCaseId&#x60;, &#x60;rootCaseId&#x60;, &#x60;last_update_date&#x60;, &#x60;supervisor_id&#x60; (only in Enterprise editions) 
-   * Note, this is equivalent to the other <code>findActivities</code> method,
+   * Note, this is equivalent to the other <code>searchActivities</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindActivitiesQueryParams} class that allows for
+   * used with the {@link SearchActivitiesQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -56,46 +68,34 @@ public interface ActivityApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<Activity> findActivities(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<Activity> searchActivities(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findActivities</code> method in a fluent style.
+   * <code>searchActivities</code> method in a fluent style.
    */
-  public static class FindActivitiesQueryParams extends HashMap<String, Object> {
-    public FindActivitiesQueryParams p(final Integer value) {
+  public static class SearchActivitiesQueryParams extends HashMap<String, Object> {
+    public SearchActivitiesQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindActivitiesQueryParams c(final Integer value) {
+    public SearchActivitiesQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindActivitiesQueryParams f(final String value) {
+    public SearchActivitiesQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindActivitiesQueryParams o(final String value) {
+    public SearchActivitiesQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindActivitiesQueryParams s(final String value) {
+    public SearchActivitiesQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the Activity by ID
-   * Returns the single Activity for the given ID 
-   * @param id ID of the Activity to return (required)
-   * @return Activity
-   */
-  @RequestLine("GET /API/bpm/activity/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  Activity getActivityById(@Param("id") String id);
 
   /**
    * Update the Activity by ID

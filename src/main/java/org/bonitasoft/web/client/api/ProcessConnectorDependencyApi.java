@@ -30,15 +30,15 @@ public interface ProcessConnectorDependencyApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ProcessConnectorDependency> findProcessConnectorDependencies(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ProcessConnectorDependency> searchProcessConnectorDependencies(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ProcessConnectorDependencies
    * Finds ProcessConnectorDependencies with pagination params and filters  **Mandatory filters: &#x60;connector_process_id&#x60;, &#x60;connector_name&#x60;, &#x60;connector_version&#x60;** 
-   * Note, this is equivalent to the other <code>findProcessConnectorDependencies</code> method,
+   * Note, this is equivalent to the other <code>searchProcessConnectorDependencies</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindProcessConnectorDependenciesQueryParams} class that allows for
+   * used with the {@link SearchProcessConnectorDependenciesQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -55,30 +55,30 @@ public interface ProcessConnectorDependencyApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ProcessConnectorDependency> findProcessConnectorDependencies(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ProcessConnectorDependency> searchProcessConnectorDependencies(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findProcessConnectorDependencies</code> method in a fluent style.
+   * <code>searchProcessConnectorDependencies</code> method in a fluent style.
    */
-  public static class FindProcessConnectorDependenciesQueryParams extends HashMap<String, Object> {
-    public FindProcessConnectorDependenciesQueryParams p(final Integer value) {
+  public static class SearchProcessConnectorDependenciesQueryParams extends HashMap<String, Object> {
+    public SearchProcessConnectorDependenciesQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindProcessConnectorDependenciesQueryParams c(final Integer value) {
+    public SearchProcessConnectorDependenciesQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindProcessConnectorDependenciesQueryParams f(final String value) {
+    public SearchProcessConnectorDependenciesQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindProcessConnectorDependenciesQueryParams o(final String value) {
+    public SearchProcessConnectorDependenciesQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindProcessConnectorDependenciesQueryParams s(final String value) {
+    public SearchProcessConnectorDependenciesQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }

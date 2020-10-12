@@ -18,6 +18,19 @@ public interface CaseVariableApi extends ApiClient.Api {
 
 
   /**
+   * Finds the Variable by Case ID
+   * Returns the single Variable for the given Case ID 
+   * @param id The identifier of the case from which to retrieve the variable (required)
+   * @param variableName The name of the variable to retrieve (required)
+   * @return CaseVariable
+   */
+  @RequestLine("GET /API/bpm/caseVariable/{id}/{variableName}")
+  @Headers({
+    "Accept: application/json",
+  })
+  CaseVariable getVariableByCaseId(@Param("id") String id, @Param("variableName") String variableName);
+
+  /**
    * Finds Case Variables
    * Finds Case Variables with pagination params and filters 
    * @param p index of the page to display (required)
@@ -30,15 +43,15 @@ public interface CaseVariableApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<CaseVariable> findCaseVariables(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<CaseVariable> searchCaseVariables(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
 
   /**
    * Finds Case Variables
    * Finds Case Variables with pagination params and filters 
-   * Note, this is equivalent to the other <code>findCaseVariables</code> method,
+   * Note, this is equivalent to the other <code>searchCaseVariables</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindCaseVariablesQueryParams} class that allows for
+   * used with the {@link SearchCaseVariablesQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -54,43 +67,30 @@ public interface CaseVariableApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<CaseVariable> findCaseVariables(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<CaseVariable> searchCaseVariables(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findCaseVariables</code> method in a fluent style.
+   * <code>searchCaseVariables</code> method in a fluent style.
    */
-  public static class FindCaseVariablesQueryParams extends HashMap<String, Object> {
-    public FindCaseVariablesQueryParams p(final Integer value) {
+  public static class SearchCaseVariablesQueryParams extends HashMap<String, Object> {
+    public SearchCaseVariablesQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindCaseVariablesQueryParams c(final Integer value) {
+    public SearchCaseVariablesQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindCaseVariablesQueryParams f(final String value) {
+    public SearchCaseVariablesQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindCaseVariablesQueryParams o(final String value) {
+    public SearchCaseVariablesQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the Variable by Case ID
-   * Returns the single Variable for the given Case ID 
-   * @param id The identifier of the case from which to retrieve the variable (required)
-   * @param variableName The name of the variable to retrieve (required)
-   * @return CaseVariable
-   */
-  @RequestLine("GET /API/bpm/caseVariable/{id}/{variableName}")
-  @Headers({
-    "Accept: application/json",
-  })
-  CaseVariable getVariableByCaseId(@Param("id") String id, @Param("variableName") String variableName);
 
   /**
    * Update a Variable by Case ID

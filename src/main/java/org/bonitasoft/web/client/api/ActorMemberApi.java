@@ -28,6 +28,18 @@ public interface ActorMemberApi extends ApiClient.Api {
   void deleteActorMemberById(@Param("id") String id);
 
   /**
+   * Finds the ActorMember by ID
+   * Returns the single ActorMember for the given ID 
+   * @param id ID of the ActorMember to return (required)
+   * @return ActorMember
+   */
+  @RequestLine("GET /API/bpm/actorMemberEntry/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ActorMember getActorMemberById(@Param("id") String id);
+
+  /**
    * Finds ActorMembers
    * Finds ActorMembers with pagination params and filters  There is a **mandatory** filter on:  * &#x60;actor_id&#x60; For example, retrieve the actorMembers related to the specified actor_id. http://localhost:8080/bonita/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1  You can also filter also on:  * &#x60;member_type&#x60; (user|role|group|roleAndGroup) retrieve only the actorMembers of type user. &#x60;/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1&amp;f&#x3D;member_type%3duser&#x60; * &#x60;user_id&#x60;: retrieve only the actorMembers related to the specified user_id. &#x60;/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1&amp;f&#x3D;user_id%3d101&#x60; * &#x60;role_id&#x60;: retrieve only the actorMembers related to the specified role_id. &#x60;/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1&amp;f&#x3D;role_id%3d101&#x60; * &#x60;group_id&#x60;: retrieve only the actorMembers related to the specified group_id. &#x60;/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1&amp;f&#x3D;group_id%3d101&#x60; 
    * @param p index of the page to display (required)
@@ -40,15 +52,15 @@ public interface ActorMemberApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ActorMember> findActorMembers(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<ActorMember> searchActorMembers(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
 
   /**
    * Finds ActorMembers
    * Finds ActorMembers with pagination params and filters  There is a **mandatory** filter on:  * &#x60;actor_id&#x60; For example, retrieve the actorMembers related to the specified actor_id. http://localhost:8080/bonita/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1  You can also filter also on:  * &#x60;member_type&#x60; (user|role|group|roleAndGroup) retrieve only the actorMembers of type user. &#x60;/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1&amp;f&#x3D;member_type%3duser&#x60; * &#x60;user_id&#x60;: retrieve only the actorMembers related to the specified user_id. &#x60;/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1&amp;f&#x3D;user_id%3d101&#x60; * &#x60;role_id&#x60;: retrieve only the actorMembers related to the specified role_id. &#x60;/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1&amp;f&#x3D;role_id%3d101&#x60; * &#x60;group_id&#x60;: retrieve only the actorMembers related to the specified group_id. &#x60;/API/bpm/actorMember?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;actor_id%3d1&amp;f&#x3D;group_id%3d101&#x60; 
-   * Note, this is equivalent to the other <code>findActorMembers</code> method,
+   * Note, this is equivalent to the other <code>searchActorMembers</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindActorMembersQueryParams} class that allows for
+   * used with the {@link SearchActorMembersQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -64,40 +76,28 @@ public interface ActorMemberApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ActorMember> findActorMembers(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ActorMember> searchActorMembers(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findActorMembers</code> method in a fluent style.
+   * <code>searchActorMembers</code> method in a fluent style.
    */
-  public static class FindActorMembersQueryParams extends HashMap<String, Object> {
-    public FindActorMembersQueryParams p(final Integer value) {
+  public static class SearchActorMembersQueryParams extends HashMap<String, Object> {
+    public SearchActorMembersQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindActorMembersQueryParams c(final Integer value) {
+    public SearchActorMembersQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindActorMembersQueryParams f(final String value) {
+    public SearchActorMembersQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindActorMembersQueryParams o(final String value) {
+    public SearchActorMembersQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the ActorMember by ID
-   * Returns the single ActorMember for the given ID 
-   * @param id ID of the ActorMember to return (required)
-   * @return ActorMember
-   */
-  @RequestLine("GET /API/bpm/actorMemberEntry/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  ActorMember getActorMemberById(@Param("id") String id);
 }

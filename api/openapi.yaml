@@ -527,7 +527,7 @@ paths:
         - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`
         - can search on `token`, `displayName`, `version`
         - can filter on `token`, `displayName`, `version`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`
-      operationId: findApplications
+      operationId: searchApplications
       parameters:
       - description: index of the page to display
         example: "0"
@@ -960,7 +960,7 @@ paths:
         - can order on `id`, `displayName`, `applicationId`, `applicationPageId`, `menuIndex`, `parentMenuId`
         - can search on `displayName`
         - can filter on `id`, `displayName`, `applicationId`, `applicationPageId`, `menuIndex`, `parentMenuId`
-      operationId: findApplicationMenus
+      operationId: searchApplicationMenus
       parameters:
       - description: index of the page to display
         example: "0"
@@ -1284,7 +1284,7 @@ paths:
         - can order on `id`, `token`, `applicationId`, `pageId`
         - can search on `token`
         - can filter on `id`, `token`, `applicationId`, `pageId`
-      operationId: findApplicationPages
+      operationId: searchApplicationPages
       parameters:
       - description: index of the page to display
         example: "0"
@@ -1559,7 +1559,7 @@ paths:
           * yyyy-MM-dd HH:mm:ss
           * yyyy-MM-dd'T'HH:mm:ss
           * yyyy-MM-dd'T'HH:mm:ss.SSS
-      operationId: findBusinessData
+      operationId: searchBusinessData
       parameters:
       - description: Business Data Type
         example: com.company.model.Employee
@@ -1571,7 +1571,7 @@ paths:
           type: string
         style: simple
       - description: Named query to use
-        example: findEmployeeByFirstNameAndLastName
+        example: searchEmployeeByFirstNameAndLastName
         explode: true
         in: query
         name: q
@@ -1668,7 +1668,7 @@ paths:
     get:
       description: |
         Finds business data specified by their identifiers.
-      operationId: findBusinessDataByIds
+      operationId: searchBusinessDataByIds
       parameters:
       - description: Business Data Type
         example: com.company.model.Employee
@@ -1729,7 +1729,7 @@ paths:
     get:
       description: |
         Finds business data specified by its identifier.
-      operationId: findBusinessDataById
+      operationId: searchBusinessDataById
       parameters:
       - description: Business Data Type
         example: com.company.model.Employee
@@ -1796,7 +1796,7 @@ paths:
     get:
       description: |
         Gets the business data attribute of business data according to its identifier and attribute name. Request url.
-      operationId: findBusinessDataAttributeById
+      operationId: searchBusinessDataAttributeById
       parameters:
       - description: Business Data Type
         example: com.company.model.Employee
@@ -2071,7 +2071,7 @@ paths:
         - can order on `name`, `displayName`, `state`, `processDefinitionId`, `parentProcessInstanceId`, `parentActivityInstanceId` (order by parent activity id), `rootProcessInstanceId`, `lastUpdateDate`
         - can search on `name`, `displayName`, `state`, `processDefinitionId`, `parentProcessInstanceId`, `parentActivityInstanceId` (order by parent activity id), `rootProcessInstanceId`, `lastUpdateDate`
         - can filter on `name`, `state`, `processId`, `parentCaseId`, `rootCaseId`, `last_update_date`, `supervisor_id` (only in Enterprise editions)
-      operationId: findActivities
+      operationId: searchActivities
       parameters:
       - description: index of the page to display
         example: "0"
@@ -2302,7 +2302,7 @@ paths:
         Can filter on:
           - `supervisor_id`: retrieve the information the process manager associated to this id has access to (only in Enterprise editions)
           - f: same as the sort order fields
-      operationId: findArchivedActivities
+      operationId: searchArchivedActivities
       parameters:
       - description: index of the page to display
         example: "0"
@@ -2463,7 +2463,7 @@ paths:
         - can order on `name`, `priority`, `dueDate`, `state`, `processDefinitionId`, `processInstanceId`, `parentActivityInstanceId`, `assigneeId`, `parentContainerId`, `displayName`, `reachedStateDate`
         - can search on any field that can be used to order results
         - can filter on `assigned_id`, `state`, `name`, `displayName`, `processDefinitionId`, `parentContainerId`, `userId`, `groupId`, `roleId`
-      operationId: findHumanTasks
+      operationId: searchHumanTasks
       parameters:
       - description: index of the page to display
         example: "0"
@@ -2692,7 +2692,7 @@ paths:
         You can search on:
 
         * name: search all manual tasks with a name that starts with the search string. For example, search for all manual tasks that have a name that starts with MySubTask: `/API/bpm/manualTask?p=0&c=10&s=MySubTask`.
-      operationId: findManualTasks
+      operationId: searchManualTasks
       parameters:
       - description: index of the page to display
         example: "0"
@@ -2963,7 +2963,7 @@ paths:
 
         - can order on `caseId`, `processId`, `state`, `type`, `supervisor_id`, `last_update_date`
         - can filter on `caseId`, `processId`, `state`, `type`, `supervisor_id`, `last_update_date`
-      operationId: findTasks
+      operationId: searchTasks
       parameters:
       - description: index of the page to display
         example: "0"
@@ -3187,7 +3187,7 @@ paths:
         - can order on `id`
         - can search on `displayName`
         - can filter on `displayName`
-      operationId: findUserTasks
+      operationId: searchUserTasks
       parameters:
       - description: index of the page to display
         example: "0"
@@ -3616,7 +3616,7 @@ paths:
         * `state=`: retrieve only the archived user tasks with the specified state. For example, retrieve the skipped tasks: `/API/bpm/archivedHumanTask?p=0&c=10&f=state=skipped`
         * `name=`: retrieve only the human tasks with the specified name. For example, retrieve the human tasks with the name "Analyse Case": `/API/bpm/archivedHumanTask?p=0&c=10&f=name=Analyse Case`
         * `displayName=`: retrieve only the archived user tasks with the specified displayName. For example, retrieve the human tasks with the displayName "Analyse Case": `/API/bpm/archivedHumanTask?p=0&c=10&f=displayName=Analyse Case`
-      operationId: findArchivedHumanTasks
+      operationId: searchArchivedHumanTasks
       parameters:
       - description: index of the page to display
         example: "0"
@@ -3772,7 +3772,7 @@ paths:
         * `state=`: retrieve only the archived user tasks with the specified state. For example, retrieve the skipped tasks: `/API/bpm/archivedHumanTask?p=0&c=10&f=state=skipped`
         * `name=`: retrieve only the human tasks with the specified name. For example, retrieve the human tasks with the name "Analyse Case": `/API/bpm/archivedHumanTask?p=0&c=10&f=name=Analyse Case`
         * `displayName=`: retrieve only the archived user tasks with the specified displayName. For example, retrieve the human tasks with the displayName "Analyse Case": `/API/bpm/archivedHumanTask?p=0&c=10&f=displayName=Analyse Case`
-      operationId: findArchivedManualTasks
+      operationId: searchArchivedManualTasks
       parameters:
       - description: index of the page to display
         example: "0"
@@ -3929,7 +3929,7 @@ paths:
         * `state=`: retrieve only the archived user tasks with the specified state. For example, retrieve the skipped tasks: `/API/bpm/archivedUserTask?p=0&c=10&f=state=skipped`
         * `name=`: retrieve only the user tasks with the specified name. For example, retrieve the user tasks with the name "Analyse Case": `/API/bpm/archivedUserTask?p=0&c=10&f=name=Analyse Case`
         * `displayName=`: retrieve only the archived user tasks with the specified displayName. For example, retrieve the user tasks with the displayName "Analyse Case": `/API/bpm/archivedUserTask?p=0&c=10&f=displayName=Analyse Case`
-      operationId: findArchivedUserTasks
+      operationId: searchArchivedUserTasks
       parameters:
       - description: index of the page to display
         example: "0"
@@ -4081,7 +4081,7 @@ paths:
 
         - Can order on `caseId`, `name`, `displayName`, `processId`, `state`, `type`, `archivedDate`, `reached_state_date`, `assigned_id`
         - Can filter on `caseId`, `name`, `displayName`, `processId`, `state`, `type`, `archivedDate`, `reached_state_date`, `assigned_id`, `isTerminal`
-      operationId: findArchivedTasks
+      operationId: searchArchivedTasks
       parameters:
       - description: index of the page to display
         example: "0"
@@ -4295,7 +4295,7 @@ paths:
     get:
       description: |
         Finds Case Variables with pagination params and filters
-      operationId: findCaseVariables
+      operationId: searchCaseVariables
       parameters:
       - description: index of the page to display
         example: "0"
@@ -4530,7 +4530,7 @@ paths:
            Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the name or the start of a word in the name.
          * `description="string"`: search for documents with descriptions that contain _string_.
            Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the description or the start of a word in the description.
-      operationId: findCaseDocuments
+      operationId: searchCaseDocuments
       parameters:
       - description: index of the page to display
         example: "0"
@@ -4864,7 +4864,7 @@ paths:
           Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the name or the start of a word in the name.
         * `description="string"`: search for documents with descriptions that contain _string_.
           Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the description or the start of a word in the description.
-      operationId: findArchivedCaseDocuments
+      operationId: searchArchivedCaseDocuments
       parameters:
       - description: index of the page to display
         example: "0"
@@ -5009,7 +5009,7 @@ paths:
     get:
       description: |
         Finds Actors with pagination params and filters
-      operationId: findActors
+      operationId: searchActors
       parameters:
       - description: index of the page to display
         example: "0"
@@ -5229,7 +5229,7 @@ paths:
         * `user_id`: retrieve only the actorMembers related to the specified user_id. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=user_id%3d101`
         * `role_id`: retrieve only the actorMembers related to the specified role_id. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=role_id%3d101`
         * `group_id`: retrieve only the actorMembers related to the specified group_id. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=group_id%3d101`
-      operationId: findActorMembers
+      operationId: searchActorMembers
       parameters:
       - description: index of the page to display
         example: "0"
@@ -5492,7 +5492,7 @@ paths:
         * `started_by`: the ID of the user who started the process
         * `team_manager_id`: allow to retrieve the cases in which all users with this manager ID ar involved)
         * `supervisor_id`: allow the retrived the cases of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
-      operationId: findCases
+      operationId: searchCases
       parameters:
       - description: index of the page to display
         example: "0"
@@ -5846,7 +5846,7 @@ paths:
         * `started_by`: the ID of the user who started the process
         * `team_manager_id`: allow to retrieve the cases in which all users with this manager ID ar involved)
         * `supervisor_id`: allow the retrived the cases of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
-      operationId: findArchivedCases
+      operationId: searchArchivedCases
       parameters:
       - description: index of the page to display
         example: "0"
@@ -6186,7 +6186,7 @@ paths:
 
         - can order on `postDate`
         - can filter on `supervisor_id`,`user_id`,`processInstanceId` - You cannot use supervisor_id and user_id filter at the same time
-      operationId: findCaseComments
+      operationId: searchCaseComments
       parameters:
       - description: index of the page to display
         example: "0"
@@ -6330,7 +6330,7 @@ paths:
         - can order on `id`
         - can search on `displayName`
         - can filter on `displayName`
-      operationId: findArchivedCaseComments
+      operationId: searchArchivedCaseComments
       parameters:
       - description: index of the page to display
         example: "0"
@@ -6488,7 +6488,7 @@ paths:
         - can order (default is ASC) on `name`, `version`, `deploymentDate`, `deployedBy`, `activationState`, `configurationState`, `processId`, `displayName`, `lastUpdateDate`, `categoryId`, `label`
         - can search on `name`, `displayName` or `version`
         - can filter on `name`, `version`, `deploymentDate`, `deployedBy`, `activationState` with the value DISABLED or ENABLED, `configurationState` with the value UNRESOLVED, or RESOLVED, `processId`, `displayName`, `lastUpdateDate`, `categoryId`, `label`, `supervisor_id`
-      operationId: findProcesses
+      operationId: searchProcesses
       parameters:
       - description: index of the page to display
         example: "0"
@@ -7057,7 +7057,7 @@ paths:
     get:
       description: |
         Finds ProcessParameters with pagination params and filters.
-      operationId: findProcessParameters
+      operationId: searchProcessParameters
       parameters:
       - description: index of the page to display
         example: "0"
@@ -7295,7 +7295,7 @@ paths:
         Finds ProcessResolutionProblems with pagination params and filters to list the problems that need to be solved before a process can be used.
 
         **Filtering on the process definition ID is mandatory.**
-      operationId: findProcessResolutionProblems
+      operationId: searchProcessResolutionProblems
       parameters:
       - description: index of the page to display
         example: "0"
@@ -7458,7 +7458,7 @@ paths:
         To filter, you need to specify the `process_id`, and then the `user_id`, `group_id` and `role_id` with one of them
         (two if you want to filter on group and role) set to `>0` and the other ones set to `-1`.
         E.g.: `f=process_id%3D8040901857674754544&f=user_id%3D>0&f=group_id%3D-1&f=role_id%3D-1`
-      operationId: findProcessSupervisors
+      operationId: searchProcessSupervisors
       parameters:
       - description: index of the page to display
         example: "0"
@@ -7612,7 +7612,7 @@ paths:
         Finds ProcessConnectorDependencies with pagination params and filters
 
         **Mandatory filters: `connector_process_id`, `connector_name`, `connector_version`**
-      operationId: findProcessConnectorDependencies
+      operationId: searchProcessConnectorDependencies
       parameters:
       - description: index of the page to display
         example: "0"
@@ -7770,7 +7770,7 @@ paths:
       description: |
         Finds ConnectorInstances with pagination params and filters.
         Retrieve a list of connector instances attached to a process or a flow node.
-      operationId: findConnectorInstances
+      operationId: searchConnectorInstances
       parameters:
       - description: index of the page to display
         example: "0"
@@ -7870,7 +7870,7 @@ paths:
     get:
       description: |
         Finds ArchivedConnectorInstances with pagination params and filters
-      operationId: findArchivedConnectorInstances
+      operationId: searchArchivedConnectorInstances
       parameters:
       - description: index of the page to display
         example: "0"
@@ -7974,7 +7974,7 @@ paths:
         - can order on `name`, `displayName`, `state`, `processDefinitionId`, `parentProcessInstanceId`, `parentActivityInstanceId` (if the retrieved flow nodes are activities, order by parent activity id), `rootProcessInstanceId`, `lastUpdateDate`
         - can search on any field that can be used to order results
         - can filter on `name`, `state`, `processId`, `parentCaseId`, `rootCaseId`, `last_update_date`
-      operationId: findFlowNodes
+      operationId: searchFlowNodes
       parameters:
       - description: index of the page to display
         example: "0"
@@ -8197,7 +8197,7 @@ paths:
         - can order on `name`, `displayName`, `state`, `type`, `isTerminal`, `processId`, `caseId`, `archivedDate`
         - can search on any field that can be used to order results
         - can filter on `name`, `displayName`, `state`, `stateId`, `kind`, `terminal`, `processDefinitionId`, `parentProcessInstanceId`, `rootProcessInstanceId`, `parentActivityInstanceId`, `archivedDate`, `reachedStateDate`, `sourceObjectId`
-      operationId: findArchivedFlowNodes
+      operationId: searchArchivedFlowNodes
       parameters:
       - description: index of the page to display
         example: "0"
@@ -8358,7 +8358,7 @@ paths:
         - can order on `id`
         - can search on `displayName`
         - can filter on `displayName`
-      operationId: findTimerEventTriggers
+      operationId: searchTimerEventTriggers
       parameters:
       - description: index of the page to display
         example: "0"
@@ -8633,7 +8633,7 @@ paths:
     get:
       description: |
         Finds CustomUserDefinitions. There are no filters, and no search terms. All the definitions are returned.
-      operationId: findCustomUserDefinitions
+      operationId: searchCustomUserDefinitions
       parameters:
       - description: index of the page to display
         example: "0"
@@ -8865,7 +8865,7 @@ paths:
         Finds CustomUserValues with pagination params and filters
 
         You can filter on `userId`, `value`, `definitionId`
-      operationId: findCustomUserValues
+      operationId: searchCustomUserValues
       parameters:
       - description: index of the page to display
         example: "0"
@@ -9019,7 +9019,7 @@ paths:
         Finds CustomUsers with pagination params and filters
 
         **The filter `userId` is mandatory**
-      operationId: findCustomUsers
+      operationId: searchCustomUsers
       parameters:
       - description: index of the page to display
         example: "0"
@@ -9104,7 +9104,7 @@ paths:
         Finds FormMappings with pagination params and filters
 
         - can filter on `processDefinitionId`,`type`
-      operationId: findFormMappings
+      operationId: searchFormMappings
       parameters:
       - description: index of the page to display
         example: "0"
@@ -9272,7 +9272,7 @@ paths:
         - can order on `id`
         - can search on `displayName`
         - can filter on `displayName`
-      operationId: findProfessionalContactDatas
+      operationId: searchProfessionalContactDatas
       parameters:
       - description: index of the page to display
         example: "0"
@@ -9694,7 +9694,7 @@ paths:
 
         - can order on `id`,`name`,`displayName`
         - can filter on `name`,`displayName`,`parent_path`
-      operationId: findGroups
+      operationId: searchGroups
       parameters:
       - description: index of the page to display
         example: "0"
@@ -10007,7 +10007,7 @@ paths:
         **Filter `user_id` is mandatory**
 
         You can order with the values: `ROLE_NAME_ASC`,`ROLE_NAME_DESC`, `GROUP_NAME_ASC`,`GROUP_NAME_DESC`, `ASSIGNED_DATE_ASC`, `ASSIGNED_DATE_DESC`
-      operationId: findMemberships
+      operationId: searchMemberships
       parameters:
       - description: index of the page to display
         example: "0"
@@ -10227,7 +10227,7 @@ paths:
 
         - can order on `id`, `name` and `displayName`
         - can filter on `name` and `displayName`
-      operationId: findRoles
+      operationId: searchRoles
       parameters:
       - description: index of the page to display
         example: "0"
@@ -10548,7 +10548,7 @@ paths:
         - can order on `id`
         - can search on `displayName`
         - can filter on `displayName`
-      operationId: findUsers
+      operationId: searchUsers
       parameters:
       - description: index of the page to display
         example: "0"
@@ -11088,7 +11088,7 @@ paths:
         - can order on `id`
         - can search on `displayName`
         - can filter on `displayName`
-      operationId: findTenants
+      operationId: searchTenants
       parameters:
       - description: index of the page to display
         example: "0"
@@ -11568,7 +11568,7 @@ paths:
 
         - can search on `displayName`,`description`
         - can filter on `createdBy`,`contentType`
-      operationId: findPages
+      operationId: searchPages
       parameters:
       - description: index of the page to display
         example: "0"
@@ -11888,7 +11888,8 @@ paths:
 
         - can search on `name`
         - can filter on `name`,`hasNavigation`
-      operationId: findProfiles
+        - can order on `name`
+      operationId: searchProfiles
       parameters:
       - description: index of the page to display
         example: "0"
@@ -11926,6 +11927,15 @@ paths:
         explode: true
         in: query
         name: s
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: can order on attributes
+        example: myProp%20ASC
+        explode: true
+        in: query
+        name: o
         required: false
         schema:
           type: string
@@ -12199,7 +12209,7 @@ paths:
 
         - can search on `name`
         - can filter on `page`,`name` and `parent_id`
-      operationId: findProfileEntries
+      operationId: searchProfileEntries
       parameters:
       - description: index of the page to display
         example: "0"
@@ -12511,7 +12521,7 @@ paths:
         **Filter `member_type` is mandatory**
 
         You can filter on `profile_id`, `user_id`, `role_id` and `group_id`
-      operationId: findProfileMembers
+      operationId: searchProfileMembers
       parameters:
       - description: index of the page to display
         example: "0"
@@ -12848,7 +12858,7 @@ paths:
     get:
       description: |
         List the available I18nlocales with pagination params and filters
-      operationId: findI18nlocales
+      operationId: searchI18nlocales
       parameters:
       - description: index of the page to display
         example: "0"
@@ -12925,7 +12935,7 @@ paths:
         If no locale is specified, the translations in English are returned.
 
         You can filter on `locale`
-      operationId: findI18ntranslations
+      operationId: searchI18ntranslations
       parameters:
       - description: index of the page to display
         example: "0"

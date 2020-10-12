@@ -15,5 +15,5 @@ public interface OrganizationService {
 
     User createUser(UserCreateRequest userCreateRequest);
 
-    List<User> findUsers(UserApi.FindUsersQueryParams params);
+    List<User> searchUsers(UserApi.SearchUsersQueryParams params);
 }

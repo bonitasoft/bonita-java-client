@@ -18,6 +18,18 @@ public interface HumanTaskApi extends ApiClient.Api {
 
 
   /**
+   * Finds the HumanTask by ID
+   * Returns the single HumanTask for the given ID 
+   * @param id ID of the HumanTask to return (required)
+   * @return HumanTask
+   */
+  @RequestLine("GET /API/bpm/humanTask/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  HumanTask getHumanTaskById(@Param("id") String id);
+
+  /**
    * Finds HumanTasks
    * Finds HumanTasks with pagination params and filters  - can order on &#x60;name&#x60;, &#x60;priority&#x60;, &#x60;dueDate&#x60;, &#x60;state&#x60;, &#x60;processDefinitionId&#x60;, &#x60;processInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60;, &#x60;assigneeId&#x60;, &#x60;parentContainerId&#x60;, &#x60;displayName&#x60;, &#x60;reachedStateDate&#x60; - can search on any field that can be used to order results - can filter on &#x60;assigned_id&#x60;, &#x60;state&#x60;, &#x60;name&#x60;, &#x60;displayName&#x60;, &#x60;processDefinitionId&#x60;, &#x60;parentContainerId&#x60;, &#x60;userId&#x60;, &#x60;groupId&#x60;, &#x60;roleId&#x60; 
    * @param p index of the page to display (required)
@@ -31,15 +43,15 @@ public interface HumanTaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<HumanTask> findHumanTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<HumanTask> searchHumanTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds HumanTasks
    * Finds HumanTasks with pagination params and filters  - can order on &#x60;name&#x60;, &#x60;priority&#x60;, &#x60;dueDate&#x60;, &#x60;state&#x60;, &#x60;processDefinitionId&#x60;, &#x60;processInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60;, &#x60;assigneeId&#x60;, &#x60;parentContainerId&#x60;, &#x60;displayName&#x60;, &#x60;reachedStateDate&#x60; - can search on any field that can be used to order results - can filter on &#x60;assigned_id&#x60;, &#x60;state&#x60;, &#x60;name&#x60;, &#x60;displayName&#x60;, &#x60;processDefinitionId&#x60;, &#x60;parentContainerId&#x60;, &#x60;userId&#x60;, &#x60;groupId&#x60;, &#x60;roleId&#x60; 
-   * Note, this is equivalent to the other <code>findHumanTasks</code> method,
+   * Note, this is equivalent to the other <code>searchHumanTasks</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindHumanTasksQueryParams} class that allows for
+   * used with the {@link SearchHumanTasksQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -56,46 +68,34 @@ public interface HumanTaskApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<HumanTask> findHumanTasks(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<HumanTask> searchHumanTasks(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findHumanTasks</code> method in a fluent style.
+   * <code>searchHumanTasks</code> method in a fluent style.
    */
-  public static class FindHumanTasksQueryParams extends HashMap<String, Object> {
-    public FindHumanTasksQueryParams p(final Integer value) {
+  public static class SearchHumanTasksQueryParams extends HashMap<String, Object> {
+    public SearchHumanTasksQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindHumanTasksQueryParams c(final Integer value) {
+    public SearchHumanTasksQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindHumanTasksQueryParams f(final String value) {
+    public SearchHumanTasksQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindHumanTasksQueryParams o(final String value) {
+    public SearchHumanTasksQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindHumanTasksQueryParams s(final String value) {
+    public SearchHumanTasksQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the HumanTask by ID
-   * Returns the single HumanTask for the given ID 
-   * @param id ID of the HumanTask to return (required)
-   * @return HumanTask
-   */
-  @RequestLine("GET /API/bpm/humanTask/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  HumanTask getHumanTaskById(@Param("id") String id);
 
   /**
    * Update the HumanTask by ID

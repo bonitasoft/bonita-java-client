@@ -31,15 +31,15 @@ public interface FormMappingApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<FormMapping> findFormMappings(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<FormMapping> searchFormMappings(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds FormMappings
    * Finds FormMappings with pagination params and filters  - can filter on &#x60;processDefinitionId&#x60;,&#x60;type&#x60; 
-   * Note, this is equivalent to the other <code>findFormMappings</code> method,
+   * Note, this is equivalent to the other <code>searchFormMappings</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindFormMappingsQueryParams} class that allows for
+   * used with the {@link SearchFormMappingsQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -56,30 +56,30 @@ public interface FormMappingApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<FormMapping> findFormMappings(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<FormMapping> searchFormMappings(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findFormMappings</code> method in a fluent style.
+   * <code>searchFormMappings</code> method in a fluent style.
    */
-  public static class FindFormMappingsQueryParams extends HashMap<String, Object> {
-    public FindFormMappingsQueryParams p(final Integer value) {
+  public static class SearchFormMappingsQueryParams extends HashMap<String, Object> {
+    public SearchFormMappingsQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindFormMappingsQueryParams c(final Integer value) {
+    public SearchFormMappingsQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindFormMappingsQueryParams f(final String value) {
+    public SearchFormMappingsQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindFormMappingsQueryParams o(final String value) {
+    public SearchFormMappingsQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindFormMappingsQueryParams s(final String value) {
+    public SearchFormMappingsQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }

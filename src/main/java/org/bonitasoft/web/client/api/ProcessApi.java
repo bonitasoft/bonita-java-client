@@ -59,74 +59,6 @@ public interface ProcessApi extends ApiClient.Api {
   void deleteProcessByIds(List<String> requestBody);
 
   /**
-   * Finds Processes
-   * Finds Processes with pagination params and filters  - can order (default is ASC) on &#x60;name&#x60;, &#x60;version&#x60;, &#x60;deploymentDate&#x60;, &#x60;deployedBy&#x60;, &#x60;activationState&#x60;, &#x60;configurationState&#x60;, &#x60;processId&#x60;, &#x60;displayName&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;categoryId&#x60;, &#x60;label&#x60; - can search on &#x60;name&#x60;, &#x60;displayName&#x60; or &#x60;version&#x60; - can filter on &#x60;name&#x60;, &#x60;version&#x60;, &#x60;deploymentDate&#x60;, &#x60;deployedBy&#x60;, &#x60;activationState&#x60; with the value DISABLED or ENABLED, &#x60;configurationState&#x60; with the value UNRESOLVED, or RESOLVED, &#x60;processId&#x60;, &#x60;displayName&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;categoryId&#x60;, &#x60;label&#x60;, &#x60;supervisor_id&#x60; 
-   * @param p index of the page to display (required)
-   * @param c maximum number of elements to retrieve (required)
-   * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
-   * @param o can order on attributes (optional)
-   * @param s can search on attributes (optional)
-   * @return List&lt;Process&gt;
-   */
-  @RequestLine("GET /API/bpm/process?p={p}&c={c}&f={f}&o={o}&s={s}")
-  @Headers({
-    "Accept: application/json",
-  })
-  List<Process> findProcesses(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
-
-  /**
-   * Finds Processes
-   * Finds Processes with pagination params and filters  - can order (default is ASC) on &#x60;name&#x60;, &#x60;version&#x60;, &#x60;deploymentDate&#x60;, &#x60;deployedBy&#x60;, &#x60;activationState&#x60;, &#x60;configurationState&#x60;, &#x60;processId&#x60;, &#x60;displayName&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;categoryId&#x60;, &#x60;label&#x60; - can search on &#x60;name&#x60;, &#x60;displayName&#x60; or &#x60;version&#x60; - can filter on &#x60;name&#x60;, &#x60;version&#x60;, &#x60;deploymentDate&#x60;, &#x60;deployedBy&#x60;, &#x60;activationState&#x60; with the value DISABLED or ENABLED, &#x60;configurationState&#x60; with the value UNRESOLVED, or RESOLVED, &#x60;processId&#x60;, &#x60;displayName&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;categoryId&#x60;, &#x60;label&#x60;, &#x60;supervisor_id&#x60; 
-   * Note, this is equivalent to the other <code>findProcesses</code> method,
-   * but with the query parameters collected into a single Map parameter. This
-   * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindProcessesQueryParams} class that allows for
-   * building up this map in a fluent style.
-   * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>p - index of the page to display (required)</li>
-   *   <li>c - maximum number of elements to retrieve (required)</li>
-   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
-   *   <li>o - can order on attributes (optional)</li>
-   *   <li>s - can search on attributes (optional)</li>
-   *   </ul>
-   * @return List&lt;Process&gt;
-   */
-  @RequestLine("GET /API/bpm/process?p={p}&c={c}&f={f}&o={o}&s={s}")
-  @Headers({
-  "Accept: application/json",
-  })
-  List<Process> findProcesses(@QueryMap(encoded=true) Map<String, Object> queryParams);
-
-  /**
-   * A convenience class for generating query parameters for the
-   * <code>findProcesses</code> method in a fluent style.
-   */
-  public static class FindProcessesQueryParams extends HashMap<String, Object> {
-    public FindProcessesQueryParams p(final Integer value) {
-      put("p", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindProcessesQueryParams c(final Integer value) {
-      put("c", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindProcessesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindProcessesQueryParams o(final String value) {
-      put("o", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindProcessesQueryParams s(final String value) {
-      put("s", EncodingUtils.encode(value));
-      return this;
-    }
-  }
-
-  /**
    * Finds the Process by ID
    * Returns the single Process for the given ID 
    * @param id ID of the Process to return (required)
@@ -175,6 +107,74 @@ public interface ProcessApi extends ApiClient.Api {
     "Accept: application/json",
   })
   ProcessInstantiationResponse instanciateProcess(@Param("id") String id, Map<String, Object> body);
+
+  /**
+   * Finds Processes
+   * Finds Processes with pagination params and filters  - can order (default is ASC) on &#x60;name&#x60;, &#x60;version&#x60;, &#x60;deploymentDate&#x60;, &#x60;deployedBy&#x60;, &#x60;activationState&#x60;, &#x60;configurationState&#x60;, &#x60;processId&#x60;, &#x60;displayName&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;categoryId&#x60;, &#x60;label&#x60; - can search on &#x60;name&#x60;, &#x60;displayName&#x60; or &#x60;version&#x60; - can filter on &#x60;name&#x60;, &#x60;version&#x60;, &#x60;deploymentDate&#x60;, &#x60;deployedBy&#x60;, &#x60;activationState&#x60; with the value DISABLED or ENABLED, &#x60;configurationState&#x60; with the value UNRESOLVED, or RESOLVED, &#x60;processId&#x60;, &#x60;displayName&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;categoryId&#x60;, &#x60;label&#x60;, &#x60;supervisor_id&#x60; 
+   * @param p index of the page to display (required)
+   * @param c maximum number of elements to retrieve (required)
+   * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
+   * @param o can order on attributes (optional)
+   * @param s can search on attributes (optional)
+   * @return List&lt;Process&gt;
+   */
+  @RequestLine("GET /API/bpm/process?p={p}&c={c}&f={f}&o={o}&s={s}")
+  @Headers({
+    "Accept: application/json",
+  })
+  List<Process> searchProcesses(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+
+  /**
+   * Finds Processes
+   * Finds Processes with pagination params and filters  - can order (default is ASC) on &#x60;name&#x60;, &#x60;version&#x60;, &#x60;deploymentDate&#x60;, &#x60;deployedBy&#x60;, &#x60;activationState&#x60;, &#x60;configurationState&#x60;, &#x60;processId&#x60;, &#x60;displayName&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;categoryId&#x60;, &#x60;label&#x60; - can search on &#x60;name&#x60;, &#x60;displayName&#x60; or &#x60;version&#x60; - can filter on &#x60;name&#x60;, &#x60;version&#x60;, &#x60;deploymentDate&#x60;, &#x60;deployedBy&#x60;, &#x60;activationState&#x60; with the value DISABLED or ENABLED, &#x60;configurationState&#x60; with the value UNRESOLVED, or RESOLVED, &#x60;processId&#x60;, &#x60;displayName&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;categoryId&#x60;, &#x60;label&#x60;, &#x60;supervisor_id&#x60; 
+   * Note, this is equivalent to the other <code>searchProcesses</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link SearchProcessesQueryParams} class that allows for
+   * building up this map in a fluent style.
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>p - index of the page to display (required)</li>
+   *   <li>c - maximum number of elements to retrieve (required)</li>
+   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
+   *   <li>o - can order on attributes (optional)</li>
+   *   <li>s - can search on attributes (optional)</li>
+   *   </ul>
+   * @return List&lt;Process&gt;
+   */
+  @RequestLine("GET /API/bpm/process?p={p}&c={c}&f={f}&o={o}&s={s}")
+  @Headers({
+  "Accept: application/json",
+  })
+  List<Process> searchProcesses(@QueryMap(encoded=true) Map<String, Object> queryParams);
+
+  /**
+   * A convenience class for generating query parameters for the
+   * <code>searchProcesses</code> method in a fluent style.
+   */
+  public static class SearchProcessesQueryParams extends HashMap<String, Object> {
+    public SearchProcessesQueryParams p(final Integer value) {
+      put("p", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchProcessesQueryParams c(final Integer value) {
+      put("c", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchProcessesQueryParams f(final String value) {
+      put("f", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchProcessesQueryParams o(final String value) {
+      put("o", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchProcessesQueryParams s(final String value) {
+      put("s", EncodingUtils.encode(value));
+      return this;
+    }
+  }
 
   /**
    * Update the Process by ID

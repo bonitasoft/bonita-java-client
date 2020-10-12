@@ -45,6 +45,18 @@ public interface PageApi extends ApiClient.Api {
   void deletePageById(@Param("id") String id);
 
   /**
+   * Finds the Page by ID
+   * Returns the single Page for the given ID 
+   * @param id ID of the Page to return (required)
+   * @return Page
+   */
+  @RequestLine("GET /API/portal/page/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  Page getPageById(@Param("id") String id);
+
+  /**
    * Finds Pages
    * Finds Pages with pagination params and filters  - can search on &#x60;displayName&#x60;,&#x60;description&#x60; - can filter on &#x60;createdBy&#x60;,&#x60;contentType&#x60; 
    * @param p index of the page to display (required)
@@ -58,15 +70,15 @@ public interface PageApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Page> findPages(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Page> searchPages(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Pages
    * Finds Pages with pagination params and filters  - can search on &#x60;displayName&#x60;,&#x60;description&#x60; - can filter on &#x60;createdBy&#x60;,&#x60;contentType&#x60; 
-   * Note, this is equivalent to the other <code>findPages</code> method,
+   * Note, this is equivalent to the other <code>searchPages</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindPagesQueryParams} class that allows for
+   * used with the {@link SearchPagesQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -83,46 +95,34 @@ public interface PageApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<Page> findPages(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<Page> searchPages(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findPages</code> method in a fluent style.
+   * <code>searchPages</code> method in a fluent style.
    */
-  public static class FindPagesQueryParams extends HashMap<String, Object> {
-    public FindPagesQueryParams p(final Integer value) {
+  public static class SearchPagesQueryParams extends HashMap<String, Object> {
+    public SearchPagesQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindPagesQueryParams c(final Integer value) {
+    public SearchPagesQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindPagesQueryParams f(final String value) {
+    public SearchPagesQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindPagesQueryParams o(final String value) {
+    public SearchPagesQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindPagesQueryParams s(final String value) {
+    public SearchPagesQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the Page by ID
-   * Returns the single Page for the given ID 
-   * @param id ID of the Page to return (required)
-   * @return Page
-   */
-  @RequestLine("GET /API/portal/page/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  Page getPageById(@Param("id") String id);
 
   /**
    * Update the Page by ID

@@ -54,68 +54,6 @@ public interface CaseApi extends ApiClient.Api {
   void deleteCaseByIds(List<String> requestBody);
 
   /**
-   * Finds Cases
-   * Finds Cases with pagination params and filters  You can filter on:  * &#x60;processDefinitionId&#x60;: The process derfinition ID * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the cases in which all users with this manager ID ar involved) * &#x60;supervisor_id&#x60;: allow the retrived the cases of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time 
-   * @param p index of the page to display (required)
-   * @param c maximum number of elements to retrieve (required)
-   * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
-   * @param o can order on attributes (optional)
-   * @return List&lt;ModelCase&gt;
-   */
-  @RequestLine("GET /API/bpm/case?p={p}&c={c}&f={f}&o={o}")
-  @Headers({
-    "Accept: application/json",
-  })
-  List<ModelCase> findCases(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
-
-  /**
-   * Finds Cases
-   * Finds Cases with pagination params and filters  You can filter on:  * &#x60;processDefinitionId&#x60;: The process derfinition ID * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the cases in which all users with this manager ID ar involved) * &#x60;supervisor_id&#x60;: allow the retrived the cases of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time 
-   * Note, this is equivalent to the other <code>findCases</code> method,
-   * but with the query parameters collected into a single Map parameter. This
-   * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindCasesQueryParams} class that allows for
-   * building up this map in a fluent style.
-   * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>p - index of the page to display (required)</li>
-   *   <li>c - maximum number of elements to retrieve (required)</li>
-   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
-   *   <li>o - can order on attributes (optional)</li>
-   *   </ul>
-   * @return List&lt;ModelCase&gt;
-   */
-  @RequestLine("GET /API/bpm/case?p={p}&c={c}&f={f}&o={o}")
-  @Headers({
-  "Accept: application/json",
-  })
-  List<ModelCase> findCases(@QueryMap(encoded=true) Map<String, Object> queryParams);
-
-  /**
-   * A convenience class for generating query parameters for the
-   * <code>findCases</code> method in a fluent style.
-   */
-  public static class FindCasesQueryParams extends HashMap<String, Object> {
-    public FindCasesQueryParams p(final Integer value) {
-      put("p", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindCasesQueryParams c(final Integer value) {
-      put("c", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindCasesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindCasesQueryParams o(final String value) {
-      put("o", EncodingUtils.encode(value));
-      return this;
-    }
-  }
-
-  /**
    * Finds the Case by ID
    * Returns the single Case for the given ID 
    * @param id ID of the Case to return (required)
@@ -172,4 +110,66 @@ public interface CaseApi extends ApiClient.Api {
     "Accept: application/json",
   })
   Map<String, Object> getContextByCaseId(@Param("id") String id);
+
+  /**
+   * Finds Cases
+   * Finds Cases with pagination params and filters  You can filter on:  * &#x60;processDefinitionId&#x60;: The process derfinition ID * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the cases in which all users with this manager ID ar involved) * &#x60;supervisor_id&#x60;: allow the retrived the cases of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time 
+   * @param p index of the page to display (required)
+   * @param c maximum number of elements to retrieve (required)
+   * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
+   * @param o can order on attributes (optional)
+   * @return List&lt;ModelCase&gt;
+   */
+  @RequestLine("GET /API/bpm/case?p={p}&c={c}&f={f}&o={o}")
+  @Headers({
+    "Accept: application/json",
+  })
+  List<ModelCase> searchCases(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+
+  /**
+   * Finds Cases
+   * Finds Cases with pagination params and filters  You can filter on:  * &#x60;processDefinitionId&#x60;: The process derfinition ID * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the cases in which all users with this manager ID ar involved) * &#x60;supervisor_id&#x60;: allow the retrived the cases of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time 
+   * Note, this is equivalent to the other <code>searchCases</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link SearchCasesQueryParams} class that allows for
+   * building up this map in a fluent style.
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>p - index of the page to display (required)</li>
+   *   <li>c - maximum number of elements to retrieve (required)</li>
+   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
+   *   <li>o - can order on attributes (optional)</li>
+   *   </ul>
+   * @return List&lt;ModelCase&gt;
+   */
+  @RequestLine("GET /API/bpm/case?p={p}&c={c}&f={f}&o={o}")
+  @Headers({
+  "Accept: application/json",
+  })
+  List<ModelCase> searchCases(@QueryMap(encoded=true) Map<String, Object> queryParams);
+
+  /**
+   * A convenience class for generating query parameters for the
+   * <code>searchCases</code> method in a fluent style.
+   */
+  public static class SearchCasesQueryParams extends HashMap<String, Object> {
+    public SearchCasesQueryParams p(final Integer value) {
+      put("p", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchCasesQueryParams c(final Integer value) {
+      put("c", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchCasesQueryParams f(final String value) {
+      put("f", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchCasesQueryParams o(final String value) {
+      put("o", EncodingUtils.encode(value));
+      return this;
+    }
+  }
 }

@@ -30,15 +30,15 @@ public interface ArchivedConnectorInstanceApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ArchivedConnectorInstance> findArchivedConnectorInstances(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ArchivedConnectorInstance> searchArchivedConnectorInstances(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ArchivedConnectorInstances
    * Finds ArchivedConnectorInstances with pagination params and filters 
-   * Note, this is equivalent to the other <code>findArchivedConnectorInstances</code> method,
+   * Note, this is equivalent to the other <code>searchArchivedConnectorInstances</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindArchivedConnectorInstancesQueryParams} class that allows for
+   * used with the {@link SearchArchivedConnectorInstancesQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -55,30 +55,30 @@ public interface ArchivedConnectorInstanceApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ArchivedConnectorInstance> findArchivedConnectorInstances(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ArchivedConnectorInstance> searchArchivedConnectorInstances(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findArchivedConnectorInstances</code> method in a fluent style.
+   * <code>searchArchivedConnectorInstances</code> method in a fluent style.
    */
-  public static class FindArchivedConnectorInstancesQueryParams extends HashMap<String, Object> {
-    public FindArchivedConnectorInstancesQueryParams p(final Integer value) {
+  public static class SearchArchivedConnectorInstancesQueryParams extends HashMap<String, Object> {
+    public SearchArchivedConnectorInstancesQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindArchivedConnectorInstancesQueryParams c(final Integer value) {
+    public SearchArchivedConnectorInstancesQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindArchivedConnectorInstancesQueryParams f(final String value) {
+    public SearchArchivedConnectorInstancesQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindArchivedConnectorInstancesQueryParams o(final String value) {
+    public SearchArchivedConnectorInstancesQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindArchivedConnectorInstancesQueryParams s(final String value) {
+    public SearchArchivedConnectorInstancesQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }

@@ -15,7 +15,7 @@ public interface ApplicationService {
 
     List<Application> searchApplications(int page, int count);
 
-    List<Application> findApplications(ApplicationApi.FindApplicationsQueryParams params);
+    List<Application> searchApplications(ApplicationApi.SearchApplicationsQueryParams params);
 
     boolean deleteApplication(String applicationToken);
 }

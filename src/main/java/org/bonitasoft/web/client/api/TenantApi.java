@@ -43,6 +43,18 @@ public interface TenantApi extends ApiClient.Api {
   void deleteTenantById(@Param("id") String id);
 
   /**
+   * Finds the Tenant by ID
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Returns the single Tenant for the given ID 
+   * @param id ID of the Tenant to return (required)
+   * @return Tenant
+   */
+  @RequestLine("GET /API/platform/tenant/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  Tenant getTenantById(@Param("id") String id);
+
+  /**
    * Finds Tenants
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
    * @param p index of the page to display (required)
@@ -56,15 +68,15 @@ public interface TenantApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Tenant> findTenants(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Tenant> searchTenants(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Tenants
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
-   * Note, this is equivalent to the other <code>findTenants</code> method,
+   * Note, this is equivalent to the other <code>searchTenants</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindTenantsQueryParams} class that allows for
+   * used with the {@link SearchTenantsQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -81,46 +93,34 @@ public interface TenantApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<Tenant> findTenants(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<Tenant> searchTenants(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findTenants</code> method in a fluent style.
+   * <code>searchTenants</code> method in a fluent style.
    */
-  public static class FindTenantsQueryParams extends HashMap<String, Object> {
-    public FindTenantsQueryParams p(final Integer value) {
+  public static class SearchTenantsQueryParams extends HashMap<String, Object> {
+    public SearchTenantsQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindTenantsQueryParams c(final Integer value) {
+    public SearchTenantsQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindTenantsQueryParams f(final String value) {
+    public SearchTenantsQueryParams f(final String value) {
       put("f", EncodingUtils.encode(value));
       return this;
     }
-    public FindTenantsQueryParams o(final String value) {
+    public SearchTenantsQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindTenantsQueryParams s(final String value) {
+    public SearchTenantsQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the Tenant by ID
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Returns the single Tenant for the given ID 
-   * @param id ID of the Tenant to return (required)
-   * @return Tenant
-   */
-  @RequestLine("GET /API/platform/tenant/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  Tenant getTenantById(@Param("id") String id);
 
   /**
    * Update the Tenant by ID
