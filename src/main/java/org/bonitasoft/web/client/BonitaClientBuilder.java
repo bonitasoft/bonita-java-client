@@ -2,7 +2,7 @@ package org.bonitasoft.web.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
+import org.bonitasoft.web.client.log.LogContentLevel;
 
 public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
 
@@ -20,5 +20,5 @@ public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
 
     T objectMapper(ObjectMapper objectMapper);
 
-    T logInterceptor(HttpLoggingInterceptor loggingInterceptor);
+    T logContentLevel(LogContentLevel level);
 }

@@ -8,7 +8,6 @@ import java.io.File;
 import org.bonitasoft.web.client.model.Page;
 import org.bonitasoft.web.client.model.PageCreateRequest;
 import org.bonitasoft.web.client.model.PageUpdateRequest;
-import org.bonitasoft.web.client.model.PageUploadResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,7 +69,7 @@ public interface PageApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Page> searchPages(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Page> searchPages(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Pages
@@ -110,8 +109,8 @@ public interface PageApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchPagesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchPagesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchPagesQueryParams o(final String value) {
@@ -141,12 +140,12 @@ public interface PageApi extends ApiClient.Api {
    * Upload a Page
    * Upload Page 
    * @param file  (optional)
-   * @return PageUploadResponse
+   * @return String
    */
   @RequestLine("POST /portal/pageUpload")
   @Headers({
     "Content-Type: multipart/form-data",
     "Accept: application/json",
   })
-  PageUploadResponse uploadPage(@Param("file") File file);
+  String uploadPage(@Param("file") File file);
 }

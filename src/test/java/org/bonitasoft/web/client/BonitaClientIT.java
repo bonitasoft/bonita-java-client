@@ -1,7 +1,8 @@
 package org.bonitasoft.web.client;
 
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.logging.HttpLoggingInterceptor;
+import org.bonitasoft.testcontainers.BonitaContainer;
+import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.model.*;
 import org.bonitasoft.web.client.services.policies.ApplicationImportPolicy;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
@@ -9,6 +10,7 @@ import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.io.File;
@@ -23,21 +25,25 @@ import static org.bonitasoft.web.client.api.UserApi.SearchUsersQueryParams;
 @Testcontainers
 class BonitaClientIT {
 
-    public static final String USER_PROFILE_NAME = "User";
+
     public static final String ROLE_MEMBER_NAME = "member";
 
-//    @Container
-//    private static final BonitaContainer BONITA_CONTAINER = new BonitaContainer();
+    @Container
+    private static final BonitaContainer BONITA_CONTAINER = new BonitaContainer();
 
     private BonitaClient bonitaClient;
 
     @BeforeEach
     void setUp() {
-//        String portalUrl = BONITA_CONTAINER.getPortalUrl();
-        String portalUrl = "http://localhost:8888/bonita";
+        String portalUrl = BONITA_CONTAINER.getPortalUrl();
+        // String portalUrl = "http://localhost:8888/bonita";
         bonitaClient = BonitaClient.newFeignBuilder(portalUrl)
-                .logInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
+                .logContentLevel(LogContentLevel.HEADER)
                 .build();
+    }
+
+    private void bonitaIsRunning() {
+        assertThat(BONITA_CONTAINER.isRunning()).isTrue();
     }
 
     @Test
@@ -67,7 +73,7 @@ class BonitaClientIT {
 
 
         // add "User" profile to all imported users
-        Profile userProfile = bonitaClient.getProfileByName(USER_PROFILE_NAME);
+        Profile userProfile = bonitaClient.getProfileByName(BonitaClient.USER_PROFILE_NAME);
         Role memberRole = bonitaClient.getRoleByName(ROLE_MEMBER_NAME);
         bonitaClient.addRoleToProfile(memberRole.getId(), userProfile.getId());
 
@@ -111,8 +117,8 @@ class BonitaClientIT {
                         .enabled("true")
         );
 
-        Profile userProfile = bonitaClient.getProfileByName(USER_PROFILE_NAME);
-        bonitaClient.addUserToProfile(user.getId(), userProfile.getId());
+        Profile administratorProfile = bonitaClient.getProfileByName(BonitaClient.ADMIN_PROFILE_NAME);
+        bonitaClient.addUserToProfile(user.getId(), administratorProfile.getId());
 
         // Then
         User walter = bonitaClient.getUser(username);
@@ -134,14 +140,28 @@ class BonitaClientIT {
         assertThat(bdm.getState()).isEqualTo(TenantResourceState.INSTALLED);
     }
 
+    @Test
+    void page_should_be_uploaded() throws Exception {
+        // Given
+        bonitaIsRunning();
+        loggedInAsTechnicalUser();
+
+        // When
+        File pageFile = getClasspathFile("/page.zip");
+        Page page = bonitaClient.importPage(pageFile);
+
+        // Then
+        Page pageAgain = bonitaClient.getPage(page.getUrlToken());
+        assertThat(pageAgain.getId()).isEqualTo(page.getId());
+        assertThat(pageAgain.getUrlToken()).isEqualTo(page.getUrlToken());
+        assertThat(pageAgain.getDisplayName()).isEqualTo(page.getDisplayName());
+        assertThat(pageAgain.getContentName()).isEqualTo(page.getContentName());
+    }
+
     private void loggedInAsTechnicalUser() {
         Session session = bonitaClient.login("install", "install");
         assertThat(session).isNotNull();
         assertThat(session.getUserName()).isEqualTo("install");
-    }
-
-    private void bonitaIsRunning() {
-//        assertThat(BONITA_CONTAINER.isRunning()).isTrue();
     }
 
     @NotNull

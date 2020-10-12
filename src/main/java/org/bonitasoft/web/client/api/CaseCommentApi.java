@@ -43,7 +43,7 @@ public interface CaseCommentApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<CaseComment> searchCaseComments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<CaseComment> searchCaseComments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds CaseComments
@@ -82,8 +82,8 @@ public interface CaseCommentApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchCaseCommentsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchCaseCommentsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchCaseCommentsQueryParams o(final String value) {

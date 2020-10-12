@@ -559,7 +559,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -992,7 +994,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -1316,7 +1320,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -1609,7 +1615,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       responses:
         "200":
@@ -2103,7 +2111,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -2334,7 +2344,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -2495,7 +2507,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -2724,7 +2738,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -2995,7 +3011,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -3219,7 +3237,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -3648,7 +3668,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -3804,7 +3826,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -3961,7 +3985,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -4113,7 +4139,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -4327,7 +4355,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -4562,7 +4592,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -4896,7 +4928,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -5041,7 +5075,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -5261,7 +5297,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -5524,7 +5562,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -5878,7 +5918,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -6218,7 +6260,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -6362,7 +6406,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -6520,7 +6566,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -6545,7 +6593,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/Process'
+                  $ref: '#/components/schemas/BusinessProcess'
                 type: array
           description: 'Success '
           headers:
@@ -6601,7 +6649,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Process'
+                $ref: '#/components/schemas/BusinessProcess'
           description: 'Success '
         "400":
           content:
@@ -6711,7 +6759,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Process'
+                $ref: '#/components/schemas/BusinessProcess'
           description: 'Success '
         "400":
           content:
@@ -7089,7 +7137,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -7327,7 +7377,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -7490,7 +7542,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -7644,7 +7698,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -7802,7 +7858,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -7902,7 +7960,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -8006,7 +8066,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -8229,7 +8291,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -8390,7 +8454,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -8897,7 +8963,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       responses:
         "200":
@@ -9051,7 +9119,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       responses:
         "200":
@@ -9136,7 +9206,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -9304,7 +9376,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -9726,7 +9800,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -10039,7 +10115,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -10259,7 +10337,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -10580,7 +10660,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -11120,7 +11202,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -11528,10 +11612,10 @@ paths:
       responses:
         "200":
           content:
-            application/json:
+            text/plain:
               schema:
-                $ref: '#/components/schemas/PageUploadResponse'
-          description: 'Success '
+                type: string
+          description: 'Success: the temp file name as present on the server'
         "400":
           content:
             application/json:
@@ -11600,7 +11684,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can order on attributes
         example: myProp%20ASC
@@ -11921,7 +12007,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can search on attributes
         explode: true
@@ -12241,7 +12329,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       - description: can search on attributes
         explode: true
@@ -12553,7 +12643,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       responses:
         "200":
@@ -12967,7 +13059,9 @@ paths:
         name: f
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
         style: form
       responses:
         "200":
@@ -13216,6 +13310,59 @@ paths:
       tags:
       - License
       x-accepts: application/json
+  /APIv2/service/install:
+    post:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Upload an application configuration file in the `bconf` format.
+      operationId: uploadApplicationConfiguration
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object_5'
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  format: binary
+                  type: string
+              type: object
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: 'Success: the temp file name as present on the server'
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Upload an application configuration file
+      tags:
+      - Application
+      x-contentType: multipart/form-data
+      x-accepts: application/json
   /portal/fileUpload:
     post:
       description: |
@@ -13226,7 +13373,7 @@ paths:
         In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.
       operationId: uploadBDM
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_5'
+        $ref: '#/components/requestBodies/inline_object_6'
         content:
           multipart/form-data:
             schema:
@@ -13366,7 +13513,7 @@ paths:
         Upload organization
       operationId: uploadOrganization
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_6'
+        $ref: '#/components/requestBodies/inline_object_7'
         content:
           multipart/form-data:
             schema:
@@ -13474,7 +13621,7 @@ paths:
         Upload profiles
       operationId: uploadprofiles
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_7'
+        $ref: '#/components/requestBodies/inline_object_8'
         content:
           multipart/form-data:
             schema:
@@ -13611,7 +13758,9 @@ components:
       name: f
       required: false
       schema:
-        type: string
+        items:
+          type: string
+        type: array
       style: form
     pageOrder:
       description: can order on attributes
@@ -13643,6 +13792,11 @@ components:
         multipart/form-data:
           schema:
             $ref: '#/components/schemas/inline_object'
+    inline_object_8:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/inline_object_8'
     inline_object_7:
       content:
         multipart/form-data:
@@ -14077,7 +14231,7 @@ components:
           description: Last date when the access control were installed or updated.
           type: string
       type: object
-    ActivityTypeEnum:
+    ActivityType:
       description: the activity type (string)
       enum:
       - AUTOMATIC_TASK
@@ -14088,7 +14242,7 @@ components:
       - MULTI_INSTANCE_ACTIVITY
       - CALL_ACTIVITY
       type: string
-    ActivityStateEnum:
+    ActivityState:
       description: the current state of the activity
       enum:
       - failed
@@ -14103,7 +14257,7 @@ components:
       - aborted
       - cancelling subtasks
       type: string
-    ActivityPriorityEnum:
+    ActivityPriority:
       description: the priority of the current activity
       enum:
       - highest
@@ -14143,7 +14297,7 @@ components:
           description: the activity id
           type: string
         type:
-          $ref: '#/components/schemas/ActivityTypeEnum'
+          $ref: '#/components/schemas/ActivityType'
         name:
           description: the activity technical name
           type: string
@@ -14157,7 +14311,7 @@ components:
           description: the human readable activity description
           type: string
         state:
-          $ref: '#/components/schemas/ActivityStateEnum'
+          $ref: '#/components/schemas/ActivityState'
         reached_state_date:
           description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity reached
             the current state, for example '2014-10-17 16:05:42.626'
@@ -14171,7 +14325,7 @@ components:
             due, for example '2014-10-17 16:05:42.626'
           type: string
         priority:
-          $ref: '#/components/schemas/ActivityPriorityEnum'
+          $ref: '#/components/schemas/ActivityPriority'
         processId:
           description: the process definition id of the case which define this activity
           type: string
@@ -14257,7 +14411,7 @@ components:
           description: the archived activity id
           type: string
         type:
-          $ref: '#/components/schemas/ActivityTypeEnum'
+          $ref: '#/components/schemas/ActivityType'
         name:
           description: the archived activity technical name
           type: string
@@ -14271,7 +14425,7 @@ components:
           description: the human readable archived activity description
           type: string
         state:
-          $ref: '#/components/schemas/ActivityStateEnum'
+          $ref: '#/components/schemas/ActivityState'
         reached_state_date:
           description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when this archived activity
             reached the current state, for example '2014-10-17 16:05:42.626'
@@ -14285,7 +14439,7 @@ components:
             is due, for example '2014-10-17 16:05:42.626'
           type: string
         priority:
-          $ref: '#/components/schemas/ActivityPriorityEnum'
+          $ref: '#/components/schemas/ActivityPriority'
         processId:
           description: the process definition id of the case which define this archived
             activity
@@ -15289,19 +15443,29 @@ components:
       allOf:
       - $ref: '#/components/schemas/CaseComment'
       - $ref: '#/components/schemas/ArchivedCaseComment_allOf'
-    Process:
+    ActivationState:
+      description: The state of the process definition (ENABLED or DISABLED)
+      enum:
+      - ENABLED
+      - DISABLED
+      type: string
+    ConfigurationState:
+      description: the configuration state of the process (UNRESOLVED or RESOLVED)
+      enum:
+      - UNRESOLVED
+      - RESOLVED
+      type: string
+    BusinessProcess:
       example:
         displayDescription: displayDescription
         displayName: displayName
         icon: icon
         description: description
         deployedBy: deployedBy
-        activationState: activationState
         version: version
         deploymentDate: deploymentDate
         name: name
         id: id
-        configurationState: configurationState
         actorinitiatorid: actorinitiatorid
         last_update_date: last_update_date
       properties:
@@ -15321,8 +15485,7 @@ components:
           description: the process description
           type: string
         activationState:
-          description: the state of the process definition (ENABLED or DISABLED)
-          type: string
+          $ref: '#/components/schemas/ActivationState'
         name:
           description: the process name
           type: string
@@ -15339,8 +15502,7 @@ components:
           description: the date when the process definition was last updated
           type: string
         configurationState:
-          description: the configuration state of the process (UNRESOLVED or RESOLVED)
-          type: string
+          $ref: '#/components/schemas/ConfigurationState'
         version:
           description: the version of the process
           type: string
@@ -15364,11 +15526,7 @@ components:
           description: display name of the Process
           type: string
         activationState:
-          description: activation state of the Process
-          enum:
-          - ENABLED
-          - DISABLED
-          type: string
+          $ref: '#/components/schemas/ActivationState'
       type: object
     FlowElementContainerDefinition:
       description: Allows to access all flow elements (activities, gateways, events
@@ -16889,14 +17047,6 @@ components:
           format: int64
           type: integer
       type: object
-    PageUploadResponse:
-      example:
-        pageZip: tmp_113096560980259488.zip:bonita-angular-dashboard.zip
-      properties:
-        pageZip:
-          description: the temporary file name once uploaded on the server
-          type: string
-      type: object
     Page:
       example:
         updatedBy: updatedBy
@@ -17394,6 +17544,12 @@ components:
           type: string
       type: object
     inline_object_7:
+      properties:
+        file:
+          format: binary
+          type: string
+      type: object
+    inline_object_8:
       properties:
         file:
           format: binary

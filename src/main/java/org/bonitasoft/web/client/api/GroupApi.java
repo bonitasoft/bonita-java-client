@@ -67,7 +67,7 @@ public interface GroupApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Group> searchGroups(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<Group> searchGroups(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds Groups
@@ -106,8 +106,8 @@ public interface GroupApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchGroupsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchGroupsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchGroupsQueryParams o(final String value) {

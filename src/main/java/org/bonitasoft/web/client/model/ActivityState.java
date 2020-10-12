@@ -23,23 +23,35 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * the priority of the current activity
+ * the current state of the activity
  */
-public enum ActivityPriorityEnum {
+public enum ActivityState {
   
-  HIGHEST("highest"),
+  FAILED("failed"),
   
-  ABOVE_NORMAL("above_normal"),
+  INITIALIZING("initializing"),
   
-  NORMAL("normal"),
+  READY("ready"),
   
-  UNDER_NORMAL("under_normal"),
+  EXECUTING("executing"),
   
-  LOWEST("lowest");
+  COMPLETING("completing"),
+  
+  COMPLETED("completed"),
+  
+  WAITING("waiting"),
+  
+  SKIPPED("skipped"),
+  
+  CANCELLED("cancelled"),
+  
+  ABORTED("aborted"),
+  
+  CANCELLING_SUBTASKS("cancelling subtasks");
 
   private String value;
 
-  ActivityPriorityEnum(String value) {
+  ActivityState(String value) {
     this.value = value;
   }
 
@@ -54,8 +66,8 @@ public enum ActivityPriorityEnum {
   }
 
   @JsonCreator
-  public static ActivityPriorityEnum fromValue(String value) {
-    for (ActivityPriorityEnum b : ActivityPriorityEnum.values()) {
+  public static ActivityState fromValue(String value) {
+    for (ActivityState b : ActivityState.values()) {
       if (b.value.equals(value)) {
         return b;
       }

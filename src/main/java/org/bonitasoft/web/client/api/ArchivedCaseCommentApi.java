@@ -30,7 +30,7 @@ public interface ArchivedCaseCommentApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ArchivedCaseComment> searchArchivedCaseComments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ArchivedCaseComment> searchArchivedCaseComments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ArchivedCaseComments
@@ -70,8 +70,8 @@ public interface ArchivedCaseCommentApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchArchivedCaseCommentsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchArchivedCaseCommentsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchArchivedCaseCommentsQueryParams o(final String value) {

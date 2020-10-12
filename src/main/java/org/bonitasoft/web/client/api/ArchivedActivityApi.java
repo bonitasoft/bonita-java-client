@@ -42,7 +42,7 @@ public interface ArchivedActivityApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ArchivedActivity> searchArchivedActivities(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ArchivedActivity> searchArchivedActivities(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Archived Activities
@@ -82,8 +82,8 @@ public interface ArchivedActivityApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchArchivedActivitiesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchArchivedActivitiesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchArchivedActivitiesQueryParams o(final String value) {

@@ -67,7 +67,7 @@ public interface CaseDocumentApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<CaseDocument> searchCaseDocuments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<CaseDocument> searchCaseDocuments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds CaseDocuments
@@ -106,8 +106,8 @@ public interface CaseDocumentApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchCaseDocumentsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchCaseDocumentsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchCaseDocumentsQueryParams o(final String value) {

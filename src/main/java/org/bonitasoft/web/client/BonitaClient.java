@@ -20,6 +20,9 @@ public interface BonitaClient extends
         UserTaskService {
 
     String DEFAULT_TENANT_ID = "1";
+    String USER_PROFILE_NAME = "User";
+    String ADMIN_PROFILE_NAME = "Administrator";
+
 
     static BonitaFeignClientBuilder newFeignBuilder(String url) {
         return new BonitaFeignClientBuilderImpl(url);

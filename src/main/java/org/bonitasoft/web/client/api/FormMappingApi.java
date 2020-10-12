@@ -31,7 +31,7 @@ public interface FormMappingApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<FormMapping> searchFormMappings(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<FormMapping> searchFormMappings(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds FormMappings
@@ -71,8 +71,8 @@ public interface FormMappingApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchFormMappingsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchFormMappingsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchFormMappingsQueryParams o(final String value) {

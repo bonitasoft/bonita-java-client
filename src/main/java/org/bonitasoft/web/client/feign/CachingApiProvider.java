@@ -8,14 +8,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RequiredArgsConstructor
-public class CachingApiLocator implements ApiLocator {
+public class CachingApiProvider implements ApiProvider {
 
     private final ApiClient apiClient;
 
     private final Map<Class<?>, ApiClient.Api> apiCache = new ConcurrentHashMap<>();
 
     @Override
-    public <T extends ApiClient.Api> T getApi(Class<T> apiClass) {
+    public <T extends ApiClient.Api> T get(Class<T> apiClass) {
         if (apiClass.isAssignableFrom(PortalAuthenticationApi.class)) {
             throw new RuntimeException("Direct use of PortalAuthenticationApi is not allowed. Use BonitaClient#login method instead");
         }

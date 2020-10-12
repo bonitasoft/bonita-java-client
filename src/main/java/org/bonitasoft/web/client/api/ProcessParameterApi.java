@@ -44,7 +44,7 @@ public interface ProcessParameterApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ProcessParameter> searchProcessParameters(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ProcessParameter> searchProcessParameters(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ProcessParameters
@@ -84,8 +84,8 @@ public interface ProcessParameterApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchProcessParametersQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchProcessParametersQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchProcessParametersQueryParams o(final String value) {

@@ -30,7 +30,7 @@ public interface ArchivedConnectorInstanceApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ArchivedConnectorInstance> searchArchivedConnectorInstances(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ArchivedConnectorInstance> searchArchivedConnectorInstances(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ArchivedConnectorInstances
@@ -70,8 +70,8 @@ public interface ArchivedConnectorInstanceApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchArchivedConnectorInstancesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchArchivedConnectorInstancesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchArchivedConnectorInstancesQueryParams o(final String value) {

@@ -43,7 +43,7 @@ public interface ActivityApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Activity> searchActivities(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Activity> searchActivities(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Activities
@@ -83,8 +83,8 @@ public interface ActivityApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchActivitiesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchActivitiesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchActivitiesQueryParams o(final String value) {

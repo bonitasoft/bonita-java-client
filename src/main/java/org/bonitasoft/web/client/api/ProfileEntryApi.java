@@ -67,7 +67,7 @@ public interface ProfileEntryApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ProfileEntry> searchProfileEntries(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("s") String s);
+  List<ProfileEntry> searchProfileEntries(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("s") String s);
 
   /**
    * Finds ProfileEntries
@@ -106,8 +106,8 @@ public interface ProfileEntryApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchProfileEntriesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchProfileEntriesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchProfileEntriesQueryParams s(final String value) {

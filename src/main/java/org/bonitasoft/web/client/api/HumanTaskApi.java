@@ -43,7 +43,7 @@ public interface HumanTaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<HumanTask> searchHumanTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<HumanTask> searchHumanTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds HumanTasks
@@ -83,8 +83,8 @@ public interface HumanTaskApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchHumanTasksQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchHumanTasksQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchHumanTasksQueryParams o(final String value) {

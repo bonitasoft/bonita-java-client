@@ -21,29 +21,31 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.bonitasoft.web.client.model.ActivationState;
+import org.bonitasoft.web.client.model.ConfigurationState;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * Process
+ * BusinessProcess
  */
 @JsonPropertyOrder({
-  Process.JSON_PROPERTY_ID,
-  Process.JSON_PROPERTY_ICON,
-  Process.JSON_PROPERTY_DISPLAY_DESCRIPTION,
-  Process.JSON_PROPERTY_DEPLOYMENT_DATE,
-  Process.JSON_PROPERTY_DESCRIPTION,
-  Process.JSON_PROPERTY_ACTIVATION_STATE,
-  Process.JSON_PROPERTY_NAME,
-  Process.JSON_PROPERTY_DEPLOYED_BY,
-  Process.JSON_PROPERTY_DISPLAY_NAME,
-  Process.JSON_PROPERTY_ACTORINITIATORID,
-  Process.JSON_PROPERTY_LAST_UPDATE_DATE,
-  Process.JSON_PROPERTY_CONFIGURATION_STATE,
-  Process.JSON_PROPERTY_VERSION
+  BusinessProcess.JSON_PROPERTY_ID,
+  BusinessProcess.JSON_PROPERTY_ICON,
+  BusinessProcess.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+  BusinessProcess.JSON_PROPERTY_DEPLOYMENT_DATE,
+  BusinessProcess.JSON_PROPERTY_DESCRIPTION,
+  BusinessProcess.JSON_PROPERTY_ACTIVATION_STATE,
+  BusinessProcess.JSON_PROPERTY_NAME,
+  BusinessProcess.JSON_PROPERTY_DEPLOYED_BY,
+  BusinessProcess.JSON_PROPERTY_DISPLAY_NAME,
+  BusinessProcess.JSON_PROPERTY_ACTORINITIATORID,
+  BusinessProcess.JSON_PROPERTY_LAST_UPDATE_DATE,
+  BusinessProcess.JSON_PROPERTY_CONFIGURATION_STATE,
+  BusinessProcess.JSON_PROPERTY_VERSION
 })
 
-public class Process implements Serializable {
+public class BusinessProcess implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public static final String JSON_PROPERTY_ID = "id";
@@ -62,7 +64,7 @@ public class Process implements Serializable {
   private String description;
 
   public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
-  private String activationState;
+  private ActivationState activationState;
 
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -80,13 +82,13 @@ public class Process implements Serializable {
   private String lastUpdateDate;
 
   public static final String JSON_PROPERTY_CONFIGURATION_STATE = "configurationState";
-  private String configurationState;
+  private ConfigurationState configurationState;
 
   public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
 
 
-  public Process id(String id) {
+  public BusinessProcess id(String id) {
     
     this.id = id;
     return this;
@@ -111,7 +113,7 @@ public class Process implements Serializable {
   }
 
 
-  public Process icon(String icon) {
+  public BusinessProcess icon(String icon) {
     
     this.icon = icon;
     return this;
@@ -136,7 +138,7 @@ public class Process implements Serializable {
   }
 
 
-  public Process displayDescription(String displayDescription) {
+  public BusinessProcess displayDescription(String displayDescription) {
     
     this.displayDescription = displayDescription;
     return this;
@@ -161,7 +163,7 @@ public class Process implements Serializable {
   }
 
 
-  public Process deploymentDate(String deploymentDate) {
+  public BusinessProcess deploymentDate(String deploymentDate) {
     
     this.deploymentDate = deploymentDate;
     return this;
@@ -186,7 +188,7 @@ public class Process implements Serializable {
   }
 
 
-  public Process description(String description) {
+  public BusinessProcess description(String description) {
     
     this.description = description;
     return this;
@@ -211,32 +213,32 @@ public class Process implements Serializable {
   }
 
 
-  public Process activationState(String activationState) {
+  public BusinessProcess activationState(ActivationState activationState) {
     
     this.activationState = activationState;
     return this;
   }
 
    /**
-   * the state of the process definition (ENABLED or DISABLED)
+   * Get activationState
    * @return activationState
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the state of the process definition (ENABLED or DISABLED)")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getActivationState() {
+  public ActivationState getActivationState() {
     return activationState;
   }
 
 
-  public void setActivationState(String activationState) {
+  public void setActivationState(ActivationState activationState) {
     this.activationState = activationState;
   }
 
 
-  public Process name(String name) {
+  public BusinessProcess name(String name) {
     
     this.name = name;
     return this;
@@ -261,7 +263,7 @@ public class Process implements Serializable {
   }
 
 
-  public Process deployedBy(String deployedBy) {
+  public BusinessProcess deployedBy(String deployedBy) {
     
     this.deployedBy = deployedBy;
     return this;
@@ -286,7 +288,7 @@ public class Process implements Serializable {
   }
 
 
-  public Process displayName(String displayName) {
+  public BusinessProcess displayName(String displayName) {
     
     this.displayName = displayName;
     return this;
@@ -311,7 +313,7 @@ public class Process implements Serializable {
   }
 
 
-  public Process actorinitiatorid(String actorinitiatorid) {
+  public BusinessProcess actorinitiatorid(String actorinitiatorid) {
     
     this.actorinitiatorid = actorinitiatorid;
     return this;
@@ -336,7 +338,7 @@ public class Process implements Serializable {
   }
 
 
-  public Process lastUpdateDate(String lastUpdateDate) {
+  public BusinessProcess lastUpdateDate(String lastUpdateDate) {
     
     this.lastUpdateDate = lastUpdateDate;
     return this;
@@ -361,32 +363,32 @@ public class Process implements Serializable {
   }
 
 
-  public Process configurationState(String configurationState) {
+  public BusinessProcess configurationState(ConfigurationState configurationState) {
     
     this.configurationState = configurationState;
     return this;
   }
 
    /**
-   * the configuration state of the process (UNRESOLVED or RESOLVED)
+   * Get configurationState
    * @return configurationState
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the configuration state of the process (UNRESOLVED or RESOLVED)")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_CONFIGURATION_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getConfigurationState() {
+  public ConfigurationState getConfigurationState() {
     return configurationState;
   }
 
 
-  public void setConfigurationState(String configurationState) {
+  public void setConfigurationState(ConfigurationState configurationState) {
     this.configurationState = configurationState;
   }
 
 
-  public Process version(String version) {
+  public BusinessProcess version(String version) {
     
     this.version = version;
     return this;
@@ -419,20 +421,20 @@ public class Process implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Process process = (Process) o;
-    return Objects.equals(this.id, process.id) &&
-        Objects.equals(this.icon, process.icon) &&
-        Objects.equals(this.displayDescription, process.displayDescription) &&
-        Objects.equals(this.deploymentDate, process.deploymentDate) &&
-        Objects.equals(this.description, process.description) &&
-        Objects.equals(this.activationState, process.activationState) &&
-        Objects.equals(this.name, process.name) &&
-        Objects.equals(this.deployedBy, process.deployedBy) &&
-        Objects.equals(this.displayName, process.displayName) &&
-        Objects.equals(this.actorinitiatorid, process.actorinitiatorid) &&
-        Objects.equals(this.lastUpdateDate, process.lastUpdateDate) &&
-        Objects.equals(this.configurationState, process.configurationState) &&
-        Objects.equals(this.version, process.version);
+    BusinessProcess businessProcess = (BusinessProcess) o;
+    return Objects.equals(this.id, businessProcess.id) &&
+        Objects.equals(this.icon, businessProcess.icon) &&
+        Objects.equals(this.displayDescription, businessProcess.displayDescription) &&
+        Objects.equals(this.deploymentDate, businessProcess.deploymentDate) &&
+        Objects.equals(this.description, businessProcess.description) &&
+        Objects.equals(this.activationState, businessProcess.activationState) &&
+        Objects.equals(this.name, businessProcess.name) &&
+        Objects.equals(this.deployedBy, businessProcess.deployedBy) &&
+        Objects.equals(this.displayName, businessProcess.displayName) &&
+        Objects.equals(this.actorinitiatorid, businessProcess.actorinitiatorid) &&
+        Objects.equals(this.lastUpdateDate, businessProcess.lastUpdateDate) &&
+        Objects.equals(this.configurationState, businessProcess.configurationState) &&
+        Objects.equals(this.version, businessProcess.version);
   }
 
   @Override
@@ -444,7 +446,7 @@ public class Process implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Process {\n");
+    sb.append("class BusinessProcess {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
     sb.append("    displayDescription: ").append(toIndentedString(displayDescription)).append("\n");

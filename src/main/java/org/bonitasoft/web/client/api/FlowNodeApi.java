@@ -43,7 +43,7 @@ public interface FlowNodeApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<FlowNode> searchFlowNodes(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<FlowNode> searchFlowNodes(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds FlowNodes
@@ -83,8 +83,8 @@ public interface FlowNodeApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchFlowNodesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchFlowNodesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchFlowNodesQueryParams o(final String value) {

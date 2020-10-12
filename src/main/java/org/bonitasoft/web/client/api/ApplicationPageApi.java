@@ -67,7 +67,7 @@ public interface ApplicationPageApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ApplicationPage> searchApplicationPages(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ApplicationPage> searchApplicationPages(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds application pages
@@ -107,8 +107,8 @@ public interface ApplicationPageApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchApplicationPagesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchApplicationPagesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchApplicationPagesQueryParams o(final String value) {

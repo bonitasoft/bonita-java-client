@@ -30,7 +30,7 @@ public interface ProcessConnectorDependencyApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ProcessConnectorDependency> searchProcessConnectorDependencies(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ProcessConnectorDependency> searchProcessConnectorDependencies(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ProcessConnectorDependencies
@@ -70,8 +70,8 @@ public interface ProcessConnectorDependencyApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchProcessConnectorDependenciesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchProcessConnectorDependenciesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchProcessConnectorDependenciesQueryParams o(final String value) {

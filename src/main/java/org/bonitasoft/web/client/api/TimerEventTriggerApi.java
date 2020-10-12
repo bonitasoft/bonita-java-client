@@ -45,7 +45,7 @@ public interface TimerEventTriggerApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<TimerEventTrigger> searchTimerEventTriggers(@Param("p") Integer p, @Param("c") Integer c, @Param("caseId") String caseId, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<TimerEventTrigger> searchTimerEventTriggers(@Param("p") Integer p, @Param("c") Integer c, @Param("caseId") String caseId, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds TimerEventTriggers
@@ -86,8 +86,8 @@ public interface TimerEventTriggerApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchTimerEventTriggersQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchTimerEventTriggersQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchTimerEventTriggersQueryParams o(final String value) {

@@ -15,91 +15,56 @@ package org.bonitasoft.web.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
- * BDMAccessControlUploadResponse
+ * the activity type (string)
  */
-@JsonPropertyOrder({
-  BDMAccessControlUploadResponse.JSON_PROPERTY_FILE_UPLOAD
-})
+public enum ActivityType {
+  
+  AUTOMATIC_TASK("AUTOMATIC_TASK"),
+  
+  HUMAN_TASK("HUMAN_TASK"),
+  
+  USER_TASK("USER_TASK"),
+  
+  MANUAL_TASK("MANUAL_TASK"),
+  
+  LOOP_ACTIVITY("LOOP_ACTIVITY"),
+  
+  MULTI_INSTANCE_ACTIVITY("MULTI_INSTANCE_ACTIVITY"),
+  
+  CALL_ACTIVITY("CALL_ACTIVITY");
 
-public class BDMAccessControlUploadResponse implements Serializable {
-  private static final long serialVersionUID = 1L;
+  private String value;
 
-  public static final String JSON_PROPERTY_FILE_UPLOAD = "fileUpload";
-  private String fileUpload;
-
-
-  public BDMAccessControlUploadResponse fileUpload(String fileUpload) {
-    
-    this.fileUpload = fileUpload;
-    return this;
+  ActivityType(String value) {
+    this.value = value;
   }
 
-   /**
-   * the temporary file name once uploaded on the server
-   * @return fileUpload
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the temporary file name once uploaded on the server")
-  @JsonProperty(JSON_PROPERTY_FILE_UPLOAD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getFileUpload() {
-    return fileUpload;
+  @JsonValue
+  public String getValue() {
+    return value;
   }
-
-
-  public void setFileUpload(String fileUpload) {
-    this.fileUpload = fileUpload;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    BDMAccessControlUploadResponse bdMAccessControlUploadResponse = (BDMAccessControlUploadResponse) o;
-    return Objects.equals(this.fileUpload, bdMAccessControlUploadResponse.fileUpload);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(fileUpload);
-  }
-
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class BDMAccessControlUploadResponse {\n");
-    sb.append("    fileUpload: ").append(toIndentedString(fileUpload)).append("\n");
-    sb.append("}");
-    return sb.toString();
+    return String.valueOf(value);
   }
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+  @JsonCreator
+  public static ActivityType fromValue(String value) {
+    for (ActivityType b : ActivityType.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
     }
-    return o.toString().replace("\n", "\n    ");
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
-
 }
 

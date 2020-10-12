@@ -40,7 +40,7 @@ public interface ArchivedCaseDocumentApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ArchivedCaseDocument> searchArchivedCaseDocuments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<ArchivedCaseDocument> searchArchivedCaseDocuments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds ArchivedCaseDocuments
@@ -79,8 +79,8 @@ public interface ArchivedCaseDocumentApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchArchivedCaseDocumentsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchArchivedCaseDocumentsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchArchivedCaseDocumentsQueryParams o(final String value) {

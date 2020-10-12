@@ -41,7 +41,7 @@ public interface ArchivedUserTaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ArchivedUserTask> searchArchivedUserTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<ArchivedUserTask> searchArchivedUserTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds ArchivedUserTasks
@@ -80,8 +80,8 @@ public interface ArchivedUserTaskApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchArchivedUserTasksQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchArchivedUserTasksQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchArchivedUserTasksQueryParams o(final String value) {

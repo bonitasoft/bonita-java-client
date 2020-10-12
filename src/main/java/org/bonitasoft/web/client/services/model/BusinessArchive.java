@@ -10,43 +10,47 @@ package org.bonitasoft.web.client.services.model;
 
 import lombok.Builder;
 import lombok.Data;
+import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.services.utils.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 
 @Data
 @Builder
 public class BusinessArchive {
 
-    private String name;
-    private String version;
+    private static final String PROCESS_DESIGN_FILENAME = "process-design.xml";
 
-    public static BusinessArchive read(File content) throws IOException {
-        try (FileInputStream fileInputStream = new FileInputStream(content)) {
-            return read(fileInputStream);
-        }
-    }
+    private String processName;
+    private String processVersion;
+    private File archive;
 
-    public static BusinessArchive read(InputStream content) throws IOException {
-        byte[] fileFromZip = FileUtils.getFileFromZip(content, "process-design.xml");
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        try {
+    public static BusinessArchive create(File bar) {
+        try (FileInputStream fileInputStream = new FileInputStream(bar)) {
+
+            // Get name and version from process design file
+            byte[] fileFromZip = FileUtils.getFileFromZip(fileInputStream, PROCESS_DESIGN_FILENAME);
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document doc = documentBuilder.parse(new ByteArrayInputStream(fileFromZip));
             doc.getDocumentElement().normalize();
             NamedNodeMap attributes = doc.getFirstChild().getAttributes();
+
             return BusinessArchive.builder()
-                    .name(attributes.getNamedItem("name").getNodeValue())
-                    .version(attributes.getNamedItem("version").getNodeValue())
+                    .archive(bar)
+                    .processName(attributes.getNamedItem("name").getNodeValue())
+                    .processVersion(attributes.getNamedItem("version").getNodeValue())
                     .build();
-        } catch (ParserConfigurationException | SAXException e) {
-            throw new IOException("Unable to parse xml file", e);
+
+        } catch (Exception e) {
+            throw new ClientException("Unable to parse bar file", e);
         }
     }
+
 }

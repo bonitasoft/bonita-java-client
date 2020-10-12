@@ -41,7 +41,7 @@ public interface ArchivedHumanTaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ArchivedHumanTask> searchArchivedHumanTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<ArchivedHumanTask> searchArchivedHumanTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds ArchivedHumanTasks
@@ -80,8 +80,8 @@ public interface ArchivedHumanTaskApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchArchivedHumanTasksQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchArchivedHumanTasksQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchArchivedHumanTasksQueryParams o(final String value) {

@@ -41,7 +41,7 @@ public interface TaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Task> searchTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<Task> searchTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds Tasks
@@ -80,8 +80,8 @@ public interface TaskApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchTasksQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchTasksQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchTasksQueryParams o(final String value) {

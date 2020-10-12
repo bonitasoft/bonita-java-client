@@ -15,91 +15,46 @@ package org.bonitasoft.web.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
- * PageUploadResponse
+ * the configuration state of the process (UNRESOLVED or RESOLVED)
  */
-@JsonPropertyOrder({
-  PageUploadResponse.JSON_PROPERTY_PAGE_ZIP
-})
+public enum ConfigurationState {
+  
+  UNRESOLVED("UNRESOLVED"),
+  
+  RESOLVED("RESOLVED");
 
-public class PageUploadResponse implements Serializable {
-  private static final long serialVersionUID = 1L;
+  private String value;
 
-  public static final String JSON_PROPERTY_PAGE_ZIP = "pageZip";
-  private String pageZip;
-
-
-  public PageUploadResponse pageZip(String pageZip) {
-    
-    this.pageZip = pageZip;
-    return this;
+  ConfigurationState(String value) {
+    this.value = value;
   }
 
-   /**
-   * the temporary file name once uploaded on the server
-   * @return pageZip
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the temporary file name once uploaded on the server")
-  @JsonProperty(JSON_PROPERTY_PAGE_ZIP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPageZip() {
-    return pageZip;
+  @JsonValue
+  public String getValue() {
+    return value;
   }
-
-
-  public void setPageZip(String pageZip) {
-    this.pageZip = pageZip;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PageUploadResponse pageUploadResponse = (PageUploadResponse) o;
-    return Objects.equals(this.pageZip, pageUploadResponse.pageZip);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(pageZip);
-  }
-
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PageUploadResponse {\n");
-    sb.append("    pageZip: ").append(toIndentedString(pageZip)).append("\n");
-    sb.append("}");
-    return sb.toString();
+    return String.valueOf(value);
   }
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+  @JsonCreator
+  public static ConfigurationState fromValue(String value) {
+    for (ConfigurationState b : ConfigurationState.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
     }
-    return o.toString().replace("\n", "\n    ");
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
-
 }
 

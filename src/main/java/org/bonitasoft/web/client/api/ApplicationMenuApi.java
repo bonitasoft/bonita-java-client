@@ -68,7 +68,7 @@ public interface ApplicationMenuApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ApplicationMenu> searchApplicationMenus(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ApplicationMenu> searchApplicationMenus(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds application menus
@@ -108,8 +108,8 @@ public interface ApplicationMenuApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchApplicationMenusQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchApplicationMenusQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchApplicationMenusQueryParams o(final String value) {

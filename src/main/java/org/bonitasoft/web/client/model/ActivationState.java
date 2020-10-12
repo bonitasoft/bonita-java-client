@@ -23,27 +23,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * the activity type (string)
+ * The state of the process definition (ENABLED or DISABLED)
  */
-public enum ActivityTypeEnum {
+public enum ActivationState {
   
-  AUTOMATIC_TASK("AUTOMATIC_TASK"),
+  ENABLED("ENABLED"),
   
-  HUMAN_TASK("HUMAN_TASK"),
-  
-  USER_TASK("USER_TASK"),
-  
-  MANUAL_TASK("MANUAL_TASK"),
-  
-  LOOP_ACTIVITY("LOOP_ACTIVITY"),
-  
-  MULTI_INSTANCE_ACTIVITY("MULTI_INSTANCE_ACTIVITY"),
-  
-  CALL_ACTIVITY("CALL_ACTIVITY");
+  DISABLED("DISABLED");
 
   private String value;
 
-  ActivityTypeEnum(String value) {
+  ActivationState(String value) {
     this.value = value;
   }
 
@@ -58,8 +48,8 @@ public enum ActivityTypeEnum {
   }
 
   @JsonCreator
-  public static ActivityTypeEnum fromValue(String value) {
-    for (ActivityTypeEnum b : ActivityTypeEnum.values()) {
+  public static ActivationState fromValue(String value) {
+    for (ActivationState b : ActivationState.values()) {
       if (b.value.equals(value)) {
         return b;
       }

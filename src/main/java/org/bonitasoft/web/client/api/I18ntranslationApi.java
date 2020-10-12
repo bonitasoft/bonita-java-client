@@ -27,7 +27,7 @@ public interface I18ntranslationApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Map<String, String>> searchI18ntranslations(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f);
+  List<Map<String, String>> searchI18ntranslations(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f);
 
   /**
    * Finds I18ntranslations
@@ -65,8 +65,8 @@ public interface I18ntranslationApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchI18ntranslationsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchI18ntranslationsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
   }

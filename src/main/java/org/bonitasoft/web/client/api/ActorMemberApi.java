@@ -52,7 +52,7 @@ public interface ActorMemberApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ActorMember> searchActorMembers(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<ActorMember> searchActorMembers(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds ActorMembers
@@ -91,8 +91,8 @@ public interface ActorMemberApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchActorMembersQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchActorMembersQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchActorMembersQueryParams o(final String value) {

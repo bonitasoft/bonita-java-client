@@ -27,7 +27,10 @@ import org.bonitasoft.web.client.exception.UnauthorizedException;
 import org.bonitasoft.web.client.feign.decoder.DelegatingDecoder;
 import org.bonitasoft.web.client.feign.interceptor.BonitaCharsetBugInterceptor;
 import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.services.LoginService;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
@@ -65,7 +68,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
     @Setter
     private ObjectMapper objectMapper;
     @Setter
-    private HttpLoggingInterceptor logInterceptor;
+    private LogContentLevel logContentLevel = LogContentLevel.OFF;
 
     private static String addTrailingSlashIfNeeded(String url) {
         return url.endsWith("/") ? url : url + "/";
@@ -78,14 +81,34 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
         // OkHttp
         if (okHttpClient == null) {
+
             OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder()
                     .connectTimeout(connectTimeoutInSeconds, SECONDS)
                     .readTimeout(readTimeoutInSeconds, SECONDS)
                     .writeTimeout(writeTimeoutInSeconds, SECONDS);
+
             if (disableCertificateCheck) {
                 addTrustAllCertificateManager(okHttpClientBuilder);
             }
-            if (logInterceptor != null) {
+
+            if (logContentLevel != null && logContentLevel != LogContentLevel.OFF) {
+                HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+                    @Override
+                    public void log(@NotNull String message) {
+                        LoggerFactory.getLogger(BonitaClient.class).debug(message);
+                    }
+                });
+                switch (logContentLevel) {
+                    case FULL:
+                        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                        break;
+                    case HEADER:
+                        logInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+                        break;
+                    default:
+                        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+                        break;
+                }
                 okHttpClientBuilder.addInterceptor(logInterceptor);
             }
             okHttpClient = okHttpClientBuilder.build();
@@ -107,7 +130,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                     .errorDecoder((methodKey, response) -> {
                         switch (response.status()) {
                             case 401:
-                                return new UnauthorizedException();
+                                return new UnauthorizedException(response.reason());
                             case 404:
                                 return new NotFoundException(response.reason());
                         }
@@ -131,9 +154,9 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         apiClient.addAuthorization("bonita", authorization);
 
         LoginService loginService = new LoginService(apiClient, authorization);
-        ApiLocator apiLocator = new CachingApiLocator(apiClient);
+        ApiProvider apiProvider = new CachingApiProvider(apiClient);
 
-        return new BonitaFeignClient(loginService, apiLocator, objectMapper);
+        return new BonitaFeignClient(loginService, apiProvider, objectMapper);
     }
 
     private void addTrustAllCertificateManager(OkHttpClient.Builder builder) {

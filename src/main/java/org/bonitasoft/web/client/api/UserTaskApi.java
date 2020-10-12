@@ -116,7 +116,7 @@ public interface UserTaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<UserTask> searchUserTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<UserTask> searchUserTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds UserTasks
@@ -156,8 +156,8 @@ public interface UserTaskApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchUserTasksQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchUserTasksQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchUserTasksQueryParams o(final String value) {

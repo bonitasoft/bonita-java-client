@@ -28,7 +28,7 @@ public interface CustomUserApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<CustomUser> searchCustomUsers(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f);
+  List<CustomUser> searchCustomUsers(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f);
 
   /**
    * Finds CustomUsers
@@ -66,8 +66,8 @@ public interface CustomUserApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchCustomUsersQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchCustomUsersQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
   }

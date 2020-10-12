@@ -68,7 +68,7 @@ public interface TenantApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Tenant> searchTenants(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Tenant> searchTenants(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Tenants
@@ -108,8 +108,8 @@ public interface TenantApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchTenantsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchTenantsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchTenantsQueryParams o(final String value) {

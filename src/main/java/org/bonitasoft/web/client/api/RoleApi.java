@@ -68,7 +68,7 @@ public interface RoleApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Role> searchRoles(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Role> searchRoles(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Roles
@@ -108,8 +108,8 @@ public interface RoleApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchRolesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchRolesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchRolesQueryParams o(final String value) {

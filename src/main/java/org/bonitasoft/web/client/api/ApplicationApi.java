@@ -82,7 +82,7 @@ public interface ApplicationApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Application> searchApplications(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Application> searchApplications(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds living applications
@@ -122,8 +122,8 @@ public interface ApplicationApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchApplicationsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchApplicationsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchApplicationsQueryParams o(final String value) {
@@ -162,4 +162,17 @@ public interface ApplicationApi extends ApiClient.Api {
     "Accept: application/json",
   })
   String uploadApplication(@Param("file") File file);
+
+  /**
+   * Upload an application configuration file
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Upload an application configuration file in the &#x60;bconf&#x60; format. 
+   * @param file  (optional)
+   * @return String
+   */
+  @RequestLine("POST /APIv2/service/install")
+  @Headers({
+    "Content-Type: multipart/form-data",
+    "Accept: application/json",
+  })
+  String uploadApplicationConfiguration(@Param("file") File file);
 }

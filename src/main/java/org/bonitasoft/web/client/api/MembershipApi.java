@@ -57,7 +57,7 @@ public interface MembershipApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Membership> searchMemberships(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Membership> searchMemberships(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Memberships
@@ -97,8 +97,8 @@ public interface MembershipApi extends ApiClient.Api {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public SearchMembershipsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchMembershipsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
     public SearchMembershipsQueryParams o(final String value) {
