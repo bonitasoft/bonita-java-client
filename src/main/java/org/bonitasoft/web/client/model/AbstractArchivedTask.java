@@ -80,7 +80,11 @@ public class AbstractArchivedTask implements Serializable {
    * the current state of the task
    */
   public enum StateEnum {
-    READY_COMPLETED_FAILED("ready completed failed");
+    READY("ready"),
+    
+    COMPLETED("completed"),
+    
+    FAILED("failed");
 
     private String value;
 

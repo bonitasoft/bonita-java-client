@@ -8,56 +8,13 @@
  */
 package org.bonitasoft.web.client.services;
 
-import feign.Response;
-import lombok.extern.slf4j.Slf4j;
-import org.bonitasoft.web.client.api.PortalAuthenticationApi;
-import org.bonitasoft.web.client.api.SessionApi;
-import org.bonitasoft.web.client.auth.BonitaCookieInterceptor;
-import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.model.Session;
 
-@Slf4j
-public class LoginService {
+public interface LoginService {
 
-    private PortalAuthenticationApi loginApi;
-    private SessionApi sessionApi;
-    private BonitaCookieInterceptor bonitaCookieInterceptor;
+    Session login(String username, String password, String tenant);
 
-    public LoginService(ApiClient apiClient, BonitaCookieInterceptor bonitaCookieInterceptor) {
-        this.loginApi = apiClient.buildClient(PortalAuthenticationApi.class);
-        this.sessionApi = apiClient.buildClient(SessionApi.class);
-        this.bonitaCookieInterceptor = bonitaCookieInterceptor;
-    }
+    Session getSession();
 
-    public boolean isPlatformUpAndRunning() {
-        try {
-            Session session = getSession();
-            return session != null;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public Session login(String username, String password, String tenant) {
-        log.debug("Login with user '{}' on tenant '{}'...", username, tenant);
-        Response loginResponse = loginApi.login(username, password, tenant, "false", "");
-        bonitaCookieInterceptor.setSessionCookies(loginResponse.headers());
-
-        //check the session is ok + it will trigger the loading of servlets
-        Session session = getSession();
-        log.debug("Login completed. Session id: {}", session.getSessionId());
-
-        return session;
-    }
-
-    public Session getSession() {
-        return sessionApi.getSession();
-    }
-
-    public void logout() {
-        log.debug("Logout...");
-        loginApi.logout("false");
-        bonitaCookieInterceptor.clearSessionCookie();
-        log.debug("Logout completed.");
-    }
+    void logout();
 }

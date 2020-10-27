@@ -166,7 +166,7 @@ public interface ApplicationApi extends ApiClient.Api {
   /**
    * Upload an application configuration file
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Upload an application configuration file in the &#x60;bconf&#x60; format. 
-   * @param file  (optional)
+   * @param configuration  (required)
    * @return String
    */
   @RequestLine("POST /APIv2/service/install")
@@ -174,5 +174,5 @@ public interface ApplicationApi extends ApiClient.Api {
     "Content-Type: multipart/form-data",
     "Accept: application/json",
   })
-  String uploadApplicationConfiguration(@Param("file") File file);
+  String uploadApplicationConfiguration(@Param("configuration") File configuration);
 }

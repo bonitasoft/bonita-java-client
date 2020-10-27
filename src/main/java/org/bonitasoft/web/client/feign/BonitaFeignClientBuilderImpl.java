@@ -21,15 +21,14 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.auth.BonitaCookieInterceptor;
-import org.bonitasoft.web.client.exception.ClientException;
-import org.bonitasoft.web.client.exception.NotFoundException;
-import org.bonitasoft.web.client.exception.UnauthorizedException;
+import org.bonitasoft.web.client.auth.BonitaLoginService;
+import org.bonitasoft.web.client.feign.decoder.BonitaErrorDecoder;
 import org.bonitasoft.web.client.feign.decoder.DelegatingDecoder;
 import org.bonitasoft.web.client.feign.interceptor.BonitaCharsetBugInterceptor;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.log.LogContentLevel;
-import org.bonitasoft.web.client.services.LoginService;
-import org.jetbrains.annotations.NotNull;
+import org.bonitasoft.web.client.services.*;
+import org.bonitasoft.web.client.services.impl.*;
 import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLContext;
@@ -38,7 +37,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateException;
 
-import static feign.FeignException.errorStatus;
+import static java.util.Optional.ofNullable;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
@@ -78,124 +77,121 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
     public BonitaClient build() {
 
         ApiClient apiClient = new ApiClient();
-
-        // OkHttp
-        if (okHttpClient == null) {
-
-            OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder()
-                    .connectTimeout(connectTimeoutInSeconds, SECONDS)
-                    .readTimeout(readTimeoutInSeconds, SECONDS)
-                    .writeTimeout(writeTimeoutInSeconds, SECONDS);
-
-            if (disableCertificateCheck) {
-                addTrustAllCertificateManager(okHttpClientBuilder);
-            }
-
-            if (logContentLevel != null && logContentLevel != LogContentLevel.OFF) {
-                HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-                    @Override
-                    public void log(@NotNull String message) {
-                        LoggerFactory.getLogger(BonitaClient.class).debug(message);
-                    }
-                });
-                switch (logContentLevel) {
-                    case FULL:
-                        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-                        break;
-                    case HEADER:
-                        logInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
-                        break;
-                    default:
-                        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
-                        break;
-                }
-                okHttpClientBuilder.addInterceptor(logInterceptor);
-            }
-            okHttpClient = okHttpClientBuilder.build();
-        }
-
-        // Jackson
-        if (objectMapper == null) {
-            objectMapper = apiClient.getObjectMapper().findAndRegisterModules()
-                    .setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        }
-
-        // Decoder
-        if (feignBuilder == null) {
-            feignBuilder = apiClient.getFeignBuilder()
-                    .client(new feign.okhttp.OkHttpClient(okHttpClient))
-                    .decode404()
-                    .decoder(new DelegatingDecoder().register("application/json", new JacksonDecoder(objectMapper)))
-                    // Map feign exception to ours
-                    .errorDecoder((methodKey, response) -> {
-                        switch (response.status()) {
-                            case 401:
-                                return new UnauthorizedException(response.reason());
-                            case 404:
-                                return new NotFoundException(response.reason());
-                        }
-                        if (response.status() >= 400 && response.status() <= 599) {
-                            return new ClientException(String.format("status: %s %s", response.status(), response.reason()));
-                        }
-                        return errorStatus(methodKey, response);
-                    })
-            ;
-        } else {
-            apiClient.setFeignBuilder(feignBuilder);
-        }
-        // Fixme: bad charset handling in bonita version. Fixed in 7.11.3
-        apiClient.getFeignBuilder().requestInterceptor(new BonitaCharsetBugInterceptor());
-
         // Bonita url
         apiClient.setBasePath(addTrailingSlashIfNeeded(url));
+
+        // OkHttp
+        okHttpClient = ofNullable(okHttpClient)
+                .orElseGet(() -> configureHttpClient(new OkHttpClient.Builder()).build());
+
+        // Jackson
+        objectMapper = configureJackson(ofNullable(this.objectMapper).orElse(apiClient.getObjectMapper()));
+
+        // Feign
+        feignBuilder = ofNullable(feignBuilder)
+                .orElse(configureFeign(apiClient.getFeignBuilder()));
+        apiClient.setFeignBuilder(feignBuilder);
+
+        // Http proxies
+        ApiProvider apiProvider = new CachingApiProvider(apiClient);
 
         // Bonita Auth
         BonitaCookieInterceptor authorization = new BonitaCookieInterceptor();
         apiClient.addAuthorization("bonita", authorization);
+        LoginService loginService = new BonitaLoginService(apiProvider, this.objectMapper, authorization);
 
-        LoginService loginService = new LoginService(apiClient, authorization);
-        ApiProvider apiProvider = new CachingApiProvider(apiClient);
+        // Delegate services
+        final ClientContext clientContext = new CachingClientContext();
+        ApplicationService applicationService = new DefaultApplicationService(clientContext, apiProvider, this.objectMapper);
+        BdmService bdmService = new DefaultBdmService(clientContext, apiProvider, this.objectMapper);
+        UserService userService = new DefaultUserService(clientContext, apiProvider, this.objectMapper);
+        ProcessService processService = new DefaultProcessService(clientContext, apiProvider, this.objectMapper);
+        SystemService systemService = new DefaultSystemService(clientContext, apiProvider, this.objectMapper);
 
-        return new BonitaFeignClient(loginService, apiProvider, objectMapper);
+        return new BonitaFeignClient(apiClient.getBasePath(), apiClient, loginService, applicationService, bdmService, userService, processService, systemService);
     }
 
-    private void addTrustAllCertificateManager(OkHttpClient.Builder builder) {
-        try {
+    private Feign.Builder configureFeign(Feign.Builder feignBuilder) {
+        return feignBuilder.client(new feign.okhttp.OkHttpClient(okHttpClient))
+                .decode404()
+                .decoder(new DelegatingDecoder().register("application/json", new JacksonDecoder(objectMapper)))
+                // Map feign exception to ours
+                .errorDecoder(new BonitaErrorDecoder())
+                // Fixme: bad charset handling in bonita version. Fixed in 7.11.3
+                .requestInterceptor(new BonitaCharsetBugInterceptor());
+    }
 
-            // Create a trust manager that does not validate certificate chains
-            final TrustManager[] trustAllCerts = new TrustManager[]{
-                    new X509TrustManager() {
+    private ObjectMapper configureJackson(ObjectMapper objectMapper) {
+        return objectMapper.findAndRegisterModules()
+                .setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
 
-                        @Override
-                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
-                                throws CertificateException {
-                        }
+    private OkHttpClient.Builder configureHttpClient(OkHttpClient.Builder builder) {
+        OkHttpClient.Builder okHttpClientBuilder = addTrustAllCertificateManagerIfNeeded(builder)
+                .connectTimeout(connectTimeoutInSeconds, SECONDS)
+                .readTimeout(readTimeoutInSeconds, SECONDS)
+                .writeTimeout(writeTimeoutInSeconds, SECONDS);
 
-                        @Override
-                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
-                                throws CertificateException {
-                        }
-
-                        @Override
-                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                            return new java.security.cert.X509Certificate[]{};
-                        }
-                    }
-            };
-
-            // Install the all-trusting trust manager
-            final SSLContext sslContext = SSLContext.getInstance("SSL");
-            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-
-            // Create an ssl socket factory with our all-trusting manager
-            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
-            builder.hostnameVerifier((hostname, session) -> true);
-
-        } catch (Exception e) {
-            throw new RuntimeException("An internal error has occurred while building the insecure HttpClient", e);
+        if (!LogContentLevel.OFF.equals(logContentLevel)) {
+            HttpLoggingInterceptor logInterceptor =
+                    new HttpLoggingInterceptor(message -> LoggerFactory.getLogger(OkHttpClient.class).info(message));
+            switch (logContentLevel) {
+                case FULL:
+                    logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                    break;
+                case HEADER:
+                    logInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+                    break;
+                default:
+                    logInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+                    break;
+            }
+            okHttpClientBuilder.addInterceptor(logInterceptor);
         }
+
+        return okHttpClientBuilder;
+    }
+
+    private OkHttpClient.Builder addTrustAllCertificateManagerIfNeeded(OkHttpClient.Builder builder) {
+        if (disableCertificateCheck) {
+            try {
+
+                // Create a trust manager that does not validate certificate chains
+                final TrustManager[] trustAllCerts = new TrustManager[]{
+                        new X509TrustManager() {
+
+                            @Override
+                            public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
+                                    throws CertificateException {
+                            }
+
+                            @Override
+                            public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
+                                    throws CertificateException {
+                            }
+
+                            @Override
+                            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                                return new java.security.cert.X509Certificate[]{};
+                            }
+                        }
+                };
+
+                // Install the all-trusting trust manager
+                final SSLContext sslContext = SSLContext.getInstance("SSL");
+                sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+
+                // Create an ssl socket factory with our all-trusting manager
+                final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
+                builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
+                builder.hostnameVerifier((hostname, session) -> true);
+
+            } catch (Exception e) {
+                throw new RuntimeException("An internal error has occurred while building the insecure HttpClient", e);
+            }
+        }
+        return builder;
     }
 
 }

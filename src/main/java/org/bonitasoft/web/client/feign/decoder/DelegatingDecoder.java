@@ -42,7 +42,7 @@ public class DelegatingDecoder implements Decoder {
         log.debug("Decoding body with content-type: {}", contentType);
 
         return delegates.entrySet().stream()
-                .filter(contentTypeRegistered(contentType)).findAny()
+                .filter(contentTypeRegistered(contentType)).findFirst()
                 .map(Map.Entry::getValue)
                 // Decoder found
                 .map(decoder -> decodeNoException(decoder, response, type))
@@ -63,6 +63,8 @@ public class DelegatingDecoder implements Decoder {
             return decoder.decode(response, type);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            response.close();
         }
     }
 

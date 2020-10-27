@@ -6,7 +6,7 @@ import org.bonitasoft.web.client.model.Bdm;
 import java.io.File;
 
 public interface BdmService {
-    void importBDM(File content);
+    void importBDM(File bdm);
 
     void importBdmAccessControl(File accessControl);
 

@@ -16,9 +16,6 @@ public class CachingApiProvider implements ApiProvider {
 
     @Override
     public <T extends ApiClient.Api> T get(Class<T> apiClass) {
-        if (apiClass.isAssignableFrom(PortalAuthenticationApi.class)) {
-            throw new RuntimeException("Direct use of PortalAuthenticationApi is not allowed. Use BonitaClient#login method instead");
-        }
         if (!apiCache.containsKey(apiClass)) {
             T service = apiClient.buildClient(apiClass);
             apiCache.put(apiClass, service);

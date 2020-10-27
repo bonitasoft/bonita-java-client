@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<forms-definition product-version="6.3-SP">
+  <migration-product-version>6.3-SP</migration-product-version>
+  <application name="CreateAndUpdateData" version="1.0">
+    <permissions>process#CreateAndUpdateData--1.0</permissions>
+    <application-label>
+      <expression>
+        <name>CreateAndUpdateData</name>
+        <expression-content>CreateAndUpdateData</expression-content>
+        <expression-type>TYPE_CONSTANT</expression-type>
+        <return-type>java.lang.String</return-type>
+      </expression>
+    </application-label>
+    <application-layout>html/_jCYUQdjcEeel3uhkRs8KyA_process_template.html</application-layout>
+  </application>
+</forms-definition>

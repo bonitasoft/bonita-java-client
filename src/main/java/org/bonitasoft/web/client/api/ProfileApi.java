@@ -58,7 +58,7 @@ public interface ProfileApi extends ApiClient.Api {
   /**
    * Import profiles
    * Import profiles 
-   * @param profileDataUpload Uploaded file (optional)
+   * @param profilesDataUpload Uploaded file (optional)
    * @param importPolicy Import policy (optional)
    */
   @RequestLine("POST /services/profile/import")
@@ -66,7 +66,7 @@ public interface ProfileApi extends ApiClient.Api {
     "Content-Type: application/x-www-form-urlencoded",
     "Accept: application/json",
   })
-  void importProfiles(@Param("profileDataUpload") String profileDataUpload, @Param("importPolicy") String importPolicy);
+  void importProfiles(@Param("profilesDataUpload") String profilesDataUpload, @Param("importPolicy") String importPolicy);
 
   /**
    * Finds Profiles
