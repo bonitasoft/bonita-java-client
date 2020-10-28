@@ -18,21 +18,21 @@
 [.float-group]
 --
 [.left]
-image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
+image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px,float=left]
 [.left]
-image::openapi.png[OpenAPI,link="https://swagger.io/specification",width=150px]
+image::openapi.png[OpenAPI,link="https://swagger.io/specification",width=150px,float=left]
 --
 
 [.float-group]
 --
 [.left]
-image::https://github.com/bonitasoft/{project-artifact-id}/workflows/Build/badge.svg[Build Status,link="https://github.com/bonitasoft/{project-artifact-id}/actions?query=workflow%3ABuild"]
+image::https://github.com/bonitasoft/{project-artifact-id}/workflows/Build/badge.svg[Build Status,link="https://github.com/bonitasoft/{project-artifact-id}/actions?query=workflow%3ABuild",float=left]
 [.left]
-image::https://img.shields.io/github/v/release/bonitasoft/{project-artifact-id}?color=blue&label=Release[Release,link="https://github.com/bonitasoft/{project-artifact-id}/releases"]
+image::https://img.shields.io/github/v/release/bonitasoft/{project-artifact-id}?color=blue&label=Release[Release,link="https://github.com/bonitasoft/{project-artifact-id}/releases",float=left]
 [.left]
-image::https://img.shields.io/maven-central/v/{project-group-id}/{project-artifact-id}.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22{project-group-id}%22%20AND%20a:%22{project-artifact-id}%22"]
+image::https://img.shields.io/maven-central/v/{project-group-id}/{project-artifact-id}.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22{project-group-id}%22%20AND%20a:%22{project-artifact-id}%22",float=left]
 [.left]
-image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html"]
+image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html",float=left]
 --
 
 = Bonita Java Client
