@@ -16,7 +16,7 @@
 [.left]
 image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
 
-[.left]
+[.right]
 image::openapi.png[OpenAPI,link="https://swagger.io/specification",width=150px]
 --
 
