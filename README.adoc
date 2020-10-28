@@ -9,25 +9,28 @@
 :linkcss: false
 :allow-uri-read:
 :imagesdir: ./doc/images
-:short-bonita-version: 7.11
+
+:bonita-short-version: 7.11
+:project-group-id: org.bonitasoft.web
+:project-artifact-id: bonita-java-client
+:project-version: 1.0.0-SNAPSHOT
 
 [.float-group]
 --
 [.left]
 image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
-
-[.right]
+[.left]
 image::openapi.png[OpenAPI,link="https://swagger.io/specification",width=150px]
 --
 
 [.float-group]
 --
 [.left]
-image::https://github.com/bonitasoft/bonita-java-client/workflows/Build/badge.svg[Build Status,link="https://github.com/bonitasoft/bonita-java-client/actions?query=workflow%3ABuild"]
+image::https://github.com/bonitasoft/{project-artifact-id}/workflows/Build/badge.svg[Build Status,link="https://github.com/bonitasoft/{project-artifact-id}/actions?query=workflow%3ABuild"]
 [.left]
-image::https://img.shields.io/github/v/release/bonitasoft/bonita-java-client?color=blue&label=Release[Release,link="https://github.com/bonitasoft/bonita-java-client/releases"]
+image::https://img.shields.io/github/v/release/bonitasoft/{project-artifact-id}?color=blue&label=Release[Release,link="https://github.com/bonitasoft/{project-artifact-id}/releases"]
 [.left]
-image::https://img.shields.io/maven-central/v/org.bonitasoft.web/bonita-java-client.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22org.bonitasoft.web%22%20AND%20a:%22bonita-java-client%22"]
+image::https://img.shields.io/maven-central/v/{project-group-id}/{project-artifact-id}.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22{project-group-id}%22%20AND%20a:%22{project-artifact-id}%22"]
 [.left]
 image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html"]
 --
@@ -36,7 +39,7 @@ image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="ht
 
 This project is the official web client for Bonita when working with Java (or on the JVM).
 
-It is based on an https://swagger.io/specification/[OpenAPI] specification for **Bonita 7.11.2** `enterprise` edition.
+It is based on an https://swagger.io/specification/[OpenAPI] specification for **Bonita {bonita-short-version}** `enterprise` edition.
 This means that this client includes all community operations plus some that are only supported by `enterprise` editions servers.
 
 //_**TODO**_: A brief description of your project, what it is used for and how does life get awesome when someone starts to use it.
@@ -45,7 +48,7 @@ This means that this client includes all community operations plus some that are
 
 //_**TODO**_: What's all the bells and whistles this project can perform?
 
-* Cover publicly available http endpoints of Bonita Platform 7.11.2 and onwards
+* Cover publicly available http endpoints of Bonita Platform {bonita-short-version} and onwards
 * Built-in Bonita authentication support (SSO not supported yet)
 * Higher level code than raw openapi client to ease developer journey
 
@@ -55,10 +58,12 @@ This means that this client includes all community operations plus some that are
 
 After the client library is installed/deployed, you can use it in your Maven project by adding the following to your *pom.xml*:
 
-[source,bash]
+[source,xml,subs="attributes+"]
 ----
 <dependency>
-include::https://raw.githubusercontent.com/bonitasoft/bonita-java-client/feat/iso-fonct/pom.xml[lines=5..7]
+    <groupId>{project-group-id}</groupId>
+    <artifactId>{project-artifact-id}</artifactId>
+    <version>{project-version}</version>
 </dependency>
 ----
 
@@ -202,10 +207,11 @@ For more details about apache maven, please refer to the https://maven.apache.or
 
 == Links
 
-. Project homepage: https://github.com/bonitasoft/bonita-java-client/
-. Repository: https://github.com/bonitasoft/bonita-java-client/
-. Issue tracker: https://github.com/bonitasoft/bonita-java-client/issues. +
+- Project homepage: https://github.com/bonitasoft/{project-artifact-id}/
+- Repository: https://github.com/bonitasoft/{project-artifact-id}/
+- Issue tracker: https://github.com/bonitasoft/{project-artifact-id}/issues. +
   In case of sensitive bugs like security vulnerabilities, please contact rd@bonitasoft.com directly instead of using issue tracker. We value your effort to improve the security and privacy of this project!
-. Current Bonita REST API documentation: https://documentation.bonitasoft.com/bonita/7.11/rest-api-overview
-. OpenAPI specification: https://swagger.io/specification/
-. OpenAPI generator: https://github.com/OpenAPITools/openapi-generator
+- Current Bonita REST API documentation: https://documentation.bonitasoft.com/bonita/{bonita-short-version}/rest-api-overview
+- OpenAPI specification: https://swagger.io/specification/
+- OpenAPI generator: https://github.com/OpenAPITools/openapi-generator
+- OpenFeign: https://github.com/OpenFeign/feign
