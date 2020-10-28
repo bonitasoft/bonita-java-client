@@ -1,10 +1,12 @@
 package org.bonitasoft.web.client;
 
+import feign.Feign;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.testcontainers.BonitaContainer;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.exception.process.DuplicatedProcessException;
 import org.bonitasoft.web.client.exception.process.ProcessActivationException;
+import org.bonitasoft.web.client.feign.BonitaFeignClientBuilder;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.model.*;
 import org.bonitasoft.web.client.services.policies.ApplicationImportPolicy;
@@ -16,6 +18,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
+import org.testcontainers.shaded.okhttp3.OkHttpClient;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -268,7 +272,6 @@ class BonitaClientIT {
 
         // Then
         assertThat(processProblems).isNotEmpty();
-
     }
 
 

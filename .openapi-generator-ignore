@@ -32,7 +32,8 @@
 **/org/bonitasoft/web/client/invoker/ServerVariable.java
 src/main/AndroidManifest.xml
 
-gradle/wrapper/
+gen
+gradle
 gradle.properties
 gradlew
 gradlew.bat

@@ -134,7 +134,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
         if (!LogContentLevel.OFF.equals(logContentLevel)) {
             HttpLoggingInterceptor logInterceptor =
-                    new HttpLoggingInterceptor(message -> LoggerFactory.getLogger(OkHttpClient.class).info(message));
+                    new HttpLoggingInterceptor(message -> LoggerFactory.getLogger(BonitaClient.class).info(message));
             switch (logContentLevel) {
                 case FULL:
                     logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

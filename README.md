@@ -24,15 +24,13 @@ After the client library is installed/deployed, you can use it in your Maven pro
 
 ```xml
 <dependency>
-    <groupId>org.openapitools</groupId>
-    <artifactId>openapi-java-client</artifactId>
-    <version>0.0.1</version>
+    <groupId>org.bonitasoft.web</groupId>
+    <artifactId>bonita-java-client</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <scope>compile</scope>
 </dependency>
 
 ```
-
-## Author
 
 
 
