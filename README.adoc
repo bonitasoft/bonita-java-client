@@ -1,6 +1,4 @@
 :doctype: book
-:toc: left
-:toclevels: 3
 :sectnums:
 :icons: font
 :source-highlighter: highlightjs
@@ -9,16 +7,17 @@
 :sectlinks:
 :sectanchors:
 :linkcss: false
+:allow-uri-read:
 :imagesdir: ./doc/images
 :short-bonita-version: 7.11
 
 [.float-group]
 --
 [.left]
-image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com"]]
+image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
 
 [.left]
-image::openapi.png[OpenAPI,link="https://swagger.io/specification"]
+image::openapi.png[OpenAPI,link="https://swagger.io/specification",width=150px]
 --
 
 [.float-group]
@@ -59,7 +58,7 @@ After the client library is installed/deployed, you can use it in your Maven pro
 [source,bash]
 ----
 <dependency>
-include::pom.xml[lines=5..7]
+include::https://raw.githubusercontent.com/bonitasoft/bonita-java-client/feat/iso-fonct/pom.xml[lines=5..7]
 </dependency>
 ----
 
