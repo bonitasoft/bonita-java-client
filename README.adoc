@@ -67,7 +67,7 @@ After the client library is installed/deployed, you can use it in your Maven pro
 </dependency>
 ----
 
-The following code creates a java client instance targeting a bonita server listening at `http://localhost:8080/bonita`. After login, it query the deployed process
+The following code creates a java client instance targeting a bonita server listening at `http://localhost:8080/bonita`. After login in, it queries the deployed processes
 with pagination parameters (page index: 0,page size: 20)
 
 [source,java,subs="attributes"]
@@ -82,6 +82,9 @@ log.debug("Bonita version: {}", session.getVersion());
 
 // Use the client &#x1F973;
 List<BusinessProcess> businessProcesses = client.processes().searchProcesses(0, 20);
+
+// Logout when done
+client.logout();
 ----
 
 == Configuration
