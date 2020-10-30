@@ -33,7 +33,7 @@ jobs:
           path: pom.xml
 
       # Push snapshots to maven central
-      - name: Release Maven archetype
+      - name: Push snapshots to Maven central
         uses: samuelmeuli/action-maven-publish@v1
         with:
           gpg_private_key: ${{ secrets.gpg_private_key }}
