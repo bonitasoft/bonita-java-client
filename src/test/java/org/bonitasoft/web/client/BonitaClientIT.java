@@ -28,6 +28,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.bonitasoft.web.client.TestUtils.*;
 import static org.bonitasoft.web.client.api.ApplicationApi.SearchApplicationsQueryParams;
 import static org.bonitasoft.web.client.api.UserApi.SearchUsersQueryParams;
 
@@ -286,9 +287,5 @@ class BonitaClientIT {
         assertThat(session.getUserName()).isEqualTo("install");
     }
 
-    @NotNull
-    private File getClasspathFile(String s) throws URISyntaxException {
-        return new File(getClass().getResource(s).toURI());
-    }
 
 }
