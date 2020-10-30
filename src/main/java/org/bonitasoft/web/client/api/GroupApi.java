@@ -43,6 +43,18 @@ public interface GroupApi extends ApiClient.Api {
   void deleteGroupById(@Param("id") String id);
 
   /**
+   * Finds the Group by ID
+   * Returns the single Group for the given ID 
+   * @param id ID of the Group to return (required)
+   * @return Group
+   */
+  @RequestLine("GET /API/identity/group/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  Group getGroupById(@Param("id") String id);
+
+  /**
    * Finds Groups
    * Finds Groups with pagination params and filters.  - can order on &#x60;id&#x60;,&#x60;name&#x60;,&#x60;displayName&#x60; - can filter on &#x60;name&#x60;,&#x60;displayName&#x60;,&#x60;parent_path&#x60; 
    * @param p index of the page to display (required)
@@ -55,15 +67,15 @@ public interface GroupApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Group> findGroups(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<Group> searchGroups(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds Groups
    * Finds Groups with pagination params and filters.  - can order on &#x60;id&#x60;,&#x60;name&#x60;,&#x60;displayName&#x60; - can filter on &#x60;name&#x60;,&#x60;displayName&#x60;,&#x60;parent_path&#x60; 
-   * Note, this is equivalent to the other <code>findGroups</code> method,
+   * Note, this is equivalent to the other <code>searchGroups</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindGroupsQueryParams} class that allows for
+   * used with the {@link SearchGroupsQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -79,42 +91,30 @@ public interface GroupApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<Group> findGroups(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<Group> searchGroups(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findGroups</code> method in a fluent style.
+   * <code>searchGroups</code> method in a fluent style.
    */
-  public static class FindGroupsQueryParams extends HashMap<String, Object> {
-    public FindGroupsQueryParams p(final Integer value) {
+  public static class SearchGroupsQueryParams extends HashMap<String, Object> {
+    public SearchGroupsQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindGroupsQueryParams c(final Integer value) {
+    public SearchGroupsQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindGroupsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchGroupsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindGroupsQueryParams o(final String value) {
+    public SearchGroupsQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the Group by ID
-   * Returns the single Group for the given ID 
-   * @param id ID of the Group to return (required)
-   * @return Group
-   */
-  @RequestLine("GET /API/identity/group/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  Group getGroupById(@Param("id") String id);
 
   /**
    * Update the Group by ID

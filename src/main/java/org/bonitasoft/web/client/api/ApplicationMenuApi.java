@@ -43,6 +43,18 @@ public interface ApplicationMenuApi extends ApiClient.Api {
   void deleteApplicationMenuById(@Param("id") String id);
 
   /**
+   * Finds a application menu by ID
+   * Returns a single application menu for the given ID 
+   * @param id ID of application menu to return (required)
+   * @return ApplicationMenu
+   */
+  @RequestLine("GET /API/living/application-menu/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ApplicationMenu geApplicationMenuById(@Param("id") String id);
+
+  /**
    * Finds application menus
    * Returns application menus with pagination params and filters  - can order on &#x60;id&#x60;, &#x60;displayName&#x60;, &#x60;applicationId&#x60;, &#x60;applicationPageId&#x60;, &#x60;menuIndex&#x60;, &#x60;parentMenuId&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;id&#x60;, &#x60;displayName&#x60;, &#x60;applicationId&#x60;, &#x60;applicationPageId&#x60;, &#x60;menuIndex&#x60;, &#x60;parentMenuId&#x60; 
    * @param p index of the page to display (required)
@@ -56,15 +68,15 @@ public interface ApplicationMenuApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ApplicationMenu> findApplicationMenus(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ApplicationMenu> searchApplicationMenus(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds application menus
    * Returns application menus with pagination params and filters  - can order on &#x60;id&#x60;, &#x60;displayName&#x60;, &#x60;applicationId&#x60;, &#x60;applicationPageId&#x60;, &#x60;menuIndex&#x60;, &#x60;parentMenuId&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;id&#x60;, &#x60;displayName&#x60;, &#x60;applicationId&#x60;, &#x60;applicationPageId&#x60;, &#x60;menuIndex&#x60;, &#x60;parentMenuId&#x60; 
-   * Note, this is equivalent to the other <code>findApplicationMenus</code> method,
+   * Note, this is equivalent to the other <code>searchApplicationMenus</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindApplicationMenusQueryParams} class that allows for
+   * used with the {@link SearchApplicationMenusQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -81,46 +93,34 @@ public interface ApplicationMenuApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ApplicationMenu> findApplicationMenus(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ApplicationMenu> searchApplicationMenus(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findApplicationMenus</code> method in a fluent style.
+   * <code>searchApplicationMenus</code> method in a fluent style.
    */
-  public static class FindApplicationMenusQueryParams extends HashMap<String, Object> {
-    public FindApplicationMenusQueryParams p(final Integer value) {
+  public static class SearchApplicationMenusQueryParams extends HashMap<String, Object> {
+    public SearchApplicationMenusQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindApplicationMenusQueryParams c(final Integer value) {
+    public SearchApplicationMenusQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindApplicationMenusQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchApplicationMenusQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindApplicationMenusQueryParams o(final String value) {
+    public SearchApplicationMenusQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindApplicationMenusQueryParams s(final String value) {
+    public SearchApplicationMenusQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds a application menu by ID
-   * Returns a single application menu for the given ID 
-   * @param id ID of application menu to return (required)
-   * @return ApplicationMenu
-   */
-  @RequestLine("GET /API/living/application-menu/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  ApplicationMenu geApplicationMenuById(@Param("id") String id);
 
   /**
    * Update a application menu by ID

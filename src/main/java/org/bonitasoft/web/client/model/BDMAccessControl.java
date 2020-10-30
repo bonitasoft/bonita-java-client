@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.bonitasoft.web.client.model.TenantResourceState;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -44,41 +45,8 @@ public class BDMAccessControl implements Serializable {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  /**
-   * BDM access control
-   */
-  public enum StateEnum {
-    INSTALLED("INSTALLED");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   public static final String JSON_PROPERTY_STATE = "state";
-  private StateEnum state;
+  private TenantResourceState state;
 
   public static final String JSON_PROPERTY_LAST_UPDATED_BY = "lastUpdatedBy";
   private String lastUpdatedBy;
@@ -137,27 +105,27 @@ public class BDMAccessControl implements Serializable {
   }
 
 
-  public BDMAccessControl state(StateEnum state) {
+  public BDMAccessControl state(TenantResourceState state) {
     
     this.state = state;
     return this;
   }
 
    /**
-   * BDM access control
+   * Get state
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "BDM access control")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public StateEnum getState() {
+  public TenantResourceState getState() {
     return state;
   }
 
 
-  public void setState(StateEnum state) {
+  public void setState(TenantResourceState state) {
     this.state = state;
   }
 

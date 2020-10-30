@@ -32,6 +32,18 @@ public interface ManualTaskApi extends ApiClient.Api {
   ManualTask createManualTask(ManualTaskCreateRequest body);
 
   /**
+   * Finds the ManualTask by ID
+   * Returns the single ManualTask for the given ID 
+   * @param id ID of the ManualTask to return (required)
+   * @return ManualTask
+   */
+  @RequestLine("GET /API/bpm/manualTask/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ManualTask getManualTaskById(@Param("id") String id);
+
+  /**
    * Finds ManualTasks
    * Finds ManualTasks with pagination params and filters  You can filter on:  * &#x60;assigned_id&#x3D;{user_id}&#x60;: retrieve only the manual tasks assigned to the specified user. For example, retrieve the manual tasks assigned to user with id 1: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;assigned_id%3d1&#x60;. * &#x60;state&#x3D;skipped | ready | completed | failed&#x60; : retrieve only the manual tasks with the specified state. For example, retrieve the ready tasks: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;state%3dready&#x60;. * &#x60;caseId&#x3D;{case_id}&#x60;: retrieve only the manual tasks created in the specified case. For example, retrieve the manual tasks for the case\\_id 2: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;caseId%3d2&#x60;. * &#x60;parentTaskId&#x3D;{parentTask_id}&#x60;: retrieve only the manual tasks for a specific parentTask. For example, retrieve the manual tasks for the parentTask\\_id 40001: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;parentTaskId%3d40001&#x60;.  You can search on:  * name: search all manual tasks with a name that starts with the search string. For example, search for all manual tasks that have a name that starts with MySubTask: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;s&#x3D;MySubTask&#x60;. 
    * @param p index of the page to display (required)
@@ -45,15 +57,15 @@ public interface ManualTaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ManualTask> findManualTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ManualTask> searchManualTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ManualTasks
    * Finds ManualTasks with pagination params and filters  You can filter on:  * &#x60;assigned_id&#x3D;{user_id}&#x60;: retrieve only the manual tasks assigned to the specified user. For example, retrieve the manual tasks assigned to user with id 1: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;assigned_id%3d1&#x60;. * &#x60;state&#x3D;skipped | ready | completed | failed&#x60; : retrieve only the manual tasks with the specified state. For example, retrieve the ready tasks: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;state%3dready&#x60;. * &#x60;caseId&#x3D;{case_id}&#x60;: retrieve only the manual tasks created in the specified case. For example, retrieve the manual tasks for the case\\_id 2: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;caseId%3d2&#x60;. * &#x60;parentTaskId&#x3D;{parentTask_id}&#x60;: retrieve only the manual tasks for a specific parentTask. For example, retrieve the manual tasks for the parentTask\\_id 40001: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;parentTaskId%3d40001&#x60;.  You can search on:  * name: search all manual tasks with a name that starts with the search string. For example, search for all manual tasks that have a name that starts with MySubTask: &#x60;/API/bpm/manualTask?p&#x3D;0&amp;c&#x3D;10&amp;s&#x3D;MySubTask&#x60;. 
-   * Note, this is equivalent to the other <code>findManualTasks</code> method,
+   * Note, this is equivalent to the other <code>searchManualTasks</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindManualTasksQueryParams} class that allows for
+   * used with the {@link SearchManualTasksQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -70,46 +82,34 @@ public interface ManualTaskApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ManualTask> findManualTasks(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ManualTask> searchManualTasks(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findManualTasks</code> method in a fluent style.
+   * <code>searchManualTasks</code> method in a fluent style.
    */
-  public static class FindManualTasksQueryParams extends HashMap<String, Object> {
-    public FindManualTasksQueryParams p(final Integer value) {
+  public static class SearchManualTasksQueryParams extends HashMap<String, Object> {
+    public SearchManualTasksQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindManualTasksQueryParams c(final Integer value) {
+    public SearchManualTasksQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindManualTasksQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchManualTasksQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindManualTasksQueryParams o(final String value) {
+    public SearchManualTasksQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindManualTasksQueryParams s(final String value) {
+    public SearchManualTasksQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the ManualTask by ID
-   * Returns the single ManualTask for the given ID 
-   * @param id ID of the ManualTask to return (required)
-   * @return ManualTask
-   */
-  @RequestLine("GET /API/bpm/manualTask/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  ManualTask getManualTaskById(@Param("id") String id);
 
   /**
    * Update the ManualTask by ID

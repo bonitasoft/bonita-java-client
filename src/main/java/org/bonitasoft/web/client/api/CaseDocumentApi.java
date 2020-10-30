@@ -43,6 +43,18 @@ public interface CaseDocumentApi extends ApiClient.Api {
   void deleteCaseDocumentById(@Param("id") String id);
 
   /**
+   * Finds the CaseDocument by ID
+   * Returns the single CaseDocument for the given ID. Use a GET method to get a document from a case. First you get the document information, then you download the content. To get the document information, specify the document id in the URL. The document id is created when you upload a document to a case. There is no payload. 
+   * @param id ID of the CaseDocument to return (required)
+   * @return CaseDocument
+   */
+  @RequestLine("GET /API/bpm/caseDocument/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  CaseDocument getCaseDocumentById(@Param("id") String id);
+
+  /**
    * Finds CaseDocuments
    * Finds CaseDocuments with pagination params and filters  It is possible to filter on three parameters: &#x60;submittedBy&#x60;, &#x60;name&#x60; and &#x60;description&#x60;.   * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier.  * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_.    Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the name or the start of a word in the name.  * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that contain _string_.    Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the description or the start of a word in the description. 
    * @param p index of the page to display (required)
@@ -55,15 +67,15 @@ public interface CaseDocumentApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<CaseDocument> findCaseDocuments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<CaseDocument> searchCaseDocuments(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds CaseDocuments
    * Finds CaseDocuments with pagination params and filters  It is possible to filter on three parameters: &#x60;submittedBy&#x60;, &#x60;name&#x60; and &#x60;description&#x60;.   * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier.  * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_.    Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the name or the start of a word in the name.  * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that contain _string_.    Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the description or the start of a word in the description. 
-   * Note, this is equivalent to the other <code>findCaseDocuments</code> method,
+   * Note, this is equivalent to the other <code>searchCaseDocuments</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindCaseDocumentsQueryParams} class that allows for
+   * used with the {@link SearchCaseDocumentsQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -79,42 +91,30 @@ public interface CaseDocumentApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<CaseDocument> findCaseDocuments(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<CaseDocument> searchCaseDocuments(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findCaseDocuments</code> method in a fluent style.
+   * <code>searchCaseDocuments</code> method in a fluent style.
    */
-  public static class FindCaseDocumentsQueryParams extends HashMap<String, Object> {
-    public FindCaseDocumentsQueryParams p(final Integer value) {
+  public static class SearchCaseDocumentsQueryParams extends HashMap<String, Object> {
+    public SearchCaseDocumentsQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindCaseDocumentsQueryParams c(final Integer value) {
+    public SearchCaseDocumentsQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindCaseDocumentsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchCaseDocumentsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindCaseDocumentsQueryParams o(final String value) {
+    public SearchCaseDocumentsQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the CaseDocument by ID
-   * Returns the single CaseDocument for the given ID. Use a GET method to get a document from a case. First you get the document information, then you download the content. To get the document information, specify the document id in the URL. The document id is created when you upload a document to a case. There is no payload. 
-   * @param id ID of the CaseDocument to return (required)
-   * @return CaseDocument
-   */
-  @RequestLine("GET /API/bpm/caseDocument/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  CaseDocument getCaseDocumentById(@Param("id") String id);
 
   /**
    * Update the CaseDocument by ID

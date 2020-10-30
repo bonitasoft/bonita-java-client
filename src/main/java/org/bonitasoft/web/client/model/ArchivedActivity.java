@@ -21,9 +21,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.bonitasoft.web.client.model.ActivityPriorityEnum;
-import org.bonitasoft.web.client.model.ActivityStateEnum;
-import org.bonitasoft.web.client.model.ActivityTypeEnum;
+import org.bonitasoft.web.client.model.ActivityPriority;
+import org.bonitasoft.web.client.model.ActivityState;
+import org.bonitasoft.web.client.model.ActivityType;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -63,7 +63,7 @@ public class ArchivedActivity implements Serializable {
   private String id;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  private ActivityTypeEnum type;
+  private ActivityType type;
 
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -78,7 +78,7 @@ public class ArchivedActivity implements Serializable {
   private String displayDescription;
 
   public static final String JSON_PROPERTY_STATE = "state";
-  private ActivityStateEnum state;
+  private ActivityState state;
 
   public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
   private String reachedStateDate;
@@ -90,7 +90,7 @@ public class ArchivedActivity implements Serializable {
   private String dueDate;
 
   public static final String JSON_PROPERTY_PRIORITY = "priority";
-  private ActivityPriorityEnum priority;
+  private ActivityPriority priority;
 
   public static final String JSON_PROPERTY_PROCESS_ID = "processId";
   private String processId;
@@ -151,7 +151,7 @@ public class ArchivedActivity implements Serializable {
   }
 
 
-  public ArchivedActivity type(ActivityTypeEnum type) {
+  public ArchivedActivity type(ActivityType type) {
     
     this.type = type;
     return this;
@@ -166,12 +166,12 @@ public class ArchivedActivity implements Serializable {
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ActivityTypeEnum getType() {
+  public ActivityType getType() {
     return type;
   }
 
 
-  public void setType(ActivityTypeEnum type) {
+  public void setType(ActivityType type) {
     this.type = type;
   }
 
@@ -276,7 +276,7 @@ public class ArchivedActivity implements Serializable {
   }
 
 
-  public ArchivedActivity state(ActivityStateEnum state) {
+  public ArchivedActivity state(ActivityState state) {
     
     this.state = state;
     return this;
@@ -291,12 +291,12 @@ public class ArchivedActivity implements Serializable {
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ActivityStateEnum getState() {
+  public ActivityState getState() {
     return state;
   }
 
 
-  public void setState(ActivityStateEnum state) {
+  public void setState(ActivityState state) {
     this.state = state;
   }
 
@@ -376,7 +376,7 @@ public class ArchivedActivity implements Serializable {
   }
 
 
-  public ArchivedActivity priority(ActivityPriorityEnum priority) {
+  public ArchivedActivity priority(ActivityPriority priority) {
     
     this.priority = priority;
     return this;
@@ -391,12 +391,12 @@ public class ArchivedActivity implements Serializable {
   @JsonProperty(JSON_PROPERTY_PRIORITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ActivityPriorityEnum getPriority() {
+  public ActivityPriority getPriority() {
     return priority;
   }
 
 
-  public void setPriority(ActivityPriorityEnum priority) {
+  public void setPriority(ActivityPriority priority) {
     this.priority = priority;
   }
 

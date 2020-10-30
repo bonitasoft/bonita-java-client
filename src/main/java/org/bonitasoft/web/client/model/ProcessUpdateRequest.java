@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.bonitasoft.web.client.model.ActivationState;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -42,43 +43,8 @@ public class ProcessUpdateRequest implements Serializable {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private String displayName;
 
-  /**
-   * activation state of the Process
-   */
-  public enum ActivationStateEnum {
-    ENABLED("ENABLED"),
-    
-    DISABLED("DISABLED");
-
-    private String value;
-
-    ActivationStateEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ActivationStateEnum fromValue(String value) {
-      for (ActivationStateEnum b : ActivationStateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
-  private ActivationStateEnum activationState;
+  private ActivationState activationState;
 
 
   public ProcessUpdateRequest displaydescription(String displaydescription) {
@@ -131,27 +97,27 @@ public class ProcessUpdateRequest implements Serializable {
   }
 
 
-  public ProcessUpdateRequest activationState(ActivationStateEnum activationState) {
+  public ProcessUpdateRequest activationState(ActivationState activationState) {
     
     this.activationState = activationState;
     return this;
   }
 
    /**
-   * activation state of the Process
+   * Get activationState
    * @return activationState
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "activation state of the Process")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ActivationStateEnum getActivationState() {
+  public ActivationState getActivationState() {
     return activationState;
   }
 
 
-  public void setActivationState(ActivationStateEnum activationState) {
+  public void setActivationState(ActivationState activationState) {
     this.activationState = activationState;
   }
 

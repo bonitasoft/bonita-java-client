@@ -22,11 +22,19 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
-**/org/bonitasoft/web/client/model/Inline*.java
 **/org/bonitasoft/web/client/api/PortalAuthenticationApi.java
+**/org/bonitasoft/web/client/api/LicenseApi.java
+**/org/bonitasoft/web/client/api/SessionApi.java
+**/org/bonitasoft/web/client/api/ApplicationApi.java
+
+**/org/bonitasoft/web/client/model/Inline*.java
+**/org/bonitasoft/web/client/invoker/ServerConfiguration.java
+**/org/bonitasoft/web/client/invoker/ServerVariable.java
+**/org/bonitasoft/web/client/invoker/auth*
 src/main/AndroidManifest.xml
 
-gradle/wrapper/
+gen
+gradle
 gradle.properties
 gradlew
 gradlew.bat
@@ -40,3 +48,5 @@ docs/Inline*.md
 
 git_push.sh
 .gitignore
+
+README.md

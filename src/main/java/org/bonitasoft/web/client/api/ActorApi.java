@@ -18,6 +18,18 @@ public interface ActorApi extends ApiClient.Api {
 
 
   /**
+   * Finds the Actor by ID
+   * Returns the single Actor for the given ID 
+   * @param id ID of the Actor to return (required)
+   * @return Actor
+   */
+  @RequestLine("GET /API/bpm/actor/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  Actor getActorById(@Param("id") String id);
+
+  /**
    * Finds Actors
    * Finds Actors with pagination params and filters 
    * @param p index of the page to display (required)
@@ -30,15 +42,15 @@ public interface ActorApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Actor> findActors(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<Actor> searchActors(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds Actors
    * Finds Actors with pagination params and filters 
-   * Note, this is equivalent to the other <code>findActors</code> method,
+   * Note, this is equivalent to the other <code>searchActors</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindActorsQueryParams} class that allows for
+   * used with the {@link SearchActorsQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -54,42 +66,30 @@ public interface ActorApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<Actor> findActors(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<Actor> searchActors(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findActors</code> method in a fluent style.
+   * <code>searchActors</code> method in a fluent style.
    */
-  public static class FindActorsQueryParams extends HashMap<String, Object> {
-    public FindActorsQueryParams p(final Integer value) {
+  public static class SearchActorsQueryParams extends HashMap<String, Object> {
+    public SearchActorsQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindActorsQueryParams c(final Integer value) {
+    public SearchActorsQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindActorsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchActorsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindActorsQueryParams o(final String value) {
+    public SearchActorsQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the Actor by ID
-   * Returns the single Actor for the given ID 
-   * @param id ID of the Actor to return (required)
-   * @return Actor
-   */
-  @RequestLine("GET /API/bpm/actor/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  Actor getActorById(@Param("id") String id);
 
   /**
    * Update the Actor by ID

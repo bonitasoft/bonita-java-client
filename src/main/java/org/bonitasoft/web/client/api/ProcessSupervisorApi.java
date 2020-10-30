@@ -55,15 +55,15 @@ public interface ProcessSupervisorApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ProcessSupervisor> findProcessSupervisors(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ProcessSupervisor> searchProcessSupervisors(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ProcessSupervisors
    * Finds ProcessSupervisors with pagination params and filters  To filter, you need to specify the &#x60;process_id&#x60;, and then the &#x60;user_id&#x60;, &#x60;group_id&#x60; and &#x60;role_id&#x60; with one of them (two if you want to filter on group and role) set to &#x60;&gt;0&#x60; and the other ones set to &#x60;-1&#x60;. E.g.: &#x60;f&#x3D;process_id%3D8040901857674754544&amp;f&#x3D;user_id%3D&gt;0&amp;f&#x3D;group_id%3D-1&amp;f&#x3D;role_id%3D-1&#x60; 
-   * Note, this is equivalent to the other <code>findProcessSupervisors</code> method,
+   * Note, this is equivalent to the other <code>searchProcessSupervisors</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindProcessSupervisorsQueryParams} class that allows for
+   * used with the {@link SearchProcessSupervisorsQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -80,30 +80,30 @@ public interface ProcessSupervisorApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ProcessSupervisor> findProcessSupervisors(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ProcessSupervisor> searchProcessSupervisors(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findProcessSupervisors</code> method in a fluent style.
+   * <code>searchProcessSupervisors</code> method in a fluent style.
    */
-  public static class FindProcessSupervisorsQueryParams extends HashMap<String, Object> {
-    public FindProcessSupervisorsQueryParams p(final Integer value) {
+  public static class SearchProcessSupervisorsQueryParams extends HashMap<String, Object> {
+    public SearchProcessSupervisorsQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindProcessSupervisorsQueryParams c(final Integer value) {
+    public SearchProcessSupervisorsQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindProcessSupervisorsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchProcessSupervisorsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindProcessSupervisorsQueryParams o(final String value) {
+    public SearchProcessSupervisorsQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindProcessSupervisorsQueryParams s(final String value) {
+    public SearchProcessSupervisorsQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }

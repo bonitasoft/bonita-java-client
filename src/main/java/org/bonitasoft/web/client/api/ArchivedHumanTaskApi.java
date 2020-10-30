@@ -17,6 +17,18 @@ public interface ArchivedHumanTaskApi extends ApiClient.Api {
 
 
   /**
+   * Finds the ArchivedHumanTask by ID
+   * Returns the single ArchivedHumanTask for the given ID 
+   * @param id ID of the ArchivedHumanTask to return (required)
+   * @return ArchivedHumanTask
+   */
+  @RequestLine("GET /API/bpm/archivedHumanTask/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ArchivedHumanTask getArchivedHumanTaskById(@Param("id") String id);
+
+  /**
    * Finds ArchivedHumanTasks
    * Finds ArchivedHumanTasks with pagination params and filters  You can filter on:  * &#x60;assigned_id&#x3D;{user_id}&#x60;: retrieve only the human tasks assigned to the specified ID. For example, retrieve the human tasks assigned to user with id 2: &#x60;/API/bpm/archivedHumanTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;assigned_id%3d2&#x60; * &#x60;state&#x3D;&#x60;: retrieve only the archived user tasks with the specified state. For example, retrieve the skipped tasks: &#x60;/API/bpm/archivedHumanTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;state&#x3D;skipped&#x60; * &#x60;name&#x3D;&#x60;: retrieve only the human tasks with the specified name. For example, retrieve the human tasks with the name \&quot;Analyse Case\&quot;: &#x60;/API/bpm/archivedHumanTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;name&#x3D;Analyse Case&#x60; * &#x60;displayName&#x3D;&#x60;: retrieve only the archived user tasks with the specified displayName. For example, retrieve the human tasks with the displayName \&quot;Analyse Case\&quot;: &#x60;/API/bpm/archivedHumanTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;displayName&#x3D;Analyse Case&#x60; 
    * @param p index of the page to display (required)
@@ -29,15 +41,15 @@ public interface ArchivedHumanTaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ArchivedHumanTask> findArchivedHumanTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o);
+  List<ArchivedHumanTask> searchArchivedHumanTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o);
 
   /**
    * Finds ArchivedHumanTasks
    * Finds ArchivedHumanTasks with pagination params and filters  You can filter on:  * &#x60;assigned_id&#x3D;{user_id}&#x60;: retrieve only the human tasks assigned to the specified ID. For example, retrieve the human tasks assigned to user with id 2: &#x60;/API/bpm/archivedHumanTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;assigned_id%3d2&#x60; * &#x60;state&#x3D;&#x60;: retrieve only the archived user tasks with the specified state. For example, retrieve the skipped tasks: &#x60;/API/bpm/archivedHumanTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;state&#x3D;skipped&#x60; * &#x60;name&#x3D;&#x60;: retrieve only the human tasks with the specified name. For example, retrieve the human tasks with the name \&quot;Analyse Case\&quot;: &#x60;/API/bpm/archivedHumanTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;name&#x3D;Analyse Case&#x60; * &#x60;displayName&#x3D;&#x60;: retrieve only the archived user tasks with the specified displayName. For example, retrieve the human tasks with the displayName \&quot;Analyse Case\&quot;: &#x60;/API/bpm/archivedHumanTask?p&#x3D;0&amp;c&#x3D;10&amp;f&#x3D;displayName&#x3D;Analyse Case&#x60; 
-   * Note, this is equivalent to the other <code>findArchivedHumanTasks</code> method,
+   * Note, this is equivalent to the other <code>searchArchivedHumanTasks</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindArchivedHumanTasksQueryParams} class that allows for
+   * used with the {@link SearchArchivedHumanTasksQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -53,40 +65,28 @@ public interface ArchivedHumanTaskApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ArchivedHumanTask> findArchivedHumanTasks(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ArchivedHumanTask> searchArchivedHumanTasks(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findArchivedHumanTasks</code> method in a fluent style.
+   * <code>searchArchivedHumanTasks</code> method in a fluent style.
    */
-  public static class FindArchivedHumanTasksQueryParams extends HashMap<String, Object> {
-    public FindArchivedHumanTasksQueryParams p(final Integer value) {
+  public static class SearchArchivedHumanTasksQueryParams extends HashMap<String, Object> {
+    public SearchArchivedHumanTasksQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindArchivedHumanTasksQueryParams c(final Integer value) {
+    public SearchArchivedHumanTasksQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindArchivedHumanTasksQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchArchivedHumanTasksQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindArchivedHumanTasksQueryParams o(final String value) {
+    public SearchArchivedHumanTasksQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the ArchivedHumanTask by ID
-   * Returns the single ArchivedHumanTask for the given ID 
-   * @param id ID of the ArchivedHumanTask to return (required)
-   * @return ArchivedHumanTask
-   */
-  @RequestLine("GET /API/bpm/archivedHumanTask/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  ArchivedHumanTask getArchivedHumanTaskById(@Param("id") String id);
 }

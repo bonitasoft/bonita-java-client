@@ -1,0 +1,12 @@
+= Bonita Java Client Changelog
+
+:project-group-id: org.bonitasoft.web
+:project-artifact-id: bonita-java-client
+:project-version: 0.0.1-SNAPSHOT
+:bonita-short-version: 7.11
+:orga: bonitasoft
+:uri-org: https://github.com/{orga}
+:uri-repo: {uri-org}/{project-artifact-id}
+
+This document provides a high-level view of the changes introduced in {project-artifact-id} by release.
+For a detailed view of what has changed, refer to the {uri-repo}/commits/master[commit history] on GitHub.

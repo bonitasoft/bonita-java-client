@@ -5,6 +5,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 
 import org.bonitasoft.web.client.model.Error;
 import org.bonitasoft.web.client.model.License;
+import org.bonitasoft.web.client.model.PlatformLicense;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,13 +18,24 @@ public interface LicenseApi extends ApiClient.Api {
 
 
   /**
+   * Get the current server license
+   * Returns license information for the current server 
+   * @return License
+   */
+  @RequestLine("GET /API/system/license/unusedid")
+  @Headers({
+    "Accept: application/json",
+  })
+  Response getLicense();
+
+  /**
    * Get the platform License
    * Returns the current platform License. This requires a platform session. Log in using the platform login service. 
-   * @return License
+   * @return PlatformLicense
    */
   @RequestLine("GET /API/platform/license")
   @Headers({
     "Accept: application/json",
   })
-  License getLicense();
+  PlatformLicense getPlatformLicense();
 }

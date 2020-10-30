@@ -4,7 +4,6 @@ import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 
 import org.bonitasoft.web.client.model.BDMAccessControl;
-import org.bonitasoft.web.client.model.BDMAccessControlUploadResponse;
 import org.bonitasoft.web.client.model.Error;
 import java.io.File;
 
@@ -37,7 +36,7 @@ public interface BdmAccessControlApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  BDMAccessControl getDBMAccessControlStatus();
+  BDMAccessControl getBDMAccessControlStatus();
 
   /**
    * Import a BDM Access Control
@@ -55,12 +54,12 @@ public interface BdmAccessControlApi extends ApiClient.Api {
    * Upload a BDM Access Control
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Upload BDM Access Control 
    * @param file  (optional)
-   * @return BDMAccessControlUploadResponse
+   * @return String
    */
   @RequestLine("POST /portal/bdmAccessControlUpload")
   @Headers({
     "Content-Type: multipart/form-data",
     "Accept: application/json",
   })
-  BDMAccessControlUploadResponse uploadBDMAccessControl(@Param("file") File file);
+  String uploadBDMAccessControl(@Param("file") File file);
 }

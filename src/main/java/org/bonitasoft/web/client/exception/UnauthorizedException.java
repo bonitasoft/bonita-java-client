@@ -8,9 +8,16 @@
  */
 package org.bonitasoft.web.client.exception;
 
-/**
- * @author Baptiste Mesta.
- */
 public class UnauthorizedException extends ClientException {
-    // only declare a type
+
+    public UnauthorizedException() {
+    }
+
+    public UnauthorizedException(String message) {
+        super(message);
+    }
+
+    public UnauthorizedException(String message, Exception cause) {
+        super(message, cause);
+    }
 }

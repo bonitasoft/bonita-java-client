@@ -57,15 +57,15 @@ public interface MembershipApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<Membership> findMemberships(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<Membership> searchMemberships(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Memberships
    * Finds Memberships with pagination params and filters  **Filter &#x60;user_id&#x60; is mandatory**  You can order with the values: &#x60;ROLE_NAME_ASC&#x60;,&#x60;ROLE_NAME_DESC&#x60;, &#x60;GROUP_NAME_ASC&#x60;,&#x60;GROUP_NAME_DESC&#x60;, &#x60;ASSIGNED_DATE_ASC&#x60;, &#x60;ASSIGNED_DATE_DESC&#x60; 
-   * Note, this is equivalent to the other <code>findMemberships</code> method,
+   * Note, this is equivalent to the other <code>searchMemberships</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindMembershipsQueryParams} class that allows for
+   * used with the {@link SearchMembershipsQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -82,30 +82,30 @@ public interface MembershipApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<Membership> findMemberships(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<Membership> searchMemberships(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findMemberships</code> method in a fluent style.
+   * <code>searchMemberships</code> method in a fluent style.
    */
-  public static class FindMembershipsQueryParams extends HashMap<String, Object> {
-    public FindMembershipsQueryParams p(final Integer value) {
+  public static class SearchMembershipsQueryParams extends HashMap<String, Object> {
+    public SearchMembershipsQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindMembershipsQueryParams c(final Integer value) {
+    public SearchMembershipsQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindMembershipsQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchMembershipsQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindMembershipsQueryParams o(final String value) {
+    public SearchMembershipsQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindMembershipsQueryParams s(final String value) {
+    public SearchMembershipsQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }

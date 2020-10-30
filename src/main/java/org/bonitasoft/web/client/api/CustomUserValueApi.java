@@ -29,15 +29,15 @@ public interface CustomUserValueApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<CustomUserValue> findCustomUserValues(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f);
+  List<CustomUserValue> searchCustomUserValues(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f);
 
   /**
    * Finds CustomUserValues
    * Finds CustomUserValues with pagination params and filters  You can filter on &#x60;userId&#x60;, &#x60;value&#x60;, &#x60;definitionId&#x60; 
-   * Note, this is equivalent to the other <code>findCustomUserValues</code> method,
+   * Note, this is equivalent to the other <code>searchCustomUserValues</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindCustomUserValuesQueryParams} class that allows for
+   * used with the {@link SearchCustomUserValuesQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -52,23 +52,23 @@ public interface CustomUserValueApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<CustomUserValue> findCustomUserValues(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<CustomUserValue> searchCustomUserValues(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findCustomUserValues</code> method in a fluent style.
+   * <code>searchCustomUserValues</code> method in a fluent style.
    */
-  public static class FindCustomUserValuesQueryParams extends HashMap<String, Object> {
-    public FindCustomUserValuesQueryParams p(final Integer value) {
+  public static class SearchCustomUserValuesQueryParams extends HashMap<String, Object> {
+    public SearchCustomUserValuesQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindCustomUserValuesQueryParams c(final Integer value) {
+    public SearchCustomUserValuesQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindCustomUserValuesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchCustomUserValuesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
   }

@@ -122,11 +122,11 @@ public class User implements Serializable {
   }
 
    /**
-   * if \&quot;true\&quot;, user will be activated.
+   * if \&quot;true\&quot;, user is active.
    * @return enabled
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "if \"true\", user will be activated.")
+  @ApiModelProperty(value = "if \"true\", user is active.")
   @JsonProperty(JSON_PROPERTY_ENABLED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

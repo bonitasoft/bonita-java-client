@@ -30,15 +30,15 @@ public interface ConnectorInstanceApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ConnectorInstance> findConnectorInstances(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ConnectorInstance> searchConnectorInstances(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds ConnectorInstances
    * Finds ConnectorInstances with pagination params and filters. Retrieve a list of connector instances attached to a process or a flow node. 
-   * Note, this is equivalent to the other <code>findConnectorInstances</code> method,
+   * Note, this is equivalent to the other <code>searchConnectorInstances</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindConnectorInstancesQueryParams} class that allows for
+   * used with the {@link SearchConnectorInstancesQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -55,30 +55,30 @@ public interface ConnectorInstanceApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ConnectorInstance> findConnectorInstances(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ConnectorInstance> searchConnectorInstances(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findConnectorInstances</code> method in a fluent style.
+   * <code>searchConnectorInstances</code> method in a fluent style.
    */
-  public static class FindConnectorInstancesQueryParams extends HashMap<String, Object> {
-    public FindConnectorInstancesQueryParams p(final Integer value) {
+  public static class SearchConnectorInstancesQueryParams extends HashMap<String, Object> {
+    public SearchConnectorInstancesQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindConnectorInstancesQueryParams c(final Integer value) {
+    public SearchConnectorInstancesQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindConnectorInstancesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchConnectorInstancesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindConnectorInstancesQueryParams o(final String value) {
+    public SearchConnectorInstancesQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindConnectorInstancesQueryParams s(final String value) {
+    public SearchConnectorInstancesQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }

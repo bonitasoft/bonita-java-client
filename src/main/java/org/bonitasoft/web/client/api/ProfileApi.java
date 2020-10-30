@@ -44,68 +44,6 @@ public interface ProfileApi extends ApiClient.Api {
   void deleteProfileById(@Param("id") String id);
 
   /**
-   * Finds Profiles
-   * Finds Profiles with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;name&#x60;,&#x60;hasNavigation&#x60; 
-   * @param p index of the page to display (required)
-   * @param c maximum number of elements to retrieve (required)
-   * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
-   * @param s can search on attributes (optional)
-   * @return List&lt;Profile&gt;
-   */
-  @RequestLine("GET /API/portal/profile?p={p}&c={c}&f={f}&s={s}")
-  @Headers({
-    "Accept: application/json",
-  })
-  List<Profile> findProfiles(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("s") String s);
-
-  /**
-   * Finds Profiles
-   * Finds Profiles with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;name&#x60;,&#x60;hasNavigation&#x60; 
-   * Note, this is equivalent to the other <code>findProfiles</code> method,
-   * but with the query parameters collected into a single Map parameter. This
-   * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindProfilesQueryParams} class that allows for
-   * building up this map in a fluent style.
-   * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>p - index of the page to display (required)</li>
-   *   <li>c - maximum number of elements to retrieve (required)</li>
-   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
-   *   <li>s - can search on attributes (optional)</li>
-   *   </ul>
-   * @return List&lt;Profile&gt;
-   */
-  @RequestLine("GET /API/portal/profile?p={p}&c={c}&f={f}&s={s}")
-  @Headers({
-  "Accept: application/json",
-  })
-  List<Profile> findProfiles(@QueryMap(encoded=true) Map<String, Object> queryParams);
-
-  /**
-   * A convenience class for generating query parameters for the
-   * <code>findProfiles</code> method in a fluent style.
-   */
-  public static class FindProfilesQueryParams extends HashMap<String, Object> {
-    public FindProfilesQueryParams p(final Integer value) {
-      put("p", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindProfilesQueryParams c(final Integer value) {
-      put("c", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindProfilesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
-      return this;
-    }
-    public FindProfilesQueryParams s(final String value) {
-      put("s", EncodingUtils.encode(value));
-      return this;
-    }
-  }
-
-  /**
    * Finds the Profile by ID
    * Returns the single Profile for the given ID 
    * @param id ID of the Profile to return (required)
@@ -120,7 +58,7 @@ public interface ProfileApi extends ApiClient.Api {
   /**
    * Import profiles
    * Import profiles 
-   * @param profileDataUpload Uploaded file (optional)
+   * @param profilesDataUpload Uploaded file (optional)
    * @param importPolicy Import policy (optional)
    */
   @RequestLine("POST /services/profile/import")
@@ -128,7 +66,75 @@ public interface ProfileApi extends ApiClient.Api {
     "Content-Type: application/x-www-form-urlencoded",
     "Accept: application/json",
   })
-  void importProfiles(@Param("profileDataUpload") String profileDataUpload, @Param("importPolicy") String importPolicy);
+  void importProfiles(@Param("profilesDataUpload") String profilesDataUpload, @Param("importPolicy") String importPolicy);
+
+  /**
+   * Finds Profiles
+   * Finds Profiles with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;name&#x60;,&#x60;hasNavigation&#x60; - can order on &#x60;name&#x60; 
+   * @param p index of the page to display (required)
+   * @param c maximum number of elements to retrieve (required)
+   * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
+   * @param s can search on attributes (optional)
+   * @param o can order on attributes (optional)
+   * @return List&lt;Profile&gt;
+   */
+  @RequestLine("GET /API/portal/profile?p={p}&c={c}&f={f}&s={s}&o={o}")
+  @Headers({
+    "Accept: application/json",
+  })
+  List<Profile> searchProfiles(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("s") String s, @Param("o") String o);
+
+  /**
+   * Finds Profiles
+   * Finds Profiles with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;name&#x60;,&#x60;hasNavigation&#x60; - can order on &#x60;name&#x60; 
+   * Note, this is equivalent to the other <code>searchProfiles</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link SearchProfilesQueryParams} class that allows for
+   * building up this map in a fluent style.
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>p - index of the page to display (required)</li>
+   *   <li>c - maximum number of elements to retrieve (required)</li>
+   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
+   *   <li>s - can search on attributes (optional)</li>
+   *   <li>o - can order on attributes (optional)</li>
+   *   </ul>
+   * @return List&lt;Profile&gt;
+   */
+  @RequestLine("GET /API/portal/profile?p={p}&c={c}&f={f}&s={s}&o={o}")
+  @Headers({
+  "Accept: application/json",
+  })
+  List<Profile> searchProfiles(@QueryMap(encoded=true) Map<String, Object> queryParams);
+
+  /**
+   * A convenience class for generating query parameters for the
+   * <code>searchProfiles</code> method in a fluent style.
+   */
+  public static class SearchProfilesQueryParams extends HashMap<String, Object> {
+    public SearchProfilesQueryParams p(final Integer value) {
+      put("p", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchProfilesQueryParams c(final Integer value) {
+      put("c", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchProfilesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
+      return this;
+    }
+    public SearchProfilesQueryParams s(final String value) {
+      put("s", EncodingUtils.encode(value));
+      return this;
+    }
+    public SearchProfilesQueryParams o(final String value) {
+      put("o", EncodingUtils.encode(value));
+      return this;
+    }
+  }
 
   /**
    * Update the Profile by ID

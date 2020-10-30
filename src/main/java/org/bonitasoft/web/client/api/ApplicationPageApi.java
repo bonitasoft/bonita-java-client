@@ -42,6 +42,18 @@ public interface ApplicationPageApi extends ApiClient.Api {
   void deleteApplicationPageById(@Param("id") String id);
 
   /**
+   * Finds an application page by ID
+   * Returns a single application page for the given ID 
+   * @param id ID of application page to return (required)
+   * @return ApplicationPage
+   */
+  @RequestLine("GET /API/living/application-page/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  ApplicationPage getApplicationPageById(@Param("id") String id);
+
+  /**
    * Finds application pages
    * Finds application pages with pagination params and filters  - can order on &#x60;id&#x60;, &#x60;token&#x60;, &#x60;applicationId&#x60;, &#x60;pageId&#x60; - can search on &#x60;token&#x60; - can filter on &#x60;id&#x60;, &#x60;token&#x60;, &#x60;applicationId&#x60;, &#x60;pageId&#x60; 
    * @param p index of the page to display (required)
@@ -55,15 +67,15 @@ public interface ApplicationPageApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<ApplicationPage> findApplicationPages(@Param("p") Integer p, @Param("c") Integer c, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<ApplicationPage> searchApplicationPages(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds application pages
    * Finds application pages with pagination params and filters  - can order on &#x60;id&#x60;, &#x60;token&#x60;, &#x60;applicationId&#x60;, &#x60;pageId&#x60; - can search on &#x60;token&#x60; - can filter on &#x60;id&#x60;, &#x60;token&#x60;, &#x60;applicationId&#x60;, &#x60;pageId&#x60; 
-   * Note, this is equivalent to the other <code>findApplicationPages</code> method,
+   * Note, this is equivalent to the other <code>searchApplicationPages</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindApplicationPagesQueryParams} class that allows for
+   * used with the {@link SearchApplicationPagesQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -80,44 +92,32 @@ public interface ApplicationPageApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<ApplicationPage> findApplicationPages(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ApplicationPage> searchApplicationPages(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findApplicationPages</code> method in a fluent style.
+   * <code>searchApplicationPages</code> method in a fluent style.
    */
-  public static class FindApplicationPagesQueryParams extends HashMap<String, Object> {
-    public FindApplicationPagesQueryParams p(final Integer value) {
+  public static class SearchApplicationPagesQueryParams extends HashMap<String, Object> {
+    public SearchApplicationPagesQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindApplicationPagesQueryParams c(final Integer value) {
+    public SearchApplicationPagesQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindApplicationPagesQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchApplicationPagesQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindApplicationPagesQueryParams o(final String value) {
+    public SearchApplicationPagesQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindApplicationPagesQueryParams s(final String value) {
+    public SearchApplicationPagesQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds an application page by ID
-   * Returns a single application page for the given ID 
-   * @param id ID of application page to return (required)
-   * @return ApplicationPage
-   */
-  @RequestLine("GET /API/living/application-page/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  ApplicationPage getApplicationPageById(@Param("id") String id);
 }

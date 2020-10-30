@@ -19,6 +19,18 @@ public interface TimerEventTriggerApi extends ApiClient.Api {
 
 
   /**
+   * Finds the TimerEventTrigger by ID
+   * Returns the single TimerEventTrigger for the given ID 
+   * @param id ID of the TimerEventTrigger to return (required)
+   * @return TimerEventTrigger
+   */
+  @RequestLine("GET /API/bpm/timerEventTrigger/{id}")
+  @Headers({
+    "Accept: application/json",
+  })
+  TimerEventTrigger getTimerEventTriggerById(@Param("id") String id);
+
+  /**
    * Finds TimerEventTriggers
    * Finds TimerEventTriggers with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
    * @param p index of the page to display (required)
@@ -33,15 +45,15 @@ public interface TimerEventTriggerApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<TimerEventTrigger> findTimerEventTriggers(@Param("p") Integer p, @Param("c") Integer c, @Param("caseId") String caseId, @Param("f") String f, @Param("o") String o, @Param("s") String s);
+  List<TimerEventTrigger> searchTimerEventTriggers(@Param("p") Integer p, @Param("c") Integer c, @Param("caseId") String caseId, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds TimerEventTriggers
    * Finds TimerEventTriggers with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
-   * Note, this is equivalent to the other <code>findTimerEventTriggers</code> method,
+   * Note, this is equivalent to the other <code>searchTimerEventTriggers</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link FindTimerEventTriggersQueryParams} class that allows for
+   * used with the {@link SearchTimerEventTriggersQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -59,50 +71,38 @@ public interface TimerEventTriggerApi extends ApiClient.Api {
   @Headers({
   "Accept: application/json",
   })
-  List<TimerEventTrigger> findTimerEventTriggers(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<TimerEventTrigger> searchTimerEventTriggers(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>findTimerEventTriggers</code> method in a fluent style.
+   * <code>searchTimerEventTriggers</code> method in a fluent style.
    */
-  public static class FindTimerEventTriggersQueryParams extends HashMap<String, Object> {
-    public FindTimerEventTriggersQueryParams p(final Integer value) {
+  public static class SearchTimerEventTriggersQueryParams extends HashMap<String, Object> {
+    public SearchTimerEventTriggersQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
-    public FindTimerEventTriggersQueryParams c(final Integer value) {
+    public SearchTimerEventTriggersQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
-    public FindTimerEventTriggersQueryParams f(final String value) {
-      put("f", EncodingUtils.encode(value));
+    public SearchTimerEventTriggersQueryParams f(final List<String> value) {
+      put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
-    public FindTimerEventTriggersQueryParams o(final String value) {
+    public SearchTimerEventTriggersQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
-    public FindTimerEventTriggersQueryParams s(final String value) {
+    public SearchTimerEventTriggersQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
     }
-    public FindTimerEventTriggersQueryParams caseId(final String value) {
+    public SearchTimerEventTriggersQueryParams caseId(final String value) {
       put("caseId", EncodingUtils.encode(value));
       return this;
     }
   }
-
-  /**
-   * Finds the TimerEventTrigger by ID
-   * Returns the single TimerEventTrigger for the given ID 
-   * @param id ID of the TimerEventTrigger to return (required)
-   * @return TimerEventTrigger
-   */
-  @RequestLine("GET /API/bpm/timerEventTrigger/{id}")
-  @Headers({
-    "Accept: application/json",
-  })
-  TimerEventTrigger getTimerEventTriggerById(@Param("id") String id);
 
   /**
    * Update the TimerEventTrigger by ID
