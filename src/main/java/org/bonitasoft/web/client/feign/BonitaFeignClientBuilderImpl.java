@@ -20,8 +20,8 @@ import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import org.bonitasoft.web.client.BonitaClient;
-import org.bonitasoft.web.client.auth.BonitaCookieInterceptor;
-import org.bonitasoft.web.client.auth.BonitaLoginService;
+import org.bonitasoft.web.client.invoker.auth.BonitaCookieAuth;
+import org.bonitasoft.web.client.invoker.auth.BonitaLoginService;
 import org.bonitasoft.web.client.feign.decoder.BonitaErrorDecoder;
 import org.bonitasoft.web.client.feign.decoder.DelegatingDecoder;
 import org.bonitasoft.web.client.feign.interceptor.BonitaCharsetBugInterceptor;
@@ -96,7 +96,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         ApiProvider apiProvider = new CachingApiProvider(apiClient);
 
         // Bonita Auth
-        BonitaCookieInterceptor authorization = new BonitaCookieInterceptor();
+        BonitaCookieAuth authorization = new BonitaCookieAuth();
         apiClient.addAuthorization("bonita", authorization);
         LoginService loginService = new BonitaLoginService(apiProvider, this.objectMapper, authorization);
 

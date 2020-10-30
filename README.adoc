@@ -1,6 +1,7 @@
+= Bonita Java Client
+
 :doctype: book
 :sectnums:
-:icons: font
 :source-highlighter: highlightjs
 :idprefix:
 :idseparator: -
@@ -10,33 +11,60 @@
 :allow-uri-read:
 :imagesdir: ./doc/images
 
-:bonita-short-version: 7.11
+:icon-party: &#x1F973;
+
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+// Vars
 :project-group-id: org.bonitasoft.web
 :project-artifact-id: bonita-java-client
 :project-version: 1.0.0-SNAPSHOT
+:bonita-short-version: 7.11
+:orga: bonitasoft
+:uri-org: https://github.com/{orga}
+:uri-repo: {uri-org}/{project-artifact-id}
+:uri-issues: {uri-repo}/issues
+:uri-contributors: {uri-repo}/graphs/contributor
+:uri-rel-file-base: link:
+:uri-rel-tree-base: link:
+ifdef::env-site,env-yard[]
+:uri-rel-file-base: {uri-repo}/blob/master/
+:uri-rel-tree-base: {uri-repo}/tree/master/
+endif::[]
+:uri-changelog: {uri-rel-file-base}CHANGELOG.adoc
+:uri-contribute: {uri-rel-file-base}CONTRIBUTING.adoc
+:uri-license: {uri-rel-file-base}LICENSE.md
 
-[cols="2",grid="none",frame="none"]
-|===
-a|image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
-a|image::openapi.png[OpenAPI,link="https://swagger.io/specification",width=150px]
-|===
+image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
 
-[%autowidth]
-[cols="4",grid="none",frame="none"]
-|===
-a|image::https://github.com/bonitasoft/{project-artifact-id}/workflows/Build/badge.svg[Build Status,link="https://github.com/bonitasoft/{project-artifact-id}/actions?query=workflow%3ABuild"]
-a|image::https://img.shields.io/github/v/release/bonitasoft/{project-artifact-id}?color=blue&label=Release[Release,link="https://github.com/bonitasoft/{project-artifact-id}/releases"]
-a|image::https://img.shields.io/maven-central/v/{project-group-id}/{project-artifact-id}.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22{project-group-id}%22%20AND%20a:%22{project-artifact-id}%22"]
-a|image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html"]
-|===
+'''
 
-
-= Bonita Java Client
+ifdef::status[]
+[.float-group]
+--
+[.left]
+image::{uri-repo}/workflows/Build/badge.svg[Build Status,link="{uri-repo}/actions?query=workflow%3ABuild"]
+[.left]
+image::https://img.shields.io/github/v/release/{orga}/{project-artifact-id}?color=blue&label=Release[Release,link="{uri-repo}/releases"]
+[.left]
+image::https://img.shields.io/maven-central/v/{project-group-id}/{project-artifact-id}.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22{project-group-id}%22%20AND%20a:%22{project-artifact-id}%22"]
+[.left]
+image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="{uri-license}"]
+--
+endif::[]
 
 This project is the official web client for Bonita when working with Java (or on the JVM).
 
-It is based on an https://swagger.io/specification/[OpenAPI] specification for **Bonita {bonita-short-version}** `enterprise` edition.
-This means that this client includes all community operations plus some that are only supported by `enterprise` editions servers.
+It is based on an https://swagger.io/specification/[OpenAPI image:openapi.png[OpenAPI,width=30px]^] specification for **Bonita {bonita-short-version}** `Enterprise` edition.
+This means that this client includes all `Community` operations plus some that are only supported by `Enterprise` editions servers.
 
 //_**TODO**_: A brief description of your project, what it is used for and how does life get awesome when someone starts to use it.
 
@@ -193,10 +221,10 @@ BonitaClient client = bonitaClientBuilder
 
 This is a standard maven project. To install the java client library to your local Maven repository, simply execute:
 
-[source,bash]
+[source,bash,subs="attributes"]
 ----
-git clone https://github.com/bonitasoft/bonita-java-client.git
-cd bonita-java-client/
+git clone {uri-repo}.git
+cd {project-artifact-id}/
 mvn install
 ----
 
@@ -204,11 +232,46 @@ The build should produce under the `target/` folder (and in your local maven rep
 
 For more details about apache maven, please refer to the https://maven.apache.org/guides/getting-started/[documentation]
 
+=== Regenerate feign stubs
+
+If the openapi specification changed, you can regenerates the feign stubs with the following command.
+
+WARNING: Be careful, some client stubs are marked as ignored in `.openapi-generator-ignore` file, since they were customized (like returning a `feign.Response` instead of a model object)
+
+[source,bash,subs="attributes"]
+----
+mvn generate-sources -Dcodegen.skip=false
+----
+
 === Branches
 
 The adopted worlfow is for now the Gitflow one.
 
 Please refers to this article for more info: https://jeffkreeftmeijer.com/git-flow/
+
+== Getting Help
+
+The *{orga}* organization on GitHub hosts the project's source code, issue tracker, and sub-projects.
+
+Source repository (git):: {uri-repo}
+Issue tracker:: {uri-issues}
+Asciidoctor organization on GitHub:: {uri-org}
+
+== Copyright and License
+
+Use of this software is granted under the terms of the GNU GENERAL PUBLIC LICENSE.
+
+See the {uri-license}[LICENSE] for the full license text.
+
+ifndef::env-site[]
+== Changelog
+
+ifeval::[{safe-mode-level} < 20]
+include::CHANGELOG.adoc[tag=compact,leveloffset=+1]
+endif::[]
+
+Refer to the {uri-changelog}[CHANGELOG] for a complete list of changes in older releases.
+endif::[]
 
 == Links
 

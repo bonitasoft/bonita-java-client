@@ -335,6 +335,14 @@
                     <version>${jacoco-maven-plugin.version}</version>
                     <configuration>
                         <append>true</append>
+                        <excludes>
+                            <exclude>org/bonitasoft/web/client/api/*</exclude>
+                            <exclude>org/bonitasoft/web/client/invoker/*</exclude>
+                            <exclude>org/bonitasoft/web/client/model/*</exclude>
+                            <exclude>org/bonitasoft/web/client/invoker/auth/ApiKeyAuth*</exclude>
+                            <exclude>org/bonitasoft/web/client/invoker/auth/HttpBasicAuth*</exclude>
+                            <exclude>org/bonitasoft/web/client/invoker/auth/HttpBearerAuth*</exclude>
+                        </excludes>
                     </configuration>
                     <executions>
                         <execution>
@@ -394,7 +402,7 @@
                             <generateModelDocumentation>false</generateModelDocumentation>
                             <output>${project.basedir}</output>
                             <!--<inputSpec>http://localhost:8080/openapi.json</inputSpec>-->
-                            <inputSpec>${project.basedir}/api/openapi.json</inputSpec>
+                            <inputSpec>${project.basedir}/api/openapi.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <invokerPackage>org.bonitasoft.web.client.invoker</invokerPackage>
                             <apiPackage>org.bonitasoft.web.client.api</apiPackage>

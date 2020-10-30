@@ -6,7 +6,7 @@
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  */
-package org.bonitasoft.web.client.auth;
+package org.bonitasoft.web.client.invoker.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
@@ -28,13 +28,13 @@ public class BonitaLoginService implements LoginService {
 
     private final ApiProvider apiProvider;
     private final ObjectMapper objectMapper;
-    private final BonitaCookieInterceptor bonitaCookieInterceptor;
+    private final BonitaCookieAuth bonitaCookieAuth;
 
     @Override
     public Session login(String username, String password, String tenant) {
         log.debug("Login with user '{}' on tenant '{}'...", username, tenant);
         try (Response loginResponse = apiProvider.get(PortalAuthenticationApi.class).login(username, password, tenant, "false", "")) {
-            bonitaCookieInterceptor.setSessionCookies(loginResponse.headers());
+            bonitaCookieAuth.setSessionCookies(loginResponse.headers());
         }    //check the session is ok + it will trigger the loading of servlets
         Session session = getSession();
         log.debug("Login completed. Session id: {}", session.getSessionId());
@@ -57,7 +57,7 @@ public class BonitaLoginService implements LoginService {
     public void logout() {
         log.debug("Logout...");
         apiProvider.get(PortalAuthenticationApi.class).logout("false");
-        bonitaCookieInterceptor.clearSessionCookie();
+        bonitaCookieAuth.clearSessionCookie();
         log.debug("Logout completed.");
     }
 }

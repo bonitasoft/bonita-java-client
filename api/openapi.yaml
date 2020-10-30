@@ -966,11 +966,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
+              $ref: '#/components/schemas/FileUploadRequest'
       responses:
         '200':
           description: 'Success '
@@ -1521,11 +1517,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
+              $ref: '#/components/schemas/FileUploadRequest'
       responses:
         '200':
           description: 'Success '
@@ -6438,11 +6430,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
+              $ref: '#/components/schemas/FileUploadRequest'
       responses:
         '200':
           description: the temporary file name once uploaded on the server
@@ -6469,11 +6457,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
+              $ref: '#/components/schemas/FileUploadRequest'
       responses:
         '200':
           description: 'Success: the temp file name as present on the server'
@@ -7358,11 +7342,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
+              $ref: '#/components/schemas/FileUploadRequest'
       responses:
         '200':
           description: 'Success: the temp file name as present on the server'
@@ -7432,11 +7412,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
+              $ref: '#/components/schemas/FileUploadRequest'
       responses:
         '200':
           description: 'Success '
@@ -7493,11 +7469,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                  format: binary
+              $ref: '#/components/schemas/FileUploadRequest'
       responses:
         '200':
           description: 'Success '
@@ -7713,6 +7685,13 @@ components:
         token: myapp
         displayName: My app
         description: My application description
+    FileUploadRequest:
+      type: object
+      description: The file to upload
+      properties:
+        file:
+          type: string
+          format: binary
     ApplicationMenu:
       type: object
       properties:

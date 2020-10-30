@@ -6,20 +6,19 @@
  * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
  */
-package org.bonitasoft.web.client.auth;
+package org.bonitasoft.web.client.invoker.auth;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
 
-import static java.util.Collections.*;
+import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toMap;
 
-public class BonitaCookieInterceptor implements RequestInterceptor {
+public class BonitaCookieAuth implements RequestInterceptor {
 
     public static final String CSRF_TOKEN_HEADER = "X-Bonita-API-Token";
 

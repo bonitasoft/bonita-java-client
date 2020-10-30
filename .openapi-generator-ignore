@@ -30,6 +30,7 @@
 **/org/bonitasoft/web/client/model/Inline*.java
 **/org/bonitasoft/web/client/invoker/ServerConfiguration.java
 **/org/bonitasoft/web/client/invoker/ServerVariable.java
+**/org/bonitasoft/web/client/invoker/auth*
 src/main/AndroidManifest.xml
 
 gen
@@ -47,3 +48,5 @@ docs/Inline*.md
 
 git_push.sh
 .gitignore
+
+README.md
