@@ -251,7 +251,7 @@ Please refers to this article for more info: https://jeffkreeftmeijer.com/git-fl
 
 == Getting Help
 
-The *{orga}* organization on GitHub hosts the project's source code, issue tracker, and sub-projects.
+The *{orga}* organization on GitHub hosts the project's source code, issue trackers, and other projects.
 
 Source repository (git):: {uri-repo}
 Issue tracker:: {uri-issues}
