@@ -255,7 +255,7 @@ The *{orga}* organization on GitHub hosts the project's source code, issue track
 
 Source repository (git):: {uri-repo}
 Issue tracker:: {uri-issues}
-Asciidoctor organization on GitHub:: {uri-org}
+Organization on GitHub:: {uri-org}
 
 == Copyright and License
 
