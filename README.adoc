@@ -51,7 +51,7 @@ ifdef::status[]
 [.float-group]
 --
 [.left]
-image::{uri-repo}/workflows/Build/badge.svg[Build Status,link="{uri-repo}/actions?query=workflow%3Aworkflow-build"]
+image::{uri-repo}/workflows/workflow-build/badge.svg[Build,link="{uri-repo}/actions?query=workflow%3Aworkflow-build"]
 [.left]
 image::https://img.shields.io/github/v/release/{orga}/{project-artifact-id}?color=blue&label=Release[Release,link="{uri-repo}/releases"]
 [.left]
