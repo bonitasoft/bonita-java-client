@@ -20,12 +20,12 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build and test project
         run: ./mvnw -B -ntp clean verify
-      - name: Upload archetype for tests
+      - name: Upload artifact for tests
         uses: actions/upload-artifact@v2
         with:
           name: latest-snapshot
-          path: target/bonita-connector-archetype-*
-      - name: Upload archetype pom for tests
+          path: target/bonita-java-client-*
+      - name: Upload artifact pom for tests
         uses: actions/upload-artifact@v2
         with:
           name: latest-snapshot-pom
