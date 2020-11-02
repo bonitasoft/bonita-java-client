@@ -38,7 +38,7 @@ public class UserTaskUpdateRequest implements Serializable {
   public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
-  public static final String JSON_PROPERTY_ASSIGNED_ID = "assignedId";
+  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
   private String assignedId;
 
 
@@ -116,7 +116,7 @@ public class UserTaskUpdateRequest implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserTaskUpdateRequest {\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
+    sb.append("    assigned_id: ").append(toIndentedString(assignedId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

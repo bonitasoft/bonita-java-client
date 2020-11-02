@@ -8492,11 +8492,11 @@ components:
         state:
           description: The UserTask state
           type: string
-        assignedId:
+        assigned_id:
           description: The id of the user assign to  the UserTask
           type: string
       example:
-        assignedId: '1'
+        assigned_id: '1'
         state: skipped
     ContractInput:
       type: object
