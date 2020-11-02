@@ -18,6 +18,7 @@ public abstract class AbstractService {
 
     private static final String COMMUNITY = "Community";
     public static final License COMMUNITY_LICENCE = new License().edition(COMMUNITY).nbCpuCores("" + Runtime.getRuntime().availableProcessors());
+
     protected final ApiProvider apiProvider;
     protected final ObjectMapper objectMapper;
     /**

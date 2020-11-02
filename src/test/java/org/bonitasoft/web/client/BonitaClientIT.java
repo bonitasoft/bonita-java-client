@@ -190,7 +190,7 @@ class BonitaClientIT {
         assertThat(bdm.getState()).isEqualTo(TenantResourceState.INSTALLED);
     }
 
-    private void importBDM() throws URISyntaxException {
+    private void importBDM() throws Exception {
         File bdmFile = getClasspathFile("/bdm.zip");
         bonitaClient.bdm().importBDM(bdmFile);
     }
@@ -276,7 +276,7 @@ class BonitaClientIT {
     }
 
 
-    private void importOrganization() throws URISyntaxException {
+    private void importOrganization() throws Exception {
         File organization = getClasspathFile("/Organization_Data.xml");
         bonitaClient.users().importOrganization(organization, OrganizationImportPolicy.MERGE_DUPLICATES);
     }

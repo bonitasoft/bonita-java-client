@@ -2,10 +2,13 @@ package org.bonitasoft.web.client.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bonitasoft.web.client.api.OrganizationApi;
+import org.bonitasoft.web.client.api.ProfileApi;
 import org.bonitasoft.web.client.api.UserApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
+import org.bonitasoft.web.client.model.Profile;
 import org.bonitasoft.web.client.model.User;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
+import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -15,8 +18,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.File;
 import java.util.AbstractMap.SimpleEntry;
+import java.util.List;
 import java.util.UUID;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
@@ -72,4 +78,100 @@ class DefaultUserServiceTest {
         assertThat(searchParams).contains(new SimpleEntry<>("f", singletonList(encode("userName=" + username))));
     }
 
+    @Test
+    void no_profiles_exist_should_not_raise_not_found_ex() {
+        // Given
+        ProfileApi profileApi = mock(ProfileApi.class);
+        when(apiProvider.get(ProfileApi.class)).thenReturn(profileApi);
+
+        final String profile1name = "profile1name";
+        final String profile2name = "profile2name";
+        when(profileApi.searchProfiles(anyMap())).thenReturn(emptyList());
+
+        // When
+        final boolean anyProfileExist = service.anyProfileExist(asList(profile1name, profile2name));
+
+        // Then
+        assertThat(anyProfileExist).isFalse();
+    }
+
+    @Test
+    void one_profiles_exist_should_not_raise_not_found_ex() {
+        // Given
+        ProfileApi profileApi = mock(ProfileApi.class);
+        when(apiProvider.get(ProfileApi.class)).thenReturn(profileApi);
+
+        final String profile1name = "profile1name";
+        final String profile2name = "profile2name";
+        when(profileApi.searchProfiles(anyMap()))
+                // first call
+                .thenReturn(emptyList())
+                // second call
+                .thenReturn(singletonList(new Profile().name(profile2name)));
+
+        // When
+        final boolean anyProfileExist = service.anyProfileExist(asList(profile1name, profile2name));
+
+        // Then
+        assertThat(anyProfileExist).isTrue();
+    }
+
+    @Test
+    void importProfiles_with_IGNORE_IF_ANY_EXISTS_on_existing_should_skip_import() throws Exception {
+        // Given
+        ProfileApi profileApi = mock(ProfileApi.class);
+        when(apiProvider.get(ProfileApi.class)).thenReturn(profileApi);
+        // Enterprise feature only
+        service = spy(service);
+        doReturn(false).when(service).isCommunity();
+
+        // pretend profile exist
+        when(profileApi.searchProfiles(anyMap())).thenReturn(singletonList(new Profile()));
+
+        // When
+        final File profileFile = getClasspathFile("/CustomProfile_Data.xml");
+        final ProfileImportPolicy importPolicy = ProfileImportPolicy.IGNORE_IF_ANY_EXISTS;
+        service.importProfiles(profileFile, importPolicy);
+
+        // Then
+        verify(profileApi, never()).uploadprofiles(profileFile);
+        verify(profileApi, never()).importProfiles(anyString(), eq(importPolicy.name()));
+    }
+
+    @Test
+    void importProfiles_with_IGNORE_IF_ANY_EXISTS_none_existing_should_use_REPLACE_DUPLICATES() throws Exception {
+        // Given
+        ProfileApi profileApi = mock(ProfileApi.class);
+        when(apiProvider.get(ProfileApi.class)).thenReturn(profileApi);
+
+        when(profileApi.uploadprofiles(any())).thenReturn(UUID.randomUUID().toString());
+
+        // Enterprise feature only
+        service = spy(service);
+        doReturn(false).when(service).isCommunity();
+        // pretend no profile exist
+        doReturn(false).when(service).anyProfileExist(anyList());
+
+        // When
+        final File profileFile = getClasspathFile("/CustomProfile_Data.xml");
+        service.importProfiles(profileFile, ProfileImportPolicy.IGNORE_IF_ANY_EXISTS);
+
+        // Then
+        verify(profileApi).uploadprofiles(eq(profileFile));
+
+        final ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+        verify(profileApi).importProfiles(anyString(), captor.capture());
+        assertThat(captor.getValue()).isEqualTo(ProfileImportPolicy.REPLACE_DUPLICATES.name());
+    }
+
+    @Test
+    void can_read_profile_file() throws Exception {
+        // Given
+        final File profileFile = getClasspathFile("/CustomProfile_Data.xml");
+        // When
+        final List<String> profilesNames = service.getProfilesNames(profileFile);
+        // Then
+        assertThat(profilesNames).hasSize(7);
+        assertThat(profilesNames).contains("Administrator", "HR", "HRManager", "Process manager", "TahitiUser", "TeamManager", "User");
+    }
 }

@@ -9,7 +9,7 @@ public final class TestUtils {
         // utility class
     }
 
-    public static File getClasspathFile(String s) throws URISyntaxException {
+    public static File getClasspathFile(String s) throws Exception {
         return new File(TestUtils.class.getResource(s).toURI());
     }
 }

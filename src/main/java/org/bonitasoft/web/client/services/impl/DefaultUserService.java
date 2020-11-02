@@ -79,14 +79,8 @@ public class DefaultUserService extends AbstractService implements UserService {
         log.info("Importing profiles from {} with {}...", profiles.getName(), policy);
 
         if (ProfileImportPolicy.IGNORE_IF_ANY_EXISTS.equals(policy)) {
-            List<String> profilesNames = getProfilesNames(profiles);
-            List<String> existingProfiles = new ArrayList<>();
-            for (String profileName : profilesNames) {
-                if (getProfileByName(profileName) != null) {
-                    existingProfiles.add(profileName);
-                }
-            }
-            if (!existingProfiles.isEmpty()) {
+            List<String> profilesToDeployNames = getProfilesNames(profiles);
+            if (anyProfileExist(profilesToDeployNames)) {
                 // Skip all if any exist
                 return;
             }
@@ -102,7 +96,26 @@ public class DefaultUserService extends AbstractService implements UserService {
         log.info("Profiles imported");
     }
 
-    private List<String> getProfilesNames(File profiles) {
+    /**
+     * Return true if some profile from the given list exists with the same name in the server
+     *
+     * @param profilesNames
+     * @return
+     */
+    protected boolean anyProfileExist(List<String> profilesNames) {
+        List<String> existingProfiles = new ArrayList<>();
+        for (String profileName : profilesNames) {
+            try {
+                final Profile profile = getProfileByName(profileName);
+                existingProfiles.add(profile.getName());
+            } catch (NotFoundException e) {
+                // Profile not found, continue
+            }
+        }
+        return !existingProfiles.isEmpty();
+    }
+
+    protected List<String> getProfilesNames(File profiles) {
         List<String> tokens = new ArrayList<>();
         try {
             DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
