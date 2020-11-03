@@ -80,7 +80,7 @@ This means that this client includes all `Community` operations plus some that a
 
 //_**TODO**_: A quick introduction of the minimal setup you need to get a hello world up & running.
 
-After the client library is installed/deployed, you can use it in your Maven project by adding the following to your *pom.xml*:
+The client library available from https://search.maven.org/search?q={project-group-id}%20AND%20a:{project-artifact-id}[Maven Central], you can use it in your Maven project by adding the following to your *pom.xml*:
 
 [source,xml,subs="attributes+"]
 ----
@@ -90,6 +90,8 @@ After the client library is installed/deployed, you can use it in your Maven pro
     <version>{project-version}</version>
 </dependency>
 ----
+
+NOTE: Snapshots versions are available at https://oss.sonatype.org/content/repositories/snapshots/
 
 The following code creates a java client instance targeting a bonita server listening at `http://localhost:8080/bonita`. After login in, it queries the deployed processes
 with pagination parameters (page index: 0,page size: 20)
