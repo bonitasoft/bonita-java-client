@@ -216,6 +216,7 @@ BonitaClient client = bonitaClientBuilder
 - a git client
 - a java (jdk8 or higher)
 - maven (optional if you chose to use https://github.com/takari/maven-wrapper[maven wrapper script])
+- Docker for integration tests
 
 === Building
 
