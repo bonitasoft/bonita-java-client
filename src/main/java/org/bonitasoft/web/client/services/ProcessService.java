@@ -35,6 +35,12 @@ public interface ProcessService {
 
     ProcessInstantiationResponse startProcess(String id, Map<String, Object> params);
 
+    /**
+     *
+     * @param taskId
+     * @return
+     * @throws org.bonitasoft.web.client.exception.NotFoundException if no UserTask for the given id
+     */
     UserTask getUserTask(String taskId);
 
     List<UserTask> searchUserTask(String rootContainerId);

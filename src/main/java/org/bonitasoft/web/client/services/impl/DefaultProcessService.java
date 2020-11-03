@@ -23,6 +23,8 @@ import java.util.Optional;
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
+import static java.util.Optional.empty;
+import static java.util.Optional.ofNullable;
 
 @Slf4j
 public class DefaultProcessService extends AbstractService implements ProcessService {
@@ -95,7 +97,7 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
         );
         if (processes.isEmpty()) {
             log.debug("Can't find any existing process with name '{}' and version '{}'.", name, version);
-            return Optional.empty();
+            return empty();
         }
         log.debug("Process '{}' with version '{}' found successfully.", name, version);
         return processes.stream().findFirst();
@@ -150,12 +152,11 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
     @Override
     public UserTask getUserTask(String taskId) {
         log.info("Get User Task {}", taskId);
-        UserTask userTask = apiProvider.get(UserTaskApi.class).getUserTaskById(taskId);
-        if (userTask == null) {
-            throw new NotFoundException("No user task found for id: " + taskId);
-        }
-        log.debug("Found successfully User Task: {}", userTask);
-        return userTask;
+        return ofNullable(apiProvider.get(UserTaskApi.class).getUserTaskById(taskId))
+                .map(userTask -> {
+                    log.debug("Found successfully User Task: {}", userTask);
+                    return userTask;
+                }).orElseThrow(() -> new NotFoundException("No user task found for id: " + taskId));
     }
 
     @Override
