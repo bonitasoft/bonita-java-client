@@ -99,7 +99,7 @@ with pagination parameters (page index: 0,page size: 20)
 [source,java,subs="attributes"]
 ----
 // Create a client
-BonitaCLient client = BonitaCLient.builder("http://localhost:8080/bonita").build();
+BonitaClient client = BonitaClient.builder("http://localhost:8080/bonita").build();
 
 // Login
 Session session = client.login("username","password");
@@ -116,6 +116,8 @@ client.logout();
 == Configuration
 
 === Logging
+
+This client can log HTTP requests made to Bonita Platform.
 
 Different log level are available. Default level is `OFF`
 
@@ -164,7 +166,7 @@ BonitaClient client = BonitaClient.builder("http://localhost:8080/bonita")
     .build();
 ----
 
-WARNING: Please note that this is not recommended from a security point of vue !
+WARNING: Please note that this is not recommended from a security point of view !
 
 === Custom Jackson object mapper
 
