@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.PortalAuthenticationApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.exception.ClientException;
+import org.bonitasoft.web.client.exception.UnauthorizedException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.services.LoginService;
@@ -34,12 +35,21 @@ public class BonitaLoginService implements LoginService {
     public Session login(String username, String password, String tenant) {
         log.debug("Login with user '{}' on tenant '{}'...", username, tenant);
         try (Response loginResponse = apiProvider.get(PortalAuthenticationApi.class).login(username, password, tenant, "false", "")) {
-            bonitaCookieAuth.setSessionCookies(loginResponse.headers());
-        }    //check the session is ok + it will trigger the loading of servlets
-        Session session = getSession();
-        log.debug("Login completed. Session id: {}", session.getSessionId());
-        return session;
+            if (loginResponse.status() == 200) {
+                bonitaCookieAuth.setSessionCookies(loginResponse.headers());
+            } else {
+                throw new UnauthorizedException(String.format("Login failed, status: %S %s", loginResponse.status(), loginResponse.reason()));
+            }
+        } catch (UnauthorizedException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new ClientException("Login failed", e);
+        }
 
+        //check the session is ok + it will trigger the loading of servlets
+        Session session = getSession();
+        log.debug("Login completed. Session: {}", session);
+        return session;
     }
 
     @Override

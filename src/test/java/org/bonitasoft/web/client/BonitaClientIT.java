@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.testcontainers.BonitaContainer;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.exception.NotFoundException;
+import org.bonitasoft.web.client.exception.UnauthorizedException;
 import org.bonitasoft.web.client.exception.process.DuplicatedProcessException;
 import org.bonitasoft.web.client.exception.process.ProcessActivationException;
 import org.bonitasoft.web.client.log.LogContentLevel;
@@ -50,6 +51,12 @@ class BonitaClientIT {
         bonitaClient = BonitaClient.builder(portalUrl)
                 .logContentLevel(LogContentLevel.OFF)
                 .build();
+    }
+
+    @Test
+    void login_with_unknown_user_should_fail() {
+        assertThatThrownBy(() -> bonitaClient.login("youknowhow", "tommarvoloriddle"))
+                .isInstanceOf(UnauthorizedException.class);
     }
 
     @Test
