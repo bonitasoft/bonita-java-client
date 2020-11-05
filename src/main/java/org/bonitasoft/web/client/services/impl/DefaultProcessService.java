@@ -2,10 +2,7 @@ package org.bonitasoft.web.client.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.bonitasoft.web.client.api.ProcessApi;
-import org.bonitasoft.web.client.api.ProcessParameterApi;
-import org.bonitasoft.web.client.api.ProcessResolutionProblemApi;
-import org.bonitasoft.web.client.api.UserTaskApi;
+import org.bonitasoft.web.client.api.*;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.exception.process.DuplicatedProcessException;
 import org.bonitasoft.web.client.exception.process.ProcessActivationException;
@@ -25,6 +22,7 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
+import static org.bonitasoft.web.client.api.ArchivedUserTaskApi.*;
 
 @Slf4j
 public class DefaultProcessService extends AbstractService implements ProcessService {

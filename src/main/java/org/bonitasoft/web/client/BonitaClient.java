@@ -10,7 +10,7 @@ public interface BonitaClient {
     String USER_PROFILE_NAME = "User";
     String ADMIN_PROFILE_NAME = "Administrator";
 
-    static BonitaClientBuilder builder(String url) {
+    static BonitaClientBuilder<?> builder(String url) {
         return new BonitaFeignClientBuilderImpl(url);
     }
 

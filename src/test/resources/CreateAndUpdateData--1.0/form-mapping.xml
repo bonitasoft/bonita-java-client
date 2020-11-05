@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<formMappingModel>
-    <form-mappings>
-        <form-mapping form="custompage_updateData" target="INTERNAL" type="TASK" taskname="Step1"/>
-        <form-mapping form="custompage_viewData" target="INTERNAL" type="TASK" taskname="Step2"/>
-        <form-mapping form="custompage_initMyBadData" target="INTERNAL" type="PROCESS_START"/>
-        <form-mapping form="custompage_caseoverview" target="INTERNAL" type="PROCESS_OVERVIEW"/>
-    </form-mappings>
-</formMappingModel>
