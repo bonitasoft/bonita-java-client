@@ -104,9 +104,9 @@ class BonitaClientIT {
                 .isInstanceOf(DuplicatedProcessException.class);
 
         // Then
-        Optional<BusinessProcess> maybeProcess = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
+        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
         assertThat(maybeProcess).isPresent();
-        BusinessProcess process = maybeProcess.get();
+        ProcessDefinition process = maybeProcess.get();
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.RESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.ENABLED);
 
@@ -254,9 +254,9 @@ class BonitaClientIT {
         bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
 
         // Then
-        Optional<BusinessProcess> maybeProcess = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
+        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
         assertThat(maybeProcess).isPresent();
-        BusinessProcess process = maybeProcess.get();
+        ProcessDefinition process = maybeProcess.get();
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.RESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.ENABLED);
     }
@@ -346,9 +346,9 @@ class BonitaClientIT {
                 .hasFieldOrPropertyWithValue("processName", processName)
                 .hasFieldOrPropertyWithValue("processVersion", processVersion);
 
-        Optional<BusinessProcess> maybeProcess = bonitaClient.processes().getProcess(processName, processVersion);
+        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess(processName, processVersion);
         assertThat(maybeProcess).isPresent();
-        BusinessProcess process = maybeProcess.get();
+        ProcessDefinition process = maybeProcess.get();
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.UNRESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.DISABLED);
 

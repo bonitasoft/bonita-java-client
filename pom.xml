@@ -429,7 +429,7 @@
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateModelDocumentation>false</generateModelDocumentation>
                             <output>${project.basedir}</output>
-                            <!--<inputSpec>http://localhost:8080/openapi.json</inputSpec>-->
+<!--                             <inputSpec>http://localhost:8080/openapi.json</inputSpec> -->
                             <inputSpec>${project.basedir}/api/openapi.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <invokerPackage>org.bonitasoft.web.client.invoker</invokerPackage>

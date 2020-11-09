@@ -1,6 +1,6 @@
 /*
  * Bonita 7.11 HTTP API
- *  The REST API lets you access the data with HTTP requests; it is useful when implementing rich web forms / pages for a good user experience.  If your application is using a technology other than Java, you can integrate it with the Bonita solution using the Web REST API. This API provides access to all Bonita objects (like processes, tasks, users, connectors etc.), to execute operations on them (create, retrieve, update, delete). You can use these operations to create a workflow with Bonita and integrate it into your application. The Bonita Engine remains responsible for executing the workflow logic (connectors, gateways with conditions, messages, timers etc.) while your application gives access to the workflow. Users can manage processes and tasks, and perform administrative activities.  ![diagram of architecture of a REST client integrated with Bonita](images/rest_overview_v2.png)  ### API Extensions  You can create [Rest API Extensions](rest-api-extensions.md) to extend the Rest API by adding missing ressources (not provided by the Rest API). It is possible for an extension to interact with the engine (via the API) or with any other external service (for example a database, a directory, or a web service).  ### Create a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/  `| |:-|:-| | Request Method | POST| | Request Payload | an item in JSON| | Response | the same item in JSON, containing the values provided in the posted item, completed with default values and identifiers provided by Bonita Engine.|  ### Read a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/user/5 `  #### Extend resource response  On some resources, in GET methods the `d` (deploy) URL query parameter can be used to extend the response objects. The value of this parameter consists of an attribute for which you want to make an extended request (called a deploy) and retrieve attributes of a linked resource. This means that instead of retrieving the ID or a parent or referenced resource, you can retrieve the full object.  For example, when you retrieve a task, you can also retrieve the process definition attributes in addition to the process definition ID that is already part of the task resource. The supported deploy values for a task include its process (d=processId).  Specifiy multiple `d` parameter to extend several resources. For instance, to retrieve the flow node of id 143 and the associated process, case and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`  #### With compound identifier  The order of the identifier parts for each resource type is given in the table above.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/membership/5/12/24 `  ### Update a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | PUT| | Request Payload | a map in JSON containing the new values for the attributes you want to change.| | Response | the corresponding item in JSON with new values where you requested a modification|  Example `http://.../API/identity/user/5`  #### With compound identifier:  Response: the corresponding item in JSON with new values where you requested a modification.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | PUT| | Request Payload | ` a map in JSON containing the new values for the attributes you want to change `| | Response | ` the corresponding item in JSON with new values where you requested a modification`|  Example `http://.../API/identity/membership/5/12/24 `  ### Delete resources  Use the DELETE request to remove multiple resources.  | Request URL | `http://.../API/{API_name}/{resource_name}/ `| |:-|:-| | Request Method | DELETE| | Request Payload | A list of identifiers in JSON, for example `[\"id1\",\"id2\",\"id3\"]`. Compound identifiers are separated by '/' characters.| | Response | `empty `|  Example `http://.../API/identity/membership/ `  ### Search for a resource  The required object is specified with a set of filters in the request URL. The URL parameters must be URL-encoded.  Results are returned in a paged list, so you have to specify the page (counting from zero), and the number of results per page (count), additionally you can define a sort key (order). You can see the total number of matching results in the HTTP response header Content-Range. If you are searching for business data using a custom query, there must be a [count query in the BDM](define-and-deploy-the-bdm.md). If there is no count query, results from a custom query on business data cannot be paged properly (the header Content-Range will be absent). For business data default queries, the count query is defined automatically.  The available filters are the attributes of the item plus some specific filters defined by each item.  | Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=... `| |:-|:-| | Request Method | GET| | Response | an array of items in JSON|  Example `/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`  For a GET method that retrieves more than one instance of a resource, you can specify the following request parameters:  * p (Mandatory): index of the page to display * c (Mandatory): maximum number of elements to retrieve * o: order of presentation of values in response: must be either `attributeName ASC` or `attributeName DESC`. The final order parameter value must be URL encoded. * f: list of filters, specified as `attributeName=attributeValue`. To filter on more than one attribute, specify an f parameters for each attribute. The final filter parameter value must be URL encoded.   The attributes you can filter on are specific to the resource. * s: search on name or search indexes. The matching policy depends on the configuration of [word-based search](using-list-and-search-methods.md).   For example, if word-based search is enabled, `s=Valid` returns matches containing the string \"valid\" at the start of any word in the attribute value word,   such as \"Valid address\", \"Not a valid address\", and \"Validated request\" but not \"Invalid request\".   If word-based search is disabled, `s=Valid` returns matches containing the string \"valid\" at the start of the attribute value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid address\" or \"Invalid request\".  ### Errors  The API uses standard HTTP status codes to indicate the success or failure of the API call.  If you get a `401` response code :   - make sure that the cookies have been transfered with the call   - make sure that the cookies transfered are the ones generated during the last sucessfull login call   - if one of the PUT, DELETE or POST method is used, make sure that the `X-Bonita-API-Token` header is included   - if the X-Bonita-API-Token header is included, make sure that the value is the same as the one of the cookie generated during the last login   - Maybe a logout was issued or the session has expired; try to log in again, and re run the request with the new cookies and the new value for the `X-Bonita-API-Token` header.
+ *  The REST API lets you access the data with HTTP requests; it is useful when implementing rich web forms / pages for a good user experience.  If your application is using a technology other than Java, you can integrate it with the Bonita solution using the Web REST API. This API provides access to all Bonita objects (like processes, tasks, users, connectors etc.), to execute operations on them (create, retrieve, update, delete). You can use these operations to create a workflow with Bonita and integrate it into your application. The Bonita Engine remains responsible for executing the workflow logic (connectors, gateways with conditions, messages, timers etc.) while your application gives access to the workflow. Users can manage processes and tasks, and perform administrative activities.  ![diagram of architecture of a REST client integrated with Bonita](images/rest_overview_v2.png)  ### API Extensions  You can create [Rest API Extensions](rest-api-extensions.md) to extend the Rest API by adding missing ressources (not provided by the Rest API). It is possible for an extension to interact with the engine (via the API) or with any other external service (for example a database, a directory, or a web service).  ### Create a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/  `| |:-|:-| | Request Method | POST| | Request Payload | an item in JSON| | Response | the same item in JSON, containing the values provided in the posted item, completed with default values and identifiers provided by Bonita Engine.|  ### Read a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/user/5 `  #### Extend resource response  On some resources, in GET methods the `d` (deploy) URL query parameter can be used to extend the response objects. The value of this parameter consists of an attribute for which you want to make an extended request (called a deploy) and retrieve attributes of a linked resource. This means that instead of retrieving the ID or a parent or referenced resource, you can retrieve the full object.  For example, when you retrieve a task, you can also retrieve the process definition attributes in addition to the process definition ID that is already part of the task resource. The supported deploy values for a task include its process (d=processId).  Specifiy multiple `d` parameter to extend several resources. For instance, to retrieve the flow node of id 143 and the associated process, process instance and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`  #### With compound identifier  The order of the identifier parts for each resource type is given in the table above.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/membership/5/12/24 `  ### Update a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | PUT| | Request Payload | a map in JSON containing the new values for the attributes you want to change.| | Response | the corresponding item in JSON with new values where you requested a modification|  Example `http://.../API/identity/user/5`  #### With compound identifier:  Response: the corresponding item in JSON with new values where you requested a modification.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | PUT| | Request Payload | ` a map in JSON containing the new values for the attributes you want to change `| | Response | ` the corresponding item in JSON with new values where you requested a modification`|  Example `http://.../API/identity/membership/5/12/24 `  ### Delete resources  Use the DELETE request to remove multiple resources.  | Request URL | `http://.../API/{API_name}/{resource_name}/ `| |:-|:-| | Request Method | DELETE| | Request Payload | A list of identifiers in JSON, for example `[\"id1\",\"id2\",\"id3\"]`. Compound identifiers are separated by '/' characters.| | Response | `empty `|  Example `http://.../API/identity/membership/ `  ### Search for a resource  The required object is specified with a set of filters in the request URL. The URL parameters must be URL-encoded.  Results are returned in a paged list, so you have to specify the page (counting from zero), and the number of results per page (count), additionally you can define a sort key (order). You can see the total number of matching results in the HTTP response header Content-Range. If you are searching for business data using a custom query, there must be a [count query in the BDM](define-and-deploy-the-bdm.md). If there is no count query, results from a custom query on business data cannot be paged properly (the header Content-Range will be absent). For business data default queries, the count query is defined automatically.  The available filters are the attributes of the item plus some specific filters defined by each item.  | Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=... `| |:-|:-| | Request Method | GET| | Response | an array of items in JSON|  Example `/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`  For a GET method that retrieves more than one instance of a resource, you can specify the following request parameters:  * p (Mandatory): index of the page to display * c (Mandatory): maximum number of elements to retrieve * o: order of presentation of values in response: must be either `attributeName ASC` or `attributeName DESC`. The final order parameter value must be URL encoded. * f: list of filters, specified as `attributeName=attributeValue`. To filter on more than one attribute, specify an f parameters for each attribute. The final filter parameter value must be URL encoded.   The attributes you can filter on are specific to the resource. * s: search on name or search indexes. The matching policy depends on the configuration of [word-based search](using-list-and-search-methods.md).   For example, if word-based search is enabled, `s=Valid` returns matches containing the string \"valid\" at the start of any word in the attribute value word,   such as \"Valid address\", \"Not a valid address\", and \"Validated request\" but not \"Invalid request\".   If word-based search is disabled, `s=Valid` returns matches containing the string \"valid\" at the start of the attribute value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid address\" or \"Invalid request\".  ### Errors  The API uses standard HTTP status codes to indicate the success or failure of the API call.  If you get a `401` response code :   - make sure that the cookies have been transfered with the call   - make sure that the cookies transfered are the ones generated during the last sucessfull login call   - if one of the PUT, DELETE or POST method is used, make sure that the `X-Bonita-API-Token` header is included   - if the X-Bonita-API-Token header is included, make sure that the value is the same as the one of the cookie generated during the last login   - Maybe a logout was issued or the session has expired; try to log in again, and re run the request with the new cookies and the new value for the `X-Bonita-API-Token` header.
  *
  * The version of the OpenAPI document: 0.0.1
  * 
@@ -21,34 +21,34 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.bonitasoft.web.client.model.ArchivedCaseDocumentAllOf;
-import org.bonitasoft.web.client.model.CaseDocument;
+import org.bonitasoft.web.client.model.ArchivedProcessInstanceDocumentAllOf;
+import org.bonitasoft.web.client.model.ProcessInstanceDocument;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * ArchivedCaseDocument
+ * ArchivedProcessInstanceDocument
  */
 @JsonPropertyOrder({
-  ArchivedCaseDocument.JSON_PROPERTY_ID,
-  ArchivedCaseDocument.JSON_PROPERTY_CREATION_DATE,
-  ArchivedCaseDocument.JSON_PROPERTY_AUTHOR,
-  ArchivedCaseDocument.JSON_PROPERTY_INDEX,
-  ArchivedCaseDocument.JSON_PROPERTY_CONTENT_MIMETYPE,
-  ArchivedCaseDocument.JSON_PROPERTY_CASE_ID,
-  ArchivedCaseDocument.JSON_PROPERTY_CONTENT_STORAGE_ID,
-  ArchivedCaseDocument.JSON_PROPERTY_IS_INTERNAL,
-  ArchivedCaseDocument.JSON_PROPERTY_DESCRIPTION,
-  ArchivedCaseDocument.JSON_PROPERTY_NAME,
-  ArchivedCaseDocument.JSON_PROPERTY_FILE_NAME,
-  ArchivedCaseDocument.JSON_PROPERTY_SUBMITTED_BY,
-  ArchivedCaseDocument.JSON_PROPERTY_URL,
-  ArchivedCaseDocument.JSON_PROPERTY_VERSION,
-  ArchivedCaseDocument.JSON_PROPERTY_SOURCE_OBJECT_ID,
-  ArchivedCaseDocument.JSON_PROPERTY_ARCHIVED_DATE
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_ID,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_CREATION_DATE,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_AUTHOR,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_INDEX,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_CONTENT_MIMETYPE,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_CASE_ID,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_CONTENT_STORAGE_ID,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_IS_INTERNAL,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_DESCRIPTION,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_NAME,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_FILE_NAME,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_SUBMITTED_BY,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_URL,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_VERSION,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_SOURCE_OBJECT_ID,
+  ArchivedProcessInstanceDocument.JSON_PROPERTY_ARCHIVED_DATE
 })
 
-public class ArchivedCaseDocument implements Serializable {
+public class ArchivedProcessInstanceDocument implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public static final String JSON_PROPERTY_ID = "id";
@@ -100,7 +100,7 @@ public class ArchivedCaseDocument implements Serializable {
   private String archivedDate;
 
 
-  public ArchivedCaseDocument id(String id) {
+  public ArchivedProcessInstanceDocument id(String id) {
     
     this.id = id;
     return this;
@@ -125,7 +125,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument creationDate(String creationDate) {
+  public ArchivedProcessInstanceDocument creationDate(String creationDate) {
     
     this.creationDate = creationDate;
     return this;
@@ -150,7 +150,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument author(String author) {
+  public ArchivedProcessInstanceDocument author(String author) {
     
     this.author = author;
     return this;
@@ -175,7 +175,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument index(String index) {
+  public ArchivedProcessInstanceDocument index(String index) {
     
     this.index = index;
     return this;
@@ -200,7 +200,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument contentMimetype(String contentMimetype) {
+  public ArchivedProcessInstanceDocument contentMimetype(String contentMimetype) {
     
     this.contentMimetype = contentMimetype;
     return this;
@@ -225,7 +225,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument caseId(String caseId) {
+  public ArchivedProcessInstanceDocument caseId(String caseId) {
     
     this.caseId = caseId;
     return this;
@@ -250,7 +250,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument contentStorageId(String contentStorageId) {
+  public ArchivedProcessInstanceDocument contentStorageId(String contentStorageId) {
     
     this.contentStorageId = contentStorageId;
     return this;
@@ -275,7 +275,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument isInternal(Boolean isInternal) {
+  public ArchivedProcessInstanceDocument isInternal(Boolean isInternal) {
     
     this.isInternal = isInternal;
     return this;
@@ -300,7 +300,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument description(String description) {
+  public ArchivedProcessInstanceDocument description(String description) {
     
     this.description = description;
     return this;
@@ -325,7 +325,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument name(String name) {
+  public ArchivedProcessInstanceDocument name(String name) {
     
     this.name = name;
     return this;
@@ -350,7 +350,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument fileName(String fileName) {
+  public ArchivedProcessInstanceDocument fileName(String fileName) {
     
     this.fileName = fileName;
     return this;
@@ -375,7 +375,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument submittedBy(String submittedBy) {
+  public ArchivedProcessInstanceDocument submittedBy(String submittedBy) {
     
     this.submittedBy = submittedBy;
     return this;
@@ -400,7 +400,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument url(String url) {
+  public ArchivedProcessInstanceDocument url(String url) {
     
     this.url = url;
     return this;
@@ -425,7 +425,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument version(String version) {
+  public ArchivedProcessInstanceDocument version(String version) {
     
     this.version = version;
     return this;
@@ -450,7 +450,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument sourceObjectId(String sourceObjectId) {
+  public ArchivedProcessInstanceDocument sourceObjectId(String sourceObjectId) {
     
     this.sourceObjectId = sourceObjectId;
     return this;
@@ -475,7 +475,7 @@ public class ArchivedCaseDocument implements Serializable {
   }
 
 
-  public ArchivedCaseDocument archivedDate(String archivedDate) {
+  public ArchivedProcessInstanceDocument archivedDate(String archivedDate) {
     
     this.archivedDate = archivedDate;
     return this;
@@ -508,23 +508,23 @@ public class ArchivedCaseDocument implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ArchivedCaseDocument archivedCaseDocument = (ArchivedCaseDocument) o;
-    return Objects.equals(this.id, archivedCaseDocument.id) &&
-        Objects.equals(this.creationDate, archivedCaseDocument.creationDate) &&
-        Objects.equals(this.author, archivedCaseDocument.author) &&
-        Objects.equals(this.index, archivedCaseDocument.index) &&
-        Objects.equals(this.contentMimetype, archivedCaseDocument.contentMimetype) &&
-        Objects.equals(this.caseId, archivedCaseDocument.caseId) &&
-        Objects.equals(this.contentStorageId, archivedCaseDocument.contentStorageId) &&
-        Objects.equals(this.isInternal, archivedCaseDocument.isInternal) &&
-        Objects.equals(this.description, archivedCaseDocument.description) &&
-        Objects.equals(this.name, archivedCaseDocument.name) &&
-        Objects.equals(this.fileName, archivedCaseDocument.fileName) &&
-        Objects.equals(this.submittedBy, archivedCaseDocument.submittedBy) &&
-        Objects.equals(this.url, archivedCaseDocument.url) &&
-        Objects.equals(this.version, archivedCaseDocument.version) &&
-        Objects.equals(this.sourceObjectId, archivedCaseDocument.sourceObjectId) &&
-        Objects.equals(this.archivedDate, archivedCaseDocument.archivedDate);
+    ArchivedProcessInstanceDocument archivedProcessInstanceDocument = (ArchivedProcessInstanceDocument) o;
+    return Objects.equals(this.id, archivedProcessInstanceDocument.id) &&
+        Objects.equals(this.creationDate, archivedProcessInstanceDocument.creationDate) &&
+        Objects.equals(this.author, archivedProcessInstanceDocument.author) &&
+        Objects.equals(this.index, archivedProcessInstanceDocument.index) &&
+        Objects.equals(this.contentMimetype, archivedProcessInstanceDocument.contentMimetype) &&
+        Objects.equals(this.caseId, archivedProcessInstanceDocument.caseId) &&
+        Objects.equals(this.contentStorageId, archivedProcessInstanceDocument.contentStorageId) &&
+        Objects.equals(this.isInternal, archivedProcessInstanceDocument.isInternal) &&
+        Objects.equals(this.description, archivedProcessInstanceDocument.description) &&
+        Objects.equals(this.name, archivedProcessInstanceDocument.name) &&
+        Objects.equals(this.fileName, archivedProcessInstanceDocument.fileName) &&
+        Objects.equals(this.submittedBy, archivedProcessInstanceDocument.submittedBy) &&
+        Objects.equals(this.url, archivedProcessInstanceDocument.url) &&
+        Objects.equals(this.version, archivedProcessInstanceDocument.version) &&
+        Objects.equals(this.sourceObjectId, archivedProcessInstanceDocument.sourceObjectId) &&
+        Objects.equals(this.archivedDate, archivedProcessInstanceDocument.archivedDate);
   }
 
   @Override
@@ -536,7 +536,7 @@ public class ArchivedCaseDocument implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedCaseDocument {\n");
+    sb.append("class ArchivedProcessInstanceDocument {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    author: ").append(toIndentedString(author)).append("\n");

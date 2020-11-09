@@ -1,6 +1,6 @@
 /*
  * Bonita 7.11 HTTP API
- *  The REST API lets you access the data with HTTP requests; it is useful when implementing rich web forms / pages for a good user experience.  If your application is using a technology other than Java, you can integrate it with the Bonita solution using the Web REST API. This API provides access to all Bonita objects (like processes, tasks, users, connectors etc.), to execute operations on them (create, retrieve, update, delete). You can use these operations to create a workflow with Bonita and integrate it into your application. The Bonita Engine remains responsible for executing the workflow logic (connectors, gateways with conditions, messages, timers etc.) while your application gives access to the workflow. Users can manage processes and tasks, and perform administrative activities.  ![diagram of architecture of a REST client integrated with Bonita](images/rest_overview_v2.png)  ### API Extensions  You can create [Rest API Extensions](rest-api-extensions.md) to extend the Rest API by adding missing ressources (not provided by the Rest API). It is possible for an extension to interact with the engine (via the API) or with any other external service (for example a database, a directory, or a web service).  ### Create a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/  `| |:-|:-| | Request Method | POST| | Request Payload | an item in JSON| | Response | the same item in JSON, containing the values provided in the posted item, completed with default values and identifiers provided by Bonita Engine.|  ### Read a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/user/5 `  #### Extend resource response  On some resources, in GET methods the `d` (deploy) URL query parameter can be used to extend the response objects. The value of this parameter consists of an attribute for which you want to make an extended request (called a deploy) and retrieve attributes of a linked resource. This means that instead of retrieving the ID or a parent or referenced resource, you can retrieve the full object.  For example, when you retrieve a task, you can also retrieve the process definition attributes in addition to the process definition ID that is already part of the task resource. The supported deploy values for a task include its process (d=processId).  Specifiy multiple `d` parameter to extend several resources. For instance, to retrieve the flow node of id 143 and the associated process, case and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`  #### With compound identifier  The order of the identifier parts for each resource type is given in the table above.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/membership/5/12/24 `  ### Update a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | PUT| | Request Payload | a map in JSON containing the new values for the attributes you want to change.| | Response | the corresponding item in JSON with new values where you requested a modification|  Example `http://.../API/identity/user/5`  #### With compound identifier:  Response: the corresponding item in JSON with new values where you requested a modification.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | PUT| | Request Payload | ` a map in JSON containing the new values for the attributes you want to change `| | Response | ` the corresponding item in JSON with new values where you requested a modification`|  Example `http://.../API/identity/membership/5/12/24 `  ### Delete resources  Use the DELETE request to remove multiple resources.  | Request URL | `http://.../API/{API_name}/{resource_name}/ `| |:-|:-| | Request Method | DELETE| | Request Payload | A list of identifiers in JSON, for example `[\"id1\",\"id2\",\"id3\"]`. Compound identifiers are separated by '/' characters.| | Response | `empty `|  Example `http://.../API/identity/membership/ `  ### Search for a resource  The required object is specified with a set of filters in the request URL. The URL parameters must be URL-encoded.  Results are returned in a paged list, so you have to specify the page (counting from zero), and the number of results per page (count), additionally you can define a sort key (order). You can see the total number of matching results in the HTTP response header Content-Range. If you are searching for business data using a custom query, there must be a [count query in the BDM](define-and-deploy-the-bdm.md). If there is no count query, results from a custom query on business data cannot be paged properly (the header Content-Range will be absent). For business data default queries, the count query is defined automatically.  The available filters are the attributes of the item plus some specific filters defined by each item.  | Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=... `| |:-|:-| | Request Method | GET| | Response | an array of items in JSON|  Example `/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`  For a GET method that retrieves more than one instance of a resource, you can specify the following request parameters:  * p (Mandatory): index of the page to display * c (Mandatory): maximum number of elements to retrieve * o: order of presentation of values in response: must be either `attributeName ASC` or `attributeName DESC`. The final order parameter value must be URL encoded. * f: list of filters, specified as `attributeName=attributeValue`. To filter on more than one attribute, specify an f parameters for each attribute. The final filter parameter value must be URL encoded.   The attributes you can filter on are specific to the resource. * s: search on name or search indexes. The matching policy depends on the configuration of [word-based search](using-list-and-search-methods.md).   For example, if word-based search is enabled, `s=Valid` returns matches containing the string \"valid\" at the start of any word in the attribute value word,   such as \"Valid address\", \"Not a valid address\", and \"Validated request\" but not \"Invalid request\".   If word-based search is disabled, `s=Valid` returns matches containing the string \"valid\" at the start of the attribute value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid address\" or \"Invalid request\".  ### Errors  The API uses standard HTTP status codes to indicate the success or failure of the API call.  If you get a `401` response code :   - make sure that the cookies have been transfered with the call   - make sure that the cookies transfered are the ones generated during the last sucessfull login call   - if one of the PUT, DELETE or POST method is used, make sure that the `X-Bonita-API-Token` header is included   - if the X-Bonita-API-Token header is included, make sure that the value is the same as the one of the cookie generated during the last login   - Maybe a logout was issued or the session has expired; try to log in again, and re run the request with the new cookies and the new value for the `X-Bonita-API-Token` header.
+ *  The REST API lets you access the data with HTTP requests; it is useful when implementing rich web forms / pages for a good user experience.  If your application is using a technology other than Java, you can integrate it with the Bonita solution using the Web REST API. This API provides access to all Bonita objects (like processes, tasks, users, connectors etc.), to execute operations on them (create, retrieve, update, delete). You can use these operations to create a workflow with Bonita and integrate it into your application. The Bonita Engine remains responsible for executing the workflow logic (connectors, gateways with conditions, messages, timers etc.) while your application gives access to the workflow. Users can manage processes and tasks, and perform administrative activities.  ![diagram of architecture of a REST client integrated with Bonita](images/rest_overview_v2.png)  ### API Extensions  You can create [Rest API Extensions](rest-api-extensions.md) to extend the Rest API by adding missing ressources (not provided by the Rest API). It is possible for an extension to interact with the engine (via the API) or with any other external service (for example a database, a directory, or a web service).  ### Create a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/  `| |:-|:-| | Request Method | POST| | Request Payload | an item in JSON| | Response | the same item in JSON, containing the values provided in the posted item, completed with default values and identifiers provided by Bonita Engine.|  ### Read a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/user/5 `  #### Extend resource response  On some resources, in GET methods the `d` (deploy) URL query parameter can be used to extend the response objects. The value of this parameter consists of an attribute for which you want to make an extended request (called a deploy) and retrieve attributes of a linked resource. This means that instead of retrieving the ID or a parent or referenced resource, you can retrieve the full object.  For example, when you retrieve a task, you can also retrieve the process definition attributes in addition to the process definition ID that is already part of the task resource. The supported deploy values for a task include its process (d=processId).  Specifiy multiple `d` parameter to extend several resources. For instance, to retrieve the flow node of id 143 and the associated process, process instance and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`  #### With compound identifier  The order of the identifier parts for each resource type is given in the table above.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/membership/5/12/24 `  ### Update a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | PUT| | Request Payload | a map in JSON containing the new values for the attributes you want to change.| | Response | the corresponding item in JSON with new values where you requested a modification|  Example `http://.../API/identity/user/5`  #### With compound identifier:  Response: the corresponding item in JSON with new values where you requested a modification.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | PUT| | Request Payload | ` a map in JSON containing the new values for the attributes you want to change `| | Response | ` the corresponding item in JSON with new values where you requested a modification`|  Example `http://.../API/identity/membership/5/12/24 `  ### Delete resources  Use the DELETE request to remove multiple resources.  | Request URL | `http://.../API/{API_name}/{resource_name}/ `| |:-|:-| | Request Method | DELETE| | Request Payload | A list of identifiers in JSON, for example `[\"id1\",\"id2\",\"id3\"]`. Compound identifiers are separated by '/' characters.| | Response | `empty `|  Example `http://.../API/identity/membership/ `  ### Search for a resource  The required object is specified with a set of filters in the request URL. The URL parameters must be URL-encoded.  Results are returned in a paged list, so you have to specify the page (counting from zero), and the number of results per page (count), additionally you can define a sort key (order). You can see the total number of matching results in the HTTP response header Content-Range. If you are searching for business data using a custom query, there must be a [count query in the BDM](define-and-deploy-the-bdm.md). If there is no count query, results from a custom query on business data cannot be paged properly (the header Content-Range will be absent). For business data default queries, the count query is defined automatically.  The available filters are the attributes of the item plus some specific filters defined by each item.  | Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=... `| |:-|:-| | Request Method | GET| | Response | an array of items in JSON|  Example `/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`  For a GET method that retrieves more than one instance of a resource, you can specify the following request parameters:  * p (Mandatory): index of the page to display * c (Mandatory): maximum number of elements to retrieve * o: order of presentation of values in response: must be either `attributeName ASC` or `attributeName DESC`. The final order parameter value must be URL encoded. * f: list of filters, specified as `attributeName=attributeValue`. To filter on more than one attribute, specify an f parameters for each attribute. The final filter parameter value must be URL encoded.   The attributes you can filter on are specific to the resource. * s: search on name or search indexes. The matching policy depends on the configuration of [word-based search](using-list-and-search-methods.md).   For example, if word-based search is enabled, `s=Valid` returns matches containing the string \"valid\" at the start of any word in the attribute value word,   such as \"Valid address\", \"Not a valid address\", and \"Validated request\" but not \"Invalid request\".   If word-based search is disabled, `s=Valid` returns matches containing the string \"valid\" at the start of the attribute value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid address\" or \"Invalid request\".  ### Errors  The API uses standard HTTP status codes to indicate the success or failure of the API call.  If you get a `401` response code :   - make sure that the cookies have been transfered with the call   - make sure that the cookies transfered are the ones generated during the last sucessfull login call   - if one of the PUT, DELETE or POST method is used, make sure that the `X-Bonita-API-Token` header is included   - if the X-Bonita-API-Token header is included, make sure that the value is the same as the one of the cookie generated during the last login   - Maybe a logout was issued or the session has expired; try to log in again, and re run the request with the new cookies and the new value for the `X-Bonita-API-Token` header.
  *
  * The version of the OpenAPI document: 0.0.1
  * 
@@ -21,41 +21,38 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.bonitasoft.web.client.model.ArchivedCaseAllOf;
-import org.bonitasoft.web.client.model.ModelCase;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * ArchivedCase
+ * ProcessInstance (Case) is an instance of a process. When you start a process, it creates a process instances.
  */
+@ApiModel(description = "ProcessInstance (Case) is an instance of a process. When you start a process, it creates a process instances.")
 @JsonPropertyOrder({
-  ArchivedCase.JSON_PROPERTY_ID,
-  ArchivedCase.JSON_PROPERTY_END_DATE,
-  ArchivedCase.JSON_PROPERTY_FAILED_FLOW_NODES,
-  ArchivedCase.JSON_PROPERTY_STARTED_BY_SUBSTITUTE,
-  ArchivedCase.JSON_PROPERTY_START,
-  ArchivedCase.JSON_PROPERTY_ACTIVE_FLOW_NODES,
-  ArchivedCase.JSON_PROPERTY_STATE,
-  ArchivedCase.JSON_PROPERTY_ROOT_CASE_ID,
-  ArchivedCase.JSON_PROPERTY_STARTED_BY,
-  ArchivedCase.JSON_PROPERTY_PROCESS_DEFINITION_ID,
-  ArchivedCase.JSON_PROPERTY_LAST_UPDATE_DATE,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX1_LABEL,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX2_LABEL,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX3_LABEL,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX4_LABEL,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX5_LABEL,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX1_VALUE,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX2_VALUE,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX3_VALUE,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX4_VALUE,
-  ArchivedCase.JSON_PROPERTY_SEARCH_INDEX5_VALUE,
-  ArchivedCase.JSON_PROPERTY_SOURCE_OBJECT_ID,
-  ArchivedCase.JSON_PROPERTY_ARCHIVED_DATE
+  ProcessInstance.JSON_PROPERTY_ID,
+  ProcessInstance.JSON_PROPERTY_END_DATE,
+  ProcessInstance.JSON_PROPERTY_FAILED_FLOW_NODES,
+  ProcessInstance.JSON_PROPERTY_STARTED_BY_SUBSTITUTE,
+  ProcessInstance.JSON_PROPERTY_START,
+  ProcessInstance.JSON_PROPERTY_ACTIVE_FLOW_NODES,
+  ProcessInstance.JSON_PROPERTY_STATE,
+  ProcessInstance.JSON_PROPERTY_ROOT_CASE_ID,
+  ProcessInstance.JSON_PROPERTY_STARTED_BY,
+  ProcessInstance.JSON_PROPERTY_PROCESS_DEFINITION_ID,
+  ProcessInstance.JSON_PROPERTY_LAST_UPDATE_DATE,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX1_LABEL,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX2_LABEL,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX3_LABEL,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX4_LABEL,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_LABEL,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX1_VALUE,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX2_VALUE,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX3_VALUE,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX4_VALUE,
+  ProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_VALUE
 })
 
-public class ArchivedCase implements Serializable {
+public class ProcessInstance implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public static final String JSON_PROPERTY_ID = "id";
@@ -121,25 +118,19 @@ public class ArchivedCase implements Serializable {
   public static final String JSON_PROPERTY_SEARCH_INDEX5_VALUE = "searchIndex5Value";
   private String searchIndex5Value;
 
-  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
-  private String sourceObjectId;
 
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
-
-
-  public ArchivedCase id(String id) {
+  public ProcessInstance id(String id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * the identifier of the case
+   * the identifier of the ProcessInstance (Case)
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the identifier of the case")
+  @ApiModelProperty(value = "the identifier of the ProcessInstance (Case)")
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -153,18 +144,18 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase endDate(String endDate) {
+  public ProcessInstance endDate(String endDate) {
     
     this.endDate = endDate;
     return this;
   }
 
    /**
-   * the date set when the case is closed
+   * the date set when the process instance is closed
    * @return endDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the date set when the case is closed")
+  @ApiModelProperty(value = "the date set when the process instance is closed")
   @JsonProperty(JSON_PROPERTY_END_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -178,7 +169,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase failedFlowNodes(String failedFlowNodes) {
+  public ProcessInstance failedFlowNodes(String failedFlowNodes) {
     
     this.failedFlowNodes = failedFlowNodes;
     return this;
@@ -203,7 +194,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase startedBySubstitute(String startedBySubstitute) {
+  public ProcessInstance startedBySubstitute(String startedBySubstitute) {
     
     this.startedBySubstitute = startedBySubstitute;
     return this;
@@ -228,7 +219,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase start(String start) {
+  public ProcessInstance start(String start) {
     
     this.start = start;
     return this;
@@ -253,7 +244,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase activeFlowNodes(String activeFlowNodes) {
+  public ProcessInstance activeFlowNodes(String activeFlowNodes) {
     
     this.activeFlowNodes = activeFlowNodes;
     return this;
@@ -278,18 +269,18 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase state(String state) {
+  public ProcessInstance state(String state) {
     
     this.state = state;
     return this;
   }
 
    /**
-   * state: an enum that represent the state of the case, it can be INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR, ABORTING
+   * state: an enum that represent the state of the process instances, it can be INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR, ABORTING
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "state: an enum that represent the state of the case, it can be INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR, ABORTING")
+  @ApiModelProperty(value = "state: an enum that represent the state of the process instances, it can be INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR, ABORTING")
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -303,7 +294,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase rootCaseId(String rootCaseId) {
+  public ProcessInstance rootCaseId(String rootCaseId) {
     
     this.rootCaseId = rootCaseId;
     return this;
@@ -328,7 +319,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase startedBy(String startedBy) {
+  public ProcessInstance startedBy(String startedBy) {
     
     this.startedBy = startedBy;
     return this;
@@ -353,7 +344,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase processDefinitionId(String processDefinitionId) {
+  public ProcessInstance processDefinitionId(String processDefinitionId) {
     
     this.processDefinitionId = processDefinitionId;
     return this;
@@ -378,7 +369,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase lastUpdateDate(String lastUpdateDate) {
+  public ProcessInstance lastUpdateDate(String lastUpdateDate) {
     
     this.lastUpdateDate = lastUpdateDate;
     return this;
@@ -403,7 +394,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex1Label(String searchIndex1Label) {
+  public ProcessInstance searchIndex1Label(String searchIndex1Label) {
     
     this.searchIndex1Label = searchIndex1Label;
     return this;
@@ -428,7 +419,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex2Label(String searchIndex2Label) {
+  public ProcessInstance searchIndex2Label(String searchIndex2Label) {
     
     this.searchIndex2Label = searchIndex2Label;
     return this;
@@ -453,7 +444,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex3Label(String searchIndex3Label) {
+  public ProcessInstance searchIndex3Label(String searchIndex3Label) {
     
     this.searchIndex3Label = searchIndex3Label;
     return this;
@@ -478,7 +469,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex4Label(String searchIndex4Label) {
+  public ProcessInstance searchIndex4Label(String searchIndex4Label) {
     
     this.searchIndex4Label = searchIndex4Label;
     return this;
@@ -503,7 +494,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex5Label(String searchIndex5Label) {
+  public ProcessInstance searchIndex5Label(String searchIndex5Label) {
     
     this.searchIndex5Label = searchIndex5Label;
     return this;
@@ -528,7 +519,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex1Value(String searchIndex1Value) {
+  public ProcessInstance searchIndex1Value(String searchIndex1Value) {
     
     this.searchIndex1Value = searchIndex1Value;
     return this;
@@ -553,7 +544,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex2Value(String searchIndex2Value) {
+  public ProcessInstance searchIndex2Value(String searchIndex2Value) {
     
     this.searchIndex2Value = searchIndex2Value;
     return this;
@@ -578,7 +569,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex3Value(String searchIndex3Value) {
+  public ProcessInstance searchIndex3Value(String searchIndex3Value) {
     
     this.searchIndex3Value = searchIndex3Value;
     return this;
@@ -603,7 +594,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex4Value(String searchIndex4Value) {
+  public ProcessInstance searchIndex4Value(String searchIndex4Value) {
     
     this.searchIndex4Value = searchIndex4Value;
     return this;
@@ -628,7 +619,7 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase searchIndex5Value(String searchIndex5Value) {
+  public ProcessInstance searchIndex5Value(String searchIndex5Value) {
     
     this.searchIndex5Value = searchIndex5Value;
     return this;
@@ -653,56 +644,6 @@ public class ArchivedCase implements Serializable {
   }
 
 
-  public ArchivedCase sourceObjectId(String sourceObjectId) {
-    
-    this.sourceObjectId = sourceObjectId;
-    return this;
-  }
-
-   /**
-   * the id of the case before it was archived
-   * @return sourceObjectId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the id of the case before it was archived")
-  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getSourceObjectId() {
-    return sourceObjectId;
-  }
-
-
-  public void setSourceObjectId(String sourceObjectId) {
-    this.sourceObjectId = sourceObjectId;
-  }
-
-
-  public ArchivedCase archivedDate(String archivedDate) {
-    
-    this.archivedDate = archivedDate;
-    return this;
-  }
-
-   /**
-   * the date set when the case was archived
-   * @return archivedDate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the date set when the case was archived")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getArchivedDate() {
-    return archivedDate;
-  }
-
-
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -711,42 +652,40 @@ public class ArchivedCase implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ArchivedCase archivedCase = (ArchivedCase) o;
-    return Objects.equals(this.id, archivedCase.id) &&
-        Objects.equals(this.endDate, archivedCase.endDate) &&
-        Objects.equals(this.failedFlowNodes, archivedCase.failedFlowNodes) &&
-        Objects.equals(this.startedBySubstitute, archivedCase.startedBySubstitute) &&
-        Objects.equals(this.start, archivedCase.start) &&
-        Objects.equals(this.activeFlowNodes, archivedCase.activeFlowNodes) &&
-        Objects.equals(this.state, archivedCase.state) &&
-        Objects.equals(this.rootCaseId, archivedCase.rootCaseId) &&
-        Objects.equals(this.startedBy, archivedCase.startedBy) &&
-        Objects.equals(this.processDefinitionId, archivedCase.processDefinitionId) &&
-        Objects.equals(this.lastUpdateDate, archivedCase.lastUpdateDate) &&
-        Objects.equals(this.searchIndex1Label, archivedCase.searchIndex1Label) &&
-        Objects.equals(this.searchIndex2Label, archivedCase.searchIndex2Label) &&
-        Objects.equals(this.searchIndex3Label, archivedCase.searchIndex3Label) &&
-        Objects.equals(this.searchIndex4Label, archivedCase.searchIndex4Label) &&
-        Objects.equals(this.searchIndex5Label, archivedCase.searchIndex5Label) &&
-        Objects.equals(this.searchIndex1Value, archivedCase.searchIndex1Value) &&
-        Objects.equals(this.searchIndex2Value, archivedCase.searchIndex2Value) &&
-        Objects.equals(this.searchIndex3Value, archivedCase.searchIndex3Value) &&
-        Objects.equals(this.searchIndex4Value, archivedCase.searchIndex4Value) &&
-        Objects.equals(this.searchIndex5Value, archivedCase.searchIndex5Value) &&
-        Objects.equals(this.sourceObjectId, archivedCase.sourceObjectId) &&
-        Objects.equals(this.archivedDate, archivedCase.archivedDate);
+    ProcessInstance processInstance = (ProcessInstance) o;
+    return Objects.equals(this.id, processInstance.id) &&
+        Objects.equals(this.endDate, processInstance.endDate) &&
+        Objects.equals(this.failedFlowNodes, processInstance.failedFlowNodes) &&
+        Objects.equals(this.startedBySubstitute, processInstance.startedBySubstitute) &&
+        Objects.equals(this.start, processInstance.start) &&
+        Objects.equals(this.activeFlowNodes, processInstance.activeFlowNodes) &&
+        Objects.equals(this.state, processInstance.state) &&
+        Objects.equals(this.rootCaseId, processInstance.rootCaseId) &&
+        Objects.equals(this.startedBy, processInstance.startedBy) &&
+        Objects.equals(this.processDefinitionId, processInstance.processDefinitionId) &&
+        Objects.equals(this.lastUpdateDate, processInstance.lastUpdateDate) &&
+        Objects.equals(this.searchIndex1Label, processInstance.searchIndex1Label) &&
+        Objects.equals(this.searchIndex2Label, processInstance.searchIndex2Label) &&
+        Objects.equals(this.searchIndex3Label, processInstance.searchIndex3Label) &&
+        Objects.equals(this.searchIndex4Label, processInstance.searchIndex4Label) &&
+        Objects.equals(this.searchIndex5Label, processInstance.searchIndex5Label) &&
+        Objects.equals(this.searchIndex1Value, processInstance.searchIndex1Value) &&
+        Objects.equals(this.searchIndex2Value, processInstance.searchIndex2Value) &&
+        Objects.equals(this.searchIndex3Value, processInstance.searchIndex3Value) &&
+        Objects.equals(this.searchIndex4Value, processInstance.searchIndex4Value) &&
+        Objects.equals(this.searchIndex5Value, processInstance.searchIndex5Value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, endDate, failedFlowNodes, startedBySubstitute, start, activeFlowNodes, state, rootCaseId, startedBy, processDefinitionId, lastUpdateDate, searchIndex1Label, searchIndex2Label, searchIndex3Label, searchIndex4Label, searchIndex5Label, searchIndex1Value, searchIndex2Value, searchIndex3Value, searchIndex4Value, searchIndex5Value, sourceObjectId, archivedDate);
+    return Objects.hash(id, endDate, failedFlowNodes, startedBySubstitute, start, activeFlowNodes, state, rootCaseId, startedBy, processDefinitionId, lastUpdateDate, searchIndex1Label, searchIndex2Label, searchIndex3Label, searchIndex4Label, searchIndex5Label, searchIndex1Value, searchIndex2Value, searchIndex3Value, searchIndex4Value, searchIndex5Value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedCase {\n");
+    sb.append("class ProcessInstance {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    failedFlowNodes: ").append(toIndentedString(failedFlowNodes)).append("\n");
@@ -768,8 +707,6 @@ public class ArchivedCase implements Serializable {
     sb.append("    searchIndex3Value: ").append(toIndentedString(searchIndex3Value)).append("\n");
     sb.append("    searchIndex4Value: ").append(toIndentedString(searchIndex4Value)).append("\n");
     sb.append("    searchIndex5Value: ").append(toIndentedString(searchIndex5Value)).append("\n");
-    sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,12 +3,12 @@ package org.bonitasoft.web.client.api;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 
-import org.bonitasoft.web.client.model.BusinessProcess;
 import org.bonitasoft.web.client.model.Contract;
 import org.bonitasoft.web.client.model.DesignProcessDefinition;
 import org.bonitasoft.web.client.model.Error;
 import java.io.File;
 import org.bonitasoft.web.client.model.ProcessCreateRequest;
+import org.bonitasoft.web.client.model.ProcessDefinition;
 import org.bonitasoft.web.client.model.ProcessInstantiationResponse;
 import org.bonitasoft.web.client.model.ProcessUpdateRequest;
 
@@ -26,18 +26,18 @@ public interface ProcessApi extends ApiClient.Api {
    * Create the Process
    * Create the Process. A process resource is created using the content of a .bar file that has previously been uploaded, using the [processUpload servlet](#operation/uploadProcess), to get the process archive path. 
    * @param body Partial Process description (required)
-   * @return BusinessProcess
+   * @return ProcessDefinition
    */
   @RequestLine("POST /API/bpm/process")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  BusinessProcess createProcess(ProcessCreateRequest body);
+  ProcessDefinition createProcess(ProcessCreateRequest body);
 
   /**
    * Delete the Process by ID
-   * Delete the single Process for the given ID.  **Warning: Beware! Data loss risk!**  Deleting a process will automatically delete all its cases (on-going and archived alike). Thus, the operation may take a long time, and fail if the transaction timeout is not large enough. This feature should only be used on non-production environments.  **Please proceed at your own risk.** 
+   * Delete the single Process for the given ID.  **Warning: Beware! Data loss risk!**  Deleting a process will automatically delete all its process instances (on-going and archived alike). Thus, the operation may take a long time, and fail if the transaction timeout is not large enough. This feature should only be used on non-production environments.  **Please proceed at your own risk.** 
    * @param id ID of the Process to delete (required)
    */
   @RequestLine("DELETE /API/bpm/process/{id}")
@@ -48,7 +48,7 @@ public interface ProcessApi extends ApiClient.Api {
 
   /**
    * Delete the Process by IDs
-   * Delete Process for the given list of ID.  **Warning: Beware! Data loss risk!**  Deleting a process will automatically delete all its cases (on-going and archived alike). Thus, the operation may take a long time, and fail if the transaction timeout is not large enough. This feature should only be used on non-production environments.  **Please proceed at your own risk.** 
+   * Delete Process for the given list of ID.  **Warning: Beware! Data loss risk!**  Deleting a process will automatically delete all its process instances (on-going and archived alike). Thus, the operation may take a long time, and fail if the transaction timeout is not large enough. This feature should only be used on non-production environments.  **Please proceed at your own risk.** 
    * @param requestBody  (optional)
    */
   @RequestLine("DELETE /API/bpm/process")
@@ -62,13 +62,13 @@ public interface ProcessApi extends ApiClient.Api {
    * Finds the Process by ID
    * Returns the single Process for the given ID 
    * @param id ID of the Process to return (required)
-   * @return BusinessProcess
+   * @return ProcessDefinition
    */
   @RequestLine("GET /API/bpm/process/{id}")
   @Headers({
     "Accept: application/json",
   })
-  BusinessProcess getProcessById(@Param("id") String id);
+  ProcessDefinition getProcessById(@Param("id") String id);
 
   /**
    * Finds the Process contract by ID
@@ -116,13 +116,13 @@ public interface ProcessApi extends ApiClient.Api {
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param o can order on attributes (optional)
    * @param s can search on attributes (optional)
-   * @return List&lt;BusinessProcess&gt;
+   * @return List&lt;ProcessDefinition&gt;
    */
   @RequestLine("GET /API/bpm/process?p={p}&c={c}&f={f}&o={o}&s={s}")
   @Headers({
     "Accept: application/json",
   })
-  List<BusinessProcess> searchProcesses(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
+  List<ProcessDefinition> searchProcesses(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
 
   /**
    * Finds Processes
@@ -141,13 +141,13 @@ public interface ProcessApi extends ApiClient.Api {
    *   <li>o - can order on attributes (optional)</li>
    *   <li>s - can search on attributes (optional)</li>
    *   </ul>
-   * @return List&lt;BusinessProcess&gt;
+   * @return List&lt;ProcessDefinition&gt;
    */
   @RequestLine("GET /API/bpm/process?p={p}&c={c}&f={f}&o={o}&s={s}")
   @Headers({
   "Accept: application/json",
   })
-  List<BusinessProcess> searchProcesses(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<ProcessDefinition> searchProcesses(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
