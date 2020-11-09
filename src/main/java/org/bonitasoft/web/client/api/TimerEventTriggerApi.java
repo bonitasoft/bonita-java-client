@@ -35,7 +35,7 @@ public interface TimerEventTriggerApi extends ApiClient.Api {
    * Finds TimerEventTriggers with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
    * @param p index of the page to display (required)
    * @param c maximum number of elements to retrieve (required)
-   * @param caseId the case id (required)
+   * @param caseId the process instance id (required)
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param o can order on attributes (optional)
    * @param s can search on attributes (optional)
@@ -63,7 +63,7 @@ public interface TimerEventTriggerApi extends ApiClient.Api {
    *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
    *   <li>o - can order on attributes (optional)</li>
    *   <li>s - can search on attributes (optional)</li>
-   *   <li>caseId - the case id (required)</li>
+   *   <li>caseId - the process instance id (required)</li>
    *   </ul>
    * @return List&lt;TimerEventTrigger&gt;
    */
