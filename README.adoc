@@ -254,6 +254,15 @@ The adopted worlfow is for now the Gitflow one.
 
 Please refers to this article for more info: https://jeffkreeftmeijer.com/git-flow/
 
+== Release
+
+- Create a branch for the desired version. ex: `release/1.0.0`. You can use the `set-version.sh` script to align declared versions in sources (pom.xml,readme.adoc,...)
+- Push branch, make a pull request to `master` and review release with others
+- Once you are happy with the content of the release branch, merge pull request to master branch
+- That's it !
+
+NOTE: Don't forget to update your local `dev` branch after a release has been done !
+
 == Getting Help
 
 The *{orga}* organization on GitHub hosts the project's source code, issue trackers, and other projects.
