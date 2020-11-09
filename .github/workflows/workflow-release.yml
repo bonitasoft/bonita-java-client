@@ -1,0 +1,91 @@
+name: workflow-release
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+          
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      
+      # Extract version
+      - name: Extract version
+        shell: bash
+        run: echo "##[set-output name=version;]$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)"
+        id: extract_version
+
+      # Build and Push release to maven central
+      - name: Build and Push release to Maven central
+        uses: samuelmeuli/action-maven-publish@v1
+        with:
+          gpg_private_key: ${{ secrets.gpg_private_key }}
+          gpg_passphrase: ${{ secrets.gpg_passphrase }}
+          nexus_username: ${{ secrets.ossrh_username }}
+          nexus_password: ${{ secrets.ossrh_password }}
+       
+      # Create tag and GitHub release 
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.extract_version.outputs.version }}
+          release_name: Release ${{ steps.extract_version.outputs.version }}
+          body: |
+            TODO
+          draft: false
+          prerelease: false
+          
+      # Switch to dev  
+      - uses: actions/checkout@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          ref: 'dev'
+                
+      # Merge master into dev    
+      - uses: everlytic/branch-merge@1.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_ref: 'master'
+          target_branch: 'dev'
+          commit_message_template: 'ci(release): Merged {source_ref} into target {target_branch}'
+          
+      # Update next dev version
+      - name: Update next version
+        run: ./mvnw versions:use-next-snapshots
+        id: update_next_version
+      - name: Extract next version
+        shell: bash
+        run: echo "##[set-output name=next_version;]$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)"
+        id: extract_next_version
+      - name: Set next version
+        run: ./set-version.sh ${{ steps.extract_next_version.outputs.next_version }}
+        id: set_next_version
+      - name: Commit next version
+        run: | 
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "ci(release): Set next dev version"
+          git push
+
+         
+         
