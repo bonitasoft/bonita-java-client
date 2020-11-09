@@ -33,7 +33,7 @@ public interface UserApi extends ApiClient.Api {
 
   /**
    * Delete the User by ID
-   * Delete the single User for the given ID.  **Use this method with caution**: some artifacts like applications, cases or users may present display problems in the Bonita Portal if the referenced user was deleted. Note that you can disable a user instead of deleting it. To do so, use the UPDATE method and set the attribute &#39;enabled&#39; to false 
+   * Delete the single User for the given ID.  **Use this method with caution**: some artifacts like applications, process instances or users may present display problems in the Bonita Portal if the referenced user was deleted. Note that you can disable a user instead of deleting it. To do so, use the UPDATE method and set the attribute &#39;enabled&#39; to false 
    * @param id ID of the User to delete (required)
    */
   @RequestLine("DELETE /API/identity/user/{id}")

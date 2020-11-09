@@ -19,15 +19,15 @@ public interface ProcessService {
      */
     void importProcess(File file, ProcessImportPolicy policy);
 
-    List<BusinessProcess> searchProcesses(int page, int count);
+    List<ProcessDefinition> searchProcesses(int page, int count);
 
-    List<BusinessProcess> searchProcesses(ProcessApi.SearchProcessesQueryParams params);
+    List<ProcessDefinition> searchProcesses(ProcessApi.SearchProcessesQueryParams params);
 
     List<ProcessParameter> searchProcessParameters(int page, int count, String processId);
 
     List<ProcessResolutionProblem> getProcessProblem(int page, int count, String processId) ;
 
-    Optional<BusinessProcess> getProcess(String name, String version);
+    Optional<ProcessDefinition> getProcess(String name, String version);
 
     ProcessInstantiationResponse startProcess(String name, String version);
 

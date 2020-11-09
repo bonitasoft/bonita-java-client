@@ -172,7 +172,7 @@ public interface UserTaskApi extends ApiClient.Api {
 
   /**
    * Update the UserTask by ID
-   * Update the UserTask for the given ID.  Fields that can be updated are assignedId and state. The only value that can be set for the state is \&quot;skipped\&quot;. You only need to specify the fields that are to be updated. 
+   * Update the UserTask for the given ID.  Fields that can be updated are &#x60;assigned_id&#x60; and &#x60;state&#x60;. The only value that can be set for the state is &#x60;skipped&#x60;. You only need to specify the fields that are to be updated. 
    * @param id ID of the UserTask to return (required)
    * @param userTaskUpdateRequest Partial UserTask description (required)
    */

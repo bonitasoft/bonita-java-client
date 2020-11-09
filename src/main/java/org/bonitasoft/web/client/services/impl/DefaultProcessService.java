@@ -35,7 +35,7 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
     public void importProcess(File barFile, ProcessImportPolicy policy) {
         log.info("Deploying process '{}' using policy {} ...", barFile.getName(), policy.name());
         BusinessArchive bar = BusinessArchive.create(barFile);
-        Optional<BusinessProcess> process = getProcess(bar.getProcessName(), bar.getProcessVersion());
+        Optional<ProcessDefinition> process = getProcess(bar.getProcessName(), bar.getProcessVersion());
         if (process.isPresent()) {
             log.debug("Process '{}' in version '{}' already exists.", bar.getProcessName(), bar.getProcessVersion());
             switch (policy) {
@@ -58,7 +58,7 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
         String uploadedFileName = processApi.uploadProcess(barFile);
         log.debug("Process file uploaded successfully.");
 
-        BusinessProcess processDeployed = processApi.createProcess(new ProcessCreateRequest().fileupload(uploadedFileName));
+        ProcessDefinition processDeployed = processApi.createProcess(new ProcessCreateRequest().fileupload(uploadedFileName));
         log.info("Process {}-{} deployed successfully.", processDeployed.getName(), processDeployed.getVersion());
 
         if (ConfigurationState.RESOLVED.equals(processDeployed.getConfigurationState())) {
@@ -72,7 +72,7 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
         }
     }
 
-    private void deleteExistingProcess(BusinessProcess process) {
+    private void deleteExistingProcess(ProcessDefinition process) {
         ProcessApi processApi = apiProvider.get(ProcessApi.class);
         if (ActivationState.ENABLED.equals(process.getActivationState())) {
             log.info("Deactivating existing process {}-{} before deletion...", process.getName(), process.getVersion());
@@ -84,9 +84,9 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
     }
 
     @Override
-    public Optional<BusinessProcess> getProcess(String name, String version) {
+    public Optional<ProcessDefinition> getProcess(String name, String version) {
         log.info("Get process '{}' with version '{}'", name, version);
-        List<BusinessProcess> processes = apiProvider.get(ProcessApi.class).searchProcesses(new ProcessApi.SearchProcessesQueryParams()
+        List<ProcessDefinition> processes = apiProvider.get(ProcessApi.class).searchProcesses(new ProcessApi.SearchProcessesQueryParams()
                 .p(0).c(1)
                 .f(asList(
                         "name=" + name,
@@ -102,12 +102,12 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
     }
 
     @Override
-    public List<BusinessProcess> searchProcesses(int page, int count) {
+    public List<ProcessDefinition> searchProcesses(int page, int count) {
         return searchProcesses(new ProcessApi.SearchProcessesQueryParams().p(page).c(count));
     }
 
     @Override
-    public List<BusinessProcess> searchProcesses(ProcessApi.SearchProcessesQueryParams params) {
+    public List<ProcessDefinition> searchProcesses(ProcessApi.SearchProcessesQueryParams params) {
         log.info("Search processes with params {}", params);
         return apiProvider.get(ProcessApi.class).searchProcesses(params);
     }
