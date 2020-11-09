@@ -35,7 +35,7 @@ public class BonitaLoginService implements LoginService {
     public Session login(String username, String password, String tenant) {
         log.debug("Login with user '{}' on tenant '{}'...", username, tenant);
         try (Response loginResponse = apiProvider.get(PortalAuthenticationApi.class).login(username, password, tenant, "false", "")) {
-            if (loginResponse.status() == 200) {
+            if (loginResponse.status() == 200 || loginResponse.status() == 204) {
                 bonitaCookieAuth.setSessionCookies(loginResponse.headers());
             } else {
                 throw new UnauthorizedException(String.format("Login failed, status: %S %s", loginResponse.status(), loginResponse.reason()));
