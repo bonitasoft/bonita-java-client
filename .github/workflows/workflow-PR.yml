@@ -2,7 +2,7 @@ name: workflow-pr
 
 on:
   pull_request:
-    branches: [ dev ]
+    branches: [ master, dev ]
 
 jobs:
 
@@ -22,13 +22,3 @@ jobs:
           java-version: 11
       - name: Build and test project
         run: ./mvnw -B -ntp clean verify
-      - name: Upload artifact for tests
-        uses: actions/upload-artifact@v2
-        with:
-          name: latest-snapshot
-          path: target/bonita-java-client-*
-      - name: Upload artifact pom for tests
-        uses: actions/upload-artifact@v2
-        with:
-          name: latest-snapshot-pom
-          path: pom.xml
