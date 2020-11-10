@@ -68,6 +68,10 @@ jobs:
           commit_message_template: 'ci(release): Merge master into dev'
           
       # Update next dev version
+      - name: Git pull
+        run: | 
+          git config pull.rebase false 
+          git pull
       - name: Update next version
         run: ./mvnw -B versions:set -DnextSnapshot=true
         id: update_next_version
@@ -82,8 +86,7 @@ jobs:
         run: | 
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git pull
-          git add .
+          git add --all
           git commit -m "ci(release): Set next dev version"
           git push
 
