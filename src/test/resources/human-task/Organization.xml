@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<organization:Organization xmlns:organization="http://documentation.bonitasoft.com/organization-xml-schema">
+  <customUserInfoDefinitions/>
+  <users>
+    <user userName="human.task">
+      <password encrypted="false">bpm</password>
+      <firstName>human</firstName>
+      <lastName>task</lastName>
+      <title>Mr</title>
+      <jobTitle>Account manager</jobTitle>
+      <enabled>true</enabled>
+    </user>
+  </users>
+  <roles>
+    <role name="member">
+      <displayName>Member</displayName>
+      <description/>
+    </role>
+  </roles>
+  <groups>
+    <group name="acme">
+      <displayName>Acme</displayName>
+      <description>This group represents the acme department of the ACME organization</description>
+    </group>
+  </groups>
+  <memberships>
+    <membership>
+      <userName>human.task</userName>
+      <roleName>member</roleName>
+      <groupName>acme</groupName>
+      <groupParentPath/>
+    </membership>
+  </memberships>
+</organization:Organization>
