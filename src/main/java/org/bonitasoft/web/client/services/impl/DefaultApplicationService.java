@@ -20,6 +20,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -73,6 +74,8 @@ public class DefaultApplicationService extends AbstractService implements Applic
         List<String> tokens = new ArrayList<>();
         try {
             DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
+            domFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            domFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             domFactory.setNamespaceAware(false);
             DocumentBuilder builder = domFactory.newDocumentBuilder();
             Document doc = builder.parse(application);

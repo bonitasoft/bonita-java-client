@@ -20,6 +20,7 @@ import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import org.bonitasoft.web.client.BonitaClient;
+import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.invoker.auth.BonitaCookieAuth;
 import org.bonitasoft.web.client.invoker.auth.BonitaLoginService;
 import org.bonitasoft.web.client.feign.decoder.BonitaErrorDecoder;
@@ -178,7 +179,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                 };
 
                 // Install the all-trusting trust manager
-                final SSLContext sslContext = SSLContext.getInstance("SSL");
+                final SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
                 sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
 
                 // Create an ssl socket factory with our all-trusting manager
@@ -188,7 +189,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                 builder.hostnameVerifier((hostname, session) -> true);
 
             } catch (Exception e) {
-                throw new RuntimeException("An internal error has occurred while building the insecure HttpClient", e);
+                throw new ClientException("An internal error has occurred while building the insecure HttpClient", e);
             }
         }
         return builder;

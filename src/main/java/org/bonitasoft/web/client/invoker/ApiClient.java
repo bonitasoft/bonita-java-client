@@ -46,7 +46,7 @@ public class ApiClient {
       } else if ("bonita_token".equals(authName)) {
         auth = new ApiKeyAuth("header", "X-Bonita-API-Token");
       } else {
-        throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
+        throw new ClientException("auth name \"" + authName + "\" not found in available auth names");
       }
       addAuthorization(authName, auth);
     }
@@ -183,7 +183,7 @@ public class ApiClient {
         return;
       }
     }
-    throw new RuntimeException("No Bearer authentication configured!");
+    throw new ClientException("No Bearer authentication configured!");
   }
 
   /**
@@ -198,7 +198,7 @@ public class ApiClient {
         return ;
       }
     }
-    throw new RuntimeException("No API key authentication configured!");
+    throw new ClientException("No API key authentication configured!");
   }
 
   /**
@@ -214,7 +214,7 @@ public class ApiClient {
         return;
       }
     }
-    throw new RuntimeException("No Basic authentication or OAuth configured!");
+    throw new ClientException("No Basic authentication or OAuth configured!");
   }
 
   /**
@@ -233,7 +233,7 @@ public class ApiClient {
    */
   public void addAuthorization(String authName, RequestInterceptor authorization) {
     if (apiAuthorizations.containsKey(authName)) {
-      throw new RuntimeException("auth name \"" + authName + "\" already in api authorizations");
+      throw new ClientException("auth name \"" + authName + "\" already in api authorizations");
     }
     apiAuthorizations.put(authName, authorization);
     feignBuilder.requestInterceptor(authorization);

@@ -15,6 +15,7 @@ import org.bonitasoft.web.client.services.utils.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.ByteArrayInputStream;
@@ -37,6 +38,8 @@ class BusinessArchive {
             // Get name and version from process design file
             byte[] fileFromZip = FileUtils.getFileFromZip(fileInputStream, PROCESS_DESIGN_FILENAME);
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            documentBuilderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            documentBuilderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document doc = documentBuilder.parse(new ByteArrayInputStream(fileFromZip));
             doc.getDocumentElement().normalize();

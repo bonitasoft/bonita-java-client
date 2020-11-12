@@ -9,6 +9,8 @@ import org.bonitasoft.web.client.exception.process.DuplicatedProcessException;
 import org.bonitasoft.web.client.exception.process.ProcessActivationException;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.model.*;
+import org.bonitasoft.web.client.services.ApplicationService;
+import org.bonitasoft.web.client.services.ProcessService;
 import org.bonitasoft.web.client.services.policies.ApplicationImportPolicy;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProcessImportPolicy;
@@ -82,7 +84,10 @@ class BonitaClientIT {
         File processFile = getClasspathFile("/bconf/Pool-1.0.bar");
 
         // Then
-        assertThatThrownBy(() -> bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.IGNORE_DUPLICATES))
+        final ProcessService processes = bonitaClient.processes();
+        assertThatThrownBy(() -> {
+            processes.importProcess(processFile, ProcessImportPolicy.IGNORE_DUPLICATES);
+        })
                 .isInstanceOf(ProcessActivationException.class);
 
     }
@@ -100,7 +105,10 @@ class BonitaClientIT {
 
         // When
         // Second import should fail because of policy
-        assertThatThrownBy(() -> bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.FAIL_ON_DUPLICATES))
+        final ProcessService processes = bonitaClient.processes();
+        assertThatThrownBy(() -> {
+            processes.importProcess(processFile, ProcessImportPolicy.FAIL_ON_DUPLICATES);
+        })
                 .isInstanceOf(DuplicatedProcessException.class);
 
         // Then
@@ -121,7 +129,10 @@ class BonitaClientIT {
         File bconfFile = getClasspathFile("/bconf/default-Production.bconf");
 
         // Then
-        assertThatThrownBy(() -> bonitaClient.applications().importBonitaConfiguration(bconfFile))
+        final ApplicationService applications = bonitaClient.applications();
+        assertThatThrownBy(() -> {
+            applications.importBonitaConfiguration(bconfFile);
+        })
                 .isInstanceOf(LicenseException.class);
 
     }
@@ -321,7 +332,10 @@ class BonitaClientIT {
         waitForUserTaskToBeExecuted(taskId);
 
         // Then:
-        Throwable thrown = catchThrowable(() -> bonitaClient.processes().getUserTask(taskId));
+        final ProcessService processes = bonitaClient.processes();
+        Throwable thrown = catchThrowable(() -> {
+            processes.getUserTask(taskId);
+        });
 
         // FIXME we should search the task in the archives instead
         assertThat(thrown).isInstanceOf(NotFoundException.class);
@@ -341,7 +355,10 @@ class BonitaClientIT {
         String processName = "Pool";
         String processVersion = "1.0";
 
-        assertThatThrownBy(() -> bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES))
+        final ProcessService processes = bonitaClient.processes();
+        assertThatThrownBy(() -> {
+            processes.importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
+        })
                 .isInstanceOf(ProcessActivationException.class)
                 .hasFieldOrPropertyWithValue("processName", processName)
                 .hasFieldOrPropertyWithValue("processVersion", processVersion);

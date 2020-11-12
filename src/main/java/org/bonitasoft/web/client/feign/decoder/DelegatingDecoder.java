@@ -4,6 +4,7 @@ import feign.FeignException;
 import feign.Response;
 import feign.codec.DecodeException;
 import feign.codec.Decoder;
+import org.bonitasoft.web.client.exception.ClientException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +38,7 @@ public class DelegatingDecoder implements Decoder {
         }
 
         String contentType = contentTypeHeader.stream().findFirst()
-                .orElseThrow(() -> new RuntimeException("No " + CONTENT_TYPE_HEADER + " header in response headers."));
+                .orElseThrow(() -> new ClientException("No " + CONTENT_TYPE_HEADER + " header in response headers."));
 
         log.debug("Decoding body with content-type: {}", contentType);
 
@@ -62,7 +63,7 @@ public class DelegatingDecoder implements Decoder {
         try {
             return decoder.decode(response, type);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ClientException("Failed to decode response",e);
         } finally {
             response.close();
         }
