@@ -70,9 +70,9 @@ class DefaultUserServiceTest {
     // Then
     verify(userApi).searchUsers(captor.capture());
     final UserApi.SearchUsersQueryParams searchParams = captor.getValue();
-    assertThat(searchParams).contains(new SimpleEntry<>("p", "0"));
-    assertThat(searchParams).contains(new SimpleEntry<>("c", "1"));
     assertThat(searchParams)
+        .contains(new SimpleEntry<>("p", "0"))
+        .contains(new SimpleEntry<>("c", "1"))
         .contains(new SimpleEntry<>("f", singletonList(encode("userName=" + username))));
   }
 
@@ -170,8 +170,8 @@ class DefaultUserServiceTest {
     // When
     final List<String> profilesNames = service.getProfilesNames(profileFile);
     // Then
-    assertThat(profilesNames).hasSize(7);
     assertThat(profilesNames)
+        .hasSize(7)
         .contains(
             "Administrator",
             "HR",

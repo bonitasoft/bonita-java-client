@@ -23,6 +23,7 @@ import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.model.*;
 import org.bonitasoft.web.client.services.ApplicationService;
 import org.bonitasoft.web.client.services.ProcessService;
+import org.bonitasoft.web.client.services.UserService;
 import org.bonitasoft.web.client.services.policies.ApplicationImportPolicy;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProcessImportPolicy;
@@ -65,11 +66,8 @@ class BonitaClientIT {
     File profile = getClasspathFile("/CustomProfile_Data.xml");
 
     // Then
-    assertThatThrownBy(
-            () ->
-                bonitaClient
-                    .users()
-                    .importProfiles(profile, ProfileImportPolicy.REPLACE_DUPLICATES))
+    final UserService users = bonitaClient.users();
+    assertThatThrownBy(() -> users.importProfiles(profile, ProfileImportPolicy.REPLACE_DUPLICATES))
         .isInstanceOf(LicenseException.class);
   }
 
@@ -84,9 +82,7 @@ class BonitaClientIT {
     // Then
     final ProcessService processes = bonitaClient.processes();
     assertThatThrownBy(
-            () -> {
-              processes.importProcess(processFile, ProcessImportPolicy.IGNORE_DUPLICATES);
-            })
+            () -> processes.importProcess(processFile, ProcessImportPolicy.IGNORE_DUPLICATES))
         .isInstanceOf(ProcessActivationException.class);
   }
 
@@ -105,9 +101,7 @@ class BonitaClientIT {
     // Second import should fail because of policy
     final ProcessService processes = bonitaClient.processes();
     assertThatThrownBy(
-            () -> {
-              processes.importProcess(processFile, ProcessImportPolicy.FAIL_ON_DUPLICATES);
-            })
+            () -> processes.importProcess(processFile, ProcessImportPolicy.FAIL_ON_DUPLICATES))
         .isInstanceOf(DuplicatedProcessException.class);
 
     // Then
@@ -129,10 +123,7 @@ class BonitaClientIT {
 
     // Then
     final ApplicationService applications = bonitaClient.applications();
-    assertThatThrownBy(
-            () -> {
-              applications.importBonitaConfiguration(bconfFile);
-            })
+    assertThatThrownBy(() -> applications.importBonitaConfiguration(bconfFile))
         .isInstanceOf(LicenseException.class);
   }
 
@@ -181,7 +172,7 @@ class BonitaClientIT {
   }
 
   @Test
-  void user_should_be_created() throws Exception {
+  void user_should_be_created() {
 
     // Given
     loggedInAsTechnicalUser();
@@ -300,7 +291,7 @@ class BonitaClientIT {
         bonitaClient.processes().startProcess("standaloneAutomaticProcess", "1.0");
 
     // Then
-    assertThat(startProcess.getCaseId()).isNotBlank();
+    assertThat(startProcess.getCaseId()).isNotNull().isNotEmpty();
     assertThat(Long.valueOf(startProcess.getCaseId())).isGreaterThan(0L);
   }
 
@@ -364,11 +355,7 @@ class BonitaClientIT {
 
     // Then:
     final ProcessService processes = bonitaClient.processes();
-    Throwable thrown =
-        catchThrowable(
-            () -> {
-              processes.getUserTask(taskId);
-            });
+    Throwable thrown = catchThrowable(() -> processes.getUserTask(taskId));
 
     // FIXME we should search the task in the archives instead
     assertThat(thrown).isInstanceOf(NotFoundException.class);
@@ -392,9 +379,7 @@ class BonitaClientIT {
 
     final ProcessService processes = bonitaClient.processes();
     assertThatThrownBy(
-            () -> {
-              processes.importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
-            })
+            () -> processes.importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES))
         .isInstanceOf(ProcessActivationException.class)
         .hasFieldOrPropertyWithValue("processName", processName)
         .hasFieldOrPropertyWithValue("processVersion", processVersion);
@@ -446,8 +431,6 @@ class BonitaClientIT {
               } catch (NotFoundException e) {
                 log.debug("User task not found, so consider it has been archived and stop waiting");
                 return true;
-              } catch (Exception e) {
-                throw e;
               }
               return false;
             });

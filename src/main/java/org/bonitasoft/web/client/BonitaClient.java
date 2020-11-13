@@ -17,8 +17,8 @@ public interface BonitaClient {
    * @param url the bonita instance url
    * @return a builder instance
    */
-  static BonitaClientBuilder<?> builder(String url) {
-    return new BonitaFeignClientBuilderImpl(url);
+  static <T extends BonitaClientBuilder<T>> BonitaClientBuilder<T> builder(String url) {
+    return (BonitaClientBuilder<T>) new BonitaFeignClientBuilderImpl(url);
   }
 
   /**
@@ -39,9 +39,9 @@ public interface BonitaClient {
    *
    * @param username Account username
    * @param password Account password
-   * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
    * @param tenant Account tenant
    * @return A session with the authenticated user info
+   * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
    */
   Session login(String username, String password, String tenant);
 

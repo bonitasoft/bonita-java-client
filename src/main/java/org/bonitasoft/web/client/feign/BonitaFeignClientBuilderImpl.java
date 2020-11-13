@@ -172,12 +172,16 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                 @Override
                 public void checkClientTrusted(
                     java.security.cert.X509Certificate[] chain, String authType)
-                    throws CertificateException {}
+                    throws CertificateException {
+                  // noop
+                }
 
                 @Override
                 public void checkServerTrusted(
                     java.security.cert.X509Certificate[] chain, String authType)
-                    throws CertificateException {}
+                    throws CertificateException {
+                  // noop
+                }
 
                 @Override
                 public java.security.cert.X509Certificate[] getAcceptedIssuers() {

@@ -19,7 +19,11 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /** @author Baptiste Mesta. */
-public class FileUtils {
+public final class FileUtils {
+
+  private FileUtils() {
+    // Utility class
+  }
 
   public static byte[] getFileFromZip(File zip, String filePath) throws IOException {
     try (InputStream inputStream = new FileInputStream(zip)) {
