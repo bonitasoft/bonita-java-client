@@ -72,18 +72,21 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <git-commit-id-plugin.version>4.0.0</git-commit-id-plugin.version>
+        <fmt-maven-plugin.version>2.10</fmt-maven-plugin.version>
 
         <codegen.skip>true</codegen.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
+        <jacoco-exec-file>${project.build.directory}/jacoco-merged.exec</jacoco-exec-file>
 
         <!-- Sonar -->
         <sonar.projectKey>${sonar.organization}_${project.artifactId}</sonar.projectKey>
         <sonar.organization>bonitasoft</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.exclusions>
-            **/api/**,**/invoker/**,**/model/**,**/invoker/auth/ApiKeyAuth*,**/invoker/auth/HttpBasicAuth*,**/invoker/auth/HttpBearerAuth*,src/test/java/**
+            **/api/**,**/invoker/**,**/model/**,**/invoker/auth/ApiKeyAuth*,**/invoker/auth/HttpBasicAuth*,**/invoker/auth/HttpBearerAuth*,src/test/java/**,pom.xml
         </sonar.exclusions>
-        <fmt-maven-plugin.version>2.10</fmt-maven-plugin.version>
+        <sonar.jacoco.reportPath>${jacoco-exec-file}</sonar.jacoco.reportPath>
+
     </properties>
 
     <dependencyManagement>
@@ -382,7 +385,7 @@
                                         </includes>
                                     </fileSet>
                                 </fileSets>
-                                <destFile>${project.build.directory}/jacoco-merged.exec</destFile>
+                                <destFile>${jacoco-exec-file}</destFile>
                             </configuration>
                         </execution>
                         <execution>
