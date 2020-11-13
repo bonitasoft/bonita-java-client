@@ -33,7 +33,9 @@ public class CachingClientContext implements ClientContext {
   }
 
   @Override
-  public void put(String key, Object o) {}
+  public void put(String key, Object o) {
+    shareContext.put(key, o);
+  }
 
   @Override
   public <T> T remove(String key) {

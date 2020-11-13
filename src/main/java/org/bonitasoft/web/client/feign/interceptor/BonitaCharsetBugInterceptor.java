@@ -49,16 +49,15 @@ public class BonitaCharsetBugInterceptor implements Interceptor, RequestIntercep
         requestTemplate.headers().getOrDefault(CONTENT_TYPE_HEADER, emptyList()).stream()
             .findFirst();
     contentTypeHeader.ifPresent(
-        contentType -> {
-          // FIXME: Bonita does not understand content-type when charset is added :(
-          requestTemplate.header(
-              CONTENT_TYPE_HEADER,
-              singleton(
-                  contentType
-                      .replace("; charset=utf-8", "")
-                      .replace(";charset=utf-8", "")
-                      .replace("; charset=UTF-8", "")
-                      .replace(";charset=UTF-8", "")));
-        });
+        contentType ->
+            // FIXME: Bonita does not understand content-type when charset is added :(
+            requestTemplate.header(
+                CONTENT_TYPE_HEADER,
+                singleton(
+                    contentType
+                        .replace("; charset=utf-8", "")
+                        .replace(";charset=utf-8", "")
+                        .replace("; charset=UTF-8", "")
+                        .replace(";charset=UTF-8", ""))));
   }
 }

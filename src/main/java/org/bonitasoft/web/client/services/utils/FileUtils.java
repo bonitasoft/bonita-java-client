@@ -25,16 +25,9 @@ public final class FileUtils {
     // Utility class
   }
 
-  public static byte[] getFileFromZip(File zip, String filePath) throws IOException {
-    try (InputStream inputStream = new FileInputStream(zip)) {
-      return getFileFromZip(inputStream, filePath);
-    }
-  }
-
   public static void updateFileContent(File zip, String filePath, InputStream newContent)
       throws IOException {
-    Path zipFilePath = zip.toPath();
-    try (FileSystem fs = FileSystems.newFileSystem(zipFilePath, null)) {
+    try (FileSystem fs = FileSystems.newFileSystem(zip.toPath(), null)) {
       Path source = fs.getPath(filePath);
       Path temp = fs.getPath("./temp_" + UUID.randomUUID().toString());
       Files.write(temp, readFully(newContent), StandardOpenOption.CREATE_NEW);
@@ -42,8 +35,8 @@ public final class FileUtils {
     }
   }
 
-  public static byte[] getFileFromZip(InputStream inputStream, String filePath) throws IOException {
-    try (ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
+  public static byte[] getFileFromZip(File zip, String filePath) throws IOException {
+    try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(zip))) {
       ZipEntry zipEntry;
       while ((zipEntry = zipInputStream.getNextEntry()) != null) {
         if (zipEntry.getName().equals(filePath) && !zipEntry.isDirectory()) {
@@ -67,12 +60,6 @@ public final class FileUtils {
   public static String read(File file) throws IOException {
     try (InputStream inputStream = new FileInputStream(file)) {
       return new String(readFully(inputStream), UTF_8);
-    }
-  }
-
-  public static byte[] readFully(File file) throws IOException {
-    try (InputStream inputStream = new FileInputStream(file)) {
-      return readFully(inputStream);
     }
   }
 

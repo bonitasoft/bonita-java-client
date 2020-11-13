@@ -46,7 +46,6 @@ class BonitaClientIT {
 
   @BeforeEach
   void setUp() {
-    //         String portalUrl = "http://localhost:8888/bonita";
     String portalUrl = BONITA_CONTAINER.getPortalUrl();
     bonitaClient = BonitaClient.builder(portalUrl).logContentLevel(LogContentLevel.OFF).build();
   }
@@ -296,7 +295,7 @@ class BonitaClientIT {
   }
 
   @Test
-  public void should_assign_then_execute_user_task() throws Exception {
+  void should_assign_then_execute_user_task() throws Exception {
     // Given:
     bonitaClient.login("install", "install");
 
@@ -413,7 +412,7 @@ class BonitaClientIT {
   }
 
   /** Wait at most 10 seconds for the user task. */
-  public void waitForUserTaskToBeExecuted(String taskId) {
+  void waitForUserTaskToBeExecuted(String taskId) {
     final Duration waitDuration = TEN_SECONDS;
     log.debug("Waiting at most {} for user task {} to be executed", waitDuration, taskId);
     await()

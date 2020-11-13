@@ -1,8 +1,6 @@
 package org.bonitasoft.web.client.feign.decoder;
 
-import feign.FeignException;
 import feign.Response;
-import feign.codec.DecodeException;
 import feign.codec.Decoder;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -24,13 +22,8 @@ public class DelegatingDecoder implements Decoder {
 
   public DelegatingDecoder() {}
 
-  public DelegatingDecoder(Map<String, Decoder> delegates) {
-    this.delegates.putAll(delegates);
-  }
-
   @Override
-  public Object decode(Response response, Type type)
-      throws IOException, DecodeException, FeignException {
+  public Object decode(Response response, Type type) throws IOException {
     Collection<String> contentTypeHeader = response.headers().get(CONTENT_TYPE_HEADER);
     if (contentTypeHeader == null) {
       return defaultDecoder.decode(response, type);

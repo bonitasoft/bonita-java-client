@@ -10,7 +10,6 @@ package org.bonitasoft.web.client.services.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,10 +31,9 @@ class BusinessArchive {
   private File archive;
 
   static BusinessArchive create(File bar) {
-    try (FileInputStream fileInputStream = new FileInputStream(bar)) {
-
+    try {
       // Get name and version from process design file
-      byte[] fileFromZip = FileUtils.getFileFromZip(fileInputStream, PROCESS_DESIGN_FILENAME);
+      byte[] fileFromZip = FileUtils.getFileFromZip(bar, PROCESS_DESIGN_FILENAME);
       DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
       documentBuilderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
       documentBuilderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
