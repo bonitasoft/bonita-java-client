@@ -1,13 +1,10 @@
 package org.bonitasoft.web.client.invoker;
 
 import feign.Param;
-
 import java.text.DateFormat;
 import java.util.Date;
 
-/**
- * Param Expander to convert {@link Date} to RFC3339
- */
+/** Param Expander to convert {@link Date} to RFC3339 */
 public class ParamExpander implements Param.Expander {
 
   private static final DateFormat dateformat = new RFC3339DateFormat();

@@ -80,7 +80,10 @@
         <sonar.projectKey>${sonar.organization}_${project.artifactId}</sonar.projectKey>
         <sonar.organization>bonitasoft</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.exclusions>**/api/**,**/invoker/**,**/model/**,**/invoker/auth/ApiKeyAuth*,**/invoker/auth/HttpBasicAuth*,**/invoker/auth/HttpBearerAuth*</sonar.exclusions>
+        <sonar.exclusions>
+            **/api/**,**/invoker/**,**/model/**,**/invoker/auth/ApiKeyAuth*,**/invoker/auth/HttpBasicAuth*,**/invoker/auth/HttpBearerAuth*
+        </sonar.exclusions>
+        <fmt-maven-plugin.version>2.10</fmt-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -416,6 +419,19 @@
         <plugins>
 
             <plugin>
+                <groupId>com.coveo</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>${fmt-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <version>4.3.1</version>
@@ -430,7 +446,7 @@
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateModelDocumentation>false</generateModelDocumentation>
                             <output>${project.basedir}</output>
-<!--                             <inputSpec>http://localhost:8080/openapi.json</inputSpec> -->
+                            <!--                             <inputSpec>http://localhost:8080/openapi.json</inputSpec> -->
                             <inputSpec>${project.basedir}/api/openapi.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <invokerPackage>org.bonitasoft.web.client.invoker</invokerPackage>

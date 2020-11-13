@@ -8,10 +8,8 @@
  */
 package org.bonitasoft.web.client.services.policies;
 
-/**
- * Created by laurentleseigneur on 06/07/2017.
- */
+/** Created by laurentleseigneur on 06/07/2017. */
 public enum ApplicationImportPolicy {
-    FAIL_ON_DUPLICATES, REPLACE_DUPLICATES;
-
+  FAIL_ON_DUPLICATES,
+  REPLACE_DUPLICATES;
 }
