@@ -355,7 +355,6 @@ class BonitaClientIT {
         String processName = "Pool";
         String processVersion = "1.0";
 
-        final ProcessService processes = bonitaClient.processes();
         assertThatThrownBy(() -> {
             processes.importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
         })

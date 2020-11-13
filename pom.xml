@@ -80,6 +80,7 @@
         <sonar.projectKey>${sonar.organization}_${project.artifactId}</sonar.projectKey>
         <sonar.organization>bonitasoft</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.exclusions>**/api/**,**/invoker/**,**/model/**,**/invoker/auth/ApiKeyAuth*,**/invoker/auth/HttpBasicAuth*,**/invoker/auth/HttpBearerAuth*</sonar.exclusions>
     </properties>
 
     <dependencyManagement>
