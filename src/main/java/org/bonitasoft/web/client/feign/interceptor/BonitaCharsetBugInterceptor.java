@@ -18,6 +18,7 @@ import java.util.Optional;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Class to fix bad charset handling in bonita version. Fixed in 7.11.3 This issue prevent client to
@@ -25,26 +26,33 @@ import okhttp3.Response;
  */
 public class BonitaCharsetBugInterceptor implements Interceptor, RequestInterceptor {
 
-  private static final String CONTENT_TYPE_HEADER = "Content-Type";
+  static final String CONTENT_TYPE_HEADER = "Content-Type";
 
   @Override
   public Response intercept(Chain chain) throws IOException {
     Request request = chain.request();
     String contentType = request.header(CONTENT_TYPE_HEADER);
     if (contentType != null) {
-      // FIXME: Bonita does not understand content-type when charset is added :(
+      // Bonita does not understand content-type when charset is added :(
       Request.Builder builder = request.newBuilder();
       builder.removeHeader(CONTENT_TYPE_HEADER);
-      builder.header(
-          CONTENT_TYPE_HEADER,
-          contentType
-              .replace("; charset=utf-8", "")
-              .replace(";charset=utf-8", "")
-              .replace("; charset=UTF-8", "")
-              .replace(";charset=UTF-8", ""));
+      builder.header(CONTENT_TYPE_HEADER, cleanContentType(contentType));
       request = builder.build();
     }
     return chain.proceed(request);
+  }
+
+  @NotNull
+  String cleanContentType(String contentType) {
+    return contentType
+        .replace("; charset=utf-8", "")
+        .replace(";charset=utf-8", "")
+        .replace("; charset=UTF-8", "")
+        .replace(";charset=UTF-8", "")
+        .replace("; Charset=utf-8", "")
+        .replace(";Charset=utf-8", "")
+        .replace("; Charset=UTF-8", "")
+        .replace(";Charset=UTF-8", "");
   }
 
   @Override
@@ -54,14 +62,7 @@ public class BonitaCharsetBugInterceptor implements Interceptor, RequestIntercep
             .findFirst();
     contentTypeHeader.ifPresent(
         contentType ->
-            // FIXME: Bonita does not understand content-type when charset is added :(
-            requestTemplate.header(
-                CONTENT_TYPE_HEADER,
-                singleton(
-                    contentType
-                        .replace("; charset=utf-8", "")
-                        .replace(";charset=utf-8", "")
-                        .replace("; charset=UTF-8", "")
-                        .replace(";charset=UTF-8", ""))));
+            // Bonita does not understand content-type when charset is added :(
+            requestTemplate.header(CONTENT_TYPE_HEADER, singleton(cleanContentType(contentType))));
   }
 }

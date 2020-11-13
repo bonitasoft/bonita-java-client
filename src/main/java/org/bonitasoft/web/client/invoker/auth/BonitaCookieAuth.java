@@ -38,14 +38,14 @@ public class BonitaCookieAuth implements RequestInterceptor {
     this.csrfHeader = null;
   }
 
-  public void setSessionCookies(Map<String, Collection<String>> loginHeaders) {
+  public void initFrom(Map<String, Collection<String>> loginHeaders) {
     Map<String, String> cookies =
         loginHeaders.getOrDefault("set-cookie", emptyList()).stream()
-            .map(item -> item.split("=", 2))
+            .map(cookieHeader -> cookieHeader.split("=", 2))
             .collect(
                 toMap(
-                    split -> split[0],
-                    split -> split[1].split(";")[0],
+                    cookieHeaderPair -> cookieHeaderPair[0],
+                    cookieHeaderPair -> cookieHeaderPair[1].split(";")[0],
                     (oldValue, newValue) -> newValue));
 
     this.csrfHeader = cookies.remove(CSRF_TOKEN_HEADER);

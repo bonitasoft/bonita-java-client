@@ -44,7 +44,6 @@ import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.slf4j.LoggerFactory;
 
 @Slf4j
-/** Note about timeouts: default values are the same as in OkHttpClient (10 seconds). */
 @Accessors(fluent = true)
 @RequiredArgsConstructor
 public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
@@ -53,9 +52,12 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
   @Setter(AccessLevel.NONE)
   private final String url;
 
+  /** Note about timeouts: default values are the same as in OkHttpClient (10 seconds). */
   @Setter private int connectTimeoutInSeconds = 10;
+
   @Setter private int readTimeoutInSeconds = 10;
   @Setter private int writeTimeoutInSeconds = 10;
+
   @Setter private boolean disableCertificateCheck = false;
 
   @Setter private Feign.Builder feignBuilder;
@@ -63,7 +65,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
   @Setter private ObjectMapper objectMapper;
   @Setter private LogContentLevel logContentLevel = LogContentLevel.OFF;
 
-  private static String addTrailingSlashIfNeeded(String url) {
+  String addTrailingSlashIfNeeded(String url) {
     return url.endsWith("/") ? url : url + "/";
   }
 
@@ -118,7 +120,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         systemService);
   }
 
-  private Feign.Builder configureFeign(Feign.Builder feignBuilder) {
+  Feign.Builder configureFeign(Feign.Builder feignBuilder) {
     log.debug("Configuring Feign builder ...");
     return feignBuilder
         .client(new feign.okhttp.OkHttpClient(okHttpClient))
@@ -131,14 +133,14 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         .requestInterceptor(new BonitaCharsetBugInterceptor());
   }
 
-  private ObjectMapper configureJackson(ObjectMapper objectMapper) {
+  ObjectMapper configureJackson(ObjectMapper objectMapper) {
     log.debug("Configuring Object mapper ...");
     return objectMapper
         .findAndRegisterModules()
         .setSerializationInclusion(JsonInclude.Include.NON_NULL);
   }
 
-  private OkHttpClient.Builder configureHttpClient(OkHttpClient.Builder builder) {
+  OkHttpClient.Builder configureHttpClient(OkHttpClient.Builder builder) {
     log.debug("Configuring OkHttp client ...");
     OkHttpClient.Builder okHttpClientBuilder =
         addTrustAllCertificateManagerIfNeeded(builder)
@@ -167,7 +169,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
     return okHttpClientBuilder;
   }
 
-  private OkHttpClient.Builder addTrustAllCertificateManagerIfNeeded(OkHttpClient.Builder builder) {
+  OkHttpClient.Builder addTrustAllCertificateManagerIfNeeded(OkHttpClient.Builder builder) {
     if (disableCertificateCheck) {
       log.debug("Configuring client Certificate manager ...");
       try {
