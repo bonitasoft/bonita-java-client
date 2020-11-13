@@ -1,4 +1,4 @@
-package org.bonitasoft.web.client.services.impl;
+package org.bonitasoft.web.client.services.impl.base;
 
 import java.util.function.Function;
 import org.bonitasoft.web.client.model.License;

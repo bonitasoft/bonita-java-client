@@ -5,28 +5,23 @@ import static java.util.Collections.singletonList;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.XMLConstants;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.*;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.*;
-import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.*;
 import org.bonitasoft.web.client.services.UserService;
+import org.bonitasoft.web.client.services.impl.base.AbstractService;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.bonitasoft.web.client.services.impl.xml.XmlDocumentParser;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 @Slf4j
 public class DefaultUserService extends AbstractService implements UserService {
@@ -121,25 +116,12 @@ public class DefaultUserService extends AbstractService implements UserService {
 
   protected List<String> getProfilesNames(File profiles) {
     List<String> tokens = new ArrayList<>();
-    try {
-      DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
-      domFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-      domFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
-      domFactory.setNamespaceAware(false);
-      DocumentBuilder builder = domFactory.newDocumentBuilder();
-      Document doc = builder.parse(profiles);
-      XPath xPath = XPathFactory.newInstance().newXPath();
-      XPathExpression compile = xPath.compile("/profiles/profile/@name");
-      NodeList evaluate1 = (NodeList) compile.evaluate(doc, XPathConstants.NODESET);
-      for (int i = 0; i < evaluate1.getLength(); i++) {
-        Node item = evaluate1.item(i);
-        tokens.add(item.getNodeValue());
-      }
-    } catch (XPathExpressionException
-        | IOException
-        | SAXException
-        | ParserConfigurationException e) {
-      throw new ClientException("Failed to read profile names from file: " + profiles.getName(), e);
+    final XmlDocumentParser documentParser = new XmlDocumentParser();
+    Document doc = documentParser.parse(profiles);
+    NodeList nodeList = documentParser.queryNodeList(doc, "/profiles/profile/@name");
+    for (int i = 0; i < nodeList.getLength(); i++) {
+      Node item = nodeList.item(i);
+      tokens.add(item.getNodeValue());
     }
     return tokens;
   }

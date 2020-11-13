@@ -10,11 +10,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import javax.xml.XMLConstants;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.*;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.ApplicationApi;
 import org.bonitasoft.web.client.api.PageApi;
@@ -27,12 +22,14 @@ import org.bonitasoft.web.client.model.Page;
 import org.bonitasoft.web.client.model.PageCreateRequest;
 import org.bonitasoft.web.client.model.PageUpdateRequest;
 import org.bonitasoft.web.client.services.ApplicationService;
+import org.bonitasoft.web.client.services.impl.base.AbstractService;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.bonitasoft.web.client.services.impl.xml.XmlDocumentParser;
 import org.bonitasoft.web.client.services.policies.ApplicationImportPolicy;
 import org.bonitasoft.web.client.services.utils.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 @Slf4j
 public class DefaultApplicationService extends AbstractService implements ApplicationService {
@@ -74,26 +71,12 @@ public class DefaultApplicationService extends AbstractService implements Applic
   private List<String> readApplicationTokensFromFile(File application) {
     log.debug("Extract application token from file: {}", application.getName());
     List<String> tokens = new ArrayList<>();
-    try {
-      DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
-      domFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-      domFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
-      domFactory.setNamespaceAware(false);
-      DocumentBuilder builder = domFactory.newDocumentBuilder();
-      Document doc = builder.parse(application);
-      XPath xPath = XPathFactory.newInstance().newXPath();
-      XPathExpression compile = xPath.compile("/applications/application/@token");
-      NodeList nodeList = (NodeList) compile.evaluate(doc, XPathConstants.NODESET);
-      for (int i = 0; i < nodeList.getLength(); i++) {
-        Node item = nodeList.item(i);
-        tokens.add(item.getNodeValue());
-      }
-    } catch (IOException
-        | XPathExpressionException
-        | SAXException
-        | ParserConfigurationException e) {
-      throw new ClientException(
-          "Failed to read application tokens from file: " + application.getName(), e);
+    final XmlDocumentParser documentParser = new XmlDocumentParser();
+    Document doc = documentParser.parse(application);
+    NodeList nodeList = documentParser.queryNodeList(doc, "/applications/application/@token");
+    for (int i = 0; i < nodeList.getLength(); i++) {
+      Node item = nodeList.item(i);
+      tokens.add(item.getNodeValue());
     }
     return tokens;
   }
@@ -129,7 +112,7 @@ public class DefaultApplicationService extends AbstractService implements Applic
     log.info("Deleting application: {}", applicationToken);
     Application application = getApplication(applicationToken);
     if (application == null) {
-      throw new NotFoundException(String.format("Application not found: %s", applicationToken));
+      throw new NotFoundException(format("Application not found: %s", applicationToken));
     }
     apiProvider.get(ApplicationApi.class).deleteApplicationById(application.getId());
     log.info("Application {} deleted", applicationToken);

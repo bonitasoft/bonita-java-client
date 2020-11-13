@@ -27,7 +27,7 @@ class BonitaFeignClient implements BonitaClient {
 
   private final String url;
 
-  private final ApiClient apiClient;
+  private final ApiProvider apiProvider;
   private final LoginService loginService;
 
   private final ApplicationService applicationService;
@@ -71,7 +71,7 @@ class BonitaFeignClient implements BonitaClient {
 
   @Override
   public boolean isPlatformUpAndRunning() {
-    try (Response response = apiClient.buildClient(SessionApi.class).getSession()) {
+    try (Response response = apiProvider.get(SessionApi.class).getSession()) {
       return response.status() == 401 || response.status() == 200;
     } catch (Exception e) {
       return false;
@@ -85,6 +85,12 @@ class BonitaFeignClient implements BonitaClient {
     String version = session.getVersion();
     log.debug("Bonita version: {}", version);
     return version;
+  }
+
+  @Override
+  public <T extends ApiClient.Api> T get(Class<T> apiClass) {
+    log.debug("Access http api: {}", apiClass.getName());
+    return apiProvider.get(apiClass);
   }
 
   @Override

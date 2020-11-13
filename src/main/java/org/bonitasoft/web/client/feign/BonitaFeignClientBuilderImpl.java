@@ -25,6 +25,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import org.bonitasoft.web.client.BonitaClient;
@@ -38,8 +39,11 @@ import org.bonitasoft.web.client.invoker.auth.BonitaLoginService;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.services.*;
 import org.bonitasoft.web.client.services.impl.*;
+import org.bonitasoft.web.client.services.impl.base.CachingClientContext;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.slf4j.LoggerFactory;
 
+@Slf4j
 /** Note about timeouts: default values are the same as in OkHttpClient (10 seconds). */
 @Accessors(fluent = true)
 @RequiredArgsConstructor
@@ -105,7 +109,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
     return new BonitaFeignClient(
         apiClient.getBasePath(),
-        apiClient,
+        apiProvider,
         loginService,
         applicationService,
         bdmService,
@@ -115,6 +119,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
   }
 
   private Feign.Builder configureFeign(Feign.Builder feignBuilder) {
+    log.debug("Configuring Feign builder ...");
     return feignBuilder
         .client(new feign.okhttp.OkHttpClient(okHttpClient))
         .decode404()
@@ -127,12 +132,14 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
   }
 
   private ObjectMapper configureJackson(ObjectMapper objectMapper) {
+    log.debug("Configuring Object mapper ...");
     return objectMapper
         .findAndRegisterModules()
         .setSerializationInclusion(JsonInclude.Include.NON_NULL);
   }
 
   private OkHttpClient.Builder configureHttpClient(OkHttpClient.Builder builder) {
+    log.debug("Configuring OkHttp client ...");
     OkHttpClient.Builder okHttpClientBuilder =
         addTrustAllCertificateManagerIfNeeded(builder)
             .connectTimeout(connectTimeoutInSeconds, SECONDS)
@@ -162,8 +169,8 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
   private OkHttpClient.Builder addTrustAllCertificateManagerIfNeeded(OkHttpClient.Builder builder) {
     if (disableCertificateCheck) {
+      log.debug("Configuring client Certificate manager ...");
       try {
-
         // Create a trust manager that does not validate certificate chains
         final TrustManager[] trustAllCerts =
             new TrustManager[] {
@@ -204,6 +211,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         throw new ClientException(
             "An internal error has occurred while building the insecure HttpClient", e);
       }
+      log.warn("Certificate Manager is configured to trust all ! (no check)");
     }
     return builder;
   }

@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.SystemTenantApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.services.SystemService;
+import org.bonitasoft.web.client.services.impl.base.AbstractService;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
 
 @Slf4j
 public class DefaultSystemService extends AbstractService implements SystemService {

@@ -19,6 +19,10 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Class to fix bad charset handling in bonita version. Fixed in 7.11.3 This issue prevent client to
+ * log in when sending charset info in request.
+ */
 public class BonitaCharsetBugInterceptor implements Interceptor, RequestInterceptor {
 
   private static final String CONTENT_TYPE_HEADER = "Content-Type";

@@ -10,6 +10,8 @@ import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.*;
 import org.bonitasoft.web.client.services.BdmService;
+import org.bonitasoft.web.client.services.impl.base.AbstractService;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
 
 @Slf4j
 public class DefaultBdmService extends AbstractService implements BdmService {

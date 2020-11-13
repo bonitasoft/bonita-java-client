@@ -20,6 +20,7 @@ import org.bonitasoft.web.client.api.UserApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.Profile;
 import org.bonitasoft.web.client.model.User;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 import org.junit.jupiter.api.Test;

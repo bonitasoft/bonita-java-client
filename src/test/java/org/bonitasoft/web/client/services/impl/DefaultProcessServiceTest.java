@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.bonitasoft.web.client.api.UserTaskApi;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.feign.ApiProvider;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

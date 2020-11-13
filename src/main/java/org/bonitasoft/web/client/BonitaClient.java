@@ -1,11 +1,12 @@
 package org.bonitasoft.web.client;
 
+import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.feign.BonitaFeignClientBuilderImpl;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.services.*;
 
 /** A Bonita client that communicate via http request with a Bonita running instance. */
-public interface BonitaClient {
+public interface BonitaClient extends ApiProvider {
 
   String DEFAULT_TENANT_ID = "1";
   String USER_PROFILE_NAME = "User";

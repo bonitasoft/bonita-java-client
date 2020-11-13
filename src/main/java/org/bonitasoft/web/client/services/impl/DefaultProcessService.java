@@ -5,7 +5,6 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
-import static org.bonitasoft.web.client.api.ArchivedUserTaskApi.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
@@ -21,6 +20,8 @@ import org.bonitasoft.web.client.exception.process.ProcessActivationException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.*;
 import org.bonitasoft.web.client.services.ProcessService;
+import org.bonitasoft.web.client.services.impl.base.AbstractService;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.policies.ProcessImportPolicy;
 
 @Slf4j
@@ -34,13 +35,14 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
   @Override
   public void importProcess(File barFile, ProcessImportPolicy policy) {
     log.info("Deploying process '{}' using policy {} ...", barFile.getName(), policy.name());
-    BusinessArchive bar = BusinessArchive.create(barFile);
-    Optional<ProcessDefinition> process = getProcess(bar.getProcessName(), bar.getProcessVersion());
+    BusinessArchiveInfo barInfo = BusinessArchiveInfo.readFrom(barFile);
+    Optional<ProcessDefinition> process =
+        getProcess(barInfo.getProcessName(), barInfo.getProcessVersion());
     if (process.isPresent()) {
       log.debug(
           "Process '{}' in version '{}' already exists.",
-          bar.getProcessName(),
-          bar.getProcessVersion());
+          barInfo.getProcessName(),
+          barInfo.getProcessVersion());
       switch (policy) {
         case REPLACE_DUPLICATES:
           // simulate a REPLACE_DUPLICATES policy here because it is not implemented in engine side
@@ -53,8 +55,8 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
         case FAIL_ON_DUPLICATES:
         default:
           throw new DuplicatedProcessException(
-              bar.getProcessName(),
-              bar.getProcessVersion(),
+              barInfo.getProcessName(),
+              barInfo.getProcessVersion(),
               "Policy FAIL_ON_DUPLICATES: deployment aborted.");
       }
     }
@@ -74,8 +76,8 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
     if (ConfigurationState.RESOLVED.equals(processDeployed.getConfigurationState())) {
       log.info(
           "Process {}-{} is resolved. Activating process...",
-          bar.getProcessName(),
-          bar.getProcessVersion());
+          barInfo.getProcessName(),
+          barInfo.getProcessVersion());
       String processId = processDeployed.getId();
       processApi.updateProcessById(
           processId, new ProcessUpdateRequest().activationState(ActivationState.ENABLED));
@@ -84,8 +86,8 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
       // Process maybe resolved later with deployment of bconf file.
       throw new ProcessActivationException(
           "Process is unresolved, maybe some process parameters have not been configured yet.",
-          bar.getProcessName(),
-          bar.getProcessVersion());
+          barInfo.getProcessName(),
+          barInfo.getProcessVersion());
     }
   }
 

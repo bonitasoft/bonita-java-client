@@ -8,19 +8,15 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.exception.ClientException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class DelegatingDecoder implements Decoder {
   private static final String CONTENT_TYPE_HEADER = "Content-Type";
 
-  private static Logger log = LoggerFactory.getLogger(DelegatingDecoder.class);
-
-  private Map<String, Decoder> delegates = new HashMap<>();
-  private Decoder defaultDecoder = new Decoder.Default();
-
-  public DelegatingDecoder() {}
+  private final Map<String, Decoder> delegates = new HashMap<>();
+  private final Decoder defaultDecoder = new Decoder.Default();
 
   @Override
   public Object decode(Response response, Type type) throws IOException {

@@ -12,15 +12,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.exception.UnauthorizedException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class BonitaErrorDecoder implements ErrorDecoder {
-
-  private static final Logger log = LoggerFactory.getLogger(BonitaErrorDecoder.class);
 
   @Override
   public Exception decode(String methodKey, Response response) {

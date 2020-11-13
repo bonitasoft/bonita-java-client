@@ -1,4 +1,4 @@
-package org.bonitasoft.web.client.services.impl;
+package org.bonitasoft.web.client.services.impl.base;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
