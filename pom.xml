@@ -84,6 +84,9 @@
         <sonar.exclusions>
             **/api/**,**/invoker/**,**/model/**,**/invoker/auth/ApiKeyAuth*,**/invoker/auth/HttpBasicAuth*,**/invoker/auth/HttpBearerAuth*,src/test/java/**,pom.xml
         </sonar.exclusions>
+        <Dsonar.coverage.jacoco.xmlReportPaths>
+            ${project.reporting.outputDirectory}/jacoco/jacoco.xml,${project.reporting.outputDirectory}/jacoco-it/jacoco.xml,
+        </Dsonar.coverage.jacoco.xmlReportPaths>
 
     </properties>
 
