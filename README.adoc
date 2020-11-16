@@ -47,6 +47,11 @@ image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com"
 
 '''
 
+This project is the official web client for Bonita when working with Java (or on the JVM).
+
+It is based on an https://swagger.io/specification/[OpenAPI image:openapi.png[OpenAPI,width=30px]^] specification for **Bonita {bonita-short-version}** `Enterprise` edition.
+This means that this client includes all `Community` operations plus some that are only supported by `Enterprise` editions servers.
+
 ifdef::status[]
 image::{uri-repo}/workflows/workflow-build/badge.svg[Build,link="{uri-repo}/actions?query=workflow%3Aworkflow-build"]
 image::https://img.shields.io/github/v/release/{orga}/{project-artifact-id}?color=blue&label=Release[Release,link="{uri-repo}/releases"]
@@ -54,24 +59,13 @@ image::https://img.shields.io/maven-central/v/{project-group-id}/{project-artifa
 image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="{uri-license}"]
 endif::[]
 
-This project is the official web client for Bonita when working with Java (or on the JVM).
-
-It is based on an https://swagger.io/specification/[OpenAPI image:openapi.png[OpenAPI,width=30px]^] specification for **Bonita {bonita-short-version}** `Enterprise` edition.
-This means that this client includes all `Community` operations plus some that are only supported by `Enterprise` editions servers.
-
-//_**TODO**_: A brief description of your project, what it is used for and how does life get awesome when someone starts to use it.
-
 == Features
-
-//_**TODO**_: What's all the bells and whistles this project can perform?
 
 * Cover publicly available http endpoints of Bonita Platform {bonita-short-version} and onwards
 * Built-in Bonita authentication support (SSO not supported yet)
 * Higher level code than raw openapi client to ease developer journey
 
 == Getting started
-
-//_**TODO**_: A quick introduction of the minimal setup you need to get a hello world up & running.
 
 The client library available from https://search.maven.org/search?q={project-group-id}%20AND%20a:{project-artifact-id}[Maven Central], you can use it in your Maven project by adding the following to your *pom.xml*:
 
