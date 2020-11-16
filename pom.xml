@@ -45,7 +45,7 @@
 
         <swagger-annotations.version>1.6.2</swagger-annotations.version>
         <javax-annotation.version>1.3.2</javax-annotation.version>
-        <feign.version>10.11</feign.version>
+        <feign.version>11.0</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
         <okhttp.version>4.9.0</okhttp.version>
         <jackson.version>2.11.3</jackson.version>
