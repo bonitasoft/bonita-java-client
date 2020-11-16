@@ -22,10 +22,17 @@ jobs:
         with:
           java-version: 11
 
+      - name: Compile and test project
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: ./mvnw -B -ntp clean verify sonar:sonar -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.scanner.force-deprecated-java-version=true
+
       # Build and Push snapshots to maven central
       - name: Build and Push snapshots to Maven central
         uses: samuelmeuli/action-maven-publish@v1
         with:
+          maven_args: "-DskipTests=true"
           gpg_private_key: ${{ secrets.gpg_private_key }}
           gpg_passphrase: ${{ secrets.gpg_passphrase }}
           nexus_username: ${{ secrets.ossrh_username }}
