@@ -1,40 +1,68 @@
 package org.bonitasoft.web.client;
 
+import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.feign.BonitaFeignClientBuilderImpl;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.services.*;
 
-public interface BonitaClient {
+/** A Bonita client that communicate via http request with a Bonita running instance. */
+public interface BonitaClient extends ApiProvider {
 
-    String DEFAULT_TENANT_ID = "1";
-    String USER_PROFILE_NAME = "User";
-    String ADMIN_PROFILE_NAME = "Administrator";
+  String DEFAULT_TENANT_ID = "1";
+  String USER_PROFILE_NAME = "User";
+  String ADMIN_PROFILE_NAME = "Administrator";
 
-    static BonitaClientBuilder<?> builder(String url) {
-        return new BonitaFeignClientBuilderImpl(url);
-    }
+  /**
+   * Create a client builder for the given bonita URL
+   *
+   * @param url the bonita instance url
+   * @return a builder instance
+   */
+  static <T extends BonitaClientBuilder<T>> BonitaClientBuilder<T> builder(String url) {
+    return (BonitaClientBuilder<T>) new BonitaFeignClientBuilderImpl(url);
+  }
 
-    Session login(String username, String password);
+  /**
+   * Perform client authentication. Authentication will be stored internally to be used for the
+   * future requests <br>
+   * Account tenant default to 1
+   *
+   * @param username Account username
+   * @param password Account password
+   * @return A session with the authenticated user info
+   * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
+   */
+  Session login(String username, String password);
 
-    Session login(String username, String password, String tenant);
+  /**
+   * /** Perform client authentication. Authentication will be stored internally to be used for the
+   * future requests
+   *
+   * @param username Account username
+   * @param password Account password
+   * @param tenant Account tenant
+   * @return A session with the authenticated user info
+   * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
+   */
+  Session login(String username, String password, String tenant);
 
-    void logout();
+  void logout();
 
-    void logoutSilent();
+  void logoutSilent();
 
-    boolean isPlatformUpAndRunning();
+  boolean isPlatformUpAndRunning();
 
-    String getUrl();
+  String getUrl();
 
-    String getVersion();
+  String getVersion();
 
-    ApplicationService applications();
+  ApplicationService applications();
 
-    BdmService bdm();
+  BdmService bdm();
 
-    UserService users();
+  UserService users();
 
-    ProcessService processes();
+  ProcessService processes();
 
-    SystemService system();
+  SystemService system();
 }

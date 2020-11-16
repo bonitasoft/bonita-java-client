@@ -1,28 +1,24 @@
 package org.bonitasoft.web.client.api;
 
-import org.bonitasoft.web.client.invoker.ApiClient;
-import org.bonitasoft.web.client.invoker.EncodingUtils;
-
-import org.bonitasoft.web.client.model.Contract;
-import org.bonitasoft.web.client.model.Error;
-import org.bonitasoft.web.client.model.UserTask;
-import org.bonitasoft.web.client.model.UserTaskUpdateRequest;
-
-import java.util.ArrayList;
+import feign.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import feign.*;
-
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.invoker.EncodingUtils;
+import org.bonitasoft.web.client.model.Contract;
+import org.bonitasoft.web.client.model.UserTask;
+import org.bonitasoft.web.client.model.UserTaskUpdateRequest;
 
 public interface UserTaskApi extends ApiClient.Api {
 
-
   /**
-   * Execute the UserTask
-   * Execute the UserTask. In order to execute a task, the task contract values have to be provided. 
+   * Execute the UserTask Execute the UserTask. In order to execute a task, the task contract values
+   * have to be provided.
+   *
    * @param id ID of the UserTask to execute (required)
-   * @param body A JSON object matching task contract. Execute a task providing correct contract values. (required)
+   * @param body A JSON object matching task contract. Execute a task providing correct contract
+   *     values. (required)
    * @param assign if true, assign the task to the current user and execute the task (optional)
    */
   @RequestLine("POST /API/bpm/userTask/{id}/execution?assign={assign}")
@@ -30,34 +26,38 @@ public interface UserTaskApi extends ApiClient.Api {
     "Content-Type: application/json",
     "Accept: application/json",
   })
-  void executeUserTask(@Param("id") String id, Map<String, Object> body, @Param("assign") Boolean assign);
+  void executeUserTask(
+      @Param("id") String id, Map<String, Object> body, @Param("assign") Boolean assign);
 
   /**
-   * Execute the UserTask
-   * Execute the UserTask. In order to execute a task, the task contract values have to be provided. 
-   * Note, this is equivalent to the other <code>executeUserTask</code> method,
-   * but with the query parameters collected into a single Map parameter. This
-   * is convenient for services with optional query parameters, especially when
-   * used with the {@link ExecuteUserTaskQueryParams} class that allows for
-   * building up this map in a fluent style.
+   * Execute the UserTask Execute the UserTask. In order to execute a task, the task contract values
+   * have to be provided. Note, this is equivalent to the other <code>executeUserTask</code> method,
+   * but with the query parameters collected into a single Map parameter. This is convenient for
+   * services with optional query parameters, especially when used with the {@link
+   * ExecuteUserTaskQueryParams} class that allows for building up this map in a fluent style.
+   *
    * @param id ID of the UserTask to execute (required)
-   * @param body A JSON object matching task contract. Execute a task providing correct contract values. (required)
+   * @param body A JSON object matching task contract. Execute a task providing correct contract
+   *     values. (required)
    * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>assign - if true, assign the task to the current user and execute the task (optional)</li>
-   *   </ul>
+   *     <p>The following elements may be specified in the query map:
+   *     <ul>
+   *       <li>assign - if true, assign the task to the current user and execute the task (optional)
+   *     </ul>
    */
   @RequestLine("POST /API/bpm/userTask/{id}/execution?assign={assign}")
   @Headers({
-  "Content-Type: application/json",
-  "Accept: application/json",
+    "Content-Type: application/json",
+    "Accept: application/json",
   })
-  void executeUserTask(@Param("id") String id, Map<String, Object> body, @QueryMap(encoded=true) Map<String, Object> queryParams);
+  void executeUserTask(
+      @Param("id") String id,
+      Map<String, Object> body,
+      @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
-   * A convenience class for generating query parameters for the
-   * <code>executeUserTask</code> method in a fluent style.
+   * A convenience class for generating query parameters for the <code>executeUserTask</code> method
+   * in a fluent style.
    */
   public static class ExecuteUserTaskQueryParams extends HashMap<String, Object> {
     public ExecuteUserTaskQueryParams assign(final Boolean value) {
@@ -67,8 +67,8 @@ public interface UserTaskApi extends ApiClient.Api {
   }
 
   /**
-   * Finds the Context by UserTask ID
-   * Returns the Context for the given UserTask ID 
+   * Finds the Context by UserTask ID Returns the Context for the given UserTask ID
+   *
    * @param id ID of the UserTask that has the Context to return (required)
    * @return Map&lt;String, Object&gt;
    */
@@ -79,8 +79,8 @@ public interface UserTaskApi extends ApiClient.Api {
   Map<String, Object> getContextByUserTaskId(@Param("id") String id);
 
   /**
-   * Finds the Contract by UserTask ID
-   * Returns the Contract for the given UserTask ID 
+   * Finds the Contract by UserTask ID Returns the Contract for the given UserTask ID
+   *
    * @param id ID of the UserTask that has the Contract to return (required)
    * @return Contract
    */
@@ -91,8 +91,8 @@ public interface UserTaskApi extends ApiClient.Api {
   Contract getContractByUserTaskId(@Param("id") String id);
 
   /**
-   * Finds the UserTask by ID
-   * Returns the single UserTask for the given ID 
+   * Finds the UserTask by ID Returns the single UserTask for the given ID
+   *
    * @param id ID of the UserTask to return (required)
    * @return UserTask
    */
@@ -103,11 +103,13 @@ public interface UserTaskApi extends ApiClient.Api {
   UserTask getUserTaskById(@Param("id") String id);
 
   /**
-   * Finds UserTasks
-   * Finds UserTasks with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
+   * Finds UserTasks Finds UserTasks with pagination params and filters - can order on
+   * &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60;
+   *
    * @param p index of the page to display (required)
    * @param c maximum number of elements to retrieve (required)
-   * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
+   * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value}
+   *     with the name/value pair as url encoded string. (optional)
    * @param o can order on attributes (optional)
    * @param s can search on attributes (optional)
    * @return List&lt;UserTask&gt;
@@ -116,54 +118,66 @@ public interface UserTaskApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<UserTask> searchUserTasks(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
+  List<UserTask> searchUserTasks(
+      @Param("p") Integer p,
+      @Param("c") Integer c,
+      @Param("f") List<String> f,
+      @Param("o") String o,
+      @Param("s") String s);
 
   /**
-   * Finds UserTasks
-   * Finds UserTasks with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
-   * Note, this is equivalent to the other <code>searchUserTasks</code> method,
-   * but with the query parameters collected into a single Map parameter. This
-   * is convenient for services with optional query parameters, especially when
-   * used with the {@link SearchUserTasksQueryParams} class that allows for
-   * building up this map in a fluent style.
+   * Finds UserTasks Finds UserTasks with pagination params and filters - can order on
+   * &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60;
+   * Note, this is equivalent to the other <code>searchUserTasks</code> method, but with the query
+   * parameters collected into a single Map parameter. This is convenient for services with optional
+   * query parameters, especially when used with the {@link SearchUserTasksQueryParams} class that
+   * allows for building up this map in a fluent style.
+   *
    * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>p - index of the page to display (required)</li>
-   *   <li>c - maximum number of elements to retrieve (required)</li>
-   *   <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)</li>
-   *   <li>o - can order on attributes (optional)</li>
-   *   <li>s - can search on attributes (optional)</li>
-   *   </ul>
+   *     <p>The following elements may be specified in the query map:
+   *     <ul>
+   *       <li>p - index of the page to display (required)
+   *       <li>c - maximum number of elements to retrieve (required)
+   *       <li>f - can filter on attributes with the format
+   *           f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded
+   *           string. (optional)
+   *       <li>o - can order on attributes (optional)
+   *       <li>s - can search on attributes (optional)
+   *     </ul>
+   *
    * @return List&lt;UserTask&gt;
    */
   @RequestLine("GET /API/bpm/userTask?p={p}&c={c}&f={f}&o={o}&s={s}")
   @Headers({
-  "Accept: application/json",
+    "Accept: application/json",
   })
-  List<UserTask> searchUserTasks(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<UserTask> searchUserTasks(@QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
-   * A convenience class for generating query parameters for the
-   * <code>searchUserTasks</code> method in a fluent style.
+   * A convenience class for generating query parameters for the <code>searchUserTasks</code> method
+   * in a fluent style.
    */
   public static class SearchUserTasksQueryParams extends HashMap<String, Object> {
     public SearchUserTasksQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
+
     public SearchUserTasksQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;
     }
+
     public SearchUserTasksQueryParams f(final List<String> value) {
       put("f", EncodingUtils.encodeCollection(value, "multi"));
       return this;
     }
+
     public SearchUserTasksQueryParams o(final String value) {
       put("o", EncodingUtils.encode(value));
       return this;
     }
+
     public SearchUserTasksQueryParams s(final String value) {
       put("s", EncodingUtils.encode(value));
       return this;
@@ -171,8 +185,10 @@ public interface UserTaskApi extends ApiClient.Api {
   }
 
   /**
-   * Update the UserTask by ID
-   * Update the UserTask for the given ID.  Fields that can be updated are &#x60;assigned_id&#x60; and &#x60;state&#x60;. The only value that can be set for the state is &#x60;skipped&#x60;. You only need to specify the fields that are to be updated. 
+   * Update the UserTask by ID Update the UserTask for the given ID. Fields that can be updated are
+   * &#x60;assigned_id&#x60; and &#x60;state&#x60;. The only value that can be set for the state is
+   * &#x60;skipped&#x60;. You only need to specify the fields that are to be updated.
+   *
    * @param id ID of the UserTask to return (required)
    * @param userTaskUpdateRequest Partial UserTask description (required)
    */

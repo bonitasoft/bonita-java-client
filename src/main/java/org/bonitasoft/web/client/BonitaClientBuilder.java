@@ -6,19 +6,19 @@ import org.bonitasoft.web.client.log.LogContentLevel;
 
 public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
 
-    BonitaClient build();
+  BonitaClient build();
 
-    T connectTimeoutInSeconds(int connectTimeoutInSeconds);
+  T connectTimeoutInSeconds(int connectTimeoutInSeconds);
 
-    T readTimeoutInSeconds(int readTimeoutInSeconds);
+  T readTimeoutInSeconds(int readTimeoutInSeconds);
 
-    T writeTimeoutInSeconds(int writeTimeoutInSeconds);
+  T writeTimeoutInSeconds(int writeTimeoutInSeconds);
 
-    T disableCertificateCheck(boolean disableCertificateCheck);
+  T disableCertificateCheck(boolean disableCertificateCheck);
 
-    T okHttpClient(OkHttpClient okHttpClient);
+  T okHttpClient(OkHttpClient okHttpClient);
 
-    T objectMapper(ObjectMapper objectMapper);
+  T objectMapper(ObjectMapper objectMapper);
 
-    T logContentLevel(LogContentLevel level);
+  T logContentLevel(LogContentLevel level);
 }

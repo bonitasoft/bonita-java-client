@@ -1,5 +1,7 @@
 package org.bonitasoft.web.client.services;
 
+import java.io.File;
+import java.util.List;
 import org.bonitasoft.web.client.api.ProfileApi;
 import org.bonitasoft.web.client.api.RoleApi;
 import org.bonitasoft.web.client.api.UserApi;
@@ -10,35 +12,31 @@ import org.bonitasoft.web.client.model.UserCreateRequest;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 
-import java.io.File;
-import java.util.List;
-
 public interface UserService {
 
+  void importOrganization(File organization, OrganizationImportPolicy policy);
 
-    void importOrganization(File organization, OrganizationImportPolicy policy);
+  User getUser(String username);
 
-    User getUser(String username);
+  User createUser(UserCreateRequest userCreateRequest);
 
-    User createUser(UserCreateRequest userCreateRequest);
+  List<User> searchUsers(UserApi.SearchUsersQueryParams params);
 
-    List<User> searchUsers(UserApi.SearchUsersQueryParams params);
+  void importProfiles(File profiles, ProfileImportPolicy policy);
 
-    void importProfiles(File profiles, ProfileImportPolicy policy);
+  List<Profile> searchProfiles(int page, int count);
 
-    List<Profile> searchProfiles(int page, int count);
+  List<Profile> searchProfiles(ProfileApi.SearchProfilesQueryParams params);
 
-    List<Profile> searchProfiles(ProfileApi.SearchProfilesQueryParams params);
+  String addUserToProfile(String userId, String profileId);
 
-    String addUserToProfile(String userId, String profileId);
+  List<Role> searchRoles(RoleApi.SearchRolesQueryParams params);
 
-    List<Role> searchRoles(RoleApi.SearchRolesQueryParams params);
+  Role getRoleByName(String name);
 
-    Role getRoleByName(String name);
+  Profile getProfileByName(String name);
 
-    Profile getProfileByName(String name);
+  String addRoleToProfile(String roleId, String profileId);
 
-    String addRoleToProfile(String roleId, String profileId);
-
-    String addUserToProfileByNames(String username, String profileName);
+  String addUserToProfileByNames(String username, String profileName);
 }

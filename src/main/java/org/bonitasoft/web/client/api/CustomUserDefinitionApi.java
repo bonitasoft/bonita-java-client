@@ -1,25 +1,19 @@
 package org.bonitasoft.web.client.api;
 
-import org.bonitasoft.web.client.invoker.ApiClient;
-import org.bonitasoft.web.client.invoker.EncodingUtils;
-
-import org.bonitasoft.web.client.model.CustomUserDefinition;
-import org.bonitasoft.web.client.model.CustomUserDefinitionCreateRequest;
-import org.bonitasoft.web.client.model.Error;
-
-import java.util.ArrayList;
+import feign.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import feign.*;
-
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.invoker.EncodingUtils;
+import org.bonitasoft.web.client.model.CustomUserDefinition;
+import org.bonitasoft.web.client.model.CustomUserDefinitionCreateRequest;
 
 public interface CustomUserDefinitionApi extends ApiClient.Api {
 
-
   /**
-   * Create the CustomUserDefinition
-   * Create the CustomUserDefinition 
+   * Create the CustomUserDefinition Create the CustomUserDefinition
+   *
    * @param body Partial CustomUserDefinition description (required)
    * @return CustomUserDefinition
    */
@@ -31,8 +25,8 @@ public interface CustomUserDefinitionApi extends ApiClient.Api {
   CustomUserDefinition createCustomUserDefinition(CustomUserDefinitionCreateRequest body);
 
   /**
-   * Delete the CustomUserDefinition by ID
-   * Delete the single CustomUserDefinition for the given ID 
+   * Delete the CustomUserDefinition by ID Delete the single CustomUserDefinition for the given ID
+   *
    * @param id ID of the CustomUserDefinition to delete (required)
    */
   @RequestLine("DELETE /API/customuserinfo/definition/{id}")
@@ -42,8 +36,8 @@ public interface CustomUserDefinitionApi extends ApiClient.Api {
   void deleteCustomUserDefinitionById(@Param("id") String id);
 
   /**
-   * Finds the CustomUserDefinition by ID
-   * Returns the single CustomUserDefinition for the given ID 
+   * Finds the CustomUserDefinition by ID Returns the single CustomUserDefinition for the given ID
+   *
    * @param id ID of the CustomUserDefinition to return (required)
    * @return CustomUserDefinition
    */
@@ -54,8 +48,9 @@ public interface CustomUserDefinitionApi extends ApiClient.Api {
   CustomUserDefinition getCustomUserDefinitionById(@Param("id") String id);
 
   /**
-   * Finds CustomUserDefinitions
-   * Finds CustomUserDefinitions. There are no filters, and no search terms. All the definitions are returned. 
+   * Finds CustomUserDefinitions Finds CustomUserDefinitions. There are no filters, and no search
+   * terms. All the definitions are returned.
+   *
    * @param p index of the page to display (required)
    * @param c maximum number of elements to retrieve (required)
    * @return List&lt;CustomUserDefinition&gt;
@@ -64,39 +59,43 @@ public interface CustomUserDefinitionApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  List<CustomUserDefinition> searchCustomUserDefinitions(@Param("p") Integer p, @Param("c") Integer c);
+  List<CustomUserDefinition> searchCustomUserDefinitions(
+      @Param("p") Integer p, @Param("c") Integer c);
 
   /**
-   * Finds CustomUserDefinitions
-   * Finds CustomUserDefinitions. There are no filters, and no search terms. All the definitions are returned. 
-   * Note, this is equivalent to the other <code>searchCustomUserDefinitions</code> method,
-   * but with the query parameters collected into a single Map parameter. This
-   * is convenient for services with optional query parameters, especially when
-   * used with the {@link SearchCustomUserDefinitionsQueryParams} class that allows for
-   * building up this map in a fluent style.
+   * Finds CustomUserDefinitions Finds CustomUserDefinitions. There are no filters, and no search
+   * terms. All the definitions are returned. Note, this is equivalent to the other <code>
+   * searchCustomUserDefinitions</code> method, but with the query parameters collected into a
+   * single Map parameter. This is convenient for services with optional query parameters,
+   * especially when used with the {@link SearchCustomUserDefinitionsQueryParams} class that allows
+   * for building up this map in a fluent style.
+   *
    * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>p - index of the page to display (required)</li>
-   *   <li>c - maximum number of elements to retrieve (required)</li>
-   *   </ul>
+   *     <p>The following elements may be specified in the query map:
+   *     <ul>
+   *       <li>p - index of the page to display (required)
+   *       <li>c - maximum number of elements to retrieve (required)
+   *     </ul>
+   *
    * @return List&lt;CustomUserDefinition&gt;
    */
   @RequestLine("GET /API/customuserinfo/definition?p={p}&c={c}")
   @Headers({
-  "Accept: application/json",
+    "Accept: application/json",
   })
-  List<CustomUserDefinition> searchCustomUserDefinitions(@QueryMap(encoded=true) Map<String, Object> queryParams);
+  List<CustomUserDefinition> searchCustomUserDefinitions(
+      @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
-   * A convenience class for generating query parameters for the
-   * <code>searchCustomUserDefinitions</code> method in a fluent style.
+   * A convenience class for generating query parameters for the <code>searchCustomUserDefinitions
+   * </code> method in a fluent style.
    */
   public static class SearchCustomUserDefinitionsQueryParams extends HashMap<String, Object> {
     public SearchCustomUserDefinitionsQueryParams p(final Integer value) {
       put("p", EncodingUtils.encode(value));
       return this;
     }
+
     public SearchCustomUserDefinitionsQueryParams c(final Integer value) {
       put("c", EncodingUtils.encode(value));
       return this;

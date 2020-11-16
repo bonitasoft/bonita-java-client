@@ -10,14 +10,7 @@ package org.bonitasoft.web.client.exception;
 
 public class UnauthorizedException extends ClientException {
 
-    public UnauthorizedException() {
-    }
-
-    public UnauthorizedException(String message) {
-        super(message);
-    }
-
-    public UnauthorizedException(String message, Exception cause) {
-        super(message, cause);
-    }
+  public UnauthorizedException(String message) {
+    super(message);
+  }
 }
