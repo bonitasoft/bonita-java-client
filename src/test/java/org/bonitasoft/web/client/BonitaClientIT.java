@@ -301,20 +301,45 @@ class BonitaClientIT {
     loggedInAsTechnicalUser();
     importOrganization();
     importBDM();
-
-    final List<ProcessDefinition> processesBefore =
-        bonitaClient.processes().searchProcesses(0, MAX_SEARCH_COUNT);
+    final String processName = "CreateAndUpdateData";
+    final String processVersion = "1.0";
 
     // When
-    File processFile = getClasspathFile("/CreateAndUpdateData--1.0.bar");
+    File processFile = getClasspathFile(String.format("/%s--%s.bar", processName, processVersion));
     bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
 
     // Then
-    final List<ProcessDefinition> processesAfter =
-        bonitaClient.processes().searchProcesses(0, MAX_SEARCH_COUNT);
-    assertThat(processesBefore.size()).isEqualTo(processesAfter.size() - 1);
     Optional<ProcessDefinition> maybeProcess =
-        bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
+        bonitaClient.processes().getProcess(processName, processVersion);
+    assertThat(maybeProcess).isPresent();
+    ProcessDefinition process = maybeProcess.get();
+    assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.RESOLVED);
+    assertThat(process.getActivationState()).isEqualTo(ActivationState.ENABLED);
+  }
+
+  @Test
+  void process_should_be_found() throws Exception {
+    // Given
+    loggedInAsTechnicalUser();
+    importOrganization();
+    importBDM();
+    final String processName = "CreateAndUpdateData";
+    final String processVersion = "1.0";
+    File processFile = getClasspathFile(String.format("/%s--%s.bar", processName, processVersion));
+    bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
+
+    // When
+    final List<ProcessDefinition> processes =
+        bonitaClient.processes().searchProcesses(0, MAX_SEARCH_COUNT);
+
+    // Then
+    Optional<ProcessDefinition> maybeProcess =
+        processes.stream()
+            .filter(
+                processDefinition ->
+                    processName.equals(processDefinition.getName())
+                        && processVersion.equals(processDefinition.getVersion()))
+            .findFirst();
     assertThat(maybeProcess).isPresent();
     ProcessDefinition process = maybeProcess.get();
     assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.RESOLVED);
