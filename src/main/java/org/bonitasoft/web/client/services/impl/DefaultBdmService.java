@@ -3,6 +3,7 @@ package org.bonitasoft.web.client.services.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import lombok.extern.slf4j.Slf4j;
+import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.BdmAccessControlApi;
 import org.bonitasoft.web.client.api.BdmApi;
 import org.bonitasoft.web.client.api.SystemTenantApi;
@@ -28,7 +29,8 @@ public class DefaultBdmService extends AbstractService implements BdmService {
     // Pause tenant
     log.debug("Pausing tenant ...");
     SystemTenantApi tenantApi = apiProvider.get(SystemTenantApi.class);
-    tenantApi.updateSystemTenant(DEFAULT_TENANT_ID, new TenantPauseRequest().paused("true"));
+    tenantApi.updateSystemTenant(
+        BonitaClient.DEFAULT_TENANT_ID, new TenantPauseRequest().paused("true"));
     log.debug("Tenant paused");
 
     deleteBdmAccessControlIfNeeded();
@@ -41,7 +43,8 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 
     // Restart tenant
     log.debug("Resuming tenant ...");
-    tenantApi.updateSystemTenant(DEFAULT_TENANT_ID, new TenantPauseRequest().paused("false"));
+    tenantApi.updateSystemTenant(
+        BonitaClient.DEFAULT_TENANT_ID, new TenantPauseRequest().paused("false"));
     log.debug("Tenant Resumed");
 
     log.info("Business Data Model deployed successfully.");

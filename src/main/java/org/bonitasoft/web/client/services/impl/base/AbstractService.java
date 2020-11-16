@@ -13,8 +13,6 @@ import org.bonitasoft.web.client.model.License;
 @RequiredArgsConstructor
 public abstract class AbstractService {
 
-  public static final String DEFAULT_TENANT_ID = "1";
-
   private static final String COMMUNITY = "Community";
   public static final License COMMUNITY_LICENCE =
       new License().edition(COMMUNITY).nbCpuCores("" + Runtime.getRuntime().availableProcessors());

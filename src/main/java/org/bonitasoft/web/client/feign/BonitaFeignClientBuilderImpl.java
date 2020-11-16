@@ -41,6 +41,7 @@ import org.bonitasoft.web.client.services.*;
 import org.bonitasoft.web.client.services.impl.*;
 import org.bonitasoft.web.client.services.impl.base.CachingClientContext;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.LoggerFactory;
 
 @Slf4j
@@ -73,6 +74,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
   public BonitaClient build() {
 
     ApiClient apiClient = new ApiClient();
+
     // Bonita url
     apiClient.setBasePath(addTrailingSlashIfNeeded(url));
 
@@ -83,10 +85,11 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
     // Jackson
     objectMapper =
-        configureJackson(ofNullable(this.objectMapper).orElse(apiClient.getObjectMapper()));
+        configureJackson(ofNullable(this.objectMapper).orElseGet(apiClient::getObjectMapper));
 
     // Feign
-    feignBuilder = ofNullable(feignBuilder).orElse(configureFeign(apiClient.getFeignBuilder()));
+    feignBuilder =
+        ofNullable(feignBuilder).orElseGet(() -> configureFeign(apiClient.getFeignBuilder()));
     apiClient.setFeignBuilder(feignBuilder);
 
     // Http proxies
@@ -174,30 +177,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
       log.debug("Configuring client Certificate manager ...");
       try {
         // Create a trust manager that does not validate certificate chains
-        final TrustManager[] trustAllCerts =
-            new TrustManager[] {
-              new X509TrustManager() {
-
-                @Override
-                public void checkClientTrusted(
-                    java.security.cert.X509Certificate[] chain, String authType)
-                    throws CertificateException {
-                  // noop
-                }
-
-                @Override
-                public void checkServerTrusted(
-                    java.security.cert.X509Certificate[] chain, String authType)
-                    throws CertificateException {
-                  // noop
-                }
-
-                @Override
-                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                  return new java.security.cert.X509Certificate[] {};
-                }
-              }
-            };
+        final TrustManager[] trustAllCerts = new TrustManager[] {newTrustAllCertManager()};
 
         // Install the all-trusting trust manager
         final SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
@@ -216,5 +196,28 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
       log.warn("Certificate Manager is configured to trust all ! (no check)");
     }
     return builder;
+  }
+
+  @NotNull
+  TrustManager newTrustAllCertManager() {
+    return new X509TrustManager() {
+
+      @Override
+      public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
+          throws CertificateException {
+        // noop
+      }
+
+      @Override
+      public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
+          throws CertificateException {
+        // noop
+      }
+
+      @Override
+      public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+        return new java.security.cert.X509Certificate[] {};
+      }
+    };
   }
 }

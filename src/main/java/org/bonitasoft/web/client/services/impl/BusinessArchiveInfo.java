@@ -10,22 +10,22 @@ package org.bonitasoft.web.client.services.impl;
 
 import java.io.File;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Value;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.services.impl.xml.XmlDocumentParser;
 import org.bonitasoft.web.client.services.utils.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 
-@Data
+@Value
 @Builder
 class BusinessArchiveInfo {
 
   private static final String PROCESS_DESIGN_FILENAME = "process-design.xml";
 
-  private String processName;
-  private String processVersion;
-  private File archive;
+  String processName;
+  String processVersion;
+  File archive;
 
   static BusinessArchiveInfo readFrom(File bar) {
     try {
