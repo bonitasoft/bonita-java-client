@@ -76,7 +76,6 @@
 
         <codegen.skip>true</codegen.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
-        <jacoco-exec-file>${project.build.directory}/jacoco-merged.exec</jacoco-exec-file>
 
         <!-- Sonar -->
         <sonar.projectKey>${sonar.organization}_${project.artifactId}</sonar.projectKey>
@@ -85,7 +84,6 @@
         <sonar.exclusions>
             **/api/**,**/invoker/**,**/model/**,**/invoker/auth/ApiKeyAuth*,**/invoker/auth/HttpBasicAuth*,**/invoker/auth/HttpBearerAuth*,src/test/java/**,pom.xml
         </sonar.exclusions>
-        <sonar.jacoco.reportPath>${jacoco-exec-file}</sonar.jacoco.reportPath>
 
     </properties>
 
@@ -371,33 +369,16 @@
                             </goals>
                         </execution>
                         <execution>
-                            <id>merge-unit-and-integration</id>
-                            <phase>post-integration-test</phase>
-                            <goals>
-                                <goal>merge</goal>
-                            </goals>
-                            <configuration>
-                                <fileSets>
-                                    <fileSet>
-                                        <directory>${project.basedir}</directory>
-                                        <includes>
-                                            <include>**/*.exec</include>
-                                        </includes>
-                                    </fileSet>
-                                </fileSets>
-                                <destFile>${jacoco-exec-file}</destFile>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>jacoco-site</id>
-                            <phase>post-integration-test</phase>
+                            <id>jacoco-test-report</id>
                             <goals>
                                 <goal>report</goal>
                             </goals>
-                            <configuration>
-                                <dataFile>${jacoco-exec-file}</dataFile>
-                                <outputDirectory>${project.reporting.outputDirectory}/jacoco-merged</outputDirectory>
-                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>jacoco-it-report</id>
+                            <goals>
+                                <goal>report-integration</goal>
+                            </goals>
                         </execution>
                     </executions>
                 </plugin>
