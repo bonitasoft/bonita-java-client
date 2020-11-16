@@ -44,13 +44,6 @@ endif::[]
 
 image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
 
-'''
-
-This project is the official web client for Bonita when working with Java (or on the JVM).
-
-It is based on an https://swagger.io/specification/[OpenAPI image:openapi.png[OpenAPI,width=30px]^] specification for **Bonita {bonita-short-version}** `Enterprise` edition.
-This means that this client includes all `Community` operations plus some that are only supported by `Enterprise` editions servers.
-
 ifdef::status[]
 image:{uri-repo}/workflows/workflow-build/badge.svg[Build,link="{uri-repo}/actions?query=workflow%3Aworkflow-build"]
 image:https://img.shields.io/github/v/release/{orga}/{project-artifact-id}?color=blue&label=Release[Release,link="{uri-repo}/releases"]
@@ -58,6 +51,13 @@ image:https://img.shields.io/maven-central/v/{project-group-id}/{project-artifac
 image:https://sonarcloud.io/api/project_badges/measure?project=bonitasoft_bonita-java-client&metric=alert_status[Sonar,link=https://sonarcloud.io/dashboard?id=bonitasoft_bonita-java-client]
 image:https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="{uri-license}"]
 endif::[]
+
+This project is the official web client for Bonita when working with Java (or on the JVM).
+
+It is based on an https://swagger.io/specification/[OpenAPI image:openapi.png[OpenAPI,width=30px]^] specification for **Bonita {bonita-short-version}** `Enterprise` edition.
+This means that this client includes all `Community` operations plus some that are only supported by `Enterprise` editions servers.
+
+'''
 
 == Features
 
