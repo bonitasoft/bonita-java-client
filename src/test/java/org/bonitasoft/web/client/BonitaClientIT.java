@@ -38,7 +38,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 class BonitaClientIT {
 
   private static final String ROLE_MEMBER_NAME = "member";
-  private static final int SEARCH_MAX_COUNT = 100;
+  private static final int MAX_SEARCH_COUNT = 100;
 
   @Container private static final BonitaContainer BONITA_CONTAINER = new BonitaContainer();
 
@@ -141,7 +141,7 @@ class BonitaClientIT {
 
     // Then
     List<User> users =
-        bonitaClient.users().searchUsers(new SearchUsersQueryParams().p(0).c(SEARCH_MAX_COUNT));
+        bonitaClient.users().searchUsers(new SearchUsersQueryParams().p(0).c(MAX_SEARCH_COUNT));
     assertThat(users).isNotEmpty();
   }
 
@@ -150,7 +150,7 @@ class BonitaClientIT {
     // Given
     loggedInAsTechnicalUser();
     final List<Application> applicationsBefore =
-        bonitaClient.applications().searchApplications(0, SEARCH_MAX_COUNT);
+        bonitaClient.applications().searchApplications(0, MAX_SEARCH_COUNT);
 
     // When
     File application = getClasspathFile("/application.xml");
@@ -162,7 +162,7 @@ class BonitaClientIT {
     List<Application> applications =
         bonitaClient
             .applications()
-            .searchApplications(new SearchApplicationsQueryParams().p(0).c(SEARCH_MAX_COUNT));
+            .searchApplications(new SearchApplicationsQueryParams().p(0).c(MAX_SEARCH_COUNT));
     assertThat(applications).isNotEmpty().hasSize(applicationsBefore.size() + 2);
     assertThat(applications)
         .as("Application names")
@@ -239,6 +239,46 @@ class BonitaClientIT {
   }
 
   @Test
+  void page_should_be_updated() throws Exception {
+    // Given
+    loggedInAsTechnicalUser();
+
+    // When
+    File pageFile = getClasspathFile("/page.zip");
+    bonitaClient.applications().importPage(pageFile);
+    Page page = bonitaClient.applications().importPage(pageFile);
+
+    // Then
+    Page pageAgain = bonitaClient.applications().getPage(page.getUrlToken());
+    assertThat(pageAgain.getId()).isEqualTo(page.getId());
+    assertThat(pageAgain.getUrlToken()).isEqualTo(page.getUrlToken());
+    assertThat(pageAgain.getDisplayName()).isEqualTo(page.getDisplayName());
+    assertThat(pageAgain.getContentName()).isEqualTo(page.getContentName());
+  }
+
+  @Test
+  void page_should_be_deleted() throws Exception {
+    // Given
+    loggedInAsTechnicalUser();
+    final int nbPageBefore = bonitaClient.applications().searchPages(0, MAX_SEARCH_COUNT).size();
+
+    File pageFile = getClasspathFile("/page.zip");
+    final Page page = bonitaClient.applications().importPage(pageFile);
+    final int nbPageAfterImport =
+        bonitaClient.applications().searchPages(0, MAX_SEARCH_COUNT).size();
+    assertThat(nbPageBefore).isEqualTo(nbPageAfterImport - 1);
+
+    // When
+    final boolean deleted = bonitaClient.applications().deletePage(page.getUrlToken());
+    final int nbPageAfterDeletion =
+        bonitaClient.applications().searchPages(0, MAX_SEARCH_COUNT).size();
+
+    // Then
+    assertThat(deleted).isTrue();
+    assertThat(nbPageBefore).isEqualTo(nbPageAfterDeletion);
+  }
+
+  @Test
   void restapi_should_be_uploaded() throws Exception {
     // Given
     loggedInAsTechnicalUser();
@@ -262,11 +302,17 @@ class BonitaClientIT {
     importOrganization();
     importBDM();
 
+    final List<ProcessDefinition> processesBefore =
+        bonitaClient.processes().searchProcesses(0, MAX_SEARCH_COUNT);
+
     // When
     File processFile = getClasspathFile("/CreateAndUpdateData--1.0.bar");
     bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
 
     // Then
+    final List<ProcessDefinition> processesAfter =
+        bonitaClient.processes().searchProcesses(0, MAX_SEARCH_COUNT);
+    assertThat(processesBefore.size()).isEqualTo(processesAfter.size() - 1);
     Optional<ProcessDefinition> maybeProcess =
         bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
     assertThat(maybeProcess).isPresent();
@@ -392,7 +438,7 @@ class BonitaClientIT {
 
     // When
     List<ProcessResolutionProblem> processProblems =
-        bonitaClient.processes().getProcessProblem(0, SEARCH_MAX_COUNT, process.getId());
+        bonitaClient.processes().getProcessProblem(0, MAX_SEARCH_COUNT, process.getId());
 
     // Then
     assertThat(processProblems).isNotEmpty();

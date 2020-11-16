@@ -1,6 +1,7 @@
 package org.bonitasoft.web.client.feign.decoder;
 
 import static feign.FeignException.errorStatus;
+import static java.lang.String.*;
 import static java.lang.System.lineSeparator;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.stream.Collectors.joining;
@@ -23,7 +24,8 @@ public class BonitaErrorDecoder implements ErrorDecoder {
   @Override
   public Exception decode(String methodKey, Response response) {
     final int responseStatus = response.status();
-    String message = String.format("status: %s %s \n", responseStatus, response.reason());
+    String message =
+        format("status: %s %s %s", responseStatus, response.reason(), System.lineSeparator());
     String details = getMessageDetails(response);
     String errorMessage = message + details;
 

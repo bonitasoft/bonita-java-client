@@ -60,7 +60,7 @@ public class DefaultApplicationService extends AbstractService implements Applic
     log.info("Applications in '{}' deployed successfully.", applicationFile.getName());
   }
 
-  private void silentDeleteApplication(String applicationToken) {
+  void silentDeleteApplication(String applicationToken) {
     try {
       deleteApplication(applicationToken);
     } catch (NotFoundException e) {
@@ -68,7 +68,7 @@ public class DefaultApplicationService extends AbstractService implements Applic
     }
   }
 
-  private List<String> readApplicationTokensFromFile(File application) {
+  List<String> readApplicationTokensFromFile(File application) {
     log.debug("Extract application token from file: {}", application.getName());
     List<String> tokens = new ArrayList<>();
     final XmlDocumentParser documentParser = new XmlDocumentParser();
@@ -200,7 +200,7 @@ public class DefaultApplicationService extends AbstractService implements Applic
                     .c(1)
                     .f(singletonList("urlToken=" + token)));
     if (pages.isEmpty()) {
-      // FIXME: why not 404 ?
+      // TODO: why not 404 ?
       log.debug("Can't find any existing page with the token '{}'.", token);
       return null;
     }
