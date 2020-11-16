@@ -8,7 +8,6 @@
  */
 package org.bonitasoft.web.client.services.utils;
 
-
 import java.io.*;
 import java.nio.file.*;
 import java.util.zip.ZipEntry;

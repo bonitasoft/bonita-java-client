@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import feign.FeignException;
+import org.bonitasoft.web.client.api.HumanTaskApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.services.*;
@@ -93,5 +94,18 @@ class BonitaFeignClientTest {
     final String serverVersion = feignClient.getVersion();
     // Then
     assertThat(serverVersion).isEqualTo(version);
+  }
+
+  @Test
+  void should_return_raw_api() {
+    // Given
+    final Class<HumanTaskApi> apiClass = HumanTaskApi.class;
+    when(apiProvider.get(apiClass)).thenReturn(mock(apiClass));
+
+    // When
+    final HumanTaskApi humanTaskApi = feignClient.get(apiClass);
+
+    // Then
+    assertThat(humanTaskApi).isNotNull();
   }
 }
