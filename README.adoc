@@ -48,17 +48,10 @@ image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com"
 '''
 
 ifdef::status[]
-[.float-group]
---
-[.left]
 image::{uri-repo}/workflows/workflow-build/badge.svg[Build,link="{uri-repo}/actions?query=workflow%3Aworkflow-build"]
-[.left]
 image::https://img.shields.io/github/v/release/{orga}/{project-artifact-id}?color=blue&label=Release[Release,link="{uri-repo}/releases"]
-[.left]
 image::https://img.shields.io/maven-central/v/{project-group-id}/{project-artifact-id}.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22{project-group-id}%22%20AND%20a:%22{project-artifact-id}%22"]
-[.left]
 image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="{uri-license}"]
---
 endif::[]
 
 This project is the official web client for Bonita when working with Java (or on the JVM).
