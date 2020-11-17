@@ -35,7 +35,7 @@ public interface BonitaClient extends ApiProvider {
   Session login(String username, String password);
 
   /**
-   * /** Perform client authentication. Authentication will be stored internally to be used for the
+   * Perform client authentication. Authentication will be stored internally to be used for the
    * future requests
    *
    * @param username Account username
@@ -46,23 +46,65 @@ public interface BonitaClient extends ApiProvider {
    */
   Session login(String username, String password, String tenant);
 
+  /** Logout the current user */
   void logout();
 
+  /** Logout the current user (with no exceptions) */
   void logoutSilent();
 
+  /**
+   * Return true if platform is up
+   *
+   * @return
+   */
   boolean isPlatformUpAndRunning();
 
+  /**
+   * The Bonita target url (ie. http://localhost:8080/bonita/)
+   *
+   * @return
+   */
   String getUrl();
 
+  /**
+   * The targeted Bonita version
+   *
+   * @return
+   */
   String getVersion();
 
+  /**
+   * Return the application API
+   *
+   * @return
+   */
   ApplicationService applications();
 
+  /**
+   * Return the BDM API
+   *
+   * @return
+   */
   BdmService bdm();
 
+  /**
+   * Return the user API
+   *
+   * @return
+   */
   UserService users();
 
+  /**
+   * Return the process API
+   *
+   * @return
+   */
   ProcessService processes();
 
+  /**
+   * Return the system tenant API
+   *
+   * @return
+   */
   SystemService system();
 }
