@@ -45,6 +45,7 @@
 
         <swagger-annotations.version>1.6.2</swagger-annotations.version>
         <javax-annotation.version>1.3.2</javax-annotation.version>
+        <jsr305.version>3.0.2</jsr305.version>
         <feign.version>10.11</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
         <okhttp.version>4.9.0</okhttp.version>
@@ -58,6 +59,7 @@
         <mockito-core.version>3.6.0</mockito-core.version>
         <logback-classic.version>1.2.3</logback-classic.version>
         <testcontainers.version>1.14.3</testcontainers.version>
+        <awaitility.version>4.0.2</awaitility.version>
 
         <!-- Maven plugins -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -73,6 +75,7 @@
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <git-commit-id-plugin.version>4.0.0</git-commit-id-plugin.version>
         <fmt-maven-plugin.version>2.10</fmt-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>4.3.1</openapi-generator-maven-plugin.version>
 
         <codegen.skip>true</codegen.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -87,7 +90,6 @@
         <Dsonar.coverage.jacoco.xmlReportPaths>
             ${project.reporting.outputDirectory}/jacoco/jacoco.xml,${project.reporting.outputDirectory}/jacoco-it/jacoco.xml,
         </Dsonar.coverage.jacoco.xmlReportPaths>
-
     </properties>
 
     <dependencyManagement>
@@ -134,7 +136,7 @@
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
-            <version>3.0.2</version>
+            <version>${jsr305.version}</version>
         </dependency>
 
         <dependency>
@@ -246,13 +248,13 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
-            <version>1.7.30</version>
+            <version>${slf4j-api.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
-            <version>4.0.2</version>
+            <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -421,7 +423,7 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>4.3.1</version>
+                <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
