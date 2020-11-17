@@ -132,7 +132,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
             new DelegatingDecoder().register("application/json", new JacksonDecoder(objectMapper)))
         // Map feign exception to ours
         .errorDecoder(new BonitaErrorDecoder())
-        // Fixme: bad charset handling in bonita version. Fixed in 7.11.3
+        // bad charset handling in bonita version. Fixed in 7.11.3
         .requestInterceptor(new BonitaCharsetBugInterceptor());
   }
 

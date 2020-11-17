@@ -147,7 +147,7 @@ If you need for any reason to disable ssl certificate check, here is the code to
 
 [source, java]
 ----
-BonitaClient client = BonitaClient.builder("http://localhost:8080/bonita")
+BonitaClient client = BonitaClient.builder("https://me.bonitacloud.com/")
         // Disable certificate check
         .disableCertificateCheck(true)
     .build();
