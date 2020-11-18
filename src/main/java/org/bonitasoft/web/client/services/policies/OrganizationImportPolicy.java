@@ -10,7 +10,7 @@ package org.bonitasoft.web.client.services.policies;
 
 /** Created by laurentleseigneur on 06/07/2017. */
 public enum OrganizationImportPolicy {
-  MERGE_DUPLICATES,
-  FAIL_ON_DUPLICATES,
-  IGNORE_DUPLICATES;
+
+	MERGE_DUPLICATES, FAIL_ON_DUPLICATES, IGNORE_DUPLICATES;
+
 }

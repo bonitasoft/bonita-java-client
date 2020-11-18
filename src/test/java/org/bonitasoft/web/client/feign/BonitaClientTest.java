@@ -2,10 +2,17 @@ package org.bonitasoft.web.client.feign;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
 import org.bonitasoft.web.client.BonitaClient;
-import org.bonitasoft.web.client.services.*;
+import org.bonitasoft.web.client.services.ApplicationService;
+import org.bonitasoft.web.client.services.BdmService;
+import org.bonitasoft.web.client.services.LoginService;
+import org.bonitasoft.web.client.services.ProcessService;
+import org.bonitasoft.web.client.services.SystemService;
+import org.bonitasoft.web.client.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,59 +22,72 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class BonitaClientTest {
 
-  @InjectMocks private BonitaFeignClient client;
+	@InjectMocks
+	private BonitaFeignClient client;
 
-  @Mock private LoginService loginService;
-  @Mock private ApplicationService applicationService;
-  @Mock private BdmService bdmService;
-  @Mock private UserService userService;
-  @Mock private ProcessService processService;
-  @Mock private SystemService systemService;
+	@Mock
+	private LoginService loginService;
 
-  @Test
-  void mocks_are_in_place() {
-    assertThat(client.applications()).isNotNull();
-    assertThat(client.users()).isNotNull();
-    assertThat(client.system()).isNotNull();
-    assertThat(client.bdm()).isNotNull();
-    assertThat(client.processes()).isNotNull();
-  }
+	@Mock
+	private ApplicationService applicationService;
 
-  @Test
-  void when_no_tenant_provided_should_log_with_default_tenant() {
-    // Given
-    client = spy(client);
-    String username = "test";
-    String password = "123";
+	@Mock
+	private BdmService bdmService;
 
-    // When
-    client.login(username, password);
+	@Mock
+	private UserService userService;
 
-    // Then
-    verify(client).login(eq(username), eq(password), eq(BonitaClient.DEFAULT_TENANT_ID));
-    verify(loginService).login(eq(username), eq(password), eq(BonitaClient.DEFAULT_TENANT_ID));
-  }
+	@Mock
+	private ProcessService processService;
 
-  @Test
-  void should_delegate_logout() {
-    // Given
+	@Mock
+	private SystemService systemService;
 
-    // When
-    client.logout();
+	@Test
+	void mocks_are_in_place() {
+		assertThat(client.applications()).isNotNull();
+		assertThat(client.users()).isNotNull();
+		assertThat(client.system()).isNotNull();
+		assertThat(client.bdm()).isNotNull();
+		assertThat(client.processes()).isNotNull();
+	}
 
-    // Then
-    verify(loginService).logout();
-  }
+	@Test
+	void when_no_tenant_provided_should_log_with_default_tenant() {
+		// Given
+		client = spy(client);
+		String username = "test";
+		String password = "123";
 
-  @Test
-  void should_logout_with_no_exceptions() {
-    // Given
-    doThrow(new RuntimeException("Should be ignored exc")).when(loginService).logout();
+		// When
+		client.login(username, password);
 
-    // When
-    client.logoutSilent();
+		// Then
+		verify(client).login(eq(username), eq(password), eq(BonitaClient.DEFAULT_TENANT_ID));
+		verify(loginService).login(eq(username), eq(password), eq(BonitaClient.DEFAULT_TENANT_ID));
+	}
 
-    // Then
-    verify(loginService).logout();
-  }
+	@Test
+	void should_delegate_logout() {
+		// Given
+
+		// When
+		client.logout();
+
+		// Then
+		verify(loginService).logout();
+	}
+
+	@Test
+	void should_logout_with_no_exceptions() {
+		// Given
+		doThrow(new RuntimeException("Should be ignored exc")).when(loginService).logout();
+
+		// When
+		client.logoutSilent();
+
+		// Then
+		verify(loginService).logout();
+	}
+
 }

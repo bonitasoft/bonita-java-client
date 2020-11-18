@@ -191,64 +191,17 @@ The current implementation of the client use OpenFeign internally. If you need t
 // Create your custom feign builder
 Feign.Builder myFeignBuilder = new Feign.Builder();
 
+// Create an instance of BonitaClient builder
 BonitaClientBuilder builder = BonitaClient.builder("http://localhost:8080/bonita");
-// Cast builder to BonitaFeignClientBuilder class
+
+// Cast BonitaClient builder to BonitaFeignClientBuilder class
 BonitaFeignClientBuilder bonitaClientBuilder = (BonitaFeignClientBuilder) builder;
+
+// Configure bonita client to use your custom feign builder
 BonitaClient client = bonitaClientBuilder
-        // Configure bonita client to use your custom feign builder
         .feignBuilder(myFeignBuilder)
     .build();
 ----
-
-== Developing
-
-=== Prerequisite
-
-- a git client
-- a java (jdk8 or higher)
-- maven (optional if you chose to use https://github.com/takari/maven-wrapper[maven wrapper script])
-- Docker for integration tests
-
-=== Building
-
-This is a standard maven project. To install the java client library to your local Maven repository, simply execute:
-
-[source,bash,subs="attributes"]
-----
-git clone {uri-repo}.git
-cd {project-artifact-id}/
-mvn install
-----
-
-The build should produce under the `target/` folder (and in your local maven repository) a jar archive named `bonita-java-client-1.0.0-SNAPSHOT.jar`
-
-For more details about apache maven, please refer to the https://maven.apache.org/guides/getting-started/[documentation]
-
-=== Regenerate feign stubs
-
-If the openapi specification changed, you can regenerates the feign stubs with the following command.
-
-WARNING: Be careful, some client stubs are marked as ignored in `.openapi-generator-ignore` file, since they were customized (like returning a `feign.Response` instead of a model object)
-
-[source,bash,subs="attributes"]
-----
-mvn generate-sources -Dcodegen.skip=false
-----
-
-=== Branches
-
-The adopted worlfow is for now the Gitflow one.
-
-Please refers to this article for more info: https://jeffkreeftmeijer.com/git-flow/
-
-== Release
-
-- Create a branch for the desired version. ex: `release/1.0.0`. You can use the `set-version.sh` script to align declared versions in sources (pom.xml,readme.adoc,...)
-- Push branch, make a pull request to `master` and review release with others
-- Once you are happy with the content of the release branch, merge pull request to master branch using `Merge pull request` button (&#9888; Do not squash or rebase)
-- That's it ! {icon-party}
-
-NOTE: Don't forget to update your local `dev` branch after a release has been done !
 
 == Getting Help
 

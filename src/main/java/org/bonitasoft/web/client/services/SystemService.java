@@ -4,9 +4,10 @@ import org.bonitasoft.web.client.model.License;
 
 public interface SystemService {
 
-  boolean isTenantPaused();
+	boolean isTenantPaused();
 
-  License getLicense();
+	License getLicense();
 
-  boolean isCommunity();
+	boolean isCommunity();
+
 }

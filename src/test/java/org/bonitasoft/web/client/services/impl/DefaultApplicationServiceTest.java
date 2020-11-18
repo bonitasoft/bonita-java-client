@@ -2,12 +2,21 @@ package org.bonitasoft.web.client.services.impl;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyMap;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
+
 import org.bonitasoft.web.client.api.ApplicationApi;
 import org.bonitasoft.web.client.api.PageApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
@@ -21,63 +30,71 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @ExtendWith(MockitoExtension.class)
 class DefaultApplicationServiceTest {
 
-  private final ObjectMapper objectMapper = new ObjectMapper();
-  private final ClientContext clientContext = new CachingClientContext();
+	private final ObjectMapper objectMapper = new ObjectMapper();
 
-  @Mock private ApiProvider apiProvider;
-  @Mock private ApplicationApi applicationApi;
-  @Mock private PageApi pageApi;
+	private final ClientContext clientContext = new CachingClientContext();
 
-  private DefaultApplicationService applicationService;
+	@Mock
+	private ApiProvider apiProvider;
 
-  @BeforeEach
-  void setUp() {
-    clientContext.clear();
-    applicationService =
-        spy(new DefaultApplicationService(clientContext, apiProvider, objectMapper));
+	@Mock
+	private ApplicationApi applicationApi;
 
-    lenient().when(apiProvider.get(ApplicationApi.class)).thenReturn(applicationApi);
-    lenient().when(apiProvider.get(PageApi.class)).thenReturn(pageApi);
-  }
+	@Mock
+	private PageApi pageApi;
 
-  @Test
-  void should_import_configuration_if_enterprise_edition() {
-    // Given
-    File configurationFile = new File("./dummy.bconf");
-    final ArgumentCaptor<File> captor = ArgumentCaptor.forClass(File.class);
+	private DefaultApplicationService applicationService;
 
-    doReturn(false).when(applicationService).isCommunity();
+	@BeforeEach
+	void setUp() {
+		clientContext.clear();
+		applicationService = spy(new DefaultApplicationService(clientContext, apiProvider, objectMapper));
 
-    // When
-    applicationService.importBonitaConfiguration(configurationFile);
+		lenient().when(apiProvider.get(ApplicationApi.class)).thenReturn(applicationApi);
+		lenient().when(apiProvider.get(PageApi.class)).thenReturn(pageApi);
+	}
 
-    // Then
-    verify(applicationApi).uploadApplicationConfiguration(captor.capture());
-    assertThat(captor.getValue()).isEqualTo(configurationFile);
-  }
+	@Test
+	void should_import_configuration_if_enterprise_edition() {
+		// Given
+		File configurationFile = new File("./dummy.bconf");
+		final ArgumentCaptor<File> captor = ArgumentCaptor.forClass(File.class);
 
-  @Test
-  void import_application_replace_dups_should_first_delete() {
-    // Given
-    File dummyApps = new File("/dummyApp.xml");
-    when(applicationApi.uploadApplication(dummyApps)).thenReturn(UUID.randomUUID().toString());
+		doReturn(false).when(applicationService).isCommunity();
 
-    final ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+		// When
+		applicationService.importBonitaConfiguration(configurationFile);
 
-    final List<String> fakeAppTokens = asList("app1", "app2");
-    doReturn(fakeAppTokens).when(applicationService).readApplicationTokensFromFile(any());
+		// Then
+		verify(applicationApi).uploadApplicationConfiguration(captor.capture());
+		assertThat(captor.getValue()).isEqualTo(configurationFile);
+	}
 
-    // When
-    applicationService.importApplications(dummyApps, ApplicationImportPolicy.REPLACE_DUPLICATES);
+	@Test
+	void import_application_replace_dups_should_first_delete() {
+		// Given
+		File dummyApps = new File("/dummyApp.xml");
+		when(applicationApi.uploadApplication(dummyApps)).thenReturn(UUID.randomUUID().toString());
 
-    // Then
-    verify(applicationApi, atLeast(fakeAppTokens.size())).searchApplications(anyMap());
-    verify(applicationService, times(fakeAppTokens.size())).silentDeleteApplication(anyString());
-    verify(applicationApi).uploadApplication(dummyApps);
-    verify(applicationApi).importApplication(anyString(), captor.capture());
-    assertThat(captor.getValue()).isEqualTo(ApplicationImportPolicy.FAIL_ON_DUPLICATES.name());
-  }
+		final ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+
+		final List<String> fakeAppTokens = asList("app1", "app2");
+		doReturn(fakeAppTokens).when(applicationService).readApplicationTokensFromFile(any());
+
+		// When
+		applicationService.importApplications(dummyApps, ApplicationImportPolicy.REPLACE_DUPLICATES);
+
+		// Then
+		verify(applicationApi, atLeast(fakeAppTokens.size())).searchApplications(anyMap());
+		verify(applicationService, times(fakeAppTokens.size())).silentDeleteApplication(anyString());
+		verify(applicationApi).uploadApplication(dummyApps);
+		verify(applicationApi).importApplication(anyString(), captor.capture());
+		assertThat(captor.getValue()).isEqualTo(ApplicationImportPolicy.FAIL_ON_DUPLICATES.name());
+	}
+
 }

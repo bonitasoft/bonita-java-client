@@ -2,10 +2,15 @@ package org.bonitasoft.web.client.services.impl;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
+
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.BdmAccessControlApi;
 import org.bonitasoft.web.client.api.BdmApi;
@@ -24,102 +29,109 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @ExtendWith(MockitoExtension.class)
 class DefaultBdmServiceTest {
 
-  private final ObjectMapper objectMapper = new ObjectMapper();
-  private final ClientContext clientContext = new CachingClientContext();
+	private final ObjectMapper objectMapper = new ObjectMapper();
 
-  private DefaultBdmService bdmService;
+	private final ClientContext clientContext = new CachingClientContext();
 
-  @Mock private ApiProvider apiProvider;
-  @Mock private BdmApi bdmApi;
-  @Mock private SystemTenantApi tenantApi;
-  @Mock private LicenseApi licenseApi;
-  @Mock private BdmAccessControlApi accessControlApi;
+	private DefaultBdmService bdmService;
 
-  @BeforeEach
-  void setUp() {
-    clientContext.clear();
-    bdmService = spy(new DefaultBdmService(clientContext, apiProvider, objectMapper));
+	@Mock
+	private ApiProvider apiProvider;
 
-    lenient().when(apiProvider.get(LicenseApi.class)).thenReturn(licenseApi);
-    lenient().when(apiProvider.get(SystemTenantApi.class)).thenReturn(tenantApi);
-    lenient().when(apiProvider.get(BdmApi.class)).thenReturn(bdmApi);
-    lenient().when(apiProvider.get(BdmAccessControlApi.class)).thenReturn(accessControlApi);
+	@Mock
+	private BdmApi bdmApi;
 
-    lenient().doReturn(true).when(bdmService).isCommunity();
-  }
+	@Mock
+	private SystemTenantApi tenantApi;
 
-  @Test
-  void should_import_bdm() throws Exception {
-    // Given
-    File bdmFile = getClasspathFile("/bdm.zip");
+	@Mock
+	private LicenseApi licenseApi;
 
-    // When
-    bdmService.importBDM(bdmFile);
+	@Mock
+	private BdmAccessControlApi accessControlApi;
 
-    // Then
-    // tenant paused
-    verify(tenantApi)
-        .updateSystemTenant(
-            BonitaClient.DEFAULT_TENANT_ID, new TenantPauseRequest().paused("true"));
-    verify(bdmService).deleteBdmAccessControlIfNeeded();
-    // bdm installed
-    verify(bdmApi).uploadBDM(any());
-    verify(bdmApi).installBDM(any());
-    // tenant restarted
-    verify(tenantApi)
-        .updateSystemTenant(
-            BonitaClient.DEFAULT_TENANT_ID, new TenantPauseRequest().paused("false"));
-  }
+	@BeforeEach
+	void setUp() {
+		clientContext.clear();
+		bdmService = spy(new DefaultBdmService(clientContext, apiProvider, objectMapper));
 
-  @Test
-  void access_control_should_be_deleted_when_not_community_and_installed() {
-    // Given
-    doReturn(false).when(bdmService).isCommunity();
-    doReturn(new BDMAccessControl().state(TenantResourceState.INSTALLED))
-        .when(bdmService)
-        .getBdmAccessControlStatus();
+		lenient().when(apiProvider.get(LicenseApi.class)).thenReturn(licenseApi);
+		lenient().when(apiProvider.get(SystemTenantApi.class)).thenReturn(tenantApi);
+		lenient().when(apiProvider.get(BdmApi.class)).thenReturn(bdmApi);
+		lenient().when(apiProvider.get(BdmAccessControlApi.class)).thenReturn(accessControlApi);
 
-    // When
-    bdmService.deleteBdmAccessControlIfNeeded();
+		lenient().doReturn(true).when(bdmService).isCommunity();
+	}
 
-    // Then
-    verify(accessControlApi).deleteBDMAccessControl();
-  }
+	@Test
+	void should_import_bdm() throws Exception {
+		// Given
+		File bdmFile = getClasspathFile("/bdm.zip");
 
-  @Test
-  void access_control_should_not_be_deleted_when_community() {
-    // Given
-    doReturn(true).when(bdmService).isCommunity();
+		// When
+		bdmService.importBDM(bdmFile);
 
-    // When
-    bdmService.deleteBdmAccessControlIfNeeded();
+		// Then
+		// tenant paused
+		verify(tenantApi).updateSystemTenant(BonitaClient.DEFAULT_TENANT_ID, new TenantPauseRequest().paused("true"));
+		verify(bdmService).deleteBdmAccessControlIfNeeded();
+		// bdm installed
+		verify(bdmApi).uploadBDM(any());
+		verify(bdmApi).installBDM(any());
+		// tenant restarted
+		verify(tenantApi).updateSystemTenant(BonitaClient.DEFAULT_TENANT_ID, new TenantPauseRequest().paused("false"));
+	}
 
-    // Then
-    verify(accessControlApi, never()).deleteBDMAccessControl();
-  }
+	@Test
+	void access_control_should_be_deleted_when_not_community_and_installed() {
+		// Given
+		doReturn(false).when(bdmService).isCommunity();
+		doReturn(new BDMAccessControl().state(TenantResourceState.INSTALLED)).when(bdmService)
+				.getBdmAccessControlStatus();
 
-  @Test
-  void access_control_should_be_fetched_when_not_community() {
-    // Given
-    doReturn(false).when(bdmService).isCommunity();
+		// When
+		bdmService.deleteBdmAccessControlIfNeeded();
 
-    // When
-    bdmService.getBdmAccessControlStatus();
+		// Then
+		verify(accessControlApi).deleteBDMAccessControl();
+	}
 
-    // Then
-    verify(accessControlApi).getBDMAccessControlStatus();
-  }
+	@Test
+	void access_control_should_not_be_deleted_when_community() {
+		// Given
+		doReturn(true).when(bdmService).isCommunity();
 
-  @Test
-  void access_control_should_not_be_fetched_when_not_community() {
-    // Given
-    doReturn(true).when(bdmService).isCommunity();
+		// When
+		bdmService.deleteBdmAccessControlIfNeeded();
 
-    // When
-    assertThatThrownBy(() -> bdmService.getBdmAccessControlStatus())
-        .isInstanceOf(LicenseException.class);
-  }
+		// Then
+		verify(accessControlApi, never()).deleteBDMAccessControl();
+	}
+
+	@Test
+	void access_control_should_be_fetched_when_not_community() {
+		// Given
+		doReturn(false).when(bdmService).isCommunity();
+
+		// When
+		bdmService.getBdmAccessControlStatus();
+
+		// Then
+		verify(accessControlApi).getBDMAccessControlStatus();
+	}
+
+	@Test
+	void access_control_should_not_be_fetched_when_not_community() {
+		// Given
+		doReturn(true).when(bdmService).isCommunity();
+
+		// When
+		assertThatThrownBy(() -> bdmService.getBdmAccessControlStatus()).isInstanceOf(LicenseException.class);
+	}
+
 }

@@ -8,22 +8,24 @@ import org.testcontainers.containers.wait.strategy.Wait;
 
 public class BonitaContainer extends GenericContainer<BonitaContainer> {
 
-  public static final String BONITA_PATH = "/bonita";
-  public static final String BONITA_VERSION = "bonita.version";
+	public static final String BONITA_PATH = "/bonita";
 
-  public BonitaContainer() {
-    this("bonita:" + System.getProperty(BONITA_VERSION, "latest"));
-  }
+	public static final String BONITA_VERSION = "bonita.version";
 
-  public BonitaContainer(String dockerImageName) {
-    super(dockerImageName);
-    this.setExposedPorts(singletonList(8080));
-    this.setWaitStrategy(Wait.forHttp(BONITA_PATH));
-  }
+	public BonitaContainer() {
+		this("bonita:" + System.getProperty(BONITA_VERSION, "latest"));
+	}
 
-  public String getPortalUrl() {
-    String host = this.getHost();
-    Integer port = this.getFirstMappedPort();
-    return format("http://%s:%s" + BONITA_PATH, host, port);
-  }
+	public BonitaContainer(String dockerImageName) {
+		super(dockerImageName);
+		this.setExposedPorts(singletonList(8080));
+		this.setWaitStrategy(Wait.forHttp(BONITA_PATH));
+	}
+
+	public String getPortalUrl() {
+		String host = this.getHost();
+		Integer port = this.getFirstMappedPort();
+		return format("http://%s:%s" + BONITA_PATH, host, port);
+	}
+
 }

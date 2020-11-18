@@ -1,0 +1,141 @@
+= Contributing to Bonita Java Client
+//:doctype: book
+:sectnums:
+//:source-highlighter: highlightjs
+:idprefix:
+:idseparator: -
+:sectlinks:
+:sectanchors:
+//:linkcss: false
+:allow-uri-read:
+:imagesdir: ./doc/images
+
+:icon-party: &#x1F973;
+
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+// Vars
+:project-group-id: org.bonitasoft.web
+:project-artifact-id: bonita-java-client
+:project-version: 0.0.2-SNAPSHOT
+:bonita-short-version: 7.11
+:orga: bonitasoft
+:uri-org: https://github.com/{orga}
+:uri-repo: {uri-org}/{project-artifact-id}
+:uri-issues: {uri-repo}/issues
+:uri-contributors: {uri-repo}/graphs/contributor
+:uri-rel-file-base: link:
+:uri-rel-tree-base: link:
+ifdef::env-site,env-yard[]
+:uri-rel-file-base: {uri-repo}/blob/master/
+:uri-rel-tree-base: {uri-repo}/tree/master/
+endif::[]
+:uri-changelog: {uri-rel-file-base}CHANGELOG.adoc
+:uri-contribute: {uri-rel-file-base}CONTRIBUTING.adoc
+:uri-license: {uri-rel-file-base}LICENSE.md
+
+== Prerequisite
+
+- a git client
+- a java (jdk8 or higher)
+- maven (optional if you chose to use https://github.com/takari/maven-wrapper[maven wrapper script])
+- Docker for integration tests
+
+//== Code of Conduct
+//
+//== Using GitHub Issues
+
+== Code Conventions and Housekeeping
+
+None of these is essential for a pull request, but they will all help.  They can also be
+added after the original pull request but before a merge.
+
+* We use the https://github.com/spring-io/spring-javaformat/[Spring JavaFormat image:spring-favicon.ico[width=18px]] project
+to apply code formatting conventions. If you use Eclipse and you follow the '`Eclipse`' instructions below you should get project specific formatting
+automatically. You can also install the https://github.com/spring-io/spring-javaformat/#intellij-idea[Spring JavaFormat IntelliJ Plugin] or format
+the code from the Maven build by running `./mvnw spring-javaformat:apply` from the project root directory.
+* Make sure all new `.java` files have a Javadoc class comment with at least an`@author` tag identifying you, and preferably at least a paragraph on what the class is for.
+* Add the GPLv2 license header comment to all new `.java` files (copy from existing files in the project)
+* Add yourself as an `@author` to the `.java` files that you modify substantially (more than cosmetic changes).
+* Add some Javadocs.
+* A few unit tests would help a lot as well -- someone has to do it.
+* If no-one else is using your branch, please rebase it against the current master (or other target branch in the main project).
+* When writing a commit message please follow https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html[these conventions],
+if you are fixing an existing issue please add `Fixes gh-XXXX` at the end of the commit message (where `XXXX` is the issue number).
+
+=== Branches
+
+The adopted workflow is for now the Gitflow one.
+
+Please refer to this article for more info: https://jeffkreeftmeijer.com/git-flow/
+
+=== Eclipse
+
+==== Install the Spring Formatter plugin
+* Select "`Help`" -> "`Install New Software`".
+* Add `https://dl.bintray.com/spring/javaformat-eclipse/` as a site.
+* Install "Spring Java Format".
+
+=== IntelliJ IDEA
+
+==== Install the Spring Formatter plugin
+
+If you haven't done so, install the formatter plugin so that proper formatting rules apply automatically when you reformat code in the IDE.
+
+* Download the latest https://search.maven.org/search?q=g:io.spring.javaformat%20AND%20a:spring-javaformat-intellij-plugin[IntelliJ IDEA plugin].
+* Select "`IntelliJ IDEA`" -> "`Preferences`".
+* Select "`Plugins`".
+* Select the wheel and "`Install Plugin from Disk...`".
+* Select the jar file you've downloaded.
+
+==== Import additional code style
+The formatter does not cover all rules (such as order of imports) and an additional file needs to be added.
+
+* Select "`IntelliJ IDEA`" -> "`Preferences`".
+* Select "`Editor`" -> "`Code Style`".
+* Select the wheel and "`Import Scheme`" -> "`IntelliJ IDEA code style XML`".
+* Select `idea/codeStyleConfig.xml` from this repository.
+
+== Building from Source
+
+
+This is a standard maven project. To install the java client library to your local Maven repository, simply execute:
+
+[source,bash,subs="attributes"]
+----
+git clone {uri-repo}.git
+cd {project-artifact-id}/
+mvn install
+----
+
+The build should produce under the `target/` folder (and in your local maven repository) a jar archive named `bonita-java-client-1.0.0-SNAPSHOT.jar`
+
+For more details about apache maven, please refer to the https://maven.apache.org/guides/getting-started/[documentation]
+
+=== Regenerate feign stubs
+
+If the openapi specification changed, you can regenerates the feign stubs with the following command.
+
+WARNING: Be careful, some client stubs are marked as ignored in `.openapi-generator-ignore` file, since they were customized (like returning a `feign.Response` instead of a model object)
+
+[source,bash,subs="attributes"]
+----
+mvn generate-sources -Dcodegen.skip=false
+----
+
+== Release
+
+- Create a branch for the desired version. ex: `release/1.0.0`. You can use the `set-version.sh` script to align declared versions in sources (pom.xml,readme.adoc,...)
+- Push branch, make a pull request to `master` and review release with others
+- Once you are happy with the content of the release branch, merge pull request to master branch using `Merge pull request` button (&#9888; Do not squash or rebase)
+- That's it ! {icon-party}
+
+NOTE: Don't forget to update your local `dev` branch after a release has been done !
