@@ -435,7 +435,7 @@
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateModelDocumentation>false</generateModelDocumentation>
                             <output>${project.basedir}</output>
-                            <inputSpec>${project.basedir}/api/openapi.yaml</inputSpec>
+                            <inputSpec>https://github.com/bonitasoft/bonita-openapi/releases/download/0.0.1/bonita-openapi-0.0.1.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <invokerPackage>org.bonitasoft.web.client.invoker</invokerPackage>
                             <apiPackage>org.bonitasoft.web.client.api</apiPackage>
