@@ -21,7 +21,7 @@ public enum ConfigurationState {
 
   UNRESOLVED("UNRESOLVED");
 
-  private String value;
+  private final String value;
 
   ConfigurationState(String value) {
     this.value = value;

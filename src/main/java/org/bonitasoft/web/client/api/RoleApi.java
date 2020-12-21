@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.Role;
 import org.bonitasoft.web.client.model.RoleCreateRequest;
 import org.bonitasoft.web.client.model.RoleUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface RoleApi extends ApiClient.Api {
 
   /**

@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.Contract;
 import org.bonitasoft.web.client.model.UserTask;
 import org.bonitasoft.web.client.model.UserTaskUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface UserTaskApi extends ApiClient.Api {
 
   /**

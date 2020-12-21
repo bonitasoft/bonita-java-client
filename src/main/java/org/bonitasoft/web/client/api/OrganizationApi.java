@@ -4,6 +4,7 @@ import feign.*;
 import java.io.File;
 import org.bonitasoft.web.client.invoker.ApiClient;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface OrganizationApi extends ApiClient.Api {
 
   /**

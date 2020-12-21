@@ -9,6 +9,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.Membership;
 import org.bonitasoft.web.client.model.MembershipCreateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface MembershipApi extends ApiClient.Api {
 
   /**

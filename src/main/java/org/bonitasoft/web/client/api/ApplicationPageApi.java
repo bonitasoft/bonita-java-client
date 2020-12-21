@@ -9,6 +9,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApplicationPage;
 import org.bonitasoft.web.client.model.ApplicationPageCreateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ApplicationPageApi extends ApiClient.Api {
 
   /**

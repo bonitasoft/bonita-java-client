@@ -4,6 +4,7 @@ import feign.*;
 import java.util.Map;
 import org.bonitasoft.web.client.invoker.ApiClient;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface DiagramApi extends ApiClient.Api {
 
   /**

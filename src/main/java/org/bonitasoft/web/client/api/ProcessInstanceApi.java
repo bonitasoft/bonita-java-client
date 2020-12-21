@@ -9,6 +9,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ProcessInstance;
 import org.bonitasoft.web.client.model.ProcessInstanceCreateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ProcessInstanceApi extends ApiClient.Api {
 
   /**

@@ -4,6 +4,7 @@ import feign.*;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.model.Message;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface MessageApi extends ApiClient.Api {
 
   /**

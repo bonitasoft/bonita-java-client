@@ -11,6 +11,7 @@ import org.bonitasoft.web.client.model.BDMInstallRequest;
 import org.bonitasoft.web.client.model.Bdm;
 import org.bonitasoft.web.client.model.BusinessData;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface BdmApi extends ApiClient.Api {
 
   /**
