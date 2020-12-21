@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** TenantUpdateRequest */
 @JsonPropertyOrder({ TenantUpdateRequest.JSON_PROPERTY_NAME, TenantUpdateRequest.JSON_PROPERTY_DESCRIPTION,
@@ -27,21 +28,21 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TenantUpdateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_NAME = "name";
-
-	private String name;
 
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-	private String description;
-
 	public static final String JSON_PROPERTY_USERNAME = "username";
 
-	private String username;
-
 	public static final String JSON_PROPERTY_PASSWORD = "password";
+
+	private static final long serialVersionUID = 1L;
+
+	private String name;
+
+	private String description;
+
+	private String username;
 
 	private String password;
 

@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ArchivedProcessInstanceComment */
 @JsonPropertyOrder({ ArchivedProcessInstanceComment.JSON_PROPERTY_ID,
@@ -30,33 +31,33 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceComment implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_CONTENT = "content";
 
-	private String content;
-
 	public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-
-	private String tenantId;
 
 	public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
 
-	private String processInstanceId;
-
 	public static final String JSON_PROPERTY_POST_DATE = "postDate";
-
-	private String postDate;
 
 	public static final String JSON_PROPERTY_USER_ID = "userId";
 
-	private String userId;
-
 	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String content;
+
+	private String tenantId;
+
+	private String processInstanceId;
+
+	private String postDate;
+
+	private String userId;
 
 	private String archivedDate;
 

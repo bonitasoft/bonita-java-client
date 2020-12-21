@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ConnectorFailure */
 @JsonPropertyOrder({ ConnectorFailure.JSON_PROPERTY_ERROR_MESSAGE, ConnectorFailure.JSON_PROPERTY_CONNECTOR_INSTANCE_ID,
@@ -27,17 +28,17 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConnectorFailure implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ERROR_MESSAGE = "errorMessage";
-
-	private String errorMessage;
 
 	public static final String JSON_PROPERTY_CONNECTOR_INSTANCE_ID = "connectorInstanceId";
 
-	private String connectorInstanceId;
-
 	public static final String JSON_PROPERTY_ERROR_STACK_TRACE = "errorStackTrace";
+
+	private static final long serialVersionUID = 1L;
+
+	private String errorMessage;
+
+	private String connectorInstanceId;
 
 	private String errorStackTrace;
 

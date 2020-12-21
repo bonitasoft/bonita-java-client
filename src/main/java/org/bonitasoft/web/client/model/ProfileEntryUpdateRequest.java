@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ProfileEntryUpdateRequest */
 @JsonPropertyOrder({ ProfileEntryUpdateRequest.JSON_PROPERTY_PROFILE_ID, ProfileEntryUpdateRequest.JSON_PROPERTY_PAGE,
@@ -29,33 +30,33 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfileEntryUpdateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
-
-	private String profileId;
 
 	public static final String JSON_PROPERTY_PAGE = "page";
 
-	private String page;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_TYPE = "type";
-
-	private String type;
 
 	public static final String JSON_PROPERTY_IS_CUSTOM = "isCustom";
 
-	private Boolean isCustom;
-
 	public static final String JSON_PROPERTY_PARENT_ID = "parent_id";
+
+	private static final long serialVersionUID = 1L;
+
+	private String profileId;
+
+	private String page;
+
+	private String description;
+
+	private String name;
+
+	private String type;
+
+	private Boolean isCustom;
 
 	private String parentId;
 

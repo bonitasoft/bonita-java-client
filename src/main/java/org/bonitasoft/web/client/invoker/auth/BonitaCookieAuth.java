@@ -8,15 +8,15 @@
  */
 package org.bonitasoft.web.client.invoker.auth;
 
-import static java.util.Collections.emptyList;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toMap;
-
 import java.util.Collection;
 import java.util.Map;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+
+import static java.util.Collections.emptyList;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toMap;
 
 public class BonitaCookieAuth implements RequestInterceptor {
 

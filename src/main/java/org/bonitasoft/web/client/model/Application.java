@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Application */
 @JsonPropertyOrder({ Application.JSON_PROPERTY_CREATED_BY, Application.JSON_PROPERTY_CREATION_DATE,
@@ -30,49 +31,49 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Application implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-
-	private String createdBy;
 
 	public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
 
-	private String creationDate;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-	private String displayName;
-
 	public static final String JSON_PROPERTY_HOME_PAGE_ID = "homePageId";
-
-	private String homePageId;
 
 	public static final String JSON_PROPERTY_ID = "id";
 
-	private String id;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
-
-	private String lastUpdateDate;
 
 	public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
 
-	private String profileId;
-
 	public static final String JSON_PROPERTY_TOKEN = "token";
-
-	private String token;
 
 	public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
 
-	private String updatedBy;
-
 	public static final String JSON_PROPERTY_VERSION = "version";
+
+	private static final long serialVersionUID = 1L;
+
+	private String createdBy;
+
+	private String creationDate;
+
+	private String description;
+
+	private String displayName;
+
+	private String homePageId;
+
+	private String id;
+
+	private String lastUpdateDate;
+
+	private String profileId;
+
+	private String token;
+
+	private String updatedBy;
 
 	private String version;
 

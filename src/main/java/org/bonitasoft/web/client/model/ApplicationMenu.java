@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ApplicationMenu */
 @JsonPropertyOrder({ ApplicationMenu.JSON_PROPERTY_ID, ApplicationMenu.JSON_PROPERTY_PARENT_MENU_ID,
@@ -28,29 +29,29 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationMenu implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_PARENT_MENU_ID = "parentMenuId";
 
-	private String parentMenuId;
-
 	public static final String JSON_PROPERTY_APPLICATION_PAGE_ID = "applicationPageId";
-
-	private String applicationPageId;
 
 	public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
 
-	private String applicationId;
-
 	public static final String JSON_PROPERTY_MENU_INDEX = "menuIndex";
 
-	private String menuIndex;
-
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String parentMenuId;
+
+	private String applicationPageId;
+
+	private String applicationId;
+
+	private String menuIndex;
 
 	private String displayName;
 

@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Membership */
 @JsonPropertyOrder({ Membership.JSON_PROPERTY_ASSIGNED_DATE, Membership.JSON_PROPERTY_ROLE_ID,
@@ -28,25 +29,25 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Membership implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
-
-	private String assignedDate;
 
 	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
 
-	private Long roleId;
-
 	public static final String JSON_PROPERTY_ASSIGNED_BY_USER_ID = "assigned_by_user_id";
-
-	private String assignedByUserId;
 
 	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
 
-	private String groupId;
-
 	public static final String JSON_PROPERTY_USER_ID = "user_id";
+
+	private static final long serialVersionUID = 1L;
+
+	private String assignedDate;
+
+	private Long roleId;
+
+	private String assignedByUserId;
+
+	private String groupId;
 
 	private String userId;
 

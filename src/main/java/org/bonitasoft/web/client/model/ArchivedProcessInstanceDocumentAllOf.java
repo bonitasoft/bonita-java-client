@@ -12,14 +12,15 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** A document in an active case */
 @ApiModel(description = "A document in an active case")
@@ -29,13 +30,13 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceDocumentAllOf implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
 
-	private String sourceObjectId;
-
 	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+
+	private static final long serialVersionUID = 1L;
+
+	private String sourceObjectId;
 
 	private String archivedDate;
 

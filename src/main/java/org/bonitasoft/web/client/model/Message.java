@@ -12,16 +12,17 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * Use this resource to send BPM message events. Message events are caught by processes
@@ -37,25 +38,25 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Message implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_MESSAGE_NAME = "messageName";
-
-	private String messageName;
 
 	public static final String JSON_PROPERTY_TARGET_PROCESS = "targetProcess";
 
-	private String targetProcess;
-
 	public static final String JSON_PROPERTY_TARGET_FLOW_NODE = "targetFlowNode";
-
-	private String targetFlowNode;
 
 	public static final String JSON_PROPERTY_MESSAGE_CONTENT = "messageContent";
 
-	private Map<String, MessageMessageContent> messageContent = null;
-
 	public static final String JSON_PROPERTY_CORRELATIONS = "correlations";
+
+	private static final long serialVersionUID = 1L;
+
+	private String messageName;
+
+	private String targetProcess;
+
+	private String targetFlowNode;
+
+	private Map<String, MessageMessageContent> messageContent = null;
 
 	private Map<String, MessageMessageContent> correlations = null;
 

@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Bdm */
 @JsonPropertyOrder({ Bdm.JSON_PROPERTY_ID, Bdm.JSON_PROPERTY_NAME, Bdm.JSON_PROPERTY_TYPE, Bdm.JSON_PROPERTY_STATE,
@@ -27,29 +28,29 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Bdm implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_TYPE = "type";
-
-	private String type;
 
 	public static final String JSON_PROPERTY_STATE = "state";
 
-	private TenantResourceState state;
-
 	public static final String JSON_PROPERTY_LAST_UPDATED_BY = "lastUpdatedBy";
 
-	private Integer lastUpdatedBy;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String name;
+
+	private String type;
+
+	private TenantResourceState state;
+
+	private Integer lastUpdatedBy;
 
 	private String lastUpdateDate;
 

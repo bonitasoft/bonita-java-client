@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** GroupUpdateRequest */
 @JsonPropertyOrder({ GroupUpdateRequest.JSON_PROPERTY_NAME, GroupUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
@@ -30,41 +31,41 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GroupUpdateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_NAME = "name";
-
-	private String name;
 
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-	private String displayName;
-
 	public static final String JSON_PROPERTY_PARENT_PATH = "parent_path";
-
-	private String parentPath;
 
 	public static final String JSON_PROPERTY_PATH = "path";
 
-	private String path;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_CREATION_DATE = "creation_date";
 
-	private String creationDate;
-
 	public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
-
-	private String createdByUserId;
 
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
 
-	private String lastUpdateDate;
-
 	public static final String JSON_PROPERTY_ICON = "icon";
+
+	private static final long serialVersionUID = 1L;
+
+	private String name;
+
+	private String displayName;
+
+	private String parentPath;
+
+	private String path;
+
+	private String description;
+
+	private String creationDate;
+
+	private String createdByUserId;
+
+	private String lastUpdateDate;
 
 	private String icon;
 

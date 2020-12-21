@@ -12,14 +12,15 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** A flow node (gateway, event, or task) in an open instance of a process. */
 @ApiModel(description = "A flow node (gateway, event, or task) in an open instance of a process.")
@@ -36,93 +37,93 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlowNode implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
 
-	private String displayDescription;
-
 	public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
-
-	private String executedBySubstitute;
 
 	public static final String JSON_PROPERTY_CASE_ID = "caseId";
 
-	private String caseId;
-
 	public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
-
-	private String parentCaseId;
 
 	public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
 
-	private String rootCaseId;
-
 	public static final String JSON_PROPERTY_PROCESS_ID = "processId";
-
-	private String processId;
 
 	public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
 
-	private String rootContainerId;
-
 	public static final String JSON_PROPERTY_STATE = "state";
-
-	private String state;
 
 	public static final String JSON_PROPERTY_TYPE = "type";
 
-	private String type;
-
 	public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
-
-	private String assignedId;
 
 	public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
 
-	private String assignedDate;
-
 	public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
-
-	private String executedBy;
 
 	public static final String JSON_PROPERTY_PRIORITY = "priority";
 
-	private String priority;
-
 	public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
-
-	private String actorId;
 
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-	private String description;
-
 	public static final String JSON_PROPERTY_NAME = "name";
-
-	private String name;
 
 	public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
 
-	private String reachedStateDate;
-
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-
-	private String displayName;
 
 	public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
 
-	private String dueDate;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
 
-	private String lastUpdateDate;
-
 	public static final String JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE = "parentTaskId&quot;";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String displayDescription;
+
+	private String executedBySubstitute;
+
+	private String caseId;
+
+	private String parentCaseId;
+
+	private String rootCaseId;
+
+	private String processId;
+
+	private String rootContainerId;
+
+	private String state;
+
+	private String type;
+
+	private String assignedId;
+
+	private String assignedDate;
+
+	private String executedBy;
+
+	private String priority;
+
+	private String actorId;
+
+	private String description;
+
+	private String name;
+
+	private String reachedStateDate;
+
+	private String displayName;
+
+	private String dueDate;
+
+	private String lastUpdateDate;
 
 	private String parentTaskIdDoubleQuote;
 

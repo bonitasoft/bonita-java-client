@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ApplicationUpdateRequest */
 @JsonPropertyOrder({ ApplicationUpdateRequest.JSON_PROPERTY_DESCRIPTION,
@@ -29,29 +30,29 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationUpdateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-	private String displayName;
-
 	public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
-
-	private String profileId;
 
 	public static final String JSON_PROPERTY_TOKEN = "token";
 
-	private String token;
-
 	public static final String JSON_PROPERTY_VERSION = "version";
 
-	private String version;
-
 	public static final String JSON_PROPERTY_THEME_ID = "themeId";
+
+	private static final long serialVersionUID = 1L;
+
+	private String description;
+
+	private String displayName;
+
+	private String profileId;
+
+	private String token;
+
+	private String version;
 
 	private String themeId;
 

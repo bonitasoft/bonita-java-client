@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** PlatformLicense */
 @JsonPropertyOrder({ PlatformLicense.JSON_PROPERTY_LICENSE_START_DATE, PlatformLicense.JSON_PROPERTY_DURATION,
@@ -31,49 +32,49 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlatformLicense implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_LICENSE_START_DATE = "licenseStartDate";
-
-	private String licenseStartDate;
 
 	public static final String JSON_PROPERTY_DURATION = "duration";
 
-	private String duration;
-
 	public static final String JSON_PROPERTY_LICENSE_EXPIRATION_DATE = "licenseExpirationDate";
-
-	private String licenseExpirationDate;
 
 	public static final String JSON_PROPERTY_NUMBER_OF_C_P_U_CORES = "numberOfCPUCores";
 
-	private String numberOfCPUCores;
-
 	public static final String JSON_PROPERTY_EDITION = "edition";
-
-	private String edition;
 
 	public static final String JSON_PROPERTY_LICENSE_MODE = "licenseMode";
 
-	private String licenseMode;
-
 	public static final String JSON_PROPERTY_REQUEST_KEY = "requestKey";
-
-	private String requestKey;
 
 	public static final String JSON_PROPERTY_SUBSCRIPTION_START_PERIOD = "subscriptionStartPeriod";
 
-	private String subscriptionStartPeriod;
-
 	public static final String JSON_PROPERTY_SUBSCRIPTION_END_PERIOD = "subscriptionEndPeriod";
-
-	private String subscriptionEndPeriod;
 
 	public static final String JSON_PROPERTY_CASE_COUNTER_LIMIT = "caseCounterLimit";
 
-	private Long caseCounterLimit;
-
 	public static final String JSON_PROPERTY_CASE_COUNTER = "caseCounter";
+
+	private static final long serialVersionUID = 1L;
+
+	private String licenseStartDate;
+
+	private String duration;
+
+	private String licenseExpirationDate;
+
+	private String numberOfCPUCores;
+
+	private String edition;
+
+	private String licenseMode;
+
+	private String requestKey;
+
+	private String subscriptionStartPeriod;
+
+	private String subscriptionEndPeriod;
+
+	private Long caseCounterLimit;
 
 	private Long caseCounter;
 

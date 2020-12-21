@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ConnectorInstance */
 @JsonPropertyOrder({ ConnectorInstance.JSON_PROPERTY_CONTAINER_TYPE, ConnectorInstance.JSON_PROPERTY_CONNECTOR_ID,
@@ -29,37 +30,37 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConnectorInstance implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
-
-	private String containerType;
 
 	public static final String JSON_PROPERTY_CONNECTOR_ID = "connectorId";
 
-	private String connectorId;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private Long id;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_ACTIVATION_EVENT = "activationEvent";
-
-	private String activationEvent;
 
 	public static final String JSON_PROPERTY_STATE = "state";
 
-	private String state;
-
 	public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
 
-	private String containerId;
-
 	public static final String JSON_PROPERTY_VERSION = "version";
+
+	private static final long serialVersionUID = 1L;
+
+	private String containerType;
+
+	private String connectorId;
+
+	private Long id;
+
+	private String name;
+
+	private String activationEvent;
+
+	private String state;
+
+	private String containerId;
 
 	private String version;
 

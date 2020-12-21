@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** MembershipCreateRequest */
 @JsonPropertyOrder({ MembershipCreateRequest.JSON_PROPERTY_ROLE_ID, MembershipCreateRequest.JSON_PROPERTY_GROUP_ID,
@@ -27,17 +28,17 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MembershipCreateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
-
-	private String roleId;
 
 	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
 
-	private String groupId;
-
 	public static final String JSON_PROPERTY_USER_ID = "user_id";
+
+	private static final long serialVersionUID = 1L;
+
+	private String roleId;
+
+	private String groupId;
 
 	private String userId;
 

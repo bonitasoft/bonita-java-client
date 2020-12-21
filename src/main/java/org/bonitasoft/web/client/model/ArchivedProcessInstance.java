@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ArchivedProcessInstance */
 @JsonPropertyOrder({ ArchivedProcessInstance.JSON_PROPERTY_ID, ArchivedProcessInstance.JSON_PROPERTY_END_DATE,
@@ -43,97 +44,97 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstance implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_END_DATE = "end_date";
 
-	private String endDate;
-
 	public static final String JSON_PROPERTY_FAILED_FLOW_NODES = "failedFlowNodes";
-
-	private String failedFlowNodes;
 
 	public static final String JSON_PROPERTY_STARTED_BY_SUBSTITUTE = "startedBySubstitute";
 
-	private String startedBySubstitute;
-
 	public static final String JSON_PROPERTY_START = "start";
-
-	private String start;
 
 	public static final String JSON_PROPERTY_ACTIVE_FLOW_NODES = "activeFlowNodes";
 
-	private String activeFlowNodes;
-
 	public static final String JSON_PROPERTY_STATE = "state";
-
-	private String state;
 
 	public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
 
-	private String rootCaseId;
-
 	public static final String JSON_PROPERTY_STARTED_BY = "started_by";
-
-	private String startedBy;
 
 	public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
 
-	private String processDefinitionId;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
-
-	private String lastUpdateDate;
 
 	public static final String JSON_PROPERTY_SEARCH_INDEX1_LABEL = "searchIndex1Label";
 
-	private String searchIndex1Label;
-
 	public static final String JSON_PROPERTY_SEARCH_INDEX2_LABEL = "searchIndex2Label";
-
-	private String searchIndex2Label;
 
 	public static final String JSON_PROPERTY_SEARCH_INDEX3_LABEL = "searchIndex3Label";
 
-	private String searchIndex3Label;
-
 	public static final String JSON_PROPERTY_SEARCH_INDEX4_LABEL = "searchIndex4Label";
-
-	private String searchIndex4Label;
 
 	public static final String JSON_PROPERTY_SEARCH_INDEX5_LABEL = "searchIndex5Label";
 
-	private String searchIndex5Label;
-
 	public static final String JSON_PROPERTY_SEARCH_INDEX1_VALUE = "searchIndex1Value";
-
-	private String searchIndex1Value;
 
 	public static final String JSON_PROPERTY_SEARCH_INDEX2_VALUE = "searchIndex2Value";
 
-	private String searchIndex2Value;
-
 	public static final String JSON_PROPERTY_SEARCH_INDEX3_VALUE = "searchIndex3Value";
-
-	private String searchIndex3Value;
 
 	public static final String JSON_PROPERTY_SEARCH_INDEX4_VALUE = "searchIndex4Value";
 
-	private String searchIndex4Value;
-
 	public static final String JSON_PROPERTY_SEARCH_INDEX5_VALUE = "searchIndex5Value";
-
-	private String searchIndex5Value;
 
 	public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
 
-	private String sourceObjectId;
-
 	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String endDate;
+
+	private String failedFlowNodes;
+
+	private String startedBySubstitute;
+
+	private String start;
+
+	private String activeFlowNodes;
+
+	private String state;
+
+	private String rootCaseId;
+
+	private String startedBy;
+
+	private String processDefinitionId;
+
+	private String lastUpdateDate;
+
+	private String searchIndex1Label;
+
+	private String searchIndex2Label;
+
+	private String searchIndex3Label;
+
+	private String searchIndex4Label;
+
+	private String searchIndex5Label;
+
+	private String searchIndex1Value;
+
+	private String searchIndex2Value;
+
+	private String searchIndex3Value;
+
+	private String searchIndex4Value;
+
+	private String searchIndex5Value;
+
+	private String sourceObjectId;
 
 	private String archivedDate;
 

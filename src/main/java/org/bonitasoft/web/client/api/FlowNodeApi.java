@@ -4,15 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.bonitasoft.web.client.invoker.ApiClient;
-import org.bonitasoft.web.client.invoker.EncodingUtils;
-import org.bonitasoft.web.client.model.FlowNode;
-import org.bonitasoft.web.client.model.FlowNodeUpdateRequest;
-
 import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.invoker.EncodingUtils;
+import org.bonitasoft.web.client.model.FlowNode;
+import org.bonitasoft.web.client.model.FlowNodeUpdateRequest;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface FlowNodeApi extends ApiClient.Api {

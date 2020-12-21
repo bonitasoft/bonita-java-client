@@ -12,6 +12,9 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,8 +23,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * Form Mapping specifies the mapping of a form to a process or a task. The mapping
@@ -38,123 +39,45 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FormMapping implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
 
-	private String processDefinitionId;
-
-	/** the form mapping type */
-	public enum TypeEnum {
-
-		PROCESSSTART("PROCESSSTART"),
-
-		PROCESSOVERVIEW("PROCESSOVERVIEW"),
-
-		TASK("TASK");
-
-		private String value;
-
-		TypeEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static TypeEnum fromValue(String value) {
-			for (TypeEnum b : TypeEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-	}
-
 	public static final String JSON_PROPERTY_TYPE = "type";
-
-	private TypeEnum type;
-
-	/** the target */
-	public enum TargetEnum {
-
-		URL("URL"),
-
-		INTERNAL("INTERNAL"),
-
-		LEGACY("LEGACY"),
-
-		UNDEFINED("UNDEFINED"),
-
-		NONE("NONE");
-
-		private String value;
-
-		TargetEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static TargetEnum fromValue(String value) {
-			for (TargetEnum b : TargetEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-	}
 
 	public static final String JSON_PROPERTY_TARGET = "target";
 
-	private TargetEnum target;
-
 	public static final String JSON_PROPERTY_TASK = "task";
-
-	private String task;
 
 	public static final String JSON_PROPERTY_PAGE_ID = "pageId";
 
-	private String pageId;
-
 	public static final String JSON_PROPERTY_PAGE_MAPPING_KEY = "pageMappingKey";
-
-	private String pageMappingKey;
 
 	public static final String JSON_PROPERTY_LAST_UPDATE_BY = "lastUpdateBy";
 
-	private String lastUpdateBy;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
 
-	private String lastUpdateDate;
-
 	public static final String JSON_PROPERTY_URL = "url";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String processDefinitionId;
+
+	private TypeEnum type;
+
+	private TargetEnum target;
+
+	private String task;
+
+	private String pageId;
+
+	private String pageMappingKey;
+
+	private String lastUpdateBy;
+
+	private String lastUpdateDate;
 
 	private String url;
 
@@ -432,6 +355,84 @@ public class FormMapping implements Serializable {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	/** the form mapping type */
+	public enum TypeEnum {
+
+		PROCESSSTART("PROCESSSTART"),
+
+		PROCESSOVERVIEW("PROCESSOVERVIEW"),
+
+		TASK("TASK");
+
+		private String value;
+
+		TypeEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static TypeEnum fromValue(String value) {
+			for (TypeEnum b : TypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
+	}
+
+	/** the target */
+	public enum TargetEnum {
+
+		URL("URL"),
+
+		INTERNAL("INTERNAL"),
+
+		LEGACY("LEGACY"),
+
+		UNDEFINED("UNDEFINED"),
+
+		NONE("NONE");
+
+		private String value;
+
+		TargetEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static TargetEnum fromValue(String value) {
+			for (TargetEnum b : TargetEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
 	}
 
 }

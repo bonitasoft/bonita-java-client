@@ -8,8 +8,6 @@
  */
 package org.bonitasoft.web.client.services.utils;
 
-import static java.lang.String.format;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +16,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+import static java.lang.String.format;
 
 /**
  * @author Baptiste Mesta.

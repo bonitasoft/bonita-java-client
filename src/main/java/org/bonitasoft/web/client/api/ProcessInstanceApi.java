@@ -4,15 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.bonitasoft.web.client.invoker.ApiClient;
-import org.bonitasoft.web.client.invoker.EncodingUtils;
-import org.bonitasoft.web.client.model.ProcessInstance;
-import org.bonitasoft.web.client.model.ProcessInstanceCreateRequest;
-
 import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.invoker.EncodingUtils;
+import org.bonitasoft.web.client.model.ProcessInstance;
+import org.bonitasoft.web.client.model.ProcessInstanceCreateRequest;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ProcessInstanceApi extends ApiClient.Api {

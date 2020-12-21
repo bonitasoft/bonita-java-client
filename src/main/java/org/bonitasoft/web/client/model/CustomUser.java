@@ -12,14 +12,15 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Custom user defintion and value */
 @ApiModel(description = "Custom user defintion and value")
@@ -29,17 +30,17 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CustomUser implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_USER_ID = "userId";
-
-	private String userId;
 
 	public static final String JSON_PROPERTY_VALUE = "value";
 
-	private String value;
-
 	public static final String JSON_PROPERTY_DEFINITION_ID = "definitionId";
+
+	private static final long serialVersionUID = 1L;
+
+	private String userId;
+
+	private String value;
 
 	private CustomUserDefinition definitionId;
 

@@ -1,11 +1,10 @@
 package org.bonitasoft.web.client.api;
 
-import org.bonitasoft.web.client.invoker.ApiClient;
-import org.bonitasoft.web.client.model.ProcessInstanceInfo;
-
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.model.ProcessInstanceInfo;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ProcessInstanceInfoApi extends ApiClient.Api {

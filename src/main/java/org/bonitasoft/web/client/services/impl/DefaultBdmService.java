@@ -2,6 +2,8 @@ package org.bonitasoft.web.client.services.impl;
 
 import java.io.File;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.BdmAccessControlApi;
 import org.bonitasoft.web.client.api.BdmApi;
@@ -16,10 +18,6 @@ import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.services.BdmService;
 import org.bonitasoft.web.client.services.impl.base.AbstractService;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DefaultBdmService extends AbstractService implements BdmService {

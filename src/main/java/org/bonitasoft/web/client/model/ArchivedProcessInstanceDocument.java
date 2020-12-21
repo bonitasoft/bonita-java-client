@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ArchivedProcessInstanceDocument */
 @JsonPropertyOrder({ ArchivedProcessInstanceDocument.JSON_PROPERTY_ID,
@@ -38,69 +39,69 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceDocument implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
 
-	private String creationDate;
-
 	public static final String JSON_PROPERTY_AUTHOR = "author";
-
-	private String author;
 
 	public static final String JSON_PROPERTY_INDEX = "index";
 
-	private String index;
-
 	public static final String JSON_PROPERTY_CONTENT_MIMETYPE = "contentMimetype";
-
-	private String contentMimetype;
 
 	public static final String JSON_PROPERTY_CASE_ID = "caseId";
 
-	private String caseId;
-
 	public static final String JSON_PROPERTY_CONTENT_STORAGE_ID = "contentStorageId";
-
-	private String contentStorageId;
 
 	public static final String JSON_PROPERTY_IS_INTERNAL = "isInternal";
 
-	private Boolean isInternal;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-
-	private String fileName;
 
 	public static final String JSON_PROPERTY_SUBMITTED_BY = "submittedBy";
 
-	private String submittedBy;
-
 	public static final String JSON_PROPERTY_URL = "url";
-
-	private String url;
 
 	public static final String JSON_PROPERTY_VERSION = "version";
 
-	private String version;
-
 	public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
 
-	private String sourceObjectId;
-
 	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String creationDate;
+
+	private String author;
+
+	private String index;
+
+	private String contentMimetype;
+
+	private String caseId;
+
+	private String contentStorageId;
+
+	private Boolean isInternal;
+
+	private String description;
+
+	private String name;
+
+	private String fileName;
+
+	private String submittedBy;
+
+	private String url;
+
+	private String version;
+
+	private String sourceObjectId;
 
 	private String archivedDate;
 

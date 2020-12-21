@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ProfileUpdateRequest */
 @JsonPropertyOrder({ ProfileUpdateRequest.JSON_PROPERTY_DESCRIPTION, ProfileUpdateRequest.JSON_PROPERTY_DISPLAY_NAME })
@@ -26,13 +27,13 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfileUpdateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-	private String description;
-
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+
+	private static final long serialVersionUID = 1L;
+
+	private String description;
 
 	private String displayName;
 

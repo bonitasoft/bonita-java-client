@@ -12,16 +12,17 @@
 
 package org.bonitasoft.web.client.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.swagger.annotations.ApiModelProperty;
 
 /** Error */
 @JsonPropertyOrder({ Error.JSON_PROPERTY_MESSAGE, Error.JSON_PROPERTY_EXCEPTION, Error.JSON_PROPERTY_EXPLANATIONS })
@@ -29,17 +30,17 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Error extends HashMap<String, Object> implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_MESSAGE = "message";
-
-	private String message;
 
 	public static final String JSON_PROPERTY_EXCEPTION = "exception";
 
-	private String exception;
-
 	public static final String JSON_PROPERTY_EXPLANATIONS = "explanations";
+
+	private static final long serialVersionUID = 1L;
+
+	private String message;
+
+	private String exception;
 
 	private List<String> explanations = null;
 

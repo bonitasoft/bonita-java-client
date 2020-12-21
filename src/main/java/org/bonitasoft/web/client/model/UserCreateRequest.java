@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** UserCreateRequest */
 @JsonPropertyOrder({ UserCreateRequest.JSON_PROPERTY_USER_NAME, UserCreateRequest.JSON_PROPERTY_FIRSTNAME,
@@ -30,45 +31,45 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UserCreateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_USER_NAME = "userName";
-
-	private String userName;
 
 	public static final String JSON_PROPERTY_FIRSTNAME = "firstname";
 
-	private String firstname;
-
 	public static final String JSON_PROPERTY_LASTNAME = "lastname";
-
-	private String lastname;
 
 	public static final String JSON_PROPERTY_PASSWORD = "password";
 
-	private String password;
-
 	public static final String JSON_PROPERTY_PASSWORD_CONFIRM = "password_confirm";
-
-	private String passwordConfirm;
 
 	public static final String JSON_PROPERTY_ICON = "icon";
 
-	private String icon;
-
 	public static final String JSON_PROPERTY_TITLE = "title";
-
-	private String title;
 
 	public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
 
-	private String jobTitle;
-
 	public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
 
-	private String managerId;
-
 	public static final String JSON_PROPERTY_ENABLED = "enabled";
+
+	private static final long serialVersionUID = 1L;
+
+	private String userName;
+
+	private String firstname;
+
+	private String lastname;
+
+	private String password;
+
+	private String passwordConfirm;
+
+	private String icon;
+
+	private String title;
+
+	private String jobTitle;
+
+	private String managerId;
 
 	private String enabled;
 

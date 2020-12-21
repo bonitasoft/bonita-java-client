@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ManualTaskCreateRequest */
 @JsonPropertyOrder({ ManualTaskCreateRequest.JSON_PROPERTY_PARENT_TASK_ID, ManualTaskCreateRequest.JSON_PROPERTY_STATE,
@@ -29,33 +30,33 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ManualTaskCreateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
-
-	private String parentTaskId;
 
 	public static final String JSON_PROPERTY_STATE = "state";
 
-	private String state;
-
 	public static final String JSON_PROPERTY_NAME = "name";
-
-	private String name;
 
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-	private String description;
-
 	public static final String JSON_PROPERTY_PRIORITY = "priority";
-
-	private String priority;
 
 	public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
 
-	private String dueDate;
-
 	public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+
+	private static final long serialVersionUID = 1L;
+
+	private String parentTaskId;
+
+	private String state;
+
+	private String name;
+
+	private String description;
+
+	private String priority;
+
+	private String dueDate;
 
 	private String assignedId;
 

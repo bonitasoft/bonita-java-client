@@ -12,15 +12,16 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /** ContractInput */
 @JsonPropertyOrder({ ContractInput.JSON_PROPERTY_DESCRIPTION, ContractInput.JSON_PROPERTY_NAME,
@@ -29,25 +30,25 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContractInput implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_MULTIPLE = "multiple";
-
-	private String multiple;
 
 	public static final String JSON_PROPERTY_TYPE = "type";
 
-	private String type;
-
 	public static final String JSON_PROPERTY_INPUTS = "inputs";
+
+	private static final long serialVersionUID = 1L;
+
+	private String description;
+
+	private String name;
+
+	private String multiple;
+
+	private String type;
 
 	private List<ContractInput> inputs = null;
 

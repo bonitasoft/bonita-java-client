@@ -12,15 +12,16 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * Retrieve business data value. Depending on the object attribute loading policy, the API
@@ -46,13 +47,13 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BusinessData extends HashMap<String, Object> implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_PERSISTENCE_ID_STRING = "persistenceId_string";
 
-	private String persistenceIdString;
-
 	public static final String JSON_PROPERTY_PERSISTENCE_VERSION_STRING = "persistenceVersion_string";
+
+	private static final long serialVersionUID = 1L;
+
+	private String persistenceIdString;
 
 	private String persistenceVersionString;
 

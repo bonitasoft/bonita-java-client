@@ -12,15 +12,16 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /** ContractConstraints */
 @JsonPropertyOrder({ ContractConstraints.JSON_PROPERTY_NAME, ContractConstraints.JSON_PROPERTY_EXPRESSION,
@@ -30,25 +31,25 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContractConstraints implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_NAME = "name";
-
-	private String name;
 
 	public static final String JSON_PROPERTY_EXPRESSION = "expression";
 
-	private String expression;
-
 	public static final String JSON_PROPERTY_EXPLANATION = "explanation";
-
-	private String explanation;
 
 	public static final String JSON_PROPERTY_INPUT_NAMES = "inputNames";
 
-	private List<String> inputNames = null;
-
 	public static final String JSON_PROPERTY_CONSTRAINT_TYPE = "constraintType";
+
+	private static final long serialVersionUID = 1L;
+
+	private String name;
+
+	private String expression;
+
+	private String explanation;
+
+	private List<String> inputNames = null;
 
 	private String constraintType;
 

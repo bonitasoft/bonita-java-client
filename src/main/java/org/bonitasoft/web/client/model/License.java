@@ -12,14 +12,15 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Bonita license */
 @ApiModel(description = "Bonita license")
@@ -29,21 +30,21 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class License implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_OWNER = "owner";
-
-	private String owner;
 
 	public static final String JSON_PROPERTY_EDITION = "edition";
 
-	private String edition;
-
 	public static final String JSON_PROPERTY_NB_CPU_CORES = "nb_cpu_cores";
 
-	private String nbCpuCores;
-
 	public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
+
+	private static final long serialVersionUID = 1L;
+
+	private String owner;
+
+	private String edition;
+
+	private String nbCpuCores;
 
 	private Long expirationDate;
 

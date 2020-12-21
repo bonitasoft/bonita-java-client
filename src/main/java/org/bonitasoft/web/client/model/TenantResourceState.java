@@ -28,16 +28,6 @@ public enum TenantResourceState {
 		this.value = value;
 	}
 
-	@JsonValue
-	public String getValue() {
-		return value;
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value);
-	}
-
 	@JsonCreator
 	public static TenantResourceState fromValue(String value) {
 		for (TenantResourceState b : TenantResourceState.values()) {
@@ -46,6 +36,16 @@ public enum TenantResourceState {
 			}
 		}
 		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value);
 	}
 
 }

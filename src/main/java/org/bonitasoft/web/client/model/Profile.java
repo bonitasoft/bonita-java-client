@@ -12,14 +12,15 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Profile */
 @ApiModel(description = "Profile")
@@ -30,41 +31,41 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Profile implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
 
-	private String creationDate;
-
 	public static final String JSON_PROPERTY_ICON = "icon";
-
-	private String icon;
 
 	public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
 
-	private String createdBy;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_ISDEFAULT = "isdefault";
-
-	private Boolean isdefault;
 
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
 
-	private String lastUpdateDate;
-
 	public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String creationDate;
+
+	private String icon;
+
+	private String createdBy;
+
+	private String description;
+
+	private String name;
+
+	private Boolean isdefault;
+
+	private String lastUpdateDate;
 
 	private String updatedBy;
 

@@ -3,23 +3,21 @@ package org.bonitasoft.web.client.invoker;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.bonitasoft.web.client.exception.ClientException;
-import org.bonitasoft.web.client.invoker.auth.ApiKeyAuth;
-import org.bonitasoft.web.client.invoker.auth.HttpBasicAuth;
-import org.bonitasoft.web.client.invoker.auth.HttpBearerAuth;
-import org.openapitools.jackson.nullable.JsonNullableModule;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
 import feign.Feign;
 import feign.RequestInterceptor;
 import feign.form.FormEncoder;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import feign.slf4j.Slf4jLogger;
+import org.bonitasoft.web.client.exception.ClientException;
+import org.bonitasoft.web.client.invoker.auth.ApiKeyAuth;
+import org.bonitasoft.web.client.invoker.auth.HttpBasicAuth;
+import org.bonitasoft.web.client.invoker.auth.HttpBearerAuth;
+import org.openapitools.jackson.nullable.JsonNullableModule;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApiClient {

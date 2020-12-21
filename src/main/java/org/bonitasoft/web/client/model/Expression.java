@@ -12,15 +12,16 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /** Expression */
 @JsonPropertyOrder({ Expression.JSON_PROPERTY_ID, Expression.JSON_PROPERTY_NAME, Expression.JSON_PROPERTY_CONTENT,
@@ -30,33 +31,33 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Expression implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_CONTENT = "content";
-
-	private String content;
 
 	public static final String JSON_PROPERTY_EXPRESSION_TYPE = "expressionType";
 
-	private String expressionType;
-
 	public static final String JSON_PROPERTY_RETURN_TYPE = "returnType";
-
-	private String returnType;
 
 	public static final String JSON_PROPERTY_INTERPRETER = "interpreter";
 
-	private String interpreter;
-
 	public static final String JSON_PROPERTY_DEPENDENCIES = "dependencies";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String name;
+
+	private String content;
+
+	private String expressionType;
+
+	private String returnType;
+
+	private String interpreter;
 
 	private List<Expression> dependencies = null;
 

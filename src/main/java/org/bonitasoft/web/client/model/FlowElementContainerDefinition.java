@@ -12,17 +12,18 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * Allows to access all flow elements (activities, gateways, events and transitions) of a
@@ -46,53 +47,53 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlowElementContainerDefinition implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ACTIVITIES = "activities";
-
-	private List<Map<String, Object>> activities = null;
 
 	public static final String JSON_PROPERTY_TRANSITIONS = "transitions";
 
-	private List<Map<String, Object>> transitions = null;
-
 	public static final String JSON_PROPERTY_GATEWAYS_LIST = "gatewaysList";
-
-	private List<Map<String, Object>> gatewaysList = null;
 
 	public static final String JSON_PROPERTY_START_EVENTS = "startEvents";
 
-	private List<Map<String, Object>> startEvents = null;
-
 	public static final String JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS = "intermediateCatchEvents";
-
-	private List<Map<String, Object>> intermediateCatchEvents = null;
 
 	public static final String JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS = "intermediateThrowEvents";
 
-	private List<Map<String, Object>> intermediateThrowEvents = null;
-
 	public static final String JSON_PROPERTY_END_EVENTS = "endEvents";
-
-	private List<Map<String, Object>> endEvents = null;
 
 	public static final String JSON_PROPERTY_DATA_DEFINITIONS = "dataDefinitions";
 
-	private List<Map<String, Object>> dataDefinitions = null;
-
 	public static final String JSON_PROPERTY_DOCUMENT_DEFINITIONS = "documentDefinitions";
-
-	private List<Map<String, Object>> documentDefinitions = null;
 
 	public static final String JSON_PROPERTY_CONNECTORS = "connectors";
 
-	private List<Map<String, Object>> connectors = null;
-
 	public static final String JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS = "businessDataDefinitions";
 
-	private List<Map<String, Object>> businessDataDefinitions = null;
-
 	public static final String JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS = "documentListDefinitions";
+
+	private static final long serialVersionUID = 1L;
+
+	private List<Map<String, Object>> activities = null;
+
+	private List<Map<String, Object>> transitions = null;
+
+	private List<Map<String, Object>> gatewaysList = null;
+
+	private List<Map<String, Object>> startEvents = null;
+
+	private List<Map<String, Object>> intermediateCatchEvents = null;
+
+	private List<Map<String, Object>> intermediateThrowEvents = null;
+
+	private List<Map<String, Object>> endEvents = null;
+
+	private List<Map<String, Object>> dataDefinitions = null;
+
+	private List<Map<String, Object>> documentDefinitions = null;
+
+	private List<Map<String, Object>> connectors = null;
+
+	private List<Map<String, Object>> businessDataDefinitions = null;
 
 	private List<Map<String, Object>> documentListDefinitions = null;
 

@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** UserTaskUpdateRequest */
 @JsonPropertyOrder({ UserTaskUpdateRequest.JSON_PROPERTY_STATE, UserTaskUpdateRequest.JSON_PROPERTY_ASSIGNED_ID })
@@ -26,13 +27,13 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UserTaskUpdateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_STATE = "state";
 
-	private String state;
-
 	public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+
+	private static final long serialVersionUID = 1L;
+
+	private String state;
 
 	private String assignedId;
 

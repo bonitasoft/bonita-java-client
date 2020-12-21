@@ -12,6 +12,9 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** PlatformUpdateRequest */
 @JsonPropertyOrder({ PlatformUpdateRequest.JSON_PROPERTY_STATE })
@@ -28,44 +29,9 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlatformUpdateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
-	/** Platform state */
-	public enum StateEnum {
-
-		START("start"),
-
-		STOP("stop");
-
-		private String value;
-
-		StateEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static StateEnum fromValue(String value) {
-			for (StateEnum b : StateEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-	}
-
 	public static final String JSON_PROPERTY_STATE = "state";
+
+	private static final long serialVersionUID = 1L;
 
 	private StateEnum state;
 
@@ -126,6 +92,41 @@ public class PlatformUpdateRequest implements Serializable {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	/** Platform state */
+	public enum StateEnum {
+
+		START("start"),
+
+		STOP("stop");
+
+		private String value;
+
+		StateEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static StateEnum fromValue(String value) {
+			for (StateEnum b : StateEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
 	}
 
 }

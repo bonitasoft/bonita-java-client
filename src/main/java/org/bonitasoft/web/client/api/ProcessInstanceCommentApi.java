@@ -4,15 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.bonitasoft.web.client.invoker.ApiClient;
-import org.bonitasoft.web.client.invoker.EncodingUtils;
-import org.bonitasoft.web.client.model.ProcessInstanceComment;
-import org.bonitasoft.web.client.model.ProcessInstanceCommentCreateRequest;
-
 import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.invoker.EncodingUtils;
+import org.bonitasoft.web.client.model.ProcessInstanceComment;
+import org.bonitasoft.web.client.model.ProcessInstanceCommentCreateRequest;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ProcessInstanceCommentApi extends ApiClient.Api {

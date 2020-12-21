@@ -38,16 +38,6 @@ public enum ActivityType {
 		this.value = value;
 	}
 
-	@JsonValue
-	public String getValue() {
-		return value;
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value);
-	}
-
 	@JsonCreator
 	public static ActivityType fromValue(String value) {
 		for (ActivityType b : ActivityType.values()) {
@@ -56,6 +46,16 @@ public enum ActivityType {
 			}
 		}
 		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value);
 	}
 
 }

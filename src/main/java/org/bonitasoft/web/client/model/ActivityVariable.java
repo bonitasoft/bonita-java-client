@@ -12,6 +12,9 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,8 +23,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * This resource enables you to retrieve the value of a specific variable name for a
@@ -40,91 +41,53 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActivityVariable implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-
-	private String tenantId;
 
 	public static final String JSON_PROPERTY_TENANT_ID_STRING = "tenantId_string";
 
-	private String tenantIdString;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_ID_STRING = "id_string";
 
-	private String idString;
-
 	public static final String JSON_PROPERTY_NAME = "name";
-
-	private String name;
 
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-	private String description;
-
 	public static final String JSON_PROPERTY_TRANSIENT_DATA = "transientData";
-
-	private String transientData;
 
 	public static final String JSON_PROPERTY_CLASS_NAME = "className";
 
-	private String className;
-
 	public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
-
-	private String containerId;
 
 	public static final String JSON_PROPERTY_CONTAINER_ID_STRING = "containerId_string";
 
-	private String containerIdString;
-
-	/**
-	 * ACTIVITY_INSTANCE | PROCESS_INSTANCE depending on whether the variable is defined
-	 * at activity or process level.
-	 */
-	public enum ContainerTypeEnum {
-
-		ACTIVITY_INSTANCE("ACTIVITY_INSTANCE"),
-
-		PROCESS_INSTANCE("PROCESS_INSTANCE");
-
-		private String value;
-
-		ContainerTypeEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static ContainerTypeEnum fromValue(String value) {
-			for (ContainerTypeEnum b : ContainerTypeEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-	}
-
 	public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
 
-	private ContainerTypeEnum containerType;
-
 	public static final String JSON_PROPERTY_VALUE = "value";
+
+	private static final long serialVersionUID = 1L;
+
+	private String tenantId;
+
+	private String tenantIdString;
+
+	private String id;
+
+	private String idString;
+
+	private String name;
+
+	private String description;
+
+	private String transientData;
+
+	private String className;
+
+	private String containerId;
+
+	private String containerIdString;
+
+	private ContainerTypeEnum containerType;
 
 	private String value;
 
@@ -456,6 +419,44 @@ public class ActivityVariable implements Serializable {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	/**
+	 * ACTIVITY_INSTANCE | PROCESS_INSTANCE depending on whether the variable is defined
+	 * at activity or process level.
+	 */
+	public enum ContainerTypeEnum {
+
+		ACTIVITY_INSTANCE("ACTIVITY_INSTANCE"),
+
+		PROCESS_INSTANCE("PROCESS_INSTANCE");
+
+		private String value;
+
+		ContainerTypeEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static ContainerTypeEnum fromValue(String value) {
+			for (ContainerTypeEnum b : ContainerTypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
 	}
 
 }

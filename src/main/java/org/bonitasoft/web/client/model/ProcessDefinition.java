@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ProcessDefinition */
 @JsonPropertyOrder({ ProcessDefinition.JSON_PROPERTY_ID, ProcessDefinition.JSON_PROPERTY_ICON,
@@ -32,57 +33,57 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessDefinition implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_ICON = "icon";
 
-	private String icon;
-
 	public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
-
-	private String displayDescription;
 
 	public static final String JSON_PROPERTY_DEPLOYMENT_DATE = "deploymentDate";
 
-	private String deploymentDate;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
 
-	private ActivationState activationState;
-
 	public static final String JSON_PROPERTY_NAME = "name";
-
-	private String name;
 
 	public static final String JSON_PROPERTY_DEPLOYED_BY = "deployedBy";
 
-	private String deployedBy;
-
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-
-	private String displayName;
 
 	public static final String JSON_PROPERTY_ACTORINITIATORID = "actorinitiatorid";
 
-	private String actorinitiatorid;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
-
-	private String lastUpdateDate;
 
 	public static final String JSON_PROPERTY_CONFIGURATION_STATE = "configurationState";
 
-	private ConfigurationState configurationState;
-
 	public static final String JSON_PROPERTY_VERSION = "version";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String icon;
+
+	private String displayDescription;
+
+	private String deploymentDate;
+
+	private String description;
+
+	private ActivationState activationState;
+
+	private String name;
+
+	private String deployedBy;
+
+	private String displayName;
+
+	private String actorinitiatorid;
+
+	private String lastUpdateDate;
+
+	private ConfigurationState configurationState;
 
 	private String version;
 

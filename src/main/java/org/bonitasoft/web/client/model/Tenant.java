@@ -12,6 +12,9 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Tenant */
 @JsonPropertyOrder({ Tenant.JSON_PROPERTY_ID, Tenant.JSON_PROPERTY_CREATION, Tenant.JSON_PROPERTY_ICON,
@@ -30,72 +31,37 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Tenant implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_CREATION = "creation";
 
-	private String creation;
-
 	public static final String JSON_PROPERTY_ICON = "icon";
-
-	private String icon;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_USERNAME = "username";
 
-	private String username;
-
 	public static final String JSON_PROPERTY_PASSWORD = "password";
 
-	private String password;
-
-	/** the tenant state */
-	public enum StateEnum {
-
-		ACTIVATED("ACTIVATED"),
-
-		DEACTIVATED("DEACTIVATED");
-
-		private String value;
-
-		StateEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static StateEnum fromValue(String value) {
-			for (StateEnum b : StateEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-	}
-
 	public static final String JSON_PROPERTY_STATE = "state";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String creation;
+
+	private String icon;
+
+	private String name;
+
+	private String description;
+
+	private String username;
+
+	private String password;
 
 	private StateEnum state;
 
@@ -321,6 +287,41 @@ public class Tenant implements Serializable {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	/** the tenant state */
+	public enum StateEnum {
+
+		ACTIVATED("ACTIVATED"),
+
+		DEACTIVATED("DEACTIVATED");
+
+		private String value;
+
+		StateEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static StateEnum fromValue(String value) {
+			for (StateEnum b : StateEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
 	}
 
 }

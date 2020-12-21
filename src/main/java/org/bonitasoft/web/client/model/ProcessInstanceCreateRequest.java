@@ -12,16 +12,17 @@
 
 package org.bonitasoft.web.client.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.swagger.annotations.ApiModelProperty;
 
 /** ProcessInstanceCreateRequest */
 @JsonPropertyOrder({ ProcessInstanceCreateRequest.JSON_PROPERTY_PROCESS_DEFINITION_ID,
@@ -30,13 +31,13 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceCreateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
 
-	private String processDefinitionId;
-
 	public static final String JSON_PROPERTY_VARIABLES = "variables";
+
+	private static final long serialVersionUID = 1L;
+
+	private String processDefinitionId;
 
 	private List<Map<String, Object>> variables = null;
 

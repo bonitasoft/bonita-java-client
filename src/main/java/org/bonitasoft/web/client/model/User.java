@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** User */
 @JsonPropertyOrder({ User.JSON_PROPERTY_ID, User.JSON_PROPERTY_ENABLED, User.JSON_PROPERTY_USER_NAME,
@@ -30,61 +31,61 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class User implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_ENABLED = "enabled";
 
-	private String enabled;
-
 	public static final String JSON_PROPERTY_USER_NAME = "userName";
-
-	private String userName;
 
 	public static final String JSON_PROPERTY_FIRSTNAME = "firstname";
 
-	private String firstname;
-
 	public static final String JSON_PROPERTY_LASTNAME = "lastname";
-
-	private String lastname;
 
 	public static final String JSON_PROPERTY_PASSWORD = "password";
 
-	private String password;
-
 	public static final String JSON_PROPERTY_ICON = "icon";
-
-	private String icon;
 
 	public static final String JSON_PROPERTY_TITLE = "title";
 
-	private String title;
-
 	public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
-
-	private String jobTitle;
 
 	public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
 
-	private String managerId;
-
 	public static final String JSON_PROPERTY_LAST_CONNECTION = "last_connection";
-
-	private String lastConnection;
 
 	public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
 
-	private String createdByUserId;
-
 	public static final String JSON_PROPERTY_CREATION_DATE = "creation_date";
 
-	private String creationDate;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String enabled;
+
+	private String userName;
+
+	private String firstname;
+
+	private String lastname;
+
+	private String password;
+
+	private String icon;
+
+	private String title;
+
+	private String jobTitle;
+
+	private String managerId;
+
+	private String lastConnection;
+
+	private String createdByUserId;
+
+	private String creationDate;
 
 	private String lastUpdateDate;
 

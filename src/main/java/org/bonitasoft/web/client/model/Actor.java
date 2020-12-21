@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Actor */
 @JsonPropertyOrder({ Actor.JSON_PROPERTY_ID, Actor.JSON_PROPERTY_PROCESS_ID, Actor.JSON_PROPERTY_DESCRIPTION,
@@ -27,25 +28,25 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Actor implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private Long id;
 
 	public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
 
-	private Long processId;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_NAME = "name";
 
-	private String name;
-
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
+
+	private Long processId;
+
+	private String description;
+
+	private String name;
 
 	private String displayName;
 

@@ -34,16 +34,6 @@ public enum ActivityPriority {
 		this.value = value;
 	}
 
-	@JsonValue
-	public String getValue() {
-		return value;
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value);
-	}
-
 	@JsonCreator
 	public static ActivityPriority fromValue(String value) {
 		for (ActivityPriority b : ActivityPriority.values()) {
@@ -52,6 +42,16 @@ public enum ActivityPriority {
 			}
 		}
 		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value);
 	}
 
 }

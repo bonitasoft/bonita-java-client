@@ -12,14 +12,15 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Use the processConnectorDependency resource to access connector dependencies. */
 @ApiModel(description = "Use the processConnectorDependency resource to access connector dependencies.")
@@ -30,21 +31,21 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessConnectorDependency implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_CONNECTOR_VERSION = "connector_version";
-
-	private String connectorVersion;
 
 	public static final String JSON_PROPERTY_CONNECTOR_PROCESS_ID = "connector_process_id";
 
-	private String connectorProcessId;
-
 	public static final String JSON_PROPERTY_FILENAME = "filename";
 
-	private String filename;
-
 	public static final String JSON_PROPERTY_CONNECTOR_NAME = "connector_name";
+
+	private static final long serialVersionUID = 1L;
+
+	private String connectorVersion;
+
+	private String connectorProcessId;
+
+	private String filename;
 
 	private String connectorName;
 

@@ -1,8 +1,7 @@
 package org.bonitasoft.web.client.exception.process;
 
-import org.bonitasoft.web.client.exception.ClientException;
-
 import lombok.Getter;
+import org.bonitasoft.web.client.exception.ClientException;
 
 public class ProcessActivationException extends ClientException {
 

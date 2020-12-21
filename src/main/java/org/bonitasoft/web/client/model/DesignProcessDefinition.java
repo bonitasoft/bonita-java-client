@@ -12,16 +12,17 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Represents the Design Definition of a process. It gives access to process attributes.
@@ -38,45 +39,45 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DesignProcessDefinition implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-
-	private String displayName;
 
 	public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
 
-	private String displayDescription;
-
 	public static final String JSON_PROPERTY_FLOW_ELEMENT_CONTAINER = "flowElementContainer";
-
-	private FlowElementContainerDefinition flowElementContainer;
 
 	public static final String JSON_PROPERTY_PARAMETERS = "parameters";
 
-	private List<DesignProcessDefinitionParameters> parameters = null;
-
 	public static final String JSON_PROPERTY_ACTORS_LIST = "actorsList";
-
-	private List<ActorDefinition> actorsList = null;
 
 	public static final String JSON_PROPERTY_ACTOR_INITIATOR = "actorInitiator";
 
-	private ActorDefinition actorInitiator;
-
 	public static final String JSON_PROPERTY_STRING_INDEX_LABELS = "stringIndexLabels";
-
-	private List<String> stringIndexLabels = null;
 
 	public static final String JSON_PROPERTY_STRING_INDEX_VALUES = "stringIndexValues";
 
-	private List<Expression> stringIndexValues = null;
-
 	public static final String JSON_PROPERTY_CONTRACT = "contract";
 
-	private DesignProcessDefinitionContract contract;
-
 	public static final String JSON_PROPERTY_CONTEXT = "context";
+
+	private static final long serialVersionUID = 1L;
+
+	private String displayName;
+
+	private String displayDescription;
+
+	private FlowElementContainerDefinition flowElementContainer;
+
+	private List<DesignProcessDefinitionParameters> parameters = null;
+
+	private List<ActorDefinition> actorsList = null;
+
+	private ActorDefinition actorInitiator;
+
+	private List<String> stringIndexLabels = null;
+
+	private List<Expression> stringIndexValues = null;
+
+	private DesignProcessDefinitionContract contract;
 
 	private List<DesignProcessDefinitionContext> context = null;
 

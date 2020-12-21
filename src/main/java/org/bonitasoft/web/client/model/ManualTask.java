@@ -12,6 +12,9 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ManualTask */
 @JsonPropertyOrder({ ManualTask.JSON_PROPERTY_ID, ManualTask.JSON_PROPERTY_TYPE, ManualTask.JSON_PROPERTY_NAME,
@@ -37,130 +38,93 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ManualTask implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_TYPE = "type";
 
-	private String type;
-
 	public static final String JSON_PROPERTY_NAME = "name";
-
-	private String name;
 
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-	private String displayName;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
 
-	private String displayDescription;
-
-	/** the current state of the task */
-	public enum StateEnum {
-
-		READY("ready"),
-
-		COMPLETED("completed"),
-
-		FAILED("failed");
-
-		private String value;
-
-		StateEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static StateEnum fromValue(String value) {
-			for (StateEnum b : StateEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-	}
-
 	public static final String JSON_PROPERTY_STATE = "state";
-
-	private StateEnum state;
 
 	public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
 
-	private String reachedStateDate;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
-
-	private String lastUpdateDate;
 
 	public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
 
-	private String dueDate;
-
 	public static final String JSON_PROPERTY_PRIORITY = "priority";
-
-	private String priority;
 
 	public static final String JSON_PROPERTY_PROCESS_ID = "processId";
 
-	private String processId;
-
 	public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
-
-	private String parentCaseId;
 
 	public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
 
-	private String parentTaskId;
-
 	public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
-
-	private String rootCaseId;
 
 	public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
 
-	private String rootContainerId;
-
 	public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
-
-	private String executedBy;
 
 	public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
 
-	private String executedBySubstitute;
-
 	public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
-
-	private String actorId;
 
 	public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
 
-	private String assignedId;
-
 	public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
 
-	private String assignedDate;
-
 	public static final String JSON_PROPERTY_IS_TERMINAL = "isTerminal";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String type;
+
+	private String name;
+
+	private String displayName;
+
+	private String description;
+
+	private String displayDescription;
+
+	private StateEnum state;
+
+	private String reachedStateDate;
+
+	private String lastUpdateDate;
+
+	private String dueDate;
+
+	private String priority;
+
+	private String processId;
+
+	private String parentCaseId;
+
+	private String parentTaskId;
+
+	private String rootCaseId;
+
+	private String rootContainerId;
+
+	private String executedBy;
+
+	private String executedBySubstitute;
+
+	private String actorId;
+
+	private String assignedId;
+
+	private String assignedDate;
 
 	private Boolean isTerminal;
 
@@ -741,6 +705,43 @@ public class ManualTask implements Serializable {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	/** the current state of the task */
+	public enum StateEnum {
+
+		READY("ready"),
+
+		COMPLETED("completed"),
+
+		FAILED("failed");
+
+		private String value;
+
+		StateEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static StateEnum fromValue(String value) {
+			for (StateEnum b : StateEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
 	}
 
 }

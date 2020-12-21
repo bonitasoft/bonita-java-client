@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Session */
 @JsonPropertyOrder({ Session.JSON_PROPERTY_USER_ID, Session.JSON_PROPERTY_USER_NAME, Session.JSON_PROPERTY_SESSION_ID,
@@ -28,37 +29,37 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Session implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_USER_ID = "user_id";
-
-	private String userId;
 
 	public static final String JSON_PROPERTY_USER_NAME = "user_name";
 
-	private String userName;
-
 	public static final String JSON_PROPERTY_SESSION_ID = "session_id";
-
-	private String sessionId;
 
 	public static final String JSON_PROPERTY_CONF = "conf";
 
-	private String conf;
-
 	public static final String JSON_PROPERTY_IS_TECHNICAL_USER = "is_technical_user";
-
-	private Boolean isTechnicalUser;
 
 	public static final String JSON_PROPERTY_IS_GUEST_USER = "is_guest_user";
 
-	private Boolean isGuestUser;
-
 	public static final String JSON_PROPERTY_VERSION = "version";
 
-	private String version;
-
 	public static final String JSON_PROPERTY_COPYRIGHT = "copyright";
+
+	private static final long serialVersionUID = 1L;
+
+	private String userId;
+
+	private String userName;
+
+	private String sessionId;
+
+	private String conf;
+
+	private Boolean isTechnicalUser;
+
+	private Boolean isGuestUser;
+
+	private String version;
 
 	private String copyright;
 

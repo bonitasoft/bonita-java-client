@@ -28,16 +28,6 @@ public enum ConfigurationState {
 		this.value = value;
 	}
 
-	@JsonValue
-	public String getValue() {
-		return value;
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value);
-	}
-
 	@JsonCreator
 	public static ConfigurationState fromValue(String value) {
 		for (ConfigurationState b : ConfigurationState.values()) {
@@ -46,6 +36,16 @@ public enum ConfigurationState {
 			}
 		}
 		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value);
 	}
 
 }

@@ -12,6 +12,9 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,8 +23,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** The bonita platform */
 @ApiModel(description = "The bonita platform")
@@ -32,64 +33,29 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Platform implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
-	/** platform state */
-	public enum StateEnum {
-
-		STARTED("STARTED"),
-
-		STOPPED("STOPPED");
-
-		private String value;
-
-		StateEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static StateEnum fromValue(String value) {
-			for (StateEnum b : StateEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-	}
-
 	public static final String JSON_PROPERTY_STATE = "state";
-
-	private StateEnum state;
 
 	public static final String JSON_PROPERTY_VERSION = "version";
 
-	private String version;
-
 	public static final String JSON_PROPERTY_INITIAL_VERSION = "initialVersion";
-
-	private String initialVersion;
 
 	public static final String JSON_PROPERTY_PREVIOUS_VERSION = "previousVersion";
 
-	private String previousVersion;
-
 	public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
 
-	private String createdBy;
-
 	public static final String JSON_PROPERTY_CREATED = "created";
+
+	private static final long serialVersionUID = 1L;
+
+	private StateEnum state;
+
+	private String version;
+
+	private String initialVersion;
+
+	private String previousVersion;
+
+	private String createdBy;
 
 	private String created;
 
@@ -268,6 +234,41 @@ public class Platform implements Serializable {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	/** platform state */
+	public enum StateEnum {
+
+		STARTED("STARTED"),
+
+		STOPPED("STOPPED");
+
+		private String value;
+
+		StateEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static StateEnum fromValue(String value) {
+			for (StateEnum b : StateEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
 	}
 
 }

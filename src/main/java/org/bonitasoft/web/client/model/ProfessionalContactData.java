@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ProfessionalContactData */
 @JsonPropertyOrder({ ProfessionalContactData.JSON_PROPERTY_ID, ProfessionalContactData.JSON_PROPERTY_FAX_NUMBER,
@@ -32,57 +33,57 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfessionalContactData implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_FAX_NUMBER = "fax_number";
 
-	private String faxNumber;
-
 	public static final String JSON_PROPERTY_BUILDING = "building";
-
-	private String building;
 
 	public static final String JSON_PROPERTY_PHONE_NUMBER = "phone_number";
 
-	private String phoneNumber;
-
 	public static final String JSON_PROPERTY_WEBSITE = "website";
-
-	private String website;
 
 	public static final String JSON_PROPERTY_ZIPCODE = "zipcode";
 
-	private String zipcode;
-
 	public static final String JSON_PROPERTY_STATE = "state";
-
-	private String state;
 
 	public static final String JSON_PROPERTY_CITY = "city";
 
-	private String city;
-
 	public static final String JSON_PROPERTY_COUNTRY = "country";
-
-	private String country;
 
 	public static final String JSON_PROPERTY_MOBILE_NUMBER = "mobile_number";
 
-	private String mobileNumber;
-
 	public static final String JSON_PROPERTY_ADDRESS = "address";
-
-	private String address;
 
 	public static final String JSON_PROPERTY_ROOM = "room";
 
-	private String room;
-
 	public static final String JSON_PROPERTY_EMAIL = "email";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String faxNumber;
+
+	private String building;
+
+	private String phoneNumber;
+
+	private String website;
+
+	private String zipcode;
+
+	private String state;
+
+	private String city;
+
+	private String country;
+
+	private String mobileNumber;
+
+	private String address;
+
+	private String room;
 
 	private String email;
 

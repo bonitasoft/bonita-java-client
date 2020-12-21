@@ -12,14 +12,15 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * This resource represents a problem in a process that needs to be resolved for the
@@ -34,17 +35,17 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessResolutionProblem implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_MESSAGE = "message";
-
-	private String message;
 
 	public static final String JSON_PROPERTY_RESOURCE_ID = "resource_id";
 
-	private String resourceId;
-
 	public static final String JSON_PROPERTY_TARGET_TYPE = "target_type";
+
+	private static final long serialVersionUID = 1L;
+
+	private String message;
+
+	private String resourceId;
 
 	private String targetType;
 

@@ -12,6 +12,9 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** ProfileMemberCreateRequest */
 @JsonPropertyOrder({ ProfileMemberCreateRequest.JSON_PROPERTY_PROFILE_ID,
@@ -30,62 +31,25 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfileMemberCreateRequest implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
-
-	private String profileId;
 
 	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
 
-	private String roleId;
-
 	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
-
-	private String groupId;
 
 	public static final String JSON_PROPERTY_USER_ID = "user_id";
 
-	private String userId;
-
-	/** member type */
-	public enum MemberTypeEnum {
-
-		USER("USER"),
-
-		ROLE("ROLE"),
-
-		GROUP("GROUP");
-
-		private String value;
-
-		MemberTypeEnum(String value) {
-			this.value = value;
-		}
-
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
-
-		@JsonCreator
-		public static MemberTypeEnum fromValue(String value) {
-			for (MemberTypeEnum b : MemberTypeEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-
-	}
-
 	public static final String JSON_PROPERTY_MEMBER_TYPE = "member_type";
+
+	private static final long serialVersionUID = 1L;
+
+	private String profileId;
+
+	private String roleId;
+
+	private String groupId;
+
+	private String userId;
 
 	private MemberTypeEnum memberType;
 
@@ -242,6 +206,43 @@ public class ProfileMemberCreateRequest implements Serializable {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	/** member type */
+	public enum MemberTypeEnum {
+
+		USER("USER"),
+
+		ROLE("ROLE"),
+
+		GROUP("GROUP");
+
+		private String value;
+
+		MemberTypeEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonCreator
+		public static MemberTypeEnum fromValue(String value) {
+			for (MemberTypeEnum b : MemberTypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
 	}
 
 }

@@ -1,8 +1,5 @@
 package org.bonitasoft.web.client.services.impl;
 
-import static java.lang.String.format;
-import static java.util.Collections.singletonList;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.ApplicationApi;
 import org.bonitasoft.web.client.api.PageApi;
 import org.bonitasoft.web.client.exception.ClientException;
@@ -30,9 +29,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.extern.slf4j.Slf4j;
+import static java.lang.String.format;
+import static java.util.Collections.singletonList;
 
 @Slf4j
 public class DefaultApplicationService extends AbstractService implements ApplicationService {

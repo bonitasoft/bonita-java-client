@@ -12,14 +12,15 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Profile member */
 @ApiModel(description = "Profile member")
@@ -30,25 +31,25 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfileMember implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
 
-	private String profileId;
-
 	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
-
-	private String roleId;
 
 	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
 
-	private String groupId;
-
 	public static final String JSON_PROPERTY_USER_ID = "user_id";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String profileId;
+
+	private String roleId;
+
+	private String groupId;
 
 	private String userId;
 

@@ -1,10 +1,9 @@
 package org.bonitasoft.web.client.api;
 
-import org.bonitasoft.web.client.invoker.ApiClient;
-
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+import org.bonitasoft.web.client.invoker.ApiClient;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface PlatformAuthenticationApi extends ApiClient.Api {

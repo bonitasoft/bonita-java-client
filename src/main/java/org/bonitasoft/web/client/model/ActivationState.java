@@ -28,16 +28,6 @@ public enum ActivationState {
 		this.value = value;
 	}
 
-	@JsonValue
-	public String getValue() {
-		return value;
-	}
-
-	@Override
-	public String toString() {
-		return String.valueOf(value);
-	}
-
 	@JsonCreator
 	public static ActivationState fromValue(String value) {
 		for (ActivationState b : ActivationState.values()) {
@@ -46,6 +36,16 @@ public enum ActivationState {
 			}
 		}
 		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(value);
 	}
 
 }

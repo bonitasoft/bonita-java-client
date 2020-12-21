@@ -12,13 +12,14 @@
 
 package org.bonitasoft.web.client.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Objects;
 
 /** Page */
 @JsonPropertyOrder({ Page.JSON_PROPERTY_ID, Page.JSON_PROPERTY_CREATION_DATE, Page.JSON_PROPERTY_CREATED_BY,
@@ -29,45 +30,45 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Page implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	public static final String JSON_PROPERTY_ID = "id";
-
-	private String id;
 
 	public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
 
-	private String creationDate;
-
 	public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-
-	private String createdBy;
 
 	public static final String JSON_PROPERTY_IS_PROVIDED = "isProvided";
 
-	private Boolean isProvided;
-
 	public static final String JSON_PROPERTY_DESCRIPTION = "description";
-
-	private String description;
 
 	public static final String JSON_PROPERTY_CONTENT_NAME = "contentName";
 
-	private String contentName;
-
 	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-
-	private String displayName;
 
 	public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
 
-	private String updatedBy;
-
 	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
 
-	private String lastUpdateDate;
-
 	public static final String JSON_PROPERTY_URL_TOKEN = "urlToken";
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String creationDate;
+
+	private String createdBy;
+
+	private Boolean isProvided;
+
+	private String description;
+
+	private String contentName;
+
+	private String displayName;
+
+	private String updatedBy;
+
+	private String lastUpdateDate;
 
 	private String urlToken;
 
