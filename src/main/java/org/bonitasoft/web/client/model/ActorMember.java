@@ -22,196 +22,192 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * An actor member represents the association between the organization and the actor af a process.
- * In an organization we have four member_types &#x3D; USER, GROUP, ROLE and MEMBERSHIP (role in a
- * group). You can assign a actor to a user by specifying a role and or a group, or specific user.
+ * An actor member represents the association between the organization and the actor af a
+ * process. In an organization we have four member_types &#x3D; USER, GROUP, ROLE and
+ * MEMBERSHIP (role in a group). You can assign a actor to a user by specifying a role and
+ * or a group, or specific user.
  */
 @ApiModel(
-    description =
-        "An actor member represents the association between the organization and the actor af a process. In an organization we have four member_types = USER, GROUP, ROLE and MEMBERSHIP (role in a group). You can assign a actor to a user by specifying a role and or a group, or specific user.")
-@JsonPropertyOrder({
-  ActorMember.JSON_PROPERTY_ID,
-  ActorMember.JSON_PROPERTY_ACTOR_ID,
-  ActorMember.JSON_PROPERTY_ROLE_ID,
-  ActorMember.JSON_PROPERTY_GROUP_ID,
-  ActorMember.JSON_PROPERTY_USER_ID
-})
+		description = "An actor member represents the association between the organization and the actor af a process. In an organization we have four member_types = USER, GROUP, ROLE and MEMBERSHIP (role in a group). You can assign a actor to a user by specifying a role and or a group, or specific user.")
+@JsonPropertyOrder({ ActorMember.JSON_PROPERTY_ID, ActorMember.JSON_PROPERTY_ACTOR_ID,
+		ActorMember.JSON_PROPERTY_ROLE_ID, ActorMember.JSON_PROPERTY_GROUP_ID, ActorMember.JSON_PROPERTY_USER_ID })
 @JsonTypeName("ActorMember")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActorMember implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ACTOR_ID = "actor_id";
-  private String actorId;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
-  private String roleId;
+	private String id;
 
-  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
-  private String groupId;
+	public static final String JSON_PROPERTY_ACTOR_ID = "actor_id";
 
-  public static final String JSON_PROPERTY_USER_ID = "user_id";
-  private String userId;
+	private String actorId;
 
-  public ActorMember id(String id) {
+	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
 
-    this.id = id;
-    return this;
-  }
+	private String roleId;
 
-  /**
-   * actor member id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "actor member id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	private String groupId;
 
-  public ActorMember actorId(String actorId) {
+	public static final String JSON_PROPERTY_USER_ID = "user_id";
 
-    this.actorId = actorId;
-    return this;
-  }
+	private String userId;
 
-  /**
-   * id of the actor for this mapping
-   *
-   * @return actorId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the actor for this mapping")
-  @JsonProperty(JSON_PROPERTY_ACTOR_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getActorId() {
-    return actorId;
-  }
+	public ActorMember id(String id) {
 
-  public void setActorId(String actorId) {
-    this.actorId = actorId;
-  }
+		this.id = id;
+		return this;
+	}
 
-  public ActorMember roleId(String roleId) {
+	/**
+	 * actor member id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "actor member id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-    this.roleId = roleId;
-    return this;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  /**
-   * id of role, or -1 if the member type is not role
-   *
-   * @return roleId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of role, or -1 if the member type is not role")
-  @JsonProperty(JSON_PROPERTY_ROLE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRoleId() {
-    return roleId;
-  }
+	public ActorMember actorId(String actorId) {
 
-  public void setRoleId(String roleId) {
-    this.roleId = roleId;
-  }
+		this.actorId = actorId;
+		return this;
+	}
 
-  public ActorMember groupId(String groupId) {
+	/**
+	 * id of the actor for this mapping
+	 * @return actorId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the actor for this mapping")
+	@JsonProperty(JSON_PROPERTY_ACTOR_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getActorId() {
+		return actorId;
+	}
 
-    this.groupId = groupId;
-    return this;
-  }
+	public void setActorId(String actorId) {
+		this.actorId = actorId;
+	}
 
-  /**
-   * id of group, or -1 if the member type is not group
-   *
-   * @return groupId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of group, or -1 if the member type is not group")
-  @JsonProperty(JSON_PROPERTY_GROUP_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getGroupId() {
-    return groupId;
-  }
+	public ActorMember roleId(String roleId) {
 
-  public void setGroupId(String groupId) {
-    this.groupId = groupId;
-  }
+		this.roleId = roleId;
+		return this;
+	}
 
-  public ActorMember userId(String userId) {
+	/**
+	 * id of role, or -1 if the member type is not role
+	 * @return roleId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of role, or -1 if the member type is not role")
+	@JsonProperty(JSON_PROPERTY_ROLE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRoleId() {
+		return roleId;
+	}
 
-    this.userId = userId;
-    return this;
-  }
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
 
-  /**
-   * id of user, or -1 if the member type is not user
-   *
-   * @return userId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of user, or -1 if the member type is not user")
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserId() {
-    return userId;
-  }
+	public ActorMember groupId(String groupId) {
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+		this.groupId = groupId;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ActorMember actorMember = (ActorMember) o;
-    return Objects.equals(this.id, actorMember.id)
-        && Objects.equals(this.actorId, actorMember.actorId)
-        && Objects.equals(this.roleId, actorMember.roleId)
-        && Objects.equals(this.groupId, actorMember.groupId)
-        && Objects.equals(this.userId, actorMember.userId);
-  }
+	/**
+	 * id of group, or -1 if the member type is not group
+	 * @return groupId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of group, or -1 if the member type is not group")
+	@JsonProperty(JSON_PROPERTY_GROUP_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getGroupId() {
+		return groupId;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, actorId, roleId, groupId, userId);
-  }
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ActorMember {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
-    sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
-    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public ActorMember userId(String userId) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.userId = userId;
+		return this;
+	}
+
+	/**
+	 * id of user, or -1 if the member type is not user
+	 * @return userId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of user, or -1 if the member type is not user")
+	@JsonProperty(JSON_PROPERTY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ActorMember actorMember = (ActorMember) o;
+		return Objects.equals(this.id, actorMember.id) && Objects.equals(this.actorId, actorMember.actorId)
+				&& Objects.equals(this.roleId, actorMember.roleId) && Objects.equals(this.groupId, actorMember.groupId)
+				&& Objects.equals(this.userId, actorMember.userId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, actorId, roleId, groupId, userId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ActorMember {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
+		sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
+		sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+		sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

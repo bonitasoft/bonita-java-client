@@ -50,12 +50,12 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 public class RFC3339DateFormat extends DateFormat {
-  private static final long serialVersionUID = 1L;
 
-  private static final TimeZone TIMEZONE_Z = TimeZone.getTimeZone("UTC");
-  private final StdDateFormat fmt =
-		  new StdDateFormat().withTimeZone(TIMEZONE_Z).withColonInTimeZone(true);
+	private static final long serialVersionUID = 1L;
 
+	private static final TimeZone TIMEZONE_Z = TimeZone.getTimeZone("UTC");
+
+	private final StdDateFormat fmt = new StdDateFormat().withTimeZone(TIMEZONE_Z).withColonInTimeZone(true);
 
 	public RFC3339DateFormat() {
 		this.calendar = new GregorianCalendar();
@@ -80,4 +80,5 @@ public class RFC3339DateFormat extends DateFormat {
 	public Object clone() {
 		return this;
 	}
+
 }

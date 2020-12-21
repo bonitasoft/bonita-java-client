@@ -17,33 +17,35 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /** the state of the process definition (ENABLED or DISABLED) */
 public enum ActivationState {
-  ENABLED("ENABLED"),
 
-  DISABLED("DISABLED");
+	ENABLED("ENABLED"),
 
-  private final String value;
+	DISABLED("DISABLED");
 
-  ActivationState(String value) {
-    this.value = value;
-  }
+	private final String value;
 
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
+	ActivationState(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
 
-  @JsonCreator
-  public static ActivationState fromValue(String value) {
-    for (ActivationState b : ActivationState.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
-    }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
+	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
+
+	@JsonCreator
+	public static ActivationState fromValue(String value) {
+		for (ActivationState b : ActivationState.values()) {
+			if (b.value.equals(value)) {
+				return b;
+			}
+		}
+		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
 }

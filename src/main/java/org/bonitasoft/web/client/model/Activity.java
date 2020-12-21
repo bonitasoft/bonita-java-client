@@ -23,677 +23,633 @@ import java.util.Objects;
 
 /**
  * Use this resource to retrieve activities (human or service tasks), call activities, and
- * subprocesses currently running on the platform. It enables you to perform maintenance tasks like
- * skipping or replaying a failed task and modifying variables.
+ * subprocesses currently running on the platform. It enables you to perform maintenance
+ * tasks like skipping or replaying a failed task and modifying variables.
  */
 @ApiModel(
-    description =
-        "Use this resource to retrieve activities (human or service tasks), call activities, and subprocesses currently running on the platform. It enables you to perform maintenance tasks like skipping or replaying a failed task and modifying variables. ")
-@JsonPropertyOrder({
-  Activity.JSON_PROPERTY_ID,
-  Activity.JSON_PROPERTY_TYPE,
-  Activity.JSON_PROPERTY_NAME,
-  Activity.JSON_PROPERTY_DISPLAY_NAME,
-  Activity.JSON_PROPERTY_DESCRIPTION,
-  Activity.JSON_PROPERTY_DISPLAY_DESCRIPTION,
-  Activity.JSON_PROPERTY_STATE,
-  Activity.JSON_PROPERTY_REACHED_STATE_DATE,
-  Activity.JSON_PROPERTY_LAST_UPDATE_DATE,
-  Activity.JSON_PROPERTY_DUE_DATE,
-  Activity.JSON_PROPERTY_PRIORITY,
-  Activity.JSON_PROPERTY_PROCESS_ID,
-  Activity.JSON_PROPERTY_PARENT_CASE_ID,
-  Activity.JSON_PROPERTY_ROOT_CASE_ID,
-  Activity.JSON_PROPERTY_ROOT_CONTAINER_ID,
-  Activity.JSON_PROPERTY_EXECUTED_BY,
-  Activity.JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE,
-  Activity.JSON_PROPERTY_ACTOR_ID,
-  Activity.JSON_PROPERTY_ASSIGNED_ID,
-  Activity.JSON_PROPERTY_ASSIGNED_DATE
-})
+		description = "Use this resource to retrieve activities (human or service tasks), call activities, and subprocesses currently running on the platform. It enables you to perform maintenance tasks like skipping or replaying a failed task and modifying variables. ")
+@JsonPropertyOrder({ Activity.JSON_PROPERTY_ID, Activity.JSON_PROPERTY_TYPE, Activity.JSON_PROPERTY_NAME,
+		Activity.JSON_PROPERTY_DISPLAY_NAME, Activity.JSON_PROPERTY_DESCRIPTION,
+		Activity.JSON_PROPERTY_DISPLAY_DESCRIPTION, Activity.JSON_PROPERTY_STATE,
+		Activity.JSON_PROPERTY_REACHED_STATE_DATE, Activity.JSON_PROPERTY_LAST_UPDATE_DATE,
+		Activity.JSON_PROPERTY_DUE_DATE, Activity.JSON_PROPERTY_PRIORITY, Activity.JSON_PROPERTY_PROCESS_ID,
+		Activity.JSON_PROPERTY_PARENT_CASE_ID, Activity.JSON_PROPERTY_ROOT_CASE_ID,
+		Activity.JSON_PROPERTY_ROOT_CONTAINER_ID, Activity.JSON_PROPERTY_EXECUTED_BY,
+		Activity.JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE, Activity.JSON_PROPERTY_ACTOR_ID,
+		Activity.JSON_PROPERTY_ASSIGNED_ID, Activity.JSON_PROPERTY_ASSIGNED_DATE })
 @JsonTypeName("Activity")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Activity implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private ActivityType type;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private String id;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private ActivityType type;
 
-  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
-  private String displayDescription;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private ActivityState state;
+	private String name;
 
-  public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
-  private String reachedStateDate;
-
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
-  private String lastUpdateDate;
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
-  private String dueDate;
+	private String displayName;
 
-  public static final String JSON_PROPERTY_PRIORITY = "priority";
-  private ActivityPriority priority;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public static final String JSON_PROPERTY_PROCESS_ID = "processId";
-  private String processId;
+	private String description;
 
-  public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
-  private String parentCaseId;
+	public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
 
-  public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
-  private String rootCaseId;
-
-  public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
-  private String rootContainerId;
-
-  public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
-  private String executedBy;
-
-  public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
-  private String executedBySubstitute;
-
-  public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
-  private String actorId;
-
-  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
-  private String assignedId;
-
-  public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
-  private String assignedDate;
-
-  public Activity id(String id) {
-
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * the activity id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the activity id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Activity type(ActivityType type) {
-
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ActivityType getType() {
-    return type;
-  }
-
-  public void setType(ActivityType type) {
-    this.type = type;
-  }
-
-  public Activity name(String name) {
-
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * the activity technical name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the activity technical name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Activity displayName(String displayName) {
-
-    this.displayName = displayName;
-    return this;
-  }
-
-  /**
-   * the human readable activity name
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the human readable activity name")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
-
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
-
-  public Activity description(String description) {
-
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * the activity description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the activity description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public Activity displayDescription(String displayDescription) {
-
-    this.displayDescription = displayDescription;
-    return this;
-  }
-
-  /**
-   * the human readable activity description
-   *
-   * @return displayDescription
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the human readable activity description")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayDescription() {
-    return displayDescription;
-  }
-
-  public void setDisplayDescription(String displayDescription) {
-    this.displayDescription = displayDescription;
-  }
-
-  public Activity state(ActivityState state) {
-
-    this.state = state;
-    return this;
-  }
-
-  /**
-   * Get state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ActivityState getState() {
-    return state;
-  }
-
-  public void setState(ActivityState state) {
-    this.state = state;
-  }
-
-  public Activity reachedStateDate(String reachedStateDate) {
-
-    this.reachedStateDate = reachedStateDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity reached the current state, for
-   * example &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return reachedStateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity reached the current state, for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getReachedStateDate() {
-    return reachedStateDate;
-  }
-
-  public void setReachedStateDate(String reachedStateDate) {
-    this.reachedStateDate = reachedStateDate;
-  }
-
-  public Activity lastUpdateDate(String lastUpdateDate) {
-
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity was last updated, for example
-   * &#39;2014-10-17 16:05:42.626)
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity was last updated, for example '2014-10-17 16:05:42.626)")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
-
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
-
-  public Activity dueDate(String dueDate) {
-
-    this.dueDate = dueDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity is due, for example
-   * &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return dueDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity is due, for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_DUE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDueDate() {
-    return dueDate;
-  }
-
-  public void setDueDate(String dueDate) {
-    this.dueDate = dueDate;
-  }
-
-  public Activity priority(ActivityPriority priority) {
-
-    this.priority = priority;
-    return this;
-  }
-
-  /**
-   * Get priority
-   *
-   * @return priority
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_PRIORITY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ActivityPriority getPriority() {
-    return priority;
-  }
-
-  public void setPriority(ActivityPriority priority) {
-    this.priority = priority;
-  }
-
-  public Activity processId(String processId) {
-
-    this.processId = processId;
-    return this;
-  }
-
-  /**
-   * the process definition id of the process instance which define this activity
-   *
-   * @return processId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "the process definition id of the process instance which define this activity")
-  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessId() {
-    return processId;
-  }
-
-  public void setProcessId(String processId) {
-    this.processId = processId;
-  }
-
-  public Activity parentCaseId(String parentCaseId) {
-
-    this.parentCaseId = parentCaseId;
-    return this;
-  }
-
-  /**
-   * the immediate containing process instance id (long, a.k.a process instance id)
-   *
-   * @return parentCaseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "the immediate containing process instance id (long, a.k.a process instance id)")
-  @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getParentCaseId() {
-    return parentCaseId;
-  }
-
-  public void setParentCaseId(String parentCaseId) {
-    this.parentCaseId = parentCaseId;
-  }
-
-  public Activity rootCaseId(String rootCaseId) {
-
-    this.rootCaseId = rootCaseId;
-    return this;
-  }
-
-  /**
-   * the top/root process instance id (long, a.k.a case id). In case of an event sub process,
-   * &#x60;parentCaseId&#x60; will the id of the process instance called while
-   * &#x60;rootCaseId&#x60; will be the one from the caller process instance
-   *
-   * @return rootCaseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the top/root process instance id (long, a.k.a case id). In case of an event sub process, `parentCaseId` will the id of the process instance called while `rootCaseId` will be the one from the caller process instance")
-  @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRootCaseId() {
-    return rootCaseId;
-  }
-
-  public void setRootCaseId(String rootCaseId) {
-    this.rootCaseId = rootCaseId;
-  }
-
-  public Activity rootContainerId(String rootContainerId) {
-
-    this.rootContainerId = rootContainerId;
-    return this;
-  }
-
-  /**
-   * same as rootCaseId
-   *
-   * @return rootContainerId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "same as rootCaseId")
-  @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRootContainerId() {
-    return rootContainerId;
-  }
-
-  public void setRootContainerId(String rootContainerId) {
-    this.rootContainerId = rootContainerId;
-  }
-
-  public Activity executedBy(String executedBy) {
-
-    this.executedBy = executedBy;
-    return this;
-  }
-
-  /**
-   * the id of the user who performed this activity. The activity has to be a human task otherwise
-   * its value will be 0
-   *
-   * @return executedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the id of the user who performed this activity. The activity has to be a human task otherwise its value will be 0")
-  @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExecutedBy() {
-    return executedBy;
-  }
-
-  public void setExecutedBy(String executedBy) {
-    this.executedBy = executedBy;
-  }
-
-  public Activity executedBySubstitute(String executedBySubstitute) {
-
-    this.executedBySubstitute = executedBySubstitute;
-    return this;
-  }
-
-  /**
-   * the id of the user who did actually performed the activity when it has been done in the name of
-   * someone else. Value is 0 otherwise
-   *
-   * @return executedBySubstitute
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the id of the user who did actually performed the activity when it has been done in the name of someone else. Value is 0 otherwise")
-  @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExecutedBySubstitute() {
-    return executedBySubstitute;
-  }
-
-  public void setExecutedBySubstitute(String executedBySubstitute) {
-    this.executedBySubstitute = executedBySubstitute;
-  }
-
-  public Activity actorId(String actorId) {
-
-    this.actorId = actorId;
-    return this;
-  }
-
-  /**
-   * the id of the actor that can execute this activity, null otherwise
-   *
-   * @return actorId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the id of the actor that can execute this activity, null otherwise")
-  @JsonProperty(JSON_PROPERTY_ACTOR_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getActorId() {
-    return actorId;
-  }
-
-  public void setActorId(String actorId) {
-    this.actorId = actorId;
-  }
-
-  public Activity assignedId(String assignedId) {
-
-    this.assignedId = assignedId;
-    return this;
-  }
-
-  /**
-   * the user id that this activity is assigned to, or 0 if it is unassigned
-   *
-   * @return assignedId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "the user id that this activity is assigned to, or 0 if it is unassigned")
-  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssignedId() {
-    return assignedId;
-  }
-
-  public void setAssignedId(String assignedId) {
-    this.assignedId = assignedId;
-  }
-
-  public Activity assignedDate(String assignedDate) {
-
-    this.assignedDate = assignedDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current activity was assigned, for
-   * example &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return assignedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current activity was assigned, for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssignedDate() {
-    return assignedDate;
-  }
-
-  public void setAssignedDate(String assignedDate) {
-    this.assignedDate = assignedDate;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Activity activity = (Activity) o;
-    return Objects.equals(this.id, activity.id)
-        && Objects.equals(this.type, activity.type)
-        && Objects.equals(this.name, activity.name)
-        && Objects.equals(this.displayName, activity.displayName)
-        && Objects.equals(this.description, activity.description)
-        && Objects.equals(this.displayDescription, activity.displayDescription)
-        && Objects.equals(this.state, activity.state)
-        && Objects.equals(this.reachedStateDate, activity.reachedStateDate)
-        && Objects.equals(this.lastUpdateDate, activity.lastUpdateDate)
-        && Objects.equals(this.dueDate, activity.dueDate)
-        && Objects.equals(this.priority, activity.priority)
-        && Objects.equals(this.processId, activity.processId)
-        && Objects.equals(this.parentCaseId, activity.parentCaseId)
-        && Objects.equals(this.rootCaseId, activity.rootCaseId)
-        && Objects.equals(this.rootContainerId, activity.rootContainerId)
-        && Objects.equals(this.executedBy, activity.executedBy)
-        && Objects.equals(this.executedBySubstitute, activity.executedBySubstitute)
-        && Objects.equals(this.actorId, activity.actorId)
-        && Objects.equals(this.assignedId, activity.assignedId)
-        && Objects.equals(this.assignedDate, activity.assignedDate);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id,
-        type,
-        name,
-        displayName,
-        description,
-        displayDescription,
-        state,
-        reachedStateDate,
-        lastUpdateDate,
-        dueDate,
-        priority,
-        processId,
-        parentCaseId,
-        rootCaseId,
-        rootContainerId,
-        executedBy,
-        executedBySubstitute,
-        actorId,
-        assignedId,
-        assignedDate);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Activity {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    displayDescription: ").append(toIndentedString(displayDescription)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    reachedStateDate: ").append(toIndentedString(reachedStateDate)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
-    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
-    sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
-    sb.append("    parentCaseId: ").append(toIndentedString(parentCaseId)).append("\n");
-    sb.append("    rootCaseId: ").append(toIndentedString(rootCaseId)).append("\n");
-    sb.append("    rootContainerId: ").append(toIndentedString(rootContainerId)).append("\n");
-    sb.append("    executedBy: ").append(toIndentedString(executedBy)).append("\n");
-    sb.append("    executedBySubstitute: ")
-        .append(toIndentedString(executedBySubstitute))
-        .append("\n");
-    sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
-    sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
-    sb.append("    assignedDate: ").append(toIndentedString(assignedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	private String displayDescription;
+
+	public static final String JSON_PROPERTY_STATE = "state";
+
+	private ActivityState state;
+
+	public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
+
+	private String reachedStateDate;
+
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+
+	private String lastUpdateDate;
+
+	public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
+
+	private String dueDate;
+
+	public static final String JSON_PROPERTY_PRIORITY = "priority";
+
+	private ActivityPriority priority;
+
+	public static final String JSON_PROPERTY_PROCESS_ID = "processId";
+
+	private String processId;
+
+	public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
+
+	private String parentCaseId;
+
+	public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
+
+	private String rootCaseId;
+
+	public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
+
+	private String rootContainerId;
+
+	public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
+
+	private String executedBy;
+
+	public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
+
+	private String executedBySubstitute;
+
+	public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
+
+	private String actorId;
+
+	public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+
+	private String assignedId;
+
+	public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
+
+	private String assignedDate;
+
+	public Activity id(String id) {
+
+		this.id = id;
+		return this;
+	}
+
+	/**
+	 * the activity id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the activity id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Activity type(ActivityType type) {
+
+		this.type = type;
+		return this;
+	}
+
+	/**
+	 * Get type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public ActivityType getType() {
+		return type;
+	}
+
+	public void setType(ActivityType type) {
+		this.type = type;
+	}
+
+	public Activity name(String name) {
+
+		this.name = name;
+		return this;
+	}
+
+	/**
+	 * the activity technical name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the activity technical name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Activity displayName(String displayName) {
+
+		this.displayName = displayName;
+		return this;
+	}
+
+	/**
+	 * the human readable activity name
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the human readable activity name")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	public Activity description(String description) {
+
+		this.description = description;
+		return this;
+	}
+
+	/**
+	 * the activity description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the activity description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Activity displayDescription(String displayDescription) {
+
+		this.displayDescription = displayDescription;
+		return this;
+	}
+
+	/**
+	 * the human readable activity description
+	 * @return displayDescription
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the human readable activity description")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayDescription() {
+		return displayDescription;
+	}
+
+	public void setDisplayDescription(String displayDescription) {
+		this.displayDescription = displayDescription;
+	}
+
+	public Activity state(ActivityState state) {
+
+		this.state = state;
+		return this;
+	}
+
+	/**
+	 * Get state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public ActivityState getState() {
+		return state;
+	}
+
+	public void setState(ActivityState state) {
+		this.state = state;
+	}
+
+	public Activity reachedStateDate(String reachedStateDate) {
+
+		this.reachedStateDate = reachedStateDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity reached the current
+	 * state, for example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return reachedStateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity reached the current state, for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getReachedStateDate() {
+		return reachedStateDate;
+	}
+
+	public void setReachedStateDate(String reachedStateDate) {
+		this.reachedStateDate = reachedStateDate;
+	}
+
+	public Activity lastUpdateDate(String lastUpdateDate) {
+
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity was last updated,
+	 * for example &#39;2014-10-17 16:05:42.626)
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity was last updated, for example '2014-10-17 16:05:42.626)")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public Activity dueDate(String dueDate) {
+
+		this.dueDate = dueDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity is due, for example
+	 * &#39;2014-10-17 16:05:42.626&#39;
+	 * @return dueDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this activity is due, for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_DUE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public Activity priority(ActivityPriority priority) {
+
+		this.priority = priority;
+		return this;
+	}
+
+	/**
+	 * Get priority
+	 * @return priority
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_PRIORITY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public ActivityPriority getPriority() {
+		return priority;
+	}
+
+	public void setPriority(ActivityPriority priority) {
+		this.priority = priority;
+	}
+
+	public Activity processId(String processId) {
+
+		this.processId = processId;
+		return this;
+	}
+
+	/**
+	 * the process definition id of the process instance which define this activity
+	 * @return processId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the process definition id of the process instance which define this activity")
+	@JsonProperty(JSON_PROPERTY_PROCESS_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessId() {
+		return processId;
+	}
+
+	public void setProcessId(String processId) {
+		this.processId = processId;
+	}
+
+	public Activity parentCaseId(String parentCaseId) {
+
+		this.parentCaseId = parentCaseId;
+		return this;
+	}
+
+	/**
+	 * the immediate containing process instance id (long, a.k.a process instance id)
+	 * @return parentCaseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the immediate containing process instance id (long, a.k.a process instance id)")
+	@JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getParentCaseId() {
+		return parentCaseId;
+	}
+
+	public void setParentCaseId(String parentCaseId) {
+		this.parentCaseId = parentCaseId;
+	}
+
+	public Activity rootCaseId(String rootCaseId) {
+
+		this.rootCaseId = rootCaseId;
+		return this;
+	}
+
+	/**
+	 * the top/root process instance id (long, a.k.a case id). In case of an event sub
+	 * process, &#x60;parentCaseId&#x60; will the id of the process instance called while
+	 * &#x60;rootCaseId&#x60; will be the one from the caller process instance
+	 * @return rootCaseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the top/root process instance id (long, a.k.a case id). In case of an event sub process, `parentCaseId` will the id of the process instance called while `rootCaseId` will be the one from the caller process instance")
+	@JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRootCaseId() {
+		return rootCaseId;
+	}
+
+	public void setRootCaseId(String rootCaseId) {
+		this.rootCaseId = rootCaseId;
+	}
+
+	public Activity rootContainerId(String rootContainerId) {
+
+		this.rootContainerId = rootContainerId;
+		return this;
+	}
+
+	/**
+	 * same as rootCaseId
+	 * @return rootContainerId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "same as rootCaseId")
+	@JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRootContainerId() {
+		return rootContainerId;
+	}
+
+	public void setRootContainerId(String rootContainerId) {
+		this.rootContainerId = rootContainerId;
+	}
+
+	public Activity executedBy(String executedBy) {
+
+		this.executedBy = executedBy;
+		return this;
+	}
+
+	/**
+	 * the id of the user who performed this activity. The activity has to be a human task
+	 * otherwise its value will be 0
+	 * @return executedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the id of the user who performed this activity. The activity has to be a human task otherwise its value will be 0")
+	@JsonProperty(JSON_PROPERTY_EXECUTED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExecutedBy() {
+		return executedBy;
+	}
+
+	public void setExecutedBy(String executedBy) {
+		this.executedBy = executedBy;
+	}
+
+	public Activity executedBySubstitute(String executedBySubstitute) {
+
+		this.executedBySubstitute = executedBySubstitute;
+		return this;
+	}
+
+	/**
+	 * the id of the user who did actually performed the activity when it has been done in
+	 * the name of someone else. Value is 0 otherwise
+	 * @return executedBySubstitute
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the id of the user who did actually performed the activity when it has been done in the name of someone else. Value is 0 otherwise")
+	@JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExecutedBySubstitute() {
+		return executedBySubstitute;
+	}
+
+	public void setExecutedBySubstitute(String executedBySubstitute) {
+		this.executedBySubstitute = executedBySubstitute;
+	}
+
+	public Activity actorId(String actorId) {
+
+		this.actorId = actorId;
+		return this;
+	}
+
+	/**
+	 * the id of the actor that can execute this activity, null otherwise
+	 * @return actorId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the id of the actor that can execute this activity, null otherwise")
+	@JsonProperty(JSON_PROPERTY_ACTOR_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getActorId() {
+		return actorId;
+	}
+
+	public void setActorId(String actorId) {
+		this.actorId = actorId;
+	}
+
+	public Activity assignedId(String assignedId) {
+
+		this.assignedId = assignedId;
+		return this;
+	}
+
+	/**
+	 * the user id that this activity is assigned to, or 0 if it is unassigned
+	 * @return assignedId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the user id that this activity is assigned to, or 0 if it is unassigned")
+	@JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAssignedId() {
+		return assignedId;
+	}
+
+	public void setAssignedId(String assignedId) {
+		this.assignedId = assignedId;
+	}
+
+	public Activity assignedDate(String assignedDate) {
+
+		this.assignedDate = assignedDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current activity was
+	 * assigned, for example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return assignedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current activity was assigned, for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAssignedDate() {
+		return assignedDate;
+	}
+
+	public void setAssignedDate(String assignedDate) {
+		this.assignedDate = assignedDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Activity activity = (Activity) o;
+		return Objects.equals(this.id, activity.id) && Objects.equals(this.type, activity.type)
+				&& Objects.equals(this.name, activity.name) && Objects.equals(this.displayName, activity.displayName)
+				&& Objects.equals(this.description, activity.description)
+				&& Objects.equals(this.displayDescription, activity.displayDescription)
+				&& Objects.equals(this.state, activity.state)
+				&& Objects.equals(this.reachedStateDate, activity.reachedStateDate)
+				&& Objects.equals(this.lastUpdateDate, activity.lastUpdateDate)
+				&& Objects.equals(this.dueDate, activity.dueDate) && Objects.equals(this.priority, activity.priority)
+				&& Objects.equals(this.processId, activity.processId)
+				&& Objects.equals(this.parentCaseId, activity.parentCaseId)
+				&& Objects.equals(this.rootCaseId, activity.rootCaseId)
+				&& Objects.equals(this.rootContainerId, activity.rootContainerId)
+				&& Objects.equals(this.executedBy, activity.executedBy)
+				&& Objects.equals(this.executedBySubstitute, activity.executedBySubstitute)
+				&& Objects.equals(this.actorId, activity.actorId)
+				&& Objects.equals(this.assignedId, activity.assignedId)
+				&& Objects.equals(this.assignedDate, activity.assignedDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, type, name, displayName, description, displayDescription, state, reachedStateDate,
+				lastUpdateDate, dueDate, priority, processId, parentCaseId, rootCaseId, rootContainerId, executedBy,
+				executedBySubstitute, actorId, assignedId, assignedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Activity {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    displayDescription: ").append(toIndentedString(displayDescription)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    reachedStateDate: ").append(toIndentedString(reachedStateDate)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
+		sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+		sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
+		sb.append("    parentCaseId: ").append(toIndentedString(parentCaseId)).append("\n");
+		sb.append("    rootCaseId: ").append(toIndentedString(rootCaseId)).append("\n");
+		sb.append("    rootContainerId: ").append(toIndentedString(rootContainerId)).append("\n");
+		sb.append("    executedBy: ").append(toIndentedString(executedBy)).append("\n");
+		sb.append("    executedBySubstitute: ").append(toIndentedString(executedBySubstitute)).append("\n");
+		sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
+		sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
+		sb.append("    assignedDate: ").append(toIndentedString(assignedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

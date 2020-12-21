@@ -23,104 +23,109 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ThemeRestoreRequest */
-@JsonPropertyOrder({ThemeRestoreRequest.JSON_PROPERTY_TYPE})
+@JsonPropertyOrder({ ThemeRestoreRequest.JSON_PROPERTY_TYPE })
 @JsonTypeName("ThemeRestoreRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ThemeRestoreRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  /** theme type */
-  public enum TypeEnum {
-    PORTAL("portal"),
+	private static final long serialVersionUID = 1L;
 
-    MOBILE("mobile");
+	/** theme type */
+	public enum TypeEnum {
 
-    private String value;
+		PORTAL("portal"),
 
-    TypeEnum(String value) {
-      this.value = value;
-    }
+		MOBILE("mobile");
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+		private String value;
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+		TypeEnum(String value) {
+			this.value = value;
+		}
 
-    @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private TypeEnum type;
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-  public ThemeRestoreRequest type(TypeEnum type) {
+		@JsonCreator
+		public static TypeEnum fromValue(String value) {
+			for (TypeEnum b : TypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
 
-    this.type = type;
-    return this;
-  }
+	}
 
-  /**
-   * theme type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "theme type")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TypeEnum getType() {
-    return type;
-  }
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
+	private TypeEnum type;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ThemeRestoreRequest themeRestoreRequest = (ThemeRestoreRequest) o;
-    return Objects.equals(this.type, themeRestoreRequest.type);
-  }
+	public ThemeRestoreRequest type(TypeEnum type) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(type);
-  }
+		this.type = type;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ThemeRestoreRequest {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * theme type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "theme type")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public TypeEnum getType() {
+		return type;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setType(TypeEnum type) {
+		this.type = type;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ThemeRestoreRequest themeRestoreRequest = (ThemeRestoreRequest) o;
+		return Objects.equals(this.type, themeRestoreRequest.type);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(type);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ThemeRestoreRequest {\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

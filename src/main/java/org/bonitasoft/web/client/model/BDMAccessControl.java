@@ -21,192 +21,189 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** BDMAccessControl */
-@JsonPropertyOrder({
-  BDMAccessControl.JSON_PROPERTY_ID,
-  BDMAccessControl.JSON_PROPERTY_NAME,
-  BDMAccessControl.JSON_PROPERTY_STATE,
-  BDMAccessControl.JSON_PROPERTY_LAST_UPDATED_BY,
-  BDMAccessControl.JSON_PROPERTY_LAST_UPDATE_DATE
-})
+@JsonPropertyOrder({ BDMAccessControl.JSON_PROPERTY_ID, BDMAccessControl.JSON_PROPERTY_NAME,
+		BDMAccessControl.JSON_PROPERTY_STATE, BDMAccessControl.JSON_PROPERTY_LAST_UPDATED_BY,
+		BDMAccessControl.JSON_PROPERTY_LAST_UPDATE_DATE })
 @JsonTypeName("BDMAccessControl")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BDMAccessControl implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private TenantResourceState state;
+	private String id;
 
-  public static final String JSON_PROPERTY_LAST_UPDATED_BY = "lastUpdatedBy";
-  private String lastUpdatedBy;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
-  private String lastUpdateDate;
+	private String name;
 
-  public BDMAccessControl id(String id) {
+	public static final String JSON_PROPERTY_STATE = "state";
 
-    this.id = id;
-    return this;
-  }
+	private TenantResourceState state;
 
-  /**
-   * Id of the BDM access control
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Id of the BDM access control")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	public static final String JSON_PROPERTY_LAST_UPDATED_BY = "lastUpdatedBy";
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	private String lastUpdatedBy;
 
-  public BDMAccessControl name(String name) {
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
 
-    this.name = name;
-    return this;
-  }
+	private String lastUpdateDate;
 
-  /**
-   * BDM access control name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "BDM access control name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public BDMAccessControl id(String id) {
 
-  public void setName(String name) {
-    this.name = name;
-  }
+		this.id = id;
+		return this;
+	}
 
-  public BDMAccessControl state(TenantResourceState state) {
+	/**
+	 * Id of the BDM access control
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Id of the BDM access control")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-    this.state = state;
-    return this;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  /**
-   * Get state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TenantResourceState getState() {
-    return state;
-  }
+	public BDMAccessControl name(String name) {
 
-  public void setState(TenantResourceState state) {
-    this.state = state;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public BDMAccessControl lastUpdatedBy(String lastUpdatedBy) {
+	/**
+	 * BDM access control name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "BDM access control name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-    this.lastUpdatedBy = lastUpdatedBy;
-    return this;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * If &#x60;lastUpdatedBy: -1&#x60; it means that the access control were last installed or
-   * updated by tenant_technical_user.
-   *
-   * @return lastUpdatedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "If `lastUpdatedBy: -1` it means that the access control were last installed or updated by tenant_technical_user.")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdatedBy() {
-    return lastUpdatedBy;
-  }
+	public BDMAccessControl state(TenantResourceState state) {
 
-  public void setLastUpdatedBy(String lastUpdatedBy) {
-    this.lastUpdatedBy = lastUpdatedBy;
-  }
+		this.state = state;
+		return this;
+	}
 
-  public BDMAccessControl lastUpdateDate(String lastUpdateDate) {
+	/**
+	 * Get state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public TenantResourceState getState() {
+		return state;
+	}
 
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
+	public void setState(TenantResourceState state) {
+		this.state = state;
+	}
 
-  /**
-   * Last date when the access control were installed or updated.
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Last date when the access control were installed or updated.")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
+	public BDMAccessControl lastUpdatedBy(String lastUpdatedBy) {
 
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
+		this.lastUpdatedBy = lastUpdatedBy;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    BDMAccessControl bdMAccessControl = (BDMAccessControl) o;
-    return Objects.equals(this.id, bdMAccessControl.id)
-        && Objects.equals(this.name, bdMAccessControl.name)
-        && Objects.equals(this.state, bdMAccessControl.state)
-        && Objects.equals(this.lastUpdatedBy, bdMAccessControl.lastUpdatedBy)
-        && Objects.equals(this.lastUpdateDate, bdMAccessControl.lastUpdateDate);
-  }
+	/**
+	 * If &#x60;lastUpdatedBy: -1&#x60; it means that the access control were last
+	 * installed or updated by tenant_technical_user.
+	 * @return lastUpdatedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "If `lastUpdatedBy: -1` it means that the access control were last installed or updated by tenant_technical_user.")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdatedBy() {
+		return lastUpdatedBy;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, state, lastUpdatedBy, lastUpdateDate);
-  }
+	public void setLastUpdatedBy(String lastUpdatedBy) {
+		this.lastUpdatedBy = lastUpdatedBy;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class BDMAccessControl {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    lastUpdatedBy: ").append(toIndentedString(lastUpdatedBy)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public BDMAccessControl lastUpdateDate(String lastUpdateDate) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * Last date when the access control were installed or updated.
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Last date when the access control were installed or updated.")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		BDMAccessControl bdMAccessControl = (BDMAccessControl) o;
+		return Objects.equals(this.id, bdMAccessControl.id) && Objects.equals(this.name, bdMAccessControl.name)
+				&& Objects.equals(this.state, bdMAccessControl.state)
+				&& Objects.equals(this.lastUpdatedBy, bdMAccessControl.lastUpdatedBy)
+				&& Objects.equals(this.lastUpdateDate, bdMAccessControl.lastUpdateDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, state, lastUpdatedBy, lastUpdateDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class BDMAccessControl {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    lastUpdatedBy: ").append(toIndentedString(lastUpdatedBy)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

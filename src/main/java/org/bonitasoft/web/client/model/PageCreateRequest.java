@@ -21,71 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** PageCreateRequest */
-@JsonPropertyOrder({PageCreateRequest.JSON_PROPERTY_PAGE_ZIP})
+@JsonPropertyOrder({ PageCreateRequest.JSON_PROPERTY_PAGE_ZIP })
 @JsonTypeName("PageCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PageCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PAGE_ZIP = "pageZip";
-  private String pageZip;
+	private static final long serialVersionUID = 1L;
 
-  public PageCreateRequest pageZip(String pageZip) {
+	public static final String JSON_PROPERTY_PAGE_ZIP = "pageZip";
 
-    this.pageZip = pageZip;
-    return this;
-  }
+	private String pageZip;
 
-  /**
-   * Zip name as named in the temp folder after upload
-   *
-   * @return pageZip
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Zip name as named in the temp folder after upload")
-  @JsonProperty(JSON_PROPERTY_PAGE_ZIP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPageZip() {
-    return pageZip;
-  }
+	public PageCreateRequest pageZip(String pageZip) {
 
-  public void setPageZip(String pageZip) {
-    this.pageZip = pageZip;
-  }
+		this.pageZip = pageZip;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PageCreateRequest pageCreateRequest = (PageCreateRequest) o;
-    return Objects.equals(this.pageZip, pageCreateRequest.pageZip);
-  }
+	/**
+	 * Zip name as named in the temp folder after upload
+	 * @return pageZip
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Zip name as named in the temp folder after upload")
+	@JsonProperty(JSON_PROPERTY_PAGE_ZIP)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPageZip() {
+		return pageZip;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(pageZip);
-  }
+	public void setPageZip(String pageZip) {
+		this.pageZip = pageZip;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PageCreateRequest {\n");
-    sb.append("    pageZip: ").append(toIndentedString(pageZip)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		PageCreateRequest pageCreateRequest = (PageCreateRequest) o;
+		return Objects.equals(this.pageZip, pageCreateRequest.pageZip);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(pageZip);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class PageCreateRequest {\n");
+		sb.append("    pageZip: ").append(toIndentedString(pageZip)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

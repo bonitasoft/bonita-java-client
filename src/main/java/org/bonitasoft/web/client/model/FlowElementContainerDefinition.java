@@ -25,533 +25,500 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Allows to access all flow elements (activities, gateways, events and transitions) of a process or
- * sub-process.
+ * Allows to access all flow elements (activities, gateways, events and transitions) of a
+ * process or sub-process.
  */
 @ApiModel(
-    description =
-        "Allows to access all flow elements (activities, gateways, events and transitions) of a process or sub-process.")
-@JsonPropertyOrder({
-  FlowElementContainerDefinition.JSON_PROPERTY_ACTIVITIES,
-  FlowElementContainerDefinition.JSON_PROPERTY_TRANSITIONS,
-  FlowElementContainerDefinition.JSON_PROPERTY_GATEWAYS_LIST,
-  FlowElementContainerDefinition.JSON_PROPERTY_START_EVENTS,
-  FlowElementContainerDefinition.JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS,
-  FlowElementContainerDefinition.JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS,
-  FlowElementContainerDefinition.JSON_PROPERTY_END_EVENTS,
-  FlowElementContainerDefinition.JSON_PROPERTY_DATA_DEFINITIONS,
-  FlowElementContainerDefinition.JSON_PROPERTY_DOCUMENT_DEFINITIONS,
-  FlowElementContainerDefinition.JSON_PROPERTY_CONNECTORS,
-  FlowElementContainerDefinition.JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS,
-  FlowElementContainerDefinition.JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS
-})
+		description = "Allows to access all flow elements (activities, gateways, events and transitions) of a process or sub-process.")
+@JsonPropertyOrder({ FlowElementContainerDefinition.JSON_PROPERTY_ACTIVITIES,
+		FlowElementContainerDefinition.JSON_PROPERTY_TRANSITIONS,
+		FlowElementContainerDefinition.JSON_PROPERTY_GATEWAYS_LIST,
+		FlowElementContainerDefinition.JSON_PROPERTY_START_EVENTS,
+		FlowElementContainerDefinition.JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS,
+		FlowElementContainerDefinition.JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS,
+		FlowElementContainerDefinition.JSON_PROPERTY_END_EVENTS,
+		FlowElementContainerDefinition.JSON_PROPERTY_DATA_DEFINITIONS,
+		FlowElementContainerDefinition.JSON_PROPERTY_DOCUMENT_DEFINITIONS,
+		FlowElementContainerDefinition.JSON_PROPERTY_CONNECTORS,
+		FlowElementContainerDefinition.JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS,
+		FlowElementContainerDefinition.JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS })
 @JsonTypeName("FlowElementContainerDefinition")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlowElementContainerDefinition implements Serializable {
-  private static final long serialVersionUID = 1L;
-
-  public static final String JSON_PROPERTY_ACTIVITIES = "activities";
-  private List<Map<String, Object>> activities = null;
-
-  public static final String JSON_PROPERTY_TRANSITIONS = "transitions";
-  private List<Map<String, Object>> transitions = null;
-
-  public static final String JSON_PROPERTY_GATEWAYS_LIST = "gatewaysList";
-  private List<Map<String, Object>> gatewaysList = null;
-
-  public static final String JSON_PROPERTY_START_EVENTS = "startEvents";
-  private List<Map<String, Object>> startEvents = null;
-
-  public static final String JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS = "intermediateCatchEvents";
-  private List<Map<String, Object>> intermediateCatchEvents = null;
-
-  public static final String JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS = "intermediateThrowEvents";
-  private List<Map<String, Object>> intermediateThrowEvents = null;
-
-  public static final String JSON_PROPERTY_END_EVENTS = "endEvents";
-  private List<Map<String, Object>> endEvents = null;
-
-  public static final String JSON_PROPERTY_DATA_DEFINITIONS = "dataDefinitions";
-  private List<Map<String, Object>> dataDefinitions = null;
-
-  public static final String JSON_PROPERTY_DOCUMENT_DEFINITIONS = "documentDefinitions";
-  private List<Map<String, Object>> documentDefinitions = null;
-
-  public static final String JSON_PROPERTY_CONNECTORS = "connectors";
-  private List<Map<String, Object>> connectors = null;
-
-  public static final String JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS = "businessDataDefinitions";
-  private List<Map<String, Object>> businessDataDefinitions = null;
-
-  public static final String JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS = "documentListDefinitions";
-  private List<Map<String, Object>> documentListDefinitions = null;
-
-  public FlowElementContainerDefinition activities(List<Map<String, Object>> activities) {
-
-    this.activities = activities;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addActivitiesItem(Map<String, Object> activitiesItem) {
-    if (this.activities == null) {
-      this.activities = new ArrayList<>();
-    }
-    this.activities.add(activitiesItem);
-    return this;
-  }
-
-  /**
-   * Get activities
-   *
-   * @return activities
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ACTIVITIES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getActivities() {
-    return activities;
-  }
-
-  public void setActivities(List<Map<String, Object>> activities) {
-    this.activities = activities;
-  }
-
-  public FlowElementContainerDefinition transitions(List<Map<String, Object>> transitions) {
-
-    this.transitions = transitions;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addTransitionsItem(Map<String, Object> transitionsItem) {
-    if (this.transitions == null) {
-      this.transitions = new ArrayList<>();
-    }
-    this.transitions.add(transitionsItem);
-    return this;
-  }
-
-  /**
-   * Get transitions
-   *
-   * @return transitions
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_TRANSITIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getTransitions() {
-    return transitions;
-  }
-
-  public void setTransitions(List<Map<String, Object>> transitions) {
-    this.transitions = transitions;
-  }
-
-  public FlowElementContainerDefinition gatewaysList(List<Map<String, Object>> gatewaysList) {
-
-    this.gatewaysList = gatewaysList;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addGatewaysListItem(Map<String, Object> gatewaysListItem) {
-    if (this.gatewaysList == null) {
-      this.gatewaysList = new ArrayList<>();
-    }
-    this.gatewaysList.add(gatewaysListItem);
-    return this;
-  }
-
-  /**
-   * Get gatewaysList
-   *
-   * @return gatewaysList
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_GATEWAYS_LIST)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getGatewaysList() {
-    return gatewaysList;
-  }
-
-  public void setGatewaysList(List<Map<String, Object>> gatewaysList) {
-    this.gatewaysList = gatewaysList;
-  }
-
-  public FlowElementContainerDefinition startEvents(List<Map<String, Object>> startEvents) {
-
-    this.startEvents = startEvents;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addStartEventsItem(Map<String, Object> startEventsItem) {
-    if (this.startEvents == null) {
-      this.startEvents = new ArrayList<>();
-    }
-    this.startEvents.add(startEventsItem);
-    return this;
-  }
-
-  /**
-   * Get startEvents
-   *
-   * @return startEvents
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_START_EVENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getStartEvents() {
-    return startEvents;
-  }
-
-  public void setStartEvents(List<Map<String, Object>> startEvents) {
-    this.startEvents = startEvents;
-  }
-
-  public FlowElementContainerDefinition intermediateCatchEvents(
-      List<Map<String, Object>> intermediateCatchEvents) {
-
-    this.intermediateCatchEvents = intermediateCatchEvents;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addIntermediateCatchEventsItem(
-      Map<String, Object> intermediateCatchEventsItem) {
-    if (this.intermediateCatchEvents == null) {
-      this.intermediateCatchEvents = new ArrayList<>();
-    }
-    this.intermediateCatchEvents.add(intermediateCatchEventsItem);
-    return this;
-  }
-
-  /**
-   * Get intermediateCatchEvents
-   *
-   * @return intermediateCatchEvents
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getIntermediateCatchEvents() {
-    return intermediateCatchEvents;
-  }
-
-  public void setIntermediateCatchEvents(List<Map<String, Object>> intermediateCatchEvents) {
-    this.intermediateCatchEvents = intermediateCatchEvents;
-  }
-
-  public FlowElementContainerDefinition intermediateThrowEvents(
-      List<Map<String, Object>> intermediateThrowEvents) {
-
-    this.intermediateThrowEvents = intermediateThrowEvents;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addIntermediateThrowEventsItem(
-      Map<String, Object> intermediateThrowEventsItem) {
-    if (this.intermediateThrowEvents == null) {
-      this.intermediateThrowEvents = new ArrayList<>();
-    }
-    this.intermediateThrowEvents.add(intermediateThrowEventsItem);
-    return this;
-  }
-
-  /**
-   * Get intermediateThrowEvents
-   *
-   * @return intermediateThrowEvents
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getIntermediateThrowEvents() {
-    return intermediateThrowEvents;
-  }
-
-  public void setIntermediateThrowEvents(List<Map<String, Object>> intermediateThrowEvents) {
-    this.intermediateThrowEvents = intermediateThrowEvents;
-  }
-
-  public FlowElementContainerDefinition endEvents(List<Map<String, Object>> endEvents) {
-
-    this.endEvents = endEvents;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addEndEventsItem(Map<String, Object> endEventsItem) {
-    if (this.endEvents == null) {
-      this.endEvents = new ArrayList<>();
-    }
-    this.endEvents.add(endEventsItem);
-    return this;
-  }
-
-  /**
-   * Get endEvents
-   *
-   * @return endEvents
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_END_EVENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getEndEvents() {
-    return endEvents;
-  }
-
-  public void setEndEvents(List<Map<String, Object>> endEvents) {
-    this.endEvents = endEvents;
-  }
-
-  public FlowElementContainerDefinition dataDefinitions(List<Map<String, Object>> dataDefinitions) {
-
-    this.dataDefinitions = dataDefinitions;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addDataDefinitionsItem(
-      Map<String, Object> dataDefinitionsItem) {
-    if (this.dataDefinitions == null) {
-      this.dataDefinitions = new ArrayList<>();
-    }
-    this.dataDefinitions.add(dataDefinitionsItem);
-    return this;
-  }
-
-  /**
-   * Get dataDefinitions
-   *
-   * @return dataDefinitions
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DATA_DEFINITIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getDataDefinitions() {
-    return dataDefinitions;
-  }
-
-  public void setDataDefinitions(List<Map<String, Object>> dataDefinitions) {
-    this.dataDefinitions = dataDefinitions;
-  }
-
-  public FlowElementContainerDefinition documentDefinitions(
-      List<Map<String, Object>> documentDefinitions) {
-
-    this.documentDefinitions = documentDefinitions;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addDocumentDefinitionsItem(
-      Map<String, Object> documentDefinitionsItem) {
-    if (this.documentDefinitions == null) {
-      this.documentDefinitions = new ArrayList<>();
-    }
-    this.documentDefinitions.add(documentDefinitionsItem);
-    return this;
-  }
-
-  /**
-   * Get documentDefinitions
-   *
-   * @return documentDefinitions
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DOCUMENT_DEFINITIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getDocumentDefinitions() {
-    return documentDefinitions;
-  }
-
-  public void setDocumentDefinitions(List<Map<String, Object>> documentDefinitions) {
-    this.documentDefinitions = documentDefinitions;
-  }
-
-  public FlowElementContainerDefinition connectors(List<Map<String, Object>> connectors) {
-
-    this.connectors = connectors;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addConnectorsItem(Map<String, Object> connectorsItem) {
-    if (this.connectors == null) {
-      this.connectors = new ArrayList<>();
-    }
-    this.connectors.add(connectorsItem);
-    return this;
-  }
-
-  /**
-   * Get connectors
-   *
-   * @return connectors
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_CONNECTORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getConnectors() {
-    return connectors;
-  }
-
-  public void setConnectors(List<Map<String, Object>> connectors) {
-    this.connectors = connectors;
-  }
-
-  public FlowElementContainerDefinition businessDataDefinitions(
-      List<Map<String, Object>> businessDataDefinitions) {
-
-    this.businessDataDefinitions = businessDataDefinitions;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addBusinessDataDefinitionsItem(
-      Map<String, Object> businessDataDefinitionsItem) {
-    if (this.businessDataDefinitions == null) {
-      this.businessDataDefinitions = new ArrayList<>();
-    }
-    this.businessDataDefinitions.add(businessDataDefinitionsItem);
-    return this;
-  }
-
-  /**
-   * Get businessDataDefinitions
-   *
-   * @return businessDataDefinitions
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getBusinessDataDefinitions() {
-    return businessDataDefinitions;
-  }
-
-  public void setBusinessDataDefinitions(List<Map<String, Object>> businessDataDefinitions) {
-    this.businessDataDefinitions = businessDataDefinitions;
-  }
-
-  public FlowElementContainerDefinition documentListDefinitions(
-      List<Map<String, Object>> documentListDefinitions) {
-
-    this.documentListDefinitions = documentListDefinitions;
-    return this;
-  }
-
-  public FlowElementContainerDefinition addDocumentListDefinitionsItem(
-      Map<String, Object> documentListDefinitionsItem) {
-    if (this.documentListDefinitions == null) {
-      this.documentListDefinitions = new ArrayList<>();
-    }
-    this.documentListDefinitions.add(documentListDefinitionsItem);
-    return this;
-  }
-
-  /**
-   * Get documentListDefinitions
-   *
-   * @return documentListDefinitions
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getDocumentListDefinitions() {
-    return documentListDefinitions;
-  }
-
-  public void setDocumentListDefinitions(List<Map<String, Object>> documentListDefinitions) {
-    this.documentListDefinitions = documentListDefinitions;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    FlowElementContainerDefinition flowElementContainerDefinition =
-        (FlowElementContainerDefinition) o;
-    return Objects.equals(this.activities, flowElementContainerDefinition.activities)
-        && Objects.equals(this.transitions, flowElementContainerDefinition.transitions)
-        && Objects.equals(this.gatewaysList, flowElementContainerDefinition.gatewaysList)
-        && Objects.equals(this.startEvents, flowElementContainerDefinition.startEvents)
-        && Objects.equals(
-            this.intermediateCatchEvents, flowElementContainerDefinition.intermediateCatchEvents)
-        && Objects.equals(
-            this.intermediateThrowEvents, flowElementContainerDefinition.intermediateThrowEvents)
-        && Objects.equals(this.endEvents, flowElementContainerDefinition.endEvents)
-        && Objects.equals(this.dataDefinitions, flowElementContainerDefinition.dataDefinitions)
-        && Objects.equals(
-            this.documentDefinitions, flowElementContainerDefinition.documentDefinitions)
-        && Objects.equals(this.connectors, flowElementContainerDefinition.connectors)
-        && Objects.equals(
-            this.businessDataDefinitions, flowElementContainerDefinition.businessDataDefinitions)
-        && Objects.equals(
-            this.documentListDefinitions, flowElementContainerDefinition.documentListDefinitions);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        activities,
-        transitions,
-        gatewaysList,
-        startEvents,
-        intermediateCatchEvents,
-        intermediateThrowEvents,
-        endEvents,
-        dataDefinitions,
-        documentDefinitions,
-        connectors,
-        businessDataDefinitions,
-        documentListDefinitions);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FlowElementContainerDefinition {\n");
-    sb.append("    activities: ").append(toIndentedString(activities)).append("\n");
-    sb.append("    transitions: ").append(toIndentedString(transitions)).append("\n");
-    sb.append("    gatewaysList: ").append(toIndentedString(gatewaysList)).append("\n");
-    sb.append("    startEvents: ").append(toIndentedString(startEvents)).append("\n");
-    sb.append("    intermediateCatchEvents: ")
-        .append(toIndentedString(intermediateCatchEvents))
-        .append("\n");
-    sb.append("    intermediateThrowEvents: ")
-        .append(toIndentedString(intermediateThrowEvents))
-        .append("\n");
-    sb.append("    endEvents: ").append(toIndentedString(endEvents)).append("\n");
-    sb.append("    dataDefinitions: ").append(toIndentedString(dataDefinitions)).append("\n");
-    sb.append("    documentDefinitions: ")
-        .append(toIndentedString(documentDefinitions))
-        .append("\n");
-    sb.append("    connectors: ").append(toIndentedString(connectors)).append("\n");
-    sb.append("    businessDataDefinitions: ")
-        .append(toIndentedString(businessDataDefinitions))
-        .append("\n");
-    sb.append("    documentListDefinitions: ")
-        .append(toIndentedString(documentListDefinitions))
-        .append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+	private static final long serialVersionUID = 1L;
+
+	public static final String JSON_PROPERTY_ACTIVITIES = "activities";
+
+	private List<Map<String, Object>> activities = null;
+
+	public static final String JSON_PROPERTY_TRANSITIONS = "transitions";
+
+	private List<Map<String, Object>> transitions = null;
+
+	public static final String JSON_PROPERTY_GATEWAYS_LIST = "gatewaysList";
+
+	private List<Map<String, Object>> gatewaysList = null;
+
+	public static final String JSON_PROPERTY_START_EVENTS = "startEvents";
+
+	private List<Map<String, Object>> startEvents = null;
+
+	public static final String JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS = "intermediateCatchEvents";
+
+	private List<Map<String, Object>> intermediateCatchEvents = null;
+
+	public static final String JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS = "intermediateThrowEvents";
+
+	private List<Map<String, Object>> intermediateThrowEvents = null;
+
+	public static final String JSON_PROPERTY_END_EVENTS = "endEvents";
+
+	private List<Map<String, Object>> endEvents = null;
+
+	public static final String JSON_PROPERTY_DATA_DEFINITIONS = "dataDefinitions";
+
+	private List<Map<String, Object>> dataDefinitions = null;
+
+	public static final String JSON_PROPERTY_DOCUMENT_DEFINITIONS = "documentDefinitions";
+
+	private List<Map<String, Object>> documentDefinitions = null;
+
+	public static final String JSON_PROPERTY_CONNECTORS = "connectors";
+
+	private List<Map<String, Object>> connectors = null;
+
+	public static final String JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS = "businessDataDefinitions";
+
+	private List<Map<String, Object>> businessDataDefinitions = null;
+
+	public static final String JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS = "documentListDefinitions";
+
+	private List<Map<String, Object>> documentListDefinitions = null;
+
+	public FlowElementContainerDefinition activities(List<Map<String, Object>> activities) {
+
+		this.activities = activities;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addActivitiesItem(Map<String, Object> activitiesItem) {
+		if (this.activities == null) {
+			this.activities = new ArrayList<>();
+		}
+		this.activities.add(activitiesItem);
+		return this;
+	}
+
+	/**
+	 * Get activities
+	 * @return activities
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_ACTIVITIES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Map<String, Object>> activities) {
+		this.activities = activities;
+	}
+
+	public FlowElementContainerDefinition transitions(List<Map<String, Object>> transitions) {
+
+		this.transitions = transitions;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addTransitionsItem(Map<String, Object> transitionsItem) {
+		if (this.transitions == null) {
+			this.transitions = new ArrayList<>();
+		}
+		this.transitions.add(transitionsItem);
+		return this;
+	}
+
+	/**
+	 * Get transitions
+	 * @return transitions
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_TRANSITIONS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getTransitions() {
+		return transitions;
+	}
+
+	public void setTransitions(List<Map<String, Object>> transitions) {
+		this.transitions = transitions;
+	}
+
+	public FlowElementContainerDefinition gatewaysList(List<Map<String, Object>> gatewaysList) {
+
+		this.gatewaysList = gatewaysList;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addGatewaysListItem(Map<String, Object> gatewaysListItem) {
+		if (this.gatewaysList == null) {
+			this.gatewaysList = new ArrayList<>();
+		}
+		this.gatewaysList.add(gatewaysListItem);
+		return this;
+	}
+
+	/**
+	 * Get gatewaysList
+	 * @return gatewaysList
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_GATEWAYS_LIST)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getGatewaysList() {
+		return gatewaysList;
+	}
+
+	public void setGatewaysList(List<Map<String, Object>> gatewaysList) {
+		this.gatewaysList = gatewaysList;
+	}
+
+	public FlowElementContainerDefinition startEvents(List<Map<String, Object>> startEvents) {
+
+		this.startEvents = startEvents;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addStartEventsItem(Map<String, Object> startEventsItem) {
+		if (this.startEvents == null) {
+			this.startEvents = new ArrayList<>();
+		}
+		this.startEvents.add(startEventsItem);
+		return this;
+	}
+
+	/**
+	 * Get startEvents
+	 * @return startEvents
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_START_EVENTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getStartEvents() {
+		return startEvents;
+	}
+
+	public void setStartEvents(List<Map<String, Object>> startEvents) {
+		this.startEvents = startEvents;
+	}
+
+	public FlowElementContainerDefinition intermediateCatchEvents(List<Map<String, Object>> intermediateCatchEvents) {
+
+		this.intermediateCatchEvents = intermediateCatchEvents;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addIntermediateCatchEventsItem(
+			Map<String, Object> intermediateCatchEventsItem) {
+		if (this.intermediateCatchEvents == null) {
+			this.intermediateCatchEvents = new ArrayList<>();
+		}
+		this.intermediateCatchEvents.add(intermediateCatchEventsItem);
+		return this;
+	}
+
+	/**
+	 * Get intermediateCatchEvents
+	 * @return intermediateCatchEvents
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getIntermediateCatchEvents() {
+		return intermediateCatchEvents;
+	}
+
+	public void setIntermediateCatchEvents(List<Map<String, Object>> intermediateCatchEvents) {
+		this.intermediateCatchEvents = intermediateCatchEvents;
+	}
+
+	public FlowElementContainerDefinition intermediateThrowEvents(List<Map<String, Object>> intermediateThrowEvents) {
+
+		this.intermediateThrowEvents = intermediateThrowEvents;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addIntermediateThrowEventsItem(
+			Map<String, Object> intermediateThrowEventsItem) {
+		if (this.intermediateThrowEvents == null) {
+			this.intermediateThrowEvents = new ArrayList<>();
+		}
+		this.intermediateThrowEvents.add(intermediateThrowEventsItem);
+		return this;
+	}
+
+	/**
+	 * Get intermediateThrowEvents
+	 * @return intermediateThrowEvents
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getIntermediateThrowEvents() {
+		return intermediateThrowEvents;
+	}
+
+	public void setIntermediateThrowEvents(List<Map<String, Object>> intermediateThrowEvents) {
+		this.intermediateThrowEvents = intermediateThrowEvents;
+	}
+
+	public FlowElementContainerDefinition endEvents(List<Map<String, Object>> endEvents) {
+
+		this.endEvents = endEvents;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addEndEventsItem(Map<String, Object> endEventsItem) {
+		if (this.endEvents == null) {
+			this.endEvents = new ArrayList<>();
+		}
+		this.endEvents.add(endEventsItem);
+		return this;
+	}
+
+	/**
+	 * Get endEvents
+	 * @return endEvents
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_END_EVENTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getEndEvents() {
+		return endEvents;
+	}
+
+	public void setEndEvents(List<Map<String, Object>> endEvents) {
+		this.endEvents = endEvents;
+	}
+
+	public FlowElementContainerDefinition dataDefinitions(List<Map<String, Object>> dataDefinitions) {
+
+		this.dataDefinitions = dataDefinitions;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addDataDefinitionsItem(Map<String, Object> dataDefinitionsItem) {
+		if (this.dataDefinitions == null) {
+			this.dataDefinitions = new ArrayList<>();
+		}
+		this.dataDefinitions.add(dataDefinitionsItem);
+		return this;
+	}
+
+	/**
+	 * Get dataDefinitions
+	 * @return dataDefinitions
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_DATA_DEFINITIONS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getDataDefinitions() {
+		return dataDefinitions;
+	}
+
+	public void setDataDefinitions(List<Map<String, Object>> dataDefinitions) {
+		this.dataDefinitions = dataDefinitions;
+	}
+
+	public FlowElementContainerDefinition documentDefinitions(List<Map<String, Object>> documentDefinitions) {
+
+		this.documentDefinitions = documentDefinitions;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addDocumentDefinitionsItem(Map<String, Object> documentDefinitionsItem) {
+		if (this.documentDefinitions == null) {
+			this.documentDefinitions = new ArrayList<>();
+		}
+		this.documentDefinitions.add(documentDefinitionsItem);
+		return this;
+	}
+
+	/**
+	 * Get documentDefinitions
+	 * @return documentDefinitions
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_DOCUMENT_DEFINITIONS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getDocumentDefinitions() {
+		return documentDefinitions;
+	}
+
+	public void setDocumentDefinitions(List<Map<String, Object>> documentDefinitions) {
+		this.documentDefinitions = documentDefinitions;
+	}
+
+	public FlowElementContainerDefinition connectors(List<Map<String, Object>> connectors) {
+
+		this.connectors = connectors;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addConnectorsItem(Map<String, Object> connectorsItem) {
+		if (this.connectors == null) {
+			this.connectors = new ArrayList<>();
+		}
+		this.connectors.add(connectorsItem);
+		return this;
+	}
+
+	/**
+	 * Get connectors
+	 * @return connectors
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_CONNECTORS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getConnectors() {
+		return connectors;
+	}
+
+	public void setConnectors(List<Map<String, Object>> connectors) {
+		this.connectors = connectors;
+	}
+
+	public FlowElementContainerDefinition businessDataDefinitions(List<Map<String, Object>> businessDataDefinitions) {
+
+		this.businessDataDefinitions = businessDataDefinitions;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addBusinessDataDefinitionsItem(
+			Map<String, Object> businessDataDefinitionsItem) {
+		if (this.businessDataDefinitions == null) {
+			this.businessDataDefinitions = new ArrayList<>();
+		}
+		this.businessDataDefinitions.add(businessDataDefinitionsItem);
+		return this;
+	}
+
+	/**
+	 * Get businessDataDefinitions
+	 * @return businessDataDefinitions
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getBusinessDataDefinitions() {
+		return businessDataDefinitions;
+	}
+
+	public void setBusinessDataDefinitions(List<Map<String, Object>> businessDataDefinitions) {
+		this.businessDataDefinitions = businessDataDefinitions;
+	}
+
+	public FlowElementContainerDefinition documentListDefinitions(List<Map<String, Object>> documentListDefinitions) {
+
+		this.documentListDefinitions = documentListDefinitions;
+		return this;
+	}
+
+	public FlowElementContainerDefinition addDocumentListDefinitionsItem(
+			Map<String, Object> documentListDefinitionsItem) {
+		if (this.documentListDefinitions == null) {
+			this.documentListDefinitions = new ArrayList<>();
+		}
+		this.documentListDefinitions.add(documentListDefinitionsItem);
+		return this;
+	}
+
+	/**
+	 * Get documentListDefinitions
+	 * @return documentListDefinitions
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getDocumentListDefinitions() {
+		return documentListDefinitions;
+	}
+
+	public void setDocumentListDefinitions(List<Map<String, Object>> documentListDefinitions) {
+		this.documentListDefinitions = documentListDefinitions;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		FlowElementContainerDefinition flowElementContainerDefinition = (FlowElementContainerDefinition) o;
+		return Objects.equals(this.activities, flowElementContainerDefinition.activities)
+				&& Objects.equals(this.transitions, flowElementContainerDefinition.transitions)
+				&& Objects.equals(this.gatewaysList, flowElementContainerDefinition.gatewaysList)
+				&& Objects.equals(this.startEvents, flowElementContainerDefinition.startEvents)
+				&& Objects.equals(this.intermediateCatchEvents, flowElementContainerDefinition.intermediateCatchEvents)
+				&& Objects.equals(this.intermediateThrowEvents, flowElementContainerDefinition.intermediateThrowEvents)
+				&& Objects.equals(this.endEvents, flowElementContainerDefinition.endEvents)
+				&& Objects.equals(this.dataDefinitions, flowElementContainerDefinition.dataDefinitions)
+				&& Objects.equals(this.documentDefinitions, flowElementContainerDefinition.documentDefinitions)
+				&& Objects.equals(this.connectors, flowElementContainerDefinition.connectors)
+				&& Objects.equals(this.businessDataDefinitions, flowElementContainerDefinition.businessDataDefinitions)
+				&& Objects.equals(this.documentListDefinitions, flowElementContainerDefinition.documentListDefinitions);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(activities, transitions, gatewaysList, startEvents, intermediateCatchEvents,
+				intermediateThrowEvents, endEvents, dataDefinitions, documentDefinitions, connectors,
+				businessDataDefinitions, documentListDefinitions);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class FlowElementContainerDefinition {\n");
+		sb.append("    activities: ").append(toIndentedString(activities)).append("\n");
+		sb.append("    transitions: ").append(toIndentedString(transitions)).append("\n");
+		sb.append("    gatewaysList: ").append(toIndentedString(gatewaysList)).append("\n");
+		sb.append("    startEvents: ").append(toIndentedString(startEvents)).append("\n");
+		sb.append("    intermediateCatchEvents: ").append(toIndentedString(intermediateCatchEvents)).append("\n");
+		sb.append("    intermediateThrowEvents: ").append(toIndentedString(intermediateThrowEvents)).append("\n");
+		sb.append("    endEvents: ").append(toIndentedString(endEvents)).append("\n");
+		sb.append("    dataDefinitions: ").append(toIndentedString(dataDefinitions)).append("\n");
+		sb.append("    documentDefinitions: ").append(toIndentedString(documentDefinitions)).append("\n");
+		sb.append("    connectors: ").append(toIndentedString(connectors)).append("\n");
+		sb.append("    businessDataDefinitions: ").append(toIndentedString(businessDataDefinitions)).append("\n");
+		sb.append("    documentListDefinitions: ").append(toIndentedString(documentListDefinitions)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

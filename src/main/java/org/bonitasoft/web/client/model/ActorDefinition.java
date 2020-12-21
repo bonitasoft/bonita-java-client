@@ -23,131 +23,131 @@ import java.util.Objects;
 
 /** Actor definition */
 @ApiModel(description = "Actor definition")
-@JsonPropertyOrder({
-  ActorDefinition.JSON_PROPERTY_NAME,
-  ActorDefinition.JSON_PROPERTY_DESCRIPTION,
-  ActorDefinition.JSON_PROPERTY_INITIATOR
-})
+@JsonPropertyOrder({ ActorDefinition.JSON_PROPERTY_NAME, ActorDefinition.JSON_PROPERTY_DESCRIPTION,
+		ActorDefinition.JSON_PROPERTY_INITIATOR })
 @JsonTypeName("ActorDefinition")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActorDefinition implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_INITIATOR = "initiator";
-  private Boolean initiator;
+	private String name;
 
-  public ActorDefinition name(String name) {
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-    this.name = name;
-    return this;
-  }
+	private String description;
 
-  /**
-   * the actor name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the actor name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public static final String JSON_PROPERTY_INITIATOR = "initiator";
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	private Boolean initiator;
 
-  public ActorDefinition description(String description) {
+	public ActorDefinition name(String name) {
 
-    this.description = description;
-    return this;
-  }
+		this.name = name;
+		return this;
+	}
 
-  /**
-   * the actor description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the actor description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	/**
+	 * the actor name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the actor name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public ActorDefinition initiator(Boolean initiator) {
+	public ActorDefinition description(String description) {
 
-    this.initiator = initiator;
-    return this;
-  }
+		this.description = description;
+		return this;
+	}
 
-  /**
-   * true, if this actor can start the process
-   *
-   * @return initiator
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "true, if this actor can start the process")
-  @JsonProperty(JSON_PROPERTY_INITIATOR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getInitiator() {
-    return initiator;
-  }
+	/**
+	 * the actor description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the actor description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  public void setInitiator(Boolean initiator) {
-    this.initiator = initiator;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ActorDefinition actorDefinition = (ActorDefinition) o;
-    return Objects.equals(this.name, actorDefinition.name)
-        && Objects.equals(this.description, actorDefinition.description)
-        && Objects.equals(this.initiator, actorDefinition.initiator);
-  }
+	public ActorDefinition initiator(Boolean initiator) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, description, initiator);
-  }
+		this.initiator = initiator;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ActorDefinition {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    initiator: ").append(toIndentedString(initiator)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * true, if this actor can start the process
+	 * @return initiator
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "true, if this actor can start the process")
+	@JsonProperty(JSON_PROPERTY_INITIATOR)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getInitiator() {
+		return initiator;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setInitiator(Boolean initiator) {
+		this.initiator = initiator;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ActorDefinition actorDefinition = (ActorDefinition) o;
+		return Objects.equals(this.name, actorDefinition.name)
+				&& Objects.equals(this.description, actorDefinition.description)
+				&& Objects.equals(this.initiator, actorDefinition.initiator);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, description, initiator);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ActorDefinition {\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    initiator: ").append(toIndentedString(initiator)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

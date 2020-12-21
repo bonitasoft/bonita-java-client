@@ -23,392 +23,377 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** Represents the Design Definition of a process. It gives access to process attributes. */
-@ApiModel(
-    description =
-        "Represents the Design Definition of a process. It gives access to process attributes.")
-@JsonPropertyOrder({
-  DesignProcessDefinition.JSON_PROPERTY_DISPLAY_NAME,
-  DesignProcessDefinition.JSON_PROPERTY_DISPLAY_DESCRIPTION,
-  DesignProcessDefinition.JSON_PROPERTY_FLOW_ELEMENT_CONTAINER,
-  DesignProcessDefinition.JSON_PROPERTY_PARAMETERS,
-  DesignProcessDefinition.JSON_PROPERTY_ACTORS_LIST,
-  DesignProcessDefinition.JSON_PROPERTY_ACTOR_INITIATOR,
-  DesignProcessDefinition.JSON_PROPERTY_STRING_INDEX_LABELS,
-  DesignProcessDefinition.JSON_PROPERTY_STRING_INDEX_VALUES,
-  DesignProcessDefinition.JSON_PROPERTY_CONTRACT,
-  DesignProcessDefinition.JSON_PROPERTY_CONTEXT
-})
+/**
+ * Represents the Design Definition of a process. It gives access to process attributes.
+ */
+@ApiModel(description = "Represents the Design Definition of a process. It gives access to process attributes.")
+@JsonPropertyOrder({ DesignProcessDefinition.JSON_PROPERTY_DISPLAY_NAME,
+		DesignProcessDefinition.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+		DesignProcessDefinition.JSON_PROPERTY_FLOW_ELEMENT_CONTAINER, DesignProcessDefinition.JSON_PROPERTY_PARAMETERS,
+		DesignProcessDefinition.JSON_PROPERTY_ACTORS_LIST, DesignProcessDefinition.JSON_PROPERTY_ACTOR_INITIATOR,
+		DesignProcessDefinition.JSON_PROPERTY_STRING_INDEX_LABELS,
+		DesignProcessDefinition.JSON_PROPERTY_STRING_INDEX_VALUES, DesignProcessDefinition.JSON_PROPERTY_CONTRACT,
+		DesignProcessDefinition.JSON_PROPERTY_CONTEXT })
 @JsonTypeName("DesignProcessDefinition")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DesignProcessDefinition implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
-  private String displayDescription;
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public static final String JSON_PROPERTY_FLOW_ELEMENT_CONTAINER = "flowElementContainer";
-  private FlowElementContainerDefinition flowElementContainer;
+	private String displayName;
 
-  public static final String JSON_PROPERTY_PARAMETERS = "parameters";
-  private List<DesignProcessDefinitionParameters> parameters = null;
+	public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
 
-  public static final String JSON_PROPERTY_ACTORS_LIST = "actorsList";
-  private List<ActorDefinition> actorsList = null;
+	private String displayDescription;
 
-  public static final String JSON_PROPERTY_ACTOR_INITIATOR = "actorInitiator";
-  private ActorDefinition actorInitiator;
+	public static final String JSON_PROPERTY_FLOW_ELEMENT_CONTAINER = "flowElementContainer";
 
-  public static final String JSON_PROPERTY_STRING_INDEX_LABELS = "stringIndexLabels";
-  private List<String> stringIndexLabels = null;
+	private FlowElementContainerDefinition flowElementContainer;
 
-  public static final String JSON_PROPERTY_STRING_INDEX_VALUES = "stringIndexValues";
-  private List<Expression> stringIndexValues = null;
+	public static final String JSON_PROPERTY_PARAMETERS = "parameters";
 
-  public static final String JSON_PROPERTY_CONTRACT = "contract";
-  private DesignProcessDefinitionContract contract;
+	private List<DesignProcessDefinitionParameters> parameters = null;
 
-  public static final String JSON_PROPERTY_CONTEXT = "context";
-  private List<DesignProcessDefinitionContext> context = null;
+	public static final String JSON_PROPERTY_ACTORS_LIST = "actorsList";
 
-  public DesignProcessDefinition displayName(String displayName) {
+	private List<ActorDefinition> actorsList = null;
 
-    this.displayName = displayName;
-    return this;
-  }
+	public static final String JSON_PROPERTY_ACTOR_INITIATOR = "actorInitiator";
 
-  /**
-   * The process definition display name
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The process definition display name")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	private ActorDefinition actorInitiator;
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public static final String JSON_PROPERTY_STRING_INDEX_LABELS = "stringIndexLabels";
 
-  public DesignProcessDefinition displayDescription(String displayDescription) {
+	private List<String> stringIndexLabels = null;
 
-    this.displayDescription = displayDescription;
-    return this;
-  }
+	public static final String JSON_PROPERTY_STRING_INDEX_VALUES = "stringIndexValues";
 
-  /**
-   * The process definition display description name
-   *
-   * @return displayDescription
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The process definition display description name")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayDescription() {
-    return displayDescription;
-  }
+	private List<Expression> stringIndexValues = null;
 
-  public void setDisplayDescription(String displayDescription) {
-    this.displayDescription = displayDescription;
-  }
+	public static final String JSON_PROPERTY_CONTRACT = "contract";
 
-  public DesignProcessDefinition flowElementContainer(
-      FlowElementContainerDefinition flowElementContainer) {
+	private DesignProcessDefinitionContract contract;
 
-    this.flowElementContainer = flowElementContainer;
-    return this;
-  }
+	public static final String JSON_PROPERTY_CONTEXT = "context";
 
-  /**
-   * Get flowElementContainer
-   *
-   * @return flowElementContainer
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_FLOW_ELEMENT_CONTAINER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public FlowElementContainerDefinition getFlowElementContainer() {
-    return flowElementContainer;
-  }
+	private List<DesignProcessDefinitionContext> context = null;
 
-  public void setFlowElementContainer(FlowElementContainerDefinition flowElementContainer) {
-    this.flowElementContainer = flowElementContainer;
-  }
+	public DesignProcessDefinition displayName(String displayName) {
 
-  public DesignProcessDefinition parameters(List<DesignProcessDefinitionParameters> parameters) {
+		this.displayName = displayName;
+		return this;
+	}
 
-    this.parameters = parameters;
-    return this;
-  }
+	/**
+	 * The process definition display name
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The process definition display name")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  public DesignProcessDefinition addParametersItem(
-      DesignProcessDefinitionParameters parametersItem) {
-    if (this.parameters == null) {
-      this.parameters = new ArrayList<>();
-    }
-    this.parameters.add(parametersItem);
-    return this;
-  }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-  /**
-   * The process parameter definitions
-   *
-   * @return parameters
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The process parameter definitions")
-  @JsonProperty(JSON_PROPERTY_PARAMETERS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<DesignProcessDefinitionParameters> getParameters() {
-    return parameters;
-  }
+	public DesignProcessDefinition displayDescription(String displayDescription) {
 
-  public void setParameters(List<DesignProcessDefinitionParameters> parameters) {
-    this.parameters = parameters;
-  }
+		this.displayDescription = displayDescription;
+		return this;
+	}
 
-  public DesignProcessDefinition actorsList(List<ActorDefinition> actorsList) {
+	/**
+	 * The process definition display description name
+	 * @return displayDescription
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The process definition display description name")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayDescription() {
+		return displayDescription;
+	}
 
-    this.actorsList = actorsList;
-    return this;
-  }
+	public void setDisplayDescription(String displayDescription) {
+		this.displayDescription = displayDescription;
+	}
 
-  public DesignProcessDefinition addActorsListItem(ActorDefinition actorsListItem) {
-    if (this.actorsList == null) {
-      this.actorsList = new ArrayList<>();
-    }
-    this.actorsList.add(actorsListItem);
-    return this;
-  }
+	public DesignProcessDefinition flowElementContainer(FlowElementContainerDefinition flowElementContainer) {
 
-  /**
-   * The list of process actor definitions
-   *
-   * @return actorsList
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of process actor definitions")
-  @JsonProperty(JSON_PROPERTY_ACTORS_LIST)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<ActorDefinition> getActorsList() {
-    return actorsList;
-  }
+		this.flowElementContainer = flowElementContainer;
+		return this;
+	}
 
-  public void setActorsList(List<ActorDefinition> actorsList) {
-    this.actorsList = actorsList;
-  }
+	/**
+	 * Get flowElementContainer
+	 * @return flowElementContainer
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_FLOW_ELEMENT_CONTAINER)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public FlowElementContainerDefinition getFlowElementContainer() {
+		return flowElementContainer;
+	}
 
-  public DesignProcessDefinition actorInitiator(ActorDefinition actorInitiator) {
+	public void setFlowElementContainer(FlowElementContainerDefinition flowElementContainer) {
+		this.flowElementContainer = flowElementContainer;
+	}
 
-    this.actorInitiator = actorInitiator;
-    return this;
-  }
+	public DesignProcessDefinition parameters(List<DesignProcessDefinitionParameters> parameters) {
 
-  /**
-   * Get actorInitiator
-   *
-   * @return actorInitiator
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ACTOR_INITIATOR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ActorDefinition getActorInitiator() {
-    return actorInitiator;
-  }
+		this.parameters = parameters;
+		return this;
+	}
 
-  public void setActorInitiator(ActorDefinition actorInitiator) {
-    this.actorInitiator = actorInitiator;
-  }
+	public DesignProcessDefinition addParametersItem(DesignProcessDefinitionParameters parametersItem) {
+		if (this.parameters == null) {
+			this.parameters = new ArrayList<>();
+		}
+		this.parameters.add(parametersItem);
+		return this;
+	}
 
-  public DesignProcessDefinition stringIndexLabels(List<String> stringIndexLabels) {
+	/**
+	 * The process parameter definitions
+	 * @return parameters
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The process parameter definitions")
+	@JsonProperty(JSON_PROPERTY_PARAMETERS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<DesignProcessDefinitionParameters> getParameters() {
+		return parameters;
+	}
 
-    this.stringIndexLabels = stringIndexLabels;
-    return this;
-  }
+	public void setParameters(List<DesignProcessDefinitionParameters> parameters) {
+		this.parameters = parameters;
+	}
 
-  public DesignProcessDefinition addStringIndexLabelsItem(String stringIndexLabelsItem) {
-    if (this.stringIndexLabels == null) {
-      this.stringIndexLabels = new ArrayList<>();
-    }
-    this.stringIndexLabels.add(stringIndexLabelsItem);
-    return this;
-  }
+	public DesignProcessDefinition actorsList(List<ActorDefinition> actorsList) {
 
-  /**
-   * The process definition labels
-   *
-   * @return stringIndexLabels
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The process definition labels")
-  @JsonProperty(JSON_PROPERTY_STRING_INDEX_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<String> getStringIndexLabels() {
-    return stringIndexLabels;
-  }
+		this.actorsList = actorsList;
+		return this;
+	}
 
-  public void setStringIndexLabels(List<String> stringIndexLabels) {
-    this.stringIndexLabels = stringIndexLabels;
-  }
+	public DesignProcessDefinition addActorsListItem(ActorDefinition actorsListItem) {
+		if (this.actorsList == null) {
+			this.actorsList = new ArrayList<>();
+		}
+		this.actorsList.add(actorsListItem);
+		return this;
+	}
 
-  public DesignProcessDefinition stringIndexValues(List<Expression> stringIndexValues) {
+	/**
+	 * The list of process actor definitions
+	 * @return actorsList
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The list of process actor definitions")
+	@JsonProperty(JSON_PROPERTY_ACTORS_LIST)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<ActorDefinition> getActorsList() {
+		return actorsList;
+	}
 
-    this.stringIndexValues = stringIndexValues;
-    return this;
-  }
+	public void setActorsList(List<ActorDefinition> actorsList) {
+		this.actorsList = actorsList;
+	}
 
-  public DesignProcessDefinition addStringIndexValuesItem(Expression stringIndexValuesItem) {
-    if (this.stringIndexValues == null) {
-      this.stringIndexValues = new ArrayList<>();
-    }
-    this.stringIndexValues.add(stringIndexValuesItem);
-    return this;
-  }
+	public DesignProcessDefinition actorInitiator(ActorDefinition actorInitiator) {
 
-  /**
-   * The process definition expressions
-   *
-   * @return stringIndexValues
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The process definition expressions")
-  @JsonProperty(JSON_PROPERTY_STRING_INDEX_VALUES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Expression> getStringIndexValues() {
-    return stringIndexValues;
-  }
+		this.actorInitiator = actorInitiator;
+		return this;
+	}
 
-  public void setStringIndexValues(List<Expression> stringIndexValues) {
-    this.stringIndexValues = stringIndexValues;
-  }
+	/**
+	 * Get actorInitiator
+	 * @return actorInitiator
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_ACTOR_INITIATOR)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public ActorDefinition getActorInitiator() {
+		return actorInitiator;
+	}
 
-  public DesignProcessDefinition contract(DesignProcessDefinitionContract contract) {
+	public void setActorInitiator(ActorDefinition actorInitiator) {
+		this.actorInitiator = actorInitiator;
+	}
 
-    this.contract = contract;
-    return this;
-  }
+	public DesignProcessDefinition stringIndexLabels(List<String> stringIndexLabels) {
 
-  /**
-   * Get contract
-   *
-   * @return contract
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_CONTRACT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DesignProcessDefinitionContract getContract() {
-    return contract;
-  }
+		this.stringIndexLabels = stringIndexLabels;
+		return this;
+	}
 
-  public void setContract(DesignProcessDefinitionContract contract) {
-    this.contract = contract;
-  }
+	public DesignProcessDefinition addStringIndexLabelsItem(String stringIndexLabelsItem) {
+		if (this.stringIndexLabels == null) {
+			this.stringIndexLabels = new ArrayList<>();
+		}
+		this.stringIndexLabels.add(stringIndexLabelsItem);
+		return this;
+	}
 
-  public DesignProcessDefinition context(List<DesignProcessDefinitionContext> context) {
+	/**
+	 * The process definition labels
+	 * @return stringIndexLabels
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The process definition labels")
+	@JsonProperty(JSON_PROPERTY_STRING_INDEX_LABELS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<String> getStringIndexLabels() {
+		return stringIndexLabels;
+	}
 
-    this.context = context;
-    return this;
-  }
+	public void setStringIndexLabels(List<String> stringIndexLabels) {
+		this.stringIndexLabels = stringIndexLabels;
+	}
 
-  public DesignProcessDefinition addContextItem(DesignProcessDefinitionContext contextItem) {
-    if (this.context == null) {
-      this.context = new ArrayList<>();
-    }
-    this.context.add(contextItem);
-    return this;
-  }
+	public DesignProcessDefinition stringIndexValues(List<Expression> stringIndexValues) {
 
-  /**
-   * The process definition expressions
-   *
-   * @return context
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The process definition expressions")
-  @JsonProperty(JSON_PROPERTY_CONTEXT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<DesignProcessDefinitionContext> getContext() {
-    return context;
-  }
+		this.stringIndexValues = stringIndexValues;
+		return this;
+	}
 
-  public void setContext(List<DesignProcessDefinitionContext> context) {
-    this.context = context;
-  }
+	public DesignProcessDefinition addStringIndexValuesItem(Expression stringIndexValuesItem) {
+		if (this.stringIndexValues == null) {
+			this.stringIndexValues = new ArrayList<>();
+		}
+		this.stringIndexValues.add(stringIndexValuesItem);
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    DesignProcessDefinition designProcessDefinition = (DesignProcessDefinition) o;
-    return Objects.equals(this.displayName, designProcessDefinition.displayName)
-        && Objects.equals(this.displayDescription, designProcessDefinition.displayDescription)
-        && Objects.equals(this.flowElementContainer, designProcessDefinition.flowElementContainer)
-        && Objects.equals(this.parameters, designProcessDefinition.parameters)
-        && Objects.equals(this.actorsList, designProcessDefinition.actorsList)
-        && Objects.equals(this.actorInitiator, designProcessDefinition.actorInitiator)
-        && Objects.equals(this.stringIndexLabels, designProcessDefinition.stringIndexLabels)
-        && Objects.equals(this.stringIndexValues, designProcessDefinition.stringIndexValues)
-        && Objects.equals(this.contract, designProcessDefinition.contract)
-        && Objects.equals(this.context, designProcessDefinition.context);
-  }
+	/**
+	 * The process definition expressions
+	 * @return stringIndexValues
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The process definition expressions")
+	@JsonProperty(JSON_PROPERTY_STRING_INDEX_VALUES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Expression> getStringIndexValues() {
+		return stringIndexValues;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        displayName,
-        displayDescription,
-        flowElementContainer,
-        parameters,
-        actorsList,
-        actorInitiator,
-        stringIndexLabels,
-        stringIndexValues,
-        contract,
-        context);
-  }
+	public void setStringIndexValues(List<Expression> stringIndexValues) {
+		this.stringIndexValues = stringIndexValues;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DesignProcessDefinition {\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    displayDescription: ").append(toIndentedString(displayDescription)).append("\n");
-    sb.append("    flowElementContainer: ")
-        .append(toIndentedString(flowElementContainer))
-        .append("\n");
-    sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
-    sb.append("    actorsList: ").append(toIndentedString(actorsList)).append("\n");
-    sb.append("    actorInitiator: ").append(toIndentedString(actorInitiator)).append("\n");
-    sb.append("    stringIndexLabels: ").append(toIndentedString(stringIndexLabels)).append("\n");
-    sb.append("    stringIndexValues: ").append(toIndentedString(stringIndexValues)).append("\n");
-    sb.append("    contract: ").append(toIndentedString(contract)).append("\n");
-    sb.append("    context: ").append(toIndentedString(context)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public DesignProcessDefinition contract(DesignProcessDefinitionContract contract) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.contract = contract;
+		return this;
+	}
+
+	/**
+	 * Get contract
+	 * @return contract
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_CONTRACT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public DesignProcessDefinitionContract getContract() {
+		return contract;
+	}
+
+	public void setContract(DesignProcessDefinitionContract contract) {
+		this.contract = contract;
+	}
+
+	public DesignProcessDefinition context(List<DesignProcessDefinitionContext> context) {
+
+		this.context = context;
+		return this;
+	}
+
+	public DesignProcessDefinition addContextItem(DesignProcessDefinitionContext contextItem) {
+		if (this.context == null) {
+			this.context = new ArrayList<>();
+		}
+		this.context.add(contextItem);
+		return this;
+	}
+
+	/**
+	 * The process definition expressions
+	 * @return context
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The process definition expressions")
+	@JsonProperty(JSON_PROPERTY_CONTEXT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<DesignProcessDefinitionContext> getContext() {
+		return context;
+	}
+
+	public void setContext(List<DesignProcessDefinitionContext> context) {
+		this.context = context;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		DesignProcessDefinition designProcessDefinition = (DesignProcessDefinition) o;
+		return Objects.equals(this.displayName, designProcessDefinition.displayName)
+				&& Objects.equals(this.displayDescription, designProcessDefinition.displayDescription)
+				&& Objects.equals(this.flowElementContainer, designProcessDefinition.flowElementContainer)
+				&& Objects.equals(this.parameters, designProcessDefinition.parameters)
+				&& Objects.equals(this.actorsList, designProcessDefinition.actorsList)
+				&& Objects.equals(this.actorInitiator, designProcessDefinition.actorInitiator)
+				&& Objects.equals(this.stringIndexLabels, designProcessDefinition.stringIndexLabels)
+				&& Objects.equals(this.stringIndexValues, designProcessDefinition.stringIndexValues)
+				&& Objects.equals(this.contract, designProcessDefinition.contract)
+				&& Objects.equals(this.context, designProcessDefinition.context);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(displayName, displayDescription, flowElementContainer, parameters, actorsList,
+				actorInitiator, stringIndexLabels, stringIndexValues, contract, context);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class DesignProcessDefinition {\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    displayDescription: ").append(toIndentedString(displayDescription)).append("\n");
+		sb.append("    flowElementContainer: ").append(toIndentedString(flowElementContainer)).append("\n");
+		sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
+		sb.append("    actorsList: ").append(toIndentedString(actorsList)).append("\n");
+		sb.append("    actorInitiator: ").append(toIndentedString(actorInitiator)).append("\n");
+		sb.append("    stringIndexLabels: ").append(toIndentedString(stringIndexLabels)).append("\n");
+		sb.append("    stringIndexValues: ").append(toIndentedString(stringIndexValues)).append("\n");
+		sb.append("    contract: ").append(toIndentedString(contract)).append("\n");
+		sb.append("    context: ").append(toIndentedString(context)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

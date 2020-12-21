@@ -22,168 +22,167 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * The process supervisor has management rights over a process. He can configure and monitor it. You
- * can give the ProcessSupervisor rights to some users by specifying a role and or a group, or a
- * specific user. In order to be able to manage the processes he supervises in the portal, a user
- * should also have the profile &#x60;Process Manager&#x60;
+ * The process supervisor has management rights over a process. He can configure and
+ * monitor it. You can give the ProcessSupervisor rights to some users by specifying a
+ * role and or a group, or a specific user. In order to be able to manage the processes he
+ * supervises in the portal, a user should also have the profile &#x60;Process
+ * Manager&#x60;
  */
 @ApiModel(
-    description =
-        "The process supervisor has management rights over a process. He can configure and monitor it. You can give the ProcessSupervisor rights to some users by specifying a role and or a group, or a specific user. In order to be able to manage the processes he supervises in the portal, a user should also have the profile `Process Manager`")
-@JsonPropertyOrder({
-  ProcessSupervisor.JSON_PROPERTY_PROCESS_ID,
-  ProcessSupervisor.JSON_PROPERTY_ROLE_ID,
-  ProcessSupervisor.JSON_PROPERTY_GROUP_ID,
-  ProcessSupervisor.JSON_PROPERTY_USER_ID
-})
+		description = "The process supervisor has management rights over a process. He can configure and monitor it. You can give the ProcessSupervisor rights to some users by specifying a role and or a group, or a specific user. In order to be able to manage the processes he supervises in the portal, a user should also have the profile `Process Manager`")
+@JsonPropertyOrder({ ProcessSupervisor.JSON_PROPERTY_PROCESS_ID, ProcessSupervisor.JSON_PROPERTY_ROLE_ID,
+		ProcessSupervisor.JSON_PROPERTY_GROUP_ID, ProcessSupervisor.JSON_PROPERTY_USER_ID })
 @JsonTypeName("ProcessSupervisor")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessSupervisor implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
-  private String processId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
-  private String roleId;
+	public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
 
-  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
-  private String groupId;
+	private String processId;
 
-  public static final String JSON_PROPERTY_USER_ID = "user_id";
-  private String userId;
+	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
 
-  public ProcessSupervisor processId(String processId) {
+	private String roleId;
 
-    this.processId = processId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
 
-  /**
-   * Id of the process
-   *
-   * @return processId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Id of the process")
-  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessId() {
-    return processId;
-  }
+	private String groupId;
 
-  public void setProcessId(String processId) {
-    this.processId = processId;
-  }
+	public static final String JSON_PROPERTY_USER_ID = "user_id";
 
-  public ProcessSupervisor roleId(String roleId) {
+	private String userId;
 
-    this.roleId = roleId;
-    return this;
-  }
+	public ProcessSupervisor processId(String processId) {
 
-  /**
-   * Id of role, or -1 if the supervisor type is not role or membership
-   *
-   * @return roleId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Id of role, or -1 if the supervisor type is not role or membership")
-  @JsonProperty(JSON_PROPERTY_ROLE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRoleId() {
-    return roleId;
-  }
+		this.processId = processId;
+		return this;
+	}
 
-  public void setRoleId(String roleId) {
-    this.roleId = roleId;
-  }
+	/**
+	 * Id of the process
+	 * @return processId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Id of the process")
+	@JsonProperty(JSON_PROPERTY_PROCESS_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessId() {
+		return processId;
+	}
 
-  public ProcessSupervisor groupId(String groupId) {
+	public void setProcessId(String processId) {
+		this.processId = processId;
+	}
 
-    this.groupId = groupId;
-    return this;
-  }
+	public ProcessSupervisor roleId(String roleId) {
 
-  /**
-   * Id of group, or -1 if the supervisor type is not group or membership
-   *
-   * @return groupId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Id of group, or -1 if the supervisor type is not group or membership")
-  @JsonProperty(JSON_PROPERTY_GROUP_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getGroupId() {
-    return groupId;
-  }
+		this.roleId = roleId;
+		return this;
+	}
 
-  public void setGroupId(String groupId) {
-    this.groupId = groupId;
-  }
+	/**
+	 * Id of role, or -1 if the supervisor type is not role or membership
+	 * @return roleId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Id of role, or -1 if the supervisor type is not role or membership")
+	@JsonProperty(JSON_PROPERTY_ROLE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRoleId() {
+		return roleId;
+	}
 
-  public ProcessSupervisor userId(String userId) {
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
 
-    this.userId = userId;
-    return this;
-  }
+	public ProcessSupervisor groupId(String groupId) {
 
-  /**
-   * Id of user, or -1 if the supervisor type is not user
-   *
-   * @return userId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Id of user, or -1 if the supervisor type is not user")
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserId() {
-    return userId;
-  }
+		this.groupId = groupId;
+		return this;
+	}
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+	/**
+	 * Id of group, or -1 if the supervisor type is not group or membership
+	 * @return groupId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Id of group, or -1 if the supervisor type is not group or membership")
+	@JsonProperty(JSON_PROPERTY_GROUP_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getGroupId() {
+		return groupId;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessSupervisor processSupervisor = (ProcessSupervisor) o;
-    return Objects.equals(this.processId, processSupervisor.processId)
-        && Objects.equals(this.roleId, processSupervisor.roleId)
-        && Objects.equals(this.groupId, processSupervisor.groupId)
-        && Objects.equals(this.userId, processSupervisor.userId);
-  }
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(processId, roleId, groupId, userId);
-  }
+	public ProcessSupervisor userId(String userId) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessSupervisor {\n");
-    sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
-    sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
-    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.userId = userId;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Id of user, or -1 if the supervisor type is not user
+	 * @return userId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Id of user, or -1 if the supervisor type is not user")
+	@JsonProperty(JSON_PROPERTY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessSupervisor processSupervisor = (ProcessSupervisor) o;
+		return Objects.equals(this.processId, processSupervisor.processId)
+				&& Objects.equals(this.roleId, processSupervisor.roleId)
+				&& Objects.equals(this.groupId, processSupervisor.groupId)
+				&& Objects.equals(this.userId, processSupervisor.userId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(processId, roleId, groupId, userId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessSupervisor {\n");
+		sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
+		sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
+		sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+		sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

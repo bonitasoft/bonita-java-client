@@ -21,277 +21,269 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** Session */
-@JsonPropertyOrder({
-  Session.JSON_PROPERTY_USER_ID,
-  Session.JSON_PROPERTY_USER_NAME,
-  Session.JSON_PROPERTY_SESSION_ID,
-  Session.JSON_PROPERTY_CONF,
-  Session.JSON_PROPERTY_IS_TECHNICAL_USER,
-  Session.JSON_PROPERTY_IS_GUEST_USER,
-  Session.JSON_PROPERTY_VERSION,
-  Session.JSON_PROPERTY_COPYRIGHT
-})
+@JsonPropertyOrder({ Session.JSON_PROPERTY_USER_ID, Session.JSON_PROPERTY_USER_NAME, Session.JSON_PROPERTY_SESSION_ID,
+		Session.JSON_PROPERTY_CONF, Session.JSON_PROPERTY_IS_TECHNICAL_USER, Session.JSON_PROPERTY_IS_GUEST_USER,
+		Session.JSON_PROPERTY_VERSION, Session.JSON_PROPERTY_COPYRIGHT })
 @JsonTypeName("Session")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Session implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_USER_ID = "user_id";
-  private String userId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_USER_NAME = "user_name";
-  private String userName;
+	public static final String JSON_PROPERTY_USER_ID = "user_id";
 
-  public static final String JSON_PROPERTY_SESSION_ID = "session_id";
-  private String sessionId;
+	private String userId;
 
-  public static final String JSON_PROPERTY_CONF = "conf";
-  private String conf;
+	public static final String JSON_PROPERTY_USER_NAME = "user_name";
 
-  public static final String JSON_PROPERTY_IS_TECHNICAL_USER = "is_technical_user";
-  private Boolean isTechnicalUser;
+	private String userName;
 
-  public static final String JSON_PROPERTY_IS_GUEST_USER = "is_guest_user";
-  private Boolean isGuestUser;
+	public static final String JSON_PROPERTY_SESSION_ID = "session_id";
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private String version;
+	private String sessionId;
 
-  public static final String JSON_PROPERTY_COPYRIGHT = "copyright";
-  private String copyright;
+	public static final String JSON_PROPERTY_CONF = "conf";
 
-  public Session userId(String userId) {
+	private String conf;
 
-    this.userId = userId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_IS_TECHNICAL_USER = "is_technical_user";
 
-  /**
-   * user id
-   *
-   * @return userId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user id")
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserId() {
-    return userId;
-  }
+	private Boolean isTechnicalUser;
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+	public static final String JSON_PROPERTY_IS_GUEST_USER = "is_guest_user";
 
-  public Session userName(String userName) {
+	private Boolean isGuestUser;
 
-    this.userName = userName;
-    return this;
-  }
+	public static final String JSON_PROPERTY_VERSION = "version";
 
-  /**
-   * user name
-   *
-   * @return userName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user name")
-  @JsonProperty(JSON_PROPERTY_USER_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserName() {
-    return userName;
-  }
+	private String version;
 
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
+	public static final String JSON_PROPERTY_COPYRIGHT = "copyright";
 
-  public Session sessionId(String sessionId) {
+	private String copyright;
 
-    this.sessionId = sessionId;
-    return this;
-  }
+	public Session userId(String userId) {
 
-  /**
-   * the session id
-   *
-   * @return sessionId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the session id")
-  @JsonProperty(JSON_PROPERTY_SESSION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSessionId() {
-    return sessionId;
-  }
+		this.userId = userId;
+		return this;
+	}
 
-  public void setSessionId(String sessionId) {
-    this.sessionId = sessionId;
-  }
+	/**
+	 * user id
+	 * @return userId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user id")
+	@JsonProperty(JSON_PROPERTY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserId() {
+		return userId;
+	}
 
-  public Session conf(String conf) {
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-    this.conf = conf;
-    return this;
-  }
+	public Session userName(String userName) {
 
-  /**
-   * conf
-   *
-   * @return conf
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "conf")
-  @JsonProperty(JSON_PROPERTY_CONF)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getConf() {
-    return conf;
-  }
+		this.userName = userName;
+		return this;
+	}
 
-  public void setConf(String conf) {
-    this.conf = conf;
-  }
+	/**
+	 * user name
+	 * @return userName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user name")
+	@JsonProperty(JSON_PROPERTY_USER_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserName() {
+		return userName;
+	}
 
-  public Session isTechnicalUser(Boolean isTechnicalUser) {
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    this.isTechnicalUser = isTechnicalUser;
-    return this;
-  }
+	public Session sessionId(String sessionId) {
 
-  /**
-   * is technical user: true|false
-   *
-   * @return isTechnicalUser
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "is technical user: true|false")
-  @JsonProperty(JSON_PROPERTY_IS_TECHNICAL_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsTechnicalUser() {
-    return isTechnicalUser;
-  }
+		this.sessionId = sessionId;
+		return this;
+	}
 
-  public void setIsTechnicalUser(Boolean isTechnicalUser) {
-    this.isTechnicalUser = isTechnicalUser;
-  }
+	/**
+	 * the session id
+	 * @return sessionId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the session id")
+	@JsonProperty(JSON_PROPERTY_SESSION_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSessionId() {
+		return sessionId;
+	}
 
-  public Session isGuestUser(Boolean isGuestUser) {
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 
-    this.isGuestUser = isGuestUser;
-    return this;
-  }
+	public Session conf(String conf) {
 
-  /**
-   * is technical user: true|false
-   *
-   * @return isGuestUser
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "is technical user: true|false")
-  @JsonProperty(JSON_PROPERTY_IS_GUEST_USER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsGuestUser() {
-    return isGuestUser;
-  }
+		this.conf = conf;
+		return this;
+	}
 
-  public void setIsGuestUser(Boolean isGuestUser) {
-    this.isGuestUser = isGuestUser;
-  }
+	/**
+	 * conf
+	 * @return conf
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "conf")
+	@JsonProperty(JSON_PROPERTY_CONF)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getConf() {
+		return conf;
+	}
 
-  public Session version(String version) {
+	public void setConf(String conf) {
+		this.conf = conf;
+	}
 
-    this.version = version;
-    return this;
-  }
+	public Session isTechnicalUser(Boolean isTechnicalUser) {
 
-  /**
-   * bonita version
-   *
-   * @return version
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "bonita version")
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getVersion() {
-    return version;
-  }
+		this.isTechnicalUser = isTechnicalUser;
+		return this;
+	}
 
-  public void setVersion(String version) {
-    this.version = version;
-  }
+	/**
+	 * is technical user: true|false
+	 * @return isTechnicalUser
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "is technical user: true|false")
+	@JsonProperty(JSON_PROPERTY_IS_TECHNICAL_USER)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getIsTechnicalUser() {
+		return isTechnicalUser;
+	}
 
-  public Session copyright(String copyright) {
+	public void setIsTechnicalUser(Boolean isTechnicalUser) {
+		this.isTechnicalUser = isTechnicalUser;
+	}
 
-    this.copyright = copyright;
-    return this;
-  }
+	public Session isGuestUser(Boolean isGuestUser) {
 
-  /**
-   * bonita copyright
-   *
-   * @return copyright
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "bonita copyright")
-  @JsonProperty(JSON_PROPERTY_COPYRIGHT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCopyright() {
-    return copyright;
-  }
+		this.isGuestUser = isGuestUser;
+		return this;
+	}
 
-  public void setCopyright(String copyright) {
-    this.copyright = copyright;
-  }
+	/**
+	 * is technical user: true|false
+	 * @return isGuestUser
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "is technical user: true|false")
+	@JsonProperty(JSON_PROPERTY_IS_GUEST_USER)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getIsGuestUser() {
+		return isGuestUser;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Session session = (Session) o;
-    return Objects.equals(this.userId, session.userId)
-        && Objects.equals(this.userName, session.userName)
-        && Objects.equals(this.sessionId, session.sessionId)
-        && Objects.equals(this.conf, session.conf)
-        && Objects.equals(this.isTechnicalUser, session.isTechnicalUser)
-        && Objects.equals(this.isGuestUser, session.isGuestUser)
-        && Objects.equals(this.version, session.version)
-        && Objects.equals(this.copyright, session.copyright);
-  }
+	public void setIsGuestUser(Boolean isGuestUser) {
+		this.isGuestUser = isGuestUser;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        userId, userName, sessionId, conf, isTechnicalUser, isGuestUser, version, copyright);
-  }
+	public Session version(String version) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Session {\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
-    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
-    sb.append("    conf: ").append(toIndentedString(conf)).append("\n");
-    sb.append("    isTechnicalUser: ").append(toIndentedString(isTechnicalUser)).append("\n");
-    sb.append("    isGuestUser: ").append(toIndentedString(isGuestUser)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    copyright: ").append(toIndentedString(copyright)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.version = version;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * bonita version
+	 * @return version
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "bonita version")
+	@JsonProperty(JSON_PROPERTY_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public Session copyright(String copyright) {
+
+		this.copyright = copyright;
+		return this;
+	}
+
+	/**
+	 * bonita copyright
+	 * @return copyright
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "bonita copyright")
+	@JsonProperty(JSON_PROPERTY_COPYRIGHT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCopyright() {
+		return copyright;
+	}
+
+	public void setCopyright(String copyright) {
+		this.copyright = copyright;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Session session = (Session) o;
+		return Objects.equals(this.userId, session.userId) && Objects.equals(this.userName, session.userName)
+				&& Objects.equals(this.sessionId, session.sessionId) && Objects.equals(this.conf, session.conf)
+				&& Objects.equals(this.isTechnicalUser, session.isTechnicalUser)
+				&& Objects.equals(this.isGuestUser, session.isGuestUser)
+				&& Objects.equals(this.version, session.version) && Objects.equals(this.copyright, session.copyright);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(userId, userName, sessionId, conf, isTechnicalUser, isGuestUser, version, copyright);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Session {\n");
+		sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+		sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
+		sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
+		sb.append("    conf: ").append(toIndentedString(conf)).append("\n");
+		sb.append("    isTechnicalUser: ").append(toIndentedString(isTechnicalUser)).append("\n");
+		sb.append("    isGuestUser: ").append(toIndentedString(isGuestUser)).append("\n");
+		sb.append("    version: ").append(toIndentedString(version)).append("\n");
+		sb.append("    copyright: ").append(toIndentedString(copyright)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

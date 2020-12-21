@@ -24,211 +24,210 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Use this resource to send BPM message events. Message events are caught by processes using
- * &#x60;catch message event&#x60; flow nodes (Start, intermediate, boundary or receive tasks).
+ * Use this resource to send BPM message events. Message events are caught by processes
+ * using &#x60;catch message event&#x60; flow nodes (Start, intermediate, boundary or
+ * receive tasks).
  */
 @ApiModel(
-    description =
-        "Use this resource to send BPM message events. Message events are caught by processes using `catch message event` flow nodes (Start, intermediate, boundary or receive tasks).")
-@JsonPropertyOrder({
-  Message.JSON_PROPERTY_MESSAGE_NAME,
-  Message.JSON_PROPERTY_TARGET_PROCESS,
-  Message.JSON_PROPERTY_TARGET_FLOW_NODE,
-  Message.JSON_PROPERTY_MESSAGE_CONTENT,
-  Message.JSON_PROPERTY_CORRELATIONS
-})
+		description = "Use this resource to send BPM message events. Message events are caught by processes using `catch message event` flow nodes (Start, intermediate, boundary or receive tasks).")
+@JsonPropertyOrder({ Message.JSON_PROPERTY_MESSAGE_NAME, Message.JSON_PROPERTY_TARGET_PROCESS,
+		Message.JSON_PROPERTY_TARGET_FLOW_NODE, Message.JSON_PROPERTY_MESSAGE_CONTENT,
+		Message.JSON_PROPERTY_CORRELATIONS })
 @JsonTypeName("Message")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Message implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_MESSAGE_NAME = "messageName";
-  private String messageName;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_TARGET_PROCESS = "targetProcess";
-  private String targetProcess;
+	public static final String JSON_PROPERTY_MESSAGE_NAME = "messageName";
 
-  public static final String JSON_PROPERTY_TARGET_FLOW_NODE = "targetFlowNode";
-  private String targetFlowNode;
+	private String messageName;
 
-  public static final String JSON_PROPERTY_MESSAGE_CONTENT = "messageContent";
-  private Map<String, MessageMessageContent> messageContent = null;
+	public static final String JSON_PROPERTY_TARGET_PROCESS = "targetProcess";
 
-  public static final String JSON_PROPERTY_CORRELATIONS = "correlations";
-  private Map<String, MessageMessageContent> correlations = null;
+	private String targetProcess;
 
-  public Message messageName(String messageName) {
+	public static final String JSON_PROPERTY_TARGET_FLOW_NODE = "targetFlowNode";
 
-    this.messageName = messageName;
-    return this;
-  }
+	private String targetFlowNode;
 
-  /**
-   * the message name
-   *
-   * @return messageName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the message name")
-  @JsonProperty(JSON_PROPERTY_MESSAGE_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getMessageName() {
-    return messageName;
-  }
+	public static final String JSON_PROPERTY_MESSAGE_CONTENT = "messageContent";
 
-  public void setMessageName(String messageName) {
-    this.messageName = messageName;
-  }
+	private Map<String, MessageMessageContent> messageContent = null;
 
-  public Message targetProcess(String targetProcess) {
+	public static final String JSON_PROPERTY_CORRELATIONS = "correlations";
 
-    this.targetProcess = targetProcess;
-    return this;
-  }
+	private Map<String, MessageMessageContent> correlations = null;
 
-  /**
-   * the target process name
-   *
-   * @return targetProcess
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the target process name")
-  @JsonProperty(JSON_PROPERTY_TARGET_PROCESS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTargetProcess() {
-    return targetProcess;
-  }
+	public Message messageName(String messageName) {
 
-  public void setTargetProcess(String targetProcess) {
-    this.targetProcess = targetProcess;
-  }
+		this.messageName = messageName;
+		return this;
+	}
 
-  public Message targetFlowNode(String targetFlowNode) {
+	/**
+	 * the message name
+	 * @return messageName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the message name")
+	@JsonProperty(JSON_PROPERTY_MESSAGE_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getMessageName() {
+		return messageName;
+	}
 
-    this.targetFlowNode = targetFlowNode;
-    return this;
-  }
+	public void setMessageName(String messageName) {
+		this.messageName = messageName;
+	}
 
-  /**
-   * the target FlowNode name
-   *
-   * @return targetFlowNode
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the target FlowNode name")
-  @JsonProperty(JSON_PROPERTY_TARGET_FLOW_NODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTargetFlowNode() {
-    return targetFlowNode;
-  }
+	public Message targetProcess(String targetProcess) {
 
-  public void setTargetFlowNode(String targetFlowNode) {
-    this.targetFlowNode = targetFlowNode;
-  }
+		this.targetProcess = targetProcess;
+		return this;
+	}
 
-  public Message messageContent(Map<String, MessageMessageContent> messageContent) {
+	/**
+	 * the target process name
+	 * @return targetProcess
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the target process name")
+	@JsonProperty(JSON_PROPERTY_TARGET_PROCESS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getTargetProcess() {
+		return targetProcess;
+	}
 
-    this.messageContent = messageContent;
-    return this;
-  }
+	public void setTargetProcess(String targetProcess) {
+		this.targetProcess = targetProcess;
+	}
 
-  public Message putMessageContentItem(String key, MessageMessageContent messageContentItem) {
-    if (this.messageContent == null) {
-      this.messageContent = new HashMap<>();
-    }
-    this.messageContent.put(key, messageContentItem);
-    return this;
-  }
+	public Message targetFlowNode(String targetFlowNode) {
 
-  /**
-   * the message content
-   *
-   * @return messageContent
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the message content")
-  @JsonProperty(JSON_PROPERTY_MESSAGE_CONTENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Map<String, MessageMessageContent> getMessageContent() {
-    return messageContent;
-  }
+		this.targetFlowNode = targetFlowNode;
+		return this;
+	}
 
-  public void setMessageContent(Map<String, MessageMessageContent> messageContent) {
-    this.messageContent = messageContent;
-  }
+	/**
+	 * the target FlowNode name
+	 * @return targetFlowNode
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the target FlowNode name")
+	@JsonProperty(JSON_PROPERTY_TARGET_FLOW_NODE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getTargetFlowNode() {
+		return targetFlowNode;
+	}
 
-  public Message correlations(Map<String, MessageMessageContent> correlations) {
+	public void setTargetFlowNode(String targetFlowNode) {
+		this.targetFlowNode = targetFlowNode;
+	}
 
-    this.correlations = correlations;
-    return this;
-  }
+	public Message messageContent(Map<String, MessageMessageContent> messageContent) {
 
-  public Message putCorrelationsItem(String key, MessageMessageContent correlationsItem) {
-    if (this.correlations == null) {
-      this.correlations = new HashMap<>();
-    }
-    this.correlations.put(key, correlationsItem);
-    return this;
-  }
+		this.messageContent = messageContent;
+		return this;
+	}
 
-  /**
-   * the message correlations
-   *
-   * @return correlations
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the message correlations")
-  @JsonProperty(JSON_PROPERTY_CORRELATIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Map<String, MessageMessageContent> getCorrelations() {
-    return correlations;
-  }
+	public Message putMessageContentItem(String key, MessageMessageContent messageContentItem) {
+		if (this.messageContent == null) {
+			this.messageContent = new HashMap<>();
+		}
+		this.messageContent.put(key, messageContentItem);
+		return this;
+	}
 
-  public void setCorrelations(Map<String, MessageMessageContent> correlations) {
-    this.correlations = correlations;
-  }
+	/**
+	 * the message content
+	 * @return messageContent
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the message content")
+	@JsonProperty(JSON_PROPERTY_MESSAGE_CONTENT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Map<String, MessageMessageContent> getMessageContent() {
+		return messageContent;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Message message = (Message) o;
-    return Objects.equals(this.messageName, message.messageName)
-        && Objects.equals(this.targetProcess, message.targetProcess)
-        && Objects.equals(this.targetFlowNode, message.targetFlowNode)
-        && Objects.equals(this.messageContent, message.messageContent)
-        && Objects.equals(this.correlations, message.correlations);
-  }
+	public void setMessageContent(Map<String, MessageMessageContent> messageContent) {
+		this.messageContent = messageContent;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(messageName, targetProcess, targetFlowNode, messageContent, correlations);
-  }
+	public Message correlations(Map<String, MessageMessageContent> correlations) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Message {\n");
-    sb.append("    messageName: ").append(toIndentedString(messageName)).append("\n");
-    sb.append("    targetProcess: ").append(toIndentedString(targetProcess)).append("\n");
-    sb.append("    targetFlowNode: ").append(toIndentedString(targetFlowNode)).append("\n");
-    sb.append("    messageContent: ").append(toIndentedString(messageContent)).append("\n");
-    sb.append("    correlations: ").append(toIndentedString(correlations)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.correlations = correlations;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public Message putCorrelationsItem(String key, MessageMessageContent correlationsItem) {
+		if (this.correlations == null) {
+			this.correlations = new HashMap<>();
+		}
+		this.correlations.put(key, correlationsItem);
+		return this;
+	}
+
+	/**
+	 * the message correlations
+	 * @return correlations
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the message correlations")
+	@JsonProperty(JSON_PROPERTY_CORRELATIONS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Map<String, MessageMessageContent> getCorrelations() {
+		return correlations;
+	}
+
+	public void setCorrelations(Map<String, MessageMessageContent> correlations) {
+		this.correlations = correlations;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Message message = (Message) o;
+		return Objects.equals(this.messageName, message.messageName)
+				&& Objects.equals(this.targetProcess, message.targetProcess)
+				&& Objects.equals(this.targetFlowNode, message.targetFlowNode)
+				&& Objects.equals(this.messageContent, message.messageContent)
+				&& Objects.equals(this.correlations, message.correlations);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(messageName, targetProcess, targetFlowNode, messageContent, correlations);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Message {\n");
+		sb.append("    messageName: ").append(toIndentedString(messageName)).append("\n");
+		sb.append("    targetProcess: ").append(toIndentedString(targetProcess)).append("\n");
+		sb.append("    targetFlowNode: ").append(toIndentedString(targetFlowNode)).append("\n");
+		sb.append("    messageContent: ").append(toIndentedString(messageContent)).append("\n");
+		sb.append("    correlations: ").append(toIndentedString(correlations)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

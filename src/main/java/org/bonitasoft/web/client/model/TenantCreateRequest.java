@@ -21,160 +21,159 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** TenantCreateRequest */
-@JsonPropertyOrder({
-  TenantCreateRequest.JSON_PROPERTY_NAME,
-  TenantCreateRequest.JSON_PROPERTY_DESCRIPTION,
-  TenantCreateRequest.JSON_PROPERTY_USERNAME,
-  TenantCreateRequest.JSON_PROPERTY_PASSWORD
-})
+@JsonPropertyOrder({ TenantCreateRequest.JSON_PROPERTY_NAME, TenantCreateRequest.JSON_PROPERTY_DESCRIPTION,
+		TenantCreateRequest.JSON_PROPERTY_USERNAME, TenantCreateRequest.JSON_PROPERTY_PASSWORD })
 @JsonTypeName("TenantCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TenantCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_USERNAME = "username";
-  private String username;
+	private String name;
 
-  public static final String JSON_PROPERTY_PASSWORD = "password";
-  private String password;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public TenantCreateRequest name(String name) {
+	private String description;
 
-    this.name = name;
-    return this;
-  }
+	public static final String JSON_PROPERTY_USERNAME = "username";
 
-  /**
-   * the name of the tenant
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the name of the tenant")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	private String username;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public static final String JSON_PROPERTY_PASSWORD = "password";
 
-  public TenantCreateRequest description(String description) {
+	private String password;
 
-    this.description = description;
-    return this;
-  }
+	public TenantCreateRequest name(String name) {
 
-  /**
-   * the description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	/**
+	 * the name of the tenant
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the name of the tenant")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  public TenantCreateRequest username(String username) {
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    this.username = username;
-    return this;
-  }
+	public TenantCreateRequest description(String description) {
 
-  /**
-   * the username
-   *
-   * @return username
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the username")
-  @JsonProperty(JSON_PROPERTY_USERNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUsername() {
-    return username;
-  }
+		this.description = description;
+		return this;
+	}
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+	/**
+	 * the description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  public TenantCreateRequest password(String password) {
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    this.password = password;
-    return this;
-  }
+	public TenantCreateRequest username(String username) {
 
-  /**
-   * the password
-   *
-   * @return password
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the password")
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPassword() {
-    return password;
-  }
+		this.username = username;
+		return this;
+	}
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+	/**
+	 * the username
+	 * @return username
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the username")
+	@JsonProperty(JSON_PROPERTY_USERNAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUsername() {
+		return username;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    TenantCreateRequest tenantCreateRequest = (TenantCreateRequest) o;
-    return Objects.equals(this.name, tenantCreateRequest.name)
-        && Objects.equals(this.description, tenantCreateRequest.description)
-        && Objects.equals(this.username, tenantCreateRequest.username)
-        && Objects.equals(this.password, tenantCreateRequest.password);
-  }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, description, username, password);
-  }
+	public TenantCreateRequest password(String password) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TenantCreateRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.password = password;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * the password
+	 * @return password
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the password")
+	@JsonProperty(JSON_PROPERTY_PASSWORD)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		TenantCreateRequest tenantCreateRequest = (TenantCreateRequest) o;
+		return Objects.equals(this.name, tenantCreateRequest.name)
+				&& Objects.equals(this.description, tenantCreateRequest.description)
+				&& Objects.equals(this.username, tenantCreateRequest.username)
+				&& Objects.equals(this.password, tenantCreateRequest.password);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, description, username, password);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class TenantCreateRequest {\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    username: ").append(toIndentedString(username)).append("\n");
+		sb.append("    password: ").append(toIndentedString(password)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

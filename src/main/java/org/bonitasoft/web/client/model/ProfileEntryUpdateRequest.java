@@ -21,250 +21,247 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProfileEntryUpdateRequest */
-@JsonPropertyOrder({
-  ProfileEntryUpdateRequest.JSON_PROPERTY_PROFILE_ID,
-  ProfileEntryUpdateRequest.JSON_PROPERTY_PAGE,
-  ProfileEntryUpdateRequest.JSON_PROPERTY_DESCRIPTION,
-  ProfileEntryUpdateRequest.JSON_PROPERTY_NAME,
-  ProfileEntryUpdateRequest.JSON_PROPERTY_TYPE,
-  ProfileEntryUpdateRequest.JSON_PROPERTY_IS_CUSTOM,
-  ProfileEntryUpdateRequest.JSON_PROPERTY_PARENT_ID
-})
+@JsonPropertyOrder({ ProfileEntryUpdateRequest.JSON_PROPERTY_PROFILE_ID, ProfileEntryUpdateRequest.JSON_PROPERTY_PAGE,
+		ProfileEntryUpdateRequest.JSON_PROPERTY_DESCRIPTION, ProfileEntryUpdateRequest.JSON_PROPERTY_NAME,
+		ProfileEntryUpdateRequest.JSON_PROPERTY_TYPE, ProfileEntryUpdateRequest.JSON_PROPERTY_IS_CUSTOM,
+		ProfileEntryUpdateRequest.JSON_PROPERTY_PARENT_ID })
 @JsonTypeName("ProfileEntryUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfileEntryUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
-  private String profileId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PAGE = "page";
-  private String page;
+	public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String profileId;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_PAGE = "page";
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+	private String page;
 
-  public static final String JSON_PROPERTY_IS_CUSTOM = "isCustom";
-  private Boolean isCustom;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public static final String JSON_PROPERTY_PARENT_ID = "parent_id";
-  private String parentId;
+	private String description;
 
-  public ProfileEntryUpdateRequest profileId(String profileId) {
+	public static final String JSON_PROPERTY_NAME = "name";
 
-    this.profileId = profileId;
-    return this;
-  }
+	private String name;
 
-  /**
-   * id of the profile that contains this profileEntry
-   *
-   * @return profileId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the profile that contains this profileEntry")
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProfileId() {
-    return profileId;
-  }
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public void setProfileId(String profileId) {
-    this.profileId = profileId;
-  }
+	private String type;
 
-  public ProfileEntryUpdateRequest page(String page) {
+	public static final String JSON_PROPERTY_IS_CUSTOM = "isCustom";
 
-    this.page = page;
-    return this;
-  }
+	private Boolean isCustom;
 
-  /**
-   * pageToken (menu name or menu item name) used in a portal menu to identify the page associated
-   * with the profileEntry
-   *
-   * @return page
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "pageToken (menu name or menu item name) used in a portal menu to identify the page associated with the profileEntry")
-  @JsonProperty(JSON_PROPERTY_PAGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPage() {
-    return page;
-  }
+	public static final String JSON_PROPERTY_PARENT_ID = "parent_id";
 
-  public void setPage(String page) {
-    this.page = page;
-  }
+	private String parentId;
 
-  public ProfileEntryUpdateRequest description(String description) {
+	public ProfileEntryUpdateRequest profileId(String profileId) {
 
-    this.description = description;
-    return this;
-  }
+		this.profileId = profileId;
+		return this;
+	}
 
-  /**
-   * description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	/**
+	 * id of the profile that contains this profileEntry
+	 * @return profileId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the profile that contains this profileEntry")
+	@JsonProperty(JSON_PROPERTY_PROFILE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProfileId() {
+		return profileId;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public void setProfileId(String profileId) {
+		this.profileId = profileId;
+	}
 
-  public ProfileEntryUpdateRequest name(String name) {
+	public ProfileEntryUpdateRequest page(String page) {
 
-    this.name = name;
-    return this;
-  }
+		this.page = page;
+		return this;
+	}
 
-  /**
-   * name of the profileEntry
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "name of the profileEntry")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	/**
+	 * pageToken (menu name or menu item name) used in a portal menu to identify the page
+	 * associated with the profileEntry
+	 * @return page
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "pageToken (menu name or menu item name) used in a portal menu to identify the page associated with the profileEntry")
+	@JsonProperty(JSON_PROPERTY_PAGE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPage() {
+		return page;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public void setPage(String page) {
+		this.page = page;
+	}
 
-  public ProfileEntryUpdateRequest type(String type) {
+	public ProfileEntryUpdateRequest description(String description) {
 
-    this.type = type;
-    return this;
-  }
+		this.description = description;
+		return this;
+	}
 
-  /**
-   * link (if menu item) | folder (if menu)
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "link (if menu item) | folder (if menu)")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getType() {
-    return type;
-  }
+	/**
+	 * description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  public void setType(String type) {
-    this.type = type;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public ProfileEntryUpdateRequest isCustom(Boolean isCustom) {
+	public ProfileEntryUpdateRequest name(String name) {
 
-    this.isCustom = isCustom;
-    return this;
-  }
+		this.name = name;
+		return this;
+	}
 
-  /**
-   * true | false
-   *
-   * @return isCustom
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = " true | false ")
-  @JsonProperty(JSON_PROPERTY_IS_CUSTOM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsCustom() {
-    return isCustom;
-  }
+	/**
+	 * name of the profileEntry
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "name of the profileEntry")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  public void setIsCustom(Boolean isCustom) {
-    this.isCustom = isCustom;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public ProfileEntryUpdateRequest parentId(String parentId) {
+	public ProfileEntryUpdateRequest type(String type) {
 
-    this.parentId = parentId;
-    return this;
-  }
+		this.type = type;
+		return this;
+	}
 
-  /**
-   * id or parent profileEntry if in a folder
-   *
-   * @return parentId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id or parent profileEntry if in a folder")
-  @JsonProperty(JSON_PROPERTY_PARENT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getParentId() {
-    return parentId;
-  }
+	/**
+	 * link (if menu item) | folder (if menu)
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "link (if menu item) | folder (if menu)")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getType() {
+		return type;
+	}
 
-  public void setParentId(String parentId) {
-    this.parentId = parentId;
-  }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProfileEntryUpdateRequest profileEntryUpdateRequest = (ProfileEntryUpdateRequest) o;
-    return Objects.equals(this.profileId, profileEntryUpdateRequest.profileId)
-        && Objects.equals(this.page, profileEntryUpdateRequest.page)
-        && Objects.equals(this.description, profileEntryUpdateRequest.description)
-        && Objects.equals(this.name, profileEntryUpdateRequest.name)
-        && Objects.equals(this.type, profileEntryUpdateRequest.type)
-        && Objects.equals(this.isCustom, profileEntryUpdateRequest.isCustom)
-        && Objects.equals(this.parentId, profileEntryUpdateRequest.parentId);
-  }
+	public ProfileEntryUpdateRequest isCustom(Boolean isCustom) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(profileId, page, description, name, type, isCustom, parentId);
-  }
+		this.isCustom = isCustom;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProfileEntryUpdateRequest {\n");
-    sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
-    sb.append("    page: ").append(toIndentedString(page)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    isCustom: ").append(toIndentedString(isCustom)).append("\n");
-    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * true | false
+	 * @return isCustom
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = " true | false ")
+	@JsonProperty(JSON_PROPERTY_IS_CUSTOM)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getIsCustom() {
+		return isCustom;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setIsCustom(Boolean isCustom) {
+		this.isCustom = isCustom;
+	}
+
+	public ProfileEntryUpdateRequest parentId(String parentId) {
+
+		this.parentId = parentId;
+		return this;
+	}
+
+	/**
+	 * id or parent profileEntry if in a folder
+	 * @return parentId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id or parent profileEntry if in a folder")
+	@JsonProperty(JSON_PROPERTY_PARENT_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProfileEntryUpdateRequest profileEntryUpdateRequest = (ProfileEntryUpdateRequest) o;
+		return Objects.equals(this.profileId, profileEntryUpdateRequest.profileId)
+				&& Objects.equals(this.page, profileEntryUpdateRequest.page)
+				&& Objects.equals(this.description, profileEntryUpdateRequest.description)
+				&& Objects.equals(this.name, profileEntryUpdateRequest.name)
+				&& Objects.equals(this.type, profileEntryUpdateRequest.type)
+				&& Objects.equals(this.isCustom, profileEntryUpdateRequest.isCustom)
+				&& Objects.equals(this.parentId, profileEntryUpdateRequest.parentId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(profileId, page, description, name, type, isCustom, parentId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProfileEntryUpdateRequest {\n");
+		sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+		sb.append("    page: ").append(toIndentedString(page)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    isCustom: ").append(toIndentedString(isCustom)).append("\n");
+		sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

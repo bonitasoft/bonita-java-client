@@ -25,121 +25,120 @@ import java.util.Objects;
 
 /** the process instantiation contract */
 @ApiModel(description = "the process instantiation contract")
-@JsonPropertyOrder({
-  DesignProcessDefinitionContract.JSON_PROPERTY_INPUTS,
-  DesignProcessDefinitionContract.JSON_PROPERTY_CONSTRAINTS
-})
+@JsonPropertyOrder({ DesignProcessDefinitionContract.JSON_PROPERTY_INPUTS,
+		DesignProcessDefinitionContract.JSON_PROPERTY_CONSTRAINTS })
 @JsonTypeName("DesignProcessDefinition_contract")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DesignProcessDefinitionContract implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_INPUTS = "inputs";
-  private List<InputDefinition> inputs = null;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
-  private List<DesignProcessDefinitionContractConstraints> constraints = null;
+	public static final String JSON_PROPERTY_INPUTS = "inputs";
 
-  public DesignProcessDefinitionContract inputs(List<InputDefinition> inputs) {
+	private List<InputDefinition> inputs = null;
 
-    this.inputs = inputs;
-    return this;
-  }
+	public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
 
-  public DesignProcessDefinitionContract addInputsItem(InputDefinition inputsItem) {
-    if (this.inputs == null) {
-      this.inputs = new ArrayList<>();
-    }
-    this.inputs.add(inputsItem);
-    return this;
-  }
+	private List<DesignProcessDefinitionContractConstraints> constraints = null;
 
-  /**
-   * Lists the inputs of the container.
-   *
-   * @return inputs
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Lists the inputs of the container.")
-  @JsonProperty(JSON_PROPERTY_INPUTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<InputDefinition> getInputs() {
-    return inputs;
-  }
+	public DesignProcessDefinitionContract inputs(List<InputDefinition> inputs) {
 
-  public void setInputs(List<InputDefinition> inputs) {
-    this.inputs = inputs;
-  }
+		this.inputs = inputs;
+		return this;
+	}
 
-  public DesignProcessDefinitionContract constraints(
-      List<DesignProcessDefinitionContractConstraints> constraints) {
+	public DesignProcessDefinitionContract addInputsItem(InputDefinition inputsItem) {
+		if (this.inputs == null) {
+			this.inputs = new ArrayList<>();
+		}
+		this.inputs.add(inputsItem);
+		return this;
+	}
 
-    this.constraints = constraints;
-    return this;
-  }
+	/**
+	 * Lists the inputs of the container.
+	 * @return inputs
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Lists the inputs of the container.")
+	@JsonProperty(JSON_PROPERTY_INPUTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<InputDefinition> getInputs() {
+		return inputs;
+	}
 
-  public DesignProcessDefinitionContract addConstraintsItem(
-      DesignProcessDefinitionContractConstraints constraintsItem) {
-    if (this.constraints == null) {
-      this.constraints = new ArrayList<>();
-    }
-    this.constraints.add(constraintsItem);
-    return this;
-  }
+	public void setInputs(List<InputDefinition> inputs) {
+		this.inputs = inputs;
+	}
 
-  /**
-   * Lists the validation rules of the contract.
-   *
-   * @return constraints
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Lists the validation rules of the contract.")
-  @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<DesignProcessDefinitionContractConstraints> getConstraints() {
-    return constraints;
-  }
+	public DesignProcessDefinitionContract constraints(List<DesignProcessDefinitionContractConstraints> constraints) {
 
-  public void setConstraints(List<DesignProcessDefinitionContractConstraints> constraints) {
-    this.constraints = constraints;
-  }
+		this.constraints = constraints;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    DesignProcessDefinitionContract designProcessDefinitionContract =
-        (DesignProcessDefinitionContract) o;
-    return Objects.equals(this.inputs, designProcessDefinitionContract.inputs)
-        && Objects.equals(this.constraints, designProcessDefinitionContract.constraints);
-  }
+	public DesignProcessDefinitionContract addConstraintsItem(
+			DesignProcessDefinitionContractConstraints constraintsItem) {
+		if (this.constraints == null) {
+			this.constraints = new ArrayList<>();
+		}
+		this.constraints.add(constraintsItem);
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(inputs, constraints);
-  }
+	/**
+	 * Lists the validation rules of the contract.
+	 * @return constraints
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Lists the validation rules of the contract.")
+	@JsonProperty(JSON_PROPERTY_CONSTRAINTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<DesignProcessDefinitionContractConstraints> getConstraints() {
+		return constraints;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DesignProcessDefinitionContract {\n");
-    sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
-    sb.append("    constraints: ").append(toIndentedString(constraints)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setConstraints(List<DesignProcessDefinitionContractConstraints> constraints) {
+		this.constraints = constraints;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		DesignProcessDefinitionContract designProcessDefinitionContract = (DesignProcessDefinitionContract) o;
+		return Objects.equals(this.inputs, designProcessDefinitionContract.inputs)
+				&& Objects.equals(this.constraints, designProcessDefinitionContract.constraints);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(inputs, constraints);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class DesignProcessDefinitionContract {\n");
+		sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
+		sb.append("    constraints: ").append(toIndentedString(constraints)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

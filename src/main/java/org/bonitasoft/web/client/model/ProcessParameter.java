@@ -21,247 +21,245 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessParameter */
-@JsonPropertyOrder({
-  ProcessParameter.JSON_PROPERTY_PROCESS_ID,
-  ProcessParameter.JSON_PROPERTY_PROCESS_NAME,
-  ProcessParameter.JSON_PROPERTY_DESCRIPTION,
-  ProcessParameter.JSON_PROPERTY_NAME,
-  ProcessParameter.JSON_PROPERTY_VALUE,
-  ProcessParameter.JSON_PROPERTY_PROCESS_VERSION,
-  ProcessParameter.JSON_PROPERTY_TYPE
-})
+@JsonPropertyOrder({ ProcessParameter.JSON_PROPERTY_PROCESS_ID, ProcessParameter.JSON_PROPERTY_PROCESS_NAME,
+		ProcessParameter.JSON_PROPERTY_DESCRIPTION, ProcessParameter.JSON_PROPERTY_NAME,
+		ProcessParameter.JSON_PROPERTY_VALUE, ProcessParameter.JSON_PROPERTY_PROCESS_VERSION,
+		ProcessParameter.JSON_PROPERTY_TYPE })
 @JsonTypeName("ProcessParameter")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessParameter implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
-  private String processId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROCESS_NAME = "process_name";
-  private String processName;
+	public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String processId;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_PROCESS_NAME = "process_name";
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private String value;
+	private String processName;
 
-  public static final String JSON_PROPERTY_PROCESS_VERSION = "process_version";
-  private String processVersion;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+	private String description;
 
-  public ProcessParameter processId(String processId) {
+	public static final String JSON_PROPERTY_NAME = "name";
 
-    this.processId = processId;
-    return this;
-  }
+	private String name;
 
-  /**
-   * the identifier of the process definition
-   *
-   * @return processId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the identifier of the process definition")
-  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessId() {
-    return processId;
-  }
+	public static final String JSON_PROPERTY_VALUE = "value";
 
-  public void setProcessId(String processId) {
-    this.processId = processId;
-  }
+	private String value;
 
-  public ProcessParameter processName(String processName) {
+	public static final String JSON_PROPERTY_PROCESS_VERSION = "process_version";
 
-    this.processName = processName;
-    return this;
-  }
+	private String processVersion;
 
-  /**
-   * the name of the related process
-   *
-   * @return processName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the name of the related process")
-  @JsonProperty(JSON_PROPERTY_PROCESS_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessName() {
-    return processName;
-  }
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public void setProcessName(String processName) {
-    this.processName = processName;
-  }
+	private String type;
 
-  public ProcessParameter description(String description) {
+	public ProcessParameter processId(String processId) {
 
-    this.description = description;
-    return this;
-  }
+		this.processId = processId;
+		return this;
+	}
 
-  /**
-   * the description of the parameter
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the description of the parameter")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	/**
+	 * the identifier of the process definition
+	 * @return processId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the identifier of the process definition")
+	@JsonProperty(JSON_PROPERTY_PROCESS_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessId() {
+		return processId;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public void setProcessId(String processId) {
+		this.processId = processId;
+	}
 
-  public ProcessParameter name(String name) {
+	public ProcessParameter processName(String processName) {
 
-    this.name = name;
-    return this;
-  }
+		this.processName = processName;
+		return this;
+	}
 
-  /**
-   * the name of the parameter
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the name of the parameter")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	/**
+	 * the name of the related process
+	 * @return processName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the name of the related process")
+	@JsonProperty(JSON_PROPERTY_PROCESS_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessName() {
+		return processName;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public void setProcessName(String processName) {
+		this.processName = processName;
+	}
 
-  public ProcessParameter value(String value) {
+	public ProcessParameter description(String description) {
 
-    this.value = value;
-    return this;
-  }
+		this.description = description;
+		return this;
+	}
 
-  /**
-   * the value of the parameter
-   *
-   * @return value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the value of the parameter")
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getValue() {
-    return value;
-  }
+	/**
+	 * the description of the parameter
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the description of the parameter")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public ProcessParameter processVersion(String processVersion) {
+	public ProcessParameter name(String name) {
 
-    this.processVersion = processVersion;
-    return this;
-  }
+		this.name = name;
+		return this;
+	}
 
-  /**
-   * the version of the process
-   *
-   * @return processVersion
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the version of the process")
-  @JsonProperty(JSON_PROPERTY_PROCESS_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessVersion() {
-    return processVersion;
-  }
+	/**
+	 * the name of the parameter
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the name of the parameter")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  public void setProcessVersion(String processVersion) {
-    this.processVersion = processVersion;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public ProcessParameter type(String type) {
+	public ProcessParameter value(String value) {
 
-    this.type = type;
-    return this;
-  }
+		this.value = value;
+		return this;
+	}
 
-  /**
-   * the type of the parameter
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the type of the parameter")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getType() {
-    return type;
-  }
+	/**
+	 * the value of the parameter
+	 * @return value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the value of the parameter")
+	@JsonProperty(JSON_PROPERTY_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getValue() {
+		return value;
+	}
 
-  public void setType(String type) {
-    this.type = type;
-  }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessParameter processParameter = (ProcessParameter) o;
-    return Objects.equals(this.processId, processParameter.processId)
-        && Objects.equals(this.processName, processParameter.processName)
-        && Objects.equals(this.description, processParameter.description)
-        && Objects.equals(this.name, processParameter.name)
-        && Objects.equals(this.value, processParameter.value)
-        && Objects.equals(this.processVersion, processParameter.processVersion)
-        && Objects.equals(this.type, processParameter.type);
-  }
+	public ProcessParameter processVersion(String processVersion) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(processId, processName, description, name, value, processVersion, type);
-  }
+		this.processVersion = processVersion;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessParameter {\n");
-    sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
-    sb.append("    processName: ").append(toIndentedString(processName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    processVersion: ").append(toIndentedString(processVersion)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * the version of the process
+	 * @return processVersion
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the version of the process")
+	@JsonProperty(JSON_PROPERTY_PROCESS_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessVersion() {
+		return processVersion;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setProcessVersion(String processVersion) {
+		this.processVersion = processVersion;
+	}
+
+	public ProcessParameter type(String type) {
+
+		this.type = type;
+		return this;
+	}
+
+	/**
+	 * the type of the parameter
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the type of the parameter")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessParameter processParameter = (ProcessParameter) o;
+		return Objects.equals(this.processId, processParameter.processId)
+				&& Objects.equals(this.processName, processParameter.processName)
+				&& Objects.equals(this.description, processParameter.description)
+				&& Objects.equals(this.name, processParameter.name)
+				&& Objects.equals(this.value, processParameter.value)
+				&& Objects.equals(this.processVersion, processParameter.processVersion)
+				&& Objects.equals(this.type, processParameter.type);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(processId, processName, description, name, value, processVersion, type);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessParameter {\n");
+		sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
+		sb.append("    processName: ").append(toIndentedString(processName)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    value: ").append(toIndentedString(value)).append("\n");
+		sb.append("    processVersion: ").append(toIndentedString(processVersion)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

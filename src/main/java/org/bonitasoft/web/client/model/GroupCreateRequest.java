@@ -21,218 +21,215 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** GroupCreateRequest */
-@JsonPropertyOrder({
-  GroupCreateRequest.JSON_PROPERTY_NAME,
-  GroupCreateRequest.JSON_PROPERTY_DISPLAY_NAME,
-  GroupCreateRequest.JSON_PROPERTY_PARENT_PATH,
-  GroupCreateRequest.JSON_PROPERTY_PATH,
-  GroupCreateRequest.JSON_PROPERTY_DESCRIPTION,
-  GroupCreateRequest.JSON_PROPERTY_ICON
-})
+@JsonPropertyOrder({ GroupCreateRequest.JSON_PROPERTY_NAME, GroupCreateRequest.JSON_PROPERTY_DISPLAY_NAME,
+		GroupCreateRequest.JSON_PROPERTY_PARENT_PATH, GroupCreateRequest.JSON_PROPERTY_PATH,
+		GroupCreateRequest.JSON_PROPERTY_DESCRIPTION, GroupCreateRequest.JSON_PROPERTY_ICON })
 @JsonTypeName("GroupCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GroupCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_PARENT_PATH = "parent_path";
-  private String parentPath;
+	private String name;
 
-  public static final String JSON_PROPERTY_PATH = "path";
-  private String path;
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String displayName;
 
-  public static final String JSON_PROPERTY_ICON = "icon";
-  private String icon;
+	public static final String JSON_PROPERTY_PARENT_PATH = "parent_path";
 
-  public GroupCreateRequest name(String name) {
+	private String parentPath;
 
-    this.name = name;
-    return this;
-  }
+	public static final String JSON_PROPERTY_PATH = "path";
 
-  /**
-   * name
-   *
-   * @return name
-   */
-  @ApiModelProperty(required = true, value = "name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getName() {
-    return name;
-  }
+	private String path;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public GroupCreateRequest displayName(String displayName) {
+	private String description;
 
-    this.displayName = displayName;
-    return this;
-  }
+	public static final String JSON_PROPERTY_ICON = "icon";
 
-  /**
-   * display name
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	private String icon;
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public GroupCreateRequest name(String name) {
 
-  public GroupCreateRequest parentPath(String parentPath) {
+		this.name = name;
+		return this;
+	}
 
-    this.parentPath = parentPath;
-    return this;
-  }
+	/**
+	 * name
+	 * @return name
+	 */
+	@ApiModelProperty(required = true, value = "name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.ALWAYS)
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * the path of the parent group of this group (empty if the group has no parent)
-   *
-   * @return parentPath
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "the path of the parent group of this group (empty if the group has no parent)")
-  @JsonProperty(JSON_PROPERTY_PARENT_PATH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getParentPath() {
-    return parentPath;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public void setParentPath(String parentPath) {
-    this.parentPath = parentPath;
-  }
+	public GroupCreateRequest displayName(String displayName) {
 
-  public GroupCreateRequest path(String path) {
+		this.displayName = displayName;
+		return this;
+	}
 
-    this.path = path;
-    return this;
-  }
+	/**
+	 * display name
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "display name")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  /**
-   * the full path of the group (including its parent path)
-   *
-   * @return path
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the full path of the group (including its parent path)")
-  @JsonProperty(JSON_PROPERTY_PATH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPath() {
-    return path;
-  }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-  public void setPath(String path) {
-    this.path = path;
-  }
+	public GroupCreateRequest parentPath(String parentPath) {
 
-  public GroupCreateRequest description(String description) {
+		this.parentPath = parentPath;
+		return this;
+	}
 
-    this.description = description;
-    return this;
-  }
+	/**
+	 * the path of the parent group of this group (empty if the group has no parent)
+	 * @return parentPath
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the path of the parent group of this group (empty if the group has no parent)")
+	@JsonProperty(JSON_PROPERTY_PARENT_PATH)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getParentPath() {
+		return parentPath;
+	}
 
-  /**
-   * description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public void setParentPath(String parentPath) {
+		this.parentPath = parentPath;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public GroupCreateRequest path(String path) {
 
-  public GroupCreateRequest icon(String icon) {
+		this.path = path;
+		return this;
+	}
 
-    this.icon = icon;
-    return this;
-  }
+	/**
+	 * the full path of the group (including its parent path)
+	 * @return path
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the full path of the group (including its parent path)")
+	@JsonProperty(JSON_PROPERTY_PATH)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPath() {
+		return path;
+	}
 
-  /**
-   * icon path
-   *
-   * @return icon
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "icon path")
-  @JsonProperty(JSON_PROPERTY_ICON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getIcon() {
-    return icon;
-  }
+	public void setPath(String path) {
+		this.path = path;
+	}
 
-  public void setIcon(String icon) {
-    this.icon = icon;
-  }
+	public GroupCreateRequest description(String description) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GroupCreateRequest groupCreateRequest = (GroupCreateRequest) o;
-    return Objects.equals(this.name, groupCreateRequest.name)
-        && Objects.equals(this.displayName, groupCreateRequest.displayName)
-        && Objects.equals(this.parentPath, groupCreateRequest.parentPath)
-        && Objects.equals(this.path, groupCreateRequest.path)
-        && Objects.equals(this.description, groupCreateRequest.description)
-        && Objects.equals(this.icon, groupCreateRequest.icon);
-  }
+		this.description = description;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, displayName, parentPath, path, description, icon);
-  }
+	/**
+	 * description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GroupCreateRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    parentPath: ").append(toIndentedString(parentPath)).append("\n");
-    sb.append("    path: ").append(toIndentedString(path)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public GroupCreateRequest icon(String icon) {
+
+		this.icon = icon;
+		return this;
+	}
+
+	/**
+	 * icon path
+	 * @return icon
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "icon path")
+	@JsonProperty(JSON_PROPERTY_ICON)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		GroupCreateRequest groupCreateRequest = (GroupCreateRequest) o;
+		return Objects.equals(this.name, groupCreateRequest.name)
+				&& Objects.equals(this.displayName, groupCreateRequest.displayName)
+				&& Objects.equals(this.parentPath, groupCreateRequest.parentPath)
+				&& Objects.equals(this.path, groupCreateRequest.path)
+				&& Objects.equals(this.description, groupCreateRequest.description)
+				&& Objects.equals(this.icon, groupCreateRequest.icon);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, displayName, parentPath, path, description, icon);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class GroupCreateRequest {\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    parentPath: ").append(toIndentedString(parentPath)).append("\n");
+		sb.append("    path: ").append(toIndentedString(path)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

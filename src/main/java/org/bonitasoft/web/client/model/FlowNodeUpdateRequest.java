@@ -21,71 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** FlowNodeUpdateRequest */
-@JsonPropertyOrder({FlowNodeUpdateRequest.JSON_PROPERTY_STATE})
+@JsonPropertyOrder({ FlowNodeUpdateRequest.JSON_PROPERTY_STATE })
 @JsonTypeName("FlowNodeUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlowNodeUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	private static final long serialVersionUID = 1L;
 
-  public FlowNodeUpdateRequest state(String state) {
+	public static final String JSON_PROPERTY_STATE = "state";
 
-    this.state = state;
-    return this;
-  }
+	private String state;
 
-  /**
-   * state of the FlowNode
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "state of the FlowNode")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
+	public FlowNodeUpdateRequest state(String state) {
 
-  public void setState(String state) {
-    this.state = state;
-  }
+		this.state = state;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    FlowNodeUpdateRequest flowNodeUpdateRequest = (FlowNodeUpdateRequest) o;
-    return Objects.equals(this.state, flowNodeUpdateRequest.state);
-  }
+	/**
+	 * state of the FlowNode
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "state of the FlowNode")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(state);
-  }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FlowNodeUpdateRequest {\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		FlowNodeUpdateRequest flowNodeUpdateRequest = (FlowNodeUpdateRequest) o;
+		return Objects.equals(this.state, flowNodeUpdateRequest.state);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(state);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class FlowNodeUpdateRequest {\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

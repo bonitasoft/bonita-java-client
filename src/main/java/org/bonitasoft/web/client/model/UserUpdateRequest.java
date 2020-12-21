@@ -21,306 +21,302 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** UserUpdateRequest */
-@JsonPropertyOrder({
-  UserUpdateRequest.JSON_PROPERTY_ENABLED,
-  UserUpdateRequest.JSON_PROPERTY_USER_NAME,
-  UserUpdateRequest.JSON_PROPERTY_FIRSTNAME,
-  UserUpdateRequest.JSON_PROPERTY_LASTNAME,
-  UserUpdateRequest.JSON_PROPERTY_PASSWORD,
-  UserUpdateRequest.JSON_PROPERTY_ICON,
-  UserUpdateRequest.JSON_PROPERTY_TITLE,
-  UserUpdateRequest.JSON_PROPERTY_JOB_TITLE,
-  UserUpdateRequest.JSON_PROPERTY_MANAGER_ID
-})
+@JsonPropertyOrder({ UserUpdateRequest.JSON_PROPERTY_ENABLED, UserUpdateRequest.JSON_PROPERTY_USER_NAME,
+		UserUpdateRequest.JSON_PROPERTY_FIRSTNAME, UserUpdateRequest.JSON_PROPERTY_LASTNAME,
+		UserUpdateRequest.JSON_PROPERTY_PASSWORD, UserUpdateRequest.JSON_PROPERTY_ICON,
+		UserUpdateRequest.JSON_PROPERTY_TITLE, UserUpdateRequest.JSON_PROPERTY_JOB_TITLE,
+		UserUpdateRequest.JSON_PROPERTY_MANAGER_ID })
 @JsonTypeName("UserUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UserUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ENABLED = "enabled";
-  private String enabled;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_USER_NAME = "userName";
-  private String userName;
+	public static final String JSON_PROPERTY_ENABLED = "enabled";
 
-  public static final String JSON_PROPERTY_FIRSTNAME = "firstname";
-  private String firstname;
+	private String enabled;
 
-  public static final String JSON_PROPERTY_LASTNAME = "lastname";
-  private String lastname;
+	public static final String JSON_PROPERTY_USER_NAME = "userName";
 
-  public static final String JSON_PROPERTY_PASSWORD = "password";
-  private String password;
+	private String userName;
 
-  public static final String JSON_PROPERTY_ICON = "icon";
-  private String icon;
+	public static final String JSON_PROPERTY_FIRSTNAME = "firstname";
 
-  public static final String JSON_PROPERTY_TITLE = "title";
-  private String title;
+	private String firstname;
 
-  public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
-  private String jobTitle;
+	public static final String JSON_PROPERTY_LASTNAME = "lastname";
 
-  public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
-  private String managerId;
+	private String lastname;
 
-  public UserUpdateRequest enabled(String enabled) {
+	public static final String JSON_PROPERTY_PASSWORD = "password";
 
-    this.enabled = enabled;
-    return this;
-  }
+	private String password;
 
-  /**
-   * if \&quot;true\&quot;, user will be activated.
-   *
-   * @return enabled
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "if \"true\", user will be activated.")
-  @JsonProperty(JSON_PROPERTY_ENABLED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEnabled() {
-    return enabled;
-  }
+	public static final String JSON_PROPERTY_ICON = "icon";
 
-  public void setEnabled(String enabled) {
-    this.enabled = enabled;
-  }
+	private String icon;
 
-  public UserUpdateRequest userName(String userName) {
+	public static final String JSON_PROPERTY_TITLE = "title";
 
-    this.userName = userName;
-    return this;
-  }
+	private String title;
 
-  /**
-   * user name
-   *
-   * @return userName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user name")
-  @JsonProperty(JSON_PROPERTY_USER_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserName() {
-    return userName;
-  }
+	public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
 
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
+	private String jobTitle;
 
-  public UserUpdateRequest firstname(String firstname) {
+	public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
 
-    this.firstname = firstname;
-    return this;
-  }
+	private String managerId;
 
-  /**
-   * user last name
-   *
-   * @return firstname
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user last name")
-  @JsonProperty(JSON_PROPERTY_FIRSTNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFirstname() {
-    return firstname;
-  }
+	public UserUpdateRequest enabled(String enabled) {
 
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
-  }
+		this.enabled = enabled;
+		return this;
+	}
 
-  public UserUpdateRequest lastname(String lastname) {
+	/**
+	 * if \&quot;true\&quot;, user will be activated.
+	 * @return enabled
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "if \"true\", user will be activated.")
+	@JsonProperty(JSON_PROPERTY_ENABLED)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getEnabled() {
+		return enabled;
+	}
 
-    this.lastname = lastname;
-    return this;
-  }
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
+	}
 
-  /**
-   * user last name
-   *
-   * @return lastname
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user last name")
-  @JsonProperty(JSON_PROPERTY_LASTNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastname() {
-    return lastname;
-  }
+	public UserUpdateRequest userName(String userName) {
 
-  public void setLastname(String lastname) {
-    this.lastname = lastname;
-  }
+		this.userName = userName;
+		return this;
+	}
 
-  public UserUpdateRequest password(String password) {
+	/**
+	 * user name
+	 * @return userName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user name")
+	@JsonProperty(JSON_PROPERTY_USER_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserName() {
+		return userName;
+	}
 
-    this.password = password;
-    return this;
-  }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-  /**
-   * user password
-   *
-   * @return password
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user password")
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPassword() {
-    return password;
-  }
+	public UserUpdateRequest firstname(String firstname) {
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+		this.firstname = firstname;
+		return this;
+	}
 
-  public UserUpdateRequest icon(String icon) {
+	/**
+	 * user last name
+	 * @return firstname
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user last name")
+	@JsonProperty(JSON_PROPERTY_FIRSTNAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFirstname() {
+		return firstname;
+	}
 
-    this.icon = icon;
-    return this;
-  }
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
 
-  /**
-   * bonita icon path (ie. /default/icon_user.png)
-   *
-   * @return icon
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = " bonita icon path (ie. /default/icon_user.png)")
-  @JsonProperty(JSON_PROPERTY_ICON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getIcon() {
-    return icon;
-  }
+	public UserUpdateRequest lastname(String lastname) {
 
-  public void setIcon(String icon) {
-    this.icon = icon;
-  }
+		this.lastname = lastname;
+		return this;
+	}
 
-  public UserUpdateRequest title(String title) {
+	/**
+	 * user last name
+	 * @return lastname
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user last name")
+	@JsonProperty(JSON_PROPERTY_LASTNAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastname() {
+		return lastname;
+	}
 
-    this.title = title;
-    return this;
-  }
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
-  /**
-   * user title
-   *
-   * @return title
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user title")
-  @JsonProperty(JSON_PROPERTY_TITLE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTitle() {
-    return title;
-  }
+	public UserUpdateRequest password(String password) {
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+		this.password = password;
+		return this;
+	}
 
-  public UserUpdateRequest jobTitle(String jobTitle) {
+	/**
+	 * user password
+	 * @return password
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user password")
+	@JsonProperty(JSON_PROPERTY_PASSWORD)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPassword() {
+		return password;
+	}
 
-    this.jobTitle = jobTitle;
-    return this;
-  }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-  /**
-   * user job title
-   *
-   * @return jobTitle
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user job title")
-  @JsonProperty(JSON_PROPERTY_JOB_TITLE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getJobTitle() {
-    return jobTitle;
-  }
+	public UserUpdateRequest icon(String icon) {
 
-  public void setJobTitle(String jobTitle) {
-    this.jobTitle = jobTitle;
-  }
+		this.icon = icon;
+		return this;
+	}
 
-  public UserUpdateRequest managerId(String managerId) {
+	/**
+	 * bonita icon path (ie. /default/icon_user.png)
+	 * @return icon
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = " bonita icon path (ie. /default/icon_user.png)")
+	@JsonProperty(JSON_PROPERTY_ICON)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getIcon() {
+		return icon;
+	}
 
-    this.managerId = managerId;
-    return this;
-  }
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 
-  /**
-   * user manager id
-   *
-   * @return managerId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user manager id")
-  @JsonProperty(JSON_PROPERTY_MANAGER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getManagerId() {
-    return managerId;
-  }
+	public UserUpdateRequest title(String title) {
 
-  public void setManagerId(String managerId) {
-    this.managerId = managerId;
-  }
+		this.title = title;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    UserUpdateRequest userUpdateRequest = (UserUpdateRequest) o;
-    return Objects.equals(this.enabled, userUpdateRequest.enabled)
-        && Objects.equals(this.userName, userUpdateRequest.userName)
-        && Objects.equals(this.firstname, userUpdateRequest.firstname)
-        && Objects.equals(this.lastname, userUpdateRequest.lastname)
-        && Objects.equals(this.password, userUpdateRequest.password)
-        && Objects.equals(this.icon, userUpdateRequest.icon)
-        && Objects.equals(this.title, userUpdateRequest.title)
-        && Objects.equals(this.jobTitle, userUpdateRequest.jobTitle)
-        && Objects.equals(this.managerId, userUpdateRequest.managerId);
-  }
+	/**
+	 * user title
+	 * @return title
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user title")
+	@JsonProperty(JSON_PROPERTY_TITLE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getTitle() {
+		return title;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        enabled, userName, firstname, lastname, password, icon, title, jobTitle, managerId);
-  }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class UserUpdateRequest {\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
-    sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
-    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    jobTitle: ").append(toIndentedString(jobTitle)).append("\n");
-    sb.append("    managerId: ").append(toIndentedString(managerId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public UserUpdateRequest jobTitle(String jobTitle) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.jobTitle = jobTitle;
+		return this;
+	}
+
+	/**
+	 * user job title
+	 * @return jobTitle
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user job title")
+	@JsonProperty(JSON_PROPERTY_JOB_TITLE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	public UserUpdateRequest managerId(String managerId) {
+
+		this.managerId = managerId;
+		return this;
+	}
+
+	/**
+	 * user manager id
+	 * @return managerId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user manager id")
+	@JsonProperty(JSON_PROPERTY_MANAGER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		UserUpdateRequest userUpdateRequest = (UserUpdateRequest) o;
+		return Objects.equals(this.enabled, userUpdateRequest.enabled)
+				&& Objects.equals(this.userName, userUpdateRequest.userName)
+				&& Objects.equals(this.firstname, userUpdateRequest.firstname)
+				&& Objects.equals(this.lastname, userUpdateRequest.lastname)
+				&& Objects.equals(this.password, userUpdateRequest.password)
+				&& Objects.equals(this.icon, userUpdateRequest.icon)
+				&& Objects.equals(this.title, userUpdateRequest.title)
+				&& Objects.equals(this.jobTitle, userUpdateRequest.jobTitle)
+				&& Objects.equals(this.managerId, userUpdateRequest.managerId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(enabled, userName, firstname, lastname, password, icon, title, jobTitle, managerId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class UserUpdateRequest {\n");
+		sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+		sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
+		sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
+		sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
+		sb.append("    password: ").append(toIndentedString(password)).append("\n");
+		sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+		sb.append("    title: ").append(toIndentedString(title)).append("\n");
+		sb.append("    jobTitle: ").append(toIndentedString(jobTitle)).append("\n");
+		sb.append("    managerId: ").append(toIndentedString(managerId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

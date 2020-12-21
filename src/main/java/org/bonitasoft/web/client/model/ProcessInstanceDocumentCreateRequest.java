@@ -21,219 +21,218 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessInstanceDocumentCreateRequest */
-@JsonPropertyOrder({
-  ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_CASE_ID,
-  ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_FILE,
-  ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_URL,
-  ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_NAME,
-  ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_FILE_NAME,
-  ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_DESCRIPTION
-})
+@JsonPropertyOrder({ ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_CASE_ID,
+		ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_FILE, ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_URL,
+		ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_NAME,
+		ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_FILE_NAME,
+		ProcessInstanceDocumentCreateRequest.JSON_PROPERTY_DESCRIPTION })
 @JsonTypeName("ProcessInstanceDocumentCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceDocumentCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CASE_ID = "caseId";
-  private String caseId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_FILE = "file";
-  private String file;
+	public static final String JSON_PROPERTY_CASE_ID = "caseId";
 
-  public static final String JSON_PROPERTY_URL = "url";
-  private String url;
+	private String caseId;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_FILE = "file";
 
-  public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  private String fileName;
+	private String file;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	public static final String JSON_PROPERTY_URL = "url";
 
-  public ProcessInstanceDocumentCreateRequest caseId(String caseId) {
+	private String url;
 
-    this.caseId = caseId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  /**
-   * The process instance id
-   *
-   * @return caseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The process instance id")
-  @JsonProperty(JSON_PROPERTY_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCaseId() {
-    return caseId;
-  }
+	private String name;
 
-  public void setCaseId(String caseId) {
-    this.caseId = caseId;
-  }
+	public static final String JSON_PROPERTY_FILE_NAME = "fileName";
 
-  public ProcessInstanceDocumentCreateRequest file(String file) {
+	private String fileName;
 
-    this.file = file;
-    return this;
-  }
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  /**
-   * The local file name to upload from (as from the temp upload folder)
-   *
-   * @return file
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The local file name to upload from (as from the temp upload folder)")
-  @JsonProperty(JSON_PROPERTY_FILE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFile() {
-    return file;
-  }
+	private String description;
 
-  public void setFile(String file) {
-    this.file = file;
-  }
+	public ProcessInstanceDocumentCreateRequest caseId(String caseId) {
 
-  public ProcessInstanceDocumentCreateRequest url(String url) {
+		this.caseId = caseId;
+		return this;
+	}
 
-    this.url = url;
-    return this;
-  }
+	/**
+	 * The process instance id
+	 * @return caseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The process instance id")
+	@JsonProperty(JSON_PROPERTY_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCaseId() {
+		return caseId;
+	}
 
-  /**
-   * The remote url to upload from
-   *
-   * @return url
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The remote url to upload from")
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUrl() {
-    return url;
-  }
+	public void setCaseId(String caseId) {
+		this.caseId = caseId;
+	}
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
+	public ProcessInstanceDocumentCreateRequest file(String file) {
 
-  public ProcessInstanceDocumentCreateRequest name(String name) {
+		this.file = file;
+		return this;
+	}
 
-    this.name = name;
-    return this;
-  }
+	/**
+	 * The local file name to upload from (as from the temp upload folder)
+	 * @return file
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The local file name to upload from (as from the temp upload folder)")
+	@JsonProperty(JSON_PROPERTY_FILE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFile() {
+		return file;
+	}
 
-  /**
-   * The file display name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The file display name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public void setFile(String file) {
+		this.file = file;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public ProcessInstanceDocumentCreateRequest url(String url) {
 
-  public ProcessInstanceDocumentCreateRequest fileName(String fileName) {
+		this.url = url;
+		return this;
+	}
 
-    this.fileName = fileName;
-    return this;
-  }
+	/**
+	 * The remote url to upload from
+	 * @return url
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The remote url to upload from")
+	@JsonProperty(JSON_PROPERTY_URL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUrl() {
+		return url;
+	}
 
-  /**
-   * The target file name
-   *
-   * @return fileName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The target file name")
-  @JsonProperty(JSON_PROPERTY_FILE_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFileName() {
-    return fileName;
-  }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-  public void setFileName(String fileName) {
-    this.fileName = fileName;
-  }
+	public ProcessInstanceDocumentCreateRequest name(String name) {
 
-  public ProcessInstanceDocumentCreateRequest description(String description) {
+		this.name = name;
+		return this;
+	}
 
-    this.description = description;
-    return this;
-  }
+	/**
+	 * The file display name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The file display name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * The document description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The document description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public ProcessInstanceDocumentCreateRequest fileName(String fileName) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstanceDocumentCreateRequest processInstanceDocumentCreateRequest =
-        (ProcessInstanceDocumentCreateRequest) o;
-    return Objects.equals(this.caseId, processInstanceDocumentCreateRequest.caseId)
-        && Objects.equals(this.file, processInstanceDocumentCreateRequest.file)
-        && Objects.equals(this.url, processInstanceDocumentCreateRequest.url)
-        && Objects.equals(this.name, processInstanceDocumentCreateRequest.name)
-        && Objects.equals(this.fileName, processInstanceDocumentCreateRequest.fileName)
-        && Objects.equals(this.description, processInstanceDocumentCreateRequest.description);
-  }
+		this.fileName = fileName;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(caseId, file, url, name, fileName, description);
-  }
+	/**
+	 * The target file name
+	 * @return fileName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The target file name")
+	@JsonProperty(JSON_PROPERTY_FILE_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFileName() {
+		return fileName;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstanceDocumentCreateRequest {\n");
-    sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
-    sb.append("    file: ").append(toIndentedString(file)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public ProcessInstanceDocumentCreateRequest description(String description) {
+
+		this.description = description;
+		return this;
+	}
+
+	/**
+	 * The document description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The document description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstanceDocumentCreateRequest processInstanceDocumentCreateRequest = (ProcessInstanceDocumentCreateRequest) o;
+		return Objects.equals(this.caseId, processInstanceDocumentCreateRequest.caseId)
+				&& Objects.equals(this.file, processInstanceDocumentCreateRequest.file)
+				&& Objects.equals(this.url, processInstanceDocumentCreateRequest.url)
+				&& Objects.equals(this.name, processInstanceDocumentCreateRequest.name)
+				&& Objects.equals(this.fileName, processInstanceDocumentCreateRequest.fileName)
+				&& Objects.equals(this.description, processInstanceDocumentCreateRequest.description);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(caseId, file, url, name, fileName, description);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstanceDocumentCreateRequest {\n");
+		sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
+		sb.append("    file: ").append(toIndentedString(file)).append("\n");
+		sb.append("    url: ").append(toIndentedString(url)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

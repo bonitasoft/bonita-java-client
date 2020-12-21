@@ -21,99 +21,101 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** I18nlocale */
-@JsonPropertyOrder({I18nlocale.JSON_PROPERTY_NAME, I18nlocale.JSON_PROPERTY_LOCALE})
+@JsonPropertyOrder({ I18nlocale.JSON_PROPERTY_NAME, I18nlocale.JSON_PROPERTY_LOCALE })
 @JsonTypeName("I18nlocale")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class I18nlocale implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_LOCALE = "locale";
-  private String locale;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public I18nlocale name(String name) {
+	private String name;
 
-    this.name = name;
-    return this;
-  }
+	public static final String JSON_PROPERTY_LOCALE = "locale";
 
-  /**
-   * Name of the language
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the language")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	private String locale;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public I18nlocale name(String name) {
 
-  public I18nlocale locale(String locale) {
+		this.name = name;
+		return this;
+	}
 
-    this.locale = locale;
-    return this;
-  }
+	/**
+	 * Name of the language
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Name of the language")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * code of the locale
-   *
-   * @return locale
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "code of the locale")
-  @JsonProperty(JSON_PROPERTY_LOCALE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLocale() {
-    return locale;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public void setLocale(String locale) {
-    this.locale = locale;
-  }
+	public I18nlocale locale(String locale) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    I18nlocale i18nlocale = (I18nlocale) o;
-    return Objects.equals(this.name, i18nlocale.name)
-        && Objects.equals(this.locale, i18nlocale.locale);
-  }
+		this.locale = locale;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, locale);
-  }
+	/**
+	 * code of the locale
+	 * @return locale
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "code of the locale")
+	@JsonProperty(JSON_PROPERTY_LOCALE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLocale() {
+		return locale;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class I18nlocale {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setLocale(String locale) {
+		this.locale = locale;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		I18nlocale i18nlocale = (I18nlocale) o;
+		return Objects.equals(this.name, i18nlocale.name) && Objects.equals(this.locale, i18nlocale.locale);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, locale);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class I18nlocale {\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

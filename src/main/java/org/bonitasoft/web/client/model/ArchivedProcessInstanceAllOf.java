@@ -23,102 +23,103 @@ import java.util.Objects;
 
 /** A completed instance of a process. */
 @ApiModel(description = "A completed instance of a process.")
-@JsonPropertyOrder({
-  ArchivedProcessInstanceAllOf.JSON_PROPERTY_SOURCE_OBJECT_ID,
-  ArchivedProcessInstanceAllOf.JSON_PROPERTY_ARCHIVED_DATE
-})
+@JsonPropertyOrder({ ArchivedProcessInstanceAllOf.JSON_PROPERTY_SOURCE_OBJECT_ID,
+		ArchivedProcessInstanceAllOf.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("ArchivedProcessInstance_allOf")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceAllOf implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
-  private String sourceObjectId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
+	public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
 
-  public ArchivedProcessInstanceAllOf sourceObjectId(String sourceObjectId) {
+	private String sourceObjectId;
 
-    this.sourceObjectId = sourceObjectId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
 
-  /**
-   * the id of the process instance before it was archived
-   *
-   * @return sourceObjectId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the id of the process instance before it was archived")
-  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSourceObjectId() {
-    return sourceObjectId;
-  }
+	private String archivedDate;
 
-  public void setSourceObjectId(String sourceObjectId) {
-    this.sourceObjectId = sourceObjectId;
-  }
+	public ArchivedProcessInstanceAllOf sourceObjectId(String sourceObjectId) {
 
-  public ArchivedProcessInstanceAllOf archivedDate(String archivedDate) {
+		this.sourceObjectId = sourceObjectId;
+		return this;
+	}
 
-    this.archivedDate = archivedDate;
-    return this;
-  }
+	/**
+	 * the id of the process instance before it was archived
+	 * @return sourceObjectId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the id of the process instance before it was archived")
+	@JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSourceObjectId() {
+		return sourceObjectId;
+	}
 
-  /**
-   * the date set when the process instance was archived
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the date set when the process instance was archived")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
+	public void setSourceObjectId(String sourceObjectId) {
+		this.sourceObjectId = sourceObjectId;
+	}
 
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
+	public ArchivedProcessInstanceAllOf archivedDate(String archivedDate) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArchivedProcessInstanceAllOf archivedProcessInstanceAllOf = (ArchivedProcessInstanceAllOf) o;
-    return Objects.equals(this.sourceObjectId, archivedProcessInstanceAllOf.sourceObjectId)
-        && Objects.equals(this.archivedDate, archivedProcessInstanceAllOf.archivedDate);
-  }
+		this.archivedDate = archivedDate;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(sourceObjectId, archivedDate);
-  }
+	/**
+	 * the date set when the process instance was archived
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the date set when the process instance was archived")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedProcessInstanceAllOf {\n");
-    sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ArchivedProcessInstanceAllOf archivedProcessInstanceAllOf = (ArchivedProcessInstanceAllOf) o;
+		return Objects.equals(this.sourceObjectId, archivedProcessInstanceAllOf.sourceObjectId)
+				&& Objects.equals(this.archivedDate, archivedProcessInstanceAllOf.archivedDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(sourceObjectId, archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ArchivedProcessInstanceAllOf {\n");
+		sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

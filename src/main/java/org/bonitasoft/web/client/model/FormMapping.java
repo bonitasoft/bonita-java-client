@@ -24,430 +24,414 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Form Mapping specifies the mapping of a form to a process or a task. The mapping indicates the
- * technology used to create the form, in the &#x60;target&#x60; attribute.
+ * Form Mapping specifies the mapping of a form to a process or a task. The mapping
+ * indicates the technology used to create the form, in the &#x60;target&#x60; attribute.
  */
 @ApiModel(
-    description =
-        "Form Mapping specifies the mapping of a form to a process or a task. The mapping indicates the technology used to create the form, in the `target` attribute.")
-@JsonPropertyOrder({
-  FormMapping.JSON_PROPERTY_ID,
-  FormMapping.JSON_PROPERTY_PROCESS_DEFINITION_ID,
-  FormMapping.JSON_PROPERTY_TYPE,
-  FormMapping.JSON_PROPERTY_TARGET,
-  FormMapping.JSON_PROPERTY_TASK,
-  FormMapping.JSON_PROPERTY_PAGE_ID,
-  FormMapping.JSON_PROPERTY_PAGE_MAPPING_KEY,
-  FormMapping.JSON_PROPERTY_LAST_UPDATE_BY,
-  FormMapping.JSON_PROPERTY_LAST_UPDATE_DATE,
-  FormMapping.JSON_PROPERTY_URL
-})
+		description = "Form Mapping specifies the mapping of a form to a process or a task. The mapping indicates the technology used to create the form, in the `target` attribute.")
+@JsonPropertyOrder({ FormMapping.JSON_PROPERTY_ID, FormMapping.JSON_PROPERTY_PROCESS_DEFINITION_ID,
+		FormMapping.JSON_PROPERTY_TYPE, FormMapping.JSON_PROPERTY_TARGET, FormMapping.JSON_PROPERTY_TASK,
+		FormMapping.JSON_PROPERTY_PAGE_ID, FormMapping.JSON_PROPERTY_PAGE_MAPPING_KEY,
+		FormMapping.JSON_PROPERTY_LAST_UPDATE_BY, FormMapping.JSON_PROPERTY_LAST_UPDATE_DATE,
+		FormMapping.JSON_PROPERTY_URL })
 @JsonTypeName("FormMapping")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FormMapping implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
-  private String processDefinitionId;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  /** the form mapping type */
-  public enum TypeEnum {
-    PROCESSSTART("PROCESSSTART"),
+	private String id;
 
-    PROCESSOVERVIEW("PROCESSOVERVIEW"),
+	public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
 
-    TASK("TASK");
+	private String processDefinitionId;
 
-    private String value;
+	/** the form mapping type */
+	public enum TypeEnum {
 
-    TypeEnum(String value) {
-      this.value = value;
-    }
+		PROCESSSTART("PROCESSSTART"),
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+		PROCESSOVERVIEW("PROCESSOVERVIEW"),
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+		TASK("TASK");
 
-    @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private TypeEnum type;
-
-  /** the target */
-  public enum TargetEnum {
-    URL("URL"),
-
-    INTERNAL("INTERNAL"),
-
-    LEGACY("LEGACY"),
-
-    UNDEFINED("UNDEFINED"),
-
-    NONE("NONE");
-
-    private String value;
-
-    TargetEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TargetEnum fromValue(String value) {
-      for (TargetEnum b : TargetEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_TARGET = "target";
-  private TargetEnum target;
-
-  public static final String JSON_PROPERTY_TASK = "task";
-  private String task;
-
-  public static final String JSON_PROPERTY_PAGE_ID = "pageId";
-  private String pageId;
-
-  public static final String JSON_PROPERTY_PAGE_MAPPING_KEY = "pageMappingKey";
-  private String pageMappingKey;
-
-  public static final String JSON_PROPERTY_LAST_UPDATE_BY = "lastUpdateBy";
-  private String lastUpdateBy;
-
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
-  private String lastUpdateDate;
-
-  public static final String JSON_PROPERTY_URL = "url";
-  private String url;
-
-  public FormMapping id(String id) {
-
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * the form mapping identifier
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the form mapping identifier")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public FormMapping processDefinitionId(String processDefinitionId) {
-
-    this.processDefinitionId = processDefinitionId;
-    return this;
-  }
-
-  /**
-   * the process identifier related to this form mapping
-   *
-   * @return processDefinitionId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the process identifier related to this form mapping")
-  @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessDefinitionId() {
-    return processDefinitionId;
-  }
-
-  public void setProcessDefinitionId(String processDefinitionId) {
-    this.processDefinitionId = processDefinitionId;
-  }
-
-  public FormMapping type(TypeEnum type) {
-
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * the form mapping type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the form mapping type")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TypeEnum getType() {
-    return type;
-  }
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-  public FormMapping target(TargetEnum target) {
-
-    this.target = target;
-    return this;
-  }
-
-  /**
-   * the target
-   *
-   * @return target
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the target")
-  @JsonProperty(JSON_PROPERTY_TARGET)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TargetEnum getTarget() {
-    return target;
-  }
-
-  public void setTarget(TargetEnum target) {
-    this.target = target;
-  }
-
-  public FormMapping task(String task) {
-
-    this.task = task;
-    return this;
-  }
-
-  /**
-   * the task name when type is TASK - null otherwise
-   *
-   * @return task
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the task name when type is TASK - null otherwise")
-  @JsonProperty(JSON_PROPERTY_TASK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTask() {
-    return task;
-  }
-
-  public void setTask(String task) {
-    this.task = task;
-  }
-
-  public FormMapping pageId(String pageId) {
-
-    this.pageId = pageId;
-    return this;
-  }
-
-  /**
-   * the custom page identifier when type is INTERNAL - null otherwise
-   *
-   * @return pageId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the custom page identifier when type is INTERNAL - null otherwise")
-  @JsonProperty(JSON_PROPERTY_PAGE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPageId() {
-    return pageId;
-  }
-
-  public void setPageId(String pageId) {
-    this.pageId = pageId;
-  }
-
-  public FormMapping pageMappingKey(String pageMappingKey) {
-
-    this.pageMappingKey = pageMappingKey;
-    return this;
-  }
-
-  /**
-   * the page mapping key part used to generate the form URL
-   *
-   * @return pageMappingKey
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the page mapping key part used to generate the form URL")
-  @JsonProperty(JSON_PROPERTY_PAGE_MAPPING_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPageMappingKey() {
-    return pageMappingKey;
-  }
-
-  public void setPageMappingKey(String pageMappingKey) {
-    this.pageMappingKey = pageMappingKey;
-  }
-
-  public FormMapping lastUpdateBy(String lastUpdateBy) {
-
-    this.lastUpdateBy = lastUpdateBy;
-    return this;
-  }
-
-  /**
-   * the identifier of the user who last updated this form mapping - 0 if no update has been done
-   * yet
-   *
-   * @return lastUpdateBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the identifier of the user who last updated this form mapping - 0 if no update has been done yet")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateBy() {
-    return lastUpdateBy;
-  }
-
-  public void setLastUpdateBy(String lastUpdateBy) {
-    this.lastUpdateBy = lastUpdateBy;
-  }
-
-  public FormMapping lastUpdateDate(String lastUpdateDate) {
-
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
-
-  /**
-   * the last update date in milliseconds - null if no update has been done yet
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "the last update date in milliseconds - null if no update has been done yet")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
-
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
-
-  public FormMapping url(String url) {
-
-    this.url = url;
-    return this;
-  }
-
-  /**
-   * the external URL (string) when type is URL - null otherwise
-   *
-   * @return url
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the external URL (string) when type is URL - null otherwise")
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    FormMapping formMapping = (FormMapping) o;
-    return Objects.equals(this.id, formMapping.id)
-        && Objects.equals(this.processDefinitionId, formMapping.processDefinitionId)
-        && Objects.equals(this.type, formMapping.type)
-        && Objects.equals(this.target, formMapping.target)
-        && Objects.equals(this.task, formMapping.task)
-        && Objects.equals(this.pageId, formMapping.pageId)
-        && Objects.equals(this.pageMappingKey, formMapping.pageMappingKey)
-        && Objects.equals(this.lastUpdateBy, formMapping.lastUpdateBy)
-        && Objects.equals(this.lastUpdateDate, formMapping.lastUpdateDate)
-        && Objects.equals(this.url, formMapping.url);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id,
-        processDefinitionId,
-        type,
-        target,
-        task,
-        pageId,
-        pageMappingKey,
-        lastUpdateBy,
-        lastUpdateDate,
-        url);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FormMapping {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    processDefinitionId: ")
-        .append(toIndentedString(processDefinitionId))
-        .append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    target: ").append(toIndentedString(target)).append("\n");
-    sb.append("    task: ").append(toIndentedString(task)).append("\n");
-    sb.append("    pageId: ").append(toIndentedString(pageId)).append("\n");
-    sb.append("    pageMappingKey: ").append(toIndentedString(pageMappingKey)).append("\n");
-    sb.append("    lastUpdateBy: ").append(toIndentedString(lastUpdateBy)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		private String value;
+
+		TypeEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
+		@JsonCreator
+		public static TypeEnum fromValue(String value) {
+			for (TypeEnum b : TypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+	}
+
+	public static final String JSON_PROPERTY_TYPE = "type";
+
+	private TypeEnum type;
+
+	/** the target */
+	public enum TargetEnum {
+
+		URL("URL"),
+
+		INTERNAL("INTERNAL"),
+
+		LEGACY("LEGACY"),
+
+		UNDEFINED("UNDEFINED"),
+
+		NONE("NONE");
+
+		private String value;
+
+		TargetEnum(String value) {
+			this.value = value;
+		}
+
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
+
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
+
+		@JsonCreator
+		public static TargetEnum fromValue(String value) {
+			for (TargetEnum b : TargetEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
+
+	}
+
+	public static final String JSON_PROPERTY_TARGET = "target";
+
+	private TargetEnum target;
+
+	public static final String JSON_PROPERTY_TASK = "task";
+
+	private String task;
+
+	public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+
+	private String pageId;
+
+	public static final String JSON_PROPERTY_PAGE_MAPPING_KEY = "pageMappingKey";
+
+	private String pageMappingKey;
+
+	public static final String JSON_PROPERTY_LAST_UPDATE_BY = "lastUpdateBy";
+
+	private String lastUpdateBy;
+
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
+
+	private String lastUpdateDate;
+
+	public static final String JSON_PROPERTY_URL = "url";
+
+	private String url;
+
+	public FormMapping id(String id) {
+
+		this.id = id;
+		return this;
+	}
+
+	/**
+	 * the form mapping identifier
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the form mapping identifier")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public FormMapping processDefinitionId(String processDefinitionId) {
+
+		this.processDefinitionId = processDefinitionId;
+		return this;
+	}
+
+	/**
+	 * the process identifier related to this form mapping
+	 * @return processDefinitionId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the process identifier related to this form mapping")
+	@JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessDefinitionId() {
+		return processDefinitionId;
+	}
+
+	public void setProcessDefinitionId(String processDefinitionId) {
+		this.processDefinitionId = processDefinitionId;
+	}
+
+	public FormMapping type(TypeEnum type) {
+
+		this.type = type;
+		return this;
+	}
+
+	/**
+	 * the form mapping type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the form mapping type")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public TypeEnum getType() {
+		return type;
+	}
+
+	public void setType(TypeEnum type) {
+		this.type = type;
+	}
+
+	public FormMapping target(TargetEnum target) {
+
+		this.target = target;
+		return this;
+	}
+
+	/**
+	 * the target
+	 * @return target
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the target")
+	@JsonProperty(JSON_PROPERTY_TARGET)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public TargetEnum getTarget() {
+		return target;
+	}
+
+	public void setTarget(TargetEnum target) {
+		this.target = target;
+	}
+
+	public FormMapping task(String task) {
+
+		this.task = task;
+		return this;
+	}
+
+	/**
+	 * the task name when type is TASK - null otherwise
+	 * @return task
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the task name when type is TASK - null otherwise")
+	@JsonProperty(JSON_PROPERTY_TASK)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getTask() {
+		return task;
+	}
+
+	public void setTask(String task) {
+		this.task = task;
+	}
+
+	public FormMapping pageId(String pageId) {
+
+		this.pageId = pageId;
+		return this;
+	}
+
+	/**
+	 * the custom page identifier when type is INTERNAL - null otherwise
+	 * @return pageId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the custom page identifier when type is INTERNAL - null otherwise")
+	@JsonProperty(JSON_PROPERTY_PAGE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPageId() {
+		return pageId;
+	}
+
+	public void setPageId(String pageId) {
+		this.pageId = pageId;
+	}
+
+	public FormMapping pageMappingKey(String pageMappingKey) {
+
+		this.pageMappingKey = pageMappingKey;
+		return this;
+	}
+
+	/**
+	 * the page mapping key part used to generate the form URL
+	 * @return pageMappingKey
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the page mapping key part used to generate the form URL")
+	@JsonProperty(JSON_PROPERTY_PAGE_MAPPING_KEY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPageMappingKey() {
+		return pageMappingKey;
+	}
+
+	public void setPageMappingKey(String pageMappingKey) {
+		this.pageMappingKey = pageMappingKey;
+	}
+
+	public FormMapping lastUpdateBy(String lastUpdateBy) {
+
+		this.lastUpdateBy = lastUpdateBy;
+		return this;
+	}
+
+	/**
+	 * the identifier of the user who last updated this form mapping - 0 if no update has
+	 * been done yet
+	 * @return lastUpdateBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the identifier of the user who last updated this form mapping - 0 if no update has been done yet")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateBy() {
+		return lastUpdateBy;
+	}
+
+	public void setLastUpdateBy(String lastUpdateBy) {
+		this.lastUpdateBy = lastUpdateBy;
+	}
+
+	public FormMapping lastUpdateDate(String lastUpdateDate) {
+
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * the last update date in milliseconds - null if no update has been done yet
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the last update date in milliseconds - null if no update has been done yet")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public FormMapping url(String url) {
+
+		this.url = url;
+		return this;
+	}
+
+	/**
+	 * the external URL (string) when type is URL - null otherwise
+	 * @return url
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the external URL (string) when type is URL - null otherwise")
+	@JsonProperty(JSON_PROPERTY_URL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		FormMapping formMapping = (FormMapping) o;
+		return Objects.equals(this.id, formMapping.id)
+				&& Objects.equals(this.processDefinitionId, formMapping.processDefinitionId)
+				&& Objects.equals(this.type, formMapping.type) && Objects.equals(this.target, formMapping.target)
+				&& Objects.equals(this.task, formMapping.task) && Objects.equals(this.pageId, formMapping.pageId)
+				&& Objects.equals(this.pageMappingKey, formMapping.pageMappingKey)
+				&& Objects.equals(this.lastUpdateBy, formMapping.lastUpdateBy)
+				&& Objects.equals(this.lastUpdateDate, formMapping.lastUpdateDate)
+				&& Objects.equals(this.url, formMapping.url);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, processDefinitionId, type, target, task, pageId, pageMappingKey, lastUpdateBy,
+				lastUpdateDate, url);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class FormMapping {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    processDefinitionId: ").append(toIndentedString(processDefinitionId)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    target: ").append(toIndentedString(target)).append("\n");
+		sb.append("    task: ").append(toIndentedString(task)).append("\n");
+		sb.append("    pageId: ").append(toIndentedString(pageId)).append("\n");
+		sb.append("    pageMappingKey: ").append(toIndentedString(pageMappingKey)).append("\n");
+		sb.append("    lastUpdateBy: ").append(toIndentedString(lastUpdateBy)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("    url: ").append(toIndentedString(url)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

@@ -17,43 +17,45 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /** the activity type (string) */
 public enum ActivityType {
-  AUTOMATIC_TASK("AUTOMATIC_TASK"),
 
-  HUMAN_TASK("HUMAN_TASK"),
+	AUTOMATIC_TASK("AUTOMATIC_TASK"),
 
-  USER_TASK("USER_TASK"),
+	HUMAN_TASK("HUMAN_TASK"),
 
-  MANUAL_TASK("MANUAL_TASK"),
+	USER_TASK("USER_TASK"),
 
-  LOOP_ACTIVITY("LOOP_ACTIVITY"),
+	MANUAL_TASK("MANUAL_TASK"),
 
-  MULTI_INSTANCE_ACTIVITY("MULTI_INSTANCE_ACTIVITY"),
+	LOOP_ACTIVITY("LOOP_ACTIVITY"),
 
-  CALL_ACTIVITY("CALL_ACTIVITY");
+	MULTI_INSTANCE_ACTIVITY("MULTI_INSTANCE_ACTIVITY"),
 
-  private final String value;
+	CALL_ACTIVITY("CALL_ACTIVITY");
 
-  ActivityType(String value) {
-    this.value = value;
-  }
+	private final String value;
 
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
+	ActivityType(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
 
-  @JsonCreator
-  public static ActivityType fromValue(String value) {
-    for (ActivityType b : ActivityType.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
-    }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
+	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
+
+	@JsonCreator
+	public static ActivityType fromValue(String value) {
+		for (ActivityType b : ActivityType.values()) {
+			if (b.value.equals(value)) {
+				return b;
+			}
+		}
+		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
 }

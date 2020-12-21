@@ -23,309 +23,304 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** Tenant */
-@JsonPropertyOrder({
-  Tenant.JSON_PROPERTY_ID,
-  Tenant.JSON_PROPERTY_CREATION,
-  Tenant.JSON_PROPERTY_ICON,
-  Tenant.JSON_PROPERTY_NAME,
-  Tenant.JSON_PROPERTY_DESCRIPTION,
-  Tenant.JSON_PROPERTY_USERNAME,
-  Tenant.JSON_PROPERTY_PASSWORD,
-  Tenant.JSON_PROPERTY_STATE
-})
+@JsonPropertyOrder({ Tenant.JSON_PROPERTY_ID, Tenant.JSON_PROPERTY_CREATION, Tenant.JSON_PROPERTY_ICON,
+		Tenant.JSON_PROPERTY_NAME, Tenant.JSON_PROPERTY_DESCRIPTION, Tenant.JSON_PROPERTY_USERNAME,
+		Tenant.JSON_PROPERTY_PASSWORD, Tenant.JSON_PROPERTY_STATE })
 @JsonTypeName("Tenant")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Tenant implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CREATION = "creation";
-  private String creation;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_ICON = "icon";
-  private String icon;
+	private String id;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_CREATION = "creation";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String creation;
 
-  public static final String JSON_PROPERTY_USERNAME = "username";
-  private String username;
+	public static final String JSON_PROPERTY_ICON = "icon";
 
-  public static final String JSON_PROPERTY_PASSWORD = "password";
-  private String password;
+	private String icon;
 
-  /** the tenant state */
-  public enum StateEnum {
-    ACTIVATED("ACTIVATED"),
+	public static final String JSON_PROPERTY_NAME = "name";
 
-    DEACTIVATED("DEACTIVATED");
+	private String name;
 
-    private String value;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-    StateEnum(String value) {
-      this.value = value;
-    }
+	private String description;
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+	public static final String JSON_PROPERTY_USERNAME = "username";
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+	private String username;
 
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+	public static final String JSON_PROPERTY_PASSWORD = "password";
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private StateEnum state;
+	private String password;
 
-  public Tenant id(String id) {
+	/** the tenant state */
+	public enum StateEnum {
 
-    this.id = id;
-    return this;
-  }
+		ACTIVATED("ACTIVATED"),
 
-  /**
-   * id of the tenant
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the tenant")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+		DEACTIVATED("DEACTIVATED");
 
-  public void setId(String id) {
-    this.id = id;
-  }
+		private String value;
 
-  public Tenant creation(String creation) {
+		StateEnum(String value) {
+			this.value = value;
+		}
 
-    this.creation = creation;
-    return this;
-  }
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
 
-  /**
-   * the creation date
-   *
-   * @return creation
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the creation date")
-  @JsonProperty(JSON_PROPERTY_CREATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreation() {
-    return creation;
-  }
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-  public void setCreation(String creation) {
-    this.creation = creation;
-  }
+		@JsonCreator
+		public static StateEnum fromValue(String value) {
+			for (StateEnum b : StateEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
 
-  public Tenant icon(String icon) {
+	}
 
-    this.icon = icon;
-    return this;
-  }
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  /**
-   * the path of the icon
-   *
-   * @return icon
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the path of the icon")
-  @JsonProperty(JSON_PROPERTY_ICON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getIcon() {
-    return icon;
-  }
+	private StateEnum state;
 
-  public void setIcon(String icon) {
-    this.icon = icon;
-  }
+	public Tenant id(String id) {
 
-  public Tenant name(String name) {
+		this.id = id;
+		return this;
+	}
 
-    this.name = name;
-    return this;
-  }
+	/**
+	 * id of the tenant
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the tenant")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  /**
-   * the name of the tenant
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the name of the tenant")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public Tenant creation(String creation) {
 
-  public Tenant description(String description) {
+		this.creation = creation;
+		return this;
+	}
 
-    this.description = description;
-    return this;
-  }
+	/**
+	 * the creation date
+	 * @return creation
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the creation date")
+	@JsonProperty(JSON_PROPERTY_CREATION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreation() {
+		return creation;
+	}
 
-  /**
-   * the description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public void setCreation(String creation) {
+		this.creation = creation;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public Tenant icon(String icon) {
 
-  public Tenant username(String username) {
+		this.icon = icon;
+		return this;
+	}
 
-    this.username = username;
-    return this;
-  }
+	/**
+	 * the path of the icon
+	 * @return icon
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the path of the icon")
+	@JsonProperty(JSON_PROPERTY_ICON)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getIcon() {
+		return icon;
+	}
 
-  /**
-   * the username
-   *
-   * @return username
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the username")
-  @JsonProperty(JSON_PROPERTY_USERNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUsername() {
-    return username;
-  }
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+	public Tenant name(String name) {
 
-  public Tenant password(String password) {
+		this.name = name;
+		return this;
+	}
 
-    this.password = password;
-    return this;
-  }
+	/**
+	 * the name of the tenant
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the name of the tenant")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * the password
-   *
-   * @return password
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the password")
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPassword() {
-    return password;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+	public Tenant description(String description) {
 
-  public Tenant state(StateEnum state) {
+		this.description = description;
+		return this;
+	}
 
-    this.state = state;
-    return this;
-  }
+	/**
+	 * the description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  /**
-   * the tenant state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the tenant state")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public StateEnum getState() {
-    return state;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public void setState(StateEnum state) {
-    this.state = state;
-  }
+	public Tenant username(String username) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Tenant tenant = (Tenant) o;
-    return Objects.equals(this.id, tenant.id)
-        && Objects.equals(this.creation, tenant.creation)
-        && Objects.equals(this.icon, tenant.icon)
-        && Objects.equals(this.name, tenant.name)
-        && Objects.equals(this.description, tenant.description)
-        && Objects.equals(this.username, tenant.username)
-        && Objects.equals(this.password, tenant.password)
-        && Objects.equals(this.state, tenant.state);
-  }
+		this.username = username;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, creation, icon, name, description, username, password, state);
-  }
+	/**
+	 * the username
+	 * @return username
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the username")
+	@JsonProperty(JSON_PROPERTY_USERNAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUsername() {
+		return username;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Tenant {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    creation: ").append(toIndentedString(creation)).append("\n");
-    sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public Tenant password(String password) {
+
+		this.password = password;
+		return this;
+	}
+
+	/**
+	 * the password
+	 * @return password
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the password")
+	@JsonProperty(JSON_PROPERTY_PASSWORD)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Tenant state(StateEnum state) {
+
+		this.state = state;
+		return this;
+	}
+
+	/**
+	 * the tenant state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the tenant state")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public StateEnum getState() {
+		return state;
+	}
+
+	public void setState(StateEnum state) {
+		this.state = state;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Tenant tenant = (Tenant) o;
+		return Objects.equals(this.id, tenant.id) && Objects.equals(this.creation, tenant.creation)
+				&& Objects.equals(this.icon, tenant.icon) && Objects.equals(this.name, tenant.name)
+				&& Objects.equals(this.description, tenant.description)
+				&& Objects.equals(this.username, tenant.username) && Objects.equals(this.password, tenant.password)
+				&& Objects.equals(this.state, tenant.state);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, creation, icon, name, description, username, password, state);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Tenant {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    creation: ").append(toIndentedString(creation)).append("\n");
+		sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    username: ").append(toIndentedString(username)).append("\n");
+		sb.append("    password: ").append(toIndentedString(password)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

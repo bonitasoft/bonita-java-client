@@ -21,71 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** CustomUserValueUpdateRequest */
-@JsonPropertyOrder({CustomUserValueUpdateRequest.JSON_PROPERTY_VALUE})
+@JsonPropertyOrder({ CustomUserValueUpdateRequest.JSON_PROPERTY_VALUE })
 @JsonTypeName("CustomUserValueUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CustomUserValueUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private String value;
+	private static final long serialVersionUID = 1L;
 
-  public CustomUserValueUpdateRequest value(String value) {
+	public static final String JSON_PROPERTY_VALUE = "value";
 
-    this.value = value;
-    return this;
-  }
+	private String value;
 
-  /**
-   * new value to set
-   *
-   * @return value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "new value to set")
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getValue() {
-    return value;
-  }
+	public CustomUserValueUpdateRequest value(String value) {
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+		this.value = value;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CustomUserValueUpdateRequest customUserValueUpdateRequest = (CustomUserValueUpdateRequest) o;
-    return Objects.equals(this.value, customUserValueUpdateRequest.value);
-  }
+	/**
+	 * new value to set
+	 * @return value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "new value to set")
+	@JsonProperty(JSON_PROPERTY_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getValue() {
+		return value;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(value);
-  }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CustomUserValueUpdateRequest {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		CustomUserValueUpdateRequest customUserValueUpdateRequest = (CustomUserValueUpdateRequest) o;
+		return Objects.equals(this.value, customUserValueUpdateRequest.value);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class CustomUserValueUpdateRequest {\n");
+		sb.append("    value: ").append(toIndentedString(value)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

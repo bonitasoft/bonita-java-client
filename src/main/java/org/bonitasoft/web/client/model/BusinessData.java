@@ -23,124 +23,122 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * Retrieve business data value. Depending on the object attribute loading policy, the API returns
- * either the full object in JSON representation or the HATEOAS links to the object attributes. Long
- * attributes use a string representation added in 7.0.1 as a workaround for the JavaScript integer
- * spectrum issue. Representation of object attributes with an _always load_ policy:
- * &#x60;&#x60;&#x60;json { \&quot;persistenceId\&quot;: _number_, // &lt;-- deprecated
- * \&quot;persistenceId_string\&quot;: \&quot;_number_\&quot; \&quot;persistenceVersion\&quot;:
- * _number_, // &lt;-- deprecated \&quot;persistenceVersion_string\&quot;: \&quot;_number_\&quot;
- * \&quot;attributeName\&quot;:_attributeType_ ... } &#x60;&#x60;&#x60; The string representation
- * added in 7.0.1 for Long attributes is a workaround for the JavaScript integer spectrum issue.
- * HATEOAS representation of object attribute with a _load when needed_ policy:
- * &#x60;&#x60;&#x60;json \&quot;links\&quot;:[ { \&quot;rel\&quot;:_string_
- * \&quot;href\&quot;:_uri_ } ] &#x60;&#x60;&#x60;
+ * Retrieve business data value. Depending on the object attribute loading policy, the API
+ * returns either the full object in JSON representation or the HATEOAS links to the
+ * object attributes. Long attributes use a string representation added in 7.0.1 as a
+ * workaround for the JavaScript integer spectrum issue. Representation of object
+ * attributes with an _always load_ policy: &#x60;&#x60;&#x60;json {
+ * \&quot;persistenceId\&quot;: _number_, // &lt;-- deprecated
+ * \&quot;persistenceId_string\&quot;: \&quot;_number_\&quot;
+ * \&quot;persistenceVersion\&quot;: _number_, // &lt;-- deprecated
+ * \&quot;persistenceVersion_string\&quot;: \&quot;_number_\&quot;
+ * \&quot;attributeName\&quot;:_attributeType_ ... } &#x60;&#x60;&#x60; The string
+ * representation added in 7.0.1 for Long attributes is a workaround for the JavaScript
+ * integer spectrum issue. HATEOAS representation of object attribute with a _load when
+ * needed_ policy: &#x60;&#x60;&#x60;json \&quot;links\&quot;:[ {
+ * \&quot;rel\&quot;:_string_ \&quot;href\&quot;:_uri_ } ] &#x60;&#x60;&#x60;
  */
 @ApiModel(
-    description =
-        "Retrieve business data value. Depending on the object attribute loading policy, the API returns either the full object in JSON representation or the HATEOAS links to the object attributes.  Long attributes use a string representation added in 7.0.1 as a workaround for the JavaScript integer spectrum issue.  Representation of object attributes with an _always load_ policy:  ```json {   \"persistenceId\": _number_, // <-- deprecated   \"persistenceId_string\": \"_number_\"   \"persistenceVersion\": _number_, // <-- deprecated   \"persistenceVersion_string\": \"_number_\"   \"attributeName\":_attributeType_   ... } ```  The string representation added in 7.0.1 for Long attributes is a workaround for the JavaScript integer spectrum issue.  HATEOAS representation of object attribute with a _load when needed_ policy: ```json \"links\":[    {    \"rel\":_string_    \"href\":_uri_    } ] ``` ")
-@JsonPropertyOrder({
-  BusinessData.JSON_PROPERTY_PERSISTENCE_ID_STRING,
-  BusinessData.JSON_PROPERTY_PERSISTENCE_VERSION_STRING
-})
+		description = "Retrieve business data value. Depending on the object attribute loading policy, the API returns either the full object in JSON representation or the HATEOAS links to the object attributes.  Long attributes use a string representation added in 7.0.1 as a workaround for the JavaScript integer spectrum issue.  Representation of object attributes with an _always load_ policy:  ```json {   \"persistenceId\": _number_, // <-- deprecated   \"persistenceId_string\": \"_number_\"   \"persistenceVersion\": _number_, // <-- deprecated   \"persistenceVersion_string\": \"_number_\"   \"attributeName\":_attributeType_   ... } ```  The string representation added in 7.0.1 for Long attributes is a workaround for the JavaScript integer spectrum issue.  HATEOAS representation of object attribute with a _load when needed_ policy: ```json \"links\":[    {    \"rel\":_string_    \"href\":_uri_    } ] ``` ")
+@JsonPropertyOrder({ BusinessData.JSON_PROPERTY_PERSISTENCE_ID_STRING,
+		BusinessData.JSON_PROPERTY_PERSISTENCE_VERSION_STRING })
 @JsonTypeName("BusinessData")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BusinessData extends HashMap<String, Object> implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PERSISTENCE_ID_STRING = "persistenceId_string";
-  private String persistenceIdString;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PERSISTENCE_VERSION_STRING = "persistenceVersion_string";
-  private String persistenceVersionString;
+	public static final String JSON_PROPERTY_PERSISTENCE_ID_STRING = "persistenceId_string";
 
-  public BusinessData persistenceIdString(String persistenceIdString) {
+	private String persistenceIdString;
 
-    this.persistenceIdString = persistenceIdString;
-    return this;
-  }
+	public static final String JSON_PROPERTY_PERSISTENCE_VERSION_STRING = "persistenceVersion_string";
 
-  /**
-   * Id of the business data object
-   *
-   * @return persistenceIdString
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Id of the business data object")
-  @JsonProperty(JSON_PROPERTY_PERSISTENCE_ID_STRING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPersistenceIdString() {
-    return persistenceIdString;
-  }
+	private String persistenceVersionString;
 
-  public void setPersistenceIdString(String persistenceIdString) {
-    this.persistenceIdString = persistenceIdString;
-  }
+	public BusinessData persistenceIdString(String persistenceIdString) {
 
-  public BusinessData persistenceVersionString(String persistenceVersionString) {
+		this.persistenceIdString = persistenceIdString;
+		return this;
+	}
 
-    this.persistenceVersionString = persistenceVersionString;
-    return this;
-  }
+	/**
+	 * Id of the business data object
+	 * @return persistenceIdString
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Id of the business data object")
+	@JsonProperty(JSON_PROPERTY_PERSISTENCE_ID_STRING)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPersistenceIdString() {
+		return persistenceIdString;
+	}
 
-  /**
-   * Version of the business data object instance
-   *
-   * @return persistenceVersionString
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Version of the business data object instance")
-  @JsonProperty(JSON_PROPERTY_PERSISTENCE_VERSION_STRING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPersistenceVersionString() {
-    return persistenceVersionString;
-  }
+	public void setPersistenceIdString(String persistenceIdString) {
+		this.persistenceIdString = persistenceIdString;
+	}
 
-  public void setPersistenceVersionString(String persistenceVersionString) {
-    this.persistenceVersionString = persistenceVersionString;
-  }
+	public BusinessData persistenceVersionString(String persistenceVersionString) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    BusinessData businessData = (BusinessData) o;
-    return Objects.equals(this.persistenceIdString, businessData.persistenceIdString)
-        && Objects.equals(this.persistenceVersionString, businessData.persistenceVersionString)
-        && super.equals(o);
-  }
+		this.persistenceVersionString = persistenceVersionString;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(persistenceIdString, persistenceVersionString, super.hashCode());
-  }
+	/**
+	 * Version of the business data object instance
+	 * @return persistenceVersionString
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Version of the business data object instance")
+	@JsonProperty(JSON_PROPERTY_PERSISTENCE_VERSION_STRING)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPersistenceVersionString() {
+		return persistenceVersionString;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class BusinessData {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    persistenceIdString: ")
-        .append(toIndentedString(persistenceIdString))
-        .append("\n");
-    sb.append("    persistenceVersionString: ")
-        .append(toIndentedString(persistenceVersionString))
-        .append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setPersistenceVersionString(String persistenceVersionString) {
+		this.persistenceVersionString = persistenceVersionString;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		BusinessData businessData = (BusinessData) o;
+		return Objects.equals(this.persistenceIdString, businessData.persistenceIdString)
+				&& Objects.equals(this.persistenceVersionString, businessData.persistenceVersionString)
+				&& super.equals(o);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(persistenceIdString, persistenceVersionString, super.hashCode());
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class BusinessData {\n");
+		sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+		sb.append("    persistenceIdString: ").append(toIndentedString(persistenceIdString)).append("\n");
+		sb.append("    persistenceVersionString: ").append(toIndentedString(persistenceVersionString)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

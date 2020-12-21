@@ -17,40 +17,43 @@ import java.util.Objects;
 
 /** UserTask */
 public class UserTask extends AbstractTask implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    return super.equals(o);
-  }
+	private static final long serialVersionUID = 1L;
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(super.hashCode());
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		return super.equals(o);
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class UserTask {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode());
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class UserTask {\n");
+		sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

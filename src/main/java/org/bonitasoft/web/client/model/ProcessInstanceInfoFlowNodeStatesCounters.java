@@ -21,161 +21,161 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessInstanceInfoFlowNodeStatesCounters */
-@JsonPropertyOrder({
-  ProcessInstanceInfoFlowNodeStatesCounters.JSON_PROPERTY_COMPLETED,
-  ProcessInstanceInfoFlowNodeStatesCounters.JSON_PROPERTY_READY,
-  ProcessInstanceInfoFlowNodeStatesCounters.JSON_PROPERTY_FAILED,
-  ProcessInstanceInfoFlowNodeStatesCounters.JSON_PROPERTY_EXECUTING
-})
+@JsonPropertyOrder({ ProcessInstanceInfoFlowNodeStatesCounters.JSON_PROPERTY_COMPLETED,
+		ProcessInstanceInfoFlowNodeStatesCounters.JSON_PROPERTY_READY,
+		ProcessInstanceInfoFlowNodeStatesCounters.JSON_PROPERTY_FAILED,
+		ProcessInstanceInfoFlowNodeStatesCounters.JSON_PROPERTY_EXECUTING })
 @JsonTypeName("ProcessInstanceInfo_flowNodeStatesCounters")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceInfoFlowNodeStatesCounters implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_COMPLETED = "completed";
-  private Long completed;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_READY = "ready";
-  private Long ready;
+	public static final String JSON_PROPERTY_COMPLETED = "completed";
 
-  public static final String JSON_PROPERTY_FAILED = "failed";
-  private Long failed;
+	private Long completed;
 
-  public static final String JSON_PROPERTY_EXECUTING = "executing";
-  private Long executing;
+	public static final String JSON_PROPERTY_READY = "ready";
 
-  public ProcessInstanceInfoFlowNodeStatesCounters completed(Long completed) {
+	private Long ready;
 
-    this.completed = completed;
-    return this;
-  }
+	public static final String JSON_PROPERTY_FAILED = "failed";
 
-  /**
-   * number of instance of the given Flow Node in completed state
-   *
-   * @return completed
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "number of instance of the given Flow Node in completed state")
-  @JsonProperty(JSON_PROPERTY_COMPLETED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCompleted() {
-    return completed;
-  }
+	private Long failed;
 
-  public void setCompleted(Long completed) {
-    this.completed = completed;
-  }
+	public static final String JSON_PROPERTY_EXECUTING = "executing";
 
-  public ProcessInstanceInfoFlowNodeStatesCounters ready(Long ready) {
+	private Long executing;
 
-    this.ready = ready;
-    return this;
-  }
+	public ProcessInstanceInfoFlowNodeStatesCounters completed(Long completed) {
 
-  /**
-   * number of instance of the given Flow Node in ready state
-   *
-   * @return ready
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "number of instance of the given Flow Node in ready state")
-  @JsonProperty(JSON_PROPERTY_READY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getReady() {
-    return ready;
-  }
+		this.completed = completed;
+		return this;
+	}
 
-  public void setReady(Long ready) {
-    this.ready = ready;
-  }
+	/**
+	 * number of instance of the given Flow Node in completed state
+	 * @return completed
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "number of instance of the given Flow Node in completed state")
+	@JsonProperty(JSON_PROPERTY_COMPLETED)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getCompleted() {
+		return completed;
+	}
 
-  public ProcessInstanceInfoFlowNodeStatesCounters failed(Long failed) {
+	public void setCompleted(Long completed) {
+		this.completed = completed;
+	}
 
-    this.failed = failed;
-    return this;
-  }
+	public ProcessInstanceInfoFlowNodeStatesCounters ready(Long ready) {
 
-  /**
-   * number of instance of the given Flow Node in failed state
-   *
-   * @return failed
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "number of instance of the given Flow Node in failed state")
-  @JsonProperty(JSON_PROPERTY_FAILED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getFailed() {
-    return failed;
-  }
+		this.ready = ready;
+		return this;
+	}
 
-  public void setFailed(Long failed) {
-    this.failed = failed;
-  }
+	/**
+	 * number of instance of the given Flow Node in ready state
+	 * @return ready
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "number of instance of the given Flow Node in ready state")
+	@JsonProperty(JSON_PROPERTY_READY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getReady() {
+		return ready;
+	}
 
-  public ProcessInstanceInfoFlowNodeStatesCounters executing(Long executing) {
+	public void setReady(Long ready) {
+		this.ready = ready;
+	}
 
-    this.executing = executing;
-    return this;
-  }
+	public ProcessInstanceInfoFlowNodeStatesCounters failed(Long failed) {
 
-  /**
-   * number of instance of the given Flow Node in executing state
-   *
-   * @return executing
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "number of instance of the given Flow Node in executing state")
-  @JsonProperty(JSON_PROPERTY_EXECUTING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getExecuting() {
-    return executing;
-  }
+		this.failed = failed;
+		return this;
+	}
 
-  public void setExecuting(Long executing) {
-    this.executing = executing;
-  }
+	/**
+	 * number of instance of the given Flow Node in failed state
+	 * @return failed
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "number of instance of the given Flow Node in failed state")
+	@JsonProperty(JSON_PROPERTY_FAILED)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getFailed() {
+		return failed;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstanceInfoFlowNodeStatesCounters processInstanceInfoFlowNodeStatesCounters =
-        (ProcessInstanceInfoFlowNodeStatesCounters) o;
-    return Objects.equals(this.completed, processInstanceInfoFlowNodeStatesCounters.completed)
-        && Objects.equals(this.ready, processInstanceInfoFlowNodeStatesCounters.ready)
-        && Objects.equals(this.failed, processInstanceInfoFlowNodeStatesCounters.failed)
-        && Objects.equals(this.executing, processInstanceInfoFlowNodeStatesCounters.executing);
-  }
+	public void setFailed(Long failed) {
+		this.failed = failed;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(completed, ready, failed, executing);
-  }
+	public ProcessInstanceInfoFlowNodeStatesCounters executing(Long executing) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstanceInfoFlowNodeStatesCounters {\n");
-    sb.append("    completed: ").append(toIndentedString(completed)).append("\n");
-    sb.append("    ready: ").append(toIndentedString(ready)).append("\n");
-    sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
-    sb.append("    executing: ").append(toIndentedString(executing)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.executing = executing;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * number of instance of the given Flow Node in executing state
+	 * @return executing
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "number of instance of the given Flow Node in executing state")
+	@JsonProperty(JSON_PROPERTY_EXECUTING)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getExecuting() {
+		return executing;
+	}
+
+	public void setExecuting(Long executing) {
+		this.executing = executing;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstanceInfoFlowNodeStatesCounters processInstanceInfoFlowNodeStatesCounters = (ProcessInstanceInfoFlowNodeStatesCounters) o;
+		return Objects.equals(this.completed, processInstanceInfoFlowNodeStatesCounters.completed)
+				&& Objects.equals(this.ready, processInstanceInfoFlowNodeStatesCounters.ready)
+				&& Objects.equals(this.failed, processInstanceInfoFlowNodeStatesCounters.failed)
+				&& Objects.equals(this.executing, processInstanceInfoFlowNodeStatesCounters.executing);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(completed, ready, failed, executing);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstanceInfoFlowNodeStatesCounters {\n");
+		sb.append("    completed: ").append(toIndentedString(completed)).append("\n");
+		sb.append("    ready: ").append(toIndentedString(ready)).append("\n");
+		sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
+		sb.append("    executing: ").append(toIndentedString(executing)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

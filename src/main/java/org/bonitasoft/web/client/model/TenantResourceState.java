@@ -17,33 +17,35 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /** Tenant resource state (BDM, BDM access control, ...) */
 public enum TenantResourceState {
-  INSTALLING("INSTALLING"),
 
-  INSTALLED("INSTALLED");
+	INSTALLING("INSTALLING"),
 
-  private final String value;
+	INSTALLED("INSTALLED");
 
-  TenantResourceState(String value) {
-    this.value = value;
-  }
+	private final String value;
 
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
+	TenantResourceState(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
 
-  @JsonCreator
-  public static TenantResourceState fromValue(String value) {
-    for (TenantResourceState b : TenantResourceState.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
-    }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
+	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
+
+	@JsonCreator
+	public static TenantResourceState fromValue(String value) {
+		for (TenantResourceState b : TenantResourceState.values()) {
+			if (b.value.equals(value)) {
+				return b;
+			}
+		}
+		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
 }

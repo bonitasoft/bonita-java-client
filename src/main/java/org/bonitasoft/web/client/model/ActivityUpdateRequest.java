@@ -21,112 +21,111 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ActivityUpdateRequest */
-@JsonPropertyOrder({
-  ActivityUpdateRequest.JSON_PROPERTY_VARIABLES,
-  ActivityUpdateRequest.JSON_PROPERTY_STATE
-})
+@JsonPropertyOrder({ ActivityUpdateRequest.JSON_PROPERTY_VARIABLES, ActivityUpdateRequest.JSON_PROPERTY_STATE })
 @JsonTypeName("ActivityUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActivityUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_VARIABLES = "variables";
-  private String variables;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	public static final String JSON_PROPERTY_VARIABLES = "variables";
 
-  public ActivityUpdateRequest variables(String variables) {
+	private String variables;
 
-    this.variables = variables;
-    return this;
-  }
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  /**
-   * Activity variables to update. **Note**: if there is no data with the specified name in the
-   * activity, the update will be applied to the process data if a variable with the specified name
-   * exists. **Note**: if the task definition includes a connector that is executed on finish and
-   * updates the value of a variable, the value set by the REST API call is overwritten.
-   *
-   * @return variables
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "Activity variables to update.  **Note**: if there is no data with the specified name in the activity, the update will be applied to the process data if a variable with the specified name exists.  **Note**: if the task definition includes a connector that is executed on finish and updates the value of a variable, the value set by the REST API call is overwritten. ")
-  @JsonProperty(JSON_PROPERTY_VARIABLES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getVariables() {
-    return variables;
-  }
+	private String state;
 
-  public void setVariables(String variables) {
-    this.variables = variables;
-  }
+	public ActivityUpdateRequest variables(String variables) {
 
-  public ActivityUpdateRequest state(String state) {
+		this.variables = variables;
+		return this;
+	}
 
-    this.state = state;
-    return this;
-  }
+	/**
+	 * Activity variables to update. **Note**: if there is no data with the specified name
+	 * in the activity, the update will be applied to the process data if a variable with
+	 * the specified name exists. **Note**: if the task definition includes a connector
+	 * that is executed on finish and updates the value of a variable, the value set by
+	 * the REST API call is overwritten.
+	 * @return variables
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "Activity variables to update.  **Note**: if there is no data with the specified name in the activity, the update will be applied to the process data if a variable with the specified name exists.  **Note**: if the task definition includes a connector that is executed on finish and updates the value of a variable, the value set by the REST API call is overwritten. ")
+	@JsonProperty(JSON_PROPERTY_VARIABLES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getVariables() {
+		return variables;
+	}
 
-  /**
-   * The target state of the activity - Execute a task: &#x60;completed&#x60; - Skip activity:
-   * &#x60;skipped&#x60; - Make this call after all failed connectors have been reset
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue) - Replay activity:
-   * &#x60;replay&#x60;
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "The target state of the activity - Execute a task: `completed` - Skip activity: `skipped` - Make this call after all failed connectors have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue) - Replay activity: `replay` ")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
+	public void setVariables(String variables) {
+		this.variables = variables;
+	}
 
-  public void setState(String state) {
-    this.state = state;
-  }
+	public ActivityUpdateRequest state(String state) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ActivityUpdateRequest activityUpdateRequest = (ActivityUpdateRequest) o;
-    return Objects.equals(this.variables, activityUpdateRequest.variables)
-        && Objects.equals(this.state, activityUpdateRequest.state);
-  }
+		this.state = state;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(variables, state);
-  }
+	/**
+	 * The target state of the activity - Execute a task: &#x60;completed&#x60; - Skip
+	 * activity: &#x60;skipped&#x60; - Make this call after all failed connectors have
+	 * been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue) -
+	 * Replay activity: &#x60;replay&#x60;
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "The target state of the activity - Execute a task: `completed` - Skip activity: `skipped` - Make this call after all failed connectors have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue) - Replay activity: `replay` ")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ActivityUpdateRequest {\n");
-    sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ActivityUpdateRequest activityUpdateRequest = (ActivityUpdateRequest) o;
+		return Objects.equals(this.variables, activityUpdateRequest.variables)
+				&& Objects.equals(this.state, activityUpdateRequest.state);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(variables, state);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ActivityUpdateRequest {\n");
+		sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

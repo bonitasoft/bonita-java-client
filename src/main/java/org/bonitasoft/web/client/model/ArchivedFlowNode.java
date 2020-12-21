@@ -21,794 +21,748 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ArchivedFlowNode */
-@JsonPropertyOrder({
-  ArchivedFlowNode.JSON_PROPERTY_ID,
-  ArchivedFlowNode.JSON_PROPERTY_DISPLAY_DESCRIPTION,
-  ArchivedFlowNode.JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE,
-  ArchivedFlowNode.JSON_PROPERTY_CASE_ID,
-  ArchivedFlowNode.JSON_PROPERTY_PARENT_CASE_ID,
-  ArchivedFlowNode.JSON_PROPERTY_ROOT_CASE_ID,
-  ArchivedFlowNode.JSON_PROPERTY_PROCESS_ID,
-  ArchivedFlowNode.JSON_PROPERTY_ROOT_CONTAINER_ID,
-  ArchivedFlowNode.JSON_PROPERTY_STATE,
-  ArchivedFlowNode.JSON_PROPERTY_TYPE,
-  ArchivedFlowNode.JSON_PROPERTY_ASSIGNED_ID,
-  ArchivedFlowNode.JSON_PROPERTY_ASSIGNED_DATE,
-  ArchivedFlowNode.JSON_PROPERTY_EXECUTED_BY,
-  ArchivedFlowNode.JSON_PROPERTY_PRIORITY,
-  ArchivedFlowNode.JSON_PROPERTY_ACTOR_ID,
-  ArchivedFlowNode.JSON_PROPERTY_DESCRIPTION,
-  ArchivedFlowNode.JSON_PROPERTY_NAME,
-  ArchivedFlowNode.JSON_PROPERTY_REACHED_STATE_DATE,
-  ArchivedFlowNode.JSON_PROPERTY_DISPLAY_NAME,
-  ArchivedFlowNode.JSON_PROPERTY_DUE_DATE,
-  ArchivedFlowNode.JSON_PROPERTY_LAST_UPDATE_DATE,
-  ArchivedFlowNode.JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE,
-  ArchivedFlowNode.JSON_PROPERTY_SOURCE_OBJECT_ID,
-  ArchivedFlowNode.JSON_PROPERTY_ARCHIVED_DATE
-})
+@JsonPropertyOrder({ ArchivedFlowNode.JSON_PROPERTY_ID, ArchivedFlowNode.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+		ArchivedFlowNode.JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE, ArchivedFlowNode.JSON_PROPERTY_CASE_ID,
+		ArchivedFlowNode.JSON_PROPERTY_PARENT_CASE_ID, ArchivedFlowNode.JSON_PROPERTY_ROOT_CASE_ID,
+		ArchivedFlowNode.JSON_PROPERTY_PROCESS_ID, ArchivedFlowNode.JSON_PROPERTY_ROOT_CONTAINER_ID,
+		ArchivedFlowNode.JSON_PROPERTY_STATE, ArchivedFlowNode.JSON_PROPERTY_TYPE,
+		ArchivedFlowNode.JSON_PROPERTY_ASSIGNED_ID, ArchivedFlowNode.JSON_PROPERTY_ASSIGNED_DATE,
+		ArchivedFlowNode.JSON_PROPERTY_EXECUTED_BY, ArchivedFlowNode.JSON_PROPERTY_PRIORITY,
+		ArchivedFlowNode.JSON_PROPERTY_ACTOR_ID, ArchivedFlowNode.JSON_PROPERTY_DESCRIPTION,
+		ArchivedFlowNode.JSON_PROPERTY_NAME, ArchivedFlowNode.JSON_PROPERTY_REACHED_STATE_DATE,
+		ArchivedFlowNode.JSON_PROPERTY_DISPLAY_NAME, ArchivedFlowNode.JSON_PROPERTY_DUE_DATE,
+		ArchivedFlowNode.JSON_PROPERTY_LAST_UPDATE_DATE, ArchivedFlowNode.JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE,
+		ArchivedFlowNode.JSON_PROPERTY_SOURCE_OBJECT_ID, ArchivedFlowNode.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("ArchivedFlowNode")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedFlowNode implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
-  private String displayDescription;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
-  private String executedBySubstitute;
+	private String id;
 
-  public static final String JSON_PROPERTY_CASE_ID = "caseId";
-  private String caseId;
+	public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
 
-  public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
-  private String parentCaseId;
+	private String displayDescription;
 
-  public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
-  private String rootCaseId;
+	public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
 
-  public static final String JSON_PROPERTY_PROCESS_ID = "processId";
-  private String processId;
+	private String executedBySubstitute;
 
-  public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
-  private String rootContainerId;
+	public static final String JSON_PROPERTY_CASE_ID = "caseId";
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	private String caseId;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+	public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
 
-  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
-  private String assignedId;
+	private String parentCaseId;
 
-  public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
-  private String assignedDate;
+	public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
 
-  public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
-  private String executedBy;
+	private String rootCaseId;
 
-  public static final String JSON_PROPERTY_PRIORITY = "priority";
-  private String priority;
+	public static final String JSON_PROPERTY_PROCESS_ID = "processId";
 
-  public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
-  private String actorId;
+	private String processId;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private String rootContainerId;
 
-  public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
-  private String reachedStateDate;
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
-
-  public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
-  private String dueDate;
-
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
-  private String lastUpdateDate;
-
-  public static final String JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE = "parentTaskId&quot;";
-  private String parentTaskIdDoubleQuote;
-
-  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
-  private String sourceObjectId;
-
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
-
-  public ArchivedFlowNode id(String id) {
-
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * the flow node id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the flow node id ")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public ArchivedFlowNode displayDescription(String displayDescription) {
-
-    this.displayDescription = displayDescription;
-    return this;
-  }
-
-  /**
-   * the human readable flow node description
-   *
-   * @return displayDescription
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the human readable flow node description ")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayDescription() {
-    return displayDescription;
-  }
-
-  public void setDisplayDescription(String displayDescription) {
-    this.displayDescription = displayDescription;
-  }
-
-  public ArchivedFlowNode executedBySubstitute(String executedBySubstitute) {
-
-    this.executedBySubstitute = executedBySubstitute;
-    return this;
-  }
-
-  /**
-   * the id of the user who really performed this flow node when a substitute did it, or 0 if the
-   * flow node was not performed by a substitute
-   *
-   * @return executedBySubstitute
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the id of the user who really performed this flow node when a substitute did it, or 0 if the flow node was not performed by a substitute")
-  @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExecutedBySubstitute() {
-    return executedBySubstitute;
-  }
-
-  public void setExecutedBySubstitute(String executedBySubstitute) {
-    this.executedBySubstitute = executedBySubstitute;
-  }
-
-  public ArchivedFlowNode caseId(String caseId) {
-
-    this.caseId = caseId;
-    return this;
-  }
-
-  /**
-   * the process instance id that is associated with this flow node
-   *
-   * @return caseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the process instance id that is associated with this flow node")
-  @JsonProperty(JSON_PROPERTY_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCaseId() {
-    return caseId;
-  }
-
-  public void setCaseId(String caseId) {
-    this.caseId = caseId;
-  }
-
-  public ArchivedFlowNode parentCaseId(String parentCaseId) {
-
-    this.parentCaseId = parentCaseId;
-    return this;
-  }
-
-  /**
-   * the parent process instance id that is associated with this flow node&#39;s case
-   *
-   * @return parentCaseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "the parent process instance id that is associated with this flow node's case")
-  @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getParentCaseId() {
-    return parentCaseId;
-  }
-
-  public void setParentCaseId(String parentCaseId) {
-    this.parentCaseId = parentCaseId;
-  }
-
-  public ArchivedFlowNode rootCaseId(String rootCaseId) {
-
-    this.rootCaseId = rootCaseId;
-    return this;
-  }
-
-  /**
-   * the root process instance initiator id that is associated with this flow node&#39;s case
-   *
-   * @return rootCaseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the root process instance initiator id that is associated with this flow node's case")
-  @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRootCaseId() {
-    return rootCaseId;
-  }
-
-  public void setRootCaseId(String rootCaseId) {
-    this.rootCaseId = rootCaseId;
-  }
-
-  public ArchivedFlowNode processId(String processId) {
-
-    this.processId = processId;
-    return this;
-  }
-
-  /**
-   * the process id that is associated with this flow node
-   *
-   * @return processId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the process id that is associated with this flow node")
-  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessId() {
-    return processId;
-  }
-
-  public void setProcessId(String processId) {
-    this.processId = processId;
-  }
-
-  public ArchivedFlowNode rootContainerId(String rootContainerId) {
-
-    this.rootContainerId = rootContainerId;
-    return this;
-  }
-
-  /**
-   * the root process id of the root process instance that is associated with this flow node
-   *
-   * @return rootContainerId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the root process id of the root process instance that is associated with this flow node")
-  @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRootContainerId() {
-    return rootContainerId;
-  }
-
-  public void setRootContainerId(String rootContainerId) {
-    this.rootContainerId = rootContainerId;
-  }
-
-  public ArchivedFlowNode state(String state) {
-
-    this.state = state;
-    return this;
-  }
-
-  /**
-   * the current state of the flow node (ready, completed, failed)
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the current state of the flow node (ready, completed, failed)")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-  public ArchivedFlowNode type(String type) {
-
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * the flow node type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the flow node type ")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public ArchivedFlowNode assignedId(String assignedId) {
-
-    this.assignedId = assignedId;
-    return this;
-  }
-
-  /**
-   * the user id that this flow node is assigned to, or 0 if it is unassigned
-   *
-   * @return assignedId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "the user id that this flow node is assigned to, or 0 if it is unassigned")
-  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssignedId() {
-    return assignedId;
-  }
-
-  public void setAssignedId(String assignedId) {
-    this.assignedId = assignedId;
-  }
-
-  public ArchivedFlowNode assignedDate(String assignedDate) {
-
-    this.assignedDate = assignedDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current flow node was assigned, for
-   * example &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return assignedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current flow node was assigned, for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssignedDate() {
-    return assignedDate;
-  }
-
-  public void setAssignedDate(String assignedDate) {
-    this.assignedDate = assignedDate;
-  }
-
-  public ArchivedFlowNode executedBy(String executedBy) {
-
-    this.executedBy = executedBy;
-    return this;
-  }
-
-  /**
-   * the id of the user who executed the flow node, or 0 if the flow node has not been executed
-   *
-   * @return executedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the id of the user who executed the flow node, or 0 if the flow node has not been executed")
-  @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExecutedBy() {
-    return executedBy;
-  }
-
-  public void setExecutedBy(String executedBy) {
-    this.executedBy = executedBy;
-  }
-
-  public ArchivedFlowNode priority(String priority) {
-
-    this.priority = priority;
-    return this;
-  }
-
-  /**
-   * the priority of the current flow node
-   *
-   * @return priority
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the priority of the current flow node")
-  @JsonProperty(JSON_PROPERTY_PRIORITY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPriority() {
-    return priority;
-  }
-
-  public void setPriority(String priority) {
-    this.priority = priority;
-  }
-
-  public ArchivedFlowNode actorId(String actorId) {
-
-    this.actorId = actorId;
-    return this;
-  }
-
-  /**
-   * the id of the actor that can execute this flow node, null otherwise
-   *
-   * @return actorId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the id of the actor that can execute this flow node, null otherwise")
-  @JsonProperty(JSON_PROPERTY_ACTOR_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getActorId() {
-    return actorId;
-  }
-
-  public void setActorId(String actorId) {
-    this.actorId = actorId;
-  }
-
-  public ArchivedFlowNode description(String description) {
-
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * the flow node description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the flow node description ")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public ArchivedFlowNode name(String name) {
-
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * the flow node name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the flow node name ")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public ArchivedFlowNode reachedStateDate(String reachedStateDate) {
-
-    this.reachedStateDate = reachedStateDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node reached the current state, for
-   * example &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return reachedStateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node reached the current state, for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getReachedStateDate() {
-    return reachedStateDate;
-  }
-
-  public void setReachedStateDate(String reachedStateDate) {
-    this.reachedStateDate = reachedStateDate;
-  }
-
-  public ArchivedFlowNode displayName(String displayName) {
-
-    this.displayName = displayName;
-    return this;
-  }
-
-  /**
-   * the display name of this flow node
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the display name of this flow node")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
-
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
-
-  public ArchivedFlowNode dueDate(String dueDate) {
-
-    this.dueDate = dueDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node is due, for example
-   * &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return dueDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node is due, for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_DUE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDueDate() {
-    return dueDate;
-  }
-
-  public void setDueDate(String dueDate) {
-    this.dueDate = dueDate;
-  }
-
-  public ArchivedFlowNode lastUpdateDate(String lastUpdateDate) {
-
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node was last updated, for example
-   * &#39;2014-10-17 16:05:42.626)
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node was last updated, for example '2014-10-17 16:05:42.626)")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
-
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
-
-  public ArchivedFlowNode parentTaskIdDoubleQuote(String parentTaskIdDoubleQuote) {
-
-    this.parentTaskIdDoubleQuote = parentTaskIdDoubleQuote;
-    return this;
-  }
-
-  /**
-   * in case of a subtask, the parent task id
-   *
-   * @return parentTaskIdDoubleQuote
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "in case of a subtask, the parent task id ")
-  @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getParentTaskIdDoubleQuote() {
-    return parentTaskIdDoubleQuote;
-  }
-
-  public void setParentTaskIdDoubleQuote(String parentTaskIdDoubleQuote) {
-    this.parentTaskIdDoubleQuote = parentTaskIdDoubleQuote;
-  }
-
-  public ArchivedFlowNode sourceObjectId(String sourceObjectId) {
-
-    this.sourceObjectId = sourceObjectId;
-    return this;
-  }
-
-  /**
-   * the original id of the flowNode before it was archived
-   *
-   * @return sourceObjectId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the original id of the flowNode before it was archived")
-  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSourceObjectId() {
-    return sourceObjectId;
-  }
-
-  public void setSourceObjectId(String sourceObjectId) {
-    this.sourceObjectId = sourceObjectId;
-  }
-
-  public ArchivedFlowNode archivedDate(String archivedDate) {
-
-    this.archivedDate = archivedDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example
-   * &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
-
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArchivedFlowNode archivedFlowNode = (ArchivedFlowNode) o;
-    return Objects.equals(this.id, archivedFlowNode.id)
-        && Objects.equals(this.displayDescription, archivedFlowNode.displayDescription)
-        && Objects.equals(this.executedBySubstitute, archivedFlowNode.executedBySubstitute)
-        && Objects.equals(this.caseId, archivedFlowNode.caseId)
-        && Objects.equals(this.parentCaseId, archivedFlowNode.parentCaseId)
-        && Objects.equals(this.rootCaseId, archivedFlowNode.rootCaseId)
-        && Objects.equals(this.processId, archivedFlowNode.processId)
-        && Objects.equals(this.rootContainerId, archivedFlowNode.rootContainerId)
-        && Objects.equals(this.state, archivedFlowNode.state)
-        && Objects.equals(this.type, archivedFlowNode.type)
-        && Objects.equals(this.assignedId, archivedFlowNode.assignedId)
-        && Objects.equals(this.assignedDate, archivedFlowNode.assignedDate)
-        && Objects.equals(this.executedBy, archivedFlowNode.executedBy)
-        && Objects.equals(this.priority, archivedFlowNode.priority)
-        && Objects.equals(this.actorId, archivedFlowNode.actorId)
-        && Objects.equals(this.description, archivedFlowNode.description)
-        && Objects.equals(this.name, archivedFlowNode.name)
-        && Objects.equals(this.reachedStateDate, archivedFlowNode.reachedStateDate)
-        && Objects.equals(this.displayName, archivedFlowNode.displayName)
-        && Objects.equals(this.dueDate, archivedFlowNode.dueDate)
-        && Objects.equals(this.lastUpdateDate, archivedFlowNode.lastUpdateDate)
-        && Objects.equals(this.parentTaskIdDoubleQuote, archivedFlowNode.parentTaskIdDoubleQuote)
-        && Objects.equals(this.sourceObjectId, archivedFlowNode.sourceObjectId)
-        && Objects.equals(this.archivedDate, archivedFlowNode.archivedDate);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id,
-        displayDescription,
-        executedBySubstitute,
-        caseId,
-        parentCaseId,
-        rootCaseId,
-        processId,
-        rootContainerId,
-        state,
-        type,
-        assignedId,
-        assignedDate,
-        executedBy,
-        priority,
-        actorId,
-        description,
-        name,
-        reachedStateDate,
-        displayName,
-        dueDate,
-        lastUpdateDate,
-        parentTaskIdDoubleQuote,
-        sourceObjectId,
-        archivedDate);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedFlowNode {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    displayDescription: ").append(toIndentedString(displayDescription)).append("\n");
-    sb.append("    executedBySubstitute: ")
-        .append(toIndentedString(executedBySubstitute))
-        .append("\n");
-    sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
-    sb.append("    parentCaseId: ").append(toIndentedString(parentCaseId)).append("\n");
-    sb.append("    rootCaseId: ").append(toIndentedString(rootCaseId)).append("\n");
-    sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
-    sb.append("    rootContainerId: ").append(toIndentedString(rootContainerId)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
-    sb.append("    assignedDate: ").append(toIndentedString(assignedDate)).append("\n");
-    sb.append("    executedBy: ").append(toIndentedString(executedBy)).append("\n");
-    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
-    sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    reachedStateDate: ").append(toIndentedString(reachedStateDate)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("    parentTaskIdDoubleQuote: ")
-        .append(toIndentedString(parentTaskIdDoubleQuote))
-        .append("\n");
-    sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	private String state;
+
+	public static final String JSON_PROPERTY_TYPE = "type";
+
+	private String type;
+
+	public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+
+	private String assignedId;
+
+	public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
+
+	private String assignedDate;
+
+	public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
+
+	private String executedBy;
+
+	public static final String JSON_PROPERTY_PRIORITY = "priority";
+
+	private String priority;
+
+	public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
+
+	private String actorId;
+
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
+
+	private String description;
+
+	public static final String JSON_PROPERTY_NAME = "name";
+
+	private String name;
+
+	public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
+
+	private String reachedStateDate;
+
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+
+	private String displayName;
+
+	public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
+
+	private String dueDate;
+
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+
+	private String lastUpdateDate;
+
+	public static final String JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE = "parentTaskId&quot;";
+
+	private String parentTaskIdDoubleQuote;
+
+	public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
+
+	private String sourceObjectId;
+
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+
+	private String archivedDate;
+
+	public ArchivedFlowNode id(String id) {
+
+		this.id = id;
+		return this;
+	}
+
+	/**
+	 * the flow node id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the flow node id ")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public ArchivedFlowNode displayDescription(String displayDescription) {
+
+		this.displayDescription = displayDescription;
+		return this;
+	}
+
+	/**
+	 * the human readable flow node description
+	 * @return displayDescription
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the human readable flow node description ")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayDescription() {
+		return displayDescription;
+	}
+
+	public void setDisplayDescription(String displayDescription) {
+		this.displayDescription = displayDescription;
+	}
+
+	public ArchivedFlowNode executedBySubstitute(String executedBySubstitute) {
+
+		this.executedBySubstitute = executedBySubstitute;
+		return this;
+	}
+
+	/**
+	 * the id of the user who really performed this flow node when a substitute did it, or
+	 * 0 if the flow node was not performed by a substitute
+	 * @return executedBySubstitute
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the id of the user who really performed this flow node when a substitute did it, or 0 if the flow node was not performed by a substitute")
+	@JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExecutedBySubstitute() {
+		return executedBySubstitute;
+	}
+
+	public void setExecutedBySubstitute(String executedBySubstitute) {
+		this.executedBySubstitute = executedBySubstitute;
+	}
+
+	public ArchivedFlowNode caseId(String caseId) {
+
+		this.caseId = caseId;
+		return this;
+	}
+
+	/**
+	 * the process instance id that is associated with this flow node
+	 * @return caseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the process instance id that is associated with this flow node")
+	@JsonProperty(JSON_PROPERTY_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCaseId() {
+		return caseId;
+	}
+
+	public void setCaseId(String caseId) {
+		this.caseId = caseId;
+	}
+
+	public ArchivedFlowNode parentCaseId(String parentCaseId) {
+
+		this.parentCaseId = parentCaseId;
+		return this;
+	}
+
+	/**
+	 * the parent process instance id that is associated with this flow node&#39;s case
+	 * @return parentCaseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the parent process instance id that is associated with this flow node's case")
+	@JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getParentCaseId() {
+		return parentCaseId;
+	}
+
+	public void setParentCaseId(String parentCaseId) {
+		this.parentCaseId = parentCaseId;
+	}
+
+	public ArchivedFlowNode rootCaseId(String rootCaseId) {
+
+		this.rootCaseId = rootCaseId;
+		return this;
+	}
+
+	/**
+	 * the root process instance initiator id that is associated with this flow node&#39;s
+	 * case
+	 * @return rootCaseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the root process instance initiator id that is associated with this flow node's case")
+	@JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRootCaseId() {
+		return rootCaseId;
+	}
+
+	public void setRootCaseId(String rootCaseId) {
+		this.rootCaseId = rootCaseId;
+	}
+
+	public ArchivedFlowNode processId(String processId) {
+
+		this.processId = processId;
+		return this;
+	}
+
+	/**
+	 * the process id that is associated with this flow node
+	 * @return processId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the process id that is associated with this flow node")
+	@JsonProperty(JSON_PROPERTY_PROCESS_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessId() {
+		return processId;
+	}
+
+	public void setProcessId(String processId) {
+		this.processId = processId;
+	}
+
+	public ArchivedFlowNode rootContainerId(String rootContainerId) {
+
+		this.rootContainerId = rootContainerId;
+		return this;
+	}
+
+	/**
+	 * the root process id of the root process instance that is associated with this flow
+	 * node
+	 * @return rootContainerId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the root process id of the root process instance that is associated with this flow node")
+	@JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRootContainerId() {
+		return rootContainerId;
+	}
+
+	public void setRootContainerId(String rootContainerId) {
+		this.rootContainerId = rootContainerId;
+	}
+
+	public ArchivedFlowNode state(String state) {
+
+		this.state = state;
+		return this;
+	}
+
+	/**
+	 * the current state of the flow node (ready, completed, failed)
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the current state of the flow node (ready, completed, failed)")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public ArchivedFlowNode type(String type) {
+
+		this.type = type;
+		return this;
+	}
+
+	/**
+	 * the flow node type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the flow node type ")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public ArchivedFlowNode assignedId(String assignedId) {
+
+		this.assignedId = assignedId;
+		return this;
+	}
+
+	/**
+	 * the user id that this flow node is assigned to, or 0 if it is unassigned
+	 * @return assignedId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the user id that this flow node is assigned to, or 0 if it is unassigned")
+	@JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAssignedId() {
+		return assignedId;
+	}
+
+	public void setAssignedId(String assignedId) {
+		this.assignedId = assignedId;
+	}
+
+	public ArchivedFlowNode assignedDate(String assignedDate) {
+
+		this.assignedDate = assignedDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current flow node was
+	 * assigned, for example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return assignedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current flow node was assigned, for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAssignedDate() {
+		return assignedDate;
+	}
+
+	public void setAssignedDate(String assignedDate) {
+		this.assignedDate = assignedDate;
+	}
+
+	public ArchivedFlowNode executedBy(String executedBy) {
+
+		this.executedBy = executedBy;
+		return this;
+	}
+
+	/**
+	 * the id of the user who executed the flow node, or 0 if the flow node has not been
+	 * executed
+	 * @return executedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the id of the user who executed the flow node, or 0 if the flow node has not been executed")
+	@JsonProperty(JSON_PROPERTY_EXECUTED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExecutedBy() {
+		return executedBy;
+	}
+
+	public void setExecutedBy(String executedBy) {
+		this.executedBy = executedBy;
+	}
+
+	public ArchivedFlowNode priority(String priority) {
+
+		this.priority = priority;
+		return this;
+	}
+
+	/**
+	 * the priority of the current flow node
+	 * @return priority
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the priority of the current flow node")
+	@JsonProperty(JSON_PROPERTY_PRIORITY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
+
+	public ArchivedFlowNode actorId(String actorId) {
+
+		this.actorId = actorId;
+		return this;
+	}
+
+	/**
+	 * the id of the actor that can execute this flow node, null otherwise
+	 * @return actorId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the id of the actor that can execute this flow node, null otherwise")
+	@JsonProperty(JSON_PROPERTY_ACTOR_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getActorId() {
+		return actorId;
+	}
+
+	public void setActorId(String actorId) {
+		this.actorId = actorId;
+	}
+
+	public ArchivedFlowNode description(String description) {
+
+		this.description = description;
+		return this;
+	}
+
+	/**
+	 * the flow node description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the flow node description ")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public ArchivedFlowNode name(String name) {
+
+		this.name = name;
+		return this;
+	}
+
+	/**
+	 * the flow node name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the flow node name ")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ArchivedFlowNode reachedStateDate(String reachedStateDate) {
+
+		this.reachedStateDate = reachedStateDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node reached the
+	 * current state, for example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return reachedStateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node reached the current state, for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getReachedStateDate() {
+		return reachedStateDate;
+	}
+
+	public void setReachedStateDate(String reachedStateDate) {
+		this.reachedStateDate = reachedStateDate;
+	}
+
+	public ArchivedFlowNode displayName(String displayName) {
+
+		this.displayName = displayName;
+		return this;
+	}
+
+	/**
+	 * the display name of this flow node
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the display name of this flow node")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	public ArchivedFlowNode dueDate(String dueDate) {
+
+		this.dueDate = dueDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node is due, for
+	 * example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return dueDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node is due, for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_DUE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public ArchivedFlowNode lastUpdateDate(String lastUpdateDate) {
+
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node was last updated,
+	 * for example &#39;2014-10-17 16:05:42.626)
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node was last updated, for example '2014-10-17 16:05:42.626)")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public ArchivedFlowNode parentTaskIdDoubleQuote(String parentTaskIdDoubleQuote) {
+
+		this.parentTaskIdDoubleQuote = parentTaskIdDoubleQuote;
+		return this;
+	}
+
+	/**
+	 * in case of a subtask, the parent task id
+	 * @return parentTaskIdDoubleQuote
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "in case of a subtask, the parent task id ")
+	@JsonProperty(JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getParentTaskIdDoubleQuote() {
+		return parentTaskIdDoubleQuote;
+	}
+
+	public void setParentTaskIdDoubleQuote(String parentTaskIdDoubleQuote) {
+		this.parentTaskIdDoubleQuote = parentTaskIdDoubleQuote;
+	}
+
+	public ArchivedFlowNode sourceObjectId(String sourceObjectId) {
+
+		this.sourceObjectId = sourceObjectId;
+		return this;
+	}
+
+	/**
+	 * the original id of the flowNode before it was archived
+	 * @return sourceObjectId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the original id of the flowNode before it was archived")
+	@JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSourceObjectId() {
+		return sourceObjectId;
+	}
+
+	public void setSourceObjectId(String sourceObjectId) {
+		this.sourceObjectId = sourceObjectId;
+	}
+
+	public ArchivedFlowNode archivedDate(String archivedDate) {
+
+		this.archivedDate = archivedDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for
+	 * example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
+
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ArchivedFlowNode archivedFlowNode = (ArchivedFlowNode) o;
+		return Objects.equals(this.id, archivedFlowNode.id)
+				&& Objects.equals(this.displayDescription, archivedFlowNode.displayDescription)
+				&& Objects.equals(this.executedBySubstitute, archivedFlowNode.executedBySubstitute)
+				&& Objects.equals(this.caseId, archivedFlowNode.caseId)
+				&& Objects.equals(this.parentCaseId, archivedFlowNode.parentCaseId)
+				&& Objects.equals(this.rootCaseId, archivedFlowNode.rootCaseId)
+				&& Objects.equals(this.processId, archivedFlowNode.processId)
+				&& Objects.equals(this.rootContainerId, archivedFlowNode.rootContainerId)
+				&& Objects.equals(this.state, archivedFlowNode.state)
+				&& Objects.equals(this.type, archivedFlowNode.type)
+				&& Objects.equals(this.assignedId, archivedFlowNode.assignedId)
+				&& Objects.equals(this.assignedDate, archivedFlowNode.assignedDate)
+				&& Objects.equals(this.executedBy, archivedFlowNode.executedBy)
+				&& Objects.equals(this.priority, archivedFlowNode.priority)
+				&& Objects.equals(this.actorId, archivedFlowNode.actorId)
+				&& Objects.equals(this.description, archivedFlowNode.description)
+				&& Objects.equals(this.name, archivedFlowNode.name)
+				&& Objects.equals(this.reachedStateDate, archivedFlowNode.reachedStateDate)
+				&& Objects.equals(this.displayName, archivedFlowNode.displayName)
+				&& Objects.equals(this.dueDate, archivedFlowNode.dueDate)
+				&& Objects.equals(this.lastUpdateDate, archivedFlowNode.lastUpdateDate)
+				&& Objects.equals(this.parentTaskIdDoubleQuote, archivedFlowNode.parentTaskIdDoubleQuote)
+				&& Objects.equals(this.sourceObjectId, archivedFlowNode.sourceObjectId)
+				&& Objects.equals(this.archivedDate, archivedFlowNode.archivedDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, displayDescription, executedBySubstitute, caseId, parentCaseId, rootCaseId, processId,
+				rootContainerId, state, type, assignedId, assignedDate, executedBy, priority, actorId, description,
+				name, reachedStateDate, displayName, dueDate, lastUpdateDate, parentTaskIdDoubleQuote, sourceObjectId,
+				archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ArchivedFlowNode {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    displayDescription: ").append(toIndentedString(displayDescription)).append("\n");
+		sb.append("    executedBySubstitute: ").append(toIndentedString(executedBySubstitute)).append("\n");
+		sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
+		sb.append("    parentCaseId: ").append(toIndentedString(parentCaseId)).append("\n");
+		sb.append("    rootCaseId: ").append(toIndentedString(rootCaseId)).append("\n");
+		sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
+		sb.append("    rootContainerId: ").append(toIndentedString(rootContainerId)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
+		sb.append("    assignedDate: ").append(toIndentedString(assignedDate)).append("\n");
+		sb.append("    executedBy: ").append(toIndentedString(executedBy)).append("\n");
+		sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+		sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    reachedStateDate: ").append(toIndentedString(reachedStateDate)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("    parentTaskIdDoubleQuote: ").append(toIndentedString(parentTaskIdDoubleQuote)).append("\n");
+		sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

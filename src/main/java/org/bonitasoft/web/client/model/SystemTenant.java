@@ -21,99 +21,101 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** SystemTenant */
-@JsonPropertyOrder({SystemTenant.JSON_PROPERTY_ID, SystemTenant.JSON_PROPERTY_PAUSED})
+@JsonPropertyOrder({ SystemTenant.JSON_PROPERTY_ID, SystemTenant.JSON_PROPERTY_PAUSED })
 @JsonTypeName("SystemTenant")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SystemTenant implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PAUSED = "paused";
-  private Boolean paused;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public SystemTenant id(String id) {
+	private String id;
 
-    this.id = id;
-    return this;
-  }
+	public static final String JSON_PROPERTY_PAUSED = "paused";
 
-  /**
-   * system tenant id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "system tenant id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	private Boolean paused;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public SystemTenant id(String id) {
 
-  public SystemTenant paused(Boolean paused) {
+		this.id = id;
+		return this;
+	}
 
-    this.paused = paused;
-    return this;
-  }
+	/**
+	 * system tenant id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "system tenant id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  /**
-   * wether the system tenant is paused or not
-   *
-   * @return paused
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "wether the system tenant is paused or not")
-  @JsonProperty(JSON_PROPERTY_PAUSED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getPaused() {
-    return paused;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public void setPaused(Boolean paused) {
-    this.paused = paused;
-  }
+	public SystemTenant paused(Boolean paused) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    SystemTenant systemTenant = (SystemTenant) o;
-    return Objects.equals(this.id, systemTenant.id)
-        && Objects.equals(this.paused, systemTenant.paused);
-  }
+		this.paused = paused;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, paused);
-  }
+	/**
+	 * wether the system tenant is paused or not
+	 * @return paused
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "wether the system tenant is paused or not")
+	@JsonProperty(JSON_PROPERTY_PAUSED)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getPaused() {
+		return paused;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SystemTenant {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    paused: ").append(toIndentedString(paused)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setPaused(Boolean paused) {
+		this.paused = paused;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		SystemTenant systemTenant = (SystemTenant) o;
+		return Objects.equals(this.id, systemTenant.id) && Objects.equals(this.paused, systemTenant.paused);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, paused);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class SystemTenant {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    paused: ").append(toIndentedString(paused)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

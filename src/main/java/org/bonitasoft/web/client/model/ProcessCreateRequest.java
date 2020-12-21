@@ -21,71 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessCreateRequest */
-@JsonPropertyOrder({ProcessCreateRequest.JSON_PROPERTY_FILEUPLOAD})
+@JsonPropertyOrder({ ProcessCreateRequest.JSON_PROPERTY_FILEUPLOAD })
 @JsonTypeName("ProcessCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_FILEUPLOAD = "fileupload";
-  private String fileupload;
+	private static final long serialVersionUID = 1L;
 
-  public ProcessCreateRequest fileupload(String fileupload) {
+	public static final String JSON_PROPERTY_FILEUPLOAD = "fileupload";
 
-    this.fileupload = fileupload;
-    return this;
-  }
+	private String fileupload;
 
-  /**
-   * the bar file to deploy (previously uploaded in tmp folder)
-   *
-   * @return fileupload
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the bar file to deploy (previously uploaded in tmp folder)")
-  @JsonProperty(JSON_PROPERTY_FILEUPLOAD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFileupload() {
-    return fileupload;
-  }
+	public ProcessCreateRequest fileupload(String fileupload) {
 
-  public void setFileupload(String fileupload) {
-    this.fileupload = fileupload;
-  }
+		this.fileupload = fileupload;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessCreateRequest processCreateRequest = (ProcessCreateRequest) o;
-    return Objects.equals(this.fileupload, processCreateRequest.fileupload);
-  }
+	/**
+	 * the bar file to deploy (previously uploaded in tmp folder)
+	 * @return fileupload
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the bar file to deploy (previously uploaded in tmp folder)")
+	@JsonProperty(JSON_PROPERTY_FILEUPLOAD)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFileupload() {
+		return fileupload;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(fileupload);
-  }
+	public void setFileupload(String fileupload) {
+		this.fileupload = fileupload;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessCreateRequest {\n");
-    sb.append("    fileupload: ").append(toIndentedString(fileupload)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessCreateRequest processCreateRequest = (ProcessCreateRequest) o;
+		return Objects.equals(this.fileupload, processCreateRequest.fileupload);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(fileupload);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessCreateRequest {\n");
+		sb.append("    fileupload: ").append(toIndentedString(fileupload)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

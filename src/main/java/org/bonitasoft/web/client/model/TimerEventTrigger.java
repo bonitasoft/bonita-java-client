@@ -23,224 +23,218 @@ import java.util.Objects;
 
 /** BPM timer event triggers */
 @ApiModel(description = "BPM timer event triggers")
-@JsonPropertyOrder({
-  TimerEventTrigger.JSON_PROPERTY_ID,
-  TimerEventTrigger.JSON_PROPERTY_ID_STRING,
-  TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_ID,
-  TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_ID_STRING,
-  TimerEventTrigger.JSON_PROPERTY_EXECUTION_DATE,
-  TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_NAME
-})
+@JsonPropertyOrder({ TimerEventTrigger.JSON_PROPERTY_ID, TimerEventTrigger.JSON_PROPERTY_ID_STRING,
+		TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_ID, TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_ID_STRING,
+		TimerEventTrigger.JSON_PROPERTY_EXECUTION_DATE, TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_NAME })
 @JsonTypeName("TimerEventTrigger")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TimerEventTrigger implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID_STRING = "id_string";
-  private String idString;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_EVENT_INSTANCE_ID = "eventInstanceId";
-  private String eventInstanceId;
+	private String id;
 
-  public static final String JSON_PROPERTY_EVENT_INSTANCE_ID_STRING = "eventInstanceId_string";
-  private String eventInstanceIdString;
+	public static final String JSON_PROPERTY_ID_STRING = "id_string";
 
-  public static final String JSON_PROPERTY_EXECUTION_DATE = "executionDate";
-  private String executionDate;
+	private String idString;
 
-  public static final String JSON_PROPERTY_EVENT_INSTANCE_NAME = "eventInstanceName";
-  private String eventInstanceName;
+	public static final String JSON_PROPERTY_EVENT_INSTANCE_ID = "eventInstanceId";
 
-  public TimerEventTrigger id(String id) {
+	private String eventInstanceId;
 
-    this.id = id;
-    return this;
-  }
+	public static final String JSON_PROPERTY_EVENT_INSTANCE_ID_STRING = "eventInstanceId_string";
 
-  /**
-   * the ID of the timer returned
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the ID of the timer returned")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	private String eventInstanceIdString;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public static final String JSON_PROPERTY_EXECUTION_DATE = "executionDate";
 
-  public TimerEventTrigger idString(String idString) {
+	private String executionDate;
 
-    this.idString = idString;
-    return this;
-  }
+	public static final String JSON_PROPERTY_EVENT_INSTANCE_NAME = "eventInstanceName";
 
-  /**
-   * the ID of the timer returned
-   *
-   * @return idString
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the ID of the timer returned")
-  @JsonProperty(JSON_PROPERTY_ID_STRING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getIdString() {
-    return idString;
-  }
+	private String eventInstanceName;
 
-  public void setIdString(String idString) {
-    this.idString = idString;
-  }
+	public TimerEventTrigger id(String id) {
 
-  public TimerEventTrigger eventInstanceId(String eventInstanceId) {
+		this.id = id;
+		return this;
+	}
 
-    this.eventInstanceId = eventInstanceId;
-    return this;
-  }
+	/**
+	 * the ID of the timer returned
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the ID of the timer returned")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  /**
-   * the ID of the event instance to which this trigger is related
-   *
-   * @return eventInstanceId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the ID of the event instance to which this trigger is related")
-  @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEventInstanceId() {
-    return eventInstanceId;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public void setEventInstanceId(String eventInstanceId) {
-    this.eventInstanceId = eventInstanceId;
-  }
+	public TimerEventTrigger idString(String idString) {
 
-  public TimerEventTrigger eventInstanceIdString(String eventInstanceIdString) {
+		this.idString = idString;
+		return this;
+	}
 
-    this.eventInstanceIdString = eventInstanceIdString;
-    return this;
-  }
+	/**
+	 * the ID of the timer returned
+	 * @return idString
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the ID of the timer returned")
+	@JsonProperty(JSON_PROPERTY_ID_STRING)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getIdString() {
+		return idString;
+	}
 
-  /**
-   * the ID of the event instance to which this trigger is related
-   *
-   * @return eventInstanceIdString
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the ID of the event instance to which this trigger is related")
-  @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_ID_STRING)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEventInstanceIdString() {
-    return eventInstanceIdString;
-  }
+	public void setIdString(String idString) {
+		this.idString = idString;
+	}
 
-  public void setEventInstanceIdString(String eventInstanceIdString) {
-    this.eventInstanceIdString = eventInstanceIdString;
-  }
+	public TimerEventTrigger eventInstanceId(String eventInstanceId) {
 
-  public TimerEventTrigger executionDate(String executionDate) {
+		this.eventInstanceId = eventInstanceId;
+		return this;
+	}
 
-    this.executionDate = executionDate;
-    return this;
-  }
+	/**
+	 * the ID of the event instance to which this trigger is related
+	 * @return eventInstanceId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the ID of the event instance to which this trigger is related")
+	@JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getEventInstanceId() {
+		return eventInstanceId;
+	}
 
-  /**
-   * the long value of the next execution date (number of milliseconds from January 1st, 1970
-   * 00:00:00)
-   *
-   * @return executionDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the long value of the next execution date (number of milliseconds from January 1st, 1970 00:00:00)")
-  @JsonProperty(JSON_PROPERTY_EXECUTION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExecutionDate() {
-    return executionDate;
-  }
+	public void setEventInstanceId(String eventInstanceId) {
+		this.eventInstanceId = eventInstanceId;
+	}
 
-  public void setExecutionDate(String executionDate) {
-    this.executionDate = executionDate;
-  }
+	public TimerEventTrigger eventInstanceIdString(String eventInstanceIdString) {
 
-  public TimerEventTrigger eventInstanceName(String eventInstanceName) {
+		this.eventInstanceIdString = eventInstanceIdString;
+		return this;
+	}
 
-    this.eventInstanceName = eventInstanceName;
-    return this;
-  }
+	/**
+	 * the ID of the event instance to which this trigger is related
+	 * @return eventInstanceIdString
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the ID of the event instance to which this trigger is related")
+	@JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_ID_STRING)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getEventInstanceIdString() {
+		return eventInstanceIdString;
+	}
 
-  /**
-   * the name of the event instance to which this trigger is related
-   *
-   * @return eventInstanceName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the name of the event instance to which this trigger is related")
-  @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEventInstanceName() {
-    return eventInstanceName;
-  }
+	public void setEventInstanceIdString(String eventInstanceIdString) {
+		this.eventInstanceIdString = eventInstanceIdString;
+	}
 
-  public void setEventInstanceName(String eventInstanceName) {
-    this.eventInstanceName = eventInstanceName;
-  }
+	public TimerEventTrigger executionDate(String executionDate) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    TimerEventTrigger timerEventTrigger = (TimerEventTrigger) o;
-    return Objects.equals(this.id, timerEventTrigger.id)
-        && Objects.equals(this.idString, timerEventTrigger.idString)
-        && Objects.equals(this.eventInstanceId, timerEventTrigger.eventInstanceId)
-        && Objects.equals(this.eventInstanceIdString, timerEventTrigger.eventInstanceIdString)
-        && Objects.equals(this.executionDate, timerEventTrigger.executionDate)
-        && Objects.equals(this.eventInstanceName, timerEventTrigger.eventInstanceName);
-  }
+		this.executionDate = executionDate;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id, idString, eventInstanceId, eventInstanceIdString, executionDate, eventInstanceName);
-  }
+	/**
+	 * the long value of the next execution date (number of milliseconds from January 1st,
+	 * 1970 00:00:00)
+	 * @return executionDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the long value of the next execution date (number of milliseconds from January 1st, 1970 00:00:00)")
+	@JsonProperty(JSON_PROPERTY_EXECUTION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExecutionDate() {
+		return executionDate;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TimerEventTrigger {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    idString: ").append(toIndentedString(idString)).append("\n");
-    sb.append("    eventInstanceId: ").append(toIndentedString(eventInstanceId)).append("\n");
-    sb.append("    eventInstanceIdString: ")
-        .append(toIndentedString(eventInstanceIdString))
-        .append("\n");
-    sb.append("    executionDate: ").append(toIndentedString(executionDate)).append("\n");
-    sb.append("    eventInstanceName: ").append(toIndentedString(eventInstanceName)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setExecutionDate(String executionDate) {
+		this.executionDate = executionDate;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public TimerEventTrigger eventInstanceName(String eventInstanceName) {
+
+		this.eventInstanceName = eventInstanceName;
+		return this;
+	}
+
+	/**
+	 * the name of the event instance to which this trigger is related
+	 * @return eventInstanceName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the name of the event instance to which this trigger is related")
+	@JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getEventInstanceName() {
+		return eventInstanceName;
+	}
+
+	public void setEventInstanceName(String eventInstanceName) {
+		this.eventInstanceName = eventInstanceName;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		TimerEventTrigger timerEventTrigger = (TimerEventTrigger) o;
+		return Objects.equals(this.id, timerEventTrigger.id)
+				&& Objects.equals(this.idString, timerEventTrigger.idString)
+				&& Objects.equals(this.eventInstanceId, timerEventTrigger.eventInstanceId)
+				&& Objects.equals(this.eventInstanceIdString, timerEventTrigger.eventInstanceIdString)
+				&& Objects.equals(this.executionDate, timerEventTrigger.executionDate)
+				&& Objects.equals(this.eventInstanceName, timerEventTrigger.eventInstanceName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, idString, eventInstanceId, eventInstanceIdString, executionDate, eventInstanceName);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class TimerEventTrigger {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    idString: ").append(toIndentedString(idString)).append("\n");
+		sb.append("    eventInstanceId: ").append(toIndentedString(eventInstanceId)).append("\n");
+		sb.append("    eventInstanceIdString: ").append(toIndentedString(eventInstanceIdString)).append("\n");
+		sb.append("    executionDate: ").append(toIndentedString(executionDate)).append("\n");
+		sb.append("    eventInstanceName: ").append(toIndentedString(eventInstanceName)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

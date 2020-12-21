@@ -21,134 +21,131 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ConnectorFailure */
-@JsonPropertyOrder({
-  ConnectorFailure.JSON_PROPERTY_ERROR_MESSAGE,
-  ConnectorFailure.JSON_PROPERTY_CONNECTOR_INSTANCE_ID,
-  ConnectorFailure.JSON_PROPERTY_ERROR_STACK_TRACE
-})
+@JsonPropertyOrder({ ConnectorFailure.JSON_PROPERTY_ERROR_MESSAGE, ConnectorFailure.JSON_PROPERTY_CONNECTOR_INSTANCE_ID,
+		ConnectorFailure.JSON_PROPERTY_ERROR_STACK_TRACE })
 @JsonTypeName("ConnectorFailure")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConnectorFailure implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ERROR_MESSAGE = "errorMessage";
-  private String errorMessage;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONNECTOR_INSTANCE_ID = "connectorInstanceId";
-  private String connectorInstanceId;
+	public static final String JSON_PROPERTY_ERROR_MESSAGE = "errorMessage";
 
-  public static final String JSON_PROPERTY_ERROR_STACK_TRACE = "errorStackTrace";
-  private String errorStackTrace;
+	private String errorMessage;
 
-  public ConnectorFailure errorMessage(String errorMessage) {
+	public static final String JSON_PROPERTY_CONNECTOR_INSTANCE_ID = "connectorInstanceId";
 
-    this.errorMessage = errorMessage;
-    return this;
-  }
+	private String connectorInstanceId;
 
-  /**
-   * the message of the connector failure
-   *
-   * @return errorMessage
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the message of the connector failure")
-  @JsonProperty(JSON_PROPERTY_ERROR_MESSAGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getErrorMessage() {
-    return errorMessage;
-  }
+	public static final String JSON_PROPERTY_ERROR_STACK_TRACE = "errorStackTrace";
 
-  public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-  }
+	private String errorStackTrace;
 
-  public ConnectorFailure connectorInstanceId(String connectorInstanceId) {
+	public ConnectorFailure errorMessage(String errorMessage) {
 
-    this.connectorInstanceId = connectorInstanceId;
-    return this;
-  }
+		this.errorMessage = errorMessage;
+		return this;
+	}
 
-  /**
-   * the ID of the connector instance (see connectorInstance resource documentation)
-   *
-   * @return connectorInstanceId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "the ID of the connector instance (see connectorInstance resource documentation)")
-  @JsonProperty(JSON_PROPERTY_CONNECTOR_INSTANCE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getConnectorInstanceId() {
-    return connectorInstanceId;
-  }
+	/**
+	 * the message of the connector failure
+	 * @return errorMessage
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the message of the connector failure")
+	@JsonProperty(JSON_PROPERTY_ERROR_MESSAGE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getErrorMessage() {
+		return errorMessage;
+	}
 
-  public void setConnectorInstanceId(String connectorInstanceId) {
-    this.connectorInstanceId = connectorInstanceId;
-  }
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
 
-  public ConnectorFailure errorStackTrace(String errorStackTrace) {
+	public ConnectorFailure connectorInstanceId(String connectorInstanceId) {
 
-    this.errorStackTrace = errorStackTrace;
-    return this;
-  }
+		this.connectorInstanceId = connectorInstanceId;
+		return this;
+	}
 
-  /**
-   * the stack trace of the error
-   *
-   * @return errorStackTrace
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the stack trace of the error")
-  @JsonProperty(JSON_PROPERTY_ERROR_STACK_TRACE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getErrorStackTrace() {
-    return errorStackTrace;
-  }
+	/**
+	 * the ID of the connector instance (see connectorInstance resource documentation)
+	 * @return connectorInstanceId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the ID of the connector instance (see connectorInstance resource documentation)")
+	@JsonProperty(JSON_PROPERTY_CONNECTOR_INSTANCE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getConnectorInstanceId() {
+		return connectorInstanceId;
+	}
 
-  public void setErrorStackTrace(String errorStackTrace) {
-    this.errorStackTrace = errorStackTrace;
-  }
+	public void setConnectorInstanceId(String connectorInstanceId) {
+		this.connectorInstanceId = connectorInstanceId;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ConnectorFailure connectorFailure = (ConnectorFailure) o;
-    return Objects.equals(this.errorMessage, connectorFailure.errorMessage)
-        && Objects.equals(this.connectorInstanceId, connectorFailure.connectorInstanceId)
-        && Objects.equals(this.errorStackTrace, connectorFailure.errorStackTrace);
-  }
+	public ConnectorFailure errorStackTrace(String errorStackTrace) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(errorMessage, connectorInstanceId, errorStackTrace);
-  }
+		this.errorStackTrace = errorStackTrace;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ConnectorFailure {\n");
-    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
-    sb.append("    connectorInstanceId: ")
-        .append(toIndentedString(connectorInstanceId))
-        .append("\n");
-    sb.append("    errorStackTrace: ").append(toIndentedString(errorStackTrace)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * the stack trace of the error
+	 * @return errorStackTrace
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the stack trace of the error")
+	@JsonProperty(JSON_PROPERTY_ERROR_STACK_TRACE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getErrorStackTrace() {
+		return errorStackTrace;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setErrorStackTrace(String errorStackTrace) {
+		this.errorStackTrace = errorStackTrace;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ConnectorFailure connectorFailure = (ConnectorFailure) o;
+		return Objects.equals(this.errorMessage, connectorFailure.errorMessage)
+				&& Objects.equals(this.connectorInstanceId, connectorFailure.connectorInstanceId)
+				&& Objects.equals(this.errorStackTrace, connectorFailure.errorStackTrace);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(errorMessage, connectorInstanceId, errorStackTrace);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ConnectorFailure {\n");
+		sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+		sb.append("    connectorInstanceId: ").append(toIndentedString(connectorInstanceId)).append("\n");
+		sb.append("    errorStackTrace: ").append(toIndentedString(errorStackTrace)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

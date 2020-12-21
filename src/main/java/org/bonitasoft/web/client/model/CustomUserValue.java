@@ -21,131 +21,130 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** CustomUserValue */
-@JsonPropertyOrder({
-  CustomUserValue.JSON_PROPERTY_USER_ID,
-  CustomUserValue.JSON_PROPERTY_VALUE,
-  CustomUserValue.JSON_PROPERTY_DEFINITION_ID
-})
+@JsonPropertyOrder({ CustomUserValue.JSON_PROPERTY_USER_ID, CustomUserValue.JSON_PROPERTY_VALUE,
+		CustomUserValue.JSON_PROPERTY_DEFINITION_ID })
 @JsonTypeName("CustomUserValue")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CustomUserValue implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_USER_ID = "userId";
-  private String userId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private String value;
+	public static final String JSON_PROPERTY_USER_ID = "userId";
 
-  public static final String JSON_PROPERTY_DEFINITION_ID = "definitionId";
-  private String definitionId;
+	private String userId;
 
-  public CustomUserValue userId(String userId) {
+	public static final String JSON_PROPERTY_VALUE = "value";
 
-    this.userId = userId;
-    return this;
-  }
+	private String value;
 
-  /**
-   * user id
-   *
-   * @return userId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "user id")
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserId() {
-    return userId;
-  }
+	public static final String JSON_PROPERTY_DEFINITION_ID = "definitionId";
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+	private String definitionId;
 
-  public CustomUserValue value(String value) {
+	public CustomUserValue userId(String userId) {
 
-    this.value = value;
-    return this;
-  }
+		this.userId = userId;
+		return this;
+	}
 
-  /**
-   * definition value
-   *
-   * @return value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "definition value")
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getValue() {
-    return value;
-  }
+	/**
+	 * user id
+	 * @return userId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "user id")
+	@JsonProperty(JSON_PROPERTY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserId() {
+		return userId;
+	}
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-  public CustomUserValue definitionId(String definitionId) {
+	public CustomUserValue value(String value) {
 
-    this.definitionId = definitionId;
-    return this;
-  }
+		this.value = value;
+		return this;
+	}
 
-  /**
-   * definition id
-   *
-   * @return definitionId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "definition id")
-  @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDefinitionId() {
-    return definitionId;
-  }
+	/**
+	 * definition value
+	 * @return value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "definition value")
+	@JsonProperty(JSON_PROPERTY_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getValue() {
+		return value;
+	}
 
-  public void setDefinitionId(String definitionId) {
-    this.definitionId = definitionId;
-  }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CustomUserValue customUserValue = (CustomUserValue) o;
-    return Objects.equals(this.userId, customUserValue.userId)
-        && Objects.equals(this.value, customUserValue.value)
-        && Objects.equals(this.definitionId, customUserValue.definitionId);
-  }
+	public CustomUserValue definitionId(String definitionId) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(userId, value, definitionId);
-  }
+		this.definitionId = definitionId;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CustomUserValue {\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    definitionId: ").append(toIndentedString(definitionId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * definition id
+	 * @return definitionId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "definition id")
+	@JsonProperty(JSON_PROPERTY_DEFINITION_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDefinitionId() {
+		return definitionId;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setDefinitionId(String definitionId) {
+		this.definitionId = definitionId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		CustomUserValue customUserValue = (CustomUserValue) o;
+		return Objects.equals(this.userId, customUserValue.userId) && Objects.equals(this.value, customUserValue.value)
+				&& Objects.equals(this.definitionId, customUserValue.definitionId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(userId, value, definitionId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class CustomUserValue {\n");
+		sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+		sb.append("    value: ").append(toIndentedString(value)).append("\n");
+		sb.append("    definitionId: ").append(toIndentedString(definitionId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

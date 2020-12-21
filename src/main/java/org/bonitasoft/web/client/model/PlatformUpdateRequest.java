@@ -23,104 +23,109 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** PlatformUpdateRequest */
-@JsonPropertyOrder({PlatformUpdateRequest.JSON_PROPERTY_STATE})
+@JsonPropertyOrder({ PlatformUpdateRequest.JSON_PROPERTY_STATE })
 @JsonTypeName("PlatformUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlatformUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  /** Platform state */
-  public enum StateEnum {
-    START("start"),
+	private static final long serialVersionUID = 1L;
 
-    STOP("stop");
+	/** Platform state */
+	public enum StateEnum {
 
-    private String value;
+		START("start"),
 
-    StateEnum(String value) {
-      this.value = value;
-    }
+		STOP("stop");
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+		private String value;
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+		StateEnum(String value) {
+			this.value = value;
+		}
 
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private StateEnum state;
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-  public PlatformUpdateRequest state(StateEnum state) {
+		@JsonCreator
+		public static StateEnum fromValue(String value) {
+			for (StateEnum b : StateEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
 
-    this.state = state;
-    return this;
-  }
+	}
 
-  /**
-   * Platform state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Platform state")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public StateEnum getState() {
-    return state;
-  }
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  public void setState(StateEnum state) {
-    this.state = state;
-  }
+	private StateEnum state;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PlatformUpdateRequest platformUpdateRequest = (PlatformUpdateRequest) o;
-    return Objects.equals(this.state, platformUpdateRequest.state);
-  }
+	public PlatformUpdateRequest state(StateEnum state) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(state);
-  }
+		this.state = state;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PlatformUpdateRequest {\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * Platform state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Platform state")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public StateEnum getState() {
+		return state;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setState(StateEnum state) {
+		this.state = state;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		PlatformUpdateRequest platformUpdateRequest = (PlatformUpdateRequest) o;
+		return Objects.equals(this.state, platformUpdateRequest.state);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(state);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class PlatformUpdateRequest {\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

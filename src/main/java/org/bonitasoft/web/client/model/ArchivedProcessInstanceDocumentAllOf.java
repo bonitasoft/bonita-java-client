@@ -23,106 +23,105 @@ import java.util.Objects;
 
 /** A document in an active case */
 @ApiModel(description = "A document in an active case")
-@JsonPropertyOrder({
-  ArchivedProcessInstanceDocumentAllOf.JSON_PROPERTY_SOURCE_OBJECT_ID,
-  ArchivedProcessInstanceDocumentAllOf.JSON_PROPERTY_ARCHIVED_DATE
-})
+@JsonPropertyOrder({ ArchivedProcessInstanceDocumentAllOf.JSON_PROPERTY_SOURCE_OBJECT_ID,
+		ArchivedProcessInstanceDocumentAllOf.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("ArchivedProcessInstanceDocument_allOf")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceDocumentAllOf implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
-  private String sourceObjectId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
+	public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
 
-  public ArchivedProcessInstanceDocumentAllOf sourceObjectId(String sourceObjectId) {
+	private String sourceObjectId;
 
-    this.sourceObjectId = sourceObjectId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
 
-  /**
-   * original document id
-   *
-   * @return sourceObjectId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "original document id")
-  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSourceObjectId() {
-    return sourceObjectId;
-  }
+	private String archivedDate;
 
-  public void setSourceObjectId(String sourceObjectId) {
-    this.sourceObjectId = sourceObjectId;
-  }
+	public ArchivedProcessInstanceDocumentAllOf sourceObjectId(String sourceObjectId) {
 
-  public ArchivedProcessInstanceDocumentAllOf archivedDate(String archivedDate) {
+		this.sourceObjectId = sourceObjectId;
+		return this;
+	}
 
-    this.archivedDate = archivedDate;
-    return this;
-  }
+	/**
+	 * original document id
+	 * @return sourceObjectId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "original document id")
+	@JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSourceObjectId() {
+		return sourceObjectId;
+	}
 
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example
-   * &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
+	public void setSourceObjectId(String sourceObjectId) {
+		this.sourceObjectId = sourceObjectId;
+	}
 
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
+	public ArchivedProcessInstanceDocumentAllOf archivedDate(String archivedDate) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArchivedProcessInstanceDocumentAllOf archivedProcessInstanceDocumentAllOf =
-        (ArchivedProcessInstanceDocumentAllOf) o;
-    return Objects.equals(this.sourceObjectId, archivedProcessInstanceDocumentAllOf.sourceObjectId)
-        && Objects.equals(this.archivedDate, archivedProcessInstanceDocumentAllOf.archivedDate);
-  }
+		this.archivedDate = archivedDate;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(sourceObjectId, archivedDate);
-  }
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for
+	 * example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedProcessInstanceDocumentAllOf {\n");
-    sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ArchivedProcessInstanceDocumentAllOf archivedProcessInstanceDocumentAllOf = (ArchivedProcessInstanceDocumentAllOf) o;
+		return Objects.equals(this.sourceObjectId, archivedProcessInstanceDocumentAllOf.sourceObjectId)
+				&& Objects.equals(this.archivedDate, archivedProcessInstanceDocumentAllOf.archivedDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(sourceObjectId, archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ArchivedProcessInstanceDocumentAllOf {\n");
+		sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

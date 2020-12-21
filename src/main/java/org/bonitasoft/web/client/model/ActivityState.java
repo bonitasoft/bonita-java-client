@@ -41,7 +41,6 @@
 
 package org.bonitasoft.web.client.model;
 
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 

@@ -21,317 +21,305 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ArchivedConnectorInstance */
-@JsonPropertyOrder({
-  ArchivedConnectorInstance.JSON_PROPERTY_CONTAINER_TYPE,
-  ArchivedConnectorInstance.JSON_PROPERTY_CONNECTOR_ID,
-  ArchivedConnectorInstance.JSON_PROPERTY_ID,
-  ArchivedConnectorInstance.JSON_PROPERTY_NAME,
-  ArchivedConnectorInstance.JSON_PROPERTY_ACTIVATION_EVENT,
-  ArchivedConnectorInstance.JSON_PROPERTY_STATE,
-  ArchivedConnectorInstance.JSON_PROPERTY_CONTAINER_ID,
-  ArchivedConnectorInstance.JSON_PROPERTY_VERSION,
-  ArchivedConnectorInstance.JSON_PROPERTY_ARCHIVED_DATE
-})
+@JsonPropertyOrder({ ArchivedConnectorInstance.JSON_PROPERTY_CONTAINER_TYPE,
+		ArchivedConnectorInstance.JSON_PROPERTY_CONNECTOR_ID, ArchivedConnectorInstance.JSON_PROPERTY_ID,
+		ArchivedConnectorInstance.JSON_PROPERTY_NAME, ArchivedConnectorInstance.JSON_PROPERTY_ACTIVATION_EVENT,
+		ArchivedConnectorInstance.JSON_PROPERTY_STATE, ArchivedConnectorInstance.JSON_PROPERTY_CONTAINER_ID,
+		ArchivedConnectorInstance.JSON_PROPERTY_VERSION, ArchivedConnectorInstance.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("ArchivedConnectorInstance")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedConnectorInstance implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
-  private String containerType;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONNECTOR_ID = "connectorId";
-  private String connectorId;
+	public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private Long id;
+	private String containerType;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_CONNECTOR_ID = "connectorId";
 
-  public static final String JSON_PROPERTY_ACTIVATION_EVENT = "activationEvent";
-  private String activationEvent;
+	private String connectorId;
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
-  private String containerId;
+	private Long id;
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private String version;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
+	private String name;
 
-  public ArchivedConnectorInstance containerType(String containerType) {
+	public static final String JSON_PROPERTY_ACTIVATION_EVENT = "activationEvent";
 
-    this.containerType = containerType;
-    return this;
-  }
+	private String activationEvent;
 
-  /**
-   * the type of the containing activity
-   *
-   * @return containerType
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the type of the containing activity")
-  @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContainerType() {
-    return containerType;
-  }
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  public void setContainerType(String containerType) {
-    this.containerType = containerType;
-  }
+	private String state;
 
-  public ArchivedConnectorInstance connectorId(String connectorId) {
+	public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
 
-    this.connectorId = connectorId;
-    return this;
-  }
+	private String containerId;
 
-  /**
-   * the connector id
-   *
-   * @return connectorId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector id")
-  @JsonProperty(JSON_PROPERTY_CONNECTOR_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getConnectorId() {
-    return connectorId;
-  }
+	public static final String JSON_PROPERTY_VERSION = "version";
 
-  public void setConnectorId(String connectorId) {
-    this.connectorId = connectorId;
-  }
+	private String version;
 
-  public ArchivedConnectorInstance id(Long id) {
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
 
-    this.id = id;
-    return this;
-  }
+	private String archivedDate;
 
-  /**
-   * the connector instance id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector instance id ")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getId() {
-    return id;
-  }
+	public ArchivedConnectorInstance containerType(String containerType) {
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+		this.containerType = containerType;
+		return this;
+	}
 
-  public ArchivedConnectorInstance name(String name) {
+	/**
+	 * the type of the containing activity
+	 * @return containerType
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the type of the containing activity")
+	@JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContainerType() {
+		return containerType;
+	}
 
-    this.name = name;
-    return this;
-  }
+	public void setContainerType(String containerType) {
+		this.containerType = containerType;
+	}
 
-  /**
-   * the connector name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public ArchivedConnectorInstance connectorId(String connectorId) {
 
-  public void setName(String name) {
-    this.name = name;
-  }
+		this.connectorId = connectorId;
+		return this;
+	}
 
-  public ArchivedConnectorInstance activationEvent(String activationEvent) {
+	/**
+	 * the connector id
+	 * @return connectorId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector id")
+	@JsonProperty(JSON_PROPERTY_CONNECTOR_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getConnectorId() {
+		return connectorId;
+	}
 
-    this.activationEvent = activationEvent;
-    return this;
-  }
+	public void setConnectorId(String connectorId) {
+		this.connectorId = connectorId;
+	}
 
-  /**
-   * the name of hte event that activated the connector instance
-   *
-   * @return activationEvent
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the name of hte event that activated the connector instance")
-  @JsonProperty(JSON_PROPERTY_ACTIVATION_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getActivationEvent() {
-    return activationEvent;
-  }
+	public ArchivedConnectorInstance id(Long id) {
 
-  public void setActivationEvent(String activationEvent) {
-    this.activationEvent = activationEvent;
-  }
+		this.id = id;
+		return this;
+	}
 
-  public ArchivedConnectorInstance state(String state) {
+	/**
+	 * the connector instance id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector instance id ")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getId() {
+		return id;
+	}
 
-    this.state = state;
-    return this;
-  }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  /**
-   * the connector state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector state")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
+	public ArchivedConnectorInstance name(String name) {
 
-  public void setState(String state) {
-    this.state = state;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public ArchivedConnectorInstance containerId(String containerId) {
+	/**
+	 * the connector name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-    this.containerId = containerId;
-    return this;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * the containing activity instance id
-   *
-   * @return containerId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the containing activity instance id")
-  @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContainerId() {
-    return containerId;
-  }
+	public ArchivedConnectorInstance activationEvent(String activationEvent) {
 
-  public void setContainerId(String containerId) {
-    this.containerId = containerId;
-  }
+		this.activationEvent = activationEvent;
+		return this;
+	}
 
-  public ArchivedConnectorInstance version(String version) {
+	/**
+	 * the name of hte event that activated the connector instance
+	 * @return activationEvent
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the name of hte event that activated the connector instance")
+	@JsonProperty(JSON_PROPERTY_ACTIVATION_EVENT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getActivationEvent() {
+		return activationEvent;
+	}
 
-    this.version = version;
-    return this;
-  }
+	public void setActivationEvent(String activationEvent) {
+		this.activationEvent = activationEvent;
+	}
 
-  /**
-   * the connector version
-   *
-   * @return version
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector version")
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getVersion() {
-    return version;
-  }
+	public ArchivedConnectorInstance state(String state) {
 
-  public void setVersion(String version) {
-    this.version = version;
-  }
+		this.state = state;
+		return this;
+	}
 
-  public ArchivedConnectorInstance archivedDate(String archivedDate) {
+	/**
+	 * the connector state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector state")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
 
-    this.archivedDate = archivedDate;
-    return this;
-  }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example
-   * &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
+	public ArchivedConnectorInstance containerId(String containerId) {
 
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
+		this.containerId = containerId;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArchivedConnectorInstance archivedConnectorInstance = (ArchivedConnectorInstance) o;
-    return Objects.equals(this.containerType, archivedConnectorInstance.containerType)
-        && Objects.equals(this.connectorId, archivedConnectorInstance.connectorId)
-        && Objects.equals(this.id, archivedConnectorInstance.id)
-        && Objects.equals(this.name, archivedConnectorInstance.name)
-        && Objects.equals(this.activationEvent, archivedConnectorInstance.activationEvent)
-        && Objects.equals(this.state, archivedConnectorInstance.state)
-        && Objects.equals(this.containerId, archivedConnectorInstance.containerId)
-        && Objects.equals(this.version, archivedConnectorInstance.version)
-        && Objects.equals(this.archivedDate, archivedConnectorInstance.archivedDate);
-  }
+	/**
+	 * the containing activity instance id
+	 * @return containerId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the containing activity instance id")
+	@JsonProperty(JSON_PROPERTY_CONTAINER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContainerId() {
+		return containerId;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        containerType,
-        connectorId,
-        id,
-        name,
-        activationEvent,
-        state,
-        containerId,
-        version,
-        archivedDate);
-  }
+	public void setContainerId(String containerId) {
+		this.containerId = containerId;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedConnectorInstance {\n");
-    sb.append("    containerType: ").append(toIndentedString(containerType)).append("\n");
-    sb.append("    connectorId: ").append(toIndentedString(connectorId)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    activationEvent: ").append(toIndentedString(activationEvent)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    containerId: ").append(toIndentedString(containerId)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public ArchivedConnectorInstance version(String version) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.version = version;
+		return this;
+	}
+
+	/**
+	 * the connector version
+	 * @return version
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector version")
+	@JsonProperty(JSON_PROPERTY_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public ArchivedConnectorInstance archivedDate(String archivedDate) {
+
+		this.archivedDate = archivedDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for
+	 * example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
+
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ArchivedConnectorInstance archivedConnectorInstance = (ArchivedConnectorInstance) o;
+		return Objects.equals(this.containerType, archivedConnectorInstance.containerType)
+				&& Objects.equals(this.connectorId, archivedConnectorInstance.connectorId)
+				&& Objects.equals(this.id, archivedConnectorInstance.id)
+				&& Objects.equals(this.name, archivedConnectorInstance.name)
+				&& Objects.equals(this.activationEvent, archivedConnectorInstance.activationEvent)
+				&& Objects.equals(this.state, archivedConnectorInstance.state)
+				&& Objects.equals(this.containerId, archivedConnectorInstance.containerId)
+				&& Objects.equals(this.version, archivedConnectorInstance.version)
+				&& Objects.equals(this.archivedDate, archivedConnectorInstance.archivedDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(containerType, connectorId, id, name, activationEvent, state, containerId, version,
+				archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ArchivedConnectorInstance {\n");
+		sb.append("    containerType: ").append(toIndentedString(containerType)).append("\n");
+		sb.append("    connectorId: ").append(toIndentedString(connectorId)).append("\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    activationEvent: ").append(toIndentedString(activationEvent)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    containerId: ").append(toIndentedString(containerId)).append("\n");
+		sb.append("    version: ").append(toIndentedString(version)).append("\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

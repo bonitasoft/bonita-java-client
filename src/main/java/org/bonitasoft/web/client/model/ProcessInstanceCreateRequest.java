@@ -24,113 +24,111 @@ import java.util.Map;
 import java.util.Objects;
 
 /** ProcessInstanceCreateRequest */
-@JsonPropertyOrder({
-  ProcessInstanceCreateRequest.JSON_PROPERTY_PROCESS_DEFINITION_ID,
-  ProcessInstanceCreateRequest.JSON_PROPERTY_VARIABLES
-})
+@JsonPropertyOrder({ ProcessInstanceCreateRequest.JSON_PROPERTY_PROCESS_DEFINITION_ID,
+		ProcessInstanceCreateRequest.JSON_PROPERTY_VARIABLES })
 @JsonTypeName("ProcessInstanceCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
-  private String processDefinitionId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_VARIABLES = "variables";
-  private List<Map<String, Object>> variables = null;
+	public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
 
-  public ProcessInstanceCreateRequest processDefinitionId(String processDefinitionId) {
+	private String processDefinitionId;
 
-    this.processDefinitionId = processDefinitionId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_VARIABLES = "variables";
 
-  /**
-   * the process definition Id
-   *
-   * @return processDefinitionId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the process definition Id")
-  @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessDefinitionId() {
-    return processDefinitionId;
-  }
+	private List<Map<String, Object>> variables = null;
 
-  public void setProcessDefinitionId(String processDefinitionId) {
-    this.processDefinitionId = processDefinitionId;
-  }
+	public ProcessInstanceCreateRequest processDefinitionId(String processDefinitionId) {
 
-  public ProcessInstanceCreateRequest variables(List<Map<String, Object>> variables) {
+		this.processDefinitionId = processDefinitionId;
+		return this;
+	}
 
-    this.variables = variables;
-    return this;
-  }
+	/**
+	 * the process definition Id
+	 * @return processDefinitionId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the process definition Id")
+	@JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessDefinitionId() {
+		return processDefinitionId;
+	}
 
-  public ProcessInstanceCreateRequest addVariablesItem(Map<String, Object> variablesItem) {
-    if (this.variables == null) {
-      this.variables = new ArrayList<>();
-    }
-    this.variables.add(variablesItem);
-    return this;
-  }
+	public void setProcessDefinitionId(String processDefinitionId) {
+		this.processDefinitionId = processDefinitionId;
+	}
 
-  /**
-   * process variables initial values
-   *
-   * @return variables
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "process variables initial values")
-  @JsonProperty(JSON_PROPERTY_VARIABLES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Map<String, Object>> getVariables() {
-    return variables;
-  }
+	public ProcessInstanceCreateRequest variables(List<Map<String, Object>> variables) {
 
-  public void setVariables(List<Map<String, Object>> variables) {
-    this.variables = variables;
-  }
+		this.variables = variables;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstanceCreateRequest processInstanceCreateRequest = (ProcessInstanceCreateRequest) o;
-    return Objects.equals(
-            this.processDefinitionId, processInstanceCreateRequest.processDefinitionId)
-        && Objects.equals(this.variables, processInstanceCreateRequest.variables);
-  }
+	public ProcessInstanceCreateRequest addVariablesItem(Map<String, Object> variablesItem) {
+		if (this.variables == null) {
+			this.variables = new ArrayList<>();
+		}
+		this.variables.add(variablesItem);
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(processDefinitionId, variables);
-  }
+	/**
+	 * process variables initial values
+	 * @return variables
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "process variables initial values")
+	@JsonProperty(JSON_PROPERTY_VARIABLES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Map<String, Object>> getVariables() {
+		return variables;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstanceCreateRequest {\n");
-    sb.append("    processDefinitionId: ")
-        .append(toIndentedString(processDefinitionId))
-        .append("\n");
-    sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setVariables(List<Map<String, Object>> variables) {
+		this.variables = variables;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstanceCreateRequest processInstanceCreateRequest = (ProcessInstanceCreateRequest) o;
+		return Objects.equals(this.processDefinitionId, processInstanceCreateRequest.processDefinitionId)
+				&& Objects.equals(this.variables, processInstanceCreateRequest.variables);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(processDefinitionId, variables);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstanceCreateRequest {\n");
+		sb.append("    processDefinitionId: ").append(toIndentedString(processDefinitionId)).append("\n");
+		sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

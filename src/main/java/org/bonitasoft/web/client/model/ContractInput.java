@@ -23,197 +23,194 @@ import java.util.List;
 import java.util.Objects;
 
 /** ContractInput */
-@JsonPropertyOrder({
-  ContractInput.JSON_PROPERTY_DESCRIPTION,
-  ContractInput.JSON_PROPERTY_NAME,
-  ContractInput.JSON_PROPERTY_MULTIPLE,
-  ContractInput.JSON_PROPERTY_TYPE,
-  ContractInput.JSON_PROPERTY_INPUTS
-})
+@JsonPropertyOrder({ ContractInput.JSON_PROPERTY_DESCRIPTION, ContractInput.JSON_PROPERTY_NAME,
+		ContractInput.JSON_PROPERTY_MULTIPLE, ContractInput.JSON_PROPERTY_TYPE, ContractInput.JSON_PROPERTY_INPUTS })
 @JsonTypeName("ContractInput")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContractInput implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public static final String JSON_PROPERTY_MULTIPLE = "multiple";
-  private String multiple;
+	private String description;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_INPUTS = "inputs";
-  private List<ContractInput> inputs = null;
+	private String name;
 
-  public ContractInput description(String description) {
+	public static final String JSON_PROPERTY_MULTIPLE = "multiple";
 
-    this.description = description;
-    return this;
-  }
+	private String multiple;
 
-  /**
-   * input description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "input description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	private String type;
 
-  public ContractInput name(String name) {
+	public static final String JSON_PROPERTY_INPUTS = "inputs";
 
-    this.name = name;
-    return this;
-  }
+	private List<ContractInput> inputs = null;
 
-  /**
-   * input name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "input name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public ContractInput description(String description) {
 
-  public void setName(String name) {
-    this.name = name;
-  }
+		this.description = description;
+		return this;
+	}
 
-  public ContractInput multiple(String multiple) {
+	/**
+	 * input description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "input description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-    this.multiple = multiple;
-    return this;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  /**
-   * true if input contains multiple values
-   *
-   * @return multiple
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "true if input contains multiple values")
-  @JsonProperty(JSON_PROPERTY_MULTIPLE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getMultiple() {
-    return multiple;
-  }
+	public ContractInput name(String name) {
 
-  public void setMultiple(String multiple) {
-    this.multiple = multiple;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public ContractInput type(String type) {
+	/**
+	 * input name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "input name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-    this.type = type;
-    return this;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * input type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "input type")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getType() {
-    return type;
-  }
+	public ContractInput multiple(String multiple) {
 
-  public void setType(String type) {
-    this.type = type;
-  }
+		this.multiple = multiple;
+		return this;
+	}
 
-  public ContractInput inputs(List<ContractInput> inputs) {
+	/**
+	 * true if input contains multiple values
+	 * @return multiple
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "true if input contains multiple values")
+	@JsonProperty(JSON_PROPERTY_MULTIPLE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getMultiple() {
+		return multiple;
+	}
 
-    this.inputs = inputs;
-    return this;
-  }
+	public void setMultiple(String multiple) {
+		this.multiple = multiple;
+	}
 
-  public ContractInput addInputsItem(ContractInput inputsItem) {
-    if (this.inputs == null) {
-      this.inputs = new ArrayList<>();
-    }
-    this.inputs.add(inputsItem);
-    return this;
-  }
+	public ContractInput type(String type) {
 
-  /**
-   * Get inputs
-   *
-   * @return inputs
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_INPUTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<ContractInput> getInputs() {
-    return inputs;
-  }
+		this.type = type;
+		return this;
+	}
 
-  public void setInputs(List<ContractInput> inputs) {
-    this.inputs = inputs;
-  }
+	/**
+	 * input type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "input type")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getType() {
+		return type;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ContractInput contractInput = (ContractInput) o;
-    return Objects.equals(this.description, contractInput.description)
-        && Objects.equals(this.name, contractInput.name)
-        && Objects.equals(this.multiple, contractInput.multiple)
-        && Objects.equals(this.type, contractInput.type)
-        && Objects.equals(this.inputs, contractInput.inputs);
-  }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(description, name, multiple, type, inputs);
-  }
+	public ContractInput inputs(List<ContractInput> inputs) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ContractInput {\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    multiple: ").append(toIndentedString(multiple)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.inputs = inputs;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public ContractInput addInputsItem(ContractInput inputsItem) {
+		if (this.inputs == null) {
+			this.inputs = new ArrayList<>();
+		}
+		this.inputs.add(inputsItem);
+		return this;
+	}
+
+	/**
+	 * Get inputs
+	 * @return inputs
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_INPUTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<ContractInput> getInputs() {
+		return inputs;
+	}
+
+	public void setInputs(List<ContractInput> inputs) {
+		this.inputs = inputs;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ContractInput contractInput = (ContractInput) o;
+		return Objects.equals(this.description, contractInput.description)
+				&& Objects.equals(this.name, contractInput.name)
+				&& Objects.equals(this.multiple, contractInput.multiple)
+				&& Objects.equals(this.type, contractInput.type) && Objects.equals(this.inputs, contractInput.inputs);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, name, multiple, type, inputs);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ContractInput {\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    multiple: ").append(toIndentedString(multiple)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

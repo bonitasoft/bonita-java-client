@@ -21,192 +21,189 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** Membership */
-@JsonPropertyOrder({
-  Membership.JSON_PROPERTY_ASSIGNED_DATE,
-  Membership.JSON_PROPERTY_ROLE_ID,
-  Membership.JSON_PROPERTY_ASSIGNED_BY_USER_ID,
-  Membership.JSON_PROPERTY_GROUP_ID,
-  Membership.JSON_PROPERTY_USER_ID
-})
+@JsonPropertyOrder({ Membership.JSON_PROPERTY_ASSIGNED_DATE, Membership.JSON_PROPERTY_ROLE_ID,
+		Membership.JSON_PROPERTY_ASSIGNED_BY_USER_ID, Membership.JSON_PROPERTY_GROUP_ID,
+		Membership.JSON_PROPERTY_USER_ID })
 @JsonTypeName("Membership")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Membership implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
-  private String assignedDate;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
-  private Long roleId;
+	public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
 
-  public static final String JSON_PROPERTY_ASSIGNED_BY_USER_ID = "assigned_by_user_id";
-  private String assignedByUserId;
+	private String assignedDate;
 
-  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
-  private String groupId;
+	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
 
-  public static final String JSON_PROPERTY_USER_ID = "user_id";
-  private String userId;
+	private Long roleId;
 
-  public Membership assignedDate(String assignedDate) {
+	public static final String JSON_PROPERTY_ASSIGNED_BY_USER_ID = "assigned_by_user_id";
 
-    this.assignedDate = assignedDate;
-    return this;
-  }
+	private String assignedByUserId;
 
-  /**
-   * creation date (format: &#x60;2014-12-31 15:17:24.736&#x60;)
-   *
-   * @return assignedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "creation date (format: `2014-12-31 15:17:24.736`)")
-  @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssignedDate() {
-    return assignedDate;
-  }
+	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
 
-  public void setAssignedDate(String assignedDate) {
-    this.assignedDate = assignedDate;
-  }
+	private String groupId;
 
-  public Membership roleId(Long roleId) {
+	public static final String JSON_PROPERTY_USER_ID = "user_id";
 
-    this.roleId = roleId;
-    return this;
-  }
+	private String userId;
 
-  /**
-   * id of the role of this membership
-   *
-   * @return roleId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the role of this membership")
-  @JsonProperty(JSON_PROPERTY_ROLE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getRoleId() {
-    return roleId;
-  }
+	public Membership assignedDate(String assignedDate) {
 
-  public void setRoleId(Long roleId) {
-    this.roleId = roleId;
-  }
+		this.assignedDate = assignedDate;
+		return this;
+	}
 
-  public Membership assignedByUserId(String assignedByUserId) {
+	/**
+	 * creation date (format: &#x60;2014-12-31 15:17:24.736&#x60;)
+	 * @return assignedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "creation date (format: `2014-12-31 15:17:24.736`)")
+	@JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAssignedDate() {
+		return assignedDate;
+	}
 
-    this.assignedByUserId = assignedByUserId;
-    return this;
-  }
+	public void setAssignedDate(String assignedDate) {
+		this.assignedDate = assignedDate;
+	}
 
-  /**
-   * id of the user who created the membership (-1 if the role was created by the tenant admin or by
-   * an organisation import)
-   *
-   * @return assignedByUserId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "id of the user who created the membership (-1 if the role was created by the tenant admin or by an organisation import)")
-  @JsonProperty(JSON_PROPERTY_ASSIGNED_BY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssignedByUserId() {
-    return assignedByUserId;
-  }
+	public Membership roleId(Long roleId) {
 
-  public void setAssignedByUserId(String assignedByUserId) {
-    this.assignedByUserId = assignedByUserId;
-  }
+		this.roleId = roleId;
+		return this;
+	}
 
-  public Membership groupId(String groupId) {
+	/**
+	 * id of the role of this membership
+	 * @return roleId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the role of this membership")
+	@JsonProperty(JSON_PROPERTY_ROLE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getRoleId() {
+		return roleId;
+	}
 
-    this.groupId = groupId;
-    return this;
-  }
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
 
-  /**
-   * id of the group of this membership
-   *
-   * @return groupId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the group of this membership")
-  @JsonProperty(JSON_PROPERTY_GROUP_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getGroupId() {
-    return groupId;
-  }
+	public Membership assignedByUserId(String assignedByUserId) {
 
-  public void setGroupId(String groupId) {
-    this.groupId = groupId;
-  }
+		this.assignedByUserId = assignedByUserId;
+		return this;
+	}
 
-  public Membership userId(String userId) {
+	/**
+	 * id of the user who created the membership (-1 if the role was created by the tenant
+	 * admin or by an organisation import)
+	 * @return assignedByUserId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "id of the user who created the membership (-1 if the role was created by the tenant admin or by an organisation import)")
+	@JsonProperty(JSON_PROPERTY_ASSIGNED_BY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAssignedByUserId() {
+		return assignedByUserId;
+	}
 
-    this.userId = userId;
-    return this;
-  }
+	public void setAssignedByUserId(String assignedByUserId) {
+		this.assignedByUserId = assignedByUserId;
+	}
 
-  /**
-   * id of the user in this membership
-   *
-   * @return userId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the user in this membership")
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserId() {
-    return userId;
-  }
+	public Membership groupId(String groupId) {
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+		this.groupId = groupId;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Membership membership = (Membership) o;
-    return Objects.equals(this.assignedDate, membership.assignedDate)
-        && Objects.equals(this.roleId, membership.roleId)
-        && Objects.equals(this.assignedByUserId, membership.assignedByUserId)
-        && Objects.equals(this.groupId, membership.groupId)
-        && Objects.equals(this.userId, membership.userId);
-  }
+	/**
+	 * id of the group of this membership
+	 * @return groupId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the group of this membership")
+	@JsonProperty(JSON_PROPERTY_GROUP_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getGroupId() {
+		return groupId;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(assignedDate, roleId, assignedByUserId, groupId, userId);
-  }
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Membership {\n");
-    sb.append("    assignedDate: ").append(toIndentedString(assignedDate)).append("\n");
-    sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
-    sb.append("    assignedByUserId: ").append(toIndentedString(assignedByUserId)).append("\n");
-    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public Membership userId(String userId) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.userId = userId;
+		return this;
+	}
+
+	/**
+	 * id of the user in this membership
+	 * @return userId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the user in this membership")
+	@JsonProperty(JSON_PROPERTY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Membership membership = (Membership) o;
+		return Objects.equals(this.assignedDate, membership.assignedDate)
+				&& Objects.equals(this.roleId, membership.roleId)
+				&& Objects.equals(this.assignedByUserId, membership.assignedByUserId)
+				&& Objects.equals(this.groupId, membership.groupId) && Objects.equals(this.userId, membership.userId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(assignedDate, roleId, assignedByUserId, groupId, userId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Membership {\n");
+		sb.append("    assignedDate: ").append(toIndentedString(assignedDate)).append("\n");
+		sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
+		sb.append("    assignedByUserId: ").append(toIndentedString(assignedByUserId)).append("\n");
+		sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+		sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

@@ -24,123 +24,121 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Retrieves information about a process instances. It returns counters for each flow node in the
- * process instances, showing the number of flow node instances that are in completed, ready, or
- * failed state. If there are no flow node instances in a given state, no counter is returned for
- * that state for the flow node.
+ * Retrieves information about a process instances. It returns counters for each flow node
+ * in the process instances, showing the number of flow node instances that are in
+ * completed, ready, or failed state. If there are no flow node instances in a given
+ * state, no counter is returned for that state for the flow node.
  */
 @ApiModel(
-    description =
-        "Retrieves information about a process instances. It returns counters for each flow node in the process instances, showing the number of flow node instances that are in completed, ready, or failed state. If there are no flow node instances in a given state, no counter is returned for that state for the flow node.")
-@JsonPropertyOrder({
-  ProcessInstanceInfo.JSON_PROPERTY_ID,
-  ProcessInstanceInfo.JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS
-})
+		description = "Retrieves information about a process instances. It returns counters for each flow node in the process instances, showing the number of flow node instances that are in completed, ready, or failed state. If there are no flow node instances in a given state, no counter is returned for that state for the flow node.")
+@JsonPropertyOrder({ ProcessInstanceInfo.JSON_PROPERTY_ID,
+		ProcessInstanceInfo.JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS })
 @JsonTypeName("ProcessInstanceInfo")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceInfo implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS = "flowNodeStatesCounters";
-  private Map<String, ProcessInstanceInfoFlowNodeStatesCounters> flowNodeStatesCounters = null;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public ProcessInstanceInfo id(String id) {
+	private String id;
 
-    this.id = id;
-    return this;
-  }
+	public static final String JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS = "flowNodeStatesCounters";
 
-  /**
-   * case identifier
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "case identifier")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	private Map<String, ProcessInstanceInfoFlowNodeStatesCounters> flowNodeStatesCounters = null;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public ProcessInstanceInfo id(String id) {
 
-  public ProcessInstanceInfo flowNodeStatesCounters(
-      Map<String, ProcessInstanceInfoFlowNodeStatesCounters> flowNodeStatesCounters) {
+		this.id = id;
+		return this;
+	}
 
-    this.flowNodeStatesCounters = flowNodeStatesCounters;
-    return this;
-  }
+	/**
+	 * case identifier
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "case identifier")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  public ProcessInstanceInfo putFlowNodeStatesCountersItem(
-      String key, ProcessInstanceInfoFlowNodeStatesCounters flowNodeStatesCountersItem) {
-    if (this.flowNodeStatesCounters == null) {
-      this.flowNodeStatesCounters = new HashMap<>();
-    }
-    this.flowNodeStatesCounters.put(key, flowNodeStatesCountersItem);
-    return this;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  /**
-   * flow nodes counters
-   *
-   * @return flowNodeStatesCounters
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "flow nodes counters")
-  @JsonProperty(JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Map<String, ProcessInstanceInfoFlowNodeStatesCounters> getFlowNodeStatesCounters() {
-    return flowNodeStatesCounters;
-  }
+	public ProcessInstanceInfo flowNodeStatesCounters(
+			Map<String, ProcessInstanceInfoFlowNodeStatesCounters> flowNodeStatesCounters) {
 
-  public void setFlowNodeStatesCounters(
-      Map<String, ProcessInstanceInfoFlowNodeStatesCounters> flowNodeStatesCounters) {
-    this.flowNodeStatesCounters = flowNodeStatesCounters;
-  }
+		this.flowNodeStatesCounters = flowNodeStatesCounters;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstanceInfo processInstanceInfo = (ProcessInstanceInfo) o;
-    return Objects.equals(this.id, processInstanceInfo.id)
-        && Objects.equals(this.flowNodeStatesCounters, processInstanceInfo.flowNodeStatesCounters);
-  }
+	public ProcessInstanceInfo putFlowNodeStatesCountersItem(String key,
+			ProcessInstanceInfoFlowNodeStatesCounters flowNodeStatesCountersItem) {
+		if (this.flowNodeStatesCounters == null) {
+			this.flowNodeStatesCounters = new HashMap<>();
+		}
+		this.flowNodeStatesCounters.put(key, flowNodeStatesCountersItem);
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, flowNodeStatesCounters);
-  }
+	/**
+	 * flow nodes counters
+	 * @return flowNodeStatesCounters
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "flow nodes counters")
+	@JsonProperty(JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Map<String, ProcessInstanceInfoFlowNodeStatesCounters> getFlowNodeStatesCounters() {
+		return flowNodeStatesCounters;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstanceInfo {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    flowNodeStatesCounters: ")
-        .append(toIndentedString(flowNodeStatesCounters))
-        .append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setFlowNodeStatesCounters(
+			Map<String, ProcessInstanceInfoFlowNodeStatesCounters> flowNodeStatesCounters) {
+		this.flowNodeStatesCounters = flowNodeStatesCounters;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstanceInfo processInstanceInfo = (ProcessInstanceInfo) o;
+		return Objects.equals(this.id, processInstanceInfo.id)
+				&& Objects.equals(this.flowNodeStatesCounters, processInstanceInfo.flowNodeStatesCounters);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, flowNodeStatesCounters);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstanceInfo {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    flowNodeStatesCounters: ").append(toIndentedString(flowNodeStatesCounters)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

@@ -21,220 +21,219 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ApplicationUpdateRequest */
-@JsonPropertyOrder({
-  ApplicationUpdateRequest.JSON_PROPERTY_DESCRIPTION,
-  ApplicationUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
-  ApplicationUpdateRequest.JSON_PROPERTY_PROFILE_ID,
-  ApplicationUpdateRequest.JSON_PROPERTY_TOKEN,
-  ApplicationUpdateRequest.JSON_PROPERTY_VERSION,
-  ApplicationUpdateRequest.JSON_PROPERTY_THEME_ID
-})
+@JsonPropertyOrder({ ApplicationUpdateRequest.JSON_PROPERTY_DESCRIPTION,
+		ApplicationUpdateRequest.JSON_PROPERTY_DISPLAY_NAME, ApplicationUpdateRequest.JSON_PROPERTY_PROFILE_ID,
+		ApplicationUpdateRequest.JSON_PROPERTY_TOKEN, ApplicationUpdateRequest.JSON_PROPERTY_VERSION,
+		ApplicationUpdateRequest.JSON_PROPERTY_THEME_ID })
 @JsonTypeName("ApplicationUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
-  private String profileId;
+	private String description;
 
-  public static final String JSON_PROPERTY_TOKEN = "token";
-  private String token;
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private String version;
+	private String displayName;
 
-  public static final String JSON_PROPERTY_THEME_ID = "themeId";
-  private String themeId;
+	public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
 
-  public ApplicationUpdateRequest description(String description) {
+	private String profileId;
 
-    this.description = description;
-    return this;
-  }
+	public static final String JSON_PROPERTY_TOKEN = "token";
 
-  /**
-   * description of the application
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description of the application")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	private String token;
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public static final String JSON_PROPERTY_VERSION = "version";
 
-  public ApplicationUpdateRequest displayName(String displayName) {
+	private String version;
 
-    this.displayName = displayName;
-    return this;
-  }
+	public static final String JSON_PROPERTY_THEME_ID = "themeId";
 
-  /**
-   * display name of the application
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name of the application")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	private String themeId;
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public ApplicationUpdateRequest description(String description) {
 
-  public ApplicationUpdateRequest profileId(String profileId) {
+		this.description = description;
+		return this;
+	}
 
-    this.profileId = profileId;
-    return this;
-  }
+	/**
+	 * description of the application
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description of the application")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  /**
-   * profile authorized to access this application
-   *
-   * @return profileId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "profile authorized to access this application")
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProfileId() {
-    return profileId;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public void setProfileId(String profileId) {
-    this.profileId = profileId;
-  }
+	public ApplicationUpdateRequest displayName(String displayName) {
 
-  public ApplicationUpdateRequest token(String token) {
+		this.displayName = displayName;
+		return this;
+	}
 
-    this.token = token;
-    return this;
-  }
+	/**
+	 * display name of the application
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "display name of the application")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  /**
-   * token of the application used to build the application URL
-   *
-   * @return token
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "token of the application used to build the application URL")
-  @JsonProperty(JSON_PROPERTY_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getToken() {
-    return token;
-  }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-  public void setToken(String token) {
-    this.token = token;
-  }
+	public ApplicationUpdateRequest profileId(String profileId) {
 
-  public ApplicationUpdateRequest version(String version) {
+		this.profileId = profileId;
+		return this;
+	}
 
-    this.version = version;
-    return this;
-  }
+	/**
+	 * profile authorized to access this application
+	 * @return profileId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "profile authorized to access this application")
+	@JsonProperty(JSON_PROPERTY_PROFILE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProfileId() {
+		return profileId;
+	}
 
-  /**
-   * version of the application
-   *
-   * @return version
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "version of the application")
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getVersion() {
-    return version;
-  }
+	public void setProfileId(String profileId) {
+		this.profileId = profileId;
+	}
 
-  public void setVersion(String version) {
-    this.version = version;
-  }
+	public ApplicationUpdateRequest token(String token) {
 
-  public ApplicationUpdateRequest themeId(String themeId) {
+		this.token = token;
+		return this;
+	}
 
-    this.themeId = themeId;
-    return this;
-  }
+	/**
+	 * token of the application used to build the application URL
+	 * @return token
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "token of the application used to build the application URL")
+	@JsonProperty(JSON_PROPERTY_TOKEN)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getToken() {
+		return token;
+	}
 
-  /**
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue) theme id for the application
-   *
-   * @return themeId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "![edition](https://img.shields.io/badge/edition-entreprise-blue)  theme id for the application ")
-  @JsonProperty(JSON_PROPERTY_THEME_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getThemeId() {
-    return themeId;
-  }
+	public void setToken(String token) {
+		this.token = token;
+	}
 
-  public void setThemeId(String themeId) {
-    this.themeId = themeId;
-  }
+	public ApplicationUpdateRequest version(String version) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ApplicationUpdateRequest applicationUpdateRequest = (ApplicationUpdateRequest) o;
-    return Objects.equals(this.description, applicationUpdateRequest.description)
-        && Objects.equals(this.displayName, applicationUpdateRequest.displayName)
-        && Objects.equals(this.profileId, applicationUpdateRequest.profileId)
-        && Objects.equals(this.token, applicationUpdateRequest.token)
-        && Objects.equals(this.version, applicationUpdateRequest.version)
-        && Objects.equals(this.themeId, applicationUpdateRequest.themeId);
-  }
+		this.version = version;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(description, displayName, profileId, token, version, themeId);
-  }
+	/**
+	 * version of the application
+	 * @return version
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "version of the application")
+	@JsonProperty(JSON_PROPERTY_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getVersion() {
+		return version;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ApplicationUpdateRequest {\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    themeId: ").append(toIndentedString(themeId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setVersion(String version) {
+		this.version = version;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public ApplicationUpdateRequest themeId(String themeId) {
+
+		this.themeId = themeId;
+		return this;
+	}
+
+	/**
+	 * ![edition](https://img.shields.io/badge/edition-entreprise-blue) theme id for the
+	 * application
+	 * @return themeId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "![edition](https://img.shields.io/badge/edition-entreprise-blue)  theme id for the application ")
+	@JsonProperty(JSON_PROPERTY_THEME_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getThemeId() {
+		return themeId;
+	}
+
+	public void setThemeId(String themeId) {
+		this.themeId = themeId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ApplicationUpdateRequest applicationUpdateRequest = (ApplicationUpdateRequest) o;
+		return Objects.equals(this.description, applicationUpdateRequest.description)
+				&& Objects.equals(this.displayName, applicationUpdateRequest.displayName)
+				&& Objects.equals(this.profileId, applicationUpdateRequest.profileId)
+				&& Objects.equals(this.token, applicationUpdateRequest.token)
+				&& Objects.equals(this.version, applicationUpdateRequest.version)
+				&& Objects.equals(this.themeId, applicationUpdateRequest.themeId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, displayName, profileId, token, version, themeId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ApplicationUpdateRequest {\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+		sb.append("    token: ").append(toIndentedString(token)).append("\n");
+		sb.append("    version: ").append(toIndentedString(version)).append("\n");
+		sb.append("    themeId: ").append(toIndentedString(themeId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

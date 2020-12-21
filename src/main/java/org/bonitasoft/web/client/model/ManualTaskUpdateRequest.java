@@ -21,102 +21,102 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ManualTaskUpdateRequest */
-@JsonPropertyOrder({
-  ManualTaskUpdateRequest.JSON_PROPERTY_STATE,
-  ManualTaskUpdateRequest.JSON_PROPERTY_EXECUTED_BY
-})
+@JsonPropertyOrder({ ManualTaskUpdateRequest.JSON_PROPERTY_STATE, ManualTaskUpdateRequest.JSON_PROPERTY_EXECUTED_BY })
 @JsonTypeName("ManualTaskUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ManualTaskUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
-  private String executedBy;
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  public ManualTaskUpdateRequest state(String state) {
+	private String state;
 
-    this.state = state;
-    return this;
-  }
+	public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
 
-  /**
-   * State of the ManualTask (completed)
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "State of the ManualTask (completed)")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
+	private String executedBy;
 
-  public void setState(String state) {
-    this.state = state;
-  }
+	public ManualTaskUpdateRequest state(String state) {
 
-  public ManualTaskUpdateRequest executedBy(String executedBy) {
+		this.state = state;
+		return this;
+	}
 
-    this.executedBy = executedBy;
-    return this;
-  }
+	/**
+	 * State of the ManualTask (completed)
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "State of the ManualTask (completed)")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
 
-  /**
-   * Id of the task executor
-   *
-   * @return executedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Id of the task executor")
-  @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExecutedBy() {
-    return executedBy;
-  }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-  public void setExecutedBy(String executedBy) {
-    this.executedBy = executedBy;
-  }
+	public ManualTaskUpdateRequest executedBy(String executedBy) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ManualTaskUpdateRequest manualTaskUpdateRequest = (ManualTaskUpdateRequest) o;
-    return Objects.equals(this.state, manualTaskUpdateRequest.state)
-        && Objects.equals(this.executedBy, manualTaskUpdateRequest.executedBy);
-  }
+		this.executedBy = executedBy;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(state, executedBy);
-  }
+	/**
+	 * Id of the task executor
+	 * @return executedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Id of the task executor")
+	@JsonProperty(JSON_PROPERTY_EXECUTED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExecutedBy() {
+		return executedBy;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ManualTaskUpdateRequest {\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    executedBy: ").append(toIndentedString(executedBy)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setExecutedBy(String executedBy) {
+		this.executedBy = executedBy;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ManualTaskUpdateRequest manualTaskUpdateRequest = (ManualTaskUpdateRequest) o;
+		return Objects.equals(this.state, manualTaskUpdateRequest.state)
+				&& Objects.equals(this.executedBy, manualTaskUpdateRequest.executedBy);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(state, executedBy);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ManualTaskUpdateRequest {\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    executedBy: ").append(toIndentedString(executedBy)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

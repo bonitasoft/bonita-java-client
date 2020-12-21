@@ -21,71 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** TenantPauseRequest */
-@JsonPropertyOrder({TenantPauseRequest.JSON_PROPERTY_PAUSED})
+@JsonPropertyOrder({ TenantPauseRequest.JSON_PROPERTY_PAUSED })
 @JsonTypeName("TenantPauseRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TenantPauseRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PAUSED = "paused";
-  private String paused;
+	private static final long serialVersionUID = 1L;
 
-  public TenantPauseRequest paused(String paused) {
+	public static final String JSON_PROPERTY_PAUSED = "paused";
 
-    this.paused = paused;
-    return this;
-  }
+	private String paused;
 
-  /**
-   * wether the system tenant should be paused or not
-   *
-   * @return paused
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "wether the system tenant should be paused or not")
-  @JsonProperty(JSON_PROPERTY_PAUSED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPaused() {
-    return paused;
-  }
+	public TenantPauseRequest paused(String paused) {
 
-  public void setPaused(String paused) {
-    this.paused = paused;
-  }
+		this.paused = paused;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    TenantPauseRequest tenantPauseRequest = (TenantPauseRequest) o;
-    return Objects.equals(this.paused, tenantPauseRequest.paused);
-  }
+	/**
+	 * wether the system tenant should be paused or not
+	 * @return paused
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "wether the system tenant should be paused or not")
+	@JsonProperty(JSON_PROPERTY_PAUSED)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPaused() {
+		return paused;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(paused);
-  }
+	public void setPaused(String paused) {
+		this.paused = paused;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TenantPauseRequest {\n");
-    sb.append("    paused: ").append(toIndentedString(paused)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		TenantPauseRequest tenantPauseRequest = (TenantPauseRequest) o;
+		return Objects.equals(this.paused, tenantPauseRequest.paused);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(paused);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class TenantPauseRequest {\n");
+		sb.append("    paused: ").append(toIndentedString(paused)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

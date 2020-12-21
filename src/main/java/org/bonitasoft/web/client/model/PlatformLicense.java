@@ -21,397 +21,372 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** PlatformLicense */
-@JsonPropertyOrder({
-  PlatformLicense.JSON_PROPERTY_LICENSE_START_DATE,
-  PlatformLicense.JSON_PROPERTY_DURATION,
-  PlatformLicense.JSON_PROPERTY_LICENSE_EXPIRATION_DATE,
-  PlatformLicense.JSON_PROPERTY_NUMBER_OF_C_P_U_CORES,
-  PlatformLicense.JSON_PROPERTY_EDITION,
-  PlatformLicense.JSON_PROPERTY_LICENSE_MODE,
-  PlatformLicense.JSON_PROPERTY_REQUEST_KEY,
-  PlatformLicense.JSON_PROPERTY_SUBSCRIPTION_START_PERIOD,
-  PlatformLicense.JSON_PROPERTY_SUBSCRIPTION_END_PERIOD,
-  PlatformLicense.JSON_PROPERTY_CASE_COUNTER_LIMIT,
-  PlatformLicense.JSON_PROPERTY_CASE_COUNTER
-})
+@JsonPropertyOrder({ PlatformLicense.JSON_PROPERTY_LICENSE_START_DATE, PlatformLicense.JSON_PROPERTY_DURATION,
+		PlatformLicense.JSON_PROPERTY_LICENSE_EXPIRATION_DATE, PlatformLicense.JSON_PROPERTY_NUMBER_OF_C_P_U_CORES,
+		PlatformLicense.JSON_PROPERTY_EDITION, PlatformLicense.JSON_PROPERTY_LICENSE_MODE,
+		PlatformLicense.JSON_PROPERTY_REQUEST_KEY, PlatformLicense.JSON_PROPERTY_SUBSCRIPTION_START_PERIOD,
+		PlatformLicense.JSON_PROPERTY_SUBSCRIPTION_END_PERIOD, PlatformLicense.JSON_PROPERTY_CASE_COUNTER_LIMIT,
+		PlatformLicense.JSON_PROPERTY_CASE_COUNTER })
 @JsonTypeName("PlatformLicense")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlatformLicense implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_LICENSE_START_DATE = "licenseStartDate";
-  private String licenseStartDate;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DURATION = "duration";
-  private String duration;
+	public static final String JSON_PROPERTY_LICENSE_START_DATE = "licenseStartDate";
 
-  public static final String JSON_PROPERTY_LICENSE_EXPIRATION_DATE = "licenseExpirationDate";
-  private String licenseExpirationDate;
+	private String licenseStartDate;
 
-  public static final String JSON_PROPERTY_NUMBER_OF_C_P_U_CORES = "numberOfCPUCores";
-  private String numberOfCPUCores;
+	public static final String JSON_PROPERTY_DURATION = "duration";
 
-  public static final String JSON_PROPERTY_EDITION = "edition";
-  private String edition;
+	private String duration;
 
-  public static final String JSON_PROPERTY_LICENSE_MODE = "licenseMode";
-  private String licenseMode;
+	public static final String JSON_PROPERTY_LICENSE_EXPIRATION_DATE = "licenseExpirationDate";
 
-  public static final String JSON_PROPERTY_REQUEST_KEY = "requestKey";
-  private String requestKey;
+	private String licenseExpirationDate;
 
-  public static final String JSON_PROPERTY_SUBSCRIPTION_START_PERIOD = "subscriptionStartPeriod";
-  private String subscriptionStartPeriod;
+	public static final String JSON_PROPERTY_NUMBER_OF_C_P_U_CORES = "numberOfCPUCores";
 
-  public static final String JSON_PROPERTY_SUBSCRIPTION_END_PERIOD = "subscriptionEndPeriod";
-  private String subscriptionEndPeriod;
+	private String numberOfCPUCores;
 
-  public static final String JSON_PROPERTY_CASE_COUNTER_LIMIT = "caseCounterLimit";
-  private Long caseCounterLimit;
+	public static final String JSON_PROPERTY_EDITION = "edition";
 
-  public static final String JSON_PROPERTY_CASE_COUNTER = "caseCounter";
-  private Long caseCounter;
+	private String edition;
 
-  public PlatformLicense licenseStartDate(String licenseStartDate) {
+	public static final String JSON_PROPERTY_LICENSE_MODE = "licenseMode";
 
-    this.licenseStartDate = licenseStartDate;
-    return this;
-  }
+	private String licenseMode;
 
-  /**
-   * date with format &#x60;yyyy-MM-dd&#x60; - first day (included) of license file validity
-   *
-   * @return licenseStartDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "date with format `yyyy-MM-dd` - first day (included) of license file validity")
-  @JsonProperty(JSON_PROPERTY_LICENSE_START_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLicenseStartDate() {
-    return licenseStartDate;
-  }
+	public static final String JSON_PROPERTY_REQUEST_KEY = "requestKey";
 
-  public void setLicenseStartDate(String licenseStartDate) {
-    this.licenseStartDate = licenseStartDate;
-  }
+	private String requestKey;
 
-  public PlatformLicense duration(String duration) {
+	public static final String JSON_PROPERTY_SUBSCRIPTION_START_PERIOD = "subscriptionStartPeriod";
 
-    this.duration = duration;
-    return this;
-  }
+	private String subscriptionStartPeriod;
 
-  /**
-   * number of days for license file validity
-   *
-   * @return duration
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "number of days for license file validity")
-  @JsonProperty(JSON_PROPERTY_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDuration() {
-    return duration;
-  }
+	public static final String JSON_PROPERTY_SUBSCRIPTION_END_PERIOD = "subscriptionEndPeriod";
 
-  public void setDuration(String duration) {
-    this.duration = duration;
-  }
+	private String subscriptionEndPeriod;
 
-  public PlatformLicense licenseExpirationDate(String licenseExpirationDate) {
+	public static final String JSON_PROPERTY_CASE_COUNTER_LIMIT = "caseCounterLimit";
 
-    this.licenseExpirationDate = licenseExpirationDate;
-    return this;
-  }
+	private Long caseCounterLimit;
 
-  /**
-   * date with format &#x60;yyyy-MM-dd&#x60; - last day (included) of license file validity
-   *
-   * @return licenseExpirationDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "date with format `yyyy-MM-dd` - last day (included) of license file validity")
-  @JsonProperty(JSON_PROPERTY_LICENSE_EXPIRATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLicenseExpirationDate() {
-    return licenseExpirationDate;
-  }
+	public static final String JSON_PROPERTY_CASE_COUNTER = "caseCounter";
 
-  public void setLicenseExpirationDate(String licenseExpirationDate) {
-    this.licenseExpirationDate = licenseExpirationDate;
-  }
+	private Long caseCounter;
 
-  public PlatformLicense numberOfCPUCores(String numberOfCPUCores) {
+	public PlatformLicense licenseStartDate(String licenseStartDate) {
 
-    this.numberOfCPUCores = numberOfCPUCores;
-    return this;
-  }
+		this.licenseStartDate = licenseStartDate;
+		return this;
+	}
 
-  /**
-   * number of CPUs
-   *
-   * @return numberOfCPUCores
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "number of CPUs")
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_C_P_U_CORES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getNumberOfCPUCores() {
-    return numberOfCPUCores;
-  }
+	/**
+	 * date with format &#x60;yyyy-MM-dd&#x60; - first day (included) of license file
+	 * validity
+	 * @return licenseStartDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "date with format `yyyy-MM-dd` - first day (included) of license file validity")
+	@JsonProperty(JSON_PROPERTY_LICENSE_START_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLicenseStartDate() {
+		return licenseStartDate;
+	}
 
-  public void setNumberOfCPUCores(String numberOfCPUCores) {
-    this.numberOfCPUCores = numberOfCPUCores;
-  }
+	public void setLicenseStartDate(String licenseStartDate) {
+		this.licenseStartDate = licenseStartDate;
+	}
 
-  public PlatformLicense edition(String edition) {
+	public PlatformLicense duration(String duration) {
 
-    this.edition = edition;
-    return this;
-  }
+		this.duration = duration;
+		return this;
+	}
 
-  /**
-   * name of the Bonita edition enabled by the license
-   *
-   * @return edition
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "name of the Bonita edition enabled by the license")
-  @JsonProperty(JSON_PROPERTY_EDITION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEdition() {
-    return edition;
-  }
+	/**
+	 * number of days for license file validity
+	 * @return duration
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "number of days for license file validity")
+	@JsonProperty(JSON_PROPERTY_DURATION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDuration() {
+		return duration;
+	}
 
-  public void setEdition(String edition) {
-    this.edition = edition;
-  }
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
 
-  public PlatformLicense licenseMode(String licenseMode) {
+	public PlatformLicense licenseExpirationDate(String licenseExpirationDate) {
 
-    this.licenseMode = licenseMode;
-    return this;
-  }
+		this.licenseExpirationDate = licenseExpirationDate;
+		return this;
+	}
 
-  /**
-   * available mode enabled by the license
-   *
-   * @return licenseMode
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "available mode enabled by the license")
-  @JsonProperty(JSON_PROPERTY_LICENSE_MODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLicenseMode() {
-    return licenseMode;
-  }
+	/**
+	 * date with format &#x60;yyyy-MM-dd&#x60; - last day (included) of license file
+	 * validity
+	 * @return licenseExpirationDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "date with format `yyyy-MM-dd` - last day (included) of license file validity")
+	@JsonProperty(JSON_PROPERTY_LICENSE_EXPIRATION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLicenseExpirationDate() {
+		return licenseExpirationDate;
+	}
 
-  public void setLicenseMode(String licenseMode) {
-    this.licenseMode = licenseMode;
-  }
+	public void setLicenseExpirationDate(String licenseExpirationDate) {
+		this.licenseExpirationDate = licenseExpirationDate;
+	}
 
-  public PlatformLicense requestKey(String requestKey) {
+	public PlatformLicense numberOfCPUCores(String numberOfCPUCores) {
 
-    this.requestKey = requestKey;
-    return this;
-  }
+		this.numberOfCPUCores = numberOfCPUCores;
+		return this;
+	}
 
-  /**
-   * request key to use to generate a new license on the customer portal If you have a subscription
-   * that specifies case-counter licensing, additional fields are present:
-   *
-   * @return requestKey
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "request key to use to generate a new license on the customer portal If you have a subscription that specifies case-counter licensing, additional fields are present: ")
-  @JsonProperty(JSON_PROPERTY_REQUEST_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRequestKey() {
-    return requestKey;
-  }
+	/**
+	 * number of CPUs
+	 * @return numberOfCPUCores
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "number of CPUs")
+	@JsonProperty(JSON_PROPERTY_NUMBER_OF_C_P_U_CORES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getNumberOfCPUCores() {
+		return numberOfCPUCores;
+	}
 
-  public void setRequestKey(String requestKey) {
-    this.requestKey = requestKey;
-  }
+	public void setNumberOfCPUCores(String numberOfCPUCores) {
+		this.numberOfCPUCores = numberOfCPUCores;
+	}
 
-  public PlatformLicense subscriptionStartPeriod(String subscriptionStartPeriod) {
+	public PlatformLicense edition(String edition) {
 
-    this.subscriptionStartPeriod = subscriptionStartPeriod;
-    return this;
-  }
+		this.edition = edition;
+		return this;
+	}
 
-  /**
-   * date with format &#x60;yyyy-MM-dd&#x60; - first day (included) of current period for number of
-   * process instances provisioned
-   *
-   * @return subscriptionStartPeriod
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "date with format `yyyy-MM-dd` - first day (included) of current period for number of process instances provisioned")
-  @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_START_PERIOD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSubscriptionStartPeriod() {
-    return subscriptionStartPeriod;
-  }
+	/**
+	 * name of the Bonita edition enabled by the license
+	 * @return edition
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "name of the Bonita edition enabled by the license")
+	@JsonProperty(JSON_PROPERTY_EDITION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getEdition() {
+		return edition;
+	}
 
-  public void setSubscriptionStartPeriod(String subscriptionStartPeriod) {
-    this.subscriptionStartPeriod = subscriptionStartPeriod;
-  }
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
 
-  public PlatformLicense subscriptionEndPeriod(String subscriptionEndPeriod) {
+	public PlatformLicense licenseMode(String licenseMode) {
 
-    this.subscriptionEndPeriod = subscriptionEndPeriod;
-    return this;
-  }
+		this.licenseMode = licenseMode;
+		return this;
+	}
 
-  /**
-   * date with format &#x60;yyyy-MM-dd&#x60; - last day (included) of current period for number of
-   * process instances provisioned
-   *
-   * @return subscriptionEndPeriod
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "date with format `yyyy-MM-dd` - last day (included) of current period for number of process instances provisioned")
-  @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_END_PERIOD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSubscriptionEndPeriod() {
-    return subscriptionEndPeriod;
-  }
+	/**
+	 * available mode enabled by the license
+	 * @return licenseMode
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "available mode enabled by the license")
+	@JsonProperty(JSON_PROPERTY_LICENSE_MODE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLicenseMode() {
+		return licenseMode;
+	}
 
-  public void setSubscriptionEndPeriod(String subscriptionEndPeriod) {
-    this.subscriptionEndPeriod = subscriptionEndPeriod;
-  }
+	public void setLicenseMode(String licenseMode) {
+		this.licenseMode = licenseMode;
+	}
 
-  public PlatformLicense caseCounterLimit(Long caseCounterLimit) {
+	public PlatformLicense requestKey(String requestKey) {
 
-    this.caseCounterLimit = caseCounterLimit;
-    return this;
-  }
+		this.requestKey = requestKey;
+		return this;
+	}
 
-  /**
-   * number of process instances provisioned for period between &#x60;subscriptionStartPeriod&#x60;
-   * and &#x60;subscriptionEndPeriod&#x60;
-   *
-   * @return caseCounterLimit
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "number of process instances provisioned for period between `subscriptionStartPeriod` and `subscriptionEndPeriod`")
-  @JsonProperty(JSON_PROPERTY_CASE_COUNTER_LIMIT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCaseCounterLimit() {
-    return caseCounterLimit;
-  }
+	/**
+	 * request key to use to generate a new license on the customer portal If you have a
+	 * subscription that specifies case-counter licensing, additional fields are present:
+	 * @return requestKey
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "request key to use to generate a new license on the customer portal If you have a subscription that specifies case-counter licensing, additional fields are present: ")
+	@JsonProperty(JSON_PROPERTY_REQUEST_KEY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRequestKey() {
+		return requestKey;
+	}
 
-  public void setCaseCounterLimit(Long caseCounterLimit) {
-    this.caseCounterLimit = caseCounterLimit;
-  }
+	public void setRequestKey(String requestKey) {
+		this.requestKey = requestKey;
+	}
 
-  public PlatformLicense caseCounter(Long caseCounter) {
+	public PlatformLicense subscriptionStartPeriod(String subscriptionStartPeriod) {
 
-    this.caseCounter = caseCounter;
-    return this;
-  }
+		this.subscriptionStartPeriod = subscriptionStartPeriod;
+		return this;
+	}
 
-  /**
-   * number of consumed process instances for period between &#x60;subscriptionStartPeriod&#x60; and
-   * &#x60;subscriptionEndPeriod&#x60;
-   *
-   * @return caseCounter
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "number of consumed process instances for period between `subscriptionStartPeriod` and `subscriptionEndPeriod`")
-  @JsonProperty(JSON_PROPERTY_CASE_COUNTER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCaseCounter() {
-    return caseCounter;
-  }
+	/**
+	 * date with format &#x60;yyyy-MM-dd&#x60; - first day (included) of current period
+	 * for number of process instances provisioned
+	 * @return subscriptionStartPeriod
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "date with format `yyyy-MM-dd` - first day (included) of current period for number of process instances provisioned")
+	@JsonProperty(JSON_PROPERTY_SUBSCRIPTION_START_PERIOD)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSubscriptionStartPeriod() {
+		return subscriptionStartPeriod;
+	}
 
-  public void setCaseCounter(Long caseCounter) {
-    this.caseCounter = caseCounter;
-  }
+	public void setSubscriptionStartPeriod(String subscriptionStartPeriod) {
+		this.subscriptionStartPeriod = subscriptionStartPeriod;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PlatformLicense platformLicense = (PlatformLicense) o;
-    return Objects.equals(this.licenseStartDate, platformLicense.licenseStartDate)
-        && Objects.equals(this.duration, platformLicense.duration)
-        && Objects.equals(this.licenseExpirationDate, platformLicense.licenseExpirationDate)
-        && Objects.equals(this.numberOfCPUCores, platformLicense.numberOfCPUCores)
-        && Objects.equals(this.edition, platformLicense.edition)
-        && Objects.equals(this.licenseMode, platformLicense.licenseMode)
-        && Objects.equals(this.requestKey, platformLicense.requestKey)
-        && Objects.equals(this.subscriptionStartPeriod, platformLicense.subscriptionStartPeriod)
-        && Objects.equals(this.subscriptionEndPeriod, platformLicense.subscriptionEndPeriod)
-        && Objects.equals(this.caseCounterLimit, platformLicense.caseCounterLimit)
-        && Objects.equals(this.caseCounter, platformLicense.caseCounter);
-  }
+	public PlatformLicense subscriptionEndPeriod(String subscriptionEndPeriod) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        licenseStartDate,
-        duration,
-        licenseExpirationDate,
-        numberOfCPUCores,
-        edition,
-        licenseMode,
-        requestKey,
-        subscriptionStartPeriod,
-        subscriptionEndPeriod,
-        caseCounterLimit,
-        caseCounter);
-  }
+		this.subscriptionEndPeriod = subscriptionEndPeriod;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PlatformLicense {\n");
-    sb.append("    licenseStartDate: ").append(toIndentedString(licenseStartDate)).append("\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    licenseExpirationDate: ")
-        .append(toIndentedString(licenseExpirationDate))
-        .append("\n");
-    sb.append("    numberOfCPUCores: ").append(toIndentedString(numberOfCPUCores)).append("\n");
-    sb.append("    edition: ").append(toIndentedString(edition)).append("\n");
-    sb.append("    licenseMode: ").append(toIndentedString(licenseMode)).append("\n");
-    sb.append("    requestKey: ").append(toIndentedString(requestKey)).append("\n");
-    sb.append("    subscriptionStartPeriod: ")
-        .append(toIndentedString(subscriptionStartPeriod))
-        .append("\n");
-    sb.append("    subscriptionEndPeriod: ")
-        .append(toIndentedString(subscriptionEndPeriod))
-        .append("\n");
-    sb.append("    caseCounterLimit: ").append(toIndentedString(caseCounterLimit)).append("\n");
-    sb.append("    caseCounter: ").append(toIndentedString(caseCounter)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * date with format &#x60;yyyy-MM-dd&#x60; - last day (included) of current period for
+	 * number of process instances provisioned
+	 * @return subscriptionEndPeriod
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "date with format `yyyy-MM-dd` - last day (included) of current period for number of process instances provisioned")
+	@JsonProperty(JSON_PROPERTY_SUBSCRIPTION_END_PERIOD)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSubscriptionEndPeriod() {
+		return subscriptionEndPeriod;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setSubscriptionEndPeriod(String subscriptionEndPeriod) {
+		this.subscriptionEndPeriod = subscriptionEndPeriod;
+	}
+
+	public PlatformLicense caseCounterLimit(Long caseCounterLimit) {
+
+		this.caseCounterLimit = caseCounterLimit;
+		return this;
+	}
+
+	/**
+	 * number of process instances provisioned for period between
+	 * &#x60;subscriptionStartPeriod&#x60; and &#x60;subscriptionEndPeriod&#x60;
+	 * @return caseCounterLimit
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "number of process instances provisioned for period between `subscriptionStartPeriod` and `subscriptionEndPeriod`")
+	@JsonProperty(JSON_PROPERTY_CASE_COUNTER_LIMIT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getCaseCounterLimit() {
+		return caseCounterLimit;
+	}
+
+	public void setCaseCounterLimit(Long caseCounterLimit) {
+		this.caseCounterLimit = caseCounterLimit;
+	}
+
+	public PlatformLicense caseCounter(Long caseCounter) {
+
+		this.caseCounter = caseCounter;
+		return this;
+	}
+
+	/**
+	 * number of consumed process instances for period between
+	 * &#x60;subscriptionStartPeriod&#x60; and &#x60;subscriptionEndPeriod&#x60;
+	 * @return caseCounter
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "number of consumed process instances for period between `subscriptionStartPeriod` and `subscriptionEndPeriod`")
+	@JsonProperty(JSON_PROPERTY_CASE_COUNTER)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getCaseCounter() {
+		return caseCounter;
+	}
+
+	public void setCaseCounter(Long caseCounter) {
+		this.caseCounter = caseCounter;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		PlatformLicense platformLicense = (PlatformLicense) o;
+		return Objects.equals(this.licenseStartDate, platformLicense.licenseStartDate)
+				&& Objects.equals(this.duration, platformLicense.duration)
+				&& Objects.equals(this.licenseExpirationDate, platformLicense.licenseExpirationDate)
+				&& Objects.equals(this.numberOfCPUCores, platformLicense.numberOfCPUCores)
+				&& Objects.equals(this.edition, platformLicense.edition)
+				&& Objects.equals(this.licenseMode, platformLicense.licenseMode)
+				&& Objects.equals(this.requestKey, platformLicense.requestKey)
+				&& Objects.equals(this.subscriptionStartPeriod, platformLicense.subscriptionStartPeriod)
+				&& Objects.equals(this.subscriptionEndPeriod, platformLicense.subscriptionEndPeriod)
+				&& Objects.equals(this.caseCounterLimit, platformLicense.caseCounterLimit)
+				&& Objects.equals(this.caseCounter, platformLicense.caseCounter);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(licenseStartDate, duration, licenseExpirationDate, numberOfCPUCores, edition, licenseMode,
+				requestKey, subscriptionStartPeriod, subscriptionEndPeriod, caseCounterLimit, caseCounter);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class PlatformLicense {\n");
+		sb.append("    licenseStartDate: ").append(toIndentedString(licenseStartDate)).append("\n");
+		sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+		sb.append("    licenseExpirationDate: ").append(toIndentedString(licenseExpirationDate)).append("\n");
+		sb.append("    numberOfCPUCores: ").append(toIndentedString(numberOfCPUCores)).append("\n");
+		sb.append("    edition: ").append(toIndentedString(edition)).append("\n");
+		sb.append("    licenseMode: ").append(toIndentedString(licenseMode)).append("\n");
+		sb.append("    requestKey: ").append(toIndentedString(requestKey)).append("\n");
+		sb.append("    subscriptionStartPeriod: ").append(toIndentedString(subscriptionStartPeriod)).append("\n");
+		sb.append("    subscriptionEndPeriod: ").append(toIndentedString(subscriptionEndPeriod)).append("\n");
+		sb.append("    caseCounterLimit: ").append(toIndentedString(caseCounterLimit)).append("\n");
+		sb.append("    caseCounter: ").append(toIndentedString(caseCounter)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

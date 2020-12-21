@@ -23,191 +23,190 @@ import java.util.Objects;
 
 /** A process instance variable */
 @ApiModel(description = "A process instance  variable")
-@JsonPropertyOrder({
-  ProcessInstanceVariable.JSON_PROPERTY_DESCRIPTION,
-  ProcessInstanceVariable.JSON_PROPERTY_NAME,
-  ProcessInstanceVariable.JSON_PROPERTY_VALUE,
-  ProcessInstanceVariable.JSON_PROPERTY_CASE_ID,
-  ProcessInstanceVariable.JSON_PROPERTY_TYPE
-})
+@JsonPropertyOrder({ ProcessInstanceVariable.JSON_PROPERTY_DESCRIPTION, ProcessInstanceVariable.JSON_PROPERTY_NAME,
+		ProcessInstanceVariable.JSON_PROPERTY_VALUE, ProcessInstanceVariable.JSON_PROPERTY_CASE_ID,
+		ProcessInstanceVariable.JSON_PROPERTY_TYPE })
 @JsonTypeName("ProcessInstanceVariable")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceVariable implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private String value;
+	private String description;
 
-  public static final String JSON_PROPERTY_CASE_ID = "case_id";
-  private String caseId;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+	private String name;
 
-  public ProcessInstanceVariable description(String description) {
+	public static final String JSON_PROPERTY_VALUE = "value";
 
-    this.description = description;
-    return this;
-  }
+	private String value;
 
-  /**
-   * Detailed description of the process instance variable, as set in the definition at design-time
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "Detailed description of the process instance variable, as set in the definition at design-time")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public static final String JSON_PROPERTY_CASE_ID = "case_id";
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	private String caseId;
 
-  public ProcessInstanceVariable name(String name) {
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-    this.name = name;
-    return this;
-  }
+	private String type;
 
-  /**
-   * name of the variable in the process instance
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "name of the variable in the process instance")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public ProcessInstanceVariable description(String description) {
 
-  public void setName(String name) {
-    this.name = name;
-  }
+		this.description = description;
+		return this;
+	}
 
-  public ProcessInstanceVariable value(String value) {
+	/**
+	 * Detailed description of the process instance variable, as set in the definition at
+	 * design-time
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "Detailed description of the process instance variable, as set in the definition at design-time")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-    this.value = value;
-    return this;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  /**
-   * the current value of the process instance variable
-   *
-   * @return value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the current value of the process instance variable")
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getValue() {
-    return value;
-  }
+	public ProcessInstanceVariable name(String name) {
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public ProcessInstanceVariable caseId(String caseId) {
+	/**
+	 * name of the variable in the process instance
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "name of the variable in the process instance")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-    this.caseId = caseId;
-    return this;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * ID of the process instance this variable belongs to
-   *
-   * @return caseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "ID of the process instance this variable belongs to")
-  @JsonProperty(JSON_PROPERTY_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCaseId() {
-    return caseId;
-  }
+	public ProcessInstanceVariable value(String value) {
 
-  public void setCaseId(String caseId) {
-    this.caseId = caseId;
-  }
+		this.value = value;
+		return this;
+	}
 
-  public ProcessInstanceVariable type(String type) {
+	/**
+	 * the current value of the process instance variable
+	 * @return value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the current value of the process instance variable")
+	@JsonProperty(JSON_PROPERTY_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getValue() {
+		return value;
+	}
 
-    this.type = type;
-    return this;
-  }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-  /**
-   * the Java type of the variable
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the Java type of the variable")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getType() {
-    return type;
-  }
+	public ProcessInstanceVariable caseId(String caseId) {
 
-  public void setType(String type) {
-    this.type = type;
-  }
+		this.caseId = caseId;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstanceVariable processInstanceVariable = (ProcessInstanceVariable) o;
-    return Objects.equals(this.description, processInstanceVariable.description)
-        && Objects.equals(this.name, processInstanceVariable.name)
-        && Objects.equals(this.value, processInstanceVariable.value)
-        && Objects.equals(this.caseId, processInstanceVariable.caseId)
-        && Objects.equals(this.type, processInstanceVariable.type);
-  }
+	/**
+	 * ID of the process instance this variable belongs to
+	 * @return caseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "ID of the process instance this variable belongs to")
+	@JsonProperty(JSON_PROPERTY_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCaseId() {
+		return caseId;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(description, name, value, caseId, type);
-  }
+	public void setCaseId(String caseId) {
+		this.caseId = caseId;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstanceVariable {\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public ProcessInstanceVariable type(String type) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.type = type;
+		return this;
+	}
+
+	/**
+	 * the Java type of the variable
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the Java type of the variable")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstanceVariable processInstanceVariable = (ProcessInstanceVariable) o;
+		return Objects.equals(this.description, processInstanceVariable.description)
+				&& Objects.equals(this.name, processInstanceVariable.name)
+				&& Objects.equals(this.value, processInstanceVariable.value)
+				&& Objects.equals(this.caseId, processInstanceVariable.caseId)
+				&& Objects.equals(this.type, processInstanceVariable.type);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, name, value, caseId, type);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstanceVariable {\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    value: ").append(toIndentedString(value)).append("\n");
+		sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

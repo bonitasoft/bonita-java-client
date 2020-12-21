@@ -23,224 +23,225 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProfileMemberCreateRequest */
-@JsonPropertyOrder({
-  ProfileMemberCreateRequest.JSON_PROPERTY_PROFILE_ID,
-  ProfileMemberCreateRequest.JSON_PROPERTY_ROLE_ID,
-  ProfileMemberCreateRequest.JSON_PROPERTY_GROUP_ID,
-  ProfileMemberCreateRequest.JSON_PROPERTY_USER_ID,
-  ProfileMemberCreateRequest.JSON_PROPERTY_MEMBER_TYPE
-})
+@JsonPropertyOrder({ ProfileMemberCreateRequest.JSON_PROPERTY_PROFILE_ID,
+		ProfileMemberCreateRequest.JSON_PROPERTY_ROLE_ID, ProfileMemberCreateRequest.JSON_PROPERTY_GROUP_ID,
+		ProfileMemberCreateRequest.JSON_PROPERTY_USER_ID, ProfileMemberCreateRequest.JSON_PROPERTY_MEMBER_TYPE })
 @JsonTypeName("ProfileMemberCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfileMemberCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
-  private String profileId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
-  private String roleId;
+	public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
 
-  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
-  private String groupId;
+	private String profileId;
 
-  public static final String JSON_PROPERTY_USER_ID = "user_id";
-  private String userId;
+	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
 
-  /** member type */
-  public enum MemberTypeEnum {
-    USER("USER"),
+	private String roleId;
 
-    ROLE("ROLE"),
+	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
 
-    GROUP("GROUP");
+	private String groupId;
 
-    private String value;
+	public static final String JSON_PROPERTY_USER_ID = "user_id";
 
-    MemberTypeEnum(String value) {
-      this.value = value;
-    }
+	private String userId;
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+	/** member type */
+	public enum MemberTypeEnum {
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+		USER("USER"),
 
-    @JsonCreator
-    public static MemberTypeEnum fromValue(String value) {
-      for (MemberTypeEnum b : MemberTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+		ROLE("ROLE"),
 
-  public static final String JSON_PROPERTY_MEMBER_TYPE = "member_type";
-  private MemberTypeEnum memberType;
+		GROUP("GROUP");
 
-  public ProfileMemberCreateRequest profileId(String profileId) {
+		private String value;
 
-    this.profileId = profileId;
-    return this;
-  }
+		MemberTypeEnum(String value) {
+			this.value = value;
+		}
 
-  /**
-   * id of the profile for this mapping
-   *
-   * @return profileId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the profile for this mapping")
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProfileId() {
-    return profileId;
-  }
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
 
-  public void setProfileId(String profileId) {
-    this.profileId = profileId;
-  }
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-  public ProfileMemberCreateRequest roleId(String roleId) {
+		@JsonCreator
+		public static MemberTypeEnum fromValue(String value) {
+			for (MemberTypeEnum b : MemberTypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
 
-    this.roleId = roleId;
-    return this;
-  }
+	}
 
-  /**
-   * id of role, or -1 if the member type is not role
-   *
-   * @return roleId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of role, or -1 if the member type is not role")
-  @JsonProperty(JSON_PROPERTY_ROLE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRoleId() {
-    return roleId;
-  }
+	public static final String JSON_PROPERTY_MEMBER_TYPE = "member_type";
 
-  public void setRoleId(String roleId) {
-    this.roleId = roleId;
-  }
+	private MemberTypeEnum memberType;
 
-  public ProfileMemberCreateRequest groupId(String groupId) {
+	public ProfileMemberCreateRequest profileId(String profileId) {
 
-    this.groupId = groupId;
-    return this;
-  }
+		this.profileId = profileId;
+		return this;
+	}
 
-  /**
-   * id of group, or -1 if the member type is not group
-   *
-   * @return groupId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of group, or -1 if the member type is not group")
-  @JsonProperty(JSON_PROPERTY_GROUP_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getGroupId() {
-    return groupId;
-  }
+	/**
+	 * id of the profile for this mapping
+	 * @return profileId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the profile for this mapping")
+	@JsonProperty(JSON_PROPERTY_PROFILE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProfileId() {
+		return profileId;
+	}
 
-  public void setGroupId(String groupId) {
-    this.groupId = groupId;
-  }
+	public void setProfileId(String profileId) {
+		this.profileId = profileId;
+	}
 
-  public ProfileMemberCreateRequest userId(String userId) {
+	public ProfileMemberCreateRequest roleId(String roleId) {
 
-    this.userId = userId;
-    return this;
-  }
+		this.roleId = roleId;
+		return this;
+	}
 
-  /**
-   * id of user, or -1 if the member type is not user
-   *
-   * @return userId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of user, or -1 if the member type is not user")
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserId() {
-    return userId;
-  }
+	/**
+	 * id of role, or -1 if the member type is not role
+	 * @return roleId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of role, or -1 if the member type is not role")
+	@JsonProperty(JSON_PROPERTY_ROLE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRoleId() {
+		return roleId;
+	}
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
 
-  public ProfileMemberCreateRequest memberType(MemberTypeEnum memberType) {
+	public ProfileMemberCreateRequest groupId(String groupId) {
 
-    this.memberType = memberType;
-    return this;
-  }
+		this.groupId = groupId;
+		return this;
+	}
 
-  /**
-   * member type
-   *
-   * @return memberType
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "member type")
-  @JsonProperty(JSON_PROPERTY_MEMBER_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public MemberTypeEnum getMemberType() {
-    return memberType;
-  }
+	/**
+	 * id of group, or -1 if the member type is not group
+	 * @return groupId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of group, or -1 if the member type is not group")
+	@JsonProperty(JSON_PROPERTY_GROUP_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getGroupId() {
+		return groupId;
+	}
 
-  public void setMemberType(MemberTypeEnum memberType) {
-    this.memberType = memberType;
-  }
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProfileMemberCreateRequest profileMemberCreateRequest = (ProfileMemberCreateRequest) o;
-    return Objects.equals(this.profileId, profileMemberCreateRequest.profileId)
-        && Objects.equals(this.roleId, profileMemberCreateRequest.roleId)
-        && Objects.equals(this.groupId, profileMemberCreateRequest.groupId)
-        && Objects.equals(this.userId, profileMemberCreateRequest.userId)
-        && Objects.equals(this.memberType, profileMemberCreateRequest.memberType);
-  }
+	public ProfileMemberCreateRequest userId(String userId) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(profileId, roleId, groupId, userId, memberType);
-  }
+		this.userId = userId;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProfileMemberCreateRequest {\n");
-    sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
-    sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
-    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    memberType: ").append(toIndentedString(memberType)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * id of user, or -1 if the member type is not user
+	 * @return userId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of user, or -1 if the member type is not user")
+	@JsonProperty(JSON_PROPERTY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserId() {
+		return userId;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public ProfileMemberCreateRequest memberType(MemberTypeEnum memberType) {
+
+		this.memberType = memberType;
+		return this;
+	}
+
+	/**
+	 * member type
+	 * @return memberType
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "member type")
+	@JsonProperty(JSON_PROPERTY_MEMBER_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public MemberTypeEnum getMemberType() {
+		return memberType;
+	}
+
+	public void setMemberType(MemberTypeEnum memberType) {
+		this.memberType = memberType;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProfileMemberCreateRequest profileMemberCreateRequest = (ProfileMemberCreateRequest) o;
+		return Objects.equals(this.profileId, profileMemberCreateRequest.profileId)
+				&& Objects.equals(this.roleId, profileMemberCreateRequest.roleId)
+				&& Objects.equals(this.groupId, profileMemberCreateRequest.groupId)
+				&& Objects.equals(this.userId, profileMemberCreateRequest.userId)
+				&& Objects.equals(this.memberType, profileMemberCreateRequest.memberType);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(profileId, roleId, groupId, userId, memberType);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProfileMemberCreateRequest {\n");
+		sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+		sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
+		sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+		sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+		sb.append("    memberType: ").append(toIndentedString(memberType)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

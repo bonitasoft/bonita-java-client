@@ -27,219 +27,220 @@ import java.util.Objects;
 
 /** An input definition */
 @ApiModel(description = "An input definition")
-@JsonPropertyOrder({
-  InputDefinition.JSON_PROPERTY_MULTIPLE,
-  InputDefinition.JSON_PROPERTY_HAS_CHILDREN,
-  InputDefinition.JSON_PROPERTY_TYPE,
-  InputDefinition.JSON_PROPERTY_INPUTS
-})
+@JsonPropertyOrder({ InputDefinition.JSON_PROPERTY_MULTIPLE, InputDefinition.JSON_PROPERTY_HAS_CHILDREN,
+		InputDefinition.JSON_PROPERTY_TYPE, InputDefinition.JSON_PROPERTY_INPUTS })
 @JsonTypeName("InputDefinition")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InputDefinition implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_MULTIPLE = "multiple";
-  private Boolean multiple;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_HAS_CHILDREN = "hasChildren";
-  private Boolean hasChildren;
+	public static final String JSON_PROPERTY_MULTIPLE = "multiple";
 
-  /** Gets or Sets type */
-  public enum TypeEnum {
-    TEXT("TEXT"),
+	private Boolean multiple;
 
-    BOOLEAN("BOOLEAN"),
+	public static final String JSON_PROPERTY_HAS_CHILDREN = "hasChildren";
 
-    DATE("DATE"),
+	private Boolean hasChildren;
 
-    INTEGER("INTEGER"),
+	/** Gets or Sets type */
+	public enum TypeEnum {
 
-    DECIMAL("DECIMAL"),
+		TEXT("TEXT"),
 
-    BYTE_ARRAY("BYTE_ARRAY"),
+		BOOLEAN("BOOLEAN"),
 
-    FILE("FILE"),
+		DATE("DATE"),
 
-    LONG("LONG"),
+		INTEGER("INTEGER"),
 
-    LOCALDATE("LOCALDATE"),
+		DECIMAL("DECIMAL"),
 
-    LOCALDATETIME("LOCALDATETIME"),
+		BYTE_ARRAY("BYTE_ARRAY"),
 
-    OFFSETDATETIME("OFFSETDATETIME");
+		FILE("FILE"),
 
-    private String value;
+		LONG("LONG"),
 
-    TypeEnum(String value) {
-      this.value = value;
-    }
+		LOCALDATE("LOCALDATE"),
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+		LOCALDATETIME("LOCALDATETIME"),
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+		OFFSETDATETIME("OFFSETDATETIME");
 
-    @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+		private String value;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private TypeEnum type;
+		TypeEnum(String value) {
+			this.value = value;
+		}
 
-  public static final String JSON_PROPERTY_INPUTS = "inputs";
-  private List<InputDefinition> inputs = null;
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
 
-  public InputDefinition multiple(Boolean multiple) {
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-    this.multiple = multiple;
-    return this;
-  }
+		@JsonCreator
+		public static TypeEnum fromValue(String value) {
+			for (TypeEnum b : TypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
 
-  /**
-   * Get multiple
-   *
-   * @return multiple
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_MULTIPLE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getMultiple() {
-    return multiple;
-  }
+	}
 
-  public void setMultiple(Boolean multiple) {
-    this.multiple = multiple;
-  }
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public InputDefinition hasChildren(Boolean hasChildren) {
+	private TypeEnum type;
 
-    this.hasChildren = hasChildren;
-    return this;
-  }
+	public static final String JSON_PROPERTY_INPUTS = "inputs";
 
-  /**
-   * Get hasChildren
-   *
-   * @return hasChildren
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_HAS_CHILDREN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getHasChildren() {
-    return hasChildren;
-  }
+	private List<InputDefinition> inputs = null;
 
-  public void setHasChildren(Boolean hasChildren) {
-    this.hasChildren = hasChildren;
-  }
+	public InputDefinition multiple(Boolean multiple) {
 
-  public InputDefinition type(TypeEnum type) {
+		this.multiple = multiple;
+		return this;
+	}
 
-    this.type = type;
-    return this;
-  }
+	/**
+	 * Get multiple
+	 * @return multiple
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_MULTIPLE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getMultiple() {
+		return multiple;
+	}
 
-  /**
-   * Get type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TypeEnum getType() {
-    return type;
-  }
+	public void setMultiple(Boolean multiple) {
+		this.multiple = multiple;
+	}
 
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
+	public InputDefinition hasChildren(Boolean hasChildren) {
 
-  public InputDefinition inputs(List<InputDefinition> inputs) {
+		this.hasChildren = hasChildren;
+		return this;
+	}
 
-    this.inputs = inputs;
-    return this;
-  }
+	/**
+	 * Get hasChildren
+	 * @return hasChildren
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_HAS_CHILDREN)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getHasChildren() {
+		return hasChildren;
+	}
 
-  public InputDefinition addInputsItem(InputDefinition inputsItem) {
-    if (this.inputs == null) {
-      this.inputs = new ArrayList<>();
-    }
-    this.inputs.add(inputsItem);
-    return this;
-  }
+	public void setHasChildren(Boolean hasChildren) {
+		this.hasChildren = hasChildren;
+	}
 
-  /**
-   * Get inputs
-   *
-   * @return inputs
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_INPUTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<InputDefinition> getInputs() {
-    return inputs;
-  }
+	public InputDefinition type(TypeEnum type) {
 
-  public void setInputs(List<InputDefinition> inputs) {
-    this.inputs = inputs;
-  }
+		this.type = type;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    InputDefinition inputDefinition = (InputDefinition) o;
-    return Objects.equals(this.multiple, inputDefinition.multiple)
-        && Objects.equals(this.hasChildren, inputDefinition.hasChildren)
-        && Objects.equals(this.type, inputDefinition.type)
-        && Objects.equals(this.inputs, inputDefinition.inputs);
-  }
+	/**
+	 * Get type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public TypeEnum getType() {
+		return type;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(multiple, hasChildren, type, inputs);
-  }
+	public void setType(TypeEnum type) {
+		this.type = type;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class InputDefinition {\n");
-    sb.append("    multiple: ").append(toIndentedString(multiple)).append("\n");
-    sb.append("    hasChildren: ").append(toIndentedString(hasChildren)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public InputDefinition inputs(List<InputDefinition> inputs) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.inputs = inputs;
+		return this;
+	}
+
+	public InputDefinition addInputsItem(InputDefinition inputsItem) {
+		if (this.inputs == null) {
+			this.inputs = new ArrayList<>();
+		}
+		this.inputs.add(inputsItem);
+		return this;
+	}
+
+	/**
+	 * Get inputs
+	 * @return inputs
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_INPUTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<InputDefinition> getInputs() {
+		return inputs;
+	}
+
+	public void setInputs(List<InputDefinition> inputs) {
+		this.inputs = inputs;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		InputDefinition inputDefinition = (InputDefinition) o;
+		return Objects.equals(this.multiple, inputDefinition.multiple)
+				&& Objects.equals(this.hasChildren, inputDefinition.hasChildren)
+				&& Objects.equals(this.type, inputDefinition.type)
+				&& Objects.equals(this.inputs, inputDefinition.inputs);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(multiple, hasChildren, type, inputs);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class InputDefinition {\n");
+		sb.append("    multiple: ").append(toIndentedString(multiple)).append("\n");
+		sb.append("    hasChildren: ").append(toIndentedString(hasChildren)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

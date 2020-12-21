@@ -25,251 +25,249 @@ import java.util.Objects;
 
 /** The bonita platform */
 @ApiModel(description = "The bonita platform")
-@JsonPropertyOrder({
-  Platform.JSON_PROPERTY_STATE,
-  Platform.JSON_PROPERTY_VERSION,
-  Platform.JSON_PROPERTY_INITIAL_VERSION,
-  Platform.JSON_PROPERTY_PREVIOUS_VERSION,
-  Platform.JSON_PROPERTY_CREATED_BY,
-  Platform.JSON_PROPERTY_CREATED
-})
+@JsonPropertyOrder({ Platform.JSON_PROPERTY_STATE, Platform.JSON_PROPERTY_VERSION,
+		Platform.JSON_PROPERTY_INITIAL_VERSION, Platform.JSON_PROPERTY_PREVIOUS_VERSION,
+		Platform.JSON_PROPERTY_CREATED_BY, Platform.JSON_PROPERTY_CREATED })
 @JsonTypeName("Platform")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Platform implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  /** platform state */
-  public enum StateEnum {
-    STARTED("STARTED"),
+	private static final long serialVersionUID = 1L;
 
-    STOPPED("STOPPED");
+	/** platform state */
+	public enum StateEnum {
 
-    private String value;
+		STARTED("STARTED"),
 
-    StateEnum(String value) {
-      this.value = value;
-    }
+		STOPPED("STOPPED");
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+		private String value;
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+		StateEnum(String value) {
+			this.value = value;
+		}
 
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private StateEnum state;
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private String version;
+		@JsonCreator
+		public static StateEnum fromValue(String value) {
+			for (StateEnum b : StateEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
 
-  public static final String JSON_PROPERTY_INITIAL_VERSION = "initialVersion";
-  private String initialVersion;
+	}
 
-  public static final String JSON_PROPERTY_PREVIOUS_VERSION = "previousVersion";
-  private String previousVersion;
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-  private String createdBy;
+	private StateEnum state;
 
-  public static final String JSON_PROPERTY_CREATED = "created";
-  private String created;
+	public static final String JSON_PROPERTY_VERSION = "version";
 
-  public Platform state(StateEnum state) {
+	private String version;
 
-    this.state = state;
-    return this;
-  }
+	public static final String JSON_PROPERTY_INITIAL_VERSION = "initialVersion";
 
-  /**
-   * platform state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "platform state")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public StateEnum getState() {
-    return state;
-  }
+	private String initialVersion;
 
-  public void setState(StateEnum state) {
-    this.state = state;
-  }
+	public static final String JSON_PROPERTY_PREVIOUS_VERSION = "previousVersion";
 
-  public Platform version(String version) {
+	private String previousVersion;
 
-    this.version = version;
-    return this;
-  }
+	public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
 
-  /**
-   * the current version of the platform
-   *
-   * @return version
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the current version of the platform")
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getVersion() {
-    return version;
-  }
+	private String createdBy;
 
-  public void setVersion(String version) {
-    this.version = version;
-  }
+	public static final String JSON_PROPERTY_CREATED = "created";
 
-  public Platform initialVersion(String initialVersion) {
+	private String created;
 
-    this.initialVersion = initialVersion;
-    return this;
-  }
+	public Platform state(StateEnum state) {
 
-  /**
-   * the version in which the platform was created
-   *
-   * @return initialVersion
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the version in which the platform was created")
-  @JsonProperty(JSON_PROPERTY_INITIAL_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getInitialVersion() {
-    return initialVersion;
-  }
+		this.state = state;
+		return this;
+	}
 
-  public void setInitialVersion(String initialVersion) {
-    this.initialVersion = initialVersion;
-  }
+	/**
+	 * platform state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "platform state")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public StateEnum getState() {
+		return state;
+	}
 
-  public Platform previousVersion(String previousVersion) {
+	public void setState(StateEnum state) {
+		this.state = state;
+	}
 
-    this.previousVersion = previousVersion;
-    return this;
-  }
+	public Platform version(String version) {
 
-  /**
-   * the previous version the platform was in or empty if there is none
-   *
-   * @return previousVersion
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the previous version the platform was in or empty if there is none")
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPreviousVersion() {
-    return previousVersion;
-  }
+		this.version = version;
+		return this;
+	}
 
-  public void setPreviousVersion(String previousVersion) {
-    this.previousVersion = previousVersion;
-  }
+	/**
+	 * the current version of the platform
+	 * @return version
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the current version of the platform")
+	@JsonProperty(JSON_PROPERTY_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getVersion() {
+		return version;
+	}
 
-  public Platform createdBy(String createdBy) {
+	public void setVersion(String version) {
+		this.version = version;
+	}
 
-    this.createdBy = createdBy;
-    return this;
-  }
+	public Platform initialVersion(String initialVersion) {
 
-  /**
-   * the user name of the platform administrator
-   *
-   * @return createdBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the user name of the platform administrator")
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreatedBy() {
-    return createdBy;
-  }
+		this.initialVersion = initialVersion;
+		return this;
+	}
 
-  public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-  }
+	/**
+	 * the version in which the platform was created
+	 * @return initialVersion
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the version in which the platform was created")
+	@JsonProperty(JSON_PROPERTY_INITIAL_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getInitialVersion() {
+		return initialVersion;
+	}
 
-  public Platform created(String created) {
+	public void setInitialVersion(String initialVersion) {
+		this.initialVersion = initialVersion;
+	}
 
-    this.created = created;
-    return this;
-  }
+	public Platform previousVersion(String previousVersion) {
 
-  /**
-   * the creation date
-   *
-   * @return created
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the creation date")
-  @JsonProperty(JSON_PROPERTY_CREATED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreated() {
-    return created;
-  }
+		this.previousVersion = previousVersion;
+		return this;
+	}
 
-  public void setCreated(String created) {
-    this.created = created;
-  }
+	/**
+	 * the previous version the platform was in or empty if there is none
+	 * @return previousVersion
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the previous version the platform was in or empty if there is none")
+	@JsonProperty(JSON_PROPERTY_PREVIOUS_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPreviousVersion() {
+		return previousVersion;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Platform platform = (Platform) o;
-    return Objects.equals(this.state, platform.state)
-        && Objects.equals(this.version, platform.version)
-        && Objects.equals(this.initialVersion, platform.initialVersion)
-        && Objects.equals(this.previousVersion, platform.previousVersion)
-        && Objects.equals(this.createdBy, platform.createdBy)
-        && Objects.equals(this.created, platform.created);
-  }
+	public void setPreviousVersion(String previousVersion) {
+		this.previousVersion = previousVersion;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(state, version, initialVersion, previousVersion, createdBy, created);
-  }
+	public Platform createdBy(String createdBy) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Platform {\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    initialVersion: ").append(toIndentedString(initialVersion)).append("\n");
-    sb.append("    previousVersion: ").append(toIndentedString(previousVersion)).append("\n");
-    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.createdBy = createdBy;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * the user name of the platform administrator
+	 * @return createdBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the user name of the platform administrator")
+	@JsonProperty(JSON_PROPERTY_CREATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Platform created(String created) {
+
+		this.created = created;
+		return this;
+	}
+
+	/**
+	 * the creation date
+	 * @return created
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the creation date")
+	@JsonProperty(JSON_PROPERTY_CREATED)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreated() {
+		return created;
+	}
+
+	public void setCreated(String created) {
+		this.created = created;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Platform platform = (Platform) o;
+		return Objects.equals(this.state, platform.state) && Objects.equals(this.version, platform.version)
+				&& Objects.equals(this.initialVersion, platform.initialVersion)
+				&& Objects.equals(this.previousVersion, platform.previousVersion)
+				&& Objects.equals(this.createdBy, platform.createdBy) && Objects.equals(this.created, platform.created);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(state, version, initialVersion, previousVersion, createdBy, created);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Platform {\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    version: ").append(toIndentedString(version)).append("\n");
+		sb.append("    initialVersion: ").append(toIndentedString(initialVersion)).append("\n");
+		sb.append("    previousVersion: ").append(toIndentedString(previousVersion)).append("\n");
+		sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+		sb.append("    created: ").append(toIndentedString(created)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

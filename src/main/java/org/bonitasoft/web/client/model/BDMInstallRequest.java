@@ -21,71 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** BDMInstallRequest */
-@JsonPropertyOrder({BDMInstallRequest.JSON_PROPERTY_FILE_UPLOAD})
+@JsonPropertyOrder({ BDMInstallRequest.JSON_PROPERTY_FILE_UPLOAD })
 @JsonTypeName("BDMInstallRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BDMInstallRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_FILE_UPLOAD = "fileUpload";
-  private String fileUpload;
+	private static final long serialVersionUID = 1L;
 
-  public BDMInstallRequest fileUpload(String fileUpload) {
+	public static final String JSON_PROPERTY_FILE_UPLOAD = "fileUpload";
 
-    this.fileUpload = fileUpload;
-    return this;
-  }
+	private String fileUpload;
 
-  /**
-   * the temporary file name once uploaded on the server
-   *
-   * @return fileUpload
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the temporary file name once uploaded on the server")
-  @JsonProperty(JSON_PROPERTY_FILE_UPLOAD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFileUpload() {
-    return fileUpload;
-  }
+	public BDMInstallRequest fileUpload(String fileUpload) {
 
-  public void setFileUpload(String fileUpload) {
-    this.fileUpload = fileUpload;
-  }
+		this.fileUpload = fileUpload;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    BDMInstallRequest bdMInstallRequest = (BDMInstallRequest) o;
-    return Objects.equals(this.fileUpload, bdMInstallRequest.fileUpload);
-  }
+	/**
+	 * the temporary file name once uploaded on the server
+	 * @return fileUpload
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the temporary file name once uploaded on the server")
+	@JsonProperty(JSON_PROPERTY_FILE_UPLOAD)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFileUpload() {
+		return fileUpload;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(fileUpload);
-  }
+	public void setFileUpload(String fileUpload) {
+		this.fileUpload = fileUpload;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class BDMInstallRequest {\n");
-    sb.append("    fileUpload: ").append(toIndentedString(fileUpload)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		BDMInstallRequest bdMInstallRequest = (BDMInstallRequest) o;
+		return Objects.equals(this.fileUpload, bdMInstallRequest.fileUpload);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(fileUpload);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class BDMInstallRequest {\n");
+		sb.append("    fileUpload: ").append(toIndentedString(fileUpload)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

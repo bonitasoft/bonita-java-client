@@ -23,306 +23,297 @@ import java.util.Objects;
 
 /** Profile */
 @ApiModel(description = "Profile")
-@JsonPropertyOrder({
-  Profile.JSON_PROPERTY_ID,
-  Profile.JSON_PROPERTY_CREATION_DATE,
-  Profile.JSON_PROPERTY_ICON,
-  Profile.JSON_PROPERTY_CREATED_BY,
-  Profile.JSON_PROPERTY_DESCRIPTION,
-  Profile.JSON_PROPERTY_NAME,
-  Profile.JSON_PROPERTY_ISDEFAULT,
-  Profile.JSON_PROPERTY_LAST_UPDATE_DATE,
-  Profile.JSON_PROPERTY_UPDATED_BY
-})
+@JsonPropertyOrder({ Profile.JSON_PROPERTY_ID, Profile.JSON_PROPERTY_CREATION_DATE, Profile.JSON_PROPERTY_ICON,
+		Profile.JSON_PROPERTY_CREATED_BY, Profile.JSON_PROPERTY_DESCRIPTION, Profile.JSON_PROPERTY_NAME,
+		Profile.JSON_PROPERTY_ISDEFAULT, Profile.JSON_PROPERTY_LAST_UPDATE_DATE, Profile.JSON_PROPERTY_UPDATED_BY })
 @JsonTypeName("Profile")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Profile implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
-  private String creationDate;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_ICON = "icon";
-  private String icon;
+	private String id;
 
-  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-  private String createdBy;
+	public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String creationDate;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_ICON = "icon";
 
-  public static final String JSON_PROPERTY_ISDEFAULT = "isdefault";
-  private Boolean isdefault;
+	private String icon;
 
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
-  private String lastUpdateDate;
+	public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
 
-  public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
-  private String updatedBy;
+	private String createdBy;
 
-  public Profile id(String id) {
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-    this.id = id;
-    return this;
-  }
+	private String description;
 
-  /**
-   * profile id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "profile id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	private String name;
 
-  public Profile creationDate(String creationDate) {
+	public static final String JSON_PROPERTY_ISDEFAULT = "isdefault";
 
-    this.creationDate = creationDate;
-    return this;
-  }
+	private Boolean isdefault;
 
-  /**
-   * date and time of profile creation
-   *
-   * @return creationDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "date and time of profile creation")
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreationDate() {
-    return creationDate;
-  }
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
 
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
+	private String lastUpdateDate;
 
-  public Profile icon(String icon) {
+	public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
 
-    this.icon = icon;
-    return this;
-  }
+	private String updatedBy;
 
-  /**
-   * icon used in the portal to represent the profile
-   *
-   * @return icon
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "icon used in the portal to represent the profile")
-  @JsonProperty(JSON_PROPERTY_ICON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getIcon() {
-    return icon;
-  }
+	public Profile id(String id) {
 
-  public void setIcon(String icon) {
-    this.icon = icon;
-  }
+		this.id = id;
+		return this;
+	}
 
-  public Profile createdBy(String createdBy) {
+	/**
+	 * profile id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "profile id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-    this.createdBy = createdBy;
-    return this;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  /**
-   * id of the uer who created the profile
-   *
-   * @return createdBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the uer who created the profile")
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreatedBy() {
-    return createdBy;
-  }
+	public Profile creationDate(String creationDate) {
 
-  public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-  }
+		this.creationDate = creationDate;
+		return this;
+	}
 
-  public Profile description(String description) {
+	/**
+	 * date and time of profile creation
+	 * @return creationDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "date and time of profile creation")
+	@JsonProperty(JSON_PROPERTY_CREATION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreationDate() {
+		return creationDate;
+	}
 
-    this.description = description;
-    return this;
-  }
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
 
-  /**
-   * a description of the profile
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "a description of the profile")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public Profile icon(String icon) {
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+		this.icon = icon;
+		return this;
+	}
 
-  public Profile name(String name) {
+	/**
+	 * icon used in the portal to represent the profile
+	 * @return icon
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "icon used in the portal to represent the profile")
+	@JsonProperty(JSON_PROPERTY_ICON)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getIcon() {
+		return icon;
+	}
 
-    this.name = name;
-    return this;
-  }
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 
-  /**
-   * profile name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "profile name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public Profile createdBy(String createdBy) {
 
-  public void setName(String name) {
-    this.name = name;
-  }
+		this.createdBy = createdBy;
+		return this;
+	}
 
-  public Profile isdefault(Boolean isdefault) {
+	/**
+	 * id of the uer who created the profile
+	 * @return createdBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the uer who created the profile")
+	@JsonProperty(JSON_PROPERTY_CREATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreatedBy() {
+		return createdBy;
+	}
 
-    this.isdefault = isdefault;
-    return this;
-  }
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
 
-  /**
-   * true | false
-   *
-   * @return isdefault
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "true | false ")
-  @JsonProperty(JSON_PROPERTY_ISDEFAULT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsdefault() {
-    return isdefault;
-  }
+	public Profile description(String description) {
 
-  public void setIsdefault(Boolean isdefault) {
-    this.isdefault = isdefault;
-  }
+		this.description = description;
+		return this;
+	}
 
-  public Profile lastUpdateDate(String lastUpdateDate) {
+	/**
+	 * a description of the profile
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "a description of the profile")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  /**
-   * date and time of the last update to the profile
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "date and time of the last update to the profile")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
+	public Profile name(String name) {
 
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public Profile updatedBy(String updatedBy) {
+	/**
+	 * profile name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "profile name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-    this.updatedBy = updatedBy;
-    return this;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * the id of the user who last updated the profile
-   *
-   * @return updatedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the id of the user who last updated the profile")
-  @JsonProperty(JSON_PROPERTY_UPDATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUpdatedBy() {
-    return updatedBy;
-  }
+	public Profile isdefault(Boolean isdefault) {
 
-  public void setUpdatedBy(String updatedBy) {
-    this.updatedBy = updatedBy;
-  }
+		this.isdefault = isdefault;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Profile profile = (Profile) o;
-    return Objects.equals(this.id, profile.id)
-        && Objects.equals(this.creationDate, profile.creationDate)
-        && Objects.equals(this.icon, profile.icon)
-        && Objects.equals(this.createdBy, profile.createdBy)
-        && Objects.equals(this.description, profile.description)
-        && Objects.equals(this.name, profile.name)
-        && Objects.equals(this.isdefault, profile.isdefault)
-        && Objects.equals(this.lastUpdateDate, profile.lastUpdateDate)
-        && Objects.equals(this.updatedBy, profile.updatedBy);
-  }
+	/**
+	 * true | false
+	 * @return isdefault
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "true | false ")
+	@JsonProperty(JSON_PROPERTY_ISDEFAULT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getIsdefault() {
+		return isdefault;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id, creationDate, icon, createdBy, description, name, isdefault, lastUpdateDate, updatedBy);
-  }
+	public void setIsdefault(Boolean isdefault) {
+		this.isdefault = isdefault;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Profile {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    isdefault: ").append(toIndentedString(isdefault)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public Profile lastUpdateDate(String lastUpdateDate) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * date and time of the last update to the profile
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "date and time of the last update to the profile")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public Profile updatedBy(String updatedBy) {
+
+		this.updatedBy = updatedBy;
+		return this;
+	}
+
+	/**
+	 * the id of the user who last updated the profile
+	 * @return updatedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the id of the user who last updated the profile")
+	@JsonProperty(JSON_PROPERTY_UPDATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Profile profile = (Profile) o;
+		return Objects.equals(this.id, profile.id) && Objects.equals(this.creationDate, profile.creationDate)
+				&& Objects.equals(this.icon, profile.icon) && Objects.equals(this.createdBy, profile.createdBy)
+				&& Objects.equals(this.description, profile.description) && Objects.equals(this.name, profile.name)
+				&& Objects.equals(this.isdefault, profile.isdefault)
+				&& Objects.equals(this.lastUpdateDate, profile.lastUpdateDate)
+				&& Objects.equals(this.updatedBy, profile.updatedBy);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, creationDate, icon, createdBy, description, name, isdefault, lastUpdateDate, updatedBy);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Profile {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+		sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+		sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    isdefault: ").append(toIndentedString(isdefault)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

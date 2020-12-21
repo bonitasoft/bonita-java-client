@@ -21,744 +21,716 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ArchivedProcessInstance */
-@JsonPropertyOrder({
-  ArchivedProcessInstance.JSON_PROPERTY_ID,
-  ArchivedProcessInstance.JSON_PROPERTY_END_DATE,
-  ArchivedProcessInstance.JSON_PROPERTY_FAILED_FLOW_NODES,
-  ArchivedProcessInstance.JSON_PROPERTY_STARTED_BY_SUBSTITUTE,
-  ArchivedProcessInstance.JSON_PROPERTY_START,
-  ArchivedProcessInstance.JSON_PROPERTY_ACTIVE_FLOW_NODES,
-  ArchivedProcessInstance.JSON_PROPERTY_STATE,
-  ArchivedProcessInstance.JSON_PROPERTY_ROOT_CASE_ID,
-  ArchivedProcessInstance.JSON_PROPERTY_STARTED_BY,
-  ArchivedProcessInstance.JSON_PROPERTY_PROCESS_DEFINITION_ID,
-  ArchivedProcessInstance.JSON_PROPERTY_LAST_UPDATE_DATE,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX1_LABEL,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX2_LABEL,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX3_LABEL,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX4_LABEL,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_LABEL,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX1_VALUE,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX2_VALUE,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX3_VALUE,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX4_VALUE,
-  ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_VALUE,
-  ArchivedProcessInstance.JSON_PROPERTY_SOURCE_OBJECT_ID,
-  ArchivedProcessInstance.JSON_PROPERTY_ARCHIVED_DATE
-})
+@JsonPropertyOrder({ ArchivedProcessInstance.JSON_PROPERTY_ID, ArchivedProcessInstance.JSON_PROPERTY_END_DATE,
+		ArchivedProcessInstance.JSON_PROPERTY_FAILED_FLOW_NODES,
+		ArchivedProcessInstance.JSON_PROPERTY_STARTED_BY_SUBSTITUTE, ArchivedProcessInstance.JSON_PROPERTY_START,
+		ArchivedProcessInstance.JSON_PROPERTY_ACTIVE_FLOW_NODES, ArchivedProcessInstance.JSON_PROPERTY_STATE,
+		ArchivedProcessInstance.JSON_PROPERTY_ROOT_CASE_ID, ArchivedProcessInstance.JSON_PROPERTY_STARTED_BY,
+		ArchivedProcessInstance.JSON_PROPERTY_PROCESS_DEFINITION_ID,
+		ArchivedProcessInstance.JSON_PROPERTY_LAST_UPDATE_DATE,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX1_LABEL,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX2_LABEL,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX3_LABEL,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX4_LABEL,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_LABEL,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX1_VALUE,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX2_VALUE,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX3_VALUE,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX4_VALUE,
+		ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_VALUE,
+		ArchivedProcessInstance.JSON_PROPERTY_SOURCE_OBJECT_ID, ArchivedProcessInstance.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("ArchivedProcessInstance")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstance implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_END_DATE = "end_date";
-  private String endDate;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_FAILED_FLOW_NODES = "failedFlowNodes";
-  private String failedFlowNodes;
+	private String id;
 
-  public static final String JSON_PROPERTY_STARTED_BY_SUBSTITUTE = "startedBySubstitute";
-  private String startedBySubstitute;
+	public static final String JSON_PROPERTY_END_DATE = "end_date";
 
-  public static final String JSON_PROPERTY_START = "start";
-  private String start;
+	private String endDate;
 
-  public static final String JSON_PROPERTY_ACTIVE_FLOW_NODES = "activeFlowNodes";
-  private String activeFlowNodes;
+	public static final String JSON_PROPERTY_FAILED_FLOW_NODES = "failedFlowNodes";
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	private String failedFlowNodes;
 
-  public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
-  private String rootCaseId;
+	public static final String JSON_PROPERTY_STARTED_BY_SUBSTITUTE = "startedBySubstitute";
 
-  public static final String JSON_PROPERTY_STARTED_BY = "started_by";
-  private String startedBy;
+	private String startedBySubstitute;
 
-  public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
-  private String processDefinitionId;
+	public static final String JSON_PROPERTY_START = "start";
 
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
-  private String lastUpdateDate;
+	private String start;
 
-  public static final String JSON_PROPERTY_SEARCH_INDEX1_LABEL = "searchIndex1Label";
-  private String searchIndex1Label;
+	public static final String JSON_PROPERTY_ACTIVE_FLOW_NODES = "activeFlowNodes";
 
-  public static final String JSON_PROPERTY_SEARCH_INDEX2_LABEL = "searchIndex2Label";
-  private String searchIndex2Label;
+	private String activeFlowNodes;
 
-  public static final String JSON_PROPERTY_SEARCH_INDEX3_LABEL = "searchIndex3Label";
-  private String searchIndex3Label;
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  public static final String JSON_PROPERTY_SEARCH_INDEX4_LABEL = "searchIndex4Label";
-  private String searchIndex4Label;
+	private String state;
 
-  public static final String JSON_PROPERTY_SEARCH_INDEX5_LABEL = "searchIndex5Label";
-  private String searchIndex5Label;
+	public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
 
-  public static final String JSON_PROPERTY_SEARCH_INDEX1_VALUE = "searchIndex1Value";
-  private String searchIndex1Value;
+	private String rootCaseId;
 
-  public static final String JSON_PROPERTY_SEARCH_INDEX2_VALUE = "searchIndex2Value";
-  private String searchIndex2Value;
-
-  public static final String JSON_PROPERTY_SEARCH_INDEX3_VALUE = "searchIndex3Value";
-  private String searchIndex3Value;
-
-  public static final String JSON_PROPERTY_SEARCH_INDEX4_VALUE = "searchIndex4Value";
-  private String searchIndex4Value;
-
-  public static final String JSON_PROPERTY_SEARCH_INDEX5_VALUE = "searchIndex5Value";
-  private String searchIndex5Value;
-
-  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
-  private String sourceObjectId;
-
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
-
-  public ArchivedProcessInstance id(String id) {
-
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * the identifier of the ProcessInstance (Case)
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the identifier of the ProcessInstance (Case)")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public ArchivedProcessInstance endDate(String endDate) {
-
-    this.endDate = endDate;
-    return this;
-  }
-
-  /**
-   * the date set when the process instance is closed
-   *
-   * @return endDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the date set when the process instance is closed")
-  @JsonProperty(JSON_PROPERTY_END_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEndDate() {
-    return endDate;
-  }
-
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
-  }
-
-  public ArchivedProcessInstance failedFlowNodes(String failedFlowNodes) {
-
-    this.failedFlowNodes = failedFlowNodes;
-    return this;
-  }
-
-  /**
-   * count of failed flow nodes if parameter n&#x3D;failedFlowNodes is given
-   *
-   * @return failedFlowNodes
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "count of failed flow nodes if parameter n=failedFlowNodes is given")
-  @JsonProperty(JSON_PROPERTY_FAILED_FLOW_NODES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFailedFlowNodes() {
-    return failedFlowNodes;
-  }
-
-  public void setFailedFlowNodes(String failedFlowNodes) {
-    this.failedFlowNodes = failedFlowNodes;
-  }
-
-  public ArchivedProcessInstance startedBySubstitute(String startedBySubstitute) {
-
-    this.startedBySubstitute = startedBySubstitute;
-    return this;
-  }
-
-  /**
-   * the identifier of the substitute user (as Process manager or Administrator) who started the
-   * process. It can be also the substitute user if d&#x3D;startedBySubstitute is given.
-   *
-   * @return startedBySubstitute
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the identifier of the substitute user (as Process manager or Administrator) who started the process. It can be also the substitute user if d=startedBySubstitute is given.")
-  @JsonProperty(JSON_PROPERTY_STARTED_BY_SUBSTITUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getStartedBySubstitute() {
-    return startedBySubstitute;
-  }
-
-  public void setStartedBySubstitute(String startedBySubstitute) {
-    this.startedBySubstitute = startedBySubstitute;
-  }
-
-  public ArchivedProcessInstance start(String start) {
-
-    this.start = start;
-    return this;
-  }
-
-  /**
-   * the starting date of the case
-   *
-   * @return start
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the starting date of the case")
-  @JsonProperty(JSON_PROPERTY_START)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getStart() {
-    return start;
-  }
-
-  public void setStart(String start) {
-    this.start = start;
-  }
-
-  public ArchivedProcessInstance activeFlowNodes(String activeFlowNodes) {
-
-    this.activeFlowNodes = activeFlowNodes;
-    return this;
-  }
-
-  /**
-   * count of active flow nodes if parameter n&#x3D;activeFlowNodes is given
-   *
-   * @return activeFlowNodes
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "count of active flow nodes if parameter n=activeFlowNodes is given")
-  @JsonProperty(JSON_PROPERTY_ACTIVE_FLOW_NODES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getActiveFlowNodes() {
-    return activeFlowNodes;
-  }
-
-  public void setActiveFlowNodes(String activeFlowNodes) {
-    this.activeFlowNodes = activeFlowNodes;
-  }
-
-  public ArchivedProcessInstance state(String state) {
-
-    this.state = state;
-    return this;
-  }
-
-  /**
-   * state: an enum that represent the state of the process instances, it can be INITIALIZING,
-   * STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR, ABORTING
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "state: an enum that represent the state of the process instances, it can be INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR, ABORTING")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-  public ArchivedProcessInstance rootCaseId(String rootCaseId) {
-
-    this.rootCaseId = rootCaseId;
-    return this;
-  }
-
-  /**
-   * the identifier of the container of the case
-   *
-   * @return rootCaseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the identifier of the container of the case")
-  @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getRootCaseId() {
-    return rootCaseId;
-  }
-
-  public void setRootCaseId(String rootCaseId) {
-    this.rootCaseId = rootCaseId;
-  }
-
-  public ArchivedProcessInstance startedBy(String startedBy) {
-
-    this.startedBy = startedBy;
-    return this;
-  }
-
-  /**
-   * the identifier of the user who started the case
-   *
-   * @return startedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the identifier of the user who started the case")
-  @JsonProperty(JSON_PROPERTY_STARTED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getStartedBy() {
-    return startedBy;
-  }
-
-  public void setStartedBy(String startedBy) {
-    this.startedBy = startedBy;
-  }
-
-  public ArchivedProcessInstance processDefinitionId(String processDefinitionId) {
-
-    this.processDefinitionId = processDefinitionId;
-    return this;
-  }
-
-  /**
-   * the identifier of the process related of the case
-   *
-   * @return processDefinitionId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the identifier of the process related of the case")
-  @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessDefinitionId() {
-    return processDefinitionId;
-  }
-
-  public void setProcessDefinitionId(String processDefinitionId) {
-    this.processDefinitionId = processDefinitionId;
-  }
-
-  public ArchivedProcessInstance lastUpdateDate(String lastUpdateDate) {
-
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
-
-  /**
-   * the date of the last update done on the case
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the date of the last update done on the case")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
-
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
-
-  public ArchivedProcessInstance searchIndex1Label(String searchIndex1Label) {
-
-    this.searchIndex1Label = searchIndex1Label;
-    return this;
-  }
-
-  /**
-   * the 1st search index label (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex1Label
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 1st search index label (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_LABEL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex1Label() {
-    return searchIndex1Label;
-  }
-
-  public void setSearchIndex1Label(String searchIndex1Label) {
-    this.searchIndex1Label = searchIndex1Label;
-  }
-
-  public ArchivedProcessInstance searchIndex2Label(String searchIndex2Label) {
-
-    this.searchIndex2Label = searchIndex2Label;
-    return this;
-  }
-
-  /**
-   * the 2nd search index label (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex2Label
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 2nd search index label (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_LABEL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex2Label() {
-    return searchIndex2Label;
-  }
-
-  public void setSearchIndex2Label(String searchIndex2Label) {
-    this.searchIndex2Label = searchIndex2Label;
-  }
-
-  public ArchivedProcessInstance searchIndex3Label(String searchIndex3Label) {
-
-    this.searchIndex3Label = searchIndex3Label;
-    return this;
-  }
-
-  /**
-   * the 3rd search index label (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex3Label
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 3rd search index label (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_LABEL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex3Label() {
-    return searchIndex3Label;
-  }
-
-  public void setSearchIndex3Label(String searchIndex3Label) {
-    this.searchIndex3Label = searchIndex3Label;
-  }
-
-  public ArchivedProcessInstance searchIndex4Label(String searchIndex4Label) {
-
-    this.searchIndex4Label = searchIndex4Label;
-    return this;
-  }
-
-  /**
-   * the 4th search index label (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex4Label
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 4th search index label (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_LABEL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex4Label() {
-    return searchIndex4Label;
-  }
-
-  public void setSearchIndex4Label(String searchIndex4Label) {
-    this.searchIndex4Label = searchIndex4Label;
-  }
-
-  public ArchivedProcessInstance searchIndex5Label(String searchIndex5Label) {
-
-    this.searchIndex5Label = searchIndex5Label;
-    return this;
-  }
-
-  /**
-   * the 5th search index label (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex5Label
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 5th search index label (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_LABEL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex5Label() {
-    return searchIndex5Label;
-  }
-
-  public void setSearchIndex5Label(String searchIndex5Label) {
-    this.searchIndex5Label = searchIndex5Label;
-  }
-
-  public ArchivedProcessInstance searchIndex1Value(String searchIndex1Value) {
-
-    this.searchIndex1Value = searchIndex1Value;
-    return this;
-  }
-
-  /**
-   * the 1st search index value (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex1Value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 1st search index value (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex1Value() {
-    return searchIndex1Value;
-  }
-
-  public void setSearchIndex1Value(String searchIndex1Value) {
-    this.searchIndex1Value = searchIndex1Value;
-  }
-
-  public ArchivedProcessInstance searchIndex2Value(String searchIndex2Value) {
-
-    this.searchIndex2Value = searchIndex2Value;
-    return this;
-  }
-
-  /**
-   * the 2nd search index value (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex2Value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 2nd search index value (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex2Value() {
-    return searchIndex2Value;
-  }
-
-  public void setSearchIndex2Value(String searchIndex2Value) {
-    this.searchIndex2Value = searchIndex2Value;
-  }
-
-  public ArchivedProcessInstance searchIndex3Value(String searchIndex3Value) {
-
-    this.searchIndex3Value = searchIndex3Value;
-    return this;
-  }
-
-  /**
-   * the 3rd search index value (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex3Value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 3rd search index value (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex3Value() {
-    return searchIndex3Value;
-  }
-
-  public void setSearchIndex3Value(String searchIndex3Value) {
-    this.searchIndex3Value = searchIndex3Value;
-  }
-
-  public ArchivedProcessInstance searchIndex4Value(String searchIndex4Value) {
-
-    this.searchIndex4Value = searchIndex4Value;
-    return this;
-  }
-
-  /**
-   * the 4th search index value (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex4Value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 4th search index value (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex4Value() {
-    return searchIndex4Value;
-  }
-
-  public void setSearchIndex4Value(String searchIndex4Value) {
-    this.searchIndex4Value = searchIndex4Value;
-  }
-
-  public ArchivedProcessInstance searchIndex5Value(String searchIndex5Value) {
-
-    this.searchIndex5Value = searchIndex5Value;
-    return this;
-  }
-
-  /**
-   * the 5th search index value (from 6.5, in Subscription editions only)
-   *
-   * @return searchIndex5Value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the 5th search index value (from 6.5, in Subscription editions only)")
-  @JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSearchIndex5Value() {
-    return searchIndex5Value;
-  }
-
-  public void setSearchIndex5Value(String searchIndex5Value) {
-    this.searchIndex5Value = searchIndex5Value;
-  }
-
-  public ArchivedProcessInstance sourceObjectId(String sourceObjectId) {
-
-    this.sourceObjectId = sourceObjectId;
-    return this;
-  }
-
-  /**
-   * the id of the process instance before it was archived
-   *
-   * @return sourceObjectId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the id of the process instance before it was archived")
-  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSourceObjectId() {
-    return sourceObjectId;
-  }
-
-  public void setSourceObjectId(String sourceObjectId) {
-    this.sourceObjectId = sourceObjectId;
-  }
-
-  public ArchivedProcessInstance archivedDate(String archivedDate) {
-
-    this.archivedDate = archivedDate;
-    return this;
-  }
-
-  /**
-   * the date set when the process instance was archived
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the date set when the process instance was archived")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
-
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArchivedProcessInstance archivedProcessInstance = (ArchivedProcessInstance) o;
-    return Objects.equals(this.id, archivedProcessInstance.id)
-        && Objects.equals(this.endDate, archivedProcessInstance.endDate)
-        && Objects.equals(this.failedFlowNodes, archivedProcessInstance.failedFlowNodes)
-        && Objects.equals(this.startedBySubstitute, archivedProcessInstance.startedBySubstitute)
-        && Objects.equals(this.start, archivedProcessInstance.start)
-        && Objects.equals(this.activeFlowNodes, archivedProcessInstance.activeFlowNodes)
-        && Objects.equals(this.state, archivedProcessInstance.state)
-        && Objects.equals(this.rootCaseId, archivedProcessInstance.rootCaseId)
-        && Objects.equals(this.startedBy, archivedProcessInstance.startedBy)
-        && Objects.equals(this.processDefinitionId, archivedProcessInstance.processDefinitionId)
-        && Objects.equals(this.lastUpdateDate, archivedProcessInstance.lastUpdateDate)
-        && Objects.equals(this.searchIndex1Label, archivedProcessInstance.searchIndex1Label)
-        && Objects.equals(this.searchIndex2Label, archivedProcessInstance.searchIndex2Label)
-        && Objects.equals(this.searchIndex3Label, archivedProcessInstance.searchIndex3Label)
-        && Objects.equals(this.searchIndex4Label, archivedProcessInstance.searchIndex4Label)
-        && Objects.equals(this.searchIndex5Label, archivedProcessInstance.searchIndex5Label)
-        && Objects.equals(this.searchIndex1Value, archivedProcessInstance.searchIndex1Value)
-        && Objects.equals(this.searchIndex2Value, archivedProcessInstance.searchIndex2Value)
-        && Objects.equals(this.searchIndex3Value, archivedProcessInstance.searchIndex3Value)
-        && Objects.equals(this.searchIndex4Value, archivedProcessInstance.searchIndex4Value)
-        && Objects.equals(this.searchIndex5Value, archivedProcessInstance.searchIndex5Value)
-        && Objects.equals(this.sourceObjectId, archivedProcessInstance.sourceObjectId)
-        && Objects.equals(this.archivedDate, archivedProcessInstance.archivedDate);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id,
-        endDate,
-        failedFlowNodes,
-        startedBySubstitute,
-        start,
-        activeFlowNodes,
-        state,
-        rootCaseId,
-        startedBy,
-        processDefinitionId,
-        lastUpdateDate,
-        searchIndex1Label,
-        searchIndex2Label,
-        searchIndex3Label,
-        searchIndex4Label,
-        searchIndex5Label,
-        searchIndex1Value,
-        searchIndex2Value,
-        searchIndex3Value,
-        searchIndex4Value,
-        searchIndex5Value,
-        sourceObjectId,
-        archivedDate);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedProcessInstance {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    failedFlowNodes: ").append(toIndentedString(failedFlowNodes)).append("\n");
-    sb.append("    startedBySubstitute: ")
-        .append(toIndentedString(startedBySubstitute))
-        .append("\n");
-    sb.append("    start: ").append(toIndentedString(start)).append("\n");
-    sb.append("    activeFlowNodes: ").append(toIndentedString(activeFlowNodes)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    rootCaseId: ").append(toIndentedString(rootCaseId)).append("\n");
-    sb.append("    startedBy: ").append(toIndentedString(startedBy)).append("\n");
-    sb.append("    processDefinitionId: ")
-        .append(toIndentedString(processDefinitionId))
-        .append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("    searchIndex1Label: ").append(toIndentedString(searchIndex1Label)).append("\n");
-    sb.append("    searchIndex2Label: ").append(toIndentedString(searchIndex2Label)).append("\n");
-    sb.append("    searchIndex3Label: ").append(toIndentedString(searchIndex3Label)).append("\n");
-    sb.append("    searchIndex4Label: ").append(toIndentedString(searchIndex4Label)).append("\n");
-    sb.append("    searchIndex5Label: ").append(toIndentedString(searchIndex5Label)).append("\n");
-    sb.append("    searchIndex1Value: ").append(toIndentedString(searchIndex1Value)).append("\n");
-    sb.append("    searchIndex2Value: ").append(toIndentedString(searchIndex2Value)).append("\n");
-    sb.append("    searchIndex3Value: ").append(toIndentedString(searchIndex3Value)).append("\n");
-    sb.append("    searchIndex4Value: ").append(toIndentedString(searchIndex4Value)).append("\n");
-    sb.append("    searchIndex5Value: ").append(toIndentedString(searchIndex5Value)).append("\n");
-    sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public static final String JSON_PROPERTY_STARTED_BY = "started_by";
+
+	private String startedBy;
+
+	public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
+
+	private String processDefinitionId;
+
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+
+	private String lastUpdateDate;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX1_LABEL = "searchIndex1Label";
+
+	private String searchIndex1Label;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX2_LABEL = "searchIndex2Label";
+
+	private String searchIndex2Label;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX3_LABEL = "searchIndex3Label";
+
+	private String searchIndex3Label;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX4_LABEL = "searchIndex4Label";
+
+	private String searchIndex4Label;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX5_LABEL = "searchIndex5Label";
+
+	private String searchIndex5Label;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX1_VALUE = "searchIndex1Value";
+
+	private String searchIndex1Value;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX2_VALUE = "searchIndex2Value";
+
+	private String searchIndex2Value;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX3_VALUE = "searchIndex3Value";
+
+	private String searchIndex3Value;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX4_VALUE = "searchIndex4Value";
+
+	private String searchIndex4Value;
+
+	public static final String JSON_PROPERTY_SEARCH_INDEX5_VALUE = "searchIndex5Value";
+
+	private String searchIndex5Value;
+
+	public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
+
+	private String sourceObjectId;
+
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+
+	private String archivedDate;
+
+	public ArchivedProcessInstance id(String id) {
+
+		this.id = id;
+		return this;
+	}
+
+	/**
+	 * the identifier of the ProcessInstance (Case)
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the identifier of the ProcessInstance (Case)")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public ArchivedProcessInstance endDate(String endDate) {
+
+		this.endDate = endDate;
+		return this;
+	}
+
+	/**
+	 * the date set when the process instance is closed
+	 * @return endDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the date set when the process instance is closed")
+	@JsonProperty(JSON_PROPERTY_END_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public ArchivedProcessInstance failedFlowNodes(String failedFlowNodes) {
+
+		this.failedFlowNodes = failedFlowNodes;
+		return this;
+	}
+
+	/**
+	 * count of failed flow nodes if parameter n&#x3D;failedFlowNodes is given
+	 * @return failedFlowNodes
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "count of failed flow nodes if parameter n=failedFlowNodes is given")
+	@JsonProperty(JSON_PROPERTY_FAILED_FLOW_NODES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFailedFlowNodes() {
+		return failedFlowNodes;
+	}
+
+	public void setFailedFlowNodes(String failedFlowNodes) {
+		this.failedFlowNodes = failedFlowNodes;
+	}
+
+	public ArchivedProcessInstance startedBySubstitute(String startedBySubstitute) {
+
+		this.startedBySubstitute = startedBySubstitute;
+		return this;
+	}
+
+	/**
+	 * the identifier of the substitute user (as Process manager or Administrator) who
+	 * started the process. It can be also the substitute user if
+	 * d&#x3D;startedBySubstitute is given.
+	 * @return startedBySubstitute
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the identifier of the substitute user (as Process manager or Administrator) who started the process. It can be also the substitute user if d=startedBySubstitute is given.")
+	@JsonProperty(JSON_PROPERTY_STARTED_BY_SUBSTITUTE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getStartedBySubstitute() {
+		return startedBySubstitute;
+	}
+
+	public void setStartedBySubstitute(String startedBySubstitute) {
+		this.startedBySubstitute = startedBySubstitute;
+	}
+
+	public ArchivedProcessInstance start(String start) {
+
+		this.start = start;
+		return this;
+	}
+
+	/**
+	 * the starting date of the case
+	 * @return start
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the starting date of the case")
+	@JsonProperty(JSON_PROPERTY_START)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getStart() {
+		return start;
+	}
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+	public ArchivedProcessInstance activeFlowNodes(String activeFlowNodes) {
+
+		this.activeFlowNodes = activeFlowNodes;
+		return this;
+	}
+
+	/**
+	 * count of active flow nodes if parameter n&#x3D;activeFlowNodes is given
+	 * @return activeFlowNodes
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "count of active flow nodes if parameter n=activeFlowNodes is given")
+	@JsonProperty(JSON_PROPERTY_ACTIVE_FLOW_NODES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getActiveFlowNodes() {
+		return activeFlowNodes;
+	}
+
+	public void setActiveFlowNodes(String activeFlowNodes) {
+		this.activeFlowNodes = activeFlowNodes;
+	}
+
+	public ArchivedProcessInstance state(String state) {
+
+		this.state = state;
+		return this;
+	}
+
+	/**
+	 * state: an enum that represent the state of the process instances, it can be
+	 * INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR,
+	 * ABORTING
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "state: an enum that represent the state of the process instances, it can be INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING, COMPLETED, ERROR, ABORTING")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public ArchivedProcessInstance rootCaseId(String rootCaseId) {
+
+		this.rootCaseId = rootCaseId;
+		return this;
+	}
+
+	/**
+	 * the identifier of the container of the case
+	 * @return rootCaseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the identifier of the container of the case")
+	@JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getRootCaseId() {
+		return rootCaseId;
+	}
+
+	public void setRootCaseId(String rootCaseId) {
+		this.rootCaseId = rootCaseId;
+	}
+
+	public ArchivedProcessInstance startedBy(String startedBy) {
+
+		this.startedBy = startedBy;
+		return this;
+	}
+
+	/**
+	 * the identifier of the user who started the case
+	 * @return startedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the identifier of the user who started the case")
+	@JsonProperty(JSON_PROPERTY_STARTED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getStartedBy() {
+		return startedBy;
+	}
+
+	public void setStartedBy(String startedBy) {
+		this.startedBy = startedBy;
+	}
+
+	public ArchivedProcessInstance processDefinitionId(String processDefinitionId) {
+
+		this.processDefinitionId = processDefinitionId;
+		return this;
+	}
+
+	/**
+	 * the identifier of the process related of the case
+	 * @return processDefinitionId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the identifier of the process related of the case")
+	@JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessDefinitionId() {
+		return processDefinitionId;
+	}
+
+	public void setProcessDefinitionId(String processDefinitionId) {
+		this.processDefinitionId = processDefinitionId;
+	}
+
+	public ArchivedProcessInstance lastUpdateDate(String lastUpdateDate) {
+
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * the date of the last update done on the case
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the date of the last update done on the case")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public ArchivedProcessInstance searchIndex1Label(String searchIndex1Label) {
+
+		this.searchIndex1Label = searchIndex1Label;
+		return this;
+	}
+
+	/**
+	 * the 1st search index label (from 6.5, in Subscription editions only)
+	 * @return searchIndex1Label
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 1st search index label (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_LABEL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex1Label() {
+		return searchIndex1Label;
+	}
+
+	public void setSearchIndex1Label(String searchIndex1Label) {
+		this.searchIndex1Label = searchIndex1Label;
+	}
+
+	public ArchivedProcessInstance searchIndex2Label(String searchIndex2Label) {
+
+		this.searchIndex2Label = searchIndex2Label;
+		return this;
+	}
+
+	/**
+	 * the 2nd search index label (from 6.5, in Subscription editions only)
+	 * @return searchIndex2Label
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 2nd search index label (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_LABEL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex2Label() {
+		return searchIndex2Label;
+	}
+
+	public void setSearchIndex2Label(String searchIndex2Label) {
+		this.searchIndex2Label = searchIndex2Label;
+	}
+
+	public ArchivedProcessInstance searchIndex3Label(String searchIndex3Label) {
+
+		this.searchIndex3Label = searchIndex3Label;
+		return this;
+	}
+
+	/**
+	 * the 3rd search index label (from 6.5, in Subscription editions only)
+	 * @return searchIndex3Label
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 3rd search index label (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_LABEL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex3Label() {
+		return searchIndex3Label;
+	}
+
+	public void setSearchIndex3Label(String searchIndex3Label) {
+		this.searchIndex3Label = searchIndex3Label;
+	}
+
+	public ArchivedProcessInstance searchIndex4Label(String searchIndex4Label) {
+
+		this.searchIndex4Label = searchIndex4Label;
+		return this;
+	}
+
+	/**
+	 * the 4th search index label (from 6.5, in Subscription editions only)
+	 * @return searchIndex4Label
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 4th search index label (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_LABEL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex4Label() {
+		return searchIndex4Label;
+	}
+
+	public void setSearchIndex4Label(String searchIndex4Label) {
+		this.searchIndex4Label = searchIndex4Label;
+	}
+
+	public ArchivedProcessInstance searchIndex5Label(String searchIndex5Label) {
+
+		this.searchIndex5Label = searchIndex5Label;
+		return this;
+	}
+
+	/**
+	 * the 5th search index label (from 6.5, in Subscription editions only)
+	 * @return searchIndex5Label
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 5th search index label (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_LABEL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex5Label() {
+		return searchIndex5Label;
+	}
+
+	public void setSearchIndex5Label(String searchIndex5Label) {
+		this.searchIndex5Label = searchIndex5Label;
+	}
+
+	public ArchivedProcessInstance searchIndex1Value(String searchIndex1Value) {
+
+		this.searchIndex1Value = searchIndex1Value;
+		return this;
+	}
+
+	/**
+	 * the 1st search index value (from 6.5, in Subscription editions only)
+	 * @return searchIndex1Value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 1st search index value (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex1Value() {
+		return searchIndex1Value;
+	}
+
+	public void setSearchIndex1Value(String searchIndex1Value) {
+		this.searchIndex1Value = searchIndex1Value;
+	}
+
+	public ArchivedProcessInstance searchIndex2Value(String searchIndex2Value) {
+
+		this.searchIndex2Value = searchIndex2Value;
+		return this;
+	}
+
+	/**
+	 * the 2nd search index value (from 6.5, in Subscription editions only)
+	 * @return searchIndex2Value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 2nd search index value (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex2Value() {
+		return searchIndex2Value;
+	}
+
+	public void setSearchIndex2Value(String searchIndex2Value) {
+		this.searchIndex2Value = searchIndex2Value;
+	}
+
+	public ArchivedProcessInstance searchIndex3Value(String searchIndex3Value) {
+
+		this.searchIndex3Value = searchIndex3Value;
+		return this;
+	}
+
+	/**
+	 * the 3rd search index value (from 6.5, in Subscription editions only)
+	 * @return searchIndex3Value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 3rd search index value (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex3Value() {
+		return searchIndex3Value;
+	}
+
+	public void setSearchIndex3Value(String searchIndex3Value) {
+		this.searchIndex3Value = searchIndex3Value;
+	}
+
+	public ArchivedProcessInstance searchIndex4Value(String searchIndex4Value) {
+
+		this.searchIndex4Value = searchIndex4Value;
+		return this;
+	}
+
+	/**
+	 * the 4th search index value (from 6.5, in Subscription editions only)
+	 * @return searchIndex4Value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 4th search index value (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex4Value() {
+		return searchIndex4Value;
+	}
+
+	public void setSearchIndex4Value(String searchIndex4Value) {
+		this.searchIndex4Value = searchIndex4Value;
+	}
+
+	public ArchivedProcessInstance searchIndex5Value(String searchIndex5Value) {
+
+		this.searchIndex5Value = searchIndex5Value;
+		return this;
+	}
+
+	/**
+	 * the 5th search index value (from 6.5, in Subscription editions only)
+	 * @return searchIndex5Value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the 5th search index value (from 6.5, in Subscription editions only)")
+	@JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSearchIndex5Value() {
+		return searchIndex5Value;
+	}
+
+	public void setSearchIndex5Value(String searchIndex5Value) {
+		this.searchIndex5Value = searchIndex5Value;
+	}
+
+	public ArchivedProcessInstance sourceObjectId(String sourceObjectId) {
+
+		this.sourceObjectId = sourceObjectId;
+		return this;
+	}
+
+	/**
+	 * the id of the process instance before it was archived
+	 * @return sourceObjectId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the id of the process instance before it was archived")
+	@JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSourceObjectId() {
+		return sourceObjectId;
+	}
+
+	public void setSourceObjectId(String sourceObjectId) {
+		this.sourceObjectId = sourceObjectId;
+	}
+
+	public ArchivedProcessInstance archivedDate(String archivedDate) {
+
+		this.archivedDate = archivedDate;
+		return this;
+	}
+
+	/**
+	 * the date set when the process instance was archived
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the date set when the process instance was archived")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
+
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ArchivedProcessInstance archivedProcessInstance = (ArchivedProcessInstance) o;
+		return Objects.equals(this.id, archivedProcessInstance.id)
+				&& Objects.equals(this.endDate, archivedProcessInstance.endDate)
+				&& Objects.equals(this.failedFlowNodes, archivedProcessInstance.failedFlowNodes)
+				&& Objects.equals(this.startedBySubstitute, archivedProcessInstance.startedBySubstitute)
+				&& Objects.equals(this.start, archivedProcessInstance.start)
+				&& Objects.equals(this.activeFlowNodes, archivedProcessInstance.activeFlowNodes)
+				&& Objects.equals(this.state, archivedProcessInstance.state)
+				&& Objects.equals(this.rootCaseId, archivedProcessInstance.rootCaseId)
+				&& Objects.equals(this.startedBy, archivedProcessInstance.startedBy)
+				&& Objects.equals(this.processDefinitionId, archivedProcessInstance.processDefinitionId)
+				&& Objects.equals(this.lastUpdateDate, archivedProcessInstance.lastUpdateDate)
+				&& Objects.equals(this.searchIndex1Label, archivedProcessInstance.searchIndex1Label)
+				&& Objects.equals(this.searchIndex2Label, archivedProcessInstance.searchIndex2Label)
+				&& Objects.equals(this.searchIndex3Label, archivedProcessInstance.searchIndex3Label)
+				&& Objects.equals(this.searchIndex4Label, archivedProcessInstance.searchIndex4Label)
+				&& Objects.equals(this.searchIndex5Label, archivedProcessInstance.searchIndex5Label)
+				&& Objects.equals(this.searchIndex1Value, archivedProcessInstance.searchIndex1Value)
+				&& Objects.equals(this.searchIndex2Value, archivedProcessInstance.searchIndex2Value)
+				&& Objects.equals(this.searchIndex3Value, archivedProcessInstance.searchIndex3Value)
+				&& Objects.equals(this.searchIndex4Value, archivedProcessInstance.searchIndex4Value)
+				&& Objects.equals(this.searchIndex5Value, archivedProcessInstance.searchIndex5Value)
+				&& Objects.equals(this.sourceObjectId, archivedProcessInstance.sourceObjectId)
+				&& Objects.equals(this.archivedDate, archivedProcessInstance.archivedDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, endDate, failedFlowNodes, startedBySubstitute, start, activeFlowNodes, state,
+				rootCaseId, startedBy, processDefinitionId, lastUpdateDate, searchIndex1Label, searchIndex2Label,
+				searchIndex3Label, searchIndex4Label, searchIndex5Label, searchIndex1Value, searchIndex2Value,
+				searchIndex3Value, searchIndex4Value, searchIndex5Value, sourceObjectId, archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ArchivedProcessInstance {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+		sb.append("    failedFlowNodes: ").append(toIndentedString(failedFlowNodes)).append("\n");
+		sb.append("    startedBySubstitute: ").append(toIndentedString(startedBySubstitute)).append("\n");
+		sb.append("    start: ").append(toIndentedString(start)).append("\n");
+		sb.append("    activeFlowNodes: ").append(toIndentedString(activeFlowNodes)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    rootCaseId: ").append(toIndentedString(rootCaseId)).append("\n");
+		sb.append("    startedBy: ").append(toIndentedString(startedBy)).append("\n");
+		sb.append("    processDefinitionId: ").append(toIndentedString(processDefinitionId)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("    searchIndex1Label: ").append(toIndentedString(searchIndex1Label)).append("\n");
+		sb.append("    searchIndex2Label: ").append(toIndentedString(searchIndex2Label)).append("\n");
+		sb.append("    searchIndex3Label: ").append(toIndentedString(searchIndex3Label)).append("\n");
+		sb.append("    searchIndex4Label: ").append(toIndentedString(searchIndex4Label)).append("\n");
+		sb.append("    searchIndex5Label: ").append(toIndentedString(searchIndex5Label)).append("\n");
+		sb.append("    searchIndex1Value: ").append(toIndentedString(searchIndex1Value)).append("\n");
+		sb.append("    searchIndex2Value: ").append(toIndentedString(searchIndex2Value)).append("\n");
+		sb.append("    searchIndex3Value: ").append(toIndentedString(searchIndex3Value)).append("\n");
+		sb.append("    searchIndex4Value: ").append(toIndentedString(searchIndex4Value)).append("\n");
+		sb.append("    searchIndex5Value: ").append(toIndentedString(searchIndex5Value)).append("\n");
+		sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

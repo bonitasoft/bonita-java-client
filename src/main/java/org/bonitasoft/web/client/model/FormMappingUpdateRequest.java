@@ -21,102 +21,102 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** FormMappingUpdateRequest */
-@JsonPropertyOrder({
-  FormMappingUpdateRequest.JSON_PROPERTY_PAGE_ID,
-  FormMappingUpdateRequest.JSON_PROPERTY_URL
-})
+@JsonPropertyOrder({ FormMappingUpdateRequest.JSON_PROPERTY_PAGE_ID, FormMappingUpdateRequest.JSON_PROPERTY_URL })
 @JsonTypeName("FormMappingUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FormMappingUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PAGE_ID = "pageId";
-  private String pageId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_URL = "url";
-  private String url;
+	public static final String JSON_PROPERTY_PAGE_ID = "pageId";
 
-  public FormMappingUpdateRequest pageId(String pageId) {
+	private String pageId;
 
-    this.pageId = pageId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_URL = "url";
 
-  /**
-   * pageId of the FormMapping
-   *
-   * @return pageId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "pageId of the FormMapping")
-  @JsonProperty(JSON_PROPERTY_PAGE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPageId() {
-    return pageId;
-  }
+	private String url;
 
-  public void setPageId(String pageId) {
-    this.pageId = pageId;
-  }
+	public FormMappingUpdateRequest pageId(String pageId) {
 
-  public FormMappingUpdateRequest url(String url) {
+		this.pageId = pageId;
+		return this;
+	}
 
-    this.url = url;
-    return this;
-  }
+	/**
+	 * pageId of the FormMapping
+	 * @return pageId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "pageId of the FormMapping")
+	@JsonProperty(JSON_PROPERTY_PAGE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPageId() {
+		return pageId;
+	}
 
-  /**
-   * url of the FormMapping
-   *
-   * @return url
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "url of the FormMapping")
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUrl() {
-    return url;
-  }
+	public void setPageId(String pageId) {
+		this.pageId = pageId;
+	}
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
+	public FormMappingUpdateRequest url(String url) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    FormMappingUpdateRequest formMappingUpdateRequest = (FormMappingUpdateRequest) o;
-    return Objects.equals(this.pageId, formMappingUpdateRequest.pageId)
-        && Objects.equals(this.url, formMappingUpdateRequest.url);
-  }
+		this.url = url;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(pageId, url);
-  }
+	/**
+	 * url of the FormMapping
+	 * @return url
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "url of the FormMapping")
+	@JsonProperty(JSON_PROPERTY_URL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUrl() {
+		return url;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FormMappingUpdateRequest {\n");
-    sb.append("    pageId: ").append(toIndentedString(pageId)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		FormMappingUpdateRequest formMappingUpdateRequest = (FormMappingUpdateRequest) o;
+		return Objects.equals(this.pageId, formMappingUpdateRequest.pageId)
+				&& Objects.equals(this.url, formMappingUpdateRequest.url);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(pageId, url);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class FormMappingUpdateRequest {\n");
+		sb.append("    pageId: ").append(toIndentedString(pageId)).append("\n");
+		sb.append("    url: ").append(toIndentedString(url)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

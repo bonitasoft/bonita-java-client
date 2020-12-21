@@ -22,162 +22,161 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** Use the processConnectorDependency resource to access connector dependencies. */
-@ApiModel(
-    description = "Use the processConnectorDependency resource to access connector dependencies.")
-@JsonPropertyOrder({
-  ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_VERSION,
-  ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_PROCESS_ID,
-  ProcessConnectorDependency.JSON_PROPERTY_FILENAME,
-  ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_NAME
-})
+@ApiModel(description = "Use the processConnectorDependency resource to access connector dependencies.")
+@JsonPropertyOrder({ ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_VERSION,
+		ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_PROCESS_ID,
+		ProcessConnectorDependency.JSON_PROPERTY_FILENAME, ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_NAME })
 @JsonTypeName("ProcessConnectorDependency")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessConnectorDependency implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONNECTOR_VERSION = "connector_version";
-  private String connectorVersion;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONNECTOR_PROCESS_ID = "connector_process_id";
-  private String connectorProcessId;
+	public static final String JSON_PROPERTY_CONNECTOR_VERSION = "connector_version";
 
-  public static final String JSON_PROPERTY_FILENAME = "filename";
-  private String filename;
+	private String connectorVersion;
 
-  public static final String JSON_PROPERTY_CONNECTOR_NAME = "connector_name";
-  private String connectorName;
+	public static final String JSON_PROPERTY_CONNECTOR_PROCESS_ID = "connector_process_id";
 
-  public ProcessConnectorDependency connectorVersion(String connectorVersion) {
+	private String connectorProcessId;
 
-    this.connectorVersion = connectorVersion;
-    return this;
-  }
+	public static final String JSON_PROPERTY_FILENAME = "filename";
 
-  /**
-   * &lt;connector version&gt;
-   *
-   * @return connectorVersion
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "<connector version>")
-  @JsonProperty(JSON_PROPERTY_CONNECTOR_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getConnectorVersion() {
-    return connectorVersion;
-  }
+	private String filename;
 
-  public void setConnectorVersion(String connectorVersion) {
-    this.connectorVersion = connectorVersion;
-  }
+	public static final String JSON_PROPERTY_CONNECTOR_NAME = "connector_name";
 
-  public ProcessConnectorDependency connectorProcessId(String connectorProcessId) {
+	private String connectorName;
 
-    this.connectorProcessId = connectorProcessId;
-    return this;
-  }
+	public ProcessConnectorDependency connectorVersion(String connectorVersion) {
 
-  /**
-   * &lt;process id&gt;
-   *
-   * @return connectorProcessId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "<process id>")
-  @JsonProperty(JSON_PROPERTY_CONNECTOR_PROCESS_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getConnectorProcessId() {
-    return connectorProcessId;
-  }
+		this.connectorVersion = connectorVersion;
+		return this;
+	}
 
-  public void setConnectorProcessId(String connectorProcessId) {
-    this.connectorProcessId = connectorProcessId;
-  }
+	/**
+	 * &lt;connector version&gt;
+	 * @return connectorVersion
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "<connector version>")
+	@JsonProperty(JSON_PROPERTY_CONNECTOR_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getConnectorVersion() {
+		return connectorVersion;
+	}
 
-  public ProcessConnectorDependency filename(String filename) {
+	public void setConnectorVersion(String connectorVersion) {
+		this.connectorVersion = connectorVersion;
+	}
 
-    this.filename = filename;
-    return this;
-  }
+	public ProcessConnectorDependency connectorProcessId(String connectorProcessId) {
 
-  /**
-   * &lt;filename representing the connector&gt;
-   *
-   * @return filename
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "<filename representing the connector>")
-  @JsonProperty(JSON_PROPERTY_FILENAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFilename() {
-    return filename;
-  }
+		this.connectorProcessId = connectorProcessId;
+		return this;
+	}
 
-  public void setFilename(String filename) {
-    this.filename = filename;
-  }
+	/**
+	 * &lt;process id&gt;
+	 * @return connectorProcessId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "<process id>")
+	@JsonProperty(JSON_PROPERTY_CONNECTOR_PROCESS_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getConnectorProcessId() {
+		return connectorProcessId;
+	}
 
-  public ProcessConnectorDependency connectorName(String connectorName) {
+	public void setConnectorProcessId(String connectorProcessId) {
+		this.connectorProcessId = connectorProcessId;
+	}
 
-    this.connectorName = connectorName;
-    return this;
-  }
+	public ProcessConnectorDependency filename(String filename) {
 
-  /**
-   * &lt;connector name&gt;
-   *
-   * @return connectorName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "<connector name>")
-  @JsonProperty(JSON_PROPERTY_CONNECTOR_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getConnectorName() {
-    return connectorName;
-  }
+		this.filename = filename;
+		return this;
+	}
 
-  public void setConnectorName(String connectorName) {
-    this.connectorName = connectorName;
-  }
+	/**
+	 * &lt;filename representing the connector&gt;
+	 * @return filename
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "<filename representing the connector>")
+	@JsonProperty(JSON_PROPERTY_FILENAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFilename() {
+		return filename;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessConnectorDependency processConnectorDependency = (ProcessConnectorDependency) o;
-    return Objects.equals(this.connectorVersion, processConnectorDependency.connectorVersion)
-        && Objects.equals(this.connectorProcessId, processConnectorDependency.connectorProcessId)
-        && Objects.equals(this.filename, processConnectorDependency.filename)
-        && Objects.equals(this.connectorName, processConnectorDependency.connectorName);
-  }
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(connectorVersion, connectorProcessId, filename, connectorName);
-  }
+	public ProcessConnectorDependency connectorName(String connectorName) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessConnectorDependency {\n");
-    sb.append("    connectorVersion: ").append(toIndentedString(connectorVersion)).append("\n");
-    sb.append("    connectorProcessId: ").append(toIndentedString(connectorProcessId)).append("\n");
-    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
-    sb.append("    connectorName: ").append(toIndentedString(connectorName)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.connectorName = connectorName;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * &lt;connector name&gt;
+	 * @return connectorName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "<connector name>")
+	@JsonProperty(JSON_PROPERTY_CONNECTOR_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getConnectorName() {
+		return connectorName;
+	}
+
+	public void setConnectorName(String connectorName) {
+		this.connectorName = connectorName;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessConnectorDependency processConnectorDependency = (ProcessConnectorDependency) o;
+		return Objects.equals(this.connectorVersion, processConnectorDependency.connectorVersion)
+				&& Objects.equals(this.connectorProcessId, processConnectorDependency.connectorProcessId)
+				&& Objects.equals(this.filename, processConnectorDependency.filename)
+				&& Objects.equals(this.connectorName, processConnectorDependency.connectorName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(connectorVersion, connectorProcessId, filename, connectorName);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessConnectorDependency {\n");
+		sb.append("    connectorVersion: ").append(toIndentedString(connectorVersion)).append("\n");
+		sb.append("    connectorProcessId: ").append(toIndentedString(connectorProcessId)).append("\n");
+		sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
+		sb.append("    connectorName: ").append(toIndentedString(connectorName)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

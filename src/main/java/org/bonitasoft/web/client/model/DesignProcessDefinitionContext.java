@@ -21,103 +21,103 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** DesignProcessDefinitionContext */
-@JsonPropertyOrder({
-  DesignProcessDefinitionContext.JSON_PROPERTY_KEY,
-  DesignProcessDefinitionContext.JSON_PROPERTY_EXPRESSION
-})
+@JsonPropertyOrder({ DesignProcessDefinitionContext.JSON_PROPERTY_KEY,
+		DesignProcessDefinitionContext.JSON_PROPERTY_EXPRESSION })
 @JsonTypeName("DesignProcessDefinition_context")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DesignProcessDefinitionContext implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_KEY = "key";
-  private String key;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_EXPRESSION = "expression";
-  private Expression expression;
+	public static final String JSON_PROPERTY_KEY = "key";
 
-  public DesignProcessDefinitionContext key(String key) {
+	private String key;
 
-    this.key = key;
-    return this;
-  }
+	public static final String JSON_PROPERTY_EXPRESSION = "expression";
 
-  /**
-   * Get key
-   *
-   * @return key
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getKey() {
-    return key;
-  }
+	private Expression expression;
 
-  public void setKey(String key) {
-    this.key = key;
-  }
+	public DesignProcessDefinitionContext key(String key) {
 
-  public DesignProcessDefinitionContext expression(Expression expression) {
+		this.key = key;
+		return this;
+	}
 
-    this.expression = expression;
-    return this;
-  }
+	/**
+	 * Get key
+	 * @return key
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_KEY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getKey() {
+		return key;
+	}
 
-  /**
-   * Get expression
-   *
-   * @return expression
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_EXPRESSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Expression getExpression() {
-    return expression;
-  }
+	public void setKey(String key) {
+		this.key = key;
+	}
 
-  public void setExpression(Expression expression) {
-    this.expression = expression;
-  }
+	public DesignProcessDefinitionContext expression(Expression expression) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    DesignProcessDefinitionContext designProcessDefinitionContext =
-        (DesignProcessDefinitionContext) o;
-    return Objects.equals(this.key, designProcessDefinitionContext.key)
-        && Objects.equals(this.expression, designProcessDefinitionContext.expression);
-  }
+		this.expression = expression;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(key, expression);
-  }
+	/**
+	 * Get expression
+	 * @return expression
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_EXPRESSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Expression getExpression() {
+		return expression;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DesignProcessDefinitionContext {\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setExpression(Expression expression) {
+		this.expression = expression;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		DesignProcessDefinitionContext designProcessDefinitionContext = (DesignProcessDefinitionContext) o;
+		return Objects.equals(this.key, designProcessDefinitionContext.key)
+				&& Objects.equals(this.expression, designProcessDefinitionContext.expression);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(key, expression);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class DesignProcessDefinitionContext {\n");
+		sb.append("    key: ").append(toIndentedString(key)).append("\n");
+		sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

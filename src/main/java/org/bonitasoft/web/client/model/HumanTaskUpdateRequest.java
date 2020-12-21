@@ -21,102 +21,102 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** HumanTaskUpdateRequest */
-@JsonPropertyOrder({
-  HumanTaskUpdateRequest.JSON_PROPERTY_ASSIGNED_ID,
-  HumanTaskUpdateRequest.JSON_PROPERTY_STATE
-})
+@JsonPropertyOrder({ HumanTaskUpdateRequest.JSON_PROPERTY_ASSIGNED_ID, HumanTaskUpdateRequest.JSON_PROPERTY_STATE })
 @JsonTypeName("HumanTaskUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class HumanTaskUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ASSIGNED_ID = "assignedId";
-  private String assignedId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	public static final String JSON_PROPERTY_ASSIGNED_ID = "assignedId";
 
-  public HumanTaskUpdateRequest assignedId(String assignedId) {
+	private String assignedId;
 
-    this.assignedId = assignedId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  /**
-   * assignedId of the HumanTask
-   *
-   * @return assignedId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "assignedId of the HumanTask")
-  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssignedId() {
-    return assignedId;
-  }
+	private String state;
 
-  public void setAssignedId(String assignedId) {
-    this.assignedId = assignedId;
-  }
+	public HumanTaskUpdateRequest assignedId(String assignedId) {
 
-  public HumanTaskUpdateRequest state(String state) {
+		this.assignedId = assignedId;
+		return this;
+	}
 
-    this.state = state;
-    return this;
-  }
+	/**
+	 * assignedId of the HumanTask
+	 * @return assignedId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "assignedId of the HumanTask")
+	@JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAssignedId() {
+		return assignedId;
+	}
 
-  /**
-   * state of the HumanTask
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "state of the HumanTask")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
+	public void setAssignedId(String assignedId) {
+		this.assignedId = assignedId;
+	}
 
-  public void setState(String state) {
-    this.state = state;
-  }
+	public HumanTaskUpdateRequest state(String state) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    HumanTaskUpdateRequest humanTaskUpdateRequest = (HumanTaskUpdateRequest) o;
-    return Objects.equals(this.assignedId, humanTaskUpdateRequest.assignedId)
-        && Objects.equals(this.state, humanTaskUpdateRequest.state);
-  }
+		this.state = state;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(assignedId, state);
-  }
+	/**
+	 * state of the HumanTask
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "state of the HumanTask")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class HumanTaskUpdateRequest {\n");
-    sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		HumanTaskUpdateRequest humanTaskUpdateRequest = (HumanTaskUpdateRequest) o;
+		return Objects.equals(this.assignedId, humanTaskUpdateRequest.assignedId)
+				&& Objects.equals(this.state, humanTaskUpdateRequest.state);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(assignedId, state);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class HumanTaskUpdateRequest {\n");
+		sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

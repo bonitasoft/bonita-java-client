@@ -21,219 +21,213 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** Bdm */
-@JsonPropertyOrder({
-  Bdm.JSON_PROPERTY_ID,
-  Bdm.JSON_PROPERTY_NAME,
-  Bdm.JSON_PROPERTY_TYPE,
-  Bdm.JSON_PROPERTY_STATE,
-  Bdm.JSON_PROPERTY_LAST_UPDATED_BY,
-  Bdm.JSON_PROPERTY_LAST_UPDATE_DATE
-})
+@JsonPropertyOrder({ Bdm.JSON_PROPERTY_ID, Bdm.JSON_PROPERTY_NAME, Bdm.JSON_PROPERTY_TYPE, Bdm.JSON_PROPERTY_STATE,
+		Bdm.JSON_PROPERTY_LAST_UPDATED_BY, Bdm.JSON_PROPERTY_LAST_UPDATE_DATE })
 @JsonTypeName("Bdm")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Bdm implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+	private String id;
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private TenantResourceState state;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_LAST_UPDATED_BY = "lastUpdatedBy";
-  private Integer lastUpdatedBy;
+	private String name;
 
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
-  private String lastUpdateDate;
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public Bdm id(String id) {
+	private String type;
 
-    this.id = id;
-    return this;
-  }
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  /**
-   * BDM id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "BDM id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	private TenantResourceState state;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public static final String JSON_PROPERTY_LAST_UPDATED_BY = "lastUpdatedBy";
 
-  public Bdm name(String name) {
+	private Integer lastUpdatedBy;
 
-    this.name = name;
-    return this;
-  }
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
 
-  /**
-   * BDM name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "BDM name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	private String lastUpdateDate;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public Bdm id(String id) {
 
-  public Bdm type(String type) {
+		this.id = id;
+		return this;
+	}
 
-    this.type = type;
-    return this;
-  }
+	/**
+	 * BDM id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "BDM id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  /**
-   * BDM type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "BDM type")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getType() {
-    return type;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public void setType(String type) {
-    this.type = type;
-  }
+	public Bdm name(String name) {
 
-  public Bdm state(TenantResourceState state) {
+		this.name = name;
+		return this;
+	}
 
-    this.state = state;
-    return this;
-  }
+	/**
+	 * BDM name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "BDM name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * Get state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TenantResourceState getState() {
-    return state;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public void setState(TenantResourceState state) {
-    this.state = state;
-  }
+	public Bdm type(String type) {
 
-  public Bdm lastUpdatedBy(Integer lastUpdatedBy) {
+		this.type = type;
+		return this;
+	}
 
-    this.lastUpdatedBy = lastUpdatedBy;
-    return this;
-  }
+	/**
+	 * BDM type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "BDM type")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getType() {
+		return type;
+	}
 
-  /**
-   * This value is always -1 because only the tenant_technical_user can install BDM.
-   *
-   * @return lastUpdatedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "This value is always -1 because only the tenant_technical_user can install BDM.")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getLastUpdatedBy() {
-    return lastUpdatedBy;
-  }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-  public void setLastUpdatedBy(Integer lastUpdatedBy) {
-    this.lastUpdatedBy = lastUpdatedBy;
-  }
+	public Bdm state(TenantResourceState state) {
 
-  public Bdm lastUpdateDate(String lastUpdateDate) {
+		this.state = state;
+		return this;
+	}
 
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
+	/**
+	 * Get state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public TenantResourceState getState() {
+		return state;
+	}
 
-  /**
-   * Last date when the BDM was installed or updated.
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Last date when the BDM was installed or updated.")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
+	public void setState(TenantResourceState state) {
+		this.state = state;
+	}
 
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
+	public Bdm lastUpdatedBy(Integer lastUpdatedBy) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Bdm bdm = (Bdm) o;
-    return Objects.equals(this.id, bdm.id)
-        && Objects.equals(this.name, bdm.name)
-        && Objects.equals(this.type, bdm.type)
-        && Objects.equals(this.state, bdm.state)
-        && Objects.equals(this.lastUpdatedBy, bdm.lastUpdatedBy)
-        && Objects.equals(this.lastUpdateDate, bdm.lastUpdateDate);
-  }
+		this.lastUpdatedBy = lastUpdatedBy;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, type, state, lastUpdatedBy, lastUpdateDate);
-  }
+	/**
+	 * This value is always -1 because only the tenant_technical_user can install BDM.
+	 * @return lastUpdatedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "This value is always -1 because only the tenant_technical_user can install BDM.")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Integer getLastUpdatedBy() {
+		return lastUpdatedBy;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Bdm {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    lastUpdatedBy: ").append(toIndentedString(lastUpdatedBy)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setLastUpdatedBy(Integer lastUpdatedBy) {
+		this.lastUpdatedBy = lastUpdatedBy;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public Bdm lastUpdateDate(String lastUpdateDate) {
+
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * Last date when the BDM was installed or updated.
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Last date when the BDM was installed or updated.")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Bdm bdm = (Bdm) o;
+		return Objects.equals(this.id, bdm.id) && Objects.equals(this.name, bdm.name)
+				&& Objects.equals(this.type, bdm.type) && Objects.equals(this.state, bdm.state)
+				&& Objects.equals(this.lastUpdatedBy, bdm.lastUpdatedBy)
+				&& Objects.equals(this.lastUpdateDate, bdm.lastUpdateDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, type, state, lastUpdatedBy, lastUpdateDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Bdm {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    lastUpdatedBy: ").append(toIndentedString(lastUpdatedBy)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

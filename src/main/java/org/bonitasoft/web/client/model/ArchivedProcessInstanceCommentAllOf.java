@@ -23,72 +23,74 @@ import java.util.Objects;
 
 /** Information about the comment of an archived process instances. */
 @ApiModel(description = "Information about the comment of an archived process instances.")
-@JsonPropertyOrder({ArchivedProcessInstanceCommentAllOf.JSON_PROPERTY_ARCHIVED_DATE})
+@JsonPropertyOrder({ ArchivedProcessInstanceCommentAllOf.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("ArchivedProcessInstanceComment_allOf")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceCommentAllOf implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
+	private static final long serialVersionUID = 1L;
 
-  public ArchivedProcessInstanceCommentAllOf archivedDate(String archivedDate) {
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
 
-    this.archivedDate = archivedDate;
-    return this;
-  }
+	private String archivedDate;
 
-  /**
-   * the date set when the process instance comment was archived
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the date set when the process instance comment was archived")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
+	public ArchivedProcessInstanceCommentAllOf archivedDate(String archivedDate) {
 
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
+		this.archivedDate = archivedDate;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArchivedProcessInstanceCommentAllOf archivedProcessInstanceCommentAllOf =
-        (ArchivedProcessInstanceCommentAllOf) o;
-    return Objects.equals(this.archivedDate, archivedProcessInstanceCommentAllOf.archivedDate);
-  }
+	/**
+	 * the date set when the process instance comment was archived
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the date set when the process instance comment was archived")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(archivedDate);
-  }
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedProcessInstanceCommentAllOf {\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ArchivedProcessInstanceCommentAllOf archivedProcessInstanceCommentAllOf = (ArchivedProcessInstanceCommentAllOf) o;
+		return Objects.equals(this.archivedDate, archivedProcessInstanceCommentAllOf.archivedDate);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ArchivedProcessInstanceCommentAllOf {\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

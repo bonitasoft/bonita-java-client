@@ -23,160 +23,158 @@ import java.util.Objects;
 
 /** Bonita license */
 @ApiModel(description = "Bonita license")
-@JsonPropertyOrder({
-  License.JSON_PROPERTY_OWNER,
-  License.JSON_PROPERTY_EDITION,
-  License.JSON_PROPERTY_NB_CPU_CORES,
-  License.JSON_PROPERTY_EXPIRATION_DATE
-})
+@JsonPropertyOrder({ License.JSON_PROPERTY_OWNER, License.JSON_PROPERTY_EDITION, License.JSON_PROPERTY_NB_CPU_CORES,
+		License.JSON_PROPERTY_EXPIRATION_DATE })
 @JsonTypeName("License")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class License implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_OWNER = "owner";
-  private String owner;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_EDITION = "edition";
-  private String edition;
+	public static final String JSON_PROPERTY_OWNER = "owner";
 
-  public static final String JSON_PROPERTY_NB_CPU_CORES = "nb_cpu_cores";
-  private String nbCpuCores;
+	private String owner;
 
-  public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
-  private Long expirationDate;
+	public static final String JSON_PROPERTY_EDITION = "edition";
 
-  public License owner(String owner) {
+	private String edition;
 
-    this.owner = owner;
-    return this;
-  }
+	public static final String JSON_PROPERTY_NB_CPU_CORES = "nb_cpu_cores";
 
-  /**
-   * Owner of the license
-   *
-   * @return owner
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Owner of the license")
-  @JsonProperty(JSON_PROPERTY_OWNER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getOwner() {
-    return owner;
-  }
+	private String nbCpuCores;
 
-  public void setOwner(String owner) {
-    this.owner = owner;
-  }
+	public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
 
-  public License edition(String edition) {
+	private Long expirationDate;
 
-    this.edition = edition;
-    return this;
-  }
+	public License owner(String owner) {
 
-  /**
-   * name of the Bonita edition enabled by the license (Community,...)
-   *
-   * @return edition
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "name of the Bonita edition enabled by the license (Community,...)")
-  @JsonProperty(JSON_PROPERTY_EDITION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEdition() {
-    return edition;
-  }
+		this.owner = owner;
+		return this;
+	}
 
-  public void setEdition(String edition) {
-    this.edition = edition;
-  }
+	/**
+	 * Owner of the license
+	 * @return owner
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Owner of the license")
+	@JsonProperty(JSON_PROPERTY_OWNER)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getOwner() {
+		return owner;
+	}
 
-  public License nbCpuCores(String nbCpuCores) {
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
 
-    this.nbCpuCores = nbCpuCores;
-    return this;
-  }
+	public License edition(String edition) {
 
-  /**
-   * number of CPUs
-   *
-   * @return nbCpuCores
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "number of CPUs")
-  @JsonProperty(JSON_PROPERTY_NB_CPU_CORES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getNbCpuCores() {
-    return nbCpuCores;
-  }
+		this.edition = edition;
+		return this;
+	}
 
-  public void setNbCpuCores(String nbCpuCores) {
-    this.nbCpuCores = nbCpuCores;
-  }
+	/**
+	 * name of the Bonita edition enabled by the license (Community,...)
+	 * @return edition
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "name of the Bonita edition enabled by the license (Community,...)")
+	@JsonProperty(JSON_PROPERTY_EDITION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getEdition() {
+		return edition;
+	}
 
-  public License expirationDate(Long expirationDate) {
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
 
-    this.expirationDate = expirationDate;
-    return this;
-  }
+	public License nbCpuCores(String nbCpuCores) {
 
-  /**
-   * License expiration date with format: &#x60;yyyy-MM-dd HH:mm:ss.SSS&#x60;
-   *
-   * @return expirationDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "License expiration date with format: `yyyy-MM-dd HH:mm:ss.SSS`")
-  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getExpirationDate() {
-    return expirationDate;
-  }
+		this.nbCpuCores = nbCpuCores;
+		return this;
+	}
 
-  public void setExpirationDate(Long expirationDate) {
-    this.expirationDate = expirationDate;
-  }
+	/**
+	 * number of CPUs
+	 * @return nbCpuCores
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "number of CPUs")
+	@JsonProperty(JSON_PROPERTY_NB_CPU_CORES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getNbCpuCores() {
+		return nbCpuCores;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    License license = (License) o;
-    return Objects.equals(this.owner, license.owner)
-        && Objects.equals(this.edition, license.edition)
-        && Objects.equals(this.nbCpuCores, license.nbCpuCores)
-        && Objects.equals(this.expirationDate, license.expirationDate);
-  }
+	public void setNbCpuCores(String nbCpuCores) {
+		this.nbCpuCores = nbCpuCores;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(owner, edition, nbCpuCores, expirationDate);
-  }
+	public License expirationDate(Long expirationDate) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class License {\n");
-    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    edition: ").append(toIndentedString(edition)).append("\n");
-    sb.append("    nbCpuCores: ").append(toIndentedString(nbCpuCores)).append("\n");
-    sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.expirationDate = expirationDate;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * License expiration date with format: &#x60;yyyy-MM-dd HH:mm:ss.SSS&#x60;
+	 * @return expirationDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "License expiration date with format: `yyyy-MM-dd HH:mm:ss.SSS`")
+	@JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(Long expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		License license = (License) o;
+		return Objects.equals(this.owner, license.owner) && Objects.equals(this.edition, license.edition)
+				&& Objects.equals(this.nbCpuCores, license.nbCpuCores)
+				&& Objects.equals(this.expirationDate, license.expirationDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(owner, edition, nbCpuCores, expirationDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class License {\n");
+		sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+		sb.append("    edition: ").append(toIndentedString(edition)).append("\n");
+		sb.append("    nbCpuCores: ").append(toIndentedString(nbCpuCores)).append("\n");
+		sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

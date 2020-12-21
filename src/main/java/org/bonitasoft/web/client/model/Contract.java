@@ -23,115 +23,117 @@ import java.util.List;
 import java.util.Objects;
 
 /** Contract */
-@JsonPropertyOrder({Contract.JSON_PROPERTY_CONSTRAINTS, Contract.JSON_PROPERTY_INPUTS})
+@JsonPropertyOrder({ Contract.JSON_PROPERTY_CONSTRAINTS, Contract.JSON_PROPERTY_INPUTS })
 @JsonTypeName("Contract")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Contract implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
-  private List<ContractConstraints> constraints = null;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_INPUTS = "inputs";
-  private List<ContractInput> inputs = null;
+	public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
 
-  public Contract constraints(List<ContractConstraints> constraints) {
+	private List<ContractConstraints> constraints = null;
 
-    this.constraints = constraints;
-    return this;
-  }
+	public static final String JSON_PROPERTY_INPUTS = "inputs";
 
-  public Contract addConstraintsItem(ContractConstraints constraintsItem) {
-    if (this.constraints == null) {
-      this.constraints = new ArrayList<>();
-    }
-    this.constraints.add(constraintsItem);
-    return this;
-  }
+	private List<ContractInput> inputs = null;
 
-  /**
-   * Get constraints
-   *
-   * @return constraints
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<ContractConstraints> getConstraints() {
-    return constraints;
-  }
+	public Contract constraints(List<ContractConstraints> constraints) {
 
-  public void setConstraints(List<ContractConstraints> constraints) {
-    this.constraints = constraints;
-  }
+		this.constraints = constraints;
+		return this;
+	}
 
-  public Contract inputs(List<ContractInput> inputs) {
+	public Contract addConstraintsItem(ContractConstraints constraintsItem) {
+		if (this.constraints == null) {
+			this.constraints = new ArrayList<>();
+		}
+		this.constraints.add(constraintsItem);
+		return this;
+	}
 
-    this.inputs = inputs;
-    return this;
-  }
+	/**
+	 * Get constraints
+	 * @return constraints
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_CONSTRAINTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<ContractConstraints> getConstraints() {
+		return constraints;
+	}
 
-  public Contract addInputsItem(ContractInput inputsItem) {
-    if (this.inputs == null) {
-      this.inputs = new ArrayList<>();
-    }
-    this.inputs.add(inputsItem);
-    return this;
-  }
+	public void setConstraints(List<ContractConstraints> constraints) {
+		this.constraints = constraints;
+	}
 
-  /**
-   * Get inputs
-   *
-   * @return inputs
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_INPUTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<ContractInput> getInputs() {
-    return inputs;
-  }
+	public Contract inputs(List<ContractInput> inputs) {
 
-  public void setInputs(List<ContractInput> inputs) {
-    this.inputs = inputs;
-  }
+		this.inputs = inputs;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Contract contract = (Contract) o;
-    return Objects.equals(this.constraints, contract.constraints)
-        && Objects.equals(this.inputs, contract.inputs);
-  }
+	public Contract addInputsItem(ContractInput inputsItem) {
+		if (this.inputs == null) {
+			this.inputs = new ArrayList<>();
+		}
+		this.inputs.add(inputsItem);
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(constraints, inputs);
-  }
+	/**
+	 * Get inputs
+	 * @return inputs
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_INPUTS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<ContractInput> getInputs() {
+		return inputs;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Contract {\n");
-    sb.append("    constraints: ").append(toIndentedString(constraints)).append("\n");
-    sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setInputs(List<ContractInput> inputs) {
+		this.inputs = inputs;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Contract contract = (Contract) o;
+		return Objects.equals(this.constraints, contract.constraints) && Objects.equals(this.inputs, contract.inputs);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(constraints, inputs);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Contract {\n");
+		sb.append("    constraints: ").append(toIndentedString(constraints)).append("\n");
+		sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

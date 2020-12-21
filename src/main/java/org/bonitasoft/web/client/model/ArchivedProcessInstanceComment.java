@@ -21,248 +21,246 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ArchivedProcessInstanceComment */
-@JsonPropertyOrder({
-  ArchivedProcessInstanceComment.JSON_PROPERTY_ID,
-  ArchivedProcessInstanceComment.JSON_PROPERTY_CONTENT,
-  ArchivedProcessInstanceComment.JSON_PROPERTY_TENANT_ID,
-  ArchivedProcessInstanceComment.JSON_PROPERTY_PROCESS_INSTANCE_ID,
-  ArchivedProcessInstanceComment.JSON_PROPERTY_POST_DATE,
-  ArchivedProcessInstanceComment.JSON_PROPERTY_USER_ID,
-  ArchivedProcessInstanceComment.JSON_PROPERTY_ARCHIVED_DATE
-})
+@JsonPropertyOrder({ ArchivedProcessInstanceComment.JSON_PROPERTY_ID,
+		ArchivedProcessInstanceComment.JSON_PROPERTY_CONTENT, ArchivedProcessInstanceComment.JSON_PROPERTY_TENANT_ID,
+		ArchivedProcessInstanceComment.JSON_PROPERTY_PROCESS_INSTANCE_ID,
+		ArchivedProcessInstanceComment.JSON_PROPERTY_POST_DATE, ArchivedProcessInstanceComment.JSON_PROPERTY_USER_ID,
+		ArchivedProcessInstanceComment.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("ArchivedProcessInstanceComment")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceComment implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONTENT = "content";
-  private String content;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  private String tenantId;
+	private String id;
 
-  public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
-  private String processInstanceId;
+	public static final String JSON_PROPERTY_CONTENT = "content";
 
-  public static final String JSON_PROPERTY_POST_DATE = "postDate";
-  private String postDate;
+	private String content;
 
-  public static final String JSON_PROPERTY_USER_ID = "userId";
-  private String userId;
+	public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
 
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
+	private String tenantId;
 
-  public ArchivedProcessInstanceComment id(String id) {
+	public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
 
-    this.id = id;
-    return this;
-  }
+	private String processInstanceId;
 
-  /**
-   * the comment id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the comment id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	public static final String JSON_PROPERTY_POST_DATE = "postDate";
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	private String postDate;
 
-  public ArchivedProcessInstanceComment content(String content) {
+	public static final String JSON_PROPERTY_USER_ID = "userId";
 
-    this.content = content;
-    return this;
-  }
+	private String userId;
 
-  /**
-   * the comment content
-   *
-   * @return content
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the comment content")
-  @JsonProperty(JSON_PROPERTY_CONTENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContent() {
-    return content;
-  }
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
 
-  public void setContent(String content) {
-    this.content = content;
-  }
+	private String archivedDate;
 
-  public ArchivedProcessInstanceComment tenantId(String tenantId) {
+	public ArchivedProcessInstanceComment id(String id) {
 
-    this.tenantId = tenantId;
-    return this;
-  }
+		this.id = id;
+		return this;
+	}
 
-  /**
-   * the id of the tenant the comment is associated to
-   *
-   * @return tenantId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the id of the tenant the comment is associated to")
-  @JsonProperty(JSON_PROPERTY_TENANT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTenantId() {
-    return tenantId;
-  }
+	/**
+	 * the comment id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the comment id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  public void setTenantId(String tenantId) {
-    this.tenantId = tenantId;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public ArchivedProcessInstanceComment processInstanceId(String processInstanceId) {
+	public ArchivedProcessInstanceComment content(String content) {
 
-    this.processInstanceId = processInstanceId;
-    return this;
-  }
+		this.content = content;
+		return this;
+	}
 
-  /**
-   * the process instance (case) the comment is associated to
-   *
-   * @return processInstanceId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the process instance (case) the comment is associated to")
-  @JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessInstanceId() {
-    return processInstanceId;
-  }
+	/**
+	 * the comment content
+	 * @return content
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the comment content")
+	@JsonProperty(JSON_PROPERTY_CONTENT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContent() {
+		return content;
+	}
 
-  public void setProcessInstanceId(String processInstanceId) {
-    this.processInstanceId = processInstanceId;
-  }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-  public ArchivedProcessInstanceComment postDate(String postDate) {
+	public ArchivedProcessInstanceComment tenantId(String tenantId) {
 
-    this.postDate = postDate;
-    return this;
-  }
+		this.tenantId = tenantId;
+		return this;
+	}
 
-  /**
-   * the comment creation date
-   *
-   * @return postDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the comment creation date")
-  @JsonProperty(JSON_PROPERTY_POST_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPostDate() {
-    return postDate;
-  }
+	/**
+	 * the id of the tenant the comment is associated to
+	 * @return tenantId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the id of the tenant the comment is associated to")
+	@JsonProperty(JSON_PROPERTY_TENANT_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getTenantId() {
+		return tenantId;
+	}
 
-  public void setPostDate(String postDate) {
-    this.postDate = postDate;
-  }
+	public void setTenantId(String tenantId) {
+		this.tenantId = tenantId;
+	}
 
-  public ArchivedProcessInstanceComment userId(String userId) {
+	public ArchivedProcessInstanceComment processInstanceId(String processInstanceId) {
 
-    this.userId = userId;
-    return this;
-  }
+		this.processInstanceId = processInstanceId;
+		return this;
+	}
 
-  /**
-   * the user that created the comment
-   *
-   * @return userId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the user that created the comment")
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUserId() {
-    return userId;
-  }
+	/**
+	 * the process instance (case) the comment is associated to
+	 * @return processInstanceId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the process instance (case) the comment is associated to")
+	@JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessInstanceId() {
+		return processInstanceId;
+	}
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+	public void setProcessInstanceId(String processInstanceId) {
+		this.processInstanceId = processInstanceId;
+	}
 
-  public ArchivedProcessInstanceComment archivedDate(String archivedDate) {
+	public ArchivedProcessInstanceComment postDate(String postDate) {
 
-    this.archivedDate = archivedDate;
-    return this;
-  }
+		this.postDate = postDate;
+		return this;
+	}
 
-  /**
-   * the date set when the process instance comment was archived
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the date set when the process instance comment was archived")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
+	/**
+	 * the comment creation date
+	 * @return postDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the comment creation date")
+	@JsonProperty(JSON_PROPERTY_POST_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPostDate() {
+		return postDate;
+	}
 
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
+	public void setPostDate(String postDate) {
+		this.postDate = postDate;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArchivedProcessInstanceComment archivedProcessInstanceComment =
-        (ArchivedProcessInstanceComment) o;
-    return Objects.equals(this.id, archivedProcessInstanceComment.id)
-        && Objects.equals(this.content, archivedProcessInstanceComment.content)
-        && Objects.equals(this.tenantId, archivedProcessInstanceComment.tenantId)
-        && Objects.equals(this.processInstanceId, archivedProcessInstanceComment.processInstanceId)
-        && Objects.equals(this.postDate, archivedProcessInstanceComment.postDate)
-        && Objects.equals(this.userId, archivedProcessInstanceComment.userId)
-        && Objects.equals(this.archivedDate, archivedProcessInstanceComment.archivedDate);
-  }
+	public ArchivedProcessInstanceComment userId(String userId) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, content, tenantId, processInstanceId, postDate, userId, archivedDate);
-  }
+		this.userId = userId;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedProcessInstanceComment {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
-    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
-    sb.append("    processInstanceId: ").append(toIndentedString(processInstanceId)).append("\n");
-    sb.append("    postDate: ").append(toIndentedString(postDate)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * the user that created the comment
+	 * @return userId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the user that created the comment")
+	@JsonProperty(JSON_PROPERTY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUserId() {
+		return userId;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public ArchivedProcessInstanceComment archivedDate(String archivedDate) {
+
+		this.archivedDate = archivedDate;
+		return this;
+	}
+
+	/**
+	 * the date set when the process instance comment was archived
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the date set when the process instance comment was archived")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
+
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ArchivedProcessInstanceComment archivedProcessInstanceComment = (ArchivedProcessInstanceComment) o;
+		return Objects.equals(this.id, archivedProcessInstanceComment.id)
+				&& Objects.equals(this.content, archivedProcessInstanceComment.content)
+				&& Objects.equals(this.tenantId, archivedProcessInstanceComment.tenantId)
+				&& Objects.equals(this.processInstanceId, archivedProcessInstanceComment.processInstanceId)
+				&& Objects.equals(this.postDate, archivedProcessInstanceComment.postDate)
+				&& Objects.equals(this.userId, archivedProcessInstanceComment.userId)
+				&& Objects.equals(this.archivedDate, archivedProcessInstanceComment.archivedDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, content, tenantId, processInstanceId, postDate, userId, archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ArchivedProcessInstanceComment {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    content: ").append(toIndentedString(content)).append("\n");
+		sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+		sb.append("    processInstanceId: ").append(toIndentedString(processInstanceId)).append("\n");
+		sb.append("    postDate: ").append(toIndentedString(postDate)).append("\n");
+		sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

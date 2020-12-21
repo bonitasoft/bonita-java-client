@@ -21,160 +21,158 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ApplicationPage */
-@JsonPropertyOrder({
-  ApplicationPage.JSON_PROPERTY_ID,
-  ApplicationPage.JSON_PROPERTY_TOKEN,
-  ApplicationPage.JSON_PROPERTY_APPLICATION_ID,
-  ApplicationPage.JSON_PROPERTY_PAGE_ID
-})
+@JsonPropertyOrder({ ApplicationPage.JSON_PROPERTY_ID, ApplicationPage.JSON_PROPERTY_TOKEN,
+		ApplicationPage.JSON_PROPERTY_APPLICATION_ID, ApplicationPage.JSON_PROPERTY_PAGE_ID })
 @JsonTypeName("ApplicationPage")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationPage implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_TOKEN = "token";
-  private String token;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
-  private String applicationId;
+	private String id;
 
-  public static final String JSON_PROPERTY_PAGE_ID = "pageId";
-  private String pageId;
+	public static final String JSON_PROPERTY_TOKEN = "token";
 
-  public ApplicationPage id(String id) {
+	private String token;
 
-    this.id = id;
-    return this;
-  }
+	public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
 
-  /**
-   * id of the application page item
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the application page item")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	private String applicationId;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public static final String JSON_PROPERTY_PAGE_ID = "pageId";
 
-  public ApplicationPage token(String token) {
+	private String pageId;
 
-    this.token = token;
-    return this;
-  }
+	public ApplicationPage id(String id) {
 
-  /**
-   * token use to access the page using a URL : ../appName/pageToken/
-   *
-   * @return token
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "token use to access the page using a URL : ../appName/pageToken/")
-  @JsonProperty(JSON_PROPERTY_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getToken() {
-    return token;
-  }
+		this.id = id;
+		return this;
+	}
 
-  public void setToken(String token) {
-    this.token = token;
-  }
+	/**
+	 * id of the application page item
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the application page item")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  public ApplicationPage applicationId(String applicationId) {
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    this.applicationId = applicationId;
-    return this;
-  }
+	public ApplicationPage token(String token) {
 
-  /**
-   * id of the application related to this page
-   *
-   * @return applicationId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the application related to this page")
-  @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getApplicationId() {
-    return applicationId;
-  }
+		this.token = token;
+		return this;
+	}
 
-  public void setApplicationId(String applicationId) {
-    this.applicationId = applicationId;
-  }
+	/**
+	 * token use to access the page using a URL : ../appName/pageToken/
+	 * @return token
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "token use to access the page using a URL : ../appName/pageToken/")
+	@JsonProperty(JSON_PROPERTY_TOKEN)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getToken() {
+		return token;
+	}
 
-  public ApplicationPage pageId(String pageId) {
+	public void setToken(String token) {
+		this.token = token;
+	}
 
-    this.pageId = pageId;
-    return this;
-  }
+	public ApplicationPage applicationId(String applicationId) {
 
-  /**
-   * id of the custom page to display
-   *
-   * @return pageId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the custom page to display")
-  @JsonProperty(JSON_PROPERTY_PAGE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPageId() {
-    return pageId;
-  }
+		this.applicationId = applicationId;
+		return this;
+	}
 
-  public void setPageId(String pageId) {
-    this.pageId = pageId;
-  }
+	/**
+	 * id of the application related to this page
+	 * @return applicationId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the application related to this page")
+	@JsonProperty(JSON_PROPERTY_APPLICATION_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getApplicationId() {
+		return applicationId;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ApplicationPage applicationPage = (ApplicationPage) o;
-    return Objects.equals(this.id, applicationPage.id)
-        && Objects.equals(this.token, applicationPage.token)
-        && Objects.equals(this.applicationId, applicationPage.applicationId)
-        && Objects.equals(this.pageId, applicationPage.pageId);
-  }
+	public void setApplicationId(String applicationId) {
+		this.applicationId = applicationId;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, token, applicationId, pageId);
-  }
+	public ApplicationPage pageId(String pageId) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ApplicationPage {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
-    sb.append("    pageId: ").append(toIndentedString(pageId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.pageId = pageId;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * id of the custom page to display
+	 * @return pageId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the custom page to display")
+	@JsonProperty(JSON_PROPERTY_PAGE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPageId() {
+		return pageId;
+	}
+
+	public void setPageId(String pageId) {
+		this.pageId = pageId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ApplicationPage applicationPage = (ApplicationPage) o;
+		return Objects.equals(this.id, applicationPage.id) && Objects.equals(this.token, applicationPage.token)
+				&& Objects.equals(this.applicationId, applicationPage.applicationId)
+				&& Objects.equals(this.pageId, applicationPage.pageId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, token, applicationId, pageId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ApplicationPage {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    token: ").append(toIndentedString(token)).append("\n");
+		sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+		sb.append("    pageId: ").append(toIndentedString(pageId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

@@ -21,71 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessParameterUpdateRequest */
-@JsonPropertyOrder({ProcessParameterUpdateRequest.JSON_PROPERTY_VALUE})
+@JsonPropertyOrder({ ProcessParameterUpdateRequest.JSON_PROPERTY_VALUE })
 @JsonTypeName("ProcessParameterUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessParameterUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private String value;
+	private static final long serialVersionUID = 1L;
 
-  public ProcessParameterUpdateRequest value(String value) {
+	public static final String JSON_PROPERTY_VALUE = "value";
 
-    this.value = value;
-    return this;
-  }
+	private String value;
 
-  /**
-   * value of the Process Parameter
-   *
-   * @return value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "value of the Process Parameter")
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getValue() {
-    return value;
-  }
+	public ProcessParameterUpdateRequest value(String value) {
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+		this.value = value;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessParameterUpdateRequest processParameterUpdateRequest = (ProcessParameterUpdateRequest) o;
-    return Objects.equals(this.value, processParameterUpdateRequest.value);
-  }
+	/**
+	 * value of the Process Parameter
+	 * @return value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "value of the Process Parameter")
+	@JsonProperty(JSON_PROPERTY_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getValue() {
+		return value;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(value);
-  }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessParameterUpdateRequest {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessParameterUpdateRequest processParameterUpdateRequest = (ProcessParameterUpdateRequest) o;
+		return Objects.equals(this.value, processParameterUpdateRequest.value);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessParameterUpdateRequest {\n");
+		sb.append("    value: ").append(toIndentedString(value)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

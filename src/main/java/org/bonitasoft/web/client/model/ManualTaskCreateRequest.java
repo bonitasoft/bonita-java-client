@@ -21,247 +21,245 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ManualTaskCreateRequest */
-@JsonPropertyOrder({
-  ManualTaskCreateRequest.JSON_PROPERTY_PARENT_TASK_ID,
-  ManualTaskCreateRequest.JSON_PROPERTY_STATE,
-  ManualTaskCreateRequest.JSON_PROPERTY_NAME,
-  ManualTaskCreateRequest.JSON_PROPERTY_DESCRIPTION,
-  ManualTaskCreateRequest.JSON_PROPERTY_PRIORITY,
-  ManualTaskCreateRequest.JSON_PROPERTY_DUE_DATE,
-  ManualTaskCreateRequest.JSON_PROPERTY_ASSIGNED_ID
-})
+@JsonPropertyOrder({ ManualTaskCreateRequest.JSON_PROPERTY_PARENT_TASK_ID, ManualTaskCreateRequest.JSON_PROPERTY_STATE,
+		ManualTaskCreateRequest.JSON_PROPERTY_NAME, ManualTaskCreateRequest.JSON_PROPERTY_DESCRIPTION,
+		ManualTaskCreateRequest.JSON_PROPERTY_PRIORITY, ManualTaskCreateRequest.JSON_PROPERTY_DUE_DATE,
+		ManualTaskCreateRequest.JSON_PROPERTY_ASSIGNED_ID })
 @JsonTypeName("ManualTaskCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ManualTaskCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
-  private String parentTaskId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private String parentTaskId;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  public static final String JSON_PROPERTY_PRIORITY = "priority";
-  private String priority;
+	private String state;
 
-  public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
-  private String dueDate;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
-  private String assignedId;
+	private String name;
 
-  public ManualTaskCreateRequest parentTaskId(String parentTaskId) {
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-    this.parentTaskId = parentTaskId;
-    return this;
-  }
+	private String description;
 
-  /**
-   * The parent task ID
-   *
-   * @return parentTaskId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The parent task ID")
-  @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getParentTaskId() {
-    return parentTaskId;
-  }
+	public static final String JSON_PROPERTY_PRIORITY = "priority";
 
-  public void setParentTaskId(String parentTaskId) {
-    this.parentTaskId = parentTaskId;
-  }
+	private String priority;
 
-  public ManualTaskCreateRequest state(String state) {
+	public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
 
-    this.state = state;
-    return this;
-  }
+	private String dueDate;
 
-  /**
-   * The task state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The task state")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
+	public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
 
-  public void setState(String state) {
-    this.state = state;
-  }
+	private String assignedId;
 
-  public ManualTaskCreateRequest name(String name) {
+	public ManualTaskCreateRequest parentTaskId(String parentTaskId) {
 
-    this.name = name;
-    return this;
-  }
+		this.parentTaskId = parentTaskId;
+		return this;
+	}
 
-  /**
-   * The task name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The task name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	/**
+	 * The parent task ID
+	 * @return parentTaskId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The parent task ID")
+	@JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getParentTaskId() {
+		return parentTaskId;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public void setParentTaskId(String parentTaskId) {
+		this.parentTaskId = parentTaskId;
+	}
 
-  public ManualTaskCreateRequest description(String description) {
+	public ManualTaskCreateRequest state(String state) {
 
-    this.description = description;
-    return this;
-  }
+		this.state = state;
+		return this;
+	}
 
-  /**
-   * The task description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The task description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	/**
+	 * The task state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The task state")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-  public ManualTaskCreateRequest priority(String priority) {
+	public ManualTaskCreateRequest name(String name) {
 
-    this.priority = priority;
-    return this;
-  }
+		this.name = name;
+		return this;
+	}
 
-  /**
-   * The task priority
-   *
-   * @return priority
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The task priority")
-  @JsonProperty(JSON_PROPERTY_PRIORITY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPriority() {
-    return priority;
-  }
+	/**
+	 * The task name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The task name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  public void setPriority(String priority) {
-    this.priority = priority;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public ManualTaskCreateRequest dueDate(String dueDate) {
+	public ManualTaskCreateRequest description(String description) {
 
-    this.dueDate = dueDate;
-    return this;
-  }
+		this.description = description;
+		return this;
+	}
 
-  /**
-   * The task due date
-   *
-   * @return dueDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The task due date")
-  @JsonProperty(JSON_PROPERTY_DUE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDueDate() {
-    return dueDate;
-  }
+	/**
+	 * The task description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The task description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  public void setDueDate(String dueDate) {
-    this.dueDate = dueDate;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public ManualTaskCreateRequest assignedId(String assignedId) {
+	public ManualTaskCreateRequest priority(String priority) {
 
-    this.assignedId = assignedId;
-    return this;
-  }
+		this.priority = priority;
+		return this;
+	}
 
-  /**
-   * The id of the user assigned to the task
-   *
-   * @return assignedId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The id of the user assigned to the task")
-  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssignedId() {
-    return assignedId;
-  }
+	/**
+	 * The task priority
+	 * @return priority
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The task priority")
+	@JsonProperty(JSON_PROPERTY_PRIORITY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getPriority() {
+		return priority;
+	}
 
-  public void setAssignedId(String assignedId) {
-    this.assignedId = assignedId;
-  }
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ManualTaskCreateRequest manualTaskCreateRequest = (ManualTaskCreateRequest) o;
-    return Objects.equals(this.parentTaskId, manualTaskCreateRequest.parentTaskId)
-        && Objects.equals(this.state, manualTaskCreateRequest.state)
-        && Objects.equals(this.name, manualTaskCreateRequest.name)
-        && Objects.equals(this.description, manualTaskCreateRequest.description)
-        && Objects.equals(this.priority, manualTaskCreateRequest.priority)
-        && Objects.equals(this.dueDate, manualTaskCreateRequest.dueDate)
-        && Objects.equals(this.assignedId, manualTaskCreateRequest.assignedId);
-  }
+	public ManualTaskCreateRequest dueDate(String dueDate) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(parentTaskId, state, name, description, priority, dueDate, assignedId);
-  }
+		this.dueDate = dueDate;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ManualTaskCreateRequest {\n");
-    sb.append("    parentTaskId: ").append(toIndentedString(parentTaskId)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
-    sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
-    sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * The task due date
+	 * @return dueDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The task due date")
+	@JsonProperty(JSON_PROPERTY_DUE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDueDate() {
+		return dueDate;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public ManualTaskCreateRequest assignedId(String assignedId) {
+
+		this.assignedId = assignedId;
+		return this;
+	}
+
+	/**
+	 * The id of the user assigned to the task
+	 * @return assignedId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The id of the user assigned to the task")
+	@JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAssignedId() {
+		return assignedId;
+	}
+
+	public void setAssignedId(String assignedId) {
+		this.assignedId = assignedId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ManualTaskCreateRequest manualTaskCreateRequest = (ManualTaskCreateRequest) o;
+		return Objects.equals(this.parentTaskId, manualTaskCreateRequest.parentTaskId)
+				&& Objects.equals(this.state, manualTaskCreateRequest.state)
+				&& Objects.equals(this.name, manualTaskCreateRequest.name)
+				&& Objects.equals(this.description, manualTaskCreateRequest.description)
+				&& Objects.equals(this.priority, manualTaskCreateRequest.priority)
+				&& Objects.equals(this.dueDate, manualTaskCreateRequest.dueDate)
+				&& Objects.equals(this.assignedId, manualTaskCreateRequest.assignedId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(parentTaskId, state, name, description, priority, dueDate, assignedId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ManualTaskCreateRequest {\n");
+		sb.append("    parentTaskId: ").append(toIndentedString(parentTaskId)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+		sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
+		sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

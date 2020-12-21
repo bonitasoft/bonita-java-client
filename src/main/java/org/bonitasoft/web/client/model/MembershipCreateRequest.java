@@ -21,128 +21,128 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** MembershipCreateRequest */
-@JsonPropertyOrder({
-  MembershipCreateRequest.JSON_PROPERTY_ROLE_ID,
-  MembershipCreateRequest.JSON_PROPERTY_GROUP_ID,
-  MembershipCreateRequest.JSON_PROPERTY_USER_ID
-})
+@JsonPropertyOrder({ MembershipCreateRequest.JSON_PROPERTY_ROLE_ID, MembershipCreateRequest.JSON_PROPERTY_GROUP_ID,
+		MembershipCreateRequest.JSON_PROPERTY_USER_ID })
 @JsonTypeName("MembershipCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MembershipCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ROLE_ID = "role_id";
-  private String roleId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_GROUP_ID = "group_id";
-  private String groupId;
+	public static final String JSON_PROPERTY_ROLE_ID = "role_id";
 
-  public static final String JSON_PROPERTY_USER_ID = "user_id";
-  private String userId;
+	private String roleId;
 
-  public MembershipCreateRequest roleId(String roleId) {
+	public static final String JSON_PROPERTY_GROUP_ID = "group_id";
 
-    this.roleId = roleId;
-    return this;
-  }
+	private String groupId;
 
-  /**
-   * id of the role of this membership
-   *
-   * @return roleId
-   */
-  @ApiModelProperty(required = true, value = "id of the role of this membership")
-  @JsonProperty(JSON_PROPERTY_ROLE_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getRoleId() {
-    return roleId;
-  }
+	public static final String JSON_PROPERTY_USER_ID = "user_id";
 
-  public void setRoleId(String roleId) {
-    this.roleId = roleId;
-  }
+	private String userId;
 
-  public MembershipCreateRequest groupId(String groupId) {
+	public MembershipCreateRequest roleId(String roleId) {
 
-    this.groupId = groupId;
-    return this;
-  }
+		this.roleId = roleId;
+		return this;
+	}
 
-  /**
-   * id of the group of this membership
-   *
-   * @return groupId
-   */
-  @ApiModelProperty(required = true, value = "id of the group of this membership")
-  @JsonProperty(JSON_PROPERTY_GROUP_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getGroupId() {
-    return groupId;
-  }
+	/**
+	 * id of the role of this membership
+	 * @return roleId
+	 */
+	@ApiModelProperty(required = true, value = "id of the role of this membership")
+	@JsonProperty(JSON_PROPERTY_ROLE_ID)
+	@JsonInclude(value = JsonInclude.Include.ALWAYS)
+	public String getRoleId() {
+		return roleId;
+	}
 
-  public void setGroupId(String groupId) {
-    this.groupId = groupId;
-  }
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
 
-  public MembershipCreateRequest userId(String userId) {
+	public MembershipCreateRequest groupId(String groupId) {
 
-    this.userId = userId;
-    return this;
-  }
+		this.groupId = groupId;
+		return this;
+	}
 
-  /**
-   * id of the user in this membership
-   *
-   * @return userId
-   */
-  @ApiModelProperty(required = true, value = "id of the user in this membership")
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getUserId() {
-    return userId;
-  }
+	/**
+	 * id of the group of this membership
+	 * @return groupId
+	 */
+	@ApiModelProperty(required = true, value = "id of the group of this membership")
+	@JsonProperty(JSON_PROPERTY_GROUP_ID)
+	@JsonInclude(value = JsonInclude.Include.ALWAYS)
+	public String getGroupId() {
+		return groupId;
+	}
 
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    MembershipCreateRequest membershipCreateRequest = (MembershipCreateRequest) o;
-    return Objects.equals(this.roleId, membershipCreateRequest.roleId)
-        && Objects.equals(this.groupId, membershipCreateRequest.groupId)
-        && Objects.equals(this.userId, membershipCreateRequest.userId);
-  }
+	public MembershipCreateRequest userId(String userId) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(roleId, groupId, userId);
-  }
+		this.userId = userId;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class MembershipCreateRequest {\n");
-    sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
-    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * id of the user in this membership
+	 * @return userId
+	 */
+	@ApiModelProperty(required = true, value = "id of the user in this membership")
+	@JsonProperty(JSON_PROPERTY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.ALWAYS)
+	public String getUserId() {
+		return userId;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		MembershipCreateRequest membershipCreateRequest = (MembershipCreateRequest) o;
+		return Objects.equals(this.roleId, membershipCreateRequest.roleId)
+				&& Objects.equals(this.groupId, membershipCreateRequest.groupId)
+				&& Objects.equals(this.userId, membershipCreateRequest.userId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(roleId, groupId, userId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class MembershipCreateRequest {\n");
+		sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
+		sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+		sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

@@ -21,102 +21,102 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ActorUpdateRequest */
-@JsonPropertyOrder({
-  ActorUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
-  ActorUpdateRequest.JSON_PROPERTY_DESCRIPTION
-})
+@JsonPropertyOrder({ ActorUpdateRequest.JSON_PROPERTY_DISPLAY_NAME, ActorUpdateRequest.JSON_PROPERTY_DESCRIPTION })
 @JsonTypeName("ActorUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActorUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public ActorUpdateRequest displayName(String displayName) {
+	private String displayName;
 
-    this.displayName = displayName;
-    return this;
-  }
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  /**
-   * display name of the Actor
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name of the Actor")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	private String description;
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public ActorUpdateRequest displayName(String displayName) {
 
-  public ActorUpdateRequest description(String description) {
+		this.displayName = displayName;
+		return this;
+	}
 
-    this.description = description;
-    return this;
-  }
+	/**
+	 * display name of the Actor
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "display name of the Actor")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  /**
-   * description of the Actor
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description of the Actor")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public ActorUpdateRequest description(String description) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ActorUpdateRequest actorUpdateRequest = (ActorUpdateRequest) o;
-    return Objects.equals(this.displayName, actorUpdateRequest.displayName)
-        && Objects.equals(this.description, actorUpdateRequest.description);
-  }
+		this.description = description;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(displayName, description);
-  }
+	/**
+	 * description of the Actor
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description of the Actor")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ActorUpdateRequest {\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ActorUpdateRequest actorUpdateRequest = (ActorUpdateRequest) o;
+		return Objects.equals(this.displayName, actorUpdateRequest.displayName)
+				&& Objects.equals(this.description, actorUpdateRequest.description);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(displayName, description);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ActorUpdateRequest {\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

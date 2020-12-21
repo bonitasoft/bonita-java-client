@@ -23,197 +23,196 @@ import java.util.List;
 import java.util.Objects;
 
 /** ContractConstraints */
-@JsonPropertyOrder({
-  ContractConstraints.JSON_PROPERTY_NAME,
-  ContractConstraints.JSON_PROPERTY_EXPRESSION,
-  ContractConstraints.JSON_PROPERTY_EXPLANATION,
-  ContractConstraints.JSON_PROPERTY_INPUT_NAMES,
-  ContractConstraints.JSON_PROPERTY_CONSTRAINT_TYPE
-})
+@JsonPropertyOrder({ ContractConstraints.JSON_PROPERTY_NAME, ContractConstraints.JSON_PROPERTY_EXPRESSION,
+		ContractConstraints.JSON_PROPERTY_EXPLANATION, ContractConstraints.JSON_PROPERTY_INPUT_NAMES,
+		ContractConstraints.JSON_PROPERTY_CONSTRAINT_TYPE })
 @JsonTypeName("Contract_constraints")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContractConstraints implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_EXPRESSION = "expression";
-  private String expression;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_EXPLANATION = "explanation";
-  private String explanation;
+	private String name;
 
-  public static final String JSON_PROPERTY_INPUT_NAMES = "inputNames";
-  private List<String> inputNames = null;
+	public static final String JSON_PROPERTY_EXPRESSION = "expression";
 
-  public static final String JSON_PROPERTY_CONSTRAINT_TYPE = "constraintType";
-  private String constraintType;
+	private String expression;
 
-  public ContractConstraints name(String name) {
+	public static final String JSON_PROPERTY_EXPLANATION = "explanation";
 
-    this.name = name;
-    return this;
-  }
+	private String explanation;
 
-  /**
-   * constraint name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "constraint name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public static final String JSON_PROPERTY_INPUT_NAMES = "inputNames";
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	private List<String> inputNames = null;
 
-  public ContractConstraints expression(String expression) {
+	public static final String JSON_PROPERTY_CONSTRAINT_TYPE = "constraintType";
 
-    this.expression = expression;
-    return this;
-  }
+	private String constraintType;
 
-  /**
-   * constraint expression
-   *
-   * @return expression
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "constraint expression")
-  @JsonProperty(JSON_PROPERTY_EXPRESSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExpression() {
-    return expression;
-  }
+	public ContractConstraints name(String name) {
 
-  public void setExpression(String expression) {
-    this.expression = expression;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public ContractConstraints explanation(String explanation) {
+	/**
+	 * constraint name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "constraint name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-    this.explanation = explanation;
-    return this;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * constraint explanation
-   *
-   * @return explanation
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "constraint explanation")
-  @JsonProperty(JSON_PROPERTY_EXPLANATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExplanation() {
-    return explanation;
-  }
+	public ContractConstraints expression(String expression) {
 
-  public void setExplanation(String explanation) {
-    this.explanation = explanation;
-  }
+		this.expression = expression;
+		return this;
+	}
 
-  public ContractConstraints inputNames(List<String> inputNames) {
+	/**
+	 * constraint expression
+	 * @return expression
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "constraint expression")
+	@JsonProperty(JSON_PROPERTY_EXPRESSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExpression() {
+		return expression;
+	}
 
-    this.inputNames = inputNames;
-    return this;
-  }
+	public void setExpression(String expression) {
+		this.expression = expression;
+	}
 
-  public ContractConstraints addInputNamesItem(String inputNamesItem) {
-    if (this.inputNames == null) {
-      this.inputNames = new ArrayList<>();
-    }
-    this.inputNames.add(inputNamesItem);
-    return this;
-  }
+	public ContractConstraints explanation(String explanation) {
 
-  /**
-   * Get inputNames
-   *
-   * @return inputNames
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_INPUT_NAMES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<String> getInputNames() {
-    return inputNames;
-  }
+		this.explanation = explanation;
+		return this;
+	}
 
-  public void setInputNames(List<String> inputNames) {
-    this.inputNames = inputNames;
-  }
+	/**
+	 * constraint explanation
+	 * @return explanation
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "constraint explanation")
+	@JsonProperty(JSON_PROPERTY_EXPLANATION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExplanation() {
+		return explanation;
+	}
 
-  public ContractConstraints constraintType(String constraintType) {
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
+	}
 
-    this.constraintType = constraintType;
-    return this;
-  }
+	public ContractConstraints inputNames(List<String> inputNames) {
 
-  /**
-   * constraint type (ex: MANDATORY)
-   *
-   * @return constraintType
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "constraint type (ex: MANDATORY)")
-  @JsonProperty(JSON_PROPERTY_CONSTRAINT_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getConstraintType() {
-    return constraintType;
-  }
+		this.inputNames = inputNames;
+		return this;
+	}
 
-  public void setConstraintType(String constraintType) {
-    this.constraintType = constraintType;
-  }
+	public ContractConstraints addInputNamesItem(String inputNamesItem) {
+		if (this.inputNames == null) {
+			this.inputNames = new ArrayList<>();
+		}
+		this.inputNames.add(inputNamesItem);
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ContractConstraints contractConstraints = (ContractConstraints) o;
-    return Objects.equals(this.name, contractConstraints.name)
-        && Objects.equals(this.expression, contractConstraints.expression)
-        && Objects.equals(this.explanation, contractConstraints.explanation)
-        && Objects.equals(this.inputNames, contractConstraints.inputNames)
-        && Objects.equals(this.constraintType, contractConstraints.constraintType);
-  }
+	/**
+	 * Get inputNames
+	 * @return inputNames
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_INPUT_NAMES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<String> getInputNames() {
+		return inputNames;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, expression, explanation, inputNames, constraintType);
-  }
+	public void setInputNames(List<String> inputNames) {
+		this.inputNames = inputNames;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ContractConstraints {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
-    sb.append("    explanation: ").append(toIndentedString(explanation)).append("\n");
-    sb.append("    inputNames: ").append(toIndentedString(inputNames)).append("\n");
-    sb.append("    constraintType: ").append(toIndentedString(constraintType)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public ContractConstraints constraintType(String constraintType) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.constraintType = constraintType;
+		return this;
+	}
+
+	/**
+	 * constraint type (ex: MANDATORY)
+	 * @return constraintType
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "constraint type (ex: MANDATORY)")
+	@JsonProperty(JSON_PROPERTY_CONSTRAINT_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getConstraintType() {
+		return constraintType;
+	}
+
+	public void setConstraintType(String constraintType) {
+		this.constraintType = constraintType;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ContractConstraints contractConstraints = (ContractConstraints) o;
+		return Objects.equals(this.name, contractConstraints.name)
+				&& Objects.equals(this.expression, contractConstraints.expression)
+				&& Objects.equals(this.explanation, contractConstraints.explanation)
+				&& Objects.equals(this.inputNames, contractConstraints.inputNames)
+				&& Objects.equals(this.constraintType, contractConstraints.constraintType);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, expression, explanation, inputNames, constraintType);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ContractConstraints {\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+		sb.append("    explanation: ").append(toIndentedString(explanation)).append("\n");
+		sb.append("    inputNames: ").append(toIndentedString(inputNames)).append("\n");
+		sb.append("    constraintType: ").append(toIndentedString(constraintType)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

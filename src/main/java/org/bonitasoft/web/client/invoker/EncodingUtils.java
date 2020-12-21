@@ -79,4 +79,5 @@ public final class EncodingUtils {
 			throw new ClientException("Failed to encode parameter", e);
 		}
 	}
+
 }

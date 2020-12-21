@@ -21,72 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** TimerEventTriggerUpdateResponse */
-@JsonPropertyOrder({TimerEventTriggerUpdateResponse.JSON_PROPERTY_EXECUTION_DATE})
+@JsonPropertyOrder({ TimerEventTriggerUpdateResponse.JSON_PROPERTY_EXECUTION_DATE })
 @JsonTypeName("TimerEventTriggerUpdateResponse")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TimerEventTriggerUpdateResponse implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_EXECUTION_DATE = "executionDate";
-  private Long executionDate;
+	private static final long serialVersionUID = 1L;
 
-  public TimerEventTriggerUpdateResponse executionDate(Long executionDate) {
+	public static final String JSON_PROPERTY_EXECUTION_DATE = "executionDate";
 
-    this.executionDate = executionDate;
-    return this;
-  }
+	private Long executionDate;
 
-  /**
-   * executionDate of the TimerEventTrigger
-   *
-   * @return executionDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "executionDate of the TimerEventTrigger")
-  @JsonProperty(JSON_PROPERTY_EXECUTION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getExecutionDate() {
-    return executionDate;
-  }
+	public TimerEventTriggerUpdateResponse executionDate(Long executionDate) {
 
-  public void setExecutionDate(Long executionDate) {
-    this.executionDate = executionDate;
-  }
+		this.executionDate = executionDate;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    TimerEventTriggerUpdateResponse timerEventTriggerUpdateResponse =
-        (TimerEventTriggerUpdateResponse) o;
-    return Objects.equals(this.executionDate, timerEventTriggerUpdateResponse.executionDate);
-  }
+	/**
+	 * executionDate of the TimerEventTrigger
+	 * @return executionDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "executionDate of the TimerEventTrigger")
+	@JsonProperty(JSON_PROPERTY_EXECUTION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getExecutionDate() {
+		return executionDate;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(executionDate);
-  }
+	public void setExecutionDate(Long executionDate) {
+		this.executionDate = executionDate;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TimerEventTriggerUpdateResponse {\n");
-    sb.append("    executionDate: ").append(toIndentedString(executionDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		TimerEventTriggerUpdateResponse timerEventTriggerUpdateResponse = (TimerEventTriggerUpdateResponse) o;
+		return Objects.equals(this.executionDate, timerEventTriggerUpdateResponse.executionDate);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(executionDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class TimerEventTriggerUpdateResponse {\n");
+		sb.append("    executionDate: ").append(toIndentedString(executionDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

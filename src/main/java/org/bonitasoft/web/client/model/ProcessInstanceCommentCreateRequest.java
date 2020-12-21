@@ -21,104 +21,103 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessInstanceCommentCreateRequest */
-@JsonPropertyOrder({
-  ProcessInstanceCommentCreateRequest.JSON_PROPERTY_PROCESS_INSTANCE_ID,
-  ProcessInstanceCommentCreateRequest.JSON_PROPERTY_CONTENT
-})
+@JsonPropertyOrder({ ProcessInstanceCommentCreateRequest.JSON_PROPERTY_PROCESS_INSTANCE_ID,
+		ProcessInstanceCommentCreateRequest.JSON_PROPERTY_CONTENT })
 @JsonTypeName("ProcessInstanceCommentCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceCommentCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
-  private String processInstanceId;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONTENT = "content";
-  private String content;
+	public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
 
-  public ProcessInstanceCommentCreateRequest processInstanceId(String processInstanceId) {
+	private String processInstanceId;
 
-    this.processInstanceId = processInstanceId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_CONTENT = "content";
 
-  /**
-   * the process instance (case) the comment is associated to
-   *
-   * @return processInstanceId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the process instance (case) the comment is associated to")
-  @JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProcessInstanceId() {
-    return processInstanceId;
-  }
+	private String content;
 
-  public void setProcessInstanceId(String processInstanceId) {
-    this.processInstanceId = processInstanceId;
-  }
+	public ProcessInstanceCommentCreateRequest processInstanceId(String processInstanceId) {
 
-  public ProcessInstanceCommentCreateRequest content(String content) {
+		this.processInstanceId = processInstanceId;
+		return this;
+	}
 
-    this.content = content;
-    return this;
-  }
+	/**
+	 * the process instance (case) the comment is associated to
+	 * @return processInstanceId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the process instance (case) the comment is associated to")
+	@JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProcessInstanceId() {
+		return processInstanceId;
+	}
 
-  /**
-   * the comment content
-   *
-   * @return content
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the comment content")
-  @JsonProperty(JSON_PROPERTY_CONTENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContent() {
-    return content;
-  }
+	public void setProcessInstanceId(String processInstanceId) {
+		this.processInstanceId = processInstanceId;
+	}
 
-  public void setContent(String content) {
-    this.content = content;
-  }
+	public ProcessInstanceCommentCreateRequest content(String content) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstanceCommentCreateRequest processInstanceCommentCreateRequest =
-        (ProcessInstanceCommentCreateRequest) o;
-    return Objects.equals(
-            this.processInstanceId, processInstanceCommentCreateRequest.processInstanceId)
-        && Objects.equals(this.content, processInstanceCommentCreateRequest.content);
-  }
+		this.content = content;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(processInstanceId, content);
-  }
+	/**
+	 * the comment content
+	 * @return content
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the comment content")
+	@JsonProperty(JSON_PROPERTY_CONTENT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContent() {
+		return content;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstanceCommentCreateRequest {\n");
-    sb.append("    processInstanceId: ").append(toIndentedString(processInstanceId)).append("\n");
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstanceCommentCreateRequest processInstanceCommentCreateRequest = (ProcessInstanceCommentCreateRequest) o;
+		return Objects.equals(this.processInstanceId, processInstanceCommentCreateRequest.processInstanceId)
+				&& Objects.equals(this.content, processInstanceCommentCreateRequest.content);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(processInstanceId, content);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstanceCommentCreateRequest {\n");
+		sb.append("    processInstanceId: ").append(toIndentedString(processInstanceId)).append("\n");
+		sb.append("    content: ").append(toIndentedString(content)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

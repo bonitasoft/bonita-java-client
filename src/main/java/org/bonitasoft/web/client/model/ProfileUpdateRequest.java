@@ -21,102 +21,102 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProfileUpdateRequest */
-@JsonPropertyOrder({
-  ProfileUpdateRequest.JSON_PROPERTY_DESCRIPTION,
-  ProfileUpdateRequest.JSON_PROPERTY_DISPLAY_NAME
-})
+@JsonPropertyOrder({ ProfileUpdateRequest.JSON_PROPERTY_DESCRIPTION, ProfileUpdateRequest.JSON_PROPERTY_DISPLAY_NAME })
 @JsonTypeName("ProfileUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfileUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public ProfileUpdateRequest description(String description) {
+	private String description;
 
-    this.description = description;
-    return this;
-  }
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  /**
-   * description of the Profile
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description of the Profile")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	private String displayName;
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public ProfileUpdateRequest description(String description) {
 
-  public ProfileUpdateRequest displayName(String displayName) {
+		this.description = description;
+		return this;
+	}
 
-    this.displayName = displayName;
-    return this;
-  }
+	/**
+	 * description of the Profile
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description of the Profile")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  /**
-   * display name of the Profile
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name of the Profile")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public ProfileUpdateRequest displayName(String displayName) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProfileUpdateRequest profileUpdateRequest = (ProfileUpdateRequest) o;
-    return Objects.equals(this.description, profileUpdateRequest.description)
-        && Objects.equals(this.displayName, profileUpdateRequest.displayName);
-  }
+		this.displayName = displayName;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(description, displayName);
-  }
+	/**
+	 * display name of the Profile
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "display name of the Profile")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProfileUpdateRequest {\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProfileUpdateRequest profileUpdateRequest = (ProfileUpdateRequest) o;
+		return Objects.equals(this.description, profileUpdateRequest.description)
+				&& Objects.equals(this.displayName, profileUpdateRequest.displayName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, displayName);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProfileUpdateRequest {\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

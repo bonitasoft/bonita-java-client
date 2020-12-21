@@ -23,158 +23,159 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** MessageMessageContent */
-@JsonPropertyOrder({
-  MessageMessageContent.JSON_PROPERTY_VALUE,
-  MessageMessageContent.JSON_PROPERTY_TYPE
-})
+@JsonPropertyOrder({ MessageMessageContent.JSON_PROPERTY_VALUE, MessageMessageContent.JSON_PROPERTY_TYPE })
 @JsonTypeName("Message_messageContent")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageMessageContent implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private String value;
+	private static final long serialVersionUID = 1L;
 
-  /**
-   * Date types must be in the ISO-8601 format. When not set, the type is guessed using the value.
-   * Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is
-   * expected and the guessed type is a java.lang.Integer)
-   */
-  public enum TypeEnum {
-    LANG_STRING("java.lang.String"),
+	public static final String JSON_PROPERTY_VALUE = "value";
 
-    LANG_BOOLEAN("java.lang.Boolean"),
+	private String value;
 
-    LANG_INTEGER("java.lang.Integer"),
+	/**
+	 * Date types must be in the ISO-8601 format. When not set, the type is guessed using
+	 * the value. Be careful as it can lead to type inconsistency in the target process
+	 * (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer)
+	 */
+	public enum TypeEnum {
 
-    LANG_DOUBLE("java.lang.Double"),
+		LANG_STRING("java.lang.String"),
 
-    LANG_FLOAT("java.lang.Float"),
+		LANG_BOOLEAN("java.lang.Boolean"),
 
-    LANG_LONG("java.lang.Long"),
+		LANG_INTEGER("java.lang.Integer"),
 
-    UTIL_DATE("java.util.Date"),
+		LANG_DOUBLE("java.lang.Double"),
 
-    TIME_LOCALDATE("java.time.LocalDate"),
+		LANG_FLOAT("java.lang.Float"),
 
-    TIME_LOCALDATETIME("java.time.LocalDateTime"),
+		LANG_LONG("java.lang.Long"),
 
-    TIME_OFFSETDATETIME("java.time.OffsetDateTime");
+		UTIL_DATE("java.util.Date"),
 
-    private String value;
+		TIME_LOCALDATE("java.time.LocalDate"),
 
-    TypeEnum(String value) {
-      this.value = value;
-    }
+		TIME_LOCALDATETIME("java.time.LocalDateTime"),
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+		TIME_OFFSETDATETIME("java.time.OffsetDateTime");
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+		private String value;
 
-    @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+		TypeEnum(String value) {
+			this.value = value;
+		}
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private TypeEnum type;
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
 
-  public MessageMessageContent value(String value) {
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-    this.value = value;
-    return this;
-  }
+		@JsonCreator
+		public static TypeEnum fromValue(String value) {
+			for (TypeEnum b : TypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
 
-  /**
-   * Get value
-   *
-   * @return value
-   */
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getValue() {
-    return value;
-  }
+	}
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public MessageMessageContent type(TypeEnum type) {
+	private TypeEnum type;
 
-    this.type = type;
-    return this;
-  }
+	public MessageMessageContent value(String value) {
 
-  /**
-   * Date types must be in the ISO-8601 format. When not set, the type is guessed using the value.
-   * Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is
-   * expected and the guessed type is a java.lang.Integer)
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "Date types must be in the ISO-8601 format. When not set, the type is guessed using the value. Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer) ")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TypeEnum getType() {
-    return type;
-  }
+		this.value = value;
+		return this;
+	}
 
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
+	/**
+	 * Get value
+	 * @return value
+	 */
+	@ApiModelProperty(required = true, value = "")
+	@JsonProperty(JSON_PROPERTY_VALUE)
+	@JsonInclude(value = JsonInclude.Include.ALWAYS)
+	public String getValue() {
+		return value;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    MessageMessageContent messageMessageContent = (MessageMessageContent) o;
-    return Objects.equals(this.value, messageMessageContent.value)
-        && Objects.equals(this.type, messageMessageContent.type);
-  }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(value, type);
-  }
+	public MessageMessageContent type(TypeEnum type) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class MessageMessageContent {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.type = type;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Date types must be in the ISO-8601 format. When not set, the type is guessed using
+	 * the value. Be careful as it can lead to type inconsistency in the target process
+	 * (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer)
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "Date types must be in the ISO-8601 format. When not set, the type is guessed using the value. Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer) ")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public TypeEnum getType() {
+		return type;
+	}
+
+	public void setType(TypeEnum type) {
+		this.type = type;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		MessageMessageContent messageMessageContent = (MessageMessageContent) o;
+		return Objects.equals(this.value, messageMessageContent.value)
+				&& Objects.equals(this.type, messageMessageContent.type);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(value, type);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class MessageMessageContent {\n");
+		sb.append("    value: ").append(toIndentedString(value)).append("\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

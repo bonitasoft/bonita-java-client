@@ -21,222 +21,218 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ApplicationMenu */
-@JsonPropertyOrder({
-  ApplicationMenu.JSON_PROPERTY_ID,
-  ApplicationMenu.JSON_PROPERTY_PARENT_MENU_ID,
-  ApplicationMenu.JSON_PROPERTY_APPLICATION_PAGE_ID,
-  ApplicationMenu.JSON_PROPERTY_APPLICATION_ID,
-  ApplicationMenu.JSON_PROPERTY_MENU_INDEX,
-  ApplicationMenu.JSON_PROPERTY_DISPLAY_NAME
-})
+@JsonPropertyOrder({ ApplicationMenu.JSON_PROPERTY_ID, ApplicationMenu.JSON_PROPERTY_PARENT_MENU_ID,
+		ApplicationMenu.JSON_PROPERTY_APPLICATION_PAGE_ID, ApplicationMenu.JSON_PROPERTY_APPLICATION_ID,
+		ApplicationMenu.JSON_PROPERTY_MENU_INDEX, ApplicationMenu.JSON_PROPERTY_DISPLAY_NAME })
 @JsonTypeName("ApplicationMenu")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationMenu implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PARENT_MENU_ID = "parentMenuId";
-  private String parentMenuId;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_APPLICATION_PAGE_ID = "applicationPageId";
-  private String applicationPageId;
+	private String id;
 
-  public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
-  private String applicationId;
+	public static final String JSON_PROPERTY_PARENT_MENU_ID = "parentMenuId";
 
-  public static final String JSON_PROPERTY_MENU_INDEX = "menuIndex";
-  private String menuIndex;
+	private String parentMenuId;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	public static final String JSON_PROPERTY_APPLICATION_PAGE_ID = "applicationPageId";
 
-  public ApplicationMenu id(String id) {
+	private String applicationPageId;
 
-    this.id = id;
-    return this;
-  }
+	public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
 
-  /**
-   * id of the application menu item
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the application menu item")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	private String applicationId;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public static final String JSON_PROPERTY_MENU_INDEX = "menuIndex";
 
-  public ApplicationMenu parentMenuId(String parentMenuId) {
+	private String menuIndex;
 
-    this.parentMenuId = parentMenuId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  /**
-   * id of the parent menu of this menu item, or -1 for a top-level item
-   *
-   * @return parentMenuId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the parent menu of this menu item, or -1 for a top-level item")
-  @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getParentMenuId() {
-    return parentMenuId;
-  }
+	private String displayName;
 
-  public void setParentMenuId(String parentMenuId) {
-    this.parentMenuId = parentMenuId;
-  }
+	public ApplicationMenu id(String id) {
 
-  public ApplicationMenu applicationPageId(String applicationPageId) {
+		this.id = id;
+		return this;
+	}
 
-    this.applicationPageId = applicationPageId;
-    return this;
-  }
+	/**
+	 * id of the application menu item
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the application menu item")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  /**
-   * id of the application page targeted by this menu item, or -1 if there is no targeted page (that
-   * is, the item is a parent menu)
-   *
-   * @return applicationPageId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "id of the application page targeted by this menu item, or -1 if there is no targeted page (that is, the item is a parent menu)")
-  @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getApplicationPageId() {
-    return applicationPageId;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public void setApplicationPageId(String applicationPageId) {
-    this.applicationPageId = applicationPageId;
-  }
+	public ApplicationMenu parentMenuId(String parentMenuId) {
 
-  public ApplicationMenu applicationId(String applicationId) {
+		this.parentMenuId = parentMenuId;
+		return this;
+	}
 
-    this.applicationId = applicationId;
-    return this;
-  }
+	/**
+	 * id of the parent menu of this menu item, or -1 for a top-level item
+	 * @return parentMenuId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the parent menu of this menu item, or -1 for a top-level item")
+	@JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getParentMenuId() {
+		return parentMenuId;
+	}
 
-  /**
-   * id of the application related to this menu item
-   *
-   * @return applicationId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the application related to this menu item")
-  @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getApplicationId() {
-    return applicationId;
-  }
+	public void setParentMenuId(String parentMenuId) {
+		this.parentMenuId = parentMenuId;
+	}
 
-  public void setApplicationId(String applicationId) {
-    this.applicationId = applicationId;
-  }
+	public ApplicationMenu applicationPageId(String applicationPageId) {
 
-  public ApplicationMenu menuIndex(String menuIndex) {
+		this.applicationPageId = applicationPageId;
+		return this;
+	}
 
-    this.menuIndex = menuIndex;
-    return this;
-  }
+	/**
+	 * id of the application page targeted by this menu item, or -1 if there is no
+	 * targeted page (that is, the item is a parent menu)
+	 * @return applicationPageId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "id of the application page targeted by this menu item, or -1 if there is no targeted page (that is, the item is a parent menu)")
+	@JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getApplicationPageId() {
+		return applicationPageId;
+	}
 
-  /**
-   * index of the menu item
-   *
-   * @return menuIndex
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "index of the menu item")
-  @JsonProperty(JSON_PROPERTY_MENU_INDEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getMenuIndex() {
-    return menuIndex;
-  }
+	public void setApplicationPageId(String applicationPageId) {
+		this.applicationPageId = applicationPageId;
+	}
 
-  public void setMenuIndex(String menuIndex) {
-    this.menuIndex = menuIndex;
-  }
+	public ApplicationMenu applicationId(String applicationId) {
 
-  public ApplicationMenu displayName(String displayName) {
+		this.applicationId = applicationId;
+		return this;
+	}
 
-    this.displayName = displayName;
-    return this;
-  }
+	/**
+	 * id of the application related to this menu item
+	 * @return applicationId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the application related to this menu item")
+	@JsonProperty(JSON_PROPERTY_APPLICATION_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getApplicationId() {
+		return applicationId;
+	}
 
-  /**
-   * label to display for this menu in the application navigation bar or menu
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value = "label to display for this menu in the application navigation bar or menu")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	public void setApplicationId(String applicationId) {
+		this.applicationId = applicationId;
+	}
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public ApplicationMenu menuIndex(String menuIndex) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ApplicationMenu applicationMenu = (ApplicationMenu) o;
-    return Objects.equals(this.id, applicationMenu.id)
-        && Objects.equals(this.parentMenuId, applicationMenu.parentMenuId)
-        && Objects.equals(this.applicationPageId, applicationMenu.applicationPageId)
-        && Objects.equals(this.applicationId, applicationMenu.applicationId)
-        && Objects.equals(this.menuIndex, applicationMenu.menuIndex)
-        && Objects.equals(this.displayName, applicationMenu.displayName);
-  }
+		this.menuIndex = menuIndex;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, parentMenuId, applicationPageId, applicationId, menuIndex, displayName);
-  }
+	/**
+	 * index of the menu item
+	 * @return menuIndex
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "index of the menu item")
+	@JsonProperty(JSON_PROPERTY_MENU_INDEX)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getMenuIndex() {
+		return menuIndex;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ApplicationMenu {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    parentMenuId: ").append(toIndentedString(parentMenuId)).append("\n");
-    sb.append("    applicationPageId: ").append(toIndentedString(applicationPageId)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
-    sb.append("    menuIndex: ").append(toIndentedString(menuIndex)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setMenuIndex(String menuIndex) {
+		this.menuIndex = menuIndex;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public ApplicationMenu displayName(String displayName) {
+
+		this.displayName = displayName;
+		return this;
+	}
+
+	/**
+	 * label to display for this menu in the application navigation bar or menu
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "label to display for this menu in the application navigation bar or menu")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ApplicationMenu applicationMenu = (ApplicationMenu) o;
+		return Objects.equals(this.id, applicationMenu.id)
+				&& Objects.equals(this.parentMenuId, applicationMenu.parentMenuId)
+				&& Objects.equals(this.applicationPageId, applicationMenu.applicationPageId)
+				&& Objects.equals(this.applicationId, applicationMenu.applicationId)
+				&& Objects.equals(this.menuIndex, applicationMenu.menuIndex)
+				&& Objects.equals(this.displayName, applicationMenu.displayName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, parentMenuId, applicationPageId, applicationId, menuIndex, displayName);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ApplicationMenu {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    parentMenuId: ").append(toIndentedString(parentMenuId)).append("\n");
+		sb.append("    applicationPageId: ").append(toIndentedString(applicationPageId)).append("\n");
+		sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+		sb.append("    menuIndex: ").append(toIndentedString(menuIndex)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

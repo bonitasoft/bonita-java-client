@@ -21,344 +21,327 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** Page */
-@JsonPropertyOrder({
-  Page.JSON_PROPERTY_ID,
-  Page.JSON_PROPERTY_CREATION_DATE,
-  Page.JSON_PROPERTY_CREATED_BY,
-  Page.JSON_PROPERTY_IS_PROVIDED,
-  Page.JSON_PROPERTY_DESCRIPTION,
-  Page.JSON_PROPERTY_CONTENT_NAME,
-  Page.JSON_PROPERTY_DISPLAY_NAME,
-  Page.JSON_PROPERTY_UPDATED_BY,
-  Page.JSON_PROPERTY_LAST_UPDATE_DATE,
-  Page.JSON_PROPERTY_URL_TOKEN
-})
+@JsonPropertyOrder({ Page.JSON_PROPERTY_ID, Page.JSON_PROPERTY_CREATION_DATE, Page.JSON_PROPERTY_CREATED_BY,
+		Page.JSON_PROPERTY_IS_PROVIDED, Page.JSON_PROPERTY_DESCRIPTION, Page.JSON_PROPERTY_CONTENT_NAME,
+		Page.JSON_PROPERTY_DISPLAY_NAME, Page.JSON_PROPERTY_UPDATED_BY, Page.JSON_PROPERTY_LAST_UPDATE_DATE,
+		Page.JSON_PROPERTY_URL_TOKEN })
 @JsonTypeName("Page")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Page implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
-  private String creationDate;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-  private String createdBy;
+	private String id;
 
-  public static final String JSON_PROPERTY_IS_PROVIDED = "isProvided";
-  private Boolean isProvided;
+	public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String creationDate;
 
-  public static final String JSON_PROPERTY_CONTENT_NAME = "contentName";
-  private String contentName;
+	public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	private String createdBy;
 
-  public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
-  private String updatedBy;
+	public static final String JSON_PROPERTY_IS_PROVIDED = "isProvided";
 
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
-  private String lastUpdateDate;
+	private Boolean isProvided;
 
-  public static final String JSON_PROPERTY_URL_TOKEN = "urlToken";
-  private String urlToken;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public Page id(String id) {
+	private String description;
 
-    this.id = id;
-    return this;
-  }
+	public static final String JSON_PROPERTY_CONTENT_NAME = "contentName";
 
-  /**
-   * page id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "page id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	private String contentName;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public Page creationDate(String creationDate) {
+	private String displayName;
 
-    this.creationDate = creationDate;
-    return this;
-  }
+	public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
 
-  /**
-   * date and time
-   *
-   * @return creationDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "date and time")
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreationDate() {
-    return creationDate;
-  }
+	private String updatedBy;
 
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
 
-  public Page createdBy(String createdBy) {
+	private String lastUpdateDate;
 
-    this.createdBy = createdBy;
-    return this;
-  }
+	public static final String JSON_PROPERTY_URL_TOKEN = "urlToken";
 
-  /**
-   * created by user id
-   *
-   * @return createdBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "created by user id")
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreatedBy() {
-    return createdBy;
-  }
+	private String urlToken;
 
-  public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-  }
+	public Page id(String id) {
 
-  public Page isProvided(Boolean isProvided) {
+		this.id = id;
+		return this;
+	}
 
-    this.isProvided = isProvided;
-    return this;
-  }
+	/**
+	 * page id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "page id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  /**
-   * is provided
-   *
-   * @return isProvided
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "is provided")
-  @JsonProperty(JSON_PROPERTY_IS_PROVIDED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsProvided() {
-    return isProvided;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public void setIsProvided(Boolean isProvided) {
-    this.isProvided = isProvided;
-  }
+	public Page creationDate(String creationDate) {
 
-  public Page description(String description) {
+		this.creationDate = creationDate;
+		return this;
+	}
 
-    this.description = description;
-    return this;
-  }
+	/**
+	 * date and time
+	 * @return creationDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "date and time")
+	@JsonProperty(JSON_PROPERTY_CREATION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreationDate() {
+		return creationDate;
+	}
 
-  /**
-   * description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public Page createdBy(String createdBy) {
 
-  public Page contentName(String contentName) {
+		this.createdBy = createdBy;
+		return this;
+	}
 
-    this.contentName = contentName;
-    return this;
-  }
+	/**
+	 * created by user id
+	 * @return createdBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "created by user id")
+	@JsonProperty(JSON_PROPERTY_CREATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreatedBy() {
+		return createdBy;
+	}
 
-  /**
-   * content name
-   *
-   * @return contentName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "content name")
-  @JsonProperty(JSON_PROPERTY_CONTENT_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContentName() {
-    return contentName;
-  }
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
 
-  public void setContentName(String contentName) {
-    this.contentName = contentName;
-  }
+	public Page isProvided(Boolean isProvided) {
 
-  public Page displayName(String displayName) {
+		this.isProvided = isProvided;
+		return this;
+	}
 
-    this.displayName = displayName;
-    return this;
-  }
+	/**
+	 * is provided
+	 * @return isProvided
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "is provided")
+	@JsonProperty(JSON_PROPERTY_IS_PROVIDED)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getIsProvided() {
+		return isProvided;
+	}
 
-  /**
-   * custom page display name
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "custom page display name")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	public void setIsProvided(Boolean isProvided) {
+		this.isProvided = isProvided;
+	}
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public Page description(String description) {
 
-  public Page updatedBy(String updatedBy) {
+		this.description = description;
+		return this;
+	}
 
-    this.updatedBy = updatedBy;
-    return this;
-  }
+	/**
+	 * description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  /**
-   * updated by user id
-   *
-   * @return updatedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "updated by user id")
-  @JsonProperty(JSON_PROPERTY_UPDATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUpdatedBy() {
-    return updatedBy;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public void setUpdatedBy(String updatedBy) {
-    this.updatedBy = updatedBy;
-  }
+	public Page contentName(String contentName) {
 
-  public Page lastUpdateDate(String lastUpdateDate) {
+		this.contentName = contentName;
+		return this;
+	}
 
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
+	/**
+	 * content name
+	 * @return contentName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "content name")
+	@JsonProperty(JSON_PROPERTY_CONTENT_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContentName() {
+		return contentName;
+	}
 
-  /**
-   * date and time
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "date and time")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
+	public void setContentName(String contentName) {
+		this.contentName = contentName;
+	}
 
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
+	public Page displayName(String displayName) {
 
-  public Page urlToken(String urlToken) {
+		this.displayName = displayName;
+		return this;
+	}
 
-    this.urlToken = urlToken;
-    return this;
-  }
+	/**
+	 * custom page display name
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "custom page display name")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  /**
-   * custom page urlToken
-   *
-   * @return urlToken
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "custom page urlToken")
-  @JsonProperty(JSON_PROPERTY_URL_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUrlToken() {
-    return urlToken;
-  }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-  public void setUrlToken(String urlToken) {
-    this.urlToken = urlToken;
-  }
+	public Page updatedBy(String updatedBy) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Page page = (Page) o;
-    return Objects.equals(this.id, page.id)
-        && Objects.equals(this.creationDate, page.creationDate)
-        && Objects.equals(this.createdBy, page.createdBy)
-        && Objects.equals(this.isProvided, page.isProvided)
-        && Objects.equals(this.description, page.description)
-        && Objects.equals(this.contentName, page.contentName)
-        && Objects.equals(this.displayName, page.displayName)
-        && Objects.equals(this.updatedBy, page.updatedBy)
-        && Objects.equals(this.lastUpdateDate, page.lastUpdateDate)
-        && Objects.equals(this.urlToken, page.urlToken);
-  }
+		this.updatedBy = updatedBy;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id,
-        creationDate,
-        createdBy,
-        isProvided,
-        description,
-        contentName,
-        displayName,
-        updatedBy,
-        lastUpdateDate,
-        urlToken);
-  }
+	/**
+	 * updated by user id
+	 * @return updatedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "updated by user id")
+	@JsonProperty(JSON_PROPERTY_UPDATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Page {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    isProvided: ").append(toIndentedString(isProvided)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    contentName: ").append(toIndentedString(contentName)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("    urlToken: ").append(toIndentedString(urlToken)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public Page lastUpdateDate(String lastUpdateDate) {
+
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * date and time
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "date and time")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public Page urlToken(String urlToken) {
+
+		this.urlToken = urlToken;
+		return this;
+	}
+
+	/**
+	 * custom page urlToken
+	 * @return urlToken
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "custom page urlToken")
+	@JsonProperty(JSON_PROPERTY_URL_TOKEN)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUrlToken() {
+		return urlToken;
+	}
+
+	public void setUrlToken(String urlToken) {
+		this.urlToken = urlToken;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Page page = (Page) o;
+		return Objects.equals(this.id, page.id) && Objects.equals(this.creationDate, page.creationDate)
+				&& Objects.equals(this.createdBy, page.createdBy) && Objects.equals(this.isProvided, page.isProvided)
+				&& Objects.equals(this.description, page.description)
+				&& Objects.equals(this.contentName, page.contentName)
+				&& Objects.equals(this.displayName, page.displayName) && Objects.equals(this.updatedBy, page.updatedBy)
+				&& Objects.equals(this.lastUpdateDate, page.lastUpdateDate)
+				&& Objects.equals(this.urlToken, page.urlToken);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, creationDate, createdBy, isProvided, description, contentName, displayName, updatedBy,
+				lastUpdateDate, urlToken);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Page {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+		sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+		sb.append("    isProvided: ").append(toIndentedString(isProvided)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    contentName: ").append(toIndentedString(contentName)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("    urlToken: ").append(toIndentedString(urlToken)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

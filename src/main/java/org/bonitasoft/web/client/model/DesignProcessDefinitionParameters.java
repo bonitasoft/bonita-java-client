@@ -21,132 +21,132 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** DesignProcessDefinitionParameters */
-@JsonPropertyOrder({
-  DesignProcessDefinitionParameters.JSON_PROPERTY_TYPE,
-  DesignProcessDefinitionParameters.JSON_PROPERTY_DESCRIPTION,
-  DesignProcessDefinitionParameters.JSON_PROPERTY_NAME
-})
+@JsonPropertyOrder({ DesignProcessDefinitionParameters.JSON_PROPERTY_TYPE,
+		DesignProcessDefinitionParameters.JSON_PROPERTY_DESCRIPTION,
+		DesignProcessDefinitionParameters.JSON_PROPERTY_NAME })
 @JsonTypeName("DesignProcessDefinition_parameters")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DesignProcessDefinitionParameters implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private String type;
 
-  public DesignProcessDefinitionParameters type(String type) {
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-    this.type = type;
-    return this;
-  }
+	private String description;
 
-  /**
-   * the parameter type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the parameter type")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getType() {
-    return type;
-  }
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public void setType(String type) {
-    this.type = type;
-  }
+	private String name;
 
-  public DesignProcessDefinitionParameters description(String description) {
+	public DesignProcessDefinitionParameters type(String type) {
 
-    this.description = description;
-    return this;
-  }
+		this.type = type;
+		return this;
+	}
 
-  /**
-   * the parameter description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the parameter description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	/**
+	 * the parameter type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the parameter type")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getType() {
+		return type;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-  public DesignProcessDefinitionParameters name(String name) {
+	public DesignProcessDefinitionParameters description(String description) {
 
-    this.name = name;
-    return this;
-  }
+		this.description = description;
+		return this;
+	}
 
-  /**
-   * the parameter name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the parameter name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	/**
+	 * the parameter description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the parameter description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    DesignProcessDefinitionParameters designProcessDefinitionParameters =
-        (DesignProcessDefinitionParameters) o;
-    return Objects.equals(this.type, designProcessDefinitionParameters.type)
-        && Objects.equals(this.description, designProcessDefinitionParameters.description)
-        && Objects.equals(this.name, designProcessDefinitionParameters.name);
-  }
+	public DesignProcessDefinitionParameters name(String name) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(type, description, name);
-  }
+		this.name = name;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DesignProcessDefinitionParameters {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * the parameter name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the parameter name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		DesignProcessDefinitionParameters designProcessDefinitionParameters = (DesignProcessDefinitionParameters) o;
+		return Objects.equals(this.type, designProcessDefinitionParameters.type)
+				&& Objects.equals(this.description, designProcessDefinitionParameters.description)
+				&& Objects.equals(this.name, designProcessDefinitionParameters.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(type, description, name);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class DesignProcessDefinitionParameters {\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

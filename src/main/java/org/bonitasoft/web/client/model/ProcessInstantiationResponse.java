@@ -21,71 +21,74 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessInstantiationResponse */
-@JsonPropertyOrder({ProcessInstantiationResponse.JSON_PROPERTY_CASE_ID})
+@JsonPropertyOrder({ ProcessInstantiationResponse.JSON_PROPERTY_CASE_ID })
 @JsonTypeName("ProcessInstantiationResponse")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstantiationResponse implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CASE_ID = "caseId";
-  private String caseId;
+	private static final long serialVersionUID = 1L;
 
-  public ProcessInstantiationResponse caseId(String caseId) {
+	public static final String JSON_PROPERTY_CASE_ID = "caseId";
 
-    this.caseId = caseId;
-    return this;
-  }
+	private String caseId;
 
-  /**
-   * Get caseId
-   *
-   * @return caseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCaseId() {
-    return caseId;
-  }
+	public ProcessInstantiationResponse caseId(String caseId) {
 
-  public void setCaseId(String caseId) {
-    this.caseId = caseId;
-  }
+		this.caseId = caseId;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstantiationResponse processInstantiationResponse = (ProcessInstantiationResponse) o;
-    return Objects.equals(this.caseId, processInstantiationResponse.caseId);
-  }
+	/**
+	 * Get caseId
+	 * @return caseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCaseId() {
+		return caseId;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(caseId);
-  }
+	public void setCaseId(String caseId) {
+		this.caseId = caseId;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstantiationResponse {\n");
-    sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstantiationResponse processInstantiationResponse = (ProcessInstantiationResponse) o;
+		return Objects.equals(this.caseId, processInstantiationResponse.caseId);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(caseId);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstantiationResponse {\n");
+		sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

@@ -21,277 +21,272 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ConnectorInstance */
-@JsonPropertyOrder({
-  ConnectorInstance.JSON_PROPERTY_CONTAINER_TYPE,
-  ConnectorInstance.JSON_PROPERTY_CONNECTOR_ID,
-  ConnectorInstance.JSON_PROPERTY_ID,
-  ConnectorInstance.JSON_PROPERTY_NAME,
-  ConnectorInstance.JSON_PROPERTY_ACTIVATION_EVENT,
-  ConnectorInstance.JSON_PROPERTY_STATE,
-  ConnectorInstance.JSON_PROPERTY_CONTAINER_ID,
-  ConnectorInstance.JSON_PROPERTY_VERSION
-})
+@JsonPropertyOrder({ ConnectorInstance.JSON_PROPERTY_CONTAINER_TYPE, ConnectorInstance.JSON_PROPERTY_CONNECTOR_ID,
+		ConnectorInstance.JSON_PROPERTY_ID, ConnectorInstance.JSON_PROPERTY_NAME,
+		ConnectorInstance.JSON_PROPERTY_ACTIVATION_EVENT, ConnectorInstance.JSON_PROPERTY_STATE,
+		ConnectorInstance.JSON_PROPERTY_CONTAINER_ID, ConnectorInstance.JSON_PROPERTY_VERSION })
 @JsonTypeName("ConnectorInstance")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConnectorInstance implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
-  private String containerType;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONNECTOR_ID = "connectorId";
-  private String connectorId;
+	public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private Long id;
+	private String containerType;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_CONNECTOR_ID = "connectorId";
 
-  public static final String JSON_PROPERTY_ACTIVATION_EVENT = "activationEvent";
-  private String activationEvent;
+	private String connectorId;
 
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
-  private String containerId;
+	private Long id;
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private String version;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public ConnectorInstance containerType(String containerType) {
+	private String name;
 
-    this.containerType = containerType;
-    return this;
-  }
+	public static final String JSON_PROPERTY_ACTIVATION_EVENT = "activationEvent";
 
-  /**
-   * the type of the containing activity
-   *
-   * @return containerType
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the type of the containing activity")
-  @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContainerType() {
-    return containerType;
-  }
+	private String activationEvent;
 
-  public void setContainerType(String containerType) {
-    this.containerType = containerType;
-  }
+	public static final String JSON_PROPERTY_STATE = "state";
 
-  public ConnectorInstance connectorId(String connectorId) {
+	private String state;
 
-    this.connectorId = connectorId;
-    return this;
-  }
+	public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
 
-  /**
-   * the connector id
-   *
-   * @return connectorId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector id")
-  @JsonProperty(JSON_PROPERTY_CONNECTOR_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getConnectorId() {
-    return connectorId;
-  }
+	private String containerId;
 
-  public void setConnectorId(String connectorId) {
-    this.connectorId = connectorId;
-  }
+	public static final String JSON_PROPERTY_VERSION = "version";
 
-  public ConnectorInstance id(Long id) {
+	private String version;
 
-    this.id = id;
-    return this;
-  }
+	public ConnectorInstance containerType(String containerType) {
 
-  /**
-   * the connector instance id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector instance id ")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getId() {
-    return id;
-  }
+		this.containerType = containerType;
+		return this;
+	}
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+	/**
+	 * the type of the containing activity
+	 * @return containerType
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the type of the containing activity")
+	@JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContainerType() {
+		return containerType;
+	}
 
-  public ConnectorInstance name(String name) {
+	public void setContainerType(String containerType) {
+		this.containerType = containerType;
+	}
 
-    this.name = name;
-    return this;
-  }
+	public ConnectorInstance connectorId(String connectorId) {
 
-  /**
-   * the connector name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+		this.connectorId = connectorId;
+		return this;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	/**
+	 * the connector id
+	 * @return connectorId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector id")
+	@JsonProperty(JSON_PROPERTY_CONNECTOR_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getConnectorId() {
+		return connectorId;
+	}
 
-  public ConnectorInstance activationEvent(String activationEvent) {
+	public void setConnectorId(String connectorId) {
+		this.connectorId = connectorId;
+	}
 
-    this.activationEvent = activationEvent;
-    return this;
-  }
+	public ConnectorInstance id(Long id) {
 
-  /**
-   * the name of hte event that activated the connector instance
-   *
-   * @return activationEvent
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the name of hte event that activated the connector instance")
-  @JsonProperty(JSON_PROPERTY_ACTIVATION_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getActivationEvent() {
-    return activationEvent;
-  }
+		this.id = id;
+		return this;
+	}
 
-  public void setActivationEvent(String activationEvent) {
-    this.activationEvent = activationEvent;
-  }
+	/**
+	 * the connector instance id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector instance id ")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getId() {
+		return id;
+	}
 
-  public ConnectorInstance state(String state) {
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    this.state = state;
-    return this;
-  }
+	public ConnectorInstance name(String name) {
 
-  /**
-   * the connector state
-   *
-   * @return state
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector state")
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getState() {
-    return state;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public void setState(String state) {
-    this.state = state;
-  }
+	/**
+	 * the connector name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  public ConnectorInstance containerId(String containerId) {
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    this.containerId = containerId;
-    return this;
-  }
+	public ConnectorInstance activationEvent(String activationEvent) {
 
-  /**
-   * the containing activity instance id
-   *
-   * @return containerId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the containing activity instance id")
-  @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContainerId() {
-    return containerId;
-  }
+		this.activationEvent = activationEvent;
+		return this;
+	}
 
-  public void setContainerId(String containerId) {
-    this.containerId = containerId;
-  }
+	/**
+	 * the name of hte event that activated the connector instance
+	 * @return activationEvent
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the name of hte event that activated the connector instance")
+	@JsonProperty(JSON_PROPERTY_ACTIVATION_EVENT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getActivationEvent() {
+		return activationEvent;
+	}
 
-  public ConnectorInstance version(String version) {
+	public void setActivationEvent(String activationEvent) {
+		this.activationEvent = activationEvent;
+	}
 
-    this.version = version;
-    return this;
-  }
+	public ConnectorInstance state(String state) {
 
-  /**
-   * the connector version
-   *
-   * @return version
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the connector version")
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getVersion() {
-    return version;
-  }
+		this.state = state;
+		return this;
+	}
 
-  public void setVersion(String version) {
-    this.version = version;
-  }
+	/**
+	 * the connector state
+	 * @return state
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector state")
+	@JsonProperty(JSON_PROPERTY_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getState() {
+		return state;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ConnectorInstance connectorInstance = (ConnectorInstance) o;
-    return Objects.equals(this.containerType, connectorInstance.containerType)
-        && Objects.equals(this.connectorId, connectorInstance.connectorId)
-        && Objects.equals(this.id, connectorInstance.id)
-        && Objects.equals(this.name, connectorInstance.name)
-        && Objects.equals(this.activationEvent, connectorInstance.activationEvent)
-        && Objects.equals(this.state, connectorInstance.state)
-        && Objects.equals(this.containerId, connectorInstance.containerId)
-        && Objects.equals(this.version, connectorInstance.version);
-  }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        containerType, connectorId, id, name, activationEvent, state, containerId, version);
-  }
+	public ConnectorInstance containerId(String containerId) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ConnectorInstance {\n");
-    sb.append("    containerType: ").append(toIndentedString(containerType)).append("\n");
-    sb.append("    connectorId: ").append(toIndentedString(connectorId)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    activationEvent: ").append(toIndentedString(activationEvent)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    containerId: ").append(toIndentedString(containerId)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.containerId = containerId;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * the containing activity instance id
+	 * @return containerId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the containing activity instance id")
+	@JsonProperty(JSON_PROPERTY_CONTAINER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContainerId() {
+		return containerId;
+	}
+
+	public void setContainerId(String containerId) {
+		this.containerId = containerId;
+	}
+
+	public ConnectorInstance version(String version) {
+
+		this.version = version;
+		return this;
+	}
+
+	/**
+	 * the connector version
+	 * @return version
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the connector version")
+	@JsonProperty(JSON_PROPERTY_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ConnectorInstance connectorInstance = (ConnectorInstance) o;
+		return Objects.equals(this.containerType, connectorInstance.containerType)
+				&& Objects.equals(this.connectorId, connectorInstance.connectorId)
+				&& Objects.equals(this.id, connectorInstance.id) && Objects.equals(this.name, connectorInstance.name)
+				&& Objects.equals(this.activationEvent, connectorInstance.activationEvent)
+				&& Objects.equals(this.state, connectorInstance.state)
+				&& Objects.equals(this.containerId, connectorInstance.containerId)
+				&& Objects.equals(this.version, connectorInstance.version);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(containerType, connectorId, id, name, activationEvent, state, containerId, version);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ConnectorInstance {\n");
+		sb.append("    containerType: ").append(toIndentedString(containerType)).append("\n");
+		sb.append("    connectorId: ").append(toIndentedString(connectorId)).append("\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    activationEvent: ").append(toIndentedString(activationEvent)).append("\n");
+		sb.append("    state: ").append(toIndentedString(state)).append("\n");
+		sb.append("    containerId: ").append(toIndentedString(containerId)).append("\n");
+		sb.append("    version: ").append(toIndentedString(version)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

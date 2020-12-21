@@ -17,39 +17,41 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /** the priority of the current activity */
 public enum ActivityPriority {
-  HIGHEST("highest"),
 
-  ABOVE_NORMAL("above_normal"),
+	HIGHEST("highest"),
 
-  NORMAL("normal"),
+	ABOVE_NORMAL("above_normal"),
 
-  UNDER_NORMAL("under_normal"),
+	NORMAL("normal"),
 
-  LOWEST("lowest");
+	UNDER_NORMAL("under_normal"),
 
-  private final String value;
+	LOWEST("lowest");
 
-  ActivityPriority(String value) {
-    this.value = value;
-  }
+	private final String value;
 
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
+	ActivityPriority(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
 
-  @JsonCreator
-  public static ActivityPriority fromValue(String value) {
-    for (ActivityPriority b : ActivityPriority.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
-    }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
+	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
+
+	@JsonCreator
+	public static ActivityPriority fromValue(String value) {
+		for (ActivityPriority b : ActivityPriority.values()) {
+			if (b.value.equals(value)) {
+				return b;
+			}
+		}
+		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
 }

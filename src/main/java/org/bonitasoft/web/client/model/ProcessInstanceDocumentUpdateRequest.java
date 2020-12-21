@@ -21,190 +21,189 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessInstanceDocumentUpdateRequest */
-@JsonPropertyOrder({
-  ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_FILE,
-  ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_URL,
-  ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_NAME,
-  ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_FILE_NAME,
-  ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_DESCRIPTION
-})
+@JsonPropertyOrder({ ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_FILE,
+		ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_URL, ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_NAME,
+		ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_FILE_NAME,
+		ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_DESCRIPTION })
 @JsonTypeName("ProcessInstanceDocumentUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceDocumentUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_FILE = "file";
-  private String file;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_URL = "url";
-  private String url;
+	public static final String JSON_PROPERTY_FILE = "file";
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private String file;
 
-  public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  private String fileName;
+	public static final String JSON_PROPERTY_URL = "url";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String url;
 
-  public ProcessInstanceDocumentUpdateRequest file(String file) {
+	public static final String JSON_PROPERTY_NAME = "name";
 
-    this.file = file;
-    return this;
-  }
+	private String name;
 
-  /**
-   * The local file name to upload from (as from the temp upload folder)
-   *
-   * @return file
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The local file name to upload from (as from the temp upload folder)")
-  @JsonProperty(JSON_PROPERTY_FILE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFile() {
-    return file;
-  }
+	public static final String JSON_PROPERTY_FILE_NAME = "fileName";
 
-  public void setFile(String file) {
-    this.file = file;
-  }
+	private String fileName;
 
-  public ProcessInstanceDocumentUpdateRequest url(String url) {
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-    this.url = url;
-    return this;
-  }
+	private String description;
 
-  /**
-   * The remote url to upload from
-   *
-   * @return url
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The remote url to upload from")
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUrl() {
-    return url;
-  }
+	public ProcessInstanceDocumentUpdateRequest file(String file) {
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
+		this.file = file;
+		return this;
+	}
 
-  public ProcessInstanceDocumentUpdateRequest name(String name) {
+	/**
+	 * The local file name to upload from (as from the temp upload folder)
+	 * @return file
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The local file name to upload from (as from the temp upload folder)")
+	@JsonProperty(JSON_PROPERTY_FILE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFile() {
+		return file;
+	}
 
-    this.name = name;
-    return this;
-  }
+	public void setFile(String file) {
+		this.file = file;
+	}
 
-  /**
-   * The file display name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The file display name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public ProcessInstanceDocumentUpdateRequest url(String url) {
 
-  public void setName(String name) {
-    this.name = name;
-  }
+		this.url = url;
+		return this;
+	}
 
-  public ProcessInstanceDocumentUpdateRequest fileName(String fileName) {
+	/**
+	 * The remote url to upload from
+	 * @return url
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The remote url to upload from")
+	@JsonProperty(JSON_PROPERTY_URL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUrl() {
+		return url;
+	}
 
-    this.fileName = fileName;
-    return this;
-  }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-  /**
-   * The target file name
-   *
-   * @return fileName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The target file name")
-  @JsonProperty(JSON_PROPERTY_FILE_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFileName() {
-    return fileName;
-  }
+	public ProcessInstanceDocumentUpdateRequest name(String name) {
 
-  public void setFileName(String fileName) {
-    this.fileName = fileName;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public ProcessInstanceDocumentUpdateRequest description(String description) {
+	/**
+	 * The file display name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The file display name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-    this.description = description;
-    return this;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * The document description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The document description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public ProcessInstanceDocumentUpdateRequest fileName(String fileName) {
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+		this.fileName = fileName;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstanceDocumentUpdateRequest processInstanceDocumentUpdateRequest =
-        (ProcessInstanceDocumentUpdateRequest) o;
-    return Objects.equals(this.file, processInstanceDocumentUpdateRequest.file)
-        && Objects.equals(this.url, processInstanceDocumentUpdateRequest.url)
-        && Objects.equals(this.name, processInstanceDocumentUpdateRequest.name)
-        && Objects.equals(this.fileName, processInstanceDocumentUpdateRequest.fileName)
-        && Objects.equals(this.description, processInstanceDocumentUpdateRequest.description);
-  }
+	/**
+	 * The target file name
+	 * @return fileName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The target file name")
+	@JsonProperty(JSON_PROPERTY_FILE_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFileName() {
+		return fileName;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(file, url, name, fileName, description);
-  }
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstanceDocumentUpdateRequest {\n");
-    sb.append("    file: ").append(toIndentedString(file)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public ProcessInstanceDocumentUpdateRequest description(String description) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.description = description;
+		return this;
+	}
+
+	/**
+	 * The document description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The document description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstanceDocumentUpdateRequest processInstanceDocumentUpdateRequest = (ProcessInstanceDocumentUpdateRequest) o;
+		return Objects.equals(this.file, processInstanceDocumentUpdateRequest.file)
+				&& Objects.equals(this.url, processInstanceDocumentUpdateRequest.url)
+				&& Objects.equals(this.name, processInstanceDocumentUpdateRequest.name)
+				&& Objects.equals(this.fileName, processInstanceDocumentUpdateRequest.fileName)
+				&& Objects.equals(this.description, processInstanceDocumentUpdateRequest.description);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(file, url, name, fileName, description);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstanceDocumentUpdateRequest {\n");
+		sb.append("    file: ").append(toIndentedString(file)).append("\n");
+		sb.append("    url: ").append(toIndentedString(url)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

@@ -21,532 +21,512 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ArchivedProcessInstanceDocument */
-@JsonPropertyOrder({
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_ID,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_CREATION_DATE,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_AUTHOR,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_INDEX,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_CONTENT_MIMETYPE,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_CASE_ID,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_CONTENT_STORAGE_ID,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_IS_INTERNAL,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_DESCRIPTION,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_NAME,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_FILE_NAME,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_SUBMITTED_BY,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_URL,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_VERSION,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_SOURCE_OBJECT_ID,
-  ArchivedProcessInstanceDocument.JSON_PROPERTY_ARCHIVED_DATE
-})
+@JsonPropertyOrder({ ArchivedProcessInstanceDocument.JSON_PROPERTY_ID,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_CREATION_DATE,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_AUTHOR, ArchivedProcessInstanceDocument.JSON_PROPERTY_INDEX,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_CONTENT_MIMETYPE,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_CASE_ID,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_CONTENT_STORAGE_ID,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_IS_INTERNAL,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_DESCRIPTION, ArchivedProcessInstanceDocument.JSON_PROPERTY_NAME,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_FILE_NAME,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_SUBMITTED_BY, ArchivedProcessInstanceDocument.JSON_PROPERTY_URL,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_VERSION,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_SOURCE_OBJECT_ID,
+		ArchivedProcessInstanceDocument.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("ArchivedProcessInstanceDocument")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceDocument implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
-  private String creationDate;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_AUTHOR = "author";
-  private String author;
-
-  public static final String JSON_PROPERTY_INDEX = "index";
-  private String index;
-
-  public static final String JSON_PROPERTY_CONTENT_MIMETYPE = "contentMimetype";
-  private String contentMimetype;
-
-  public static final String JSON_PROPERTY_CASE_ID = "caseId";
-  private String caseId;
-
-  public static final String JSON_PROPERTY_CONTENT_STORAGE_ID = "contentStorageId";
-  private String contentStorageId;
-
-  public static final String JSON_PROPERTY_IS_INTERNAL = "isInternal";
-  private Boolean isInternal;
-
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
-
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
-
-  public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  private String fileName;
-
-  public static final String JSON_PROPERTY_SUBMITTED_BY = "submittedBy";
-  private String submittedBy;
-
-  public static final String JSON_PROPERTY_URL = "url";
-  private String url;
-
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private String version;
-
-  public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
-  private String sourceObjectId;
-
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
-
-  public ArchivedProcessInstanceDocument id(String id) {
-
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * documentId
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "documentId")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public ArchivedProcessInstanceDocument creationDate(String creationDate) {
-
-    this.creationDate = creationDate;
-    return this;
-  }
-
-  /**
-   * date and time
-   *
-   * @return creationDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "date and time")
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreationDate() {
-    return creationDate;
-  }
-
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
-
-  public ArchivedProcessInstanceDocument author(String author) {
-
-    this.author = author;
-    return this;
-  }
-
-  /**
-   * submittorUserId
-   *
-   * @return author
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "submittorUserId")
-  @JsonProperty(JSON_PROPERTY_AUTHOR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAuthor() {
-    return author;
-  }
-
-  public void setAuthor(String author) {
-    this.author = author;
-  }
-
-  public ArchivedProcessInstanceDocument index(String index) {
-
-    this.index = index;
-    return this;
-  }
-
-  /**
-   * index in a list of documents, or -1 for a single document
-   *
-   * @return index
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "index in a list of documents, or -1 for a single document")
-  @JsonProperty(JSON_PROPERTY_INDEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getIndex() {
-    return index;
-  }
-
-  public void setIndex(String index) {
-    this.index = index;
-  }
-
-  public ArchivedProcessInstanceDocument contentMimetype(String contentMimetype) {
-
-    this.contentMimetype = contentMimetype;
-    return this;
-  }
-
-  /**
-   * MIME type
-   *
-   * @return contentMimetype
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "MIME type")
-  @JsonProperty(JSON_PROPERTY_CONTENT_MIMETYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContentMimetype() {
-    return contentMimetype;
-  }
-
-  public void setContentMimetype(String contentMimetype) {
-    this.contentMimetype = contentMimetype;
-  }
-
-  public ArchivedProcessInstanceDocument caseId(String caseId) {
-
-    this.caseId = caseId;
-    return this;
-  }
-
-  /**
-   * caseId
-   *
-   * @return caseId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "caseId")
-  @JsonProperty(JSON_PROPERTY_CASE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCaseId() {
-    return caseId;
-  }
-
-  public void setCaseId(String caseId) {
-    this.caseId = caseId;
-  }
-
-  public ArchivedProcessInstanceDocument contentStorageId(String contentStorageId) {
-
-    this.contentStorageId = contentStorageId;
-    return this;
-  }
-
-  /**
-   * storageId
-   *
-   * @return contentStorageId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "storageId")
-  @JsonProperty(JSON_PROPERTY_CONTENT_STORAGE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContentStorageId() {
-    return contentStorageId;
-  }
-
-  public void setContentStorageId(String contentStorageId) {
-    this.contentStorageId = contentStorageId;
-  }
-
-  public ArchivedProcessInstanceDocument isInternal(Boolean isInternal) {
-
-    this.isInternal = isInternal;
-    return this;
-  }
-
-  /**
-   * &#x60;true&#x60; if the the document object contains the content directly. &#x60;false&#x60; if
-   * the document is specified by URL so the document object contains a reference to the content,
-   * not the content itself.
-   *
-   * @return isInternal
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "`true` if  the the document object contains the content directly. `false` if the document is specified by URL so the document object contains a reference to the content, not the content itself.")
-  @JsonProperty(JSON_PROPERTY_IS_INTERNAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsInternal() {
-    return isInternal;
-  }
-
-  public void setIsInternal(Boolean isInternal) {
-    this.isInternal = isInternal;
-  }
-
-  public ArchivedProcessInstanceDocument description(String description) {
-
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public ArchivedProcessInstanceDocument name(String name) {
-
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public ArchivedProcessInstanceDocument fileName(String fileName) {
-
-    this.fileName = fileName;
-    return this;
-  }
-
-  /**
-   * filename
-   *
-   * @return fileName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "filename")
-  @JsonProperty(JSON_PROPERTY_FILE_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getFileName() {
-    return fileName;
-  }
-
-  public void setFileName(String fileName) {
-    this.fileName = fileName;
-  }
-
-  public ArchivedProcessInstanceDocument submittedBy(String submittedBy) {
-
-    this.submittedBy = submittedBy;
-    return this;
-  }
-
-  /**
-   * submittorUserId
-   *
-   * @return submittedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "submittorUserId")
-  @JsonProperty(JSON_PROPERTY_SUBMITTED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSubmittedBy() {
-    return submittedBy;
-  }
-
-  public void setSubmittedBy(String submittedBy) {
-    this.submittedBy = submittedBy;
-  }
-
-  public ArchivedProcessInstanceDocument url(String url) {
-
-    this.url = url;
-    return this;
-  }
-
-  /**
-   * urlForDownload
-   *
-   * @return url
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "urlForDownload")
-  @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  public ArchivedProcessInstanceDocument version(String version) {
-
-    this.version = version;
-    return this;
-  }
-
-  /**
-   * version
-   *
-   * @return version
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "version")
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getVersion() {
-    return version;
-  }
-
-  public void setVersion(String version) {
-    this.version = version;
-  }
-
-  public ArchivedProcessInstanceDocument sourceObjectId(String sourceObjectId) {
-
-    this.sourceObjectId = sourceObjectId;
-    return this;
-  }
-
-  /**
-   * original document id
-   *
-   * @return sourceObjectId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "original document id")
-  @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSourceObjectId() {
-    return sourceObjectId;
-  }
-
-  public void setSourceObjectId(String sourceObjectId) {
-    this.sourceObjectId = sourceObjectId;
-  }
-
-  public ArchivedProcessInstanceDocument archivedDate(String archivedDate) {
-
-    this.archivedDate = archivedDate;
-    return this;
-  }
-
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example
-   * &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
-
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ArchivedProcessInstanceDocument archivedProcessInstanceDocument =
-        (ArchivedProcessInstanceDocument) o;
-    return Objects.equals(this.id, archivedProcessInstanceDocument.id)
-        && Objects.equals(this.creationDate, archivedProcessInstanceDocument.creationDate)
-        && Objects.equals(this.author, archivedProcessInstanceDocument.author)
-        && Objects.equals(this.index, archivedProcessInstanceDocument.index)
-        && Objects.equals(this.contentMimetype, archivedProcessInstanceDocument.contentMimetype)
-        && Objects.equals(this.caseId, archivedProcessInstanceDocument.caseId)
-        && Objects.equals(this.contentStorageId, archivedProcessInstanceDocument.contentStorageId)
-        && Objects.equals(this.isInternal, archivedProcessInstanceDocument.isInternal)
-        && Objects.equals(this.description, archivedProcessInstanceDocument.description)
-        && Objects.equals(this.name, archivedProcessInstanceDocument.name)
-        && Objects.equals(this.fileName, archivedProcessInstanceDocument.fileName)
-        && Objects.equals(this.submittedBy, archivedProcessInstanceDocument.submittedBy)
-        && Objects.equals(this.url, archivedProcessInstanceDocument.url)
-        && Objects.equals(this.version, archivedProcessInstanceDocument.version)
-        && Objects.equals(this.sourceObjectId, archivedProcessInstanceDocument.sourceObjectId)
-        && Objects.equals(this.archivedDate, archivedProcessInstanceDocument.archivedDate);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id,
-        creationDate,
-        author,
-        index,
-        contentMimetype,
-        caseId,
-        contentStorageId,
-        isInternal,
-        description,
-        name,
-        fileName,
-        submittedBy,
-        url,
-        version,
-        sourceObjectId,
-        archivedDate);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ArchivedProcessInstanceDocument {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    author: ").append(toIndentedString(author)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    contentMimetype: ").append(toIndentedString(contentMimetype)).append("\n");
-    sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
-    sb.append("    contentStorageId: ").append(toIndentedString(contentStorageId)).append("\n");
-    sb.append("    isInternal: ").append(toIndentedString(isInternal)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
-    sb.append("    submittedBy: ").append(toIndentedString(submittedBy)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	private String id;
+
+	public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+
+	private String creationDate;
+
+	public static final String JSON_PROPERTY_AUTHOR = "author";
+
+	private String author;
+
+	public static final String JSON_PROPERTY_INDEX = "index";
+
+	private String index;
+
+	public static final String JSON_PROPERTY_CONTENT_MIMETYPE = "contentMimetype";
+
+	private String contentMimetype;
+
+	public static final String JSON_PROPERTY_CASE_ID = "caseId";
+
+	private String caseId;
+
+	public static final String JSON_PROPERTY_CONTENT_STORAGE_ID = "contentStorageId";
+
+	private String contentStorageId;
+
+	public static final String JSON_PROPERTY_IS_INTERNAL = "isInternal";
+
+	private Boolean isInternal;
+
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
+
+	private String description;
+
+	public static final String JSON_PROPERTY_NAME = "name";
+
+	private String name;
+
+	public static final String JSON_PROPERTY_FILE_NAME = "fileName";
+
+	private String fileName;
+
+	public static final String JSON_PROPERTY_SUBMITTED_BY = "submittedBy";
+
+	private String submittedBy;
+
+	public static final String JSON_PROPERTY_URL = "url";
+
+	private String url;
+
+	public static final String JSON_PROPERTY_VERSION = "version";
+
+	private String version;
+
+	public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
+
+	private String sourceObjectId;
+
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+
+	private String archivedDate;
+
+	public ArchivedProcessInstanceDocument id(String id) {
+
+		this.id = id;
+		return this;
+	}
+
+	/**
+	 * documentId
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "documentId")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public ArchivedProcessInstanceDocument creationDate(String creationDate) {
+
+		this.creationDate = creationDate;
+		return this;
+	}
+
+	/**
+	 * date and time
+	 * @return creationDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "date and time")
+	@JsonProperty(JSON_PROPERTY_CREATION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public ArchivedProcessInstanceDocument author(String author) {
+
+		this.author = author;
+		return this;
+	}
+
+	/**
+	 * submittorUserId
+	 * @return author
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "submittorUserId")
+	@JsonProperty(JSON_PROPERTY_AUTHOR)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public ArchivedProcessInstanceDocument index(String index) {
+
+		this.index = index;
+		return this;
+	}
+
+	/**
+	 * index in a list of documents, or -1 for a single document
+	 * @return index
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "index in a list of documents, or -1 for a single document")
+	@JsonProperty(JSON_PROPERTY_INDEX)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
+	}
+
+	public ArchivedProcessInstanceDocument contentMimetype(String contentMimetype) {
+
+		this.contentMimetype = contentMimetype;
+		return this;
+	}
+
+	/**
+	 * MIME type
+	 * @return contentMimetype
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "MIME type")
+	@JsonProperty(JSON_PROPERTY_CONTENT_MIMETYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContentMimetype() {
+		return contentMimetype;
+	}
+
+	public void setContentMimetype(String contentMimetype) {
+		this.contentMimetype = contentMimetype;
+	}
+
+	public ArchivedProcessInstanceDocument caseId(String caseId) {
+
+		this.caseId = caseId;
+		return this;
+	}
+
+	/**
+	 * caseId
+	 * @return caseId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "caseId")
+	@JsonProperty(JSON_PROPERTY_CASE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCaseId() {
+		return caseId;
+	}
+
+	public void setCaseId(String caseId) {
+		this.caseId = caseId;
+	}
+
+	public ArchivedProcessInstanceDocument contentStorageId(String contentStorageId) {
+
+		this.contentStorageId = contentStorageId;
+		return this;
+	}
+
+	/**
+	 * storageId
+	 * @return contentStorageId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "storageId")
+	@JsonProperty(JSON_PROPERTY_CONTENT_STORAGE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContentStorageId() {
+		return contentStorageId;
+	}
+
+	public void setContentStorageId(String contentStorageId) {
+		this.contentStorageId = contentStorageId;
+	}
+
+	public ArchivedProcessInstanceDocument isInternal(Boolean isInternal) {
+
+		this.isInternal = isInternal;
+		return this;
+	}
+
+	/**
+	 * &#x60;true&#x60; if the the document object contains the content directly.
+	 * &#x60;false&#x60; if the document is specified by URL so the document object
+	 * contains a reference to the content, not the content itself.
+	 * @return isInternal
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "`true` if  the the document object contains the content directly. `false` if the document is specified by URL so the document object contains a reference to the content, not the content itself.")
+	@JsonProperty(JSON_PROPERTY_IS_INTERNAL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Boolean getIsInternal() {
+		return isInternal;
+	}
+
+	public void setIsInternal(Boolean isInternal) {
+		this.isInternal = isInternal;
+	}
+
+	public ArchivedProcessInstanceDocument description(String description) {
+
+		this.description = description;
+		return this;
+	}
+
+	/**
+	 * description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public ArchivedProcessInstanceDocument name(String name) {
+
+		this.name = name;
+		return this;
+	}
+
+	/**
+	 * name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ArchivedProcessInstanceDocument fileName(String fileName) {
+
+		this.fileName = fileName;
+		return this;
+	}
+
+	/**
+	 * filename
+	 * @return fileName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "filename")
+	@JsonProperty(JSON_PROPERTY_FILE_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public ArchivedProcessInstanceDocument submittedBy(String submittedBy) {
+
+		this.submittedBy = submittedBy;
+		return this;
+	}
+
+	/**
+	 * submittorUserId
+	 * @return submittedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "submittorUserId")
+	@JsonProperty(JSON_PROPERTY_SUBMITTED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSubmittedBy() {
+		return submittedBy;
+	}
+
+	public void setSubmittedBy(String submittedBy) {
+		this.submittedBy = submittedBy;
+	}
+
+	public ArchivedProcessInstanceDocument url(String url) {
+
+		this.url = url;
+		return this;
+	}
+
+	/**
+	 * urlForDownload
+	 * @return url
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "urlForDownload")
+	@JsonProperty(JSON_PROPERTY_URL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public ArchivedProcessInstanceDocument version(String version) {
+
+		this.version = version;
+		return this;
+	}
+
+	/**
+	 * version
+	 * @return version
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "version")
+	@JsonProperty(JSON_PROPERTY_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public ArchivedProcessInstanceDocument sourceObjectId(String sourceObjectId) {
+
+		this.sourceObjectId = sourceObjectId;
+		return this;
+	}
+
+	/**
+	 * original document id
+	 * @return sourceObjectId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "original document id")
+	@JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getSourceObjectId() {
+		return sourceObjectId;
+	}
+
+	public void setSourceObjectId(String sourceObjectId) {
+		this.sourceObjectId = sourceObjectId;
+	}
+
+	public ArchivedProcessInstanceDocument archivedDate(String archivedDate) {
+
+		this.archivedDate = archivedDate;
+		return this;
+	}
+
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for
+	 * example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
+
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ArchivedProcessInstanceDocument archivedProcessInstanceDocument = (ArchivedProcessInstanceDocument) o;
+		return Objects.equals(this.id, archivedProcessInstanceDocument.id)
+				&& Objects.equals(this.creationDate, archivedProcessInstanceDocument.creationDate)
+				&& Objects.equals(this.author, archivedProcessInstanceDocument.author)
+				&& Objects.equals(this.index, archivedProcessInstanceDocument.index)
+				&& Objects.equals(this.contentMimetype, archivedProcessInstanceDocument.contentMimetype)
+				&& Objects.equals(this.caseId, archivedProcessInstanceDocument.caseId)
+				&& Objects.equals(this.contentStorageId, archivedProcessInstanceDocument.contentStorageId)
+				&& Objects.equals(this.isInternal, archivedProcessInstanceDocument.isInternal)
+				&& Objects.equals(this.description, archivedProcessInstanceDocument.description)
+				&& Objects.equals(this.name, archivedProcessInstanceDocument.name)
+				&& Objects.equals(this.fileName, archivedProcessInstanceDocument.fileName)
+				&& Objects.equals(this.submittedBy, archivedProcessInstanceDocument.submittedBy)
+				&& Objects.equals(this.url, archivedProcessInstanceDocument.url)
+				&& Objects.equals(this.version, archivedProcessInstanceDocument.version)
+				&& Objects.equals(this.sourceObjectId, archivedProcessInstanceDocument.sourceObjectId)
+				&& Objects.equals(this.archivedDate, archivedProcessInstanceDocument.archivedDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, creationDate, author, index, contentMimetype, caseId, contentStorageId, isInternal,
+				description, name, fileName, submittedBy, url, version, sourceObjectId, archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ArchivedProcessInstanceDocument {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+		sb.append("    author: ").append(toIndentedString(author)).append("\n");
+		sb.append("    index: ").append(toIndentedString(index)).append("\n");
+		sb.append("    contentMimetype: ").append(toIndentedString(contentMimetype)).append("\n");
+		sb.append("    caseId: ").append(toIndentedString(caseId)).append("\n");
+		sb.append("    contentStorageId: ").append(toIndentedString(contentStorageId)).append("\n");
+		sb.append("    isInternal: ").append(toIndentedString(isInternal)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
+		sb.append("    submittedBy: ").append(toIndentedString(submittedBy)).append("\n");
+		sb.append("    url: ").append(toIndentedString(url)).append("\n");
+		sb.append("    version: ").append(toIndentedString(version)).append("\n");
+		sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

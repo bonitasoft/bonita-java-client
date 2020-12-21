@@ -21,159 +21,158 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** RoleCreateRequest */
-@JsonPropertyOrder({
-  RoleCreateRequest.JSON_PROPERTY_NAME,
-  RoleCreateRequest.JSON_PROPERTY_DISPLAY_NAME,
-  RoleCreateRequest.JSON_PROPERTY_DESCRIPTION,
-  RoleCreateRequest.JSON_PROPERTY_ICON
-})
+@JsonPropertyOrder({ RoleCreateRequest.JSON_PROPERTY_NAME, RoleCreateRequest.JSON_PROPERTY_DISPLAY_NAME,
+		RoleCreateRequest.JSON_PROPERTY_DESCRIPTION, RoleCreateRequest.JSON_PROPERTY_ICON })
 @JsonTypeName("RoleCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RoleCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String name;
 
-  public static final String JSON_PROPERTY_ICON = "icon";
-  private String icon;
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public RoleCreateRequest name(String name) {
+	private String displayName;
 
-    this.name = name;
-    return this;
-  }
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  /**
-   * name
-   *
-   * @return name
-   */
-  @ApiModelProperty(required = true, value = "name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getName() {
-    return name;
-  }
+	private String description;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public static final String JSON_PROPERTY_ICON = "icon";
 
-  public RoleCreateRequest displayName(String displayName) {
+	private String icon;
 
-    this.displayName = displayName;
-    return this;
-  }
+	public RoleCreateRequest name(String name) {
 
-  /**
-   * display name
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	/**
+	 * name
+	 * @return name
+	 */
+	@ApiModelProperty(required = true, value = "name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.ALWAYS)
+	public String getName() {
+		return name;
+	}
 
-  public RoleCreateRequest description(String description) {
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    this.description = description;
-    return this;
-  }
+	public RoleCreateRequest displayName(String displayName) {
 
-  /**
-   * description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+		this.displayName = displayName;
+		return this;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	/**
+	 * display name
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "display name")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  public RoleCreateRequest icon(String icon) {
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-    this.icon = icon;
-    return this;
-  }
+	public RoleCreateRequest description(String description) {
 
-  /**
-   * icon path
-   *
-   * @return icon
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "icon path")
-  @JsonProperty(JSON_PROPERTY_ICON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getIcon() {
-    return icon;
-  }
+		this.description = description;
+		return this;
+	}
 
-  public void setIcon(String icon) {
-    this.icon = icon;
-  }
+	/**
+	 * description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    RoleCreateRequest roleCreateRequest = (RoleCreateRequest) o;
-    return Objects.equals(this.name, roleCreateRequest.name)
-        && Objects.equals(this.displayName, roleCreateRequest.displayName)
-        && Objects.equals(this.description, roleCreateRequest.description)
-        && Objects.equals(this.icon, roleCreateRequest.icon);
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, displayName, description, icon);
-  }
+	public RoleCreateRequest icon(String icon) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RoleCreateRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.icon = icon;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * icon path
+	 * @return icon
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "icon path")
+	@JsonProperty(JSON_PROPERTY_ICON)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		RoleCreateRequest roleCreateRequest = (RoleCreateRequest) o;
+		return Objects.equals(this.name, roleCreateRequest.name)
+				&& Objects.equals(this.displayName, roleCreateRequest.displayName)
+				&& Objects.equals(this.description, roleCreateRequest.description)
+				&& Objects.equals(this.icon, roleCreateRequest.icon);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, displayName, description, icon);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class RoleCreateRequest {\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

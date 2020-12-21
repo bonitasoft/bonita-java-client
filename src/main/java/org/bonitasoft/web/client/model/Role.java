@@ -23,280 +23,272 @@ import java.util.Objects;
 
 /** The role of a user in a group */
 @ApiModel(description = "The role of a user in a group")
-@JsonPropertyOrder({
-  Role.JSON_PROPERTY_ID,
-  Role.JSON_PROPERTY_NAME,
-  Role.JSON_PROPERTY_DISPLAY_NAME,
-  Role.JSON_PROPERTY_DESCRIPTION,
-  Role.JSON_PROPERTY_ICON,
-  Role.JSON_PROPERTY_CREATION_DATE,
-  Role.JSON_PROPERTY_CREATED_BY_USER_ID,
-  Role.JSON_PROPERTY_LAST_UPDATE_DATE
-})
+@JsonPropertyOrder({ Role.JSON_PROPERTY_ID, Role.JSON_PROPERTY_NAME, Role.JSON_PROPERTY_DISPLAY_NAME,
+		Role.JSON_PROPERTY_DESCRIPTION, Role.JSON_PROPERTY_ICON, Role.JSON_PROPERTY_CREATION_DATE,
+		Role.JSON_PROPERTY_CREATED_BY_USER_ID, Role.JSON_PROPERTY_LAST_UPDATE_DATE })
 @JsonTypeName("Role")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Role implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	private String id;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_ICON = "icon";
-  private String icon;
+	private String name;
 
-  public static final String JSON_PROPERTY_CREATION_DATE = "creation_date";
-  private String creationDate;
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
-  private String createdByUserId;
+	private String displayName;
 
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
-  private String lastUpdateDate;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public Role id(String id) {
+	private String description;
 
-    this.id = id;
-    return this;
-  }
+	public static final String JSON_PROPERTY_ICON = "icon";
 
-  /**
-   * role ID
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "role ID")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	private String icon;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public static final String JSON_PROPERTY_CREATION_DATE = "creation_date";
 
-  public Role name(String name) {
+	private String creationDate;
 
-    this.name = name;
-    return this;
-  }
+	public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
 
-  /**
-   * name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	private String createdByUserId;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
 
-  public Role displayName(String displayName) {
+	private String lastUpdateDate;
 
-    this.displayName = displayName;
-    return this;
-  }
+	public Role id(String id) {
 
-  /**
-   * display name
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+		this.id = id;
+		return this;
+	}
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	/**
+	 * role ID
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "role ID")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  public Role description(String description) {
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    this.description = description;
-    return this;
-  }
+	public Role name(String name) {
 
-  /**
-   * description
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+		this.name = name;
+		return this;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	/**
+	 * name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  public Role icon(String icon) {
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    this.icon = icon;
-    return this;
-  }
+	public Role displayName(String displayName) {
 
-  /**
-   * icon path
-   *
-   * @return icon
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "icon path")
-  @JsonProperty(JSON_PROPERTY_ICON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getIcon() {
-    return icon;
-  }
+		this.displayName = displayName;
+		return this;
+	}
 
-  public void setIcon(String icon) {
-    this.icon = icon;
-  }
+	/**
+	 * display name
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "display name")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  public Role creationDate(String creationDate) {
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-    this.creationDate = creationDate;
-    return this;
-  }
+	public Role description(String description) {
 
-  /**
-   * creation date (format: &#x60;2014-12-31 15:17:24.736&#x60;)
-   *
-   * @return creationDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "creation date (format: `2014-12-31 15:17:24.736`)")
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreationDate() {
-    return creationDate;
-  }
+		this.description = description;
+		return this;
+	}
 
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
+	/**
+	 * description
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  public Role createdByUserId(String createdByUserId) {
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    this.createdByUserId = createdByUserId;
-    return this;
-  }
+	public Role icon(String icon) {
 
-  /**
-   * Id of the user who created the role (-1 if the role was created by the tenant admin or by an
-   * organisation import)
-   *
-   * @return createdByUserId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "Id of the user who created the role (-1 if the role was created by the tenant admin or by an organisation import)")
-  @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreatedByUserId() {
-    return createdByUserId;
-  }
+		this.icon = icon;
+		return this;
+	}
 
-  public void setCreatedByUserId(String createdByUserId) {
-    this.createdByUserId = createdByUserId;
-  }
+	/**
+	 * icon path
+	 * @return icon
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "icon path")
+	@JsonProperty(JSON_PROPERTY_ICON)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getIcon() {
+		return icon;
+	}
 
-  public Role lastUpdateDate(String lastUpdateDate) {
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
+	public Role creationDate(String creationDate) {
 
-  /**
-   * last update date (format: &#x60;2014-12-31 15:17:24.736&#x60;)
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "last update date (format: `2014-12-31 15:17:24.736`)")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
+		this.creationDate = creationDate;
+		return this;
+	}
 
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
+	/**
+	 * creation date (format: &#x60;2014-12-31 15:17:24.736&#x60;)
+	 * @return creationDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "creation date (format: `2014-12-31 15:17:24.736`)")
+	@JsonProperty(JSON_PROPERTY_CREATION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreationDate() {
+		return creationDate;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Role role = (Role) o;
-    return Objects.equals(this.id, role.id)
-        && Objects.equals(this.name, role.name)
-        && Objects.equals(this.displayName, role.displayName)
-        && Objects.equals(this.description, role.description)
-        && Objects.equals(this.icon, role.icon)
-        && Objects.equals(this.creationDate, role.creationDate)
-        && Objects.equals(this.createdByUserId, role.createdByUserId)
-        && Objects.equals(this.lastUpdateDate, role.lastUpdateDate);
-  }
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id, name, displayName, description, icon, creationDate, createdByUserId, lastUpdateDate);
-  }
+	public Role createdByUserId(String createdByUserId) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Role {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.createdByUserId = createdByUserId;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * Id of the user who created the role (-1 if the role was created by the tenant admin
+	 * or by an organisation import)
+	 * @return createdByUserId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "Id of the user who created the role (-1 if the role was created by the tenant admin or by an organisation import)")
+	@JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreatedByUserId() {
+		return createdByUserId;
+	}
+
+	public void setCreatedByUserId(String createdByUserId) {
+		this.createdByUserId = createdByUserId;
+	}
+
+	public Role lastUpdateDate(String lastUpdateDate) {
+
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
+
+	/**
+	 * last update date (format: &#x60;2014-12-31 15:17:24.736&#x60;)
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "last update date (format: `2014-12-31 15:17:24.736`)")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Role role = (Role) o;
+		return Objects.equals(this.id, role.id) && Objects.equals(this.name, role.name)
+				&& Objects.equals(this.displayName, role.displayName)
+				&& Objects.equals(this.description, role.description) && Objects.equals(this.icon, role.icon)
+				&& Objects.equals(this.creationDate, role.creationDate)
+				&& Objects.equals(this.createdByUserId, role.createdByUserId)
+				&& Objects.equals(this.lastUpdateDate, role.lastUpdateDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, displayName, description, icon, creationDate, createdByUserId, lastUpdateDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Role {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+		sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+		sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

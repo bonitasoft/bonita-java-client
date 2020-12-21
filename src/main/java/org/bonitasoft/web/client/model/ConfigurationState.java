@@ -17,33 +17,35 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /** the configuration state of the process (UNRESOLVED or RESOLVED) */
 public enum ConfigurationState {
-  RESOLVED("RESOLVED"),
 
-  UNRESOLVED("UNRESOLVED");
+	RESOLVED("RESOLVED"),
 
-  private final String value;
+	UNRESOLVED("UNRESOLVED");
 
-  ConfigurationState(String value) {
-    this.value = value;
-  }
+	private final String value;
 
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
+	ConfigurationState(String value) {
+		this.value = value;
+	}
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+	@JsonValue
+	public String getValue() {
+		return value;
+	}
 
-  @JsonCreator
-  public static ConfigurationState fromValue(String value) {
-    for (ConfigurationState b : ConfigurationState.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
-    }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
+	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
+
+	@JsonCreator
+	public static ConfigurationState fromValue(String value) {
+		for (ConfigurationState b : ConfigurationState.values()) {
+			if (b.value.equals(value)) {
+				return b;
+			}
+		}
+		throw new IllegalArgumentException("Unexpected value '" + value + "'");
+	}
+
 }

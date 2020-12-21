@@ -23,135 +23,137 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ThemeCreateRequest */
-@JsonPropertyOrder({
-  ThemeCreateRequest.JSON_PROPERTY_TYPE,
-  ThemeCreateRequest.JSON_PROPERTY_ZIP_FILE_PATHPORTAL
-})
+@JsonPropertyOrder({ ThemeCreateRequest.JSON_PROPERTY_TYPE, ThemeCreateRequest.JSON_PROPERTY_ZIP_FILE_PATHPORTAL })
 @JsonTypeName("ThemeCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ThemeCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  /** theme type */
-  public enum TypeEnum {
-    PORTAL("portal"),
+	private static final long serialVersionUID = 1L;
 
-    MOBILE("mobile");
+	/** theme type */
+	public enum TypeEnum {
 
-    private String value;
+		PORTAL("portal"),
 
-    TypeEnum(String value) {
-      this.value = value;
-    }
+		MOBILE("mobile");
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+		private String value;
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
+		TypeEnum(String value) {
+			this.value = value;
+		}
 
-    @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+		@JsonValue
+		public String getValue() {
+			return value;
+		}
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private TypeEnum type;
+		@Override
+		public String toString() {
+			return String.valueOf(value);
+		}
 
-  public static final String JSON_PROPERTY_ZIP_FILE_PATHPORTAL = "zipFilePathportal";
-  private String zipFilePathportal;
+		@JsonCreator
+		public static TypeEnum fromValue(String value) {
+			for (TypeEnum b : TypeEnum.values()) {
+				if (b.value.equals(value)) {
+					return b;
+				}
+			}
+			throw new IllegalArgumentException("Unexpected value '" + value + "'");
+		}
 
-  public ThemeCreateRequest type(TypeEnum type) {
+	}
 
-    this.type = type;
-    return this;
-  }
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  /**
-   * theme type
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "theme type")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TypeEnum getType() {
-    return type;
-  }
+	private TypeEnum type;
 
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
+	public static final String JSON_PROPERTY_ZIP_FILE_PATHPORTAL = "zipFilePathportal";
 
-  public ThemeCreateRequest zipFilePathportal(String zipFilePathportal) {
+	private String zipFilePathportal;
 
-    this.zipFilePathportal = zipFilePathportal;
-    return this;
-  }
+	public ThemeCreateRequest type(TypeEnum type) {
 
-  /**
-   * tmp zip file Path as uploaded to portal
-   *
-   * @return zipFilePathportal
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "tmp zip file Path as uploaded to portal")
-  @JsonProperty(JSON_PROPERTY_ZIP_FILE_PATHPORTAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getZipFilePathportal() {
-    return zipFilePathportal;
-  }
+		this.type = type;
+		return this;
+	}
 
-  public void setZipFilePathportal(String zipFilePathportal) {
-    this.zipFilePathportal = zipFilePathportal;
-  }
+	/**
+	 * theme type
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "theme type")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public TypeEnum getType() {
+		return type;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ThemeCreateRequest themeCreateRequest = (ThemeCreateRequest) o;
-    return Objects.equals(this.type, themeCreateRequest.type)
-        && Objects.equals(this.zipFilePathportal, themeCreateRequest.zipFilePathportal);
-  }
+	public void setType(TypeEnum type) {
+		this.type = type;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(type, zipFilePathportal);
-  }
+	public ThemeCreateRequest zipFilePathportal(String zipFilePathportal) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ThemeCreateRequest {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    zipFilePathportal: ").append(toIndentedString(zipFilePathportal)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+		this.zipFilePathportal = zipFilePathportal;
+		return this;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	/**
+	 * tmp zip file Path as uploaded to portal
+	 * @return zipFilePathportal
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "tmp zip file Path as uploaded to portal")
+	@JsonProperty(JSON_PROPERTY_ZIP_FILE_PATHPORTAL)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getZipFilePathportal() {
+		return zipFilePathportal;
+	}
+
+	public void setZipFilePathportal(String zipFilePathportal) {
+		this.zipFilePathportal = zipFilePathportal;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ThemeCreateRequest themeCreateRequest = (ThemeCreateRequest) o;
+		return Objects.equals(this.type, themeCreateRequest.type)
+				&& Objects.equals(this.zipFilePathportal, themeCreateRequest.zipFilePathportal);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(type, zipFilePathportal);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ThemeCreateRequest {\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    zipFilePathportal: ").append(toIndentedString(zipFilePathportal)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

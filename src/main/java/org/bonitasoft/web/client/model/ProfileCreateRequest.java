@@ -21,102 +21,102 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProfileCreateRequest */
-@JsonPropertyOrder({
-  ProfileCreateRequest.JSON_PROPERTY_DESCRIPTION,
-  ProfileCreateRequest.JSON_PROPERTY_NAME
-})
+@JsonPropertyOrder({ ProfileCreateRequest.JSON_PROPERTY_DESCRIPTION, ProfileCreateRequest.JSON_PROPERTY_NAME })
 @JsonTypeName("ProfileCreateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProfileCreateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public ProfileCreateRequest description(String description) {
+	private String description;
 
-    this.description = description;
-    return this;
-  }
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  /**
-   * a description of the profile
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "a description of the profile")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	private String name;
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public ProfileCreateRequest description(String description) {
 
-  public ProfileCreateRequest name(String name) {
+		this.description = description;
+		return this;
+	}
 
-    this.name = name;
-    return this;
-  }
+	/**
+	 * a description of the profile
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "a description of the profile")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  /**
-   * profile name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "profile name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public ProfileCreateRequest name(String name) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProfileCreateRequest profileCreateRequest = (ProfileCreateRequest) o;
-    return Objects.equals(this.description, profileCreateRequest.description)
-        && Objects.equals(this.name, profileCreateRequest.name);
-  }
+		this.name = name;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(description, name);
-  }
+	/**
+	 * profile name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "profile name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProfileCreateRequest {\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProfileCreateRequest profileCreateRequest = (ProfileCreateRequest) o;
+		return Objects.equals(this.description, profileCreateRequest.description)
+				&& Objects.equals(this.name, profileCreateRequest.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, name);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProfileCreateRequest {\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

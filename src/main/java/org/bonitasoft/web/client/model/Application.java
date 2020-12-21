@@ -21,374 +21,358 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** Application */
-@JsonPropertyOrder({
-  Application.JSON_PROPERTY_CREATED_BY,
-  Application.JSON_PROPERTY_CREATION_DATE,
-  Application.JSON_PROPERTY_DESCRIPTION,
-  Application.JSON_PROPERTY_DISPLAY_NAME,
-  Application.JSON_PROPERTY_HOME_PAGE_ID,
-  Application.JSON_PROPERTY_ID,
-  Application.JSON_PROPERTY_LAST_UPDATE_DATE,
-  Application.JSON_PROPERTY_PROFILE_ID,
-  Application.JSON_PROPERTY_TOKEN,
-  Application.JSON_PROPERTY_UPDATED_BY,
-  Application.JSON_PROPERTY_VERSION
-})
+@JsonPropertyOrder({ Application.JSON_PROPERTY_CREATED_BY, Application.JSON_PROPERTY_CREATION_DATE,
+		Application.JSON_PROPERTY_DESCRIPTION, Application.JSON_PROPERTY_DISPLAY_NAME,
+		Application.JSON_PROPERTY_HOME_PAGE_ID, Application.JSON_PROPERTY_ID,
+		Application.JSON_PROPERTY_LAST_UPDATE_DATE, Application.JSON_PROPERTY_PROFILE_ID,
+		Application.JSON_PROPERTY_TOKEN, Application.JSON_PROPERTY_UPDATED_BY, Application.JSON_PROPERTY_VERSION })
 @JsonTypeName("Application")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Application implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-  private String createdBy;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
-  private String creationDate;
+	public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private String createdBy;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
 
-  public static final String JSON_PROPERTY_HOME_PAGE_ID = "homePageId";
-  private String homePageId;
+	private String creationDate;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
-  private String lastUpdateDate;
+	private String description;
 
-  public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
-  private String profileId;
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-  public static final String JSON_PROPERTY_TOKEN = "token";
-  private String token;
+	private String displayName;
 
-  public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
-  private String updatedBy;
+	public static final String JSON_PROPERTY_HOME_PAGE_ID = "homePageId";
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private String version;
+	private String homePageId;
 
-  public Application createdBy(String createdBy) {
+	public static final String JSON_PROPERTY_ID = "id";
 
-    this.createdBy = createdBy;
-    return this;
-  }
+	private String id;
 
-  /**
-   * Author user ID
-   *
-   * @return createdBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Author user ID")
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreatedBy() {
-    return createdBy;
-  }
+	public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
 
-  public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-  }
+	private String lastUpdateDate;
 
-  public Application creationDate(String creationDate) {
+	public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
 
-    this.creationDate = creationDate;
-    return this;
-  }
+	private String profileId;
 
-  /**
-   * creation date of the application
-   *
-   * @return creationDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "creation date of the application")
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCreationDate() {
-    return creationDate;
-  }
+	public static final String JSON_PROPERTY_TOKEN = "token";
 
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
+	private String token;
 
-  public Application description(String description) {
+	public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
 
-    this.description = description;
-    return this;
-  }
+	private String updatedBy;
 
-  /**
-   * description of the application
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description of the application")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public static final String JSON_PROPERTY_VERSION = "version";
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	private String version;
 
-  public Application displayName(String displayName) {
+	public Application createdBy(String createdBy) {
 
-    this.displayName = displayName;
-    return this;
-  }
+		this.createdBy = createdBy;
+		return this;
+	}
 
-  /**
-   * display name of the application
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name of the application")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	/**
+	 * Author user ID
+	 * @return createdBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Author user ID")
+	@JsonProperty(JSON_PROPERTY_CREATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreatedBy() {
+		return createdBy;
+	}
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
 
-  public Application homePageId(String homePageId) {
+	public Application creationDate(String creationDate) {
 
-    this.homePageId = homePageId;
-    return this;
-  }
+		this.creationDate = creationDate;
+		return this;
+	}
 
-  /**
-   * id of the application page used as the home page
-   *
-   * @return homePageId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the application page used as the home page")
-  @JsonProperty(JSON_PROPERTY_HOME_PAGE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getHomePageId() {
-    return homePageId;
-  }
+	/**
+	 * creation date of the application
+	 * @return creationDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "creation date of the application")
+	@JsonProperty(JSON_PROPERTY_CREATION_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getCreationDate() {
+		return creationDate;
+	}
 
-  public void setHomePageId(String homePageId) {
-    this.homePageId = homePageId;
-  }
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
 
-  public Application id(String id) {
+	public Application description(String description) {
 
-    this.id = id;
-    return this;
-  }
+		this.description = description;
+		return this;
+	}
 
-  /**
-   * id of the application
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "id of the application")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	/**
+	 * description of the application
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description of the application")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public Application lastUpdateDate(String lastUpdateDate) {
+	public Application displayName(String displayName) {
 
-    this.lastUpdateDate = lastUpdateDate;
-    return this;
-  }
+		this.displayName = displayName;
+		return this;
+	}
 
-  /**
-   * last update date of the application
-   *
-   * @return lastUpdateDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "last update date of the application")
-  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastUpdateDate() {
-    return lastUpdateDate;
-  }
+	/**
+	 * display name of the application
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "display name of the application")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  public void setLastUpdateDate(String lastUpdateDate) {
-    this.lastUpdateDate = lastUpdateDate;
-  }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-  public Application profileId(String profileId) {
+	public Application homePageId(String homePageId) {
 
-    this.profileId = profileId;
-    return this;
-  }
+		this.homePageId = homePageId;
+		return this;
+	}
 
-  /**
-   * profile authorized to access this application
-   *
-   * @return profileId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "profile authorized to access this application")
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getProfileId() {
-    return profileId;
-  }
+	/**
+	 * id of the application page used as the home page
+	 * @return homePageId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the application page used as the home page")
+	@JsonProperty(JSON_PROPERTY_HOME_PAGE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getHomePageId() {
+		return homePageId;
+	}
 
-  public void setProfileId(String profileId) {
-    this.profileId = profileId;
-  }
+	public void setHomePageId(String homePageId) {
+		this.homePageId = homePageId;
+	}
 
-  public Application token(String token) {
+	public Application id(String id) {
 
-    this.token = token;
-    return this;
-  }
+		this.id = id;
+		return this;
+	}
 
-  /**
-   * token of the application used to build the application URL
-   *
-   * @return token
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "token of the application used to build the application URL")
-  @JsonProperty(JSON_PROPERTY_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getToken() {
-    return token;
-  }
+	/**
+	 * id of the application
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "id of the application")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  public void setToken(String token) {
-    this.token = token;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public Application updatedBy(String updatedBy) {
+	public Application lastUpdateDate(String lastUpdateDate) {
 
-    this.updatedBy = updatedBy;
-    return this;
-  }
+		this.lastUpdateDate = lastUpdateDate;
+		return this;
+	}
 
-  /**
-   * Last updating user ID
-   *
-   * @return updatedBy
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Last updating user ID")
-  @JsonProperty(JSON_PROPERTY_UPDATED_BY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUpdatedBy() {
-    return updatedBy;
-  }
+	/**
+	 * last update date of the application
+	 * @return lastUpdateDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "last update date of the application")
+	@JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
 
-  public void setUpdatedBy(String updatedBy) {
-    this.updatedBy = updatedBy;
-  }
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
 
-  public Application version(String version) {
+	public Application profileId(String profileId) {
 
-    this.version = version;
-    return this;
-  }
+		this.profileId = profileId;
+		return this;
+	}
 
-  /**
-   * version of the application
-   *
-   * @return version
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "version of the application")
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getVersion() {
-    return version;
-  }
+	/**
+	 * profile authorized to access this application
+	 * @return profileId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "profile authorized to access this application")
+	@JsonProperty(JSON_PROPERTY_PROFILE_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getProfileId() {
+		return profileId;
+	}
 
-  public void setVersion(String version) {
-    this.version = version;
-  }
+	public void setProfileId(String profileId) {
+		this.profileId = profileId;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Application application = (Application) o;
-    return Objects.equals(this.createdBy, application.createdBy)
-        && Objects.equals(this.creationDate, application.creationDate)
-        && Objects.equals(this.description, application.description)
-        && Objects.equals(this.displayName, application.displayName)
-        && Objects.equals(this.homePageId, application.homePageId)
-        && Objects.equals(this.id, application.id)
-        && Objects.equals(this.lastUpdateDate, application.lastUpdateDate)
-        && Objects.equals(this.profileId, application.profileId)
-        && Objects.equals(this.token, application.token)
-        && Objects.equals(this.updatedBy, application.updatedBy)
-        && Objects.equals(this.version, application.version);
-  }
+	public Application token(String token) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        createdBy,
-        creationDate,
-        description,
-        displayName,
-        homePageId,
-        id,
-        lastUpdateDate,
-        profileId,
-        token,
-        updatedBy,
-        version);
-  }
+		this.token = token;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Application {\n");
-    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    homePageId: ").append(toIndentedString(homePageId)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-    sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
-    sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * token of the application used to build the application URL
+	 * @return token
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "token of the application used to build the application URL")
+	@JsonProperty(JSON_PROPERTY_TOKEN)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getToken() {
+		return token;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Application updatedBy(String updatedBy) {
+
+		this.updatedBy = updatedBy;
+		return this;
+	}
+
+	/**
+	 * Last updating user ID
+	 * @return updatedBy
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Last updating user ID")
+	@JsonProperty(JSON_PROPERTY_UPDATED_BY)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public Application version(String version) {
+
+		this.version = version;
+		return this;
+	}
+
+	/**
+	 * version of the application
+	 * @return version
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "version of the application")
+	@JsonProperty(JSON_PROPERTY_VERSION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Application application = (Application) o;
+		return Objects.equals(this.createdBy, application.createdBy)
+				&& Objects.equals(this.creationDate, application.creationDate)
+				&& Objects.equals(this.description, application.description)
+				&& Objects.equals(this.displayName, application.displayName)
+				&& Objects.equals(this.homePageId, application.homePageId) && Objects.equals(this.id, application.id)
+				&& Objects.equals(this.lastUpdateDate, application.lastUpdateDate)
+				&& Objects.equals(this.profileId, application.profileId)
+				&& Objects.equals(this.token, application.token)
+				&& Objects.equals(this.updatedBy, application.updatedBy)
+				&& Objects.equals(this.version, application.version);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(createdBy, creationDate, description, displayName, homePageId, id, lastUpdateDate,
+				profileId, token, updatedBy, version);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Application {\n");
+		sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+		sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    homePageId: ").append(toIndentedString(homePageId)).append("\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+		sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+		sb.append("    token: ").append(toIndentedString(token)).append("\n");
+		sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
+		sb.append("    version: ").append(toIndentedString(version)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

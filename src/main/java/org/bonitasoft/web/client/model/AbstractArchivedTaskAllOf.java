@@ -23,74 +23,76 @@ import java.util.Objects;
 
 /** An Archived task is a task that has been archived */
 @ApiModel(description = "An Archived task is a task that has been archived")
-@JsonPropertyOrder({AbstractArchivedTaskAllOf.JSON_PROPERTY_ARCHIVED_DATE})
+@JsonPropertyOrder({ AbstractArchivedTaskAllOf.JSON_PROPERTY_ARCHIVED_DATE })
 @JsonTypeName("AbstractArchivedTask_allOf")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AbstractArchivedTaskAllOf implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
-  private String archivedDate;
+	private static final long serialVersionUID = 1L;
 
-  public AbstractArchivedTaskAllOf archivedDate(String archivedDate) {
+	public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
 
-    this.archivedDate = archivedDate;
-    return this;
-  }
+	private String archivedDate;
 
-  /**
-   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example
-   * &#39;2014-10-17 16:05:42.626&#39;
-   *
-   * @return archivedDate
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
-  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getArchivedDate() {
-    return archivedDate;
-  }
+	public AbstractArchivedTaskAllOf archivedDate(String archivedDate) {
 
-  public void setArchivedDate(String archivedDate) {
-    this.archivedDate = archivedDate;
-  }
+		this.archivedDate = archivedDate;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    AbstractArchivedTaskAllOf abstractArchivedTaskAllOf = (AbstractArchivedTaskAllOf) o;
-    return Objects.equals(this.archivedDate, abstractArchivedTaskAllOf.archivedDate);
-  }
+	/**
+	 * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for
+	 * example &#39;2014-10-17 16:05:42.626&#39;
+	 * @return archivedDate
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(
+			value = "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+	@JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getArchivedDate() {
+		return archivedDate;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(archivedDate);
-  }
+	public void setArchivedDate(String archivedDate) {
+		this.archivedDate = archivedDate;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AbstractArchivedTaskAllOf {\n");
-    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		AbstractArchivedTaskAllOf abstractArchivedTaskAllOf = (AbstractArchivedTaskAllOf) o;
+		return Objects.equals(this.archivedDate, abstractArchivedTaskAllOf.archivedDate);
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(archivedDate);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class AbstractArchivedTaskAllOf {\n");
+		sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

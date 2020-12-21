@@ -21,131 +21,131 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessUpdateRequest */
-@JsonPropertyOrder({
-  ProcessUpdateRequest.JSON_PROPERTY_DISPLAYDESCRIPTION,
-  ProcessUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
-  ProcessUpdateRequest.JSON_PROPERTY_ACTIVATION_STATE
-})
+@JsonPropertyOrder({ ProcessUpdateRequest.JSON_PROPERTY_DISPLAYDESCRIPTION,
+		ProcessUpdateRequest.JSON_PROPERTY_DISPLAY_NAME, ProcessUpdateRequest.JSON_PROPERTY_ACTIVATION_STATE })
 @JsonTypeName("ProcessUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAYDESCRIPTION = "displaydescription";
-  private String displaydescription;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	public static final String JSON_PROPERTY_DISPLAYDESCRIPTION = "displaydescription";
 
-  public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
-  private ActivationState activationState;
+	private String displaydescription;
 
-  public ProcessUpdateRequest displaydescription(String displaydescription) {
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-    this.displaydescription = displaydescription;
-    return this;
-  }
+	private String displayName;
 
-  /**
-   * description of the Process
-   *
-   * @return displaydescription
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "description of the Process")
-  @JsonProperty(JSON_PROPERTY_DISPLAYDESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplaydescription() {
-    return displaydescription;
-  }
+	public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
 
-  public void setDisplaydescription(String displaydescription) {
-    this.displaydescription = displaydescription;
-  }
+	private ActivationState activationState;
 
-  public ProcessUpdateRequest displayName(String displayName) {
+	public ProcessUpdateRequest displaydescription(String displaydescription) {
 
-    this.displayName = displayName;
-    return this;
-  }
+		this.displaydescription = displaydescription;
+		return this;
+	}
 
-  /**
-   * display name of the Process
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name of the Process")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	/**
+	 * description of the Process
+	 * @return displaydescription
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "description of the Process")
+	@JsonProperty(JSON_PROPERTY_DISPLAYDESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplaydescription() {
+		return displaydescription;
+	}
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+	public void setDisplaydescription(String displaydescription) {
+		this.displaydescription = displaydescription;
+	}
 
-  public ProcessUpdateRequest activationState(ActivationState activationState) {
+	public ProcessUpdateRequest displayName(String displayName) {
 
-    this.activationState = activationState;
-    return this;
-  }
+		this.displayName = displayName;
+		return this;
+	}
 
-  /**
-   * Get activationState
-   *
-   * @return activationState
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ActivationState getActivationState() {
-    return activationState;
-  }
+	/**
+	 * display name of the Process
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "display name of the Process")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
 
-  public void setActivationState(ActivationState activationState) {
-    this.activationState = activationState;
-  }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessUpdateRequest processUpdateRequest = (ProcessUpdateRequest) o;
-    return Objects.equals(this.displaydescription, processUpdateRequest.displaydescription)
-        && Objects.equals(this.displayName, processUpdateRequest.displayName)
-        && Objects.equals(this.activationState, processUpdateRequest.activationState);
-  }
+	public ProcessUpdateRequest activationState(ActivationState activationState) {
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(displaydescription, displayName, activationState);
-  }
+		this.activationState = activationState;
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessUpdateRequest {\n");
-    sb.append("    displaydescription: ").append(toIndentedString(displaydescription)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    activationState: ").append(toIndentedString(activationState)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * Get activationState
+	 * @return activationState
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "")
+	@JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public ActivationState getActivationState() {
+		return activationState;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setActivationState(ActivationState activationState) {
+		this.activationState = activationState;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessUpdateRequest processUpdateRequest = (ProcessUpdateRequest) o;
+		return Objects.equals(this.displaydescription, processUpdateRequest.displaydescription)
+				&& Objects.equals(this.displayName, processUpdateRequest.displayName)
+				&& Objects.equals(this.activationState, processUpdateRequest.activationState);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(displaydescription, displayName, activationState);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessUpdateRequest {\n");
+		sb.append("    displaydescription: ").append(toIndentedString(displaydescription)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("    activationState: ").append(toIndentedString(activationState)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

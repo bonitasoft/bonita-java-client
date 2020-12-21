@@ -23,255 +23,251 @@ import java.util.List;
 import java.util.Objects;
 
 /** Expression */
-@JsonPropertyOrder({
-  Expression.JSON_PROPERTY_ID,
-  Expression.JSON_PROPERTY_NAME,
-  Expression.JSON_PROPERTY_CONTENT,
-  Expression.JSON_PROPERTY_EXPRESSION_TYPE,
-  Expression.JSON_PROPERTY_RETURN_TYPE,
-  Expression.JSON_PROPERTY_INTERPRETER,
-  Expression.JSON_PROPERTY_DEPENDENCIES
-})
+@JsonPropertyOrder({ Expression.JSON_PROPERTY_ID, Expression.JSON_PROPERTY_NAME, Expression.JSON_PROPERTY_CONTENT,
+		Expression.JSON_PROPERTY_EXPRESSION_TYPE, Expression.JSON_PROPERTY_RETURN_TYPE,
+		Expression.JSON_PROPERTY_INTERPRETER, Expression.JSON_PROPERTY_DEPENDENCIES })
 @JsonTypeName("Expression")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Expression implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_CONTENT = "content";
-  private String content;
+	private String id;
 
-  public static final String JSON_PROPERTY_EXPRESSION_TYPE = "expressionType";
-  private String expressionType;
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public static final String JSON_PROPERTY_RETURN_TYPE = "returnType";
-  private String returnType;
+	private String name;
 
-  public static final String JSON_PROPERTY_INTERPRETER = "interpreter";
-  private String interpreter;
+	public static final String JSON_PROPERTY_CONTENT = "content";
 
-  public static final String JSON_PROPERTY_DEPENDENCIES = "dependencies";
-  private List<Expression> dependencies = null;
+	private String content;
 
-  public Expression id(String id) {
+	public static final String JSON_PROPERTY_EXPRESSION_TYPE = "expressionType";
 
-    this.id = id;
-    return this;
-  }
+	private String expressionType;
 
-  /**
-   * the expression id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the expression id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
+	public static final String JSON_PROPERTY_RETURN_TYPE = "returnType";
 
-  public void setId(String id) {
-    this.id = id;
-  }
+	private String returnType;
 
-  public Expression name(String name) {
+	public static final String JSON_PROPERTY_INTERPRETER = "interpreter";
 
-    this.name = name;
-    return this;
-  }
+	private String interpreter;
 
-  /**
-   * the expression name
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the expression name")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public static final String JSON_PROPERTY_DEPENDENCIES = "dependencies";
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	private List<Expression> dependencies = null;
 
-  public Expression content(String content) {
+	public Expression id(String id) {
 
-    this.content = content;
-    return this;
-  }
+		this.id = id;
+		return this;
+	}
 
-  /**
-   * the expression content
-   *
-   * @return content
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the expression content")
-  @JsonProperty(JSON_PROPERTY_CONTENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getContent() {
-    return content;
-  }
+	/**
+	 * the expression id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the expression id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getId() {
+		return id;
+	}
 
-  public void setContent(String content) {
-    this.content = content;
-  }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-  public Expression expressionType(String expressionType) {
+	public Expression name(String name) {
 
-    this.expressionType = expressionType;
-    return this;
-  }
+		this.name = name;
+		return this;
+	}
 
-  /**
-   * the expression type
-   *
-   * @return expressionType
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the expression type")
-  @JsonProperty(JSON_PROPERTY_EXPRESSION_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExpressionType() {
-    return expressionType;
-  }
+	/**
+	 * the expression name
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the expression name")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  public void setExpressionType(String expressionType) {
-    this.expressionType = expressionType;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public Expression returnType(String returnType) {
+	public Expression content(String content) {
 
-    this.returnType = returnType;
-    return this;
-  }
+		this.content = content;
+		return this;
+	}
 
-  /**
-   * the expression return type
-   *
-   * @return returnType
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the expression return type")
-  @JsonProperty(JSON_PROPERTY_RETURN_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getReturnType() {
-    return returnType;
-  }
+	/**
+	 * the expression content
+	 * @return content
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the expression content")
+	@JsonProperty(JSON_PROPERTY_CONTENT)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getContent() {
+		return content;
+	}
 
-  public void setReturnType(String returnType) {
-    this.returnType = returnType;
-  }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-  public Expression interpreter(String interpreter) {
+	public Expression expressionType(String expressionType) {
 
-    this.interpreter = interpreter;
-    return this;
-  }
+		this.expressionType = expressionType;
+		return this;
+	}
 
-  /**
-   * the expression interpreter
-   *
-   * @return interpreter
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the expression interpreter")
-  @JsonProperty(JSON_PROPERTY_INTERPRETER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getInterpreter() {
-    return interpreter;
-  }
+	/**
+	 * the expression type
+	 * @return expressionType
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the expression type")
+	@JsonProperty(JSON_PROPERTY_EXPRESSION_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getExpressionType() {
+		return expressionType;
+	}
 
-  public void setInterpreter(String interpreter) {
-    this.interpreter = interpreter;
-  }
+	public void setExpressionType(String expressionType) {
+		this.expressionType = expressionType;
+	}
 
-  public Expression dependencies(List<Expression> dependencies) {
+	public Expression returnType(String returnType) {
 
-    this.dependencies = dependencies;
-    return this;
-  }
+		this.returnType = returnType;
+		return this;
+	}
 
-  public Expression addDependenciesItem(Expression dependenciesItem) {
-    if (this.dependencies == null) {
-      this.dependencies = new ArrayList<>();
-    }
-    this.dependencies.add(dependenciesItem);
-    return this;
-  }
+	/**
+	 * the expression return type
+	 * @return returnType
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the expression return type")
+	@JsonProperty(JSON_PROPERTY_RETURN_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getReturnType() {
+		return returnType;
+	}
 
-  /**
-   * the expression dependencies
-   *
-   * @return dependencies
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the expression dependencies")
-  @JsonProperty(JSON_PROPERTY_DEPENDENCIES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Expression> getDependencies() {
-    return dependencies;
-  }
+	public void setReturnType(String returnType) {
+		this.returnType = returnType;
+	}
 
-  public void setDependencies(List<Expression> dependencies) {
-    this.dependencies = dependencies;
-  }
+	public Expression interpreter(String interpreter) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Expression expression = (Expression) o;
-    return Objects.equals(this.id, expression.id)
-        && Objects.equals(this.name, expression.name)
-        && Objects.equals(this.content, expression.content)
-        && Objects.equals(this.expressionType, expression.expressionType)
-        && Objects.equals(this.returnType, expression.returnType)
-        && Objects.equals(this.interpreter, expression.interpreter)
-        && Objects.equals(this.dependencies, expression.dependencies);
-  }
+		this.interpreter = interpreter;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, content, expressionType, returnType, interpreter, dependencies);
-  }
+	/**
+	 * the expression interpreter
+	 * @return interpreter
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the expression interpreter")
+	@JsonProperty(JSON_PROPERTY_INTERPRETER)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getInterpreter() {
+		return interpreter;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Expression {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
-    sb.append("    expressionType: ").append(toIndentedString(expressionType)).append("\n");
-    sb.append("    returnType: ").append(toIndentedString(returnType)).append("\n");
-    sb.append("    interpreter: ").append(toIndentedString(interpreter)).append("\n");
-    sb.append("    dependencies: ").append(toIndentedString(dependencies)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setInterpreter(String interpreter) {
+		this.interpreter = interpreter;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public Expression dependencies(List<Expression> dependencies) {
+
+		this.dependencies = dependencies;
+		return this;
+	}
+
+	public Expression addDependenciesItem(Expression dependenciesItem) {
+		if (this.dependencies == null) {
+			this.dependencies = new ArrayList<>();
+		}
+		this.dependencies.add(dependenciesItem);
+		return this;
+	}
+
+	/**
+	 * the expression dependencies
+	 * @return dependencies
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the expression dependencies")
+	@JsonProperty(JSON_PROPERTY_DEPENDENCIES)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<Expression> getDependencies() {
+		return dependencies;
+	}
+
+	public void setDependencies(List<Expression> dependencies) {
+		this.dependencies = dependencies;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Expression expression = (Expression) o;
+		return Objects.equals(this.id, expression.id) && Objects.equals(this.name, expression.name)
+				&& Objects.equals(this.content, expression.content)
+				&& Objects.equals(this.expressionType, expression.expressionType)
+				&& Objects.equals(this.returnType, expression.returnType)
+				&& Objects.equals(this.interpreter, expression.interpreter)
+				&& Objects.equals(this.dependencies, expression.dependencies);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, content, expressionType, returnType, interpreter, dependencies);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Expression {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    content: ").append(toIndentedString(content)).append("\n");
+		sb.append("    expressionType: ").append(toIndentedString(expressionType)).append("\n");
+		sb.append("    returnType: ").append(toIndentedString(returnType)).append("\n");
+		sb.append("    interpreter: ").append(toIndentedString(interpreter)).append("\n");
+		sb.append("    dependencies: ").append(toIndentedString(dependencies)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

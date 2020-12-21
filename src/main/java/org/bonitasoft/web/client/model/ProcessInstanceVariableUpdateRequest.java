@@ -21,103 +21,103 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** ProcessInstanceVariableUpdateRequest */
-@JsonPropertyOrder({
-  ProcessInstanceVariableUpdateRequest.JSON_PROPERTY_TYPE,
-  ProcessInstanceVariableUpdateRequest.JSON_PROPERTY_VALUE
-})
+@JsonPropertyOrder({ ProcessInstanceVariableUpdateRequest.JSON_PROPERTY_TYPE,
+		ProcessInstanceVariableUpdateRequest.JSON_PROPERTY_VALUE })
 @JsonTypeName("ProcessInstanceVariableUpdateRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceVariableUpdateRequest implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private String value;
+	public static final String JSON_PROPERTY_TYPE = "type";
 
-  public ProcessInstanceVariableUpdateRequest type(String type) {
+	private String type;
 
-    this.type = type;
-    return this;
-  }
+	public static final String JSON_PROPERTY_VALUE = "value";
 
-  /**
-   * the java class name
-   *
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the java class name")
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getType() {
-    return type;
-  }
+	private String value;
 
-  public void setType(String type) {
-    this.type = type;
-  }
+	public ProcessInstanceVariableUpdateRequest type(String type) {
 
-  public ProcessInstanceVariableUpdateRequest value(String value) {
+		this.type = type;
+		return this;
+	}
 
-    this.value = value;
-    return this;
-  }
+	/**
+	 * the java class name
+	 * @return type
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the java class name")
+	@JsonProperty(JSON_PROPERTY_TYPE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getType() {
+		return type;
+	}
 
-  /**
-   * the new value
-   *
-   * @return value
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the new value")
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getValue() {
-    return value;
-  }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+	public ProcessInstanceVariableUpdateRequest value(String value) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ProcessInstanceVariableUpdateRequest processInstanceVariableUpdateRequest =
-        (ProcessInstanceVariableUpdateRequest) o;
-    return Objects.equals(this.type, processInstanceVariableUpdateRequest.type)
-        && Objects.equals(this.value, processInstanceVariableUpdateRequest.value);
-  }
+		this.value = value;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(type, value);
-  }
+	/**
+	 * the new value
+	 * @return value
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the new value")
+	@JsonProperty(JSON_PROPERTY_VALUE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getValue() {
+		return value;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessInstanceVariableUpdateRequest {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ProcessInstanceVariableUpdateRequest processInstanceVariableUpdateRequest = (ProcessInstanceVariableUpdateRequest) o;
+		return Objects.equals(this.type, processInstanceVariableUpdateRequest.type)
+				&& Objects.equals(this.value, processInstanceVariableUpdateRequest.value);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(type, value);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class ProcessInstanceVariableUpdateRequest {\n");
+		sb.append("    type: ").append(toIndentedString(type)).append("\n");
+		sb.append("    value: ").append(toIndentedString(value)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

@@ -24,141 +24,138 @@ import java.util.List;
 import java.util.Objects;
 
 /** Error */
-@JsonPropertyOrder({
-  Error.JSON_PROPERTY_MESSAGE,
-  Error.JSON_PROPERTY_EXCEPTION,
-  Error.JSON_PROPERTY_EXPLANATIONS
-})
+@JsonPropertyOrder({ Error.JSON_PROPERTY_MESSAGE, Error.JSON_PROPERTY_EXCEPTION, Error.JSON_PROPERTY_EXPLANATIONS })
 @JsonTypeName("Error")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Error extends HashMap<String, Object> implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_MESSAGE = "message";
-  private String message;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_EXCEPTION = "exception";
-  private String exception;
+	public static final String JSON_PROPERTY_MESSAGE = "message";
 
-  public static final String JSON_PROPERTY_EXPLANATIONS = "explanations";
-  private List<String> explanations = null;
+	private String message;
 
-  public Error message(String message) {
+	public static final String JSON_PROPERTY_EXCEPTION = "exception";
 
-    this.message = message;
-    return this;
-  }
+	private String exception;
 
-  /**
-   * The error message
-   *
-   * @return message
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The error message")
-  @JsonProperty(JSON_PROPERTY_MESSAGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getMessage() {
-    return message;
-  }
+	public static final String JSON_PROPERTY_EXPLANATIONS = "explanations";
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+	private List<String> explanations = null;
 
-  public Error exception(String exception) {
+	public Error message(String message) {
 
-    this.exception = exception;
-    return this;
-  }
+		this.message = message;
+		return this;
+	}
 
-  /**
-   * The exception type
-   *
-   * @return exception
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The exception type")
-  @JsonProperty(JSON_PROPERTY_EXCEPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getException() {
-    return exception;
-  }
+	/**
+	 * The error message
+	 * @return message
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The error message")
+	@JsonProperty(JSON_PROPERTY_MESSAGE)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getMessage() {
+		return message;
+	}
 
-  public void setException(String exception) {
-    this.exception = exception;
-  }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
-  public Error explanations(List<String> explanations) {
+	public Error exception(String exception) {
 
-    this.explanations = explanations;
-    return this;
-  }
+		this.exception = exception;
+		return this;
+	}
 
-  public Error addExplanationsItem(String explanationsItem) {
-    if (this.explanations == null) {
-      this.explanations = new ArrayList<>();
-    }
-    this.explanations.add(explanationsItem);
-    return this;
-  }
+	/**
+	 * The exception type
+	 * @return exception
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "The exception type")
+	@JsonProperty(JSON_PROPERTY_EXCEPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getException() {
+		return exception;
+	}
 
-  /**
-   * Further details on the error
-   *
-   * @return explanations
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Further details on the error")
-  @JsonProperty(JSON_PROPERTY_EXPLANATIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<String> getExplanations() {
-    return explanations;
-  }
+	public void setException(String exception) {
+		this.exception = exception;
+	}
 
-  public void setExplanations(List<String> explanations) {
-    this.explanations = explanations;
-  }
+	public Error explanations(List<String> explanations) {
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Error error = (Error) o;
-    return Objects.equals(this.message, error.message)
-        && Objects.equals(this.exception, error.exception)
-        && Objects.equals(this.explanations, error.explanations)
-        && super.equals(o);
-  }
+		this.explanations = explanations;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(message, exception, explanations, super.hashCode());
-  }
+	public Error addExplanationsItem(String explanationsItem) {
+		if (this.explanations == null) {
+			this.explanations = new ArrayList<>();
+		}
+		this.explanations.add(explanationsItem);
+		return this;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Error {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    exception: ").append(toIndentedString(exception)).append("\n");
-    sb.append("    explanations: ").append(toIndentedString(explanations)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	/**
+	 * Further details on the error
+	 * @return explanations
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "Further details on the error")
+	@JsonProperty(JSON_PROPERTY_EXPLANATIONS)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public List<String> getExplanations() {
+		return explanations;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setExplanations(List<String> explanations) {
+		this.explanations = explanations;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Error error = (Error) o;
+		return Objects.equals(this.message, error.message) && Objects.equals(this.exception, error.exception)
+				&& Objects.equals(this.explanations, error.explanations) && super.equals(o);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(message, exception, explanations, super.hashCode());
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Error {\n");
+		sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+		sb.append("    message: ").append(toIndentedString(message)).append("\n");
+		sb.append("    exception: ").append(toIndentedString(exception)).append("\n");
+		sb.append("    explanations: ").append(toIndentedString(explanations)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }

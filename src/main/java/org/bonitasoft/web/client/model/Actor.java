@@ -21,191 +21,186 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /** Actor */
-@JsonPropertyOrder({
-  Actor.JSON_PROPERTY_ID,
-  Actor.JSON_PROPERTY_PROCESS_ID,
-  Actor.JSON_PROPERTY_DESCRIPTION,
-  Actor.JSON_PROPERTY_NAME,
-  Actor.JSON_PROPERTY_DISPLAY_NAME
-})
+@JsonPropertyOrder({ Actor.JSON_PROPERTY_ID, Actor.JSON_PROPERTY_PROCESS_ID, Actor.JSON_PROPERTY_DESCRIPTION,
+		Actor.JSON_PROPERTY_NAME, Actor.JSON_PROPERTY_DISPLAY_NAME })
 @JsonTypeName("Actor")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Actor implements Serializable {
-  private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private Long id;
+	private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
-  private Long processId;
+	public static final String JSON_PROPERTY_ID = "id";
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+	private Long id;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+	public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+	private Long processId;
 
-  public Actor id(Long id) {
+	public static final String JSON_PROPERTY_DESCRIPTION = "description";
 
-    this.id = id;
-    return this;
-  }
+	private String description;
 
-  /**
-   * actor id
-   *
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "actor id")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getId() {
-    return id;
-  }
+	public static final String JSON_PROPERTY_NAME = "name";
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+	private String name;
 
-  public Actor processId(Long processId) {
+	public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
 
-    this.processId = processId;
-    return this;
-  }
+	private String displayName;
 
-  /**
-   * process definition id
-   *
-   * @return processId
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "process definition id")
-  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getProcessId() {
-    return processId;
-  }
+	public Actor id(Long id) {
 
-  public void setProcessId(Long processId) {
-    this.processId = processId;
-  }
+		this.id = id;
+		return this;
+	}
 
-  public Actor description(String description) {
+	/**
+	 * actor id
+	 * @return id
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "actor id")
+	@JsonProperty(JSON_PROPERTY_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getId() {
+		return id;
+	}
 
-    this.description = description;
-    return this;
-  }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  /**
-   * a description of the actor
-   *
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "a description of the actor")
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDescription() {
-    return description;
-  }
+	public Actor processId(Long processId) {
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+		this.processId = processId;
+		return this;
+	}
 
-  public Actor name(String name) {
+	/**
+	 * process definition id
+	 * @return processId
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "process definition id")
+	@JsonProperty(JSON_PROPERTY_PROCESS_ID)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public Long getProcessId() {
+		return processId;
+	}
 
-    this.name = name;
-    return this;
-  }
+	public void setProcessId(Long processId) {
+		this.processId = processId;
+	}
 
-  /**
-   * name of the actor (as specified on human tasks and for the initiator of the process)
-   *
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(
-      value =
-          "name of the actor (as specified on human tasks and for the initiator of the process)")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
+	public Actor description(String description) {
 
-  public void setName(String name) {
-    this.name = name;
-  }
+		this.description = description;
+		return this;
+	}
 
-  public Actor displayName(String displayName) {
+	/**
+	 * a description of the actor
+	 * @return description
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "a description of the actor")
+	@JsonProperty(JSON_PROPERTY_DESCRIPTION)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDescription() {
+		return description;
+	}
 
-    this.displayName = displayName;
-    return this;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  /**
-   * the display name of the actor
-   *
-   * @return displayName
-   */
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the display name of the actor")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDisplayName() {
-    return displayName;
-  }
+	public Actor name(String name) {
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
+		this.name = name;
+		return this;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Actor actor = (Actor) o;
-    return Objects.equals(this.id, actor.id)
-        && Objects.equals(this.processId, actor.processId)
-        && Objects.equals(this.description, actor.description)
-        && Objects.equals(this.name, actor.name)
-        && Objects.equals(this.displayName, actor.displayName);
-  }
+	/**
+	 * name of the actor (as specified on human tasks and for the initiator of the
+	 * process)
+	 * @return name
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "name of the actor (as specified on human tasks and for the initiator of the process)")
+	@JsonProperty(JSON_PROPERTY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getName() {
+		return name;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, processId, description, name, displayName);
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Actor {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public Actor displayName(String displayName) {
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+		this.displayName = displayName;
+		return this;
+	}
+
+	/**
+	 * the display name of the actor
+	 * @return displayName
+	 */
+	@javax.annotation.Nullable
+	@ApiModelProperty(value = "the display name of the actor")
+	@JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Actor actor = (Actor) o;
+		return Objects.equals(this.id, actor.id) && Objects.equals(this.processId, actor.processId)
+				&& Objects.equals(this.description, actor.description) && Objects.equals(this.name, actor.name)
+				&& Objects.equals(this.displayName, actor.displayName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, processId, description, name, displayName);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class Actor {\n");
+		sb.append("    id: ").append(toIndentedString(id)).append("\n");
+		sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
+		sb.append("    description: ").append(toIndentedString(description)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces (except the
+	 * first line).
+	 */
+	private String toIndentedString(Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
+
 }
