@@ -76,8 +76,10 @@
 		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
-		<spring-javaformat-maven-plugin.version>0.0.26</spring-javaformat-maven-plugin.version>
-		<openapi-generator-maven-plugin.version>5.0.0</openapi-generator-maven-plugin.version>
+		<spring-javaformat-maven-plugin.version>0.0.26
+		</spring-javaformat-maven-plugin.version>
+		<openapi-generator-maven-plugin.version>5.0.0
+		</openapi-generator-maven-plugin.version>
 
 		<codegen.skip>true</codegen.skip>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -97,9 +99,16 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>com.fasterxml.jackson</groupId>
-				<artifactId>jackson-bom</artifactId>
-				<version>${jackson.version}</version>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${junit-jupiter-engine.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>testcontainers-bom</artifactId>
+				<version>${testcontainers.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -111,16 +120,9 @@
 				<type>pom</type>
 			</dependency>
 			<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>junit-bom</artifactId>
-				<version>${junit-jupiter-engine.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>org.testcontainers</groupId>
-				<artifactId>testcontainers-bom</artifactId>
-				<version>${testcontainers.version}</version>
+				<groupId>com.fasterxml.jackson</groupId>
+				<artifactId>jackson-bom</artifactId>
+				<version>${jackson.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -190,6 +192,10 @@
 			<groupId>org.openapitools</groupId>
 			<artifactId>jackson-databind-nullable</artifactId>
 			<version>${jackson-databind-nullable.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-afterburner</artifactId>
 		</dependency>
 
 		<!-- Misc -->
@@ -448,7 +454,9 @@
 							<generateModelDocumentation>false</generateModelDocumentation>
 							<output>${project.basedir}</output>
 							<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
-                            <inputSpec>https://github.com/bonitasoft/bonita-openapi/releases/download/0.0.1/bonita-openapi-0.0.1.yaml</inputSpec>
+							<inputSpec>
+								https://github.com/bonitasoft/bonita-openapi/releases/download/0.0.1/bonita-openapi-0.0.1.yaml
+							</inputSpec>
 							<generatorName>java</generatorName>
 							<invokerPackage>org.bonitasoft.web.client.invoker
 							</invokerPackage>
