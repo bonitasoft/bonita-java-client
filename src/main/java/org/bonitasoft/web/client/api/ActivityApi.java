@@ -9,6 +9,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.Activity;
 import org.bonitasoft.web.client.model.ActivityUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ActivityApi extends ApiClient.Api {
 
   /**

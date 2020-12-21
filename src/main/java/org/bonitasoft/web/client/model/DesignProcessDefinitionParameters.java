@@ -15,6 +15,7 @@ package org.bonitasoft.web.client.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,6 +26,8 @@ import java.util.Objects;
   DesignProcessDefinitionParameters.JSON_PROPERTY_DESCRIPTION,
   DesignProcessDefinitionParameters.JSON_PROPERTY_NAME
 })
+@JsonTypeName("DesignProcessDefinition_parameters")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DesignProcessDefinitionParameters implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -107,7 +110,7 @@ public class DesignProcessDefinitionParameters implements Serializable {
   }
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -140,7 +143,7 @@ public class DesignProcessDefinitionParameters implements Serializable {
   /**
    * Convert the given object to string with each line indented by 4 spaces (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

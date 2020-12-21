@@ -12,36 +12,797 @@
 
 package org.bonitasoft.web.client.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
 
 /** ArchivedTask */
-@JsonPropertyOrder({})
-public class ArchivedTask extends AbstractArchivedTask implements Serializable {
+@JsonPropertyOrder({
+  ArchivedTask.JSON_PROPERTY_ID,
+  ArchivedTask.JSON_PROPERTY_TYPE,
+  ArchivedTask.JSON_PROPERTY_NAME,
+  ArchivedTask.JSON_PROPERTY_DISPLAY_NAME,
+  ArchivedTask.JSON_PROPERTY_DESCRIPTION,
+  ArchivedTask.JSON_PROPERTY_DISPLAY_DESCRIPTION,
+  ArchivedTask.JSON_PROPERTY_STATE,
+  ArchivedTask.JSON_PROPERTY_REACHED_STATE_DATE,
+  ArchivedTask.JSON_PROPERTY_LAST_UPDATE_DATE,
+  ArchivedTask.JSON_PROPERTY_DUE_DATE,
+  ArchivedTask.JSON_PROPERTY_PRIORITY,
+  ArchivedTask.JSON_PROPERTY_PROCESS_ID,
+  ArchivedTask.JSON_PROPERTY_PARENT_CASE_ID,
+  ArchivedTask.JSON_PROPERTY_PARENT_TASK_ID,
+  ArchivedTask.JSON_PROPERTY_ROOT_CASE_ID,
+  ArchivedTask.JSON_PROPERTY_ROOT_CONTAINER_ID,
+  ArchivedTask.JSON_PROPERTY_EXECUTED_BY,
+  ArchivedTask.JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE,
+  ArchivedTask.JSON_PROPERTY_ACTOR_ID,
+  ArchivedTask.JSON_PROPERTY_ASSIGNED_ID,
+  ArchivedTask.JSON_PROPERTY_ASSIGNED_DATE,
+  ArchivedTask.JSON_PROPERTY_IS_TERMINAL,
+  ArchivedTask.JSON_PROPERTY_ARCHIVED_DATE
+})
+@JsonTypeName("ArchivedTask")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+public class ArchivedTask implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  public static final String JSON_PROPERTY_ID = "id";
+  private String id;
+
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private String type;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
+
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+  private String displayName;
+
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
+
+  public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
+  private String displayDescription;
+
+  /** the current state of the task */
+  public enum StateEnum {
+    READY("ready"),
+
+    COMPLETED("completed"),
+
+    FAILED("failed");
+
+    private String value;
+
+    StateEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StateEnum fromValue(String value) {
+      for (StateEnum b : StateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_STATE = "state";
+  private StateEnum state;
+
+  public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
+  private String reachedStateDate;
+
+  public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+  private String lastUpdateDate;
+
+  public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
+  private String dueDate;
+
+  public static final String JSON_PROPERTY_PRIORITY = "priority";
+  private String priority;
+
+  public static final String JSON_PROPERTY_PROCESS_ID = "processId";
+  private String processId;
+
+  public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
+  private String parentCaseId;
+
+  public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
+  private String parentTaskId;
+
+  public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
+  private String rootCaseId;
+
+  public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
+  private String rootContainerId;
+
+  public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
+  private String executedBy;
+
+  public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
+  private String executedBySubstitute;
+
+  public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
+  private String actorId;
+
+  public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+  private String assignedId;
+
+  public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
+  private String assignedDate;
+
+  public static final String JSON_PROPERTY_IS_TERMINAL = "isTerminal";
+  private Boolean isTerminal;
+
+  public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+  private String archivedDate;
+
+  public ArchivedTask id(String id) {
+
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * the task id
+   *
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the task id")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public ArchivedTask type(String type) {
+
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * the task type
+   *
+   * @return type
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the task type")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public ArchivedTask name(String name) {
+
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * the task technical name
+   *
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the task technical name")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public ArchivedTask displayName(String displayName) {
+
+    this.displayName = displayName;
+    return this;
+  }
+
+  /**
+   * the human readable task name
+   *
+   * @return displayName
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the human readable task name")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDisplayName() {
+    return displayName;
+  }
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+  public ArchivedTask description(String description) {
+
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * the task description
+   *
+   * @return description
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the task description")
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public ArchivedTask displayDescription(String displayDescription) {
+
+    this.displayDescription = displayDescription;
+    return this;
+  }
+
+  /**
+   * the human readable task description
+   *
+   * @return displayDescription
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the human readable task description")
+  @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDisplayDescription() {
+    return displayDescription;
+  }
+
+  public void setDisplayDescription(String displayDescription) {
+    this.displayDescription = displayDescription;
+  }
+
+  public ArchivedTask state(StateEnum state) {
+
+    this.state = state;
+    return this;
+  }
+
+  /**
+   * the current state of the task
+   *
+   * @return state
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the current state of the task")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public StateEnum getState() {
+    return state;
+  }
+
+  public void setState(StateEnum state) {
+    this.state = state;
+  }
+
+  public ArchivedTask reachedStateDate(String reachedStateDate) {
+
+    this.reachedStateDate = reachedStateDate;
+    return this;
+  }
+
+  /**
+   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task reached the current state for
+   * example &#39;2014-10-17 16:05:42.626&#39;
+   *
+   * @return reachedStateDate
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value =
+          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this task reached the current state for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getReachedStateDate() {
+    return reachedStateDate;
+  }
+
+  public void setReachedStateDate(String reachedStateDate) {
+    this.reachedStateDate = reachedStateDate;
+  }
+
+  public ArchivedTask lastUpdateDate(String lastUpdateDate) {
+
+    this.lastUpdateDate = lastUpdateDate;
+    return this;
+  }
+
+  /**
+   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task was last updated for example
+   * &#39;2014-10-17 16:05:42.626)
+   *
+   * @return lastUpdateDate
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value =
+          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this task was last updated for example '2014-10-17 16:05:42.626)")
+  @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLastUpdateDate() {
+    return lastUpdateDate;
+  }
+
+  public void setLastUpdateDate(String lastUpdateDate) {
+    this.lastUpdateDate = lastUpdateDate;
+  }
+
+  public ArchivedTask dueDate(String dueDate) {
+
+    this.dueDate = dueDate;
+    return this;
+  }
+
+  /**
+   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task is due for example &#39;2014-10-17
+   * 16:05:42.626&#39;
+   *
+   * @return dueDate
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value =
+          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this task is due for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_DUE_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDueDate() {
+    return dueDate;
+  }
+
+  public void setDueDate(String dueDate) {
+    this.dueDate = dueDate;
+  }
+
+  public ArchivedTask priority(String priority) {
+
+    this.priority = priority;
+    return this;
+  }
+
+  /**
+   * the priority (string) of the current task
+   *
+   * @return priority
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the priority (string) of the current task")
+  @JsonProperty(JSON_PROPERTY_PRIORITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getPriority() {
+    return priority;
+  }
+
+  public void setPriority(String priority) {
+    this.priority = priority;
+  }
+
+  public ArchivedTask processId(String processId) {
+
+    this.processId = processId;
+    return this;
+  }
+
+  /**
+   * the process definition id of the process instance which define this task
+   *
+   * @return processId
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value = "the process definition id of the process instance which define this task")
+  @JsonProperty(JSON_PROPERTY_PROCESS_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getProcessId() {
+    return processId;
+  }
+
+  public void setProcessId(String processId) {
+    this.processId = processId;
+  }
+
+  public ArchivedTask parentCaseId(String parentCaseId) {
+
+    this.parentCaseId = parentCaseId;
+    return this;
+  }
+
+  /**
+   * the immediate containing process instance id (case id)
+   *
+   * @return parentCaseId
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the immediate containing process instance id (case id)")
+  @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getParentCaseId() {
+    return parentCaseId;
+  }
+
+  public void setParentCaseId(String parentCaseId) {
+    this.parentCaseId = parentCaseId;
+  }
+
+  public ArchivedTask parentTaskId(String parentTaskId) {
+
+    this.parentTaskId = parentTaskId;
+    return this;
+  }
+
+  /**
+   * the parent Task id
+   *
+   * @return parentTaskId
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the parent Task id")
+  @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getParentTaskId() {
+    return parentTaskId;
+  }
+
+  public void setParentTaskId(String parentTaskId) {
+    this.parentTaskId = parentTaskId;
+  }
+
+  public ArchivedTask rootCaseId(String rootCaseId) {
+
+    this.rootCaseId = rootCaseId;
+    return this;
+  }
+
+  /**
+   * the top/root process instance id (case id). In case of an \&quot;event sub process\&quot;
+   * &#x60;parentCaseId&#x60; will the id of the process instance called while
+   * &#x60;rootCaseId&#x60; will be the one from the caller process instance
+   *
+   * @return rootCaseId
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value =
+          "the top/root process instance id (case id). In case of an \"event sub process\" `parentCaseId` will the id of the process instance called while `rootCaseId` will be the one from the caller process instance")
+  @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getRootCaseId() {
+    return rootCaseId;
+  }
+
+  public void setRootCaseId(String rootCaseId) {
+    this.rootCaseId = rootCaseId;
+  }
+
+  public ArchivedTask rootContainerId(String rootContainerId) {
+
+    this.rootContainerId = rootContainerId;
+    return this;
+  }
+
+  /**
+   * same as rootCaseId
+   *
+   * @return rootContainerId
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "same as rootCaseId")
+  @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getRootContainerId() {
+    return rootContainerId;
+  }
+
+  public void setRootContainerId(String rootContainerId) {
+    this.rootContainerId = rootContainerId;
+  }
+
+  public ArchivedTask executedBy(String executedBy) {
+
+    this.executedBy = executedBy;
+    return this;
+  }
+
+  /**
+   * the id of the user who performed this task. The task has to be a human task otherwise its value
+   * will be 0
+   *
+   * @return executedBy
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value =
+          "the id of the user who performed this task. The task has to be a human task otherwise its value will be 0")
+  @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExecutedBy() {
+    return executedBy;
+  }
+
+  public void setExecutedBy(String executedBy) {
+    this.executedBy = executedBy;
+  }
+
+  public ArchivedTask executedBySubstitute(String executedBySubstitute) {
+
+    this.executedBySubstitute = executedBySubstitute;
+    return this;
+  }
+
+  /**
+   * the id of the user who did actually performed the task when it has been done in the name of
+   * someone else. Value is 0 otherwise
+   *
+   * @return executedBySubstitute
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value =
+          "the id of the user who did actually performed the task when it has been done in the name of someone else. Value is 0 otherwise")
+  @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExecutedBySubstitute() {
+    return executedBySubstitute;
+  }
+
+  public void setExecutedBySubstitute(String executedBySubstitute) {
+    this.executedBySubstitute = executedBySubstitute;
+  }
+
+  public ArchivedTask actorId(String actorId) {
+
+    this.actorId = actorId;
+    return this;
+  }
+
+  /**
+   * the id of the actor that can execute this task null otherwise
+   *
+   * @return actorId
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the id of the actor that can execute this task null otherwise")
+  @JsonProperty(JSON_PROPERTY_ACTOR_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getActorId() {
+    return actorId;
+  }
+
+  public void setActorId(String actorId) {
+    this.actorId = actorId;
+  }
+
+  public ArchivedTask assignedId(String assignedId) {
+
+    this.assignedId = assignedId;
+    return this;
+  }
+
+  /**
+   * the user id that this task is assigned to or 0 if it is unassigned
+   *
+   * @return assignedId
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "the user id that this task is assigned to or 0 if it is unassigned")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssignedId() {
+    return assignedId;
+  }
+
+  public void setAssignedId(String assignedId) {
+    this.assignedId = assignedId;
+  }
+
+  public ArchivedTask assignedDate(String assignedDate) {
+
+    this.assignedDate = assignedDate;
+    return this;
+  }
+
+  /**
+   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example
+   * &#39;2014-10-17 16:05:42.626&#39;
+   *
+   * @return assignedDate
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value =
+          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssignedDate() {
+    return assignedDate;
+  }
+
+  public void setAssignedDate(String assignedDate) {
+    this.assignedDate = assignedDate;
+  }
+
+  public ArchivedTask isTerminal(Boolean isTerminal) {
+
+    this.isTerminal = isTerminal;
+    return this;
+  }
+
+  /**
+   * True if the task is the last one in a flow
+   *
+   * @return isTerminal
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "True if the task is the last one in a flow")
+  @JsonProperty(JSON_PROPERTY_IS_TERMINAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsTerminal() {
+    return isTerminal;
+  }
+
+  public void setIsTerminal(Boolean isTerminal) {
+    this.isTerminal = isTerminal;
+  }
+
+  public ArchivedTask archivedDate(String archivedDate) {
+
+    this.archivedDate = archivedDate;
+    return this;
+  }
+
+  /**
+   * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example
+   * &#39;2014-10-17 16:05:42.626&#39;
+   *
+   * @return archivedDate
+   */
+  @javax.annotation.Nullable
+  @ApiModelProperty(
+      value =
+          "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task was assigned for example '2014-10-17 16:05:42.626'")
+  @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getArchivedDate() {
+    return archivedDate;
+  }
+
+  public void setArchivedDate(String archivedDate) {
+    this.archivedDate = archivedDate;
+  }
+
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    ArchivedTask archivedTask = (ArchivedTask) o;
+    return Objects.equals(this.id, archivedTask.id)
+        && Objects.equals(this.type, archivedTask.type)
+        && Objects.equals(this.name, archivedTask.name)
+        && Objects.equals(this.displayName, archivedTask.displayName)
+        && Objects.equals(this.description, archivedTask.description)
+        && Objects.equals(this.displayDescription, archivedTask.displayDescription)
+        && Objects.equals(this.state, archivedTask.state)
+        && Objects.equals(this.reachedStateDate, archivedTask.reachedStateDate)
+        && Objects.equals(this.lastUpdateDate, archivedTask.lastUpdateDate)
+        && Objects.equals(this.dueDate, archivedTask.dueDate)
+        && Objects.equals(this.priority, archivedTask.priority)
+        && Objects.equals(this.processId, archivedTask.processId)
+        && Objects.equals(this.parentCaseId, archivedTask.parentCaseId)
+        && Objects.equals(this.parentTaskId, archivedTask.parentTaskId)
+        && Objects.equals(this.rootCaseId, archivedTask.rootCaseId)
+        && Objects.equals(this.rootContainerId, archivedTask.rootContainerId)
+        && Objects.equals(this.executedBy, archivedTask.executedBy)
+        && Objects.equals(this.executedBySubstitute, archivedTask.executedBySubstitute)
+        && Objects.equals(this.actorId, archivedTask.actorId)
+        && Objects.equals(this.assignedId, archivedTask.assignedId)
+        && Objects.equals(this.assignedDate, archivedTask.assignedDate)
+        && Objects.equals(this.isTerminal, archivedTask.isTerminal)
+        && Objects.equals(this.archivedDate, archivedTask.archivedDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(
+        id,
+        type,
+        name,
+        displayName,
+        description,
+        displayDescription,
+        state,
+        reachedStateDate,
+        lastUpdateDate,
+        dueDate,
+        priority,
+        processId,
+        parentCaseId,
+        parentTaskId,
+        rootCaseId,
+        rootContainerId,
+        executedBy,
+        executedBySubstitute,
+        actorId,
+        assignedId,
+        assignedDate,
+        isTerminal,
+        archivedDate);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ArchivedTask {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    displayDescription: ").append(toIndentedString(displayDescription)).append("\n");
+    sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    reachedStateDate: ").append(toIndentedString(reachedStateDate)).append("\n");
+    sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
+    sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
+    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+    sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
+    sb.append("    parentCaseId: ").append(toIndentedString(parentCaseId)).append("\n");
+    sb.append("    parentTaskId: ").append(toIndentedString(parentTaskId)).append("\n");
+    sb.append("    rootCaseId: ").append(toIndentedString(rootCaseId)).append("\n");
+    sb.append("    rootContainerId: ").append(toIndentedString(rootContainerId)).append("\n");
+    sb.append("    executedBy: ").append(toIndentedString(executedBy)).append("\n");
+    sb.append("    executedBySubstitute: ")
+        .append(toIndentedString(executedBySubstitute))
+        .append("\n");
+    sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
+    sb.append("    assignedId: ").append(toIndentedString(assignedId)).append("\n");
+    sb.append("    assignedDate: ").append(toIndentedString(assignedDate)).append("\n");
+    sb.append("    isTerminal: ").append(toIndentedString(isTerminal)).append("\n");
+    sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -49,7 +810,7 @@ public class ArchivedTask extends AbstractArchivedTask implements Serializable {
   /**
    * Convert the given object to string with each line indented by 4 spaces (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface I18ntranslationApi extends ApiClient.Api {
 
   /**

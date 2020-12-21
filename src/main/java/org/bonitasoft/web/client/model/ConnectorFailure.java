@@ -15,6 +15,7 @@ package org.bonitasoft.web.client.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,6 +26,8 @@ import java.util.Objects;
   ConnectorFailure.JSON_PROPERTY_CONNECTOR_INSTANCE_ID,
   ConnectorFailure.JSON_PROPERTY_ERROR_STACK_TRACE
 })
+@JsonTypeName("ConnectorFailure")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConnectorFailure implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -108,7 +111,7 @@ public class ConnectorFailure implements Serializable {
   }
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -142,7 +145,7 @@ public class ConnectorFailure implements Serializable {
   /**
    * Convert the given object to string with each line indented by 4 spaces (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

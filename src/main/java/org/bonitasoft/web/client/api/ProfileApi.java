@@ -11,6 +11,7 @@ import org.bonitasoft.web.client.model.Profile;
 import org.bonitasoft.web.client.model.ProfileCreateRequest;
 import org.bonitasoft.web.client.model.ProfileUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ProfileApi extends ApiClient.Api {
 
   /**

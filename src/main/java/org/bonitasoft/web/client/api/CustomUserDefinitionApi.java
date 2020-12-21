@@ -9,6 +9,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.CustomUserDefinition;
 import org.bonitasoft.web.client.model.CustomUserDefinitionCreateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface CustomUserDefinitionApi extends ApiClient.Api {
 
   /**

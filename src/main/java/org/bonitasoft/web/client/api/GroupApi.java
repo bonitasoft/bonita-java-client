@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.Group;
 import org.bonitasoft.web.client.model.GroupCreateRequest;
 import org.bonitasoft.web.client.model.GroupUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface GroupApi extends ApiClient.Api {
 
   /**

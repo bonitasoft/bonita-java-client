@@ -15,6 +15,7 @@ package org.bonitasoft.web.client.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
@@ -34,6 +35,8 @@ import java.util.Objects;
   Group.JSON_PROPERTY_LAST_UPDATE_DATE,
   Group.JSON_PROPERTY_ICON
 })
+@JsonTypeName("Group")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Group implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -301,7 +304,7 @@ public class Group implements Serializable {
   }
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -357,7 +360,7 @@ public class Group implements Serializable {
   /**
    * Convert the given object to string with each line indented by 4 spaces (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

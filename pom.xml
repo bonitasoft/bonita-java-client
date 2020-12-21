@@ -75,7 +75,7 @@
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
         <fmt-maven-plugin.version>2.10</fmt-maven-plugin.version>
-        <openapi-generator-maven-plugin.version>4.3.1</openapi-generator-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>5.0.0</openapi-generator-maven-plugin.version>
 
         <codegen.skip>true</codegen.skip>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -435,6 +435,7 @@
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateModelDocumentation>false</generateModelDocumentation>
                             <output>${project.basedir}</output>
+							<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
                             <inputSpec>https://github.com/bonitasoft/bonita-openapi/releases/download/0.0.1/bonita-openapi-0.0.1.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <invokerPackage>org.bonitasoft.web.client.invoker</invokerPackage>

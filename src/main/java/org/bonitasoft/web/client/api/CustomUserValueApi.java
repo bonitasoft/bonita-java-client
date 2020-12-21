@@ -9,6 +9,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.CustomUserValue;
 import org.bonitasoft.web.client.model.CustomUserValueUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface CustomUserValueApi extends ApiClient.Api {
 
   /**

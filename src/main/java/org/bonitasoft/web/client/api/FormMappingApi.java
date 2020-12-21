@@ -9,6 +9,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.FormMapping;
 import org.bonitasoft.web.client.model.FormMappingUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface FormMappingApi extends ApiClient.Api {
 
   /**

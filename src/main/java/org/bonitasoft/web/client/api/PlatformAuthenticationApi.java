@@ -3,6 +3,7 @@ package org.bonitasoft.web.client.api;
 import feign.*;
 import org.bonitasoft.web.client.invoker.ApiClient;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface PlatformAuthenticationApi extends ApiClient.Api {
 
   /**

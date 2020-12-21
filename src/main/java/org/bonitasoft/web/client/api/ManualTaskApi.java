@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.ManualTask;
 import org.bonitasoft.web.client.model.ManualTaskCreateRequest;
 import org.bonitasoft.web.client.model.ManualTaskUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ManualTaskApi extends ApiClient.Api {
 
   /**

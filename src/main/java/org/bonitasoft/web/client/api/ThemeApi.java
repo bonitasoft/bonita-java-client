@@ -5,6 +5,7 @@ import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.model.ThemeCreateRequest;
 import org.bonitasoft.web.client.model.ThemeRestoreRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ThemeApi extends ApiClient.Api {
 
   /**

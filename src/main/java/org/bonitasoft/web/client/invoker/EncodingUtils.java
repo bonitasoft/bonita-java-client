@@ -5,7 +5,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import org.bonitasoft.web.client.exception.ClientException;
 
 /** Utilities to support Swagger encoding formats in Feign. */
 public final class EncodingUtils {
@@ -73,7 +72,7 @@ public final class EncodingUtils {
       return URLEncoder.encode(parameter.toString(), "UTF-8").replaceAll("\\+", "%20");
     } catch (UnsupportedEncodingException e) {
       // Should never happen, UTF-8 is always supported
-      throw new ClientException("Failed to encode parameter", e);
+      throw new RuntimeException(e);
     }
   }
 }

@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.ApplicationMenu;
 import org.bonitasoft.web.client.model.ApplicationMenuCreateRequest;
 import org.bonitasoft.web.client.model.ApplicationMenuUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ApplicationMenuApi extends ApiClient.Api {
 
   /**

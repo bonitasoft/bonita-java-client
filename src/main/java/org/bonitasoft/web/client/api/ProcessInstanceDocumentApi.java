@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.ProcessInstanceDocument;
 import org.bonitasoft.web.client.model.ProcessInstanceDocumentCreateRequest;
 import org.bonitasoft.web.client.model.ProcessInstanceDocumentUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ProcessInstanceDocumentApi extends ApiClient.Api {
 
   /**

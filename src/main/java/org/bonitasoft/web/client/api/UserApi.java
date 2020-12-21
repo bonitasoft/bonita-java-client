@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.User;
 import org.bonitasoft.web.client.model.UserCreateRequest;
 import org.bonitasoft.web.client.model.UserUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface UserApi extends ApiClient.Api {
 
   /**

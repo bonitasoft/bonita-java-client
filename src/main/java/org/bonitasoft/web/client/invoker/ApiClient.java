@@ -12,10 +12,10 @@ import feign.jackson.JacksonEncoder;
 import feign.slf4j.Slf4jLogger;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.invoker.auth.*;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApiClient {
   public interface Api {}
 
@@ -43,7 +43,7 @@ public class ApiClient {
       } else if ("bonita_token".equals(authName)) {
         auth = new ApiKeyAuth("header", "X-Bonita-API-Token");
       } else {
-        throw new ClientException(
+        throw new RuntimeException(
             "auth name \"" + authName + "\" not found in available auth names");
       }
       addAuthorization(authName, auth);
@@ -180,7 +180,7 @@ public class ApiClient {
         return;
       }
     }
-    throw new ClientException("No Bearer authentication configured!");
+    throw new RuntimeException("No Bearer authentication configured!");
   }
 
   /**
@@ -196,7 +196,7 @@ public class ApiClient {
         return;
       }
     }
-    throw new ClientException("No API key authentication configured!");
+    throw new RuntimeException("No API key authentication configured!");
   }
 
   /**
@@ -213,7 +213,7 @@ public class ApiClient {
         return;
       }
     }
-    throw new ClientException("No Basic authentication or OAuth configured!");
+    throw new RuntimeException("No Basic authentication or OAuth configured!");
   }
 
   /**
@@ -234,7 +234,7 @@ public class ApiClient {
    */
   public void addAuthorization(String authName, RequestInterceptor authorization) {
     if (apiAuthorizations.containsKey(authName)) {
-      throw new ClientException("auth name \"" + authName + "\" already in api authorizations");
+      throw new RuntimeException("auth name \"" + authName + "\" already in api authorizations");
     }
     apiAuthorizations.put(authName, authorization);
     feignBuilder.requestInterceptor(authorization);

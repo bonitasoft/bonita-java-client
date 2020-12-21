@@ -21,7 +21,7 @@ public enum TenantResourceState {
 
   INSTALLED("INSTALLED");
 
-  private String value;
+  private final String value;
 
   TenantResourceState(String value) {
     this.value = value;

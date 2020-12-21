@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.TimerEventTrigger;
 import org.bonitasoft.web.client.model.TimerEventTriggerUpdateRequest;
 import org.bonitasoft.web.client.model.TimerEventTriggerUpdateResponse;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface TimerEventTriggerApi extends ApiClient.Api {
 
   /**

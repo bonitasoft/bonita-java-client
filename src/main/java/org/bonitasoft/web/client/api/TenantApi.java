@@ -10,6 +10,7 @@ import org.bonitasoft.web.client.model.Tenant;
 import org.bonitasoft.web.client.model.TenantCreateRequest;
 import org.bonitasoft.web.client.model.TenantUpdateRequest;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface TenantApi extends ApiClient.Api {
 
   /**

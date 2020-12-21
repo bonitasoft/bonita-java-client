@@ -27,7 +27,7 @@ public enum ActivityPriority {
 
   LOWEST("lowest");
 
-  private String value;
+  private final String value;
 
   ActivityPriority(String value) {
     this.value = value;

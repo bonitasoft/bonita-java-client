@@ -31,7 +31,7 @@ public enum ActivityType {
 
   CALL_ACTIVITY("CALL_ACTIVITY");
 
-  private String value;
+  private final String value;
 
   ActivityType(String value) {
     this.value = value;
