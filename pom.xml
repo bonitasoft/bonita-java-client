@@ -48,14 +48,14 @@
         <jsr305.version>3.0.2</jsr305.version>
         <feign.version>10.11</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
-        <okhttp.version>4.9.0</okhttp.version>
+        <okhttp.version>4.9.1</okhttp.version>
         <jackson.version>2.11.3</jackson.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
 
         <!-- Tests -->
         <junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
         <junit-platform-runner.version>1.7.0</junit-platform-runner.version>
-        <assertj-core.version>3.18.1</assertj-core.version>
+        <assertj-core.version>3.19.0</assertj-core.version>
         <mockito-core.version>3.8.0</mockito-core.version>
         <logback-classic.version>1.2.3</logback-classic.version>
         <testcontainers.version>1.15.2</testcontainers.version>
