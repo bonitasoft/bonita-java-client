@@ -1,7 +1,6 @@
 package org.bonitasoft.web.client.feign;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 import org.bonitasoft.web.client.BonitaClient;
@@ -44,8 +43,8 @@ class BonitaClientTest {
     client.login(username, password);
 
     // Then
-    verify(client).login(eq(username), eq(password), eq(BonitaClient.DEFAULT_TENANT_ID));
-    verify(loginService).login(eq(username), eq(password), eq(BonitaClient.DEFAULT_TENANT_ID));
+    verify(client).login(username, password, BonitaClient.DEFAULT_TENANT_ID);
+    verify(loginService).login(username, password, BonitaClient.DEFAULT_TENANT_ID);
   }
 
   @Test

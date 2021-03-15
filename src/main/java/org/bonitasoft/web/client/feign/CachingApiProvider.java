@@ -10,14 +10,11 @@ public class CachingApiProvider implements ApiProvider {
 
   private final ApiClient apiClient;
 
-  private final Map<Class<?>, ApiClient.Api> apiCache = new ConcurrentHashMap<>();
+  private final Map<Class<? extends ApiClient.Api>, ApiClient.Api> apiCache =
+      new ConcurrentHashMap<>();
 
   @Override
   public <T extends ApiClient.Api> T get(Class<T> apiClass) {
-    if (!apiCache.containsKey(apiClass)) {
-      T service = apiClient.buildClient(apiClass);
-      apiCache.put(apiClass, service);
-    }
-    return (T) apiCache.get(apiClass);
+    return (T) apiCache.computeIfAbsent(apiClass, apiClient::buildClient);
   }
 }

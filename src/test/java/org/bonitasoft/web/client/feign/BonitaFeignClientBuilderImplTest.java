@@ -2,8 +2,10 @@ package org.bonitasoft.web.client.feign;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.atMostOnce;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Feign;
@@ -37,7 +39,7 @@ class BonitaFeignClientBuilderImplTest {
     final BonitaClient client = clientBuilder.build();
 
     // Then
-    verify(clientBuilder).addTrailingSlashIfNeeded(eq(DUMMY_URL));
+    verify(clientBuilder).addTrailingSlashIfNeeded(DUMMY_URL);
     verify(clientBuilder).configureFeign(any());
     verify(clientBuilder).configureJackson(any());
     verify(clientBuilder).configureHttpClient(any());
@@ -57,7 +59,7 @@ class BonitaFeignClientBuilderImplTest {
     clientBuilder.build();
 
     // Then
-    verify(clientBuilder).configureJackson(eq(customMapper));
+    verify(clientBuilder).configureJackson(customMapper);
   }
 
   @Test
