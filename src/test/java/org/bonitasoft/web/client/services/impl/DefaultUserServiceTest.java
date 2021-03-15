@@ -42,7 +42,7 @@ class DefaultUserServiceTest {
   void orga_should_be_imported() throws Exception {
     // Given
     final OrganizationApi organizationApi = mock(OrganizationApi.class);
-    when(apiProvider.get(eq(OrganizationApi.class))).thenReturn(organizationApi);
+    when(apiProvider.get(OrganizationApi.class)).thenReturn(organizationApi);
     when(organizationApi.uploadOrganization(any())).thenReturn(UUID.randomUUID().toString());
 
     final File organization = getClasspathFile("/Organization_Data.xml");
@@ -66,7 +66,7 @@ class DefaultUserServiceTest {
     final String username = "walter.bates";
 
     // When
-    final User user = service.getUser(username);
+    service.getUser(username);
 
     // Then
     verify(userApi).searchUsers(captor.capture());
