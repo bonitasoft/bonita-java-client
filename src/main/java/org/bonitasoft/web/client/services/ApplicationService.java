@@ -1,13 +1,13 @@
 package org.bonitasoft.web.client.services;
 
+import java.io.File;
+import java.util.List;
+
 import org.bonitasoft.web.client.api.ApplicationApi;
 import org.bonitasoft.web.client.api.PageApi;
 import org.bonitasoft.web.client.model.Application;
 import org.bonitasoft.web.client.model.Page;
 import org.bonitasoft.web.client.services.policies.ApplicationImportPolicy;
-
-import java.io.File;
-import java.util.List;
 
 public interface ApplicationService {
 

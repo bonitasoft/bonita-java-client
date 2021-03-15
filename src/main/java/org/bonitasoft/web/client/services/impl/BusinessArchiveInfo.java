@@ -8,41 +8,36 @@
  */
 package org.bonitasoft.web.client.services.impl;
 
-import lombok.Builder;
-import lombok.Data;
+import java.io.File;
+
 import org.bonitasoft.web.client.exception.ClientException;
+import org.bonitasoft.web.client.services.impl.xml.XmlDocumentParser;
 import org.bonitasoft.web.client.services.utils.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
+import lombok.Builder;
+import lombok.Value;
 
-@Data
+@Value
 @Builder
-class BusinessArchive {
+class BusinessArchiveInfo {
 
     private static final String PROCESS_DESIGN_FILENAME = "process-design.xml";
 
-    private String processName;
-    private String processVersion;
-    private File archive;
+    String processName;
+    String processVersion;
+    File archive;
 
-    static BusinessArchive create(File bar) {
-        try (FileInputStream fileInputStream = new FileInputStream(bar)) {
-
+    static BusinessArchiveInfo readFrom(File bar) {
+        try {
             // Get name and version from process design file
-            byte[] fileFromZip = FileUtils.getFileFromZip(fileInputStream, PROCESS_DESIGN_FILENAME);
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document doc = documentBuilder.parse(new ByteArrayInputStream(fileFromZip));
-            doc.getDocumentElement().normalize();
-            NamedNodeMap attributes = doc.getFirstChild().getAttributes();
+            byte[] fileFromZip = FileUtils.getFileFromZip(bar, PROCESS_DESIGN_FILENAME);
 
-            return BusinessArchive.builder()
+            final XmlDocumentParser documentParser = new XmlDocumentParser();
+            Document doc = documentParser.parse(fileFromZip);
+            NamedNodeMap attributes = doc.getFirstChild().getAttributes();
+            return BusinessArchiveInfo.builder()
                     .archive(bar)
                     .processName(attributes.getNamedItem("name").getNodeValue())
                     .processVersion(attributes.getNamedItem("version").getNodeValue())
@@ -52,5 +47,4 @@ class BusinessArchive {
             throw new ClientException("Unable to parse bar file", e);
         }
     }
-
 }

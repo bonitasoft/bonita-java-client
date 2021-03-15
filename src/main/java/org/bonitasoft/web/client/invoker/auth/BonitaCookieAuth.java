@@ -8,15 +8,15 @@
  */
 package org.bonitasoft.web.client.invoker.auth;
 
-import feign.RequestInterceptor;
-import feign.RequestTemplate;
+import static java.util.Collections.emptyList;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toMap;
 
 import java.util.Collection;
 import java.util.Map;
 
-import static java.util.Collections.emptyList;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toMap;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
 
 public class BonitaCookieAuth implements RequestInterceptor {
 
@@ -39,20 +39,18 @@ public class BonitaCookieAuth implements RequestInterceptor {
         this.csrfHeader = null;
     }
 
-    public void setSessionCookies(Map<String, Collection<String>> loginHeaders) {
-        Map<String, String> cookies = loginHeaders.getOrDefault("set-cookie", emptyList())
-                .stream()
-                .map(item -> item.split("=", 2))
+    public void initFrom(Map<String, Collection<String>> loginHeaders) {
+        Map<String, String> cookies = loginHeaders.getOrDefault("set-cookie", emptyList()).stream()
+                .map(cookieHeader -> cookieHeader.split("=", 2))
                 .collect(
                         toMap(
-                                split -> split[0],
-                                split -> split[1].split(";")[0],
+                                cookieHeaderPair -> cookieHeaderPair[0],
+                                cookieHeaderPair -> cookieHeaderPair[1].split(";")[0],
                                 (oldValue, newValue) -> newValue));
 
         this.csrfHeader = cookies.remove(CSRF_TOKEN_HEADER);
 
-        this.cookie = cookies.entrySet()
-                .stream()
+        this.cookie = cookies.entrySet().stream()
                 .map(entry -> entry.getKey() + "=" + entry.getValue())
                 .collect(joining(";"));
     }

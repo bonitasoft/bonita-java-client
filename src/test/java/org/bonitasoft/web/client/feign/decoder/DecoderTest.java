@@ -1,21 +1,25 @@
 package org.bonitasoft.web.client.feign.decoder;
 
-import com.fasterxml.jackson.databind.util.StdDateFormat;
-import feign.Request;
-import feign.RequestTemplate;
-import feign.Response;
-import feign.Util;
-import feign.codec.Decoder;
-import feign.jackson.JacksonDecoder;
-import org.bonitasoft.web.client.invoker.RFC3339DateFormat;
-import org.junit.jupiter.api.Test;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.bonitasoft.web.client.invoker.RFC3339DateFormat;
+import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.databind.util.StdDateFormat;
+
+import feign.Response;
+import feign.codec.Decoder;
+import feign.jackson.JacksonDecoder;
 
 class DecoderTest {
 
@@ -45,19 +49,9 @@ class DecoderTest {
         InputStream inputStream = new ByteArrayInputStream(content.getBytes(UTF_8));
         Map<String, Collection<String>> headers = new HashMap<String, Collection<String>>();
         headers.put("Content-Type", Collections.singleton("text/plain"));
-        return Response.builder()
+        return mockResponseBuilder()
                 .status(200)
-                .reason("OK")
                 .headers(headers)
-                .request(Request.create
-                        (Request.HttpMethod.GET,
-                                "/api",
-                                Collections.emptyMap(),
-                                null,
-                                Util.UTF_8,
-                                new RequestTemplate()
-                        )
-                )
                 .body(inputStream, content.length())
                 .build();
     }

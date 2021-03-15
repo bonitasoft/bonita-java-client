@@ -2,6 +2,13 @@ package org.bonitasoft.web.client;
 
 import java.io.File;
 import java.net.URL;
+import java.util.HashMap;
+
+import org.jetbrains.annotations.NotNull;
+
+import feign.Request;
+import feign.RequestTemplate;
+import feign.Response;
 
 public final class TestUtils {
 
@@ -18,5 +25,17 @@ public final class TestUtils {
             throw new RuntimeException("Classpaht resource not found: " + path);
         }
         return new File(resource.toURI());
+    }
+
+    @NotNull
+    public static Response.Builder mockResponseBuilder() {
+        return Response.builder()
+                .request(
+                        Request.create(
+                                Request.HttpMethod.GET,
+                                "http://dummy.org",
+                                new HashMap<>(),
+                                null,
+                                new RequestTemplate()));
     }
 }

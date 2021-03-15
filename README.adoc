@@ -1,13 +1,12 @@
 = Bonita Java Client
-
-:doctype: book
+//:doctype: book
 :sectnums:
-:source-highlighter: highlightjs
+//:source-highlighter: highlightjs
 :idprefix:
 :idseparator: -
 :sectlinks:
 :sectanchors:
-:linkcss: false
+//:linkcss: false
 :allow-uri-read:
 :imagesdir: ./doc/images
 
@@ -26,7 +25,7 @@ endif::[]
 // Vars
 :project-group-id: org.bonitasoft.web
 :project-artifact-id: bonita-java-client
-:project-version: 0.0.1
+:project-version: 0.0.2
 :bonita-short-version: 7.11
 :orga: bonitasoft
 :uri-org: https://github.com/{orga}
@@ -45,20 +44,12 @@ endif::[]
 
 image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
 
-'''
-
 ifdef::status[]
-[.float-group]
---
-[.left]
-image::{uri-repo}/workflows/workflow-build/badge.svg[Build,link="{uri-repo}/actions?query=workflow%3Aworkflow-build"]
-[.left]
-image::https://img.shields.io/github/v/release/{orga}/{project-artifact-id}?color=blue&label=Release[Release,link="{uri-repo}/releases"]
-[.left]
-image::https://img.shields.io/maven-central/v/{project-group-id}/{project-artifact-id}.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22{project-group-id}%22%20AND%20a:%22{project-artifact-id}%22"]
-[.left]
-image::https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="{uri-license}"]
---
+image:{uri-repo}/workflows/workflow-build/badge.svg[Build,link="{uri-repo}/actions?query=workflow%3Aworkflow-build"]
+image:https://img.shields.io/github/v/release/{orga}/{project-artifact-id}?color=blue&label=Release[Release,link="{uri-repo}/releases"]
+image:https://img.shields.io/maven-central/v/{project-group-id}/{project-artifact-id}.svg?label=Maven%20Central&color=orange[Maven Central,link="https://search.maven.org/search?q=g:%22{project-group-id}%22%20AND%20a:%22{project-artifact-id}%22"]
+image:https://sonarcloud.io/api/project_badges/measure?project=bonitasoft_bonita-java-client&metric=alert_status[Sonar,link=https://sonarcloud.io/dashboard?id=bonitasoft_bonita-java-client]
+image:https://img.shields.io/badge/License-GPL%20v2-yellow.svg[License,link="{uri-license}"]
 endif::[]
 
 This project is the official web client for Bonita when working with Java (or on the JVM).
@@ -66,19 +57,15 @@ This project is the official web client for Bonita when working with Java (or on
 It is based on an https://swagger.io/specification/[OpenAPI image:openapi.png[OpenAPI,width=30px]^] specification for **Bonita {bonita-short-version}** `Enterprise` edition.
 This means that this client includes all `Community` operations plus some that are only supported by `Enterprise` editions servers.
 
-//_**TODO**_: A brief description of your project, what it is used for and how does life get awesome when someone starts to use it.
+'''
 
 == Features
-
-//_**TODO**_: What's all the bells and whistles this project can perform?
 
 * Cover publicly available http endpoints of Bonita Platform {bonita-short-version} and onwards
 * Built-in Bonita authentication support (SSO not supported yet)
 * Higher level code than raw openapi client to ease developer journey
 
 == Getting started
-
-//_**TODO**_: A quick introduction of the minimal setup you need to get a hello world up & running.
 
 The client library available from https://search.maven.org/search?q={project-group-id}%20AND%20a:{project-artifact-id}[Maven Central], you can use it in your Maven project by adding the following to your *pom.xml*:
 
@@ -160,7 +147,7 @@ If you need for any reason to disable ssl certificate check, here is the code to
 
 [source, java]
 ----
-BonitaClient client = BonitaClient.builder("http://localhost:8080/bonita")
+BonitaClient client = BonitaClient.builder("https://me.bonitacloud.com/")
         // Disable certificate check
         .disableCertificateCheck(true)
     .build();
@@ -259,7 +246,7 @@ Please refers to this article for more info: https://jeffkreeftmeijer.com/git-fl
 - Create a branch for the desired version. ex: `release/1.0.0`. You can use the `set-version.sh` script to align declared versions in sources (pom.xml,readme.adoc,...)
 - Push branch, make a pull request to `master` and review release with others
 - Once you are happy with the content of the release branch, merge pull request to master branch using `Merge pull request` button (&#9888; Do not squash or rebase)
-- That's it !
+- That's it ! {icon-party}
 
 NOTE: Don't forget to update your local `dev` branch after a release has been done !
 

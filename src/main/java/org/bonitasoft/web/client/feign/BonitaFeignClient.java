@@ -8,14 +8,20 @@
  */
 package org.bonitasoft.web.client.feign;
 
-import feign.Response;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.model.Session;
-import org.bonitasoft.web.client.services.*;
+import org.bonitasoft.web.client.services.ApplicationService;
+import org.bonitasoft.web.client.services.BdmService;
+import org.bonitasoft.web.client.services.LoginService;
+import org.bonitasoft.web.client.services.ProcessService;
+import org.bonitasoft.web.client.services.SystemService;
+import org.bonitasoft.web.client.services.UserService;
+
+import feign.Response;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Entry point to interact with the REST API of bonita. <br>
@@ -27,7 +33,7 @@ class BonitaFeignClient implements BonitaClient {
 
     private final String url;
 
-    private final ApiClient apiClient;
+    private final ApiProvider apiProvider;
     private final LoginService loginService;
 
     private final ApplicationService applicationService;
@@ -71,7 +77,7 @@ class BonitaFeignClient implements BonitaClient {
 
     @Override
     public boolean isPlatformUpAndRunning() {
-        try (Response response = apiClient.buildClient(SessionApi.class).getSession()) {
+        try (Response response = apiProvider.get(SessionApi.class).getSession()) {
             return response.status() == 401 || response.status() == 200;
         } catch (Exception e) {
             return false;
@@ -85,6 +91,12 @@ class BonitaFeignClient implements BonitaClient {
         String version = session.getVersion();
         log.debug("Bonita version: {}", version);
         return version;
+    }
+
+    @Override
+    public <T extends ApiClient.Api> T get(Class<T> apiClass) {
+        log.debug("Access http api: {}", apiClass.getName());
+        return apiProvider.get(apiClass);
     }
 
     @Override

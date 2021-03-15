@@ -17487,6 +17487,7 @@ components:
         constraintType:
           description: 'constraint type (ex: MANDATORY)'
           type: string
+      type: object
     AbstractArchivedTask_allOf:
       description: An Archived task is a task that has been archived
       properties:
@@ -17495,10 +17496,26 @@ components:
             was assigned for example '2014-10-17 16:05:42.626'
           pattern: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$
           type: string
+      type: object
     ArchivedProcessInstanceDocument_allOf:
       description: A document in an active case
-      example: '{"id":"1","creationDate":"2014-10-09 16:39:52.472","author":"1","index":"0","contentMimetype":"text/plain","caseId":"1","contentStorageId":"1","isInternal":"true","description":"","name":"myDoc","fileName":"test1.txt","submittedBy":"1","url":"documentDownload?fileName=test1.txt&contentStorageId=1","version":"1","sourceObjectId":"1","archivedDate":"2014-10-09
-        17:39:52.473"}'
+      example:
+        id: "1"
+        creationDate: 2014-10-09 16:39:52.472
+        author: "1"
+        index: "0"
+        contentMimetype: text/plain
+        caseId: "1"
+        contentStorageId: "1"
+        isInternal: "true"
+        description: ""
+        name: myDoc
+        fileName: test1.txt
+        submittedBy: "1"
+        url: documentDownload?fileName=test1.txt&contentStorageId=1
+        version: "1"
+        sourceObjectId: "1"
+        archivedDate: 2014-10-09 17:39:52.473
       properties:
         sourceObjectId:
           description: original document id
@@ -17508,12 +17525,31 @@ components:
             was assigned for example '2014-10-17 16:05:42.626'
           pattern: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$
           type: string
+      type: object
     ArchivedProcessInstance_allOf:
       description: A completed instance of a process.
-      example: '{"id":9,"end_date":"2014-10-22 10:57:00.299","startedBySubstitute":"4","sourceObjectId":"3","start":"2014-10-22
-        10:56:53.415","state":"completed","rootCaseId":"3","started_by":"4","archivedDate":"2014-10-22
-        10:57:00.299","processDefinitionId":"6054482369194211518","last_update_date\"":"2014-10-22
-        10:57:00.299","searchIndex1Label":"case9SearchIndex1Label","searchIndex2Label":"case9SearchIndex2Label","searchIndex3Label":"case9SearchIndex3Label","searchIndex4Label":"case9SearchIndex4Label","searchIndex5Label":"case9SearchIndex5Label","searchIndex1Value":"case9SearchIndex1Value","searchIndex2Value":"case9SearchIndex2Value","searchIndex3Value":"case9SearchIndex3Value","searchIndex4Value":"case9SearchIndex4Value","searchIndex5Value":"case9SearchIndex5Value"}'
+      example:
+        id: 9
+        end_date: 2014-10-22 10:57:00.299
+        startedBySubstitute: "4"
+        sourceObjectId: "3"
+        start: 2014-10-22 10:56:53.415
+        state: completed
+        rootCaseId: "3"
+        started_by: "4"
+        archivedDate: 2014-10-22 10:57:00.299
+        processDefinitionId: "6054482369194211518"
+        last_update_date": 2014-10-22 10:57:00.299
+        searchIndex1Label: case9SearchIndex1Label
+        searchIndex2Label: case9SearchIndex2Label
+        searchIndex3Label: case9SearchIndex3Label
+        searchIndex4Label: case9SearchIndex4Label
+        searchIndex5Label: case9SearchIndex5Label
+        searchIndex1Value: case9SearchIndex1Value
+        searchIndex2Value: case9SearchIndex2Value
+        searchIndex3Value: case9SearchIndex3Value
+        searchIndex4Value: case9SearchIndex4Value
+        searchIndex5Value: case9SearchIndex5Value
       properties:
         sourceObjectId:
           description: the id of the process instance before it was archived
@@ -17521,6 +17557,7 @@ components:
         archivedDate:
           description: the date set when the process instance was archived
           type: string
+      type: object
     ProcessInstanceInfo_flowNodeStatesCounters:
       properties:
         completed:
@@ -17539,14 +17576,21 @@ components:
           description: number of instance of the given Flow Node in executing state
           format: int64
           type: integer
+      type: object
     ArchivedProcessInstanceComment_allOf:
       description: Information about the comment of an archived process instances.
-      example: '{"id":20005,"content":"Need to review the last inputs of this case","processInstanceId":1,"postDate":"2016-06-16
-        14:51:33.053","archivedDate":"2016-06-17 10:18:24.723","userId":30}'
+      example:
+        id: 20005
+        content: Need to review the last inputs of this case
+        processInstanceId: 1
+        postDate: 2016-06-16 14:51:33.053
+        archivedDate: 2016-06-17 10:18:24.723
+        userId: 30
       properties:
         archivedDate:
           description: the date set when the process instance comment was archived
           type: string
+      type: object
     DesignProcessDefinition_parameters:
       example:
         name: name
@@ -17562,6 +17606,7 @@ components:
         name:
           description: the parameter name
           type: string
+      type: object
     DesignProcessDefinition_contract_constraints:
       description: A constraint when executing the task instance
       example:
@@ -17582,6 +17627,7 @@ components:
           items:
             type: string
           type: array
+      type: object
     DesignProcessDefinition_contract:
       description: the process instantiation contract
       example:
@@ -17622,6 +17668,7 @@ components:
           items:
             $ref: '#/components/schemas/DesignProcessDefinition_contract_constraints'
           type: array
+      type: object
     DesignProcessDefinition_context:
       example:
         expression:
@@ -17640,6 +17687,7 @@ components:
           type: string
         expression:
           $ref: '#/components/schemas/Expression'
+      type: object
     ArchivedConnectorInstance_allOf:
       description: Information about archived connector instances attached to an archived
         process or an archived flow node.
@@ -17649,6 +17697,7 @@ components:
             was assigned for example '2014-10-17 16:05:42.626'
           pattern: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$
           type: string
+      type: object
     ArchivedFlowNode_allOf:
       description: A flow node (gateway or event or task) in an archived instance
         of a process.
@@ -17661,6 +17710,7 @@ components:
             was assigned for example '2014-10-17 16:05:42.626'
           pattern: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$
           type: string
+      type: object
     Message_messageContent:
       example:
         type: java.lang.String
@@ -17686,6 +17736,7 @@ components:
           type: string
       required:
       - value
+      type: object
   securitySchemes:
     bonita_auth:
       description: |

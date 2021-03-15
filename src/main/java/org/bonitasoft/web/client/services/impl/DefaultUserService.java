@@ -1,37 +1,45 @@
 package org.bonitasoft.web.client.services.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.bonitasoft.web.client.api.*;
-import org.bonitasoft.web.client.exception.ClientException;
+import static java.lang.String.format;
+import static java.util.Collections.singletonList;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bonitasoft.web.client.api.OrganizationApi;
+import org.bonitasoft.web.client.api.ProfileApi;
+import org.bonitasoft.web.client.api.ProfileMemberApi;
+import org.bonitasoft.web.client.api.RoleApi;
+import org.bonitasoft.web.client.api.UserApi;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.feign.ApiProvider;
-import org.bonitasoft.web.client.model.*;
+import org.bonitasoft.web.client.model.Profile;
+import org.bonitasoft.web.client.model.ProfileMember;
+import org.bonitasoft.web.client.model.ProfileMemberCreateRequest;
+import org.bonitasoft.web.client.model.Role;
+import org.bonitasoft.web.client.model.User;
+import org.bonitasoft.web.client.model.UserCreateRequest;
 import org.bonitasoft.web.client.services.UserService;
+import org.bonitasoft.web.client.services.impl.base.AbstractService;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.bonitasoft.web.client.services.impl.xml.XmlDocumentParser;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static java.lang.String.format;
-import static java.util.Collections.singletonList;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DefaultUserService extends AbstractService implements UserService {
 
-    public DefaultUserService(ClientContext clientContext, ApiProvider apiProvider, ObjectMapper objectMapper) {
+    public DefaultUserService(
+            ClientContext clientContext, ApiProvider apiProvider, ObjectMapper objectMapper) {
         super(apiProvider, objectMapper, clientContext);
     }
 
@@ -51,7 +59,8 @@ public class DefaultUserService extends AbstractService implements UserService {
         log.info("Get user with username: {}", username);
         UserApi userApi = apiProvider.get(UserApi.class);
         List<String> filter = singletonList("userName=" + username);
-        return userApi.searchUsers(new UserApi.SearchUsersQueryParams().p(0).c(1).f(filter)).stream().findFirst()
+        return userApi.searchUsers(new UserApi.SearchUsersQueryParams().p(0).c(1).f(filter)).stream()
+                .findFirst()
                 .orElseThrow(() -> new NotFoundException("No user found for the username: " + username));
     }
 
@@ -69,11 +78,12 @@ public class DefaultUserService extends AbstractService implements UserService {
         return userApi.searchUsers(params);
     }
 
-
     @Override
     public void importProfiles(File profiles, ProfileImportPolicy policy) {
         if (isCommunity()) {
-            String message = format("Profile import of %s file skipped: your current Bonita license is 'Community' and this feature is only supported in 'Subscription' editions.", profiles.getName());
+            String message = format(
+                    "Profile import of %s file skipped: your current Bonita license is 'Community' and this feature is only supported in 'Subscription' editions.",
+                    profiles.getName());
             throw new LicenseException(message);
         }
         log.info("Importing profiles from {} with {}...", profiles.getName(), policy);
@@ -84,7 +94,7 @@ public class DefaultUserService extends AbstractService implements UserService {
                 // Skip all if any exist
                 return;
             }
-            //replace by policy supported by Bonita portal
+            // replace by policy supported by Bonita portal
             policy = ProfileImportPolicy.REPLACE_DUPLICATES;
         }
 
@@ -117,46 +127,39 @@ public class DefaultUserService extends AbstractService implements UserService {
 
     protected List<String> getProfilesNames(File profiles) {
         List<String> tokens = new ArrayList<>();
-        try {
-            DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
-            domFactory.setNamespaceAware(false);
-            DocumentBuilder builder = domFactory.newDocumentBuilder();
-            Document doc = builder.parse(profiles);
-            XPath xPath = XPathFactory.newInstance().newXPath();
-            XPathExpression compile = xPath.compile("/profiles/profile/@name");
-            NodeList evaluate1 = (NodeList) compile.evaluate(doc, XPathConstants.NODESET);
-            for (int i = 0; i < evaluate1.getLength(); i++) {
-                Node item = evaluate1.item(i);
-                tokens.add(item.getNodeValue());
-            }
-        } catch (XPathExpressionException | IOException | SAXException | ParserConfigurationException e) {
-            throw new ClientException("Failed to read profile names from file: " + profiles.getName(), e);
+        final XmlDocumentParser documentParser = new XmlDocumentParser();
+        Document doc = documentParser.parse(profiles);
+        NodeList nodeList = documentParser.queryNodeList(doc, "/profiles/profile/@name");
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node item = nodeList.item(i);
+            tokens.add(item.getNodeValue());
         }
         return tokens;
     }
 
     @Override
     public List<Profile> searchProfiles(int page, int count) {
-        ProfileApi.SearchProfilesQueryParams params = new ProfileApi.SearchProfilesQueryParams()
-                .p(page).c(count)
+        ProfileApi.SearchProfilesQueryParams params = new ProfileApi.SearchProfilesQueryParams().p(page).c(count)
                 .o("name ASC");
         return searchProfiles(params);
     }
 
     @Override
     public Role getRoleByName(String name) {
-        return searchRoles(new RoleApi.SearchRolesQueryParams()
-                .p(0).c(1)
-                .f(singletonList("name=" + name))
-        ).stream().findFirst().orElseThrow(() -> new NotFoundException("Role with name '" + name + "' not found"));
+        return searchRoles(
+                new RoleApi.SearchRolesQueryParams().p(0).c(1).f(singletonList("name=" + name)))
+                        .stream()
+                        .findFirst()
+                        .orElseThrow(() -> new NotFoundException("Role with name '" + name + "' not found"));
     }
 
     @Override
     public Profile getProfileByName(String name) {
-        return searchProfiles(new ProfileApi.SearchProfilesQueryParams()
-                .p(0).c(1)
-                .f(singletonList("name=" + name))
-        ).stream().findFirst().orElseThrow(() -> new NotFoundException("Profile with name  '" + name + "' not found"));
+        return searchProfiles(
+                new ProfileApi.SearchProfilesQueryParams().p(0).c(1).f(singletonList("name=" + name)))
+                        .stream()
+                        .findFirst()
+                        .orElseThrow(() -> new NotFoundException("Profile with name  '" + name + "' not found"));
     }
 
     @Override
@@ -174,11 +177,11 @@ public class DefaultUserService extends AbstractService implements UserService {
     public String addUserToProfile(String userId, String profileId) {
         log.info("Add user {} to profile {}...", userId, profileId);
         ProfileMemberApi profileMemberApi = apiProvider.get(ProfileMemberApi.class);
-        ProfileMember profileMember = profileMemberApi.createProfileMember(new ProfileMemberCreateRequest()
-                .memberType(ProfileMemberCreateRequest.MemberTypeEnum.USER)
-                .userId(userId)
-                .profileId(profileId)
-        );
+        ProfileMember profileMember = profileMemberApi.createProfileMember(
+                new ProfileMemberCreateRequest()
+                        .memberType(ProfileMemberCreateRequest.MemberTypeEnum.USER)
+                        .userId(userId)
+                        .profileId(profileId));
         log.info("User membership added to profile {}. Membership: {}", profileId, profileMember);
         return profileMember.getId();
     }
@@ -187,11 +190,11 @@ public class DefaultUserService extends AbstractService implements UserService {
     public String addRoleToProfile(String roleId, String profileId) {
         log.info("Add role {} to profile {}...", roleId, profileId);
         ProfileMemberApi profileMemberApi = apiProvider.get(ProfileMemberApi.class);
-        ProfileMember profileMember = profileMemberApi.createProfileMember(new ProfileMemberCreateRequest()
-                .memberType(ProfileMemberCreateRequest.MemberTypeEnum.ROLE)
-                .roleId(roleId)
-                .profileId(profileId)
-        );
+        ProfileMember profileMember = profileMemberApi.createProfileMember(
+                new ProfileMemberCreateRequest()
+                        .memberType(ProfileMemberCreateRequest.MemberTypeEnum.ROLE)
+                        .roleId(roleId)
+                        .profileId(profileId));
         log.info("Role membership added to profile {}. Membership: {}", profileId, profileMember);
         return profileMember.getId();
     }

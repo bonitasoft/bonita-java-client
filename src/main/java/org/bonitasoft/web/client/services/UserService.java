@@ -1,5 +1,8 @@
 package org.bonitasoft.web.client.services;
 
+import java.io.File;
+import java.util.List;
+
 import org.bonitasoft.web.client.api.ProfileApi;
 import org.bonitasoft.web.client.api.RoleApi;
 import org.bonitasoft.web.client.api.UserApi;
@@ -10,11 +13,7 @@ import org.bonitasoft.web.client.model.UserCreateRequest;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 
-import java.io.File;
-import java.util.List;
-
 public interface UserService {
-
 
     void importOrganization(File organization, OrganizationImportPolicy policy);
 

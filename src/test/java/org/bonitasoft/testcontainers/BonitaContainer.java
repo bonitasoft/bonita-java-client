@@ -1,17 +1,18 @@
 package org.bonitasoft.testcontainers;
 
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.wait.strategy.Wait;
-
 import static java.lang.String.format;
 import static java.util.Collections.singletonList;
+
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
 
 public class BonitaContainer extends GenericContainer<BonitaContainer> {
 
     public static final String BONITA_PATH = "/bonita";
+    public static final String BONITA_VERSION = "bonita.version";
 
     public BonitaContainer() {
-        this("bonita:latest");
+        this("bonita:" + System.getProperty(BONITA_VERSION, "latest"));
     }
 
     public BonitaContainer(String dockerImageName) {
