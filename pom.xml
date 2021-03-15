@@ -39,7 +39,7 @@
         <bonita.version>7.11.1</bonita.version>
         <jackson.version>2.12.2</jackson.version>
         <retrofit.version>2.9.0</retrofit.version>
-        <lombok.version>1.18.16</lombok.version>
+        <lombok.version>1.18.18</lombok.version>
         <java-semver.version>0.9.0</java-semver.version>
         <slf4j-api.version>1.7.30</slf4j-api.version>
 
@@ -56,9 +56,9 @@
         <junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
         <junit-platform-runner.version>1.7.0</junit-platform-runner.version>
         <assertj-core.version>3.18.1</assertj-core.version>
-        <mockito-core.version>3.6.28</mockito-core.version>
+        <mockito-core.version>3.8.0</mockito-core.version>
         <logback-classic.version>1.2.3</logback-classic.version>
-        <testcontainers.version>1.15.1</testcontainers.version>
+        <testcontainers.version>1.15.2</testcontainers.version>
         <awaitility.version>4.0.3</awaitility.version>
 
         <!-- Maven plugins -->
@@ -68,7 +68,7 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>${maven-surefire-plugin.version}</maven-failsafe-plugin.version>
         <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
-        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
+        <sonar-maven-plugin.version>3.8.0.2131</sonar-maven-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
