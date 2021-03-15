@@ -8,37 +8,41 @@
  */
 package org.bonitasoft.web.client.services.utils;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /** @author Baptiste Mesta. */
 public final class FileUtils {
 
-  private FileUtils() {
-    // Utility class
-  }
+    private FileUtils() {
+        // Utility class
+    }
 
-  public static byte[] getFileFromZip(File zip, String filePath) throws IOException {
-    try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(zip))) {
-      ZipEntry zipEntry;
-      while ((zipEntry = zipInputStream.getNextEntry()) != null) {
-        if (zipEntry.getName().equals(filePath) && !zipEntry.isDirectory()) {
-          return readFully(zipInputStream);
+    public static byte[] getFileFromZip(File zip, String filePath) throws IOException {
+        try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(zip))) {
+            ZipEntry zipEntry;
+            while ((zipEntry = zipInputStream.getNextEntry()) != null) {
+                if (zipEntry.getName().equals(filePath) && !zipEntry.isDirectory()) {
+                    return readFully(zipInputStream);
+                }
+            }
+            throw new FileNotFoundException(String.format("Entry %s not found in zip", filePath));
         }
-      }
-      throw new FileNotFoundException(String.format("Entry %s not found in zip", filePath));
     }
-  }
 
-  public static byte[] readFully(InputStream in) throws IOException {
-    ByteArrayOutputStream out = new ByteArrayOutputStream();
-    byte[] buf = new byte[1024];
-    int n;
-    while ((n = in.read(buf)) > 0) {
-      out.write(buf, 0, n);
+    public static byte[] readFully(InputStream in) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buf = new byte[1024];
+        int n;
+        while ((n = in.read(buf)) > 0) {
+            out.write(buf, 0, n);
+        }
+        return out.toByteArray();
     }
-    return out.toByteArray();
-  }
 }
