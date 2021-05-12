@@ -30,7 +30,7 @@ jobs:
 
       # Build and Push snapshots to maven central
       - name: Build and Push snapshots to Maven central
-        uses: samuelmeuli/action-maven-publish@v1
+        uses: samuelmeuli/action-maven-publish@v1.4.0
         with:
           maven_args: "-DskipTests=true"
           gpg_private_key: ${{ secrets.gpg_private_key }}
