@@ -60,7 +60,7 @@ jobs:
           ref: 'dev'
                 
       # Merge master into dev    
-      - uses: everlytic/branch-merge@1.1.0
+      - uses: everlytic/branch-merge@1.1.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_ref: 'master'
