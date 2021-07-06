@@ -37,7 +37,7 @@
 
         <!-- Bonita -->
         <bonita.version>7.11.1</bonita.version>
-        <jackson.version>2.12.2</jackson.version>
+        <jackson.version>2.12.4</jackson.version>
         <retrofit.version>2.9.0</retrofit.version>
         <lombok.version>1.18.18</lombok.version>
         <java-semver.version>0.9.0</java-semver.version>
