@@ -37,9 +37,9 @@
 
         <!-- Bonita -->
         <bonita.version>7.11.1</bonita.version>
-        <jackson.version>2.12.2</jackson.version>
+        <jackson.version>2.12.4</jackson.version>
         <retrofit.version>2.9.0</retrofit.version>
-        <lombok.version>1.18.18</lombok.version>
+        <lombok.version>1.18.20</lombok.version>
         <java-semver.version>0.9.0</java-semver.version>
         <slf4j-api.version>1.7.30</slf4j-api.version>
 
@@ -55,7 +55,7 @@
         <!-- Tests -->
         <junit-jupiter-engine.version>5.7.1</junit-jupiter-engine.version>
         <junit-platform-runner.version>1.7.1</junit-platform-runner.version>
-        <assertj-core.version>3.19.0</assertj-core.version>
+        <assertj-core.version>3.20.2</assertj-core.version>
         <mockito-core.version>3.8.0</mockito-core.version>
         <logback-classic.version>1.2.3</logback-classic.version>
         <testcontainers.version>1.15.2</testcontainers.version>
