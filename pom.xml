@@ -58,7 +58,7 @@
         <assertj-core.version>3.20.2</assertj-core.version>
         <mockito-core.version>3.8.0</mockito-core.version>
         <logback-classic.version>1.2.3</logback-classic.version>
-        <testcontainers.version>1.15.2</testcontainers.version>
+        <testcontainers.version>1.16.0</testcontainers.version>
         <awaitility.version>4.0.3</awaitility.version>
 
         <!-- Maven plugins -->
@@ -73,7 +73,7 @@
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
-        <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
+        <git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
         <openapi-generator-maven-plugin.version>5.0.1</openapi-generator-maven-plugin.version>
 
         <codegen.skip>true</codegen.skip>
