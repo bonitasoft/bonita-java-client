@@ -26,6 +26,7 @@ jobs:
         uses: actions/setup-java@v2.2.0
         with:
           java-version: 11
+          distribution: adopt
       - name: Build and test project
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
