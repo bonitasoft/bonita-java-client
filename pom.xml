@@ -41,7 +41,7 @@
         <retrofit.version>2.9.0</retrofit.version>
         <lombok.version>1.18.20</lombok.version>
         <java-semver.version>0.9.0</java-semver.version>
-        <slf4j-api.version>1.7.30</slf4j-api.version>
+        <slf4j-api.version>1.7.32</slf4j-api.version>
 
         <swagger-annotations.version>1.6.2</swagger-annotations.version>
         <javax-annotation.version>1.3.2</javax-annotation.version>
