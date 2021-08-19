@@ -91,7 +91,7 @@ class BonitaFeignClientTest {
         when(sessionApi.getSession())
                 .thenThrow(
                         new FeignException.GatewayTimeout(
-                                "Timeout", mockResponseBuilder().build().request(), null));
+                                "Timeout", mockResponseBuilder().build().request(), null, null));
 
         // When
         final boolean running = feignClient.isPlatformUpAndRunning();
