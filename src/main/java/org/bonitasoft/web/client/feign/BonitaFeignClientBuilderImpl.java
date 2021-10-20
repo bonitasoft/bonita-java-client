@@ -12,6 +12,7 @@ import static java.util.Optional.ofNullable;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 import java.security.cert.CertificateException;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
@@ -47,6 +48,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import feign.Feign;
+import feign.Request;
 import feign.jackson.JacksonDecoder;
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -77,6 +79,9 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
     @Setter
     private boolean disableCertificateCheck = false;
+    
+    @Setter
+    private boolean followRedirects = false;
 
     @Setter
     private Feign.Builder feignBuilder;
@@ -142,6 +147,9 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         log.debug("Configuring Feign builder ...");
         return feignBuilder
                 .client(new feign.okhttp.OkHttpClient(okHttpClient))
+                .options(new Request.Options(okHttpClient.connectTimeoutMillis(), TimeUnit.MILLISECONDS,
+                        okHttpClient.readTimeoutMillis(), TimeUnit.MILLISECONDS,
+                        okHttpClient.followRedirects()))
                 .decode404()
                 .decoder(
                         new DelegatingDecoder().register("application/json", new JacksonDecoder(objectMapper)))
@@ -163,7 +171,8 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         OkHttpClient.Builder okHttpClientBuilder = addTrustAllCertificateManagerIfNeeded(builder)
                 .connectTimeout(connectTimeoutInSeconds, SECONDS)
                 .readTimeout(readTimeoutInSeconds, SECONDS)
-                .writeTimeout(writeTimeoutInSeconds, SECONDS);
+                .writeTimeout(writeTimeoutInSeconds, SECONDS)
+                .followRedirects(followRedirects);
 
         if (!LogContentLevel.OFF.equals(logContentLevel)) {
             HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(

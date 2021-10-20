@@ -39,6 +39,15 @@ public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
      * @return the current builder
      */
     T writeTimeoutInSeconds(int writeTimeoutInSeconds);
+    
+    /**
+     * Configure whether the client should follow HTTP redirections.
+     * Disabled by default.
+     *
+     * @param followRedirects
+     * @return the current builder
+     */
+    T followRedirects(boolean followRedirects);
 
     /**
      * disable certificate check, trust all certs as default
