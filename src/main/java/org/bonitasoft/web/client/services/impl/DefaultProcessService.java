@@ -215,7 +215,7 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
                 .get(UserTaskApi.class)
                 .searchUserTasks(
                         new UserTaskApi.SearchUserTasksQueryParams()
-                                .f(singletonList("rootContainerId=" + rootContainerId)));
+                                .f(singletonList("rootCaseId=" + rootContainerId)));
         log.debug("Found User Tasks: {}", userTasks);
         return userTasks;
     }
