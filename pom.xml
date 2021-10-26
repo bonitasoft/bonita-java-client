@@ -39,11 +39,11 @@
         <bonita.version>7.11.1</bonita.version>
         <jackson.version>2.12.4</jackson.version>
         <retrofit.version>2.9.0</retrofit.version>
-        <lombok.version>1.18.20</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
         <java-semver.version>0.9.0</java-semver.version>
         <slf4j-api.version>1.7.32</slf4j-api.version>
 
-        <swagger-annotations.version>1.6.2</swagger-annotations.version>
+        <swagger-annotations.version>1.6.3</swagger-annotations.version>
         <javax-annotation.version>1.3.2</javax-annotation.version>
         <jsr305.version>3.0.2</jsr305.version>
         <feign.version>11.6</feign.version>
