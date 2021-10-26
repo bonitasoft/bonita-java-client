@@ -58,7 +58,7 @@
         <mockito-core.version>4.0.0</mockito-core.version>
         <logback-classic.version>1.2.6</logback-classic.version>
         <testcontainers.version>1.16.0</testcontainers.version>
-        <awaitility.version>4.1.0</awaitility.version>
+        <awaitility.version>4.1.1</awaitility.version>
 
         <!-- Maven plugins -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
