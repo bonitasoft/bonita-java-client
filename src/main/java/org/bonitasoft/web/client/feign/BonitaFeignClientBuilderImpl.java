@@ -150,7 +150,6 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                 .options(new Request.Options(okHttpClient.connectTimeoutMillis(), TimeUnit.MILLISECONDS,
                         okHttpClient.readTimeoutMillis(), TimeUnit.MILLISECONDS,
                         okHttpClient.followRedirects()))
-                .decode404()
                 .decoder(
                         new DelegatingDecoder().register("application/json", new JacksonDecoder(objectMapper)))
                 // Map feign exception to ours
