@@ -14,6 +14,7 @@ public class CachingApiProvider implements ApiProvider {
 
     private final Map<Class<? extends ApiClient.Api>, ApiClient.Api> apiCache = new ConcurrentHashMap<>();
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T extends ApiClient.Api> T get(Class<T> apiClass) {
         return (T) apiCache.computeIfAbsent(apiClass, apiClient::buildClient);

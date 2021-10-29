@@ -81,9 +81,6 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
     private boolean disableCertificateCheck = false;
     
     @Setter
-    private boolean followRedirects = false;
-
-    @Setter
     private Feign.Builder feignBuilder;
     @Setter
     private OkHttpClient okHttpClient;
@@ -171,7 +168,7 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                 .connectTimeout(connectTimeoutInSeconds, SECONDS)
                 .readTimeout(readTimeoutInSeconds, SECONDS)
                 .writeTimeout(writeTimeoutInSeconds, SECONDS)
-                .followRedirects(followRedirects);
+                .followRedirects(Boolean.TRUE);
 
         if (!LogContentLevel.OFF.equals(logContentLevel)) {
             HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(

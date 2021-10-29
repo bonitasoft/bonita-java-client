@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 
 /** Builder class for {@link BonitaClient} */
-public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
+public interface BonitaClientBuilder<T extends BonitaClientBuilder<T>> {
 
     /**
      * Build and return a new {@link BonitaClient}
@@ -40,14 +40,6 @@ public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
      */
     T writeTimeoutInSeconds(int writeTimeoutInSeconds);
     
-    /**
-     * Configure whether the client should follow HTTP redirections.
-     * Disabled by default.
-     *
-     * @param followRedirects
-     * @return the current builder
-     */
-    T followRedirects(boolean followRedirects);
 
     /**
      * disable certificate check, trust all certs as default
