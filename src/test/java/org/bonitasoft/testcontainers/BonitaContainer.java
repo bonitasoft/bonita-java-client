@@ -1,10 +1,10 @@
 package org.bonitasoft.testcontainers;
 
-import static java.lang.String.format;
-import static java.util.Collections.singletonList;
-
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
+
+import static java.lang.String.format;
+import static java.util.Collections.singletonList;
 
 public class BonitaContainer extends GenericContainer<BonitaContainer> {
 

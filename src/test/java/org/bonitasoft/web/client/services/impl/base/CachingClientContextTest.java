@@ -1,8 +1,5 @@
 package org.bonitasoft.web.client.services.impl.base;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.services.impl.base.AbstractService.COMMUNITY_LICENCE;
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
@@ -11,6 +8,9 @@ import org.bonitasoft.web.client.model.License;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.services.impl.base.AbstractService.COMMUNITY_LICENCE;
 
 @ExtendWith(MockitoExtension.class)
 class CachingClientContextTest {
