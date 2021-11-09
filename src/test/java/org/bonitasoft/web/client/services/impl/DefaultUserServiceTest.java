@@ -172,7 +172,7 @@ class DefaultUserServiceTest {
         service.importProfiles(profileFile, ProfileImportPolicy.IGNORE_IF_ANY_EXISTS);
 
         // Then
-        verify(profileApi).uploadprofiles(eq(profileFile));
+        verify(profileApi).uploadprofiles(profileFile);
 
         final ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(profileApi).importProfiles(anyString(), captor.capture());

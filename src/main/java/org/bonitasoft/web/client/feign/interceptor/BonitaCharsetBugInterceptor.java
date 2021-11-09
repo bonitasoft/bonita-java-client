@@ -8,19 +8,18 @@
  */
 package org.bonitasoft.web.client.feign.interceptor;
 
-import static java.util.Collections.emptyList;
-import static java.util.Collections.singleton;
-
 import java.io.IOException;
 import java.util.Optional;
-
-import org.jetbrains.annotations.NotNull;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
+
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singleton;
 
 /**
  * Class to fix bad charset handling in bonita version. Fixed in 7.11.3 This issue prevent client to

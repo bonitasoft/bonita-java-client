@@ -1,10 +1,8 @@
 package org.bonitasoft.web.client;
 
-import org.bonitasoft.web.client.log.LogContentLevel;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import okhttp3.OkHttpClient;
+import org.bonitasoft.web.client.log.LogContentLevel;
 
 /** Builder class for {@link BonitaClient} */
 public interface BonitaClientBuilder<T extends BonitaClientBuilder<T>> {

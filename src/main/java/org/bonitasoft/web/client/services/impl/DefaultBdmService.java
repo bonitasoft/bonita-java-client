@@ -2,10 +2,13 @@ package org.bonitasoft.web.client.services.impl;
 
 import java.io.File;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.BdmAccessControlApi;
 import org.bonitasoft.web.client.api.BdmApi;
 import org.bonitasoft.web.client.api.SystemTenantApi;
+import org.bonitasoft.web.client.api.UploadApi;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.BDMAccessControl;
@@ -16,10 +19,6 @@ import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.services.BdmService;
 import org.bonitasoft.web.client.services.impl.base.AbstractService;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DefaultBdmService extends AbstractService implements BdmService {
@@ -42,10 +41,12 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 
         deleteBdmAccessControlIfNeeded();
 
-        BdmApi bdmApi = apiProvider.get(BdmApi.class);
-        String uploadedFileName = bdmApi.uploadBDM(bdm);
+        UploadApi uploadApi = apiProvider.get(UploadApi.class);
+        String uploadedFileName = uploadApi.uploadFile(bdm);
         log.debug("BDM file uploaded");
-        bdmApi.installBDM(new BDMInstallRequest().fileUpload(uploadedFileName));
+
+		BdmApi bdmApi = apiProvider.get(BdmApi.class);
+		bdmApi.installBDM(new BDMInstallRequest().fileUpload(uploadedFileName));
         log.debug("BDM file installed");
 
         // Restart tenant

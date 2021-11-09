@@ -7,11 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-import org.bonitasoft.web.client.exception.ClientException;
-
 import feign.Response;
 import feign.codec.Decoder;
 import lombok.extern.slf4j.Slf4j;
+import org.bonitasoft.web.client.exception.ClientException;
 
 @Slf4j
 public class DelegatingDecoder implements Decoder {
