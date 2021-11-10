@@ -1,5 +1,6 @@
 package org.bonitasoft.web.client;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 import org.bonitasoft.testcontainers.BonitaContainer;
 import org.bonitasoft.web.client.api.ApplicationApi.SearchApplicationsQueryParams;
+import org.bonitasoft.web.client.api.RoleApi;
 import org.bonitasoft.web.client.api.UserApi.SearchUsersQueryParams;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.exception.NotFoundException;
@@ -28,12 +30,16 @@ import org.bonitasoft.web.client.model.ActivationState;
 import org.bonitasoft.web.client.model.Application;
 import org.bonitasoft.web.client.model.Bdm;
 import org.bonitasoft.web.client.model.ConfigurationState;
+import org.bonitasoft.web.client.model.Group;
+import org.bonitasoft.web.client.model.GroupCreateRequest;
 import org.bonitasoft.web.client.model.Page;
 import org.bonitasoft.web.client.model.ProcessDefinition;
 import org.bonitasoft.web.client.model.ProcessInstantiationResponse;
 import org.bonitasoft.web.client.model.ProcessResolutionProblem;
 import org.bonitasoft.web.client.model.Profile;
+import org.bonitasoft.web.client.model.ProfileCreateRequest;
 import org.bonitasoft.web.client.model.Role;
+import org.bonitasoft.web.client.model.RoleCreateRequest;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.model.User;
@@ -476,6 +482,41 @@ class BonitaClientIT {
 
         // Then
         assertThat(processProblems).isNotEmpty();
+    }
+
+    @Test
+    void should_create_all_elements_of_the_organisation() {
+
+        bonitaClient.users().createUser(new UserCreateRequest()
+                .userName("john.doe")
+                .firstname("John")
+                .lastname("Doe")
+                .password("bpm")
+                .passwordConfirm("bpm")
+                .enabled("true")
+        );
+        List<User> users = bonitaClient.users().searchUsers(new SearchUsersQueryParams().p(0).c(1).f(asList("username=john.doe")));
+        assertThat(users).anyMatch(user -> user.getFirstname().equals("John"));
+
+        Role role = bonitaClient.users().createRole(new RoleCreateRequest()
+                .name("member")
+                .displayName("Member")
+                .description("Member of the given group")
+        );
+        bonitaClient.users().searchRoles(new RoleApi.SearchRolesQueryParams().p(0).c(1).f(asList("")));
+        Group group = bonitaClient.users().createGroup(new GroupCreateRequest()
+                .name("RD")
+                .displayName("RnD")
+                .description("Research and dev.")
+                .path("/rd")
+        );
+        Profile profile = bonitaClient.users().createProfile(new ProfileCreateRequest()
+                .name("employee")
+                .description("Employee profile")
+        );
+
+        bonitaClient.users().addUserToProfile(users.get(0).getId(), "employee");
+
     }
 
     private void importOrganization() throws Exception {

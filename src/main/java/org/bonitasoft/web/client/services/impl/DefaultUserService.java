@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bonitasoft.web.client.api.GroupApi;
 import org.bonitasoft.web.client.api.OrganizationApi;
 import org.bonitasoft.web.client.api.ProfileApi;
 import org.bonitasoft.web.client.api.ProfileMemberApi;
@@ -15,10 +16,14 @@ import org.bonitasoft.web.client.api.UserApi;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.feign.ApiProvider;
+import org.bonitasoft.web.client.model.Group;
+import org.bonitasoft.web.client.model.GroupCreateRequest;
 import org.bonitasoft.web.client.model.Profile;
+import org.bonitasoft.web.client.model.ProfileCreateRequest;
 import org.bonitasoft.web.client.model.ProfileMember;
 import org.bonitasoft.web.client.model.ProfileMemberCreateRequest;
 import org.bonitasoft.web.client.model.Role;
+import org.bonitasoft.web.client.model.RoleCreateRequest;
 import org.bonitasoft.web.client.model.User;
 import org.bonitasoft.web.client.model.UserCreateRequest;
 import org.bonitasoft.web.client.services.UserService;
@@ -154,6 +159,12 @@ public class DefaultUserService extends AbstractService implements UserService {
     }
 
     @Override
+    public Group createGroup(GroupCreateRequest groupCreateRequest) {
+        log.info("Create group with params: {}", groupCreateRequest);
+        return apiProvider.get(GroupApi.class).createGroup(groupCreateRequest);
+    }
+
+    @Override
     public Profile getProfileByName(String name) {
         return searchProfiles(
                 new ProfileApi.SearchProfilesQueryParams().p(0).c(1).f(singletonList("name=" + name)))
@@ -168,9 +179,21 @@ public class DefaultUserService extends AbstractService implements UserService {
         return apiProvider.get(RoleApi.class).searchRoles(params);
     }
 
+    @Override
+    public Role createRole(RoleCreateRequest roleCreateRequest) {
+        log.info("Create role with params: {}", roleCreateRequest);
+        return apiProvider.get(RoleApi.class).createRole(roleCreateRequest);
+    }
+
     public List<Profile> searchProfiles(ProfileApi.SearchProfilesQueryParams params) {
         log.info("Search profiles with params: {}", params);
         return apiProvider.get(ProfileApi.class).searchProfiles(params);
+    }
+
+    @Override
+    public Profile createProfile(ProfileCreateRequest profileCreateRequest) {
+        log.info("Create profile with params: {}", profileCreateRequest);
+        return apiProvider.get(ProfileApi.class).createProfile(profileCreateRequest);
     }
 
     @Override
