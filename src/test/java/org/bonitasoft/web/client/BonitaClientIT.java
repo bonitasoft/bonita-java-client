@@ -512,12 +512,6 @@ class BonitaClientIT {
                 .description("Research and dev.")
                 .path("/rd")
         );
-        Profile profile = bonitaClient.users().createProfile(new ProfileCreateRequest()
-                .name("employee")
-                .description("Employee profile")
-        );
-
-        bonitaClient.users().addUserToProfile(users.get(0).getId(), "employee");
     }
 
     private void importOrganization() throws Exception {
