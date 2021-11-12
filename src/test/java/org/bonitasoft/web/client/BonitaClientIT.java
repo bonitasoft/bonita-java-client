@@ -486,6 +486,8 @@ class BonitaClientIT {
 
     @Test
     void should_create_all_elements_of_the_organisation() {
+        // Given
+        loggedInAsTechnicalUser();
 
         bonitaClient.users().createUser(new UserCreateRequest()
                 .userName("john.doe")
@@ -495,13 +497,13 @@ class BonitaClientIT {
                 .passwordConfirm("bpm")
                 .enabled("true")
         );
-        List<User> users = bonitaClient.users().searchUsers(new SearchUsersQueryParams().p(0).c(1).f(asList("username=john.doe")));
+        List<User> users = bonitaClient.users().searchUsers(new SearchUsersQueryParams().p(0).c(1).f(asList("userName=john.doe")));
         assertThat(users).anyMatch(user -> user.getFirstname().equals("John"));
 
         Role role = bonitaClient.users().createRole(new RoleCreateRequest()
-                .name("member")
-                .displayName("Member")
-                .description("Member of the given group")
+                .name("staff")
+                .displayName("staff")
+                .description("staff of the given group")
         );
         bonitaClient.users().searchRoles(new RoleApi.SearchRolesQueryParams().p(0).c(1).f(asList("")));
         Group group = bonitaClient.users().createGroup(new GroupCreateRequest()
@@ -516,7 +518,6 @@ class BonitaClientIT {
         );
 
         bonitaClient.users().addUserToProfile(users.get(0).getId(), "employee");
-
     }
 
     private void importOrganization() throws Exception {
