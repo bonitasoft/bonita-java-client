@@ -106,6 +106,8 @@ public class ArchivedHumanTask implements Serializable {
     /** the current state of the task */
     public enum StateEnum {
 
+        INITIALIZING("initializing"),
+
         READY("ready"),
 
         COMPLETED("completed"),
