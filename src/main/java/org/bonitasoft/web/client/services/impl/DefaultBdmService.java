@@ -26,6 +26,7 @@ import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.services.BdmService;
 import org.bonitasoft.web.client.services.impl.base.AbstractService;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.jetbrains.annotations.Nullable;
 
 @Slf4j
 public class DefaultBdmService extends AbstractService implements BdmService {
@@ -112,6 +113,38 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 		return bdmAccessControlStatus;
 	}
 
+	@Override
+	public <T> T querySingle(String businessDataType, String namedQuery, Class<T> queryResultType) {
+		List<T> results = this.query(businessDataType, namedQuery, queryResultType);
+		return getSingleResult(results);
+	}
+
+	@Override
+	public <T> List<T> query(String businessDataType, String namedQuery, Class<T> queryResultType) {
+		log.info("Query BDM for about {} objects", businessDataType);
+		SearchBusinessDataQueryParams queryParams = new SearchBusinessDataQueryParams();
+		queryParams.q(namedQuery).p(0).c(Integer.MAX_VALUE);
+		return query(businessDataType, queryParams, queryResultType);
+	}
+
+	@Override
+	public <T> T querySingle(String businessDataType, SearchBusinessDataQueryParams queryParams, Class<T> queryResultType) {
+		List<T> results = this.query(businessDataType, queryParams, queryResultType);
+		return getSingleResult(results);
+	}
+
+	@Nullable
+	private <T> T getSingleResult(List<T> results) {
+		if (!results.isEmpty()) {
+			if (results.size() != 1) {
+				throw new ClientException("Query returned more than one single result:" + results);
+			}
+			return results.get(0);
+		}
+		return null;
+	}
+
+	@Override
 	public <T> List<T> query(String businessDataType, SearchBusinessDataQueryParams queryParams, Class<T> queryResultType) {
 		log.info("Query BDM for about {} objects with params {}", businessDataType, queryParams);
 		BusinessDataQueryApi queryApi = apiProvider.get(BusinessDataQueryApi.class);
@@ -122,7 +155,6 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 				return (List<T>) convertMany(objects.get(0), BusinessData.class);
 			}
 			catch (Exception e) {
-				log.error("Failed to parse response as BusinessData", e);
 				throw new ClientException("Failed to parse response as BusinessData", e);
 			}
 		}
@@ -139,7 +171,7 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 	protected <T> List<T> convertMany(Object o, Class<T> queryResultType) {
 		try {
 			CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, queryResultType);
-			return (List<T>) objectMapper.readValue(o.toString(), collectionType);
+			return objectMapper.readValue(o.toString(), collectionType);
 		}
 		catch (Exception e) {
 			log.error("Failed to parse response as BusinessData", e);
@@ -164,17 +196,14 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 			if (Integer.class.equals(queryResultType)) {
 				return (T) Integer.valueOf(o.toString());
 			}
-			throw new ClientException("Failed to convert query result from " + o.getClass() + " to " + queryResultType);
+
+			// Last chance given to object mapper
+			return objectMapper.convertValue(o, queryResultType);
+
 		}
 		catch (ClassCastException | NumberFormatException e) {
 			throw new ClientException("Failed to convert query result from " + o.getClass() + " to " + queryResultType, e);
 		}
 	}
 
-	public <T> List<T> query(String businessDataType, String namedQuery, Class<T> queryResultType) {
-		log.info("Query BDM for about {} objects", businessDataType);
-		SearchBusinessDataQueryParams queryParams = new SearchBusinessDataQueryParams();
-		queryParams.q(namedQuery);
-		return query(businessDataType, queryParams, queryResultType);
-	}
 }

@@ -162,7 +162,7 @@ class DefaultBdmServiceTest {
 		queryParams.c(Integer.MAX_VALUE);
 
 		// When
-		List<DummyBdmObject> queryResults = bdmService.queryList(DummyBdmObject.class.getName(), queryParams, DummyBdmObject.class);
+//		List<DummyBdmObject> queryResults = bdmService.queryList(DummyBdmObject.class.getName(), queryParams, DummyBdmObject.class);
 
 		// Then
 	}

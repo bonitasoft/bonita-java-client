@@ -229,8 +229,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>testcontainers</artifactId>
+            <groupId>org.bonitasoft.testcontainers</groupId>
+            <artifactId>bonita</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>
