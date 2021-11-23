@@ -63,7 +63,7 @@ public class BdmResponseConverter {
 		return (T) Proxy.newProxyInstance(
 				this.getClass().getClassLoader(),
 				new Class[] { queryResultType },
-				new BdmResponseProxyInvocationHandler(this, (Map<String, Object>) o));
+				new CachingBdmResponseProxyInvocationHandler(this, (Map<String, Object>) o));
 	}
 
 	private <T> T convertToClass(Object o, Class<T> queryResultType) {
