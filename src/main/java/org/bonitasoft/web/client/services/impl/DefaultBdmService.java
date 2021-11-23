@@ -1,11 +1,9 @@
 package org.bonitasoft.web.client.services.impl;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.BdmAccessControlApi;
@@ -26,14 +24,20 @@ import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.services.BdmService;
 import org.bonitasoft.web.client.services.impl.base.AbstractService;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.bonitasoft.web.client.services.impl.bdm.BdmResponseConverter;
 import org.jetbrains.annotations.Nullable;
+
+import static java.util.stream.Collectors.toList;
 
 @Slf4j
 public class DefaultBdmService extends AbstractService implements BdmService {
 
+	private BdmResponseConverter bdmResponseConverter;
+
 	public DefaultBdmService(
-			ClientContext clientContext, ApiProvider apiProvider, ObjectMapper objectMapper) {
-		super(apiProvider, objectMapper, clientContext);
+			ClientContext clientContext, ApiProvider apiProvider, BdmResponseConverter bdmResponseConverter) {
+		super(apiProvider, bdmResponseConverter.getObjectMapper(), clientContext);
+		this.bdmResponseConverter = bdmResponseConverter;
 	}
 
 	@Override
@@ -141,6 +145,7 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 			}
 			return results.get(0);
 		}
+		log.debug("No result found for this query, returning null instead");
 		return null;
 	}
 
@@ -151,58 +156,12 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 		List<Object> objects = queryApi.searchBusinessData(businessDataType, queryParams);
 
 		if (BusinessData.class.equals(queryResultType)) {
-			try {
-				return (List<T>) convertMany(objects.get(0), BusinessData.class);
-			}
-			catch (Exception e) {
-				throw new ClientException("Failed to parse response as BusinessData", e);
-			}
+			return (List<T>) bdmResponseConverter.convertToList(objects.get(0), BusinessData.class);
 		}
 		else {
-			List<T> results = new ArrayList<>();
-			objects.forEach(o -> {
-				T result = convert(o, queryResultType);
-				results.add(result);
-			});
-			return results;
-		}
-	}
-
-	protected <T> List<T> convertMany(Object o, Class<T> queryResultType) {
-		try {
-			CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, queryResultType);
-			return objectMapper.readValue(o.toString(), collectionType);
-		}
-		catch (Exception e) {
-			log.error("Failed to parse response as BusinessData", e);
-			throw new ClientException("Failed to parse response as BusinessData", e);
-		}
-	}
-
-	protected <T> T convert(Object o, Class<T> queryResultType) {
-		try {
-			if (queryResultType.isInstance(o)) {
-				return queryResultType.cast(o);
-			}
-			if (Double.class.equals(queryResultType)) {
-				return (T) Double.valueOf(o.toString());
-			}
-			if (Long.class.equals(queryResultType)) {
-				return (T) Long.valueOf(o.toString());
-			}
-			if (Float.class.equals(queryResultType)) {
-				return (T) Float.valueOf(o.toString());
-			}
-			if (Integer.class.equals(queryResultType)) {
-				return (T) Integer.valueOf(o.toString());
-			}
-
-			// Last chance given to object mapper
-			return objectMapper.convertValue(o, queryResultType);
-
-		}
-		catch (ClassCastException | NumberFormatException e) {
-			throw new ClientException("Failed to convert query result from " + o.getClass() + " to " + queryResultType, e);
+			return objects.stream()
+					.map(o -> bdmResponseConverter.convert(o, queryResultType))
+					.collect(toList());
 		}
 	}
 

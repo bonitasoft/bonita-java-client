@@ -1,32 +1,29 @@
 package org.bonitasoft.web.client.services.impl;
 
 import java.io.File;
-import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.BdmAccessControlApi;
 import org.bonitasoft.web.client.api.BdmApi;
 import org.bonitasoft.web.client.api.BusinessDataQueryApi;
-import org.bonitasoft.web.client.api.BusinessDataQueryApi.SearchBusinessDataQueryParams;
 import org.bonitasoft.web.client.api.LicenseApi;
 import org.bonitasoft.web.client.api.SystemTenantApi;
 import org.bonitasoft.web.client.api.UploadApi;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.BDMAccessControl;
-import org.bonitasoft.web.client.model.BusinessData;
 import org.bonitasoft.web.client.model.TenantPauseRequest;
 import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.services.impl.base.CachingClientContext;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.bonitasoft.web.client.services.impl.bdm.BdmResponseConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
 import static org.mockito.ArgumentMatchers.any;
@@ -69,7 +66,7 @@ class DefaultBdmServiceTest {
 	@BeforeEach
 	void setUp() {
 		clientContext.clear();
-		bdmService = spy(new DefaultBdmService(clientContext, apiProvider, objectMapper));
+		bdmService = spy(new DefaultBdmService(clientContext, apiProvider, new BdmResponseConverter(objectMapper, apiProvider)));
 
 		lenient().when(apiProvider.get(LicenseApi.class)).thenReturn(licenseApi);
 		lenient().when(apiProvider.get(SystemTenantApi.class)).thenReturn(tenantApi);
@@ -153,56 +150,4 @@ class DefaultBdmServiceTest {
 				.isInstanceOf(LicenseException.class);
 	}
 
-	@Test
-	void bdm_query_should_return_type_data() {
-		// Given
-		SearchBusinessDataQueryParams queryParams = new SearchBusinessDataQueryParams();
-		queryParams.q("myNamedquery");
-		queryParams.p(0);
-		queryParams.c(Integer.MAX_VALUE);
-
-		// When
-//		List<DummyBdmObject> queryResults = bdmService.queryList(DummyBdmObject.class.getName(), queryParams, DummyBdmObject.class);
-
-		// Then
-	}
-
-	@Test
-	void should_convert_from_string_to_double() {
-		Double value = bdmService.convert("1", Double.class);
-		assertThat(value).isInstanceOf(Double.class).isEqualTo(1);
-	}
-
-	@Test
-	void should_convert_from_string_to_float() {
-		Float value = bdmService.convert("1", Float.class);
-		assertThat(value).isInstanceOf(Float.class).isEqualTo(1);
-	}
-
-	@Test
-	void should_convert_from_string_to_int() {
-		Integer value = bdmService.convert("1", Integer.class);
-		assertThat(value).isInstanceOf(Integer.class).isEqualTo(1);
-	}
-
-	@Test
-	void should_convert_from_string_to_long() {
-		Long value = bdmService.convert("1", Long.class);
-		assertThat(value).isInstanceOf(Long.class).isEqualTo(1);
-	}
-
-	@Test
-	void should_convert_from_string_to_business_data() {
-		List<BusinessData> values = bdmService.convertMany("[{\"persistenceId_string\":\"123456\",\"persistenceVersion_string\":\"1\"}]", BusinessData.class);
-		assertThat(values)
-				.isNotEmpty()
-//				.isInstanceOf(BusinessData.class)
-//				.hasFieldOrPropertyWithValue("persistenceId_string", "123456")
-//				.hasFieldOrPropertyWithValue("persistenceVersion_string", "1")
-				;
-	}
-
-	public static final class DummyBdmObject {
-
-	}
 }

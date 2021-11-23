@@ -51,6 +51,7 @@ import org.bonitasoft.web.client.services.impl.DefaultSystemService;
 import org.bonitasoft.web.client.services.impl.DefaultUserService;
 import org.bonitasoft.web.client.services.impl.base.CachingClientContext;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.bonitasoft.web.client.services.impl.bdm.BdmResponseConverter;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.LoggerFactory;
 
@@ -92,7 +93,8 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 	private LogContentLevel logContentLevel = LogContentLevel.OFF;
 
 	String addTrailingSlashIfNeeded(String url) {
-		return url.endsWith("/") ? url : url + "/";
+//		return url.endsWith("/") ? url : url + "/";
+		return url;
 	}
 
 	@Override
@@ -126,7 +128,10 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 		final ClientContext clientContext = new CachingClientContext();
 		ApplicationService applicationService = new DefaultApplicationService(clientContext, apiProvider,
 				this.objectMapper);
-		BdmService bdmService = new DefaultBdmService(clientContext, apiProvider, this.objectMapper);
+
+		BdmResponseConverter bdmResponseConverter = new BdmResponseConverter(this.objectMapper, apiProvider);
+		BdmService bdmService = new DefaultBdmService(clientContext, apiProvider, bdmResponseConverter);
+
 		UserService userService = new DefaultUserService(clientContext, apiProvider, this.objectMapper);
 		ProcessService processService = new DefaultProcessService(clientContext, apiProvider, this.objectMapper);
 		SystemService systemService = new DefaultSystemService(clientContext, apiProvider, this.objectMapper);
