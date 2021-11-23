@@ -156,7 +156,7 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 		List<Object> objects = queryApi.searchBusinessData(businessDataType, queryParams);
 
 		if (BusinessData.class.equals(queryResultType)) {
-			return (List<T>) bdmResponseConverter.convertToList(objects.get(0), BusinessData.class);
+			return (List<T>) bdmResponseConverter.convertToList(objects, BusinessData.class);
 		}
 		else {
 			return objects.stream()

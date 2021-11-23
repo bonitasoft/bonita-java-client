@@ -32,7 +32,7 @@ public class BdmResponseConverter {
 		try {
 			if (!elementClass.isInterface()) {
 				CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, elementClass);
-				return objectMapper.readValue(o.toString(), collectionType);
+				return objectMapper.convertValue(o, collectionType);
 			}
 			else {
 				return ((List<Object>) o).stream()
