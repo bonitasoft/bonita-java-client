@@ -58,6 +58,7 @@
         <mockito-core.version>4.0.0</mockito-core.version>
         <logback-classic.version>1.2.6</logback-classic.version>
         <testcontainers.version>1.16.2</testcontainers.version>
+<!--		<bonita-testontainers.version>0.0.1</bonita-testontainers.version>-->
         <awaitility.version>4.1.1</awaitility.version>
 
         <!-- Maven plugins -->
@@ -228,12 +229,12 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.bonitasoft.testcontainers</groupId>
-            <artifactId>bonita</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.bonitasoft.testcontainers</groupId>-->
+<!--            <artifactId>bonita</artifactId>-->
+<!--			<version>${bonita-testontainers.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
