@@ -44,7 +44,7 @@
         <jsr305.version>3.0.2</jsr305.version>
         <feign.version>11.7</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
-        <okhttp.version>4.9.2</okhttp.version>
+        <okhttp.version>4.9.3</okhttp.version>
 		<scribejava.version>8.3.1</scribejava.version>
 		<jackson.version>2.11.3</jackson.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
@@ -55,8 +55,8 @@
 		<!-- Tests -->
         <junit-jupiter-engine.version>5.8.1</junit-jupiter-engine.version>
         <assertj-core.version>3.21.0</assertj-core.version>
-        <mockito-core.version>4.0.0</mockito-core.version>
-        <logback-classic.version>1.2.6</logback-classic.version>
+        <mockito-core.version>4.1.0</mockito-core.version>
+        <logback-classic.version>1.2.7</logback-classic.version>
         <testcontainers.version>1.16.2</testcontainers.version>
 <!--		<bonita-testontainers.version>0.0.1</bonita-testontainers.version>-->
         <awaitility.version>4.1.1</awaitility.version>
@@ -68,7 +68,7 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>${maven-surefire-plugin.version}</maven-failsafe-plugin.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-        <sonar-maven-plugin.version>3.9.0.2155</sonar-maven-plugin.version>
+        <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
