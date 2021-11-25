@@ -39,7 +39,6 @@ class BonitaFeignClientBuilderImplTest {
         final BonitaClient client = clientBuilder.build();
 
         // Then
-        verify(clientBuilder).addTrailingSlashIfNeeded(DUMMY_URL);
         verify(clientBuilder).configureFeign(any());
         verify(clientBuilder).configureJackson(any());
         verify(clientBuilder).configureHttpClient(any());

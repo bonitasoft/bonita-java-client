@@ -57,8 +57,18 @@ public class BdmResponseProxyInvocationHandler implements InvocationHandler {
 		}
 		else {
 			String key = getFieldKey(method);
-			log.debug("Get data from json response field {}", key);
-			return bdmResponseConverter.getObjectMapper().convertValue(jsonData.get(key), method.getReturnType());
+			// Check if there is a '_string' field and prefer it if any. (JS long serialization bug)
+			Object value;
+			String stringedKey = key + "_string";
+			if (jsonData.containsKey(stringedKey)) {
+				log.debug("Get data from json response field {}", stringedKey);
+				value = jsonData.get(stringedKey);
+			}
+			else {
+				log.debug("Get data from json response field {}", key);
+				value = jsonData.get(key);
+			}
+			return bdmResponseConverter.getObjectMapper().convertValue(value, method.getReturnType());
 		}
 	}
 

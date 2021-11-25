@@ -92,18 +92,13 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 	@Setter
 	private LogContentLevel logContentLevel = LogContentLevel.OFF;
 
-	String addTrailingSlashIfNeeded(String url) {
-//		return url.endsWith("/") ? url : url + "/";
-		return url;
-	}
-
 	@Override
 	public BonitaClient build() {
 
 		ApiClient apiClient = new ApiClient();
 
 		// Bonita url
-		apiClient.setBasePath(addTrailingSlashIfNeeded(url));
+		apiClient.setBasePath(url);
 
 		// OkHttp
 		okHttpClient = ofNullable(okHttpClient)

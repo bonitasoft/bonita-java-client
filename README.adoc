@@ -160,7 +160,7 @@ WARNING: Please note that this is not recommended from a security point of view 
 [source, java]
 ----
 // Create your custom ObjectMapper
-ObjectMapper myObjectMapper = = new ObjectMapper();
+ObjectMapper myObjectMapper = new ObjectMapper();
 
 // Configure bonita client to use your custom ObjectMapper
 BonitaClient client = BonitaClient.builder("http://localhost:8080/bonita")
