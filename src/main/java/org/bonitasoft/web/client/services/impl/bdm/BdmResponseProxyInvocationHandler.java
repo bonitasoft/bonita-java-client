@@ -31,7 +31,7 @@ public class BdmResponseProxyInvocationHandler implements InvocationHandler {
 	private void processLinks(Map<String, Object> jsonData) {
 		List<Map<String, String>> jsonLinks = (List<Map<String, String>>) jsonData.getOrDefault("links", new ArrayList<Map<String, String>>());
 		jsonLinks.forEach(link -> {
-			String rel = link.get("rel").toLowerCase();
+			String rel = createLinkKey(link);
 			String href = link.get("href");
 			this.links.put(rel, href);
 		});
@@ -96,15 +96,19 @@ public class BdmResponseProxyInvocationHandler implements InvocationHandler {
 		}
 	}
 
-	private String getLinkKey(Method method) {
+	private String createLinkKey(Map<String, String> link) {
+		return link.get("rel").toLowerCase();
+	}
+
+	protected String getLinkKey(Method method) {
 		return method.getName().replace("get", "").toLowerCase();
 	}
 
-	private String getFieldKey(Method method) {
+	protected String getFieldKey(Method method) {
 		return lowercaseFirst(method.getName().replace("get", ""));
 	}
 
-	private String lowercaseFirst(String text) {
+	protected String lowercaseFirst(String text) {
 		char[] c = text.toCharArray();
 		c[0] = Character.toLowerCase(c[0]);
 		return new String(c);

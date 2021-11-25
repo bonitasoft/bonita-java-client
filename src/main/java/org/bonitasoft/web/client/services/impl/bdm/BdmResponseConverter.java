@@ -17,7 +17,6 @@ import org.bonitasoft.web.client.feign.ApiProvider;
 public class BdmResponseConverter {
 
 	private final ObjectMapper objectMapper;
-
 	private final ApiProvider apiProvider;
 
 	public ObjectMapper getObjectMapper() {
@@ -45,44 +44,44 @@ public class BdmResponseConverter {
 		}
 	}
 
-	public <T> T convert(Object o, Class<T> queryResultType) {
+	public <T> T convert(Object o, Class<T> targetType) {
 		try {
-			if (!queryResultType.isInterface()) {
-				return convertToClass(o, queryResultType);
+			if (!targetType.isInterface()) {
+				return convertToClass(o, targetType);
 			}
 			else {
-				return convertToInterfaceProxy(o, queryResultType);
+				return convertToInterfaceProxy(o, targetType);
 			}
 		}
 		catch (ClassCastException | NumberFormatException e) {
-			throw new ClientException("Failed to convert query result from " + o.getClass() + " to " + queryResultType, e);
+			throw new ClientException("Failed to convert query result from " + o.getClass() + " to " + targetType, e);
 		}
 	}
 
-	private <T> T convertToInterfaceProxy(Object o, Class<T> queryResultType) {
+	private <T> T convertToInterfaceProxy(Object o, Class<T> targetType) {
 		return (T) Proxy.newProxyInstance(
 				this.getClass().getClassLoader(),
-				new Class[] { queryResultType },
+				new Class[] { targetType },
 				new CachingBdmResponseProxyInvocationHandler(this, (Map<String, Object>) o));
 	}
 
-	private <T> T convertToClass(Object o, Class<T> queryResultType) {
-		if (queryResultType.isInstance(o)) {
-			return queryResultType.cast(o);
+	private <T> T convertToClass(Object o, Class<T> targetType) {
+		if (targetType.isInstance(o)) {
+			return targetType.cast(o);
 		}
-		if (Double.class.equals(queryResultType)) {
+		if (Double.class.equals(targetType)) {
 			return (T) Double.valueOf(o.toString());
 		}
-		if (Long.class.equals(queryResultType)) {
+		if (Long.class.equals(targetType)) {
 			return (T) Long.valueOf(o.toString());
 		}
-		if (Float.class.equals(queryResultType)) {
+		if (Float.class.equals(targetType)) {
 			return (T) Float.valueOf(o.toString());
 		}
-		if (Integer.class.equals(queryResultType)) {
+		if (Integer.class.equals(targetType)) {
 			return (T) Integer.valueOf(o.toString());
 		}
 		// Last chance given to object mapper
-		return objectMapper.convertValue(o, queryResultType);
+		return objectMapper.convertValue(o, targetType);
 	}
 }
