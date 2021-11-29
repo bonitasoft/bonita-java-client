@@ -13,6 +13,7 @@ import org.bonitasoft.testcontainers.BonitaContainer;
 import org.bonitasoft.web.client.api.ApplicationApi.SearchApplicationsQueryParams;
 import org.bonitasoft.web.client.api.ArchivedProcessInstanceApi;
 import org.bonitasoft.web.client.api.ProcessInstanceApi;
+import org.bonitasoft.web.client.api.RoleApi;
 import org.bonitasoft.web.client.api.UserApi.SearchUsersQueryParams;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.exception.NotFoundException;
@@ -26,6 +27,8 @@ import org.bonitasoft.web.client.model.ArchivedProcessInstance;
 import org.bonitasoft.web.client.model.Bdm;
 import org.bonitasoft.web.client.model.BusinessData;
 import org.bonitasoft.web.client.model.ConfigurationState;
+import org.bonitasoft.web.client.model.Group;
+import org.bonitasoft.web.client.model.GroupCreateRequest;
 import org.bonitasoft.web.client.model.Page;
 import org.bonitasoft.web.client.model.ProcessDefinition;
 import org.bonitasoft.web.client.model.ProcessInstance;
@@ -33,6 +36,7 @@ import org.bonitasoft.web.client.model.ProcessInstantiationResponse;
 import org.bonitasoft.web.client.model.ProcessResolutionProblem;
 import org.bonitasoft.web.client.model.Profile;
 import org.bonitasoft.web.client.model.Role;
+import org.bonitasoft.web.client.model.RoleCreateRequest;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.model.User;
@@ -486,7 +490,35 @@ class BonitaClientIT {
 		assertThat(processProblems).isNotEmpty();
 	}
 
-	private void importOrganization() throws Exception {
+	@Test
+    void should_create_all_elements_of_the_organisation() {
+        // Given
+        loggedInAsTechnicalUser();
+
+        bonitaClient.users().createUser(new UserCreateRequest()
+                .userName("john.doe")
+                .firstname("John")
+                .lastname("Doe")
+                .password("bpm")
+                .passwordConfirm("bpm")
+                .enabled("true")
+        );
+        List<User> users = bonitaClient.users().searchUsers(new SearchUsersQueryParams().p(0).c(1).f(asList("userName=john.doe")));
+        assertThat(users).anyMatch(user -> user.getFirstname().equals("John"));
+
+        Role role = bonitaClient.users().createRole(new RoleCreateRequest()
+                .name("staff")
+                .displayName("staff")
+                .description("staff of the given group")
+        );
+        bonitaClient.users().searchRoles(new RoleApi.SearchRolesQueryParams().p(0).c(1).f(asList("")));
+        Group group = bonitaClient.users().createGroup(new GroupCreateRequest()
+                .name("RD")
+                .displayName("RnD")
+                .description("Research and dev.")
+                .path("/rd")
+        );
+    }private void importOrganization() throws Exception {
 		File organization = getClasspathFile("/Organization_Data.xml");
 		bonitaClient
 				.users()

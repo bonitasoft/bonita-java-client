@@ -8,9 +8,11 @@ import java.util.UUID;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bonitasoft.web.client.api.OrganizationApi;
 import org.bonitasoft.web.client.api.ProfileApi;
+import org.bonitasoft.web.client.api.RoleApi;
 import org.bonitasoft.web.client.api.UserApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.Profile;
+import org.bonitasoft.web.client.model.RoleCreateRequest;
 import org.bonitasoft.web.client.model.User;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
@@ -51,6 +53,10 @@ class DefaultUserServiceTest {
     private ApiProvider apiProvider;
     @Mock
     private ObjectMapper objectMapper;
+    @Mock
+    private RoleApi roleApi;
+
+
 
     @Test
     void orga_should_be_imported() throws Exception {
@@ -195,5 +201,15 @@ class DefaultUserServiceTest {
                         "TahitiUser",
                         "TeamManager",
                         "User");
+    }
+
+    @Test
+    void should_create_role() {
+        when(apiProvider.get(RoleApi.class)).thenReturn(roleApi);
+        RoleCreateRequest createRequest = new RoleCreateRequest().name("newRole");
+
+        service.createRole(createRequest);
+
+        verify(roleApi).createRole(createRequest);
     }
 }

@@ -3,7 +3,6 @@ package org.bonitasoft.web.client.services.impl;
 import java.io.File;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.BdmAccessControlApi;
