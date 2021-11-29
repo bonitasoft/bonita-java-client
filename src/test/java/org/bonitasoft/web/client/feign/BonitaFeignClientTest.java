@@ -1,10 +1,6 @@
 package org.bonitasoft.web.client.feign;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
+import feign.FeignException;
 import org.bonitasoft.web.client.api.HumanTaskApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.model.Session;
@@ -20,7 +16,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import feign.FeignException;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class BonitaFeignClientTest {
@@ -91,7 +90,7 @@ class BonitaFeignClientTest {
         when(sessionApi.getSession())
                 .thenThrow(
                         new FeignException.GatewayTimeout(
-                                "Timeout", mockResponseBuilder().build().request(), null));
+                                "Timeout", mockResponseBuilder().build().request(), null, null));
 
         // When
         final boolean running = feignClient.isPlatformUpAndRunning();

@@ -10,17 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Cache Maven packages
-        uses: actions/cache@v2.1.4
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-          
       - name: Setup Java
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: 11
+          distribution: temurin
+          cache: maven
 
       - name: Compile and test project
         env:
@@ -30,7 +25,7 @@ jobs:
 
       # Build and Push snapshots to maven central
       - name: Build and Push snapshots to Maven central
-        uses: samuelmeuli/action-maven-publish@v1
+        uses: samuelmeuli/action-maven-publish@v1.4.0
         with:
           maven_args: "-DskipTests=true"
           gpg_private_key: ${{ secrets.gpg_private_key }}

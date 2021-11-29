@@ -1,13 +1,11 @@
 package org.bonitasoft.web.client;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.OkHttpClient;
 import org.bonitasoft.web.client.log.LogContentLevel;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import okhttp3.OkHttpClient;
-
 /** Builder class for {@link BonitaClient} */
-public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
+public interface BonitaClientBuilder<T extends BonitaClientBuilder<T>> {
 
     /**
      * Build and return a new {@link BonitaClient}
@@ -39,6 +37,7 @@ public interface BonitaClientBuilder<T extends BonitaClientBuilder> {
      * @return the current builder
      */
     T writeTimeoutInSeconds(int writeTimeoutInSeconds);
+    
 
     /**
      * disable certificate check, trust all certs as default

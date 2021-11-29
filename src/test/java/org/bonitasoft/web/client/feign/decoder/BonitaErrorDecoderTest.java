@@ -1,10 +1,8 @@
 package org.bonitasoft.web.client.feign.decoder;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
-
 import java.nio.charset.StandardCharsets;
 
+import feign.Response;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.exception.UnauthorizedException;
@@ -12,7 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import feign.Response;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
 
 @ExtendWith(MockitoExtension.class)
 class BonitaErrorDecoderTest {

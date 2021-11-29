@@ -44,14 +44,12 @@ package org.bonitasoft.web.client.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-import org.openapitools.jackson.nullable.JsonNullable;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /** LoginRequest */
 @JsonPropertyOrder({

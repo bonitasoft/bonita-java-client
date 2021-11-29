@@ -1,6 +1,6 @@
 <applications xmlns="http://documentation.bonitasoft.com/application-xml-schema/1.0">
     <application profile="User" state="ACTIVATED" token="HR-dashboard_Client_tests" version="2.0" homePage="my-new-custom-page"
-                 layout="custompage_defaultlayout" theme="custompage_bootstrapdefaulttheme">
+                 layout="custompage_layoutBonita" theme="custompage_themeBonita">
 
         <displayName>My HR dashboard</displayName>
         <description>This is the HR dashboard.</description>
@@ -22,8 +22,8 @@
             </applicationMenu>
         </applicationMenus>
     </application>
-    <application state="ACTIVATED" token="MyApplication_Client_tests" version="2.0" layout="custompage_defaultlayout"
-                 theme="custompage_bootstrapdefaulttheme">
+    <application state="ACTIVATED" token="MyApplication_Client_tests" version="2.0" layout="custompage_layoutBonita"
+                 theme="custompage_themeBonita">
 
         <displayName>Marketing</displayName>
         <applicationPages/>

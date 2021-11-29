@@ -1,17 +1,13 @@
 package org.bonitasoft.web.client.services.impl;
 
-import static java.lang.String.format;
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
-import static java.util.Optional.empty;
-import static java.util.Optional.ofNullable;
-
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.ProcessApi;
 import org.bonitasoft.web.client.api.ProcessParameterApi;
 import org.bonitasoft.web.client.api.ProcessResolutionProblemApi;
@@ -35,9 +31,11 @@ import org.bonitasoft.web.client.services.impl.base.AbstractService;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.policies.ProcessImportPolicy;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.extern.slf4j.Slf4j;
+import static java.lang.String.format;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static java.util.Optional.empty;
+import static java.util.Optional.ofNullable;
 
 @Slf4j
 public class DefaultProcessService extends AbstractService implements ProcessService {
@@ -215,7 +213,7 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
                 .get(UserTaskApi.class)
                 .searchUserTasks(
                         new UserTaskApi.SearchUserTasksQueryParams()
-                                .f(singletonList("rootContainerId=" + rootContainerId)));
+                                .f(singletonList("rootCaseId=" + rootContainerId)));
         log.debug("Found User Tasks: {}", userTasks);
         return userTasks;
     }

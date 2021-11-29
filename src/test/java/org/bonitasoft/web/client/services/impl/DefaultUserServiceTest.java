@@ -1,5 +1,29 @@
 package org.bonitasoft.web.client.services.impl;
 
+import java.io.File;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.List;
+import java.util.UUID;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.bonitasoft.web.client.api.OrganizationApi;
+import org.bonitasoft.web.client.api.ProfileApi;
+import org.bonitasoft.web.client.api.RoleApi;
+import org.bonitasoft.web.client.api.UserApi;
+import org.bonitasoft.web.client.feign.ApiProvider;
+import org.bonitasoft.web.client.model.Profile;
+import org.bonitasoft.web.client.model.RoleCreateRequest;
+import org.bonitasoft.web.client.model.User;
+import org.bonitasoft.web.client.services.impl.base.ClientContext;
+import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
+import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
@@ -18,29 +42,6 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.File;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.List;
-import java.util.UUID;
-
-import org.bonitasoft.web.client.api.OrganizationApi;
-import org.bonitasoft.web.client.api.ProfileApi;
-import org.bonitasoft.web.client.api.UserApi;
-import org.bonitasoft.web.client.feign.ApiProvider;
-import org.bonitasoft.web.client.model.Profile;
-import org.bonitasoft.web.client.model.User;
-import org.bonitasoft.web.client.services.impl.base.ClientContext;
-import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
-import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 @ExtendWith(MockitoExtension.class)
 class DefaultUserServiceTest {
 
@@ -52,6 +53,10 @@ class DefaultUserServiceTest {
     private ApiProvider apiProvider;
     @Mock
     private ObjectMapper objectMapper;
+    @Mock
+    private RoleApi roleApi;
+
+
 
     @Test
     void orga_should_be_imported() throws Exception {
@@ -172,7 +177,7 @@ class DefaultUserServiceTest {
         service.importProfiles(profileFile, ProfileImportPolicy.IGNORE_IF_ANY_EXISTS);
 
         // Then
-        verify(profileApi).uploadprofiles(eq(profileFile));
+        verify(profileApi).uploadprofiles(profileFile);
 
         final ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(profileApi).importProfiles(anyString(), captor.capture());
@@ -196,5 +201,15 @@ class DefaultUserServiceTest {
                         "TahitiUser",
                         "TeamManager",
                         "User");
+    }
+
+    @Test
+    void should_create_role() {
+        when(apiProvider.get(RoleApi.class)).thenReturn(roleApi);
+        RoleCreateRequest createRequest = new RoleCreateRequest().name("newRole");
+
+        service.createRole(createRequest);
+
+        verify(roleApi).createRole(createRequest);
     }
 }
