@@ -200,6 +200,61 @@ BonitaClient client = bonitaClientBuilder
     .build();
 ----
 
+== Samples
+
+=== BDM typed queries
+
+Bonita allow users to define their own custom "named" queries. That's why this client can't have java object ready to be mapped to the query results. But the client allow
+developers to specify the desired returned type when performing custom queries.
+
+As an exmple, let's say with have a model in our client project code for `Post`,`Comment` and `Author` defined this way
+
+[source, java]
+----
+public interface Post {
+    Author getAuthor();
+    String getTitle();
+    String getContent();
+    List<Comment> getComments();
+}
+
+public interface Comment {
+    Long getUserId();
+    LocalDateTime getCreationDate();
+	String getContent();
+}
+
+public class Author {
+    private String firstName;
+    private String lastName;
+    // Getter and Setter omitted ...
+}
+----
+
+Interface with `Getter` methods are a good choice since we consider the retrieved data as immutable.
+
+Bonus, it allow for lazy fetch of relations as defined in the BDM !
+
+[source, java]
+----
+// Count comment and map response to an Integer
+Integer count = bonitaClient.bdm().querySingle("com.company.model.Comment", "countForFind", Integer.class);
+
+// List comments and map response to a list of Comment
+List<Post> posts = bonitaClient.bdm().query("com.company.model.Post", "find", Post.class);
+
+Post post = posts.get(O);
+// This will trigger an HTTP GET request to get the related comments from the BDM
+List<Comment> comments = post.getComments();
+----
+
+If you prefer a map style like approach, you can still use the BusinessData class.
+[source, java]
+----
+List<BusinessData> comments = bonitaClient.bdm().query("com.company.model.Comment", "find", BusinessData.class);
+String content = comments.get(0).get("content")
+----
+
 == Developing
 
 === Prerequisite
