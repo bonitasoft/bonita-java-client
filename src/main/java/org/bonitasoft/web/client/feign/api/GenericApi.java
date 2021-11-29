@@ -1,4 +1,4 @@
-package org.bonitasoft.web.feign;
+package org.bonitasoft.web.client.feign.api;
 
 import java.util.List;
 import java.util.Map;

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import lombok.extern.slf4j.Slf4j;
-import org.bonitasoft.web.feign.GenericApi;
+import org.bonitasoft.web.client.feign.api.GenericApi;
 
 @Slf4j
 public class BdmResponseProxyInvocationHandler implements InvocationHandler {
