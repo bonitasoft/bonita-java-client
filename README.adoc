@@ -301,9 +301,11 @@ Please refers to this article for more info: https://jeffkreeftmeijer.com/git-fl
 - Create a branch for the desired version. ex: `release/1.0.0`. You can use the `set-version.sh` script to align declared versions in sources (pom.xml,readme.adoc,...)
 - Push branch, make a pull request to `master` and review release with others
 - Once you are happy with the content of the release branch, merge pull request to master branch using `Merge pull request` button (&#9888; Do not squash or rebase)
-- That's it ! {icon-party}
+- Wait the build to succeed
+- Go to https://oss.sonatype.org/ to close and release the staging repository and now you're done ! {icon-party}
 
-NOTE: Don't forget to update your local `dev` branch after a release has been done !
+
+NOTE: Do not update your local `dev` branch after a release has been done ! The release job will perform the dev branch update itself !
 
 == Getting Help
 
