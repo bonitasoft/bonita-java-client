@@ -1,22 +1,21 @@
 package org.bonitasoft.web.client.feign.interceptor;
 
+import java.io.IOException;
+
+import feign.RequestTemplate;
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.ArgumentCaptor;
+
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.bonitasoft.web.client.feign.interceptor.BonitaCharsetBugInterceptor.CONTENT_TYPE_HEADER;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.io.IOException;
-
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.ArgumentCaptor;
-
-import feign.RequestTemplate;
-import okhttp3.Interceptor;
-import okhttp3.Request;
 
 class BonitaCharsetBugInterceptorTest {
 

@@ -4,7 +4,9 @@ import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import feign.auth.BasicAuthRequestInterceptor;
 
-/** An interceptor that adds the request header needed to use HTTP basic authentication. */
+/**
+ * An interceptor that adds the request header needed to use HTTP basic authentication.
+ */
 public class HttpBasicAuth implements RequestInterceptor {
 
     private String username;
@@ -31,9 +33,9 @@ public class HttpBasicAuth implements RequestInterceptor {
         this.password = password;
     }
 
-    @Override
-    public void apply(RequestTemplate template) {
-        RequestInterceptor requestInterceptor = new BasicAuthRequestInterceptor(username, password);
-        requestInterceptor.apply(template);
-    }
+  @Override
+  public void apply(RequestTemplate template) {
+      RequestInterceptor requestInterceptor = new BasicAuthRequestInterceptor(username, password);
+      requestInterceptor.apply(template);
+  }
 }

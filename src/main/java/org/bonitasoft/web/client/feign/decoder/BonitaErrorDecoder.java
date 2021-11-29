@@ -1,24 +1,23 @@
 package org.bonitasoft.web.client.feign.decoder;
 
-import static feign.FeignException.errorStatus;
-import static java.lang.String.format;
-import static java.lang.System.lineSeparator;
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.util.stream.Collectors.joining;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Optional;
 
+import feign.Response;
+import feign.codec.ErrorDecoder;
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.exception.UnauthorizedException;
 
-import feign.Response;
-import feign.codec.ErrorDecoder;
-import lombok.extern.slf4j.Slf4j;
+import static feign.FeignException.errorStatus;
+import static java.lang.String.format;
+import static java.lang.System.lineSeparator;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.util.stream.Collectors.joining;
 
 @Slf4j
 public class BonitaErrorDecoder implements ErrorDecoder {

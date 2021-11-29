@@ -60,14 +60,17 @@ src/main/java/org/bonitasoft/web/client/api/TaskApi.java
 src/main/java/org/bonitasoft/web/client/api/TenantApi.java
 src/main/java/org/bonitasoft/web/client/api/ThemeApi.java
 src/main/java/org/bonitasoft/web/client/api/TimerEventTriggerApi.java
+src/main/java/org/bonitasoft/web/client/api/UploadApi.java
 src/main/java/org/bonitasoft/web/client/api/UserApi.java
 src/main/java/org/bonitasoft/web/client/api/UserTaskApi.java
 src/main/java/org/bonitasoft/web/client/invoker/ApiClient.java
+src/main/java/org/bonitasoft/web/client/invoker/ApiResponseDecoder.java
 src/main/java/org/bonitasoft/web/client/invoker/EncodingUtils.java
 src/main/java/org/bonitasoft/web/client/invoker/ParamExpander.java
 src/main/java/org/bonitasoft/web/client/invoker/RFC3339DateFormat.java
 src/main/java/org/bonitasoft/web/client/invoker/StringUtil.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/ApiKeyAuth.java
+src/main/java/org/bonitasoft/web/client/invoker/auth/DefaultApi20Impl.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/HttpBasicAuth.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/HttpBearerAuth.java
 src/main/java/org/bonitasoft/web/client/model/AbstractArchivedTask.java
@@ -84,6 +87,7 @@ src/main/java/org/bonitasoft/web/client/model/Actor.java
 src/main/java/org/bonitasoft/web/client/model/ActorDefinition.java
 src/main/java/org/bonitasoft/web/client/model/ActorMember.java
 src/main/java/org/bonitasoft/web/client/model/ActorUpdateRequest.java
+src/main/java/org/bonitasoft/web/client/model/ApiResponse.java
 src/main/java/org/bonitasoft/web/client/model/Application.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenu.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenuCreateRequest.java
@@ -200,6 +204,7 @@ src/main/java/org/bonitasoft/web/client/model/ThemeRestoreRequest.java
 src/main/java/org/bonitasoft/web/client/model/TimerEventTrigger.java
 src/main/java/org/bonitasoft/web/client/model/TimerEventTriggerUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/TimerEventTriggerUpdateResponse.java
+src/main/java/org/bonitasoft/web/client/model/UpdateProcessConnectorByProcessIdRequest.java
 src/main/java/org/bonitasoft/web/client/model/User.java
 src/main/java/org/bonitasoft/web/client/model/UserCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/UserTask.java

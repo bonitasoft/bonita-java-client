@@ -1,14 +1,10 @@
 package org.bonitasoft.web.client.invoker.auth;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import java.nio.charset.StandardCharsets;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import feign.Response;
 import org.bonitasoft.web.client.api.PortalAuthenticationApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
@@ -19,10 +15,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import feign.Response;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class BonitaLoginServiceTest {

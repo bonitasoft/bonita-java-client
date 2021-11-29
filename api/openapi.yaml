@@ -134,16 +134,16 @@ info:
   license:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
-  title: Bonita 7.11 HTTP API
-  version: 0.0.1
+  title: Bonita 7.13 HTTP API
+  version: 0.0.4
   x-logo:
     url: images/logo_bonitasoft_white.png
     backgroundColor: '#003355'
     altText: Bonita API
-    href: https://documentation.bonitasoft.com/bonita/7.11/_rest-api
+    href: https://documentation.bonitasoft.com/bonita/latest/rest-api-overview
 servers:
-- url: http://localhost:8080/bonita
-- url: http://bonita.localhost/bonita
+- url: https://localhost:8080/bonita
+- url: https://bonita.localhost/bonita
 security:
 - bonita_auth: []
   bonita_token: []
@@ -293,7 +293,7 @@ tags:
   x-displayName: I18nTranslation
 - description: |
     Handle the license information. This requires a platform session. Log in using the platform login service.
-    This Web REST API is available in **Enterprise editions only**, since version 7.1.
+    This Web REST API is available in **Enterprise editions only**, since version 7.11.
   name: License
   x-displayName: License
 - description: ManualTask
@@ -378,7 +378,7 @@ tags:
 
     REST API extensions can be used to query business data, Bonita Engine APIs, or an external information system (such as a database, web service, LDAP directory...). They also help to keep a clean separation between the front-end (forms, pages, and interfaces visible to users) and the back-end (processes).
   externalDocs:
-    url: https://documentation.bonitasoft.com/bonita/7.11/rest-api-extensions
+    url: https://documentation.bonitasoft.com/bonita/latest/rest-api-extensions
   name: RestAPIextensions
   x-displayName: API extensions
 paths:
@@ -441,6 +441,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -502,6 +512,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -526,7 +546,7 @@ paths:
 
         - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`
         - can search on `token`, `displayName`, `version`
-        - can filter on `token`, `displayName`, `version`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`
+        - can filter on `token`, `displayName`, `version`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`
       operationId: searchApplications
       parameters:
       - description: index of the page to display
@@ -613,6 +633,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -659,6 +689,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -706,6 +746,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -762,6 +812,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -825,6 +885,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -881,6 +951,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -936,6 +1016,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -947,6 +1037,7 @@ paths:
       summary: Upload a living application
       tags:
       - Application
+      - Upload
       x-contentType: multipart/form-data
       x-accepts: application/json
   /API/living/application-menu:
@@ -1043,6 +1134,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -1088,6 +1189,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -1133,6 +1244,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -1196,6 +1317,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -1254,6 +1385,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -1369,6 +1510,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -1415,6 +1566,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -1462,6 +1623,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -1518,6 +1689,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -1620,7 +1801,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/BusinessData'
+                  $ref: '#/components/schemas/AnyValue'
                 type: array
           description: 'Success '
           headers:
@@ -1647,6 +1828,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -1716,6 +1907,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -1855,6 +2056,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -1901,6 +2112,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -1942,6 +2163,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -1990,6 +2221,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -2001,6 +2242,7 @@ paths:
       summary: Upload a BDM Access Control
       tags:
       - BDMAccessControl
+      - Upload
       x-contentType: multipart/form-data
       x-accepts: application/json
   /services/bdmAccessControl/install:
@@ -2040,6 +2282,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -2155,6 +2407,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -2204,6 +2466,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -2263,6 +2535,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -2388,6 +2670,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -2437,6 +2729,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -2551,6 +2853,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -2600,6 +2912,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -2660,6 +2982,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -2782,6 +3114,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -2829,6 +3171,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -2880,6 +3232,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -2941,6 +3303,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -3047,6 +3419,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -3096,6 +3478,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -3166,6 +3558,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -3281,6 +3683,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -3330,6 +3742,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -3391,6 +3813,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -3449,6 +3881,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -3522,6 +3964,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -3595,6 +4047,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -3704,6 +4166,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -3753,6 +4225,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -3862,6 +4344,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -3911,6 +4403,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4021,6 +4523,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -4070,6 +4582,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4175,6 +4697,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -4224,6 +4756,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4289,6 +4831,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4391,6 +4943,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -4449,6 +5011,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4519,6 +5091,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4630,6 +5212,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -4681,6 +5273,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -4728,6 +5330,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4788,6 +5400,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4851,6 +5473,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -4966,6 +5598,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -5011,6 +5653,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5113,6 +5765,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -5162,6 +5824,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5221,6 +5893,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5242,7 +5924,7 @@ paths:
       - Actor
       x-contentType: application/json
       x-accepts: application/json
-  /API/bpm/actorMemberEntry:
+  /API/bpm/actorMember:
     get:
       description: |
         Finds ActorMembers with pagination params and filters
@@ -5335,6 +6017,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -5347,7 +6039,7 @@ paths:
       tags:
       - ActorMember
       x-accepts: application/json
-  /API/bpm/actorMemberEntry/{id}:
+  /API/bpm/actorMember/{id}:
     delete:
       description: |
         Delete the single ActorMember for the given ID
@@ -5380,6 +6072,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5436,6 +6138,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5490,6 +6202,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5600,6 +6322,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -5650,6 +6382,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -5697,6 +6439,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5764,6 +6516,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5843,6 +6605,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -5956,6 +6728,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -6001,6 +6783,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -6057,6 +6849,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -6136,6 +6938,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -6193,6 +7005,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -6298,6 +7120,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -6344,6 +7176,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -6452,6 +7294,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -6506,6 +7358,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -6612,6 +7474,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -6659,6 +7531,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -6713,6 +7595,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -6769,6 +7661,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -6828,6 +7730,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -6886,6 +7798,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -6943,6 +7865,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -7018,6 +7950,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -7030,6 +7972,83 @@ paths:
       tags:
       - Process
       x-codegen-request-body-name: body
+      x-contentType: application/json
+      x-accepts: application/json
+  /API/bpm/processConnector/{id}/{connectorImplId}/{connectorImplVersion}:
+    put:
+      description: |
+        Update the ProcessConnector for the given ID
+      operationId: updateProcessConnectorByProcessId
+      parameters:
+      - description: ID of the process to update
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the Process Connector implementation to update
+        explode: false
+        in: path
+        name: connectorImplId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Version of the Process Connector implementation to update
+        explode: false
+        in: path
+        name: connectorImplVersion
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProcessConnectorByProcessIdRequest'
+        description: Partial ProcessConnector description
+        required: true
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update the Process Connector by Process ID
+      tags:
+      - Process
       x-contentType: application/json
       x-accepts: application/json
   /API/bpm/diagram/{id}:
@@ -7073,6 +8092,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -7183,6 +8212,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -7240,6 +8279,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -7310,6 +8359,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -7423,6 +8482,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -7474,6 +8543,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -7588,6 +8667,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -7638,6 +8727,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -7744,6 +8843,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -7793,6 +8902,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -7904,6 +9023,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -8006,6 +9135,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -8112,6 +9251,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -8161,6 +9310,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -8222,6 +9381,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -8337,6 +9506,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -8386,6 +9565,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -8508,6 +9697,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -8557,6 +9756,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -8621,6 +9830,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -8673,6 +9892,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -8748,6 +9977,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -8794,6 +10033,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -8841,6 +10090,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -8897,6 +10156,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -8992,6 +10261,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -9052,6 +10331,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -9148,6 +10437,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -9252,6 +10551,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -9307,6 +10616,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -9422,6 +10741,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -9533,6 +10862,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -9604,6 +10943,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -9662,6 +11011,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -9732,6 +11091,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -9838,6 +11207,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -9884,6 +11263,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -9931,6 +11320,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -9987,6 +11386,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -10046,6 +11455,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -10161,6 +11580,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -10207,6 +11636,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -10270,6 +11709,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -10383,6 +11832,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -10429,6 +11888,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -10476,6 +11945,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -10532,6 +12011,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -10591,6 +12080,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -10706,6 +12205,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -10753,7 +12262,15 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
         "403":
-          description: Not allowed to perform operation or resource already exists
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -10804,6 +12321,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -10860,6 +12387,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -10919,6 +12456,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11004,6 +12551,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -11040,6 +12597,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -11081,6 +12648,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11131,6 +12708,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11248,6 +12835,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -11296,6 +12893,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -11345,6 +12952,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11403,6 +13020,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11464,6 +13091,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11514,6 +13151,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11568,6 +13215,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -11579,6 +13236,7 @@ paths:
       summary: Upload a bar file
       tags:
       - Process
+      - Upload
       x-contentType: multipart/form-data
       x-accepts: application/json
   /portal/pageUpload:
@@ -11614,6 +13272,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -11625,6 +13293,67 @@ paths:
       summary: Upload a Page
       tags:
       - Page
+      - Upload
+      x-contentType: multipart/form-data
+      x-accepts: application/json
+  /portal/fileUpload:
+    post:
+      description: |
+        Upload file.
+
+        **NOTE:** If this file is a BDM zip, to do this, your tenant services need to be paused.
+        In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.
+      operationId: uploadFile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileUploadRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: 'Success: the temp file name as present on the server'
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Upload a file
+      tags:
+      - Upload
+      - BDM
       x-contentType: multipart/form-data
       x-accepts: application/json
   /API/portal/page:
@@ -11720,6 +13449,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -11766,6 +13505,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -11813,6 +13562,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11869,6 +13628,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -11928,6 +13697,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12043,6 +13822,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -12089,6 +13878,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -12136,6 +13935,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12192,6 +14001,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12251,6 +14070,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12356,6 +14185,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -12402,6 +14241,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -12449,6 +14298,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12505,6 +14364,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12564,6 +14433,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12662,6 +14541,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -12708,6 +14597,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -12755,6 +14654,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12811,6 +14720,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12862,6 +14781,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -12907,6 +14836,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -12989,6 +14928,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -13078,6 +15027,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -13118,6 +15077,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -13172,6 +15141,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -13231,6 +15210,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -13280,6 +15269,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -13334,6 +15333,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -13345,56 +15354,6 @@ paths:
       summary: Upload an application configuration file
       tags:
       - Application
-      x-contentType: multipart/form-data
-      x-accepts: application/json
-  /portal/fileUpload:
-    post:
-      description: |
-        Upload BDM.
-
-        **NOTE:** To do this, your tenant services need to be paused.
-
-        In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.
-      operationId: uploadBDM
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FileUploadRequest'
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                type: string
-          description: 'Success: the temp file name as present on the server'
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Upload a BDM
-      tags:
-      - BDM
       x-contentType: multipart/form-data
       x-accepts: application/json
   /API/tenant/bdm:
@@ -13425,6 +15384,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -13473,6 +15442,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -13520,6 +15499,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -13531,6 +15520,7 @@ paths:
       summary: Import an organization
       tags:
       - Organization
+      - Upload
       x-contentType: multipart/form-data
       x-accepts: application/json
   /services/organization/import:
@@ -13568,6 +15558,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -13623,6 +15623,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "5XX":
           content:
             application/json:
@@ -13634,6 +15644,7 @@ paths:
       summary: Upload profiles
       tags:
       - Profile
+      - Upload
       x-contentType: multipart/form-data
       x-accepts: application/json
   /services/profile/import:
@@ -13671,6 +15682,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
         "404":
           content:
             application/json:
@@ -13778,6 +15799,16 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
       description: Authorization information is missing or invalid.
+    Forbidden:
+      content:
+        application/json:
+          example:
+            message: Forbidden, The request contained valid data and was understood
+              by the server, but the server is refusing action.
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Forbidden, The request contained valid data and was understood
+        by the server, but the server is refusing action.
     ServerError:
       content:
         application/json:
@@ -14068,6 +16099,10 @@ components:
           description: id of the custom page to display
           type: string
       type: object
+    AnyValue:
+      description: Can be any value - string, number, boolean, array or object or
+        null depending on your query.
+      nullable: true
     BusinessData:
       additionalProperties: true
       description: |
@@ -14437,7 +16472,7 @@ components:
         rootContainerId: 1
         type: MANUAL_TASK
         assigned_id: 1
-        assigned_date: 2014-12-01T17:39:53.784Z
+        assigned_date: 2014-12-01 17:39:53.784
         id: 40006
         executedBy: 1
         caseId: 1
@@ -14445,12 +16480,12 @@ components:
         actorId: 1
         description: This is my subtask
         name: My subtask
-        reached_state_date: 2014-12-01T17:39:53.784Z
+        reached_state_date: 2014-12-01 17:39:53.784
         rootCaseId: 1
         displayName: My subtask
         parentTaskId: 40001
-        dueDate: 2014-12-25T00:00:00.000Z
-        last_update_date: 2014-12-01T17:39:53.784Z
+        dueDate: 2014-12-25 00:00:00.000
+        last_update_date: 2014-12-01 17:39:53.784
       properties:
         id:
           description: the task id
@@ -14473,9 +16508,16 @@ components:
         state:
           description: the current state of the task
           enum:
+          - initializing
           - ready
+          - executing
+          - completing
+          - waiting
           - completed
           - failed
+          - skipped
+          - cancelled
+          - aborted
           type: string
         reached_state_date:
           description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when this task reached
@@ -14558,10 +16600,10 @@ components:
           actorId: 102
           description: null
           name: Analyse case
-          reached_state_date: 2014-09-05T11:11:30.808Z
+          reached_state_date: 2014-09-05 11:11:30.808
           displayName: Analyse case
-          dueDate: 2014-09-05T12:11:30.775Z
-          last_update_date: 2014-09-05T11:11:30.808Z
+          dueDate: 2014-09-05 12:11:30.775
+          last_update_date: 2014-09-05 11:11:30.808
         type: object
     HumanTaskUpdateRequest:
       example:
@@ -14589,7 +16631,7 @@ components:
           rootContainerId: 1
           type: MANUAL_TASK
           assigned_id: 1
-          assigned_date: 2014-12-01T17:39:53.784Z
+          assigned_date: 2014-12-01 17:39:53.784
           id: 40006
           executedBy: 1
           caseId: 1
@@ -14597,12 +16639,12 @@ components:
           actorId: 1
           description: This is my subtask
           name: My subtask
-          reached_state_date: 2014-12-01T17:39:53.784Z
+          reached_state_date: 2014-12-01 17:39:53.784
           rootCaseId: 1
           displayName: My subtask
           parentTaskId: 40001
-          dueDate: 2014-12-25T00:00:00.000Z
-          last_update_date: 2014-12-01T17:39:53.784Z
+          dueDate: 2014-12-25 00:00:00.000
+          last_update_date: 2014-12-01 17:39:53.784
         type: object
     ManualTaskCreateRequest:
       example:
@@ -14661,7 +16703,7 @@ components:
           rootContainerId: 5
           type: USER_TASK
           assigned_id: 4
-          assigned_date: 2014-12-01T16:22:54.685Z
+          assigned_date: 2014-12-01 16:22:54.685
           id: 10
           executedBy: 0
           caseId: 5
@@ -14669,11 +16711,11 @@ components:
           actorId: 6
           description: null
           name: Step1
-          reached_state_date: 2014-12-01T16:22:50.814Z
+          reached_state_date: 2014-12-01 16:22:50.814
           rootCaseId: 5
           displayName: Step1
-          dueDate: 2014-12-01T17:22:50.809Z
-          last_update_date: 2014-12-01T16:22:50.814Z
+          dueDate: 2014-12-01 17:22:50.809
+          last_update_date: 2014-12-01 16:22:50.814
         type: object
     UserTask:
       allOf:
@@ -14834,13 +16876,13 @@ components:
           actorId: 1
           description: this is a test
           name: myTest
-          reached_state_date: 2014-12-01T17:20:47.200Z
+          reached_state_date: 2014-12-01 17:20:47.200
           rootCaseId: 1
-          archivedDate: 2014-12-01T17:20:47.217Z
+          archivedDate: 2014-12-01 17:20:47.217
           displayName: myTest
           parentTaskId: 40001
-          dueDate: 2014-12-17T00:00:00.000Z
-          last_update_date: 2014-12-01T17:20:47.200Z
+          dueDate: 2014-12-17 00:00:00.000
+          last_update_date: 2014-12-01 17:20:47.200
         type: object
     ArchivedUserTask:
       allOf:
@@ -14862,11 +16904,11 @@ components:
           actorId: 102
           description: null
           name: Analyse case
-          reached_state_date: 2014-09-09T17:21:51.946Z
+          reached_state_date: 2014-09-09 17:21:51.946
           displayName: Analyse case
-          archivedDate: 2014-09-09T17:21:51.986Z
-          dueDate: 2014-09-05T12:11:30.775Z
-          last_update_date: 2014-09-09T17:21:51.946Z
+          archivedDate: 2014-09-09 17:21:51.986
+          dueDate: 2014-09-05 12:11:30.775
+          last_update_date: 2014-09-09 17:21:51.946
         type: object
     ArchivedTask:
       allOf:
@@ -14890,12 +16932,12 @@ components:
           actorId: 6
           description: null
           name: Step1
-          reached_state_date: 2014-12-01T16:24:32.457Z
+          reached_state_date: 2014-12-01 16:24:32.457
           rootCaseId: 5
-          archivedDate: 2014-12-01T16:24:32.460Z
+          archivedDate: 2014-12-01 16:24:32.460
           displayName: Step1
-          dueDate: 2014-12-01T17:22:50.809Z
-          last_update_date: 2014-12-01T16:24:32.457Z
+          dueDate: 2014-12-01 17:22:50.809
+          last_update_date: 2014-12-01 16:24:32.457
         type: object
     ActivityVariable:
       description: This resource enables you to retrieve the value of a specific variable
@@ -15840,6 +17882,20 @@ components:
         caseId: "12345678"
       properties:
         caseId:
+          type: string
+      type: object
+    UpdateProcessConnectorByProcessIdRequest:
+      example:
+        id: 8491796209115952722/scripting-groovy-script/1.0.1
+        implementation: tmp_7006630415905915150.zip
+      properties:
+        id:
+          description: Id of the process for which to update the connector, combined
+            with connector name and version separated by slashes (x/y/z)
+          type: string
+        implementation:
+          description: Previously uploaded temp file name of the updated version of
+            the connector (returned by the  [upload file api](#operation/uploadFile))
           type: string
       type: object
     ProcessParameter:
@@ -17423,9 +19479,10 @@ components:
         state:
           $ref: '#/components/schemas/TenantResourceState'
         lastUpdatedBy:
+          default: -1
           description: This value is always -1 because only the tenant_technical_user
             can install BDM.
-          type: integer
+          type: string
         lastUpdateDate:
           description: Last date when the BDM was installed or updated.
           type: string
@@ -17491,6 +19548,9 @@ components:
     AbstractArchivedTask_allOf:
       description: An Archived task is a task that has been archived
       properties:
+        sourceObjectId:
+          description: the original id of the task before it was archived
+          type: string
         archivedDate:
           description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
             was assigned for example '2014-10-17 16:05:42.626'
@@ -17829,6 +19889,7 @@ x-tagGroups:
   - ProfileEntry
   - ProfileMember
   - Theme
+  - Upload
 - name: System
   tags:
   - I18nlocale

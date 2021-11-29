@@ -15,7 +15,7 @@ public class ClientException extends RuntimeException {
         super(message);
     }
 
-    public ClientException(String message, Exception cause) {
+    public ClientException(String message, Throwable cause) {
         super(message, cause);
     }
 }

@@ -4,7 +4,6 @@ import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
 public class ApiKeyAuth implements RequestInterceptor {
-
     private final String location;
     private final String paramName;
 

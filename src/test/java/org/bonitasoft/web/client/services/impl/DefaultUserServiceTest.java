@@ -1,28 +1,11 @@
 package org.bonitasoft.web.client.services.impl;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.singletonList;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
-import static org.bonitasoft.web.client.invoker.EncodingUtils.encode;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.ArgumentMatchers.anyMap;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import java.io.File;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bonitasoft.web.client.api.OrganizationApi;
 import org.bonitasoft.web.client.api.ProfileApi;
 import org.bonitasoft.web.client.api.RoleApi;
@@ -41,7 +24,23 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
+import static org.bonitasoft.web.client.invoker.EncodingUtils.encode;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyMap;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultUserServiceTest {
@@ -178,7 +177,7 @@ class DefaultUserServiceTest {
         service.importProfiles(profileFile, ProfileImportPolicy.IGNORE_IF_ANY_EXISTS);
 
         // Then
-        verify(profileApi).uploadprofiles(eq(profileFile));
+        verify(profileApi).uploadprofiles(profileFile);
 
         final ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(profileApi).importProfiles(anyString(), captor.capture());

@@ -1,10 +1,6 @@
 package org.bonitasoft.web.client.services.impl;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.BonitaClient.DEFAULT_TENANT_ID;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bonitasoft.web.client.api.SystemTenantApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.SystemTenant;
@@ -16,7 +12,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.BonitaClient.DEFAULT_TENANT_ID;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultSystemServiceTest {
