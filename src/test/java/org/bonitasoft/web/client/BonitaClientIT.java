@@ -2,12 +2,17 @@ package org.bonitasoft.web.client;
 
 import java.io.File;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.Callable;
 
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.testcontainers.BonitaContainer;
 import org.bonitasoft.web.client.api.ApplicationApi.SearchApplicationsQueryParams;
+import org.bonitasoft.web.client.api.ArchivedProcessInstanceApi;
+import org.bonitasoft.web.client.api.ProcessInstanceApi;
 import org.bonitasoft.web.client.api.UserApi.SearchUsersQueryParams;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.exception.NotFoundException;
@@ -17,10 +22,13 @@ import org.bonitasoft.web.client.exception.process.ProcessActivationException;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.model.ActivationState;
 import org.bonitasoft.web.client.model.Application;
+import org.bonitasoft.web.client.model.ArchivedProcessInstance;
 import org.bonitasoft.web.client.model.Bdm;
+import org.bonitasoft.web.client.model.BusinessData;
 import org.bonitasoft.web.client.model.ConfigurationState;
 import org.bonitasoft.web.client.model.Page;
 import org.bonitasoft.web.client.model.ProcessDefinition;
+import org.bonitasoft.web.client.model.ProcessInstance;
 import org.bonitasoft.web.client.model.ProcessInstantiationResponse;
 import org.bonitasoft.web.client.model.ProcessResolutionProblem;
 import org.bonitasoft.web.client.model.Profile;
@@ -42,6 +50,7 @@ import org.junit.jupiter.api.Test;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -512,5 +521,87 @@ class BonitaClientIT {
 							return false;
 						}
 				);
+	}
+
+	@Test
+	void bdm_typed_query_should_be_run() throws Exception {
+		// Given
+		loggedInAsTechnicalUser();
+
+		// import BDM
+		File bdmFile = getClasspathFile("/bdm-setup-query.zip");
+		bonitaClient.bdm().importBDM(bdmFile);
+		// Provision some BDM data
+		bonitaClient.processes().importProcess(getClasspathFile("/bdm-setup-1.0.bar"), ProcessImportPolicy.IGNORE_DUPLICATES);
+		ProcessInstantiationResponse processInstance = bonitaClient.processes().startProcess("bdm-setup", "1.0");
+
+
+		await().until(processIsCompleted(processInstance));
+
+		// When
+		Integer count = bonitaClient.bdm().querySingle("com.company.model.Comment", "countForFind", Integer.class);
+		List<Post> posts = bonitaClient.bdm().query("com.company.model.Post", "find", Post.class);
+		List<Comment> comments = bonitaClient.bdm().query("com.company.model.Comment", "find", Comment.class);
+		List<BusinessData> commentBOs = bonitaClient.bdm().query("com.company.model.Comment", "find", BusinessData.class);
+
+		// Then
+		assertThat(count).isEqualTo(10);
+		assertThat(posts).hasSize(1);
+		Post post = posts.get(0);
+		Author author = post.getAuthor();
+		assertThat(author.getFirstName()).isEqualTo("Mi");
+
+		// Trigger lazy http get
+		assertThat(post.getComments()).hasSize(comments.size()).hasSize(commentBOs.size());
+		assertThat(post.getComments().get(1).getUserId()).isEqualTo(1);
+		assertThat(commentBOs.get(1).get("userId")).isEqualTo(1);
+
+	}
+
+	private Callable<Boolean> processIsCompleted(ProcessInstantiationResponse processInstance) {
+		return () -> {
+			try {
+				// Search in process instances
+				ProcessInstanceApi processInstanceApi = bonitaClient.get(ProcessInstanceApi.class);
+				ProcessInstance instance = processInstanceApi.getProcessInstanceById(processInstance.getCaseId(), (String) null);
+				return "completed".equalsIgnoreCase(instance.getState());
+			}
+			catch (NotFoundException e) {
+				// Search in "archived" process instances
+				ArchivedProcessInstanceApi archivedProcessInstanceApi = bonitaClient.get(ArchivedProcessInstanceApi.class);
+				List<ArchivedProcessInstance> archivedProcessInstances = archivedProcessInstanceApi.searchArchivedProcessInstances(
+						new ArchivedProcessInstanceApi.SearchArchivedProcessInstancesQueryParams()
+								.c(1).p(0)
+								.f(asList("sourceObjectId=" + processInstance.getCaseId()))
+				);
+				if (!archivedProcessInstances.isEmpty()) {
+					return "completed".equalsIgnoreCase(archivedProcessInstances.get(0).getState());
+				}
+				return false;
+			}
+		};
+	}
+
+	public interface Post {
+		Author getAuthor();
+
+		String getTitle();
+
+		String getContent();
+
+		List<Comment> getComments();
+	}
+
+	public interface Comment {
+		Long getUserId();
+
+		LocalDateTime getCreationDate();
+	}
+
+	@Data
+	public static class Author {
+		private String firstName;
+
+		private String lastName;
 	}
 }
