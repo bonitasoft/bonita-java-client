@@ -54,8 +54,8 @@ class BdmResponseConverterTest {
 		List<Integer> converted = converter.convertToList(value, Integer.class);
 
 		// Then
-		assertThat(converted).hasSize(5);
-		assertThat(converted).containsAll(asList(1, 2, 3, 4, 5));
+		assertThat(converted).hasSize(5)
+		                     .containsAll(asList(1, 2, 3, 4, 5));
 	}
 
 	@Test
