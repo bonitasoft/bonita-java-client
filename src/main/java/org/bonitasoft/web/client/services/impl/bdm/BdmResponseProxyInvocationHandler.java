@@ -68,7 +68,7 @@ public class BdmResponseProxyInvocationHandler implements InvocationHandler {
 				log.debug("Get data from json response field {}", key);
 				value = jsonData.get(key);
 			}
-			return bdmResponseConverter.getObjectMapper().convertValue(value, method.getReturnType());
+			return bdmResponseConverter.convert(value, method.getReturnType());
 		}
 	}
 

@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 
-@Slf4j
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+
+import lombok.RequiredArgsConstructor;
+
 @RequiredArgsConstructor
 public class BdmResponseConverter {
 
