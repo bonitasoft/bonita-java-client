@@ -297,11 +297,10 @@ class BonitaClientIT {
         assertThat(nbPageBefore).isEqualTo(nbPageAfterImport - 1);
 
         // When
-        final boolean deleted = bonitaClient.applications().deletePage(page.getUrlToken());
+        bonitaClient.applications().deletePage(page.getUrlToken());
         final int nbPageAfterDeletion = bonitaClient.applications().searchPages(0, MAX_SEARCH_COUNT).size();
 
         // Then
-        assertThat(deleted).isTrue();
         assertThat(nbPageBefore).isEqualTo(nbPageAfterDeletion);
     }
 
