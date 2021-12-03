@@ -139,13 +139,14 @@ public class DefaultApplicationService extends AbstractService implements Applic
 		String uploadedFileName = pageApi.uploadPage(pageZip);
 		log.debug("Page file uploaded successfully.");
 
-		Page page = getPage(pageZip);
-		if (page != null) {
+		Page page;
+		try {
+			page = getPage(pageZip);
 			// page already exists, we update it
 			log.debug("Updating existing page...");
 			pageApi.updatePageById(page.getId(), new PageUpdateRequest().pageZip(uploadedFileName));
 		}
-		else {
+		catch (NotFoundException e) {
 			// page do not exists, we create it
 			log.debug("Creating new page...");
 			page = pageApi.createPage(new PageCreateRequest().pageZip(uploadedFileName));
