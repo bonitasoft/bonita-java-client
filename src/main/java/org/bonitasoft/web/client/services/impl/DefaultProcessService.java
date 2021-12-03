@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -34,215 +33,212 @@ import org.bonitasoft.web.client.services.policies.ProcessImportPolicy;
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
-import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
 
 @Slf4j
 public class DefaultProcessService extends AbstractService implements ProcessService {
 
-    public DefaultProcessService(
-            ClientContext clientContext, ApiProvider apiProvider, ObjectMapper objectMapper) {
-        super(apiProvider, objectMapper, clientContext);
-    }
+	public DefaultProcessService(
+			ClientContext clientContext, ApiProvider apiProvider, ObjectMapper objectMapper) {
+		super(apiProvider, objectMapper, clientContext);
+	}
 
-    @Override
-    public void importProcess(File barFile, ProcessImportPolicy policy) {
-        log.info("Deploying process '{}' using policy {} ...", barFile.getName(), policy.name());
-        BusinessArchiveInfo barInfo = BusinessArchiveInfo.readFrom(barFile);
-        Optional<ProcessDefinition> process = getProcess(barInfo.getProcessName(), barInfo.getProcessVersion());
-        if (process.isPresent()) {
-            log.debug(
-                    "Process '{}' in version '{}' already exists.",
-                    barInfo.getProcessName(),
-                    barInfo.getProcessVersion());
-            switch (policy) {
-                case REPLACE_DUPLICATES:
-                    // simulate a REPLACE_DUPLICATES policy here because it is not implemented in engine side
-                    log.debug("Policy REPLACE_DUPLICATES: deleting existing process...");
-                    deleteExistingProcess(process.get());
-                    break;
-                case IGNORE_DUPLICATES:
-                    log.debug("Policy IGNORE_DUPLICATES: skip deployment of existing process.");
-                    return;
-                case FAIL_ON_DUPLICATES:
-                default:
-                    throw new DuplicatedProcessException(
-                            barInfo.getProcessName(),
-                            barInfo.getProcessVersion(),
-                            "Policy FAIL_ON_DUPLICATES: deployment aborted.");
-            }
-        }
+	@Override
+	public void importProcess(File barFile, ProcessImportPolicy policy) {
+		log.info("Deploying process '{}' using policy {} ...", barFile.getName(), policy.name());
+		BusinessArchiveInfo barInfo = BusinessArchiveInfo.readFrom(barFile);
+		try {
+			ProcessDefinition process = getProcess(barInfo.getProcessName(), barInfo.getProcessVersion());
+			log.debug("Process '{}' in version '{}' already exists.", barInfo.getProcessName(), barInfo.getProcessVersion());
+			switch (policy) {
+				case REPLACE_DUPLICATES:
+					// simulate a REPLACE_DUPLICATES policy here because it is not implemented in engine side
+					log.debug("Policy REPLACE_DUPLICATES: deleting existing process...");
+					deleteExistingProcess(process);
+					break;
+				case IGNORE_DUPLICATES:
+					log.debug("Policy IGNORE_DUPLICATES: skip deployment of existing process.");
+					return;
+				case FAIL_ON_DUPLICATES:
+				default:
+					throw new DuplicatedProcessException(
+							barInfo.getProcessName(),
+							barInfo.getProcessVersion(),
+							"Policy FAIL_ON_DUPLICATES: deployment aborted.");
+			}
+		}
+		catch (NotFoundException e) {
+			// Process do not exist yet, nothing to do.
+		}
 
-        ProcessApi processApi = apiProvider.get(ProcessApi.class);
-        log.debug("Uploading process file...");
-        String uploadedFileName = processApi.uploadProcess(barFile);
-        log.debug("Process file uploaded successfully.");
+		ProcessApi processApi = apiProvider.get(ProcessApi.class);
+		log.debug("Uploading process file...");
+		String uploadedFileName = processApi.uploadProcess(barFile);
+		log.debug("Process file uploaded successfully.");
 
-        ProcessDefinition processDeployed = processApi
-                .createProcess(new ProcessCreateRequest().fileupload(uploadedFileName));
-        log.info(
-                "Process {}-{} deployed successfully.",
-                processDeployed.getName(),
-                processDeployed.getVersion());
+		ProcessDefinition processDeployed = processApi
+				.createProcess(new ProcessCreateRequest().fileupload(uploadedFileName));
+		log.info(
+				"Process {}-{} deployed successfully.",
+				processDeployed.getName(),
+				processDeployed.getVersion());
 
-        if (ConfigurationState.RESOLVED.equals(processDeployed.getConfigurationState())) {
-            log.info(
-                    "Process {}-{} is resolved. Activating process...",
-                    barInfo.getProcessName(),
-                    barInfo.getProcessVersion());
-            String processId = processDeployed.getId();
-            processApi.updateProcessById(
-                    processId, new ProcessUpdateRequest().activationState(ActivationState.ENABLED));
-            log.info("Process activated successfully.");
-        } else {
-            // Process maybe resolved later with deployment of bconf file.
-            throw new ProcessActivationException(
-                    "Process is unresolved, maybe some process parameters have not been configured yet.",
-                    barInfo.getProcessName(),
-                    barInfo.getProcessVersion());
-        }
-    }
+		if (ConfigurationState.RESOLVED.equals(processDeployed.getConfigurationState())) {
+			log.info(
+					"Process {}-{} is resolved. Activating process...",
+					barInfo.getProcessName(),
+					barInfo.getProcessVersion());
+			String processId = processDeployed.getId();
+			processApi.updateProcessById(
+					processId, new ProcessUpdateRequest().activationState(ActivationState.ENABLED));
+			log.info("Process activated successfully.");
+		}
+		else {
+			// Process maybe resolved later with deployment of bconf file.
+			throw new ProcessActivationException(
+					"Process is unresolved, maybe some process parameters have not been configured yet.",
+					barInfo.getProcessName(),
+					barInfo.getProcessVersion());
+		}
+	}
 
-    private void deleteExistingProcess(ProcessDefinition process) {
-        ProcessApi processApi = apiProvider.get(ProcessApi.class);
-        if (ActivationState.ENABLED.equals(process.getActivationState())) {
-            log.info(
-                    "Deactivating existing process {}-{} before deletion...",
-                    process.getName(),
-                    process.getVersion());
-            processApi.updateProcessById(
-                    process.getId(), new ProcessUpdateRequest().activationState(ActivationState.DISABLED));
-            log.info("Existing process {}-{} deactivated.", process.getName(), process.getVersion());
-        }
-        processApi.deleteProcessById(process.getId());
-        log.info("Existing process {}-{} deleted.", process.getName(), process.getVersion());
-    }
+	private void deleteExistingProcess(ProcessDefinition process) {
+		ProcessApi processApi = apiProvider.get(ProcessApi.class);
+		if (ActivationState.ENABLED.equals(process.getActivationState())) {
+			log.info(
+					"Deactivating existing process {}-{} before deletion...",
+					process.getName(),
+					process.getVersion());
+			processApi.updateProcessById(
+					process.getId(), new ProcessUpdateRequest().activationState(ActivationState.DISABLED));
+			log.info("Existing process {}-{} deactivated.", process.getName(), process.getVersion());
+		}
+		processApi.deleteProcessById(process.getId());
+		log.info("Existing process {}-{} deleted.", process.getName(), process.getVersion());
+	}
 
-    @Override
-    public Optional<ProcessDefinition> getProcess(String name, String version) {
-        log.info("Get process '{}' with version '{}'", name, version);
-        List<ProcessDefinition> processes = apiProvider
-                .get(ProcessApi.class)
-                .searchProcesses(
-                        new ProcessApi.SearchProcessesQueryParams()
-                                .p(0)
-                                .c(1)
-                                .f(asList("name=" + name, "version=" + version)));
-        if (processes.isEmpty()) {
-            log.debug("Can't find any existing process with name '{}' and version '{}'.", name, version);
-            return empty();
-        }
-        log.debug("Process '{}' with version '{}' found successfully.", name, version);
-        return processes.stream().findFirst();
-    }
+	@Override
+	public ProcessDefinition getProcess(String name, String version) {
+		log.info("Get process '{}' with version '{}'", name, version);
+		List<ProcessDefinition> processes = apiProvider
+				.get(ProcessApi.class)
+				.searchProcesses(
+						new ProcessApi.SearchProcessesQueryParams()
+								.p(0)
+								.c(1)
+								.f(asList("name=" + name, "version=" + version)));
+		if (processes.isEmpty()) {
+			log.debug("Can't find any existing process with name '{}' and version '{}'.", name, version);
+			throw new NotFoundException(format("No process found for name '%s' and version '%s'", name, version));
+		}
+		log.debug("Process '{}' with version '{}' found successfully.", name, version);
+		return processes.get(0);
+	}
 
-    @Override
-    public List<ProcessDefinition> searchProcesses(int page, int count) {
-        return searchProcesses(new ProcessApi.SearchProcessesQueryParams().p(page).c(count));
-    }
+	@Override
+	public List<ProcessDefinition> searchProcesses(int page, int count) {
+		return searchProcesses(new ProcessApi.SearchProcessesQueryParams().p(page).c(count));
+	}
 
-    @Override
-    public List<ProcessDefinition> searchProcesses(ProcessApi.SearchProcessesQueryParams params) {
-        log.info("Search processes with params {}", params);
-        return apiProvider.get(ProcessApi.class).searchProcesses(params);
-    }
+	@Override
+	public List<ProcessDefinition> searchProcesses(ProcessApi.SearchProcessesQueryParams params) {
+		log.info("Search processes with params {}", params);
+		return apiProvider.get(ProcessApi.class).searchProcesses(params);
+	}
 
-    @Override
-    public List<ProcessParameter> searchProcessParameters(int page, int count, String processId) {
-        log.info(
-                "Search process parameters for process {} with params: p={},c={}", processId, page, count);
-        return apiProvider
-                .get(ProcessParameterApi.class)
-                .searchProcessParameters(
-                        new ProcessParameterApi.SearchProcessParametersQueryParams()
-                                .p(page)
-                                .c(count)
-                                .f(singletonList("process_id=" + processId)));
-    }
+	@Override
+	public List<ProcessParameter> searchProcessParameters(int page, int count, String processId) {
+		log.info(
+				"Search process parameters for process {} with params: p={},c={}", processId, page, count);
+		return apiProvider
+				.get(ProcessParameterApi.class)
+				.searchProcessParameters(
+						new ProcessParameterApi.SearchProcessParametersQueryParams()
+								.p(page)
+								.c(count)
+								.f(singletonList("process_id=" + processId)));
+	}
 
-    @Override
-    public List<ProcessResolutionProblem> getProcessProblem(int page, int count, String processId) {
-        log.info(
-                "Search process problems for process {} with params: p={},c={}", processId, page, count);
-        return apiProvider
-                .get(ProcessResolutionProblemApi.class)
-                .searchProcessResolutionProblems(
-                        new ProcessResolutionProblemApi.SearchProcessResolutionProblemsQueryParams()
-                                .p(page)
-                                .c(count)
-                                .f(singletonList("process_id=" + processId)));
-    }
+	@Override
+	public List<ProcessResolutionProblem> getProcessProblem(int page, int count, String processId) {
+		log.info(
+				"Search process problems for process {} with params: p={},c={}", processId, page, count);
+		return apiProvider
+				.get(ProcessResolutionProblemApi.class)
+				.searchProcessResolutionProblems(
+						new ProcessResolutionProblemApi.SearchProcessResolutionProblemsQueryParams()
+								.p(page)
+								.c(count)
+								.f(singletonList("process_id=" + processId)));
+	}
 
-    @Override
-    public ProcessInstantiationResponse startProcess(String name, String version) {
-        return getProcess(name, version)
-                .map(p -> startProcess(p.getId()))
-                .orElseThrow(
-                        () -> new NotFoundException(
-                                format("No process found for name '%s' and version '%s'", name, version)));
-    }
+	@Override
+	public ProcessInstantiationResponse startProcess(String name, String version) {
+		ProcessDefinition process = getProcess(name, version);
+		return startProcess(process.getId());
+	}
 
-    @Override
-    public ProcessInstantiationResponse startProcess(String id) {
-        return startProcess(id, new HashMap<>());
-    }
+	@Override
+	public ProcessInstantiationResponse startProcess(String id) {
+		return startProcess(id, new HashMap<>());
+	}
 
-    @Override
-    public ProcessInstantiationResponse startProcess(String id, Map<String, Object> params) {
-        log.info("Start process {} with params {}", id, params);
-        return apiProvider.get(ProcessApi.class).instanciateProcess(id, params);
-    }
+	@Override
+	public ProcessInstantiationResponse startProcess(String id, Map<String, Object> params) {
+		log.info("Start process {} with params {}", id, params);
+		return apiProvider.get(ProcessApi.class).instanciateProcess(id, params);
+	}
 
-    @Override
-    public UserTask getUserTask(String taskId) {
-        log.info("Get User Task {}", taskId);
-        return ofNullable(apiProvider.get(UserTaskApi.class).getUserTaskById(taskId))
-                .map(
-                        userTask -> {
-                            log.debug("Found successfully User Task: {}", userTask);
-                            return userTask;
-                        })
-                .orElseThrow(() -> new NotFoundException("No user task found for id: " + taskId));
-    }
+	@Override
+	public UserTask getUserTask(String taskId) {
+		log.info("Get User Task {}", taskId);
+		return ofNullable(apiProvider.get(UserTaskApi.class).getUserTaskById(taskId))
+				.map(
+						userTask -> {
+							log.debug("Found successfully User Task: {}", userTask);
+							return userTask;
+						})
+				.orElseThrow(() -> new NotFoundException("No user task found for id: " + taskId));
+	}
 
-    @Override
-    public List<UserTask> searchUserTask(String rootContainerId) {
-        log.info("Search User Task for process instance {}", rootContainerId);
-        // comment reported from deployer code ???: TODO human task api call instead user task api
-        List<UserTask> userTasks = apiProvider
-                .get(UserTaskApi.class)
-                .searchUserTasks(
-                        new UserTaskApi.SearchUserTasksQueryParams()
-                                .f(singletonList("rootCaseId=" + rootContainerId)));
-        log.debug("Found User Tasks: {}", userTasks);
-        return userTasks;
-    }
+	@Override
+	public List<UserTask> searchUserTask(String rootContainerId) {
+		log.info("Search User Task for process instance {}", rootContainerId);
+		// comment reported from deployer code ???: TODO human task api call instead user task api
+		List<UserTask> userTasks = apiProvider
+				.get(UserTaskApi.class)
+				.searchUserTasks(
+						new UserTaskApi.SearchUserTasksQueryParams()
+								.f(singletonList("rootCaseId=" + rootContainerId)));
+		log.debug("Found User Tasks: {}", userTasks);
+		return userTasks;
+	}
 
-    @Override
-    public void assignUserTask(String taskId, String assignedUserId) {
-        assignUserTask(taskId, assignedUserId, null);
-    }
+	@Override
+	public void assignUserTask(String taskId, String assignedUserId) {
+		assignUserTask(taskId, assignedUserId, null);
+	}
 
-    @Override
-    public void assignUserTask(String taskId, String assignedUserId, String state) {
-        log.info("Updating User Task {}. Assigned to {} in state {}", taskId, assignedUserId, state);
-        UserTaskUpdateRequest params = new UserTaskUpdateRequest().assignedId(assignedUserId);
-        if (state != null) {
-            params.setState(state);
-        }
-        apiProvider.get(UserTaskApi.class).updateUserTaskById(taskId, params);
-        log.info("User Task {} updated", taskId);
-    }
+	@Override
+	public void assignUserTask(String taskId, String assignedUserId, String state) {
+		log.info("Updating User Task {}. Assigned to {} in state {}", taskId, assignedUserId, state);
+		UserTaskUpdateRequest params = new UserTaskUpdateRequest().assignedId(assignedUserId);
+		if (state != null) {
+			params.setState(state);
+		}
+		apiProvider.get(UserTaskApi.class).updateUserTaskById(taskId, params);
+		log.info("User Task {} updated", taskId);
+	}
 
-    @Override
-    public void executeUserTask(String taskId) {
-        executeUserTask(taskId, new HashMap<>());
-    }
+	@Override
+	public void executeUserTask(String taskId) {
+		executeUserTask(taskId, new HashMap<>());
+	}
 
-    @Override
-    public void executeUserTask(String taskId, Map<String, Object> contractData) {
-        log.info("Executing User Task {} with parameters {}", taskId, contractData);
-        apiProvider.get(UserTaskApi.class).executeUserTask(taskId, contractData, false);
-        log.info("User Task {} executed", taskId);
-    }
+	@Override
+	public void executeUserTask(String taskId, Map<String, Object> contractData) {
+		log.info("Executing User Task {} with parameters {}", taskId, contractData);
+		apiProvider.get(UserTaskApi.class).executeUserTask(taskId, contractData, false);
+		log.info("User Task {} executed", taskId);
+	}
 }

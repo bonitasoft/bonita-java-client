@@ -30,7 +30,7 @@ public interface ProcessService {
 
     List<ProcessResolutionProblem> getProcessProblem(int page, int count, String processId);
 
-    Optional<ProcessDefinition> getProcess(String name, String version);
+    ProcessDefinition getProcess(String name, String version);
 
     ProcessInstantiationResponse startProcess(String name, String version);
 

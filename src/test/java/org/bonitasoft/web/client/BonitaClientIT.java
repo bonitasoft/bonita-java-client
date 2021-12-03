@@ -138,9 +138,7 @@ class BonitaClientIT {
                         .isInstanceOf(DuplicatedProcessException.class);
 
         // Then
-        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
-        assertThat(maybeProcess).isPresent();
-        ProcessDefinition process = maybeProcess.get();
+        ProcessDefinition process = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.RESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.ENABLED);
     }
@@ -335,9 +333,7 @@ class BonitaClientIT {
         bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
 
         // Then
-        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess(processName, processVersion);
-        assertThat(maybeProcess).isPresent();
-        ProcessDefinition process = maybeProcess.get();
+        ProcessDefinition process = bonitaClient.processes().getProcess(processName, processVersion);
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.RESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.ENABLED);
     }
@@ -476,9 +472,7 @@ class BonitaClientIT {
                         .hasFieldOrPropertyWithValue("processName", processName)
                         .hasFieldOrPropertyWithValue("processVersion", processVersion);
 
-        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess(processName, processVersion);
-        assertThat(maybeProcess).isPresent();
-        ProcessDefinition process = maybeProcess.get();
+        ProcessDefinition process = bonitaClient.processes().getProcess(processName, processVersion);
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.UNRESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.DISABLED);
 
