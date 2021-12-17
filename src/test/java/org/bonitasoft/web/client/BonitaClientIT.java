@@ -138,9 +138,7 @@ class BonitaClientIT {
                         .isInstanceOf(DuplicatedProcessException.class);
 
         // Then
-        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
-        assertThat(maybeProcess).isPresent();
-        ProcessDefinition process = maybeProcess.get();
+        ProcessDefinition process = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.RESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.ENABLED);
     }
@@ -297,11 +295,10 @@ class BonitaClientIT {
         assertThat(nbPageBefore).isEqualTo(nbPageAfterImport - 1);
 
         // When
-        final boolean deleted = bonitaClient.applications().deletePage(page.getUrlToken());
+        bonitaClient.applications().deletePage(page.getUrlToken());
         final int nbPageAfterDeletion = bonitaClient.applications().searchPages(0, MAX_SEARCH_COUNT).size();
 
         // Then
-        assertThat(deleted).isTrue();
         assertThat(nbPageBefore).isEqualTo(nbPageAfterDeletion);
     }
 
@@ -336,9 +333,7 @@ class BonitaClientIT {
         bonitaClient.processes().importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES);
 
         // Then
-        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess(processName, processVersion);
-        assertThat(maybeProcess).isPresent();
-        ProcessDefinition process = maybeProcess.get();
+        ProcessDefinition process = bonitaClient.processes().getProcess(processName, processVersion);
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.RESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.ENABLED);
     }
@@ -477,9 +472,7 @@ class BonitaClientIT {
                         .hasFieldOrPropertyWithValue("processName", processName)
                         .hasFieldOrPropertyWithValue("processVersion", processVersion);
 
-        Optional<ProcessDefinition> maybeProcess = bonitaClient.processes().getProcess(processName, processVersion);
-        assertThat(maybeProcess).isPresent();
-        ProcessDefinition process = maybeProcess.get();
+        ProcessDefinition process = bonitaClient.processes().getProcess(processName, processVersion);
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.UNRESOLVED);
         assertThat(process.getActivationState()).isEqualTo(ActivationState.DISABLED);
 
