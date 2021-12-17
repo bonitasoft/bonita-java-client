@@ -3,7 +3,6 @@ package org.bonitasoft.web.client.services;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.bonitasoft.web.client.api.ProcessApi;
 import org.bonitasoft.web.client.model.ProcessDefinition;
