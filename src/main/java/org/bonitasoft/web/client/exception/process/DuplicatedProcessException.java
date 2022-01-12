@@ -1,7 +1,8 @@
 package org.bonitasoft.web.client.exception.process;
 
-import lombok.Getter;
 import org.bonitasoft.web.client.exception.ClientException;
+
+import lombok.Getter;
 
 public class DuplicatedProcessException extends ClientException {
 

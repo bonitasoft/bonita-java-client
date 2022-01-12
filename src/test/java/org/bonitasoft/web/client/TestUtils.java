@@ -4,10 +4,11 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 
+import org.jetbrains.annotations.NotNull;
+
 import feign.Request;
 import feign.RequestTemplate;
 import feign.Response;
-import org.jetbrains.annotations.NotNull;
 
 public final class TestUtils {
 

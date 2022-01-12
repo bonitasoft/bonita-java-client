@@ -7,11 +7,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
+import org.bonitasoft.web.client.model.ApiResponse;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import feign.Response;
 import feign.Types;
 import feign.jackson.JacksonDecoder;
-import org.bonitasoft.web.client.model.ApiResponse;
 
 public class ApiResponseDecoder extends JacksonDecoder {
 

@@ -4,16 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import feign.Headers;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApiResponse;
 import org.bonitasoft.web.client.model.Group;
 import org.bonitasoft.web.client.model.GroupCreateRequest;
 import org.bonitasoft.web.client.model.GroupUpdateRequest;
+
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface GroupApi extends ApiClient.Api {

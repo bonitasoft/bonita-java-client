@@ -1,15 +1,15 @@
 package org.bonitasoft.web.client.feign;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.atMostOnce;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+
 import org.bonitasoft.web.client.api.HumanTaskApi;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.atMostOnce;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class CachingApiProviderTest {

@@ -1,6 +1,13 @@
 package org.bonitasoft.web.client.services.impl.base;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
+import static org.bonitasoft.web.client.services.impl.base.AbstractService.COMMUNITY_LICENCE;
+import static org.mockito.Mockito.atMostOnce;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.bonitasoft.web.client.api.LicenseApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.License;
@@ -10,13 +17,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
-import static org.bonitasoft.web.client.services.impl.base.AbstractService.COMMUNITY_LICENCE;
-import static org.mockito.Mockito.atMostOnce;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(MockitoExtension.class)
 class AbstractServiceTest {

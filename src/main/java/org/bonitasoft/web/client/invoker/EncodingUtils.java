@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.bonitasoft.web.client.exception.ClientException;
-
 /**
 * Utilities to support Swagger encoding formats in Feign.
 */
@@ -55,15 +53,15 @@ public final class EncodingUtils {
     // Otherwise return a formatted String
     String[] stringArray = stringValues.toArray(new String[0]);
     switch (collectionFormat) {
+      case "csv":
+      default:
+        return StringUtil.join(stringArray, ",");
       case "ssv":
         return StringUtil.join(stringArray, " ");
       case "tsv":
         return StringUtil.join(stringArray, "\t");
       case "pipes":
         return StringUtil.join(stringArray, "|");
-	  case "csv":
-	  default:
-		return StringUtil.join(stringArray, ",");
     }
   }
 
@@ -79,13 +77,10 @@ public final class EncodingUtils {
       return null;
     }
     try {
-      return URLEncoder
-			  .encode(parameter.toString(), "UTF-8")
-			  // Replace previously encode space as + by %20
-			  .replace("+", "%20");
+      return URLEncoder.encode(parameter.toString(), "UTF-8").replaceAll("\\+", "%20");
     } catch (UnsupportedEncodingException e) {
       // Should never happen, UTF-8 is always supported
-      throw new ClientException("Should never happen, UTF-8 is always supported" ,e);
+      throw new RuntimeException(e);
     }
   }
 }

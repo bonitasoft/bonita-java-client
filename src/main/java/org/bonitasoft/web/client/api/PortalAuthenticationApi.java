@@ -3,13 +3,14 @@ package org.bonitasoft.web.client.api;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.invoker.EncodingUtils;
+
 import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
 import feign.Response;
-import org.bonitasoft.web.client.invoker.ApiClient;
-import org.bonitasoft.web.client.invoker.EncodingUtils;
 
 public interface PortalAuthenticationApi extends ApiClient.Api {
 
