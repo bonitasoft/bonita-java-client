@@ -113,7 +113,7 @@ public interface ArchivedProcessInstanceVariableApi extends ApiClient.Api {
 
   /**
    * Finds an archived Variable by ProcessInstance ID and variable name
-   * Since 2022.1  Returns the single archived Variable for the given ProcessInstance ID and variable name 
+   * Since 2022.1  Returns the single ArchivedProcessInstanceVariable for the given ProcessInstance ID and variable name 
    * @param id The identifier of the process instance from which to retrieve the archived variable (required)
    * @param variableName The name of the archived variable to retrieve (required)
    * @return ArchivedProcessInstanceVariable
@@ -127,7 +127,7 @@ public interface ArchivedProcessInstanceVariableApi extends ApiClient.Api {
   /**
    * Finds an archived Variable by ProcessInstance ID and variable name
    * Similar to <code>getArchivedVariableByProcessInstance</code> but it also returns the http response headers .
-   * Since 2022.1  Returns the single archived Variable for the given ProcessInstance ID and variable name 
+   * Since 2022.1  Returns the single ArchivedProcessInstanceVariable for the given ProcessInstance ID and variable name 
    * @param id The identifier of the process instance from which to retrieve the archived variable (required)
    * @param variableName The name of the archived variable to retrieve (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.

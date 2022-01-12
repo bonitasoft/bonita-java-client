@@ -135,7 +135,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita HTTP API
-  version: 0.0.5
+  version: 0.0.6
   x-logo:
     url: images/logo_bonitasoft_white.png
     backgroundColor: '#003355'
@@ -4872,10 +4872,10 @@ paths:
       description: |
         Since 2022.1
 
-        Returns the single ActivityVariable for the given case ID and variable name
-      operationId: getArchivedActivityVariable
+        Returns the single ArchivedActivityVariable for the given activity ID and variable name
+      operationId: getArchivedActivityInstanceVariable
       parameters:
-      - description: The identifier of the case from which to retrieve the variable
+      - description: The identifier of the activity from which to retrieve the variable
         explode: false
         in: path
         name: id
@@ -5305,7 +5305,7 @@ paths:
       description: |
         Since 2022.1
 
-        Returns the single archived Variable for the given ProcessInstance ID and variable name
+        Returns the single ArchivedProcessInstanceVariable for the given ProcessInstance ID and variable name
       operationId: getArchivedVariableByProcessInstance
       parameters:
       - description: The identifier of the process instance from which to retrieve

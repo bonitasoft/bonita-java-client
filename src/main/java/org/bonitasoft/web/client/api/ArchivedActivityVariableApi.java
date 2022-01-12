@@ -14,8 +14,8 @@ public interface ArchivedActivityVariableApi extends ApiClient.Api {
 
   /**
    * Finds the ArchivedActivityVariable by case ID and name
-   * Since 2022.1  Returns the single ActivityVariable for the given case ID and variable name 
-   * @param id The identifier of the case from which to retrieve the variable (required)
+   * Since 2022.1  Returns the single ArchivedActivityVariable for the given activity ID and variable name 
+   * @param id The identifier of the activity from which to retrieve the variable (required)
    * @param variableName The name of the variable to retrieve (required)
    * @return ArchivedActivityVariable
    */
@@ -23,13 +23,13 @@ public interface ArchivedActivityVariableApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ArchivedActivityVariable getArchivedActivityVariable(@Param("id") String id, @Param("variableName") String variableName);
+  ArchivedActivityVariable getArchivedActivityInstanceVariable(@Param("id") String id, @Param("variableName") String variableName);
 
   /**
    * Finds the ArchivedActivityVariable by case ID and name
-   * Similar to <code>getArchivedActivityVariable</code> but it also returns the http response headers .
-   * Since 2022.1  Returns the single ActivityVariable for the given case ID and variable name 
-   * @param id The identifier of the case from which to retrieve the variable (required)
+   * Similar to <code>getArchivedActivityInstanceVariable</code> but it also returns the http response headers .
+   * Since 2022.1  Returns the single ArchivedActivityVariable for the given activity ID and variable name 
+   * @param id The identifier of the activity from which to retrieve the variable (required)
    * @param variableName The name of the variable to retrieve (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.
    */
@@ -37,7 +37,7 @@ public interface ArchivedActivityVariableApi extends ApiClient.Api {
   @Headers({
     "Accept: application/json",
   })
-  ApiResponse<ArchivedActivityVariable> getArchivedActivityVariableWithHttpInfo(@Param("id") String id, @Param("variableName") String variableName);
+  ApiResponse<ArchivedActivityVariable> getArchivedActivityInstanceVariableWithHttpInfo(@Param("id") String id, @Param("variableName") String variableName);
 
 
 }
