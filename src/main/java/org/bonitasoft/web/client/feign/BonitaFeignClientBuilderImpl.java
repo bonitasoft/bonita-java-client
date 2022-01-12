@@ -8,6 +8,9 @@
  */
 package org.bonitasoft.web.client.feign;
 
+import static java.util.Optional.ofNullable;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 import java.security.cert.CertificateException;
 import java.util.concurrent.TimeUnit;
 
@@ -16,18 +19,6 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import feign.Feign;
-import feign.Request;
-import lombok.AccessLevel;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.Accessors;
-import lombok.extern.slf4j.Slf4j;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.feign.decoder.BonitaErrorDecoder;
@@ -55,8 +46,19 @@ import org.bonitasoft.web.client.services.impl.bdm.BdmResponseConverter;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.LoggerFactory;
 
-import static java.util.Optional.ofNullable;
-import static java.util.concurrent.TimeUnit.SECONDS;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import feign.Feign;
+import feign.Request;
+import lombok.AccessLevel;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import lombok.extern.slf4j.Slf4j;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 @Slf4j
 @Accessors(fluent = true)

@@ -1,15 +1,16 @@
 package org.bonitasoft.testcontainers;
 
-import lombok.EqualsAndHashCode;
-import lombok.extern.slf4j.Slf4j;
+import static java.lang.String.format;
+import static java.util.Collections.singletonList;
+
 import org.jetbrains.annotations.NotNull;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
-import static java.lang.String.format;
-import static java.util.Collections.singletonList;
+import lombok.EqualsAndHashCode;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Bonita Community Container

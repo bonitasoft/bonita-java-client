@@ -8,13 +8,11 @@
  */
 package org.bonitasoft.web.client.invoker.auth;
 
+import static java.lang.String.format;
+
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import feign.Response;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.PortalAuthenticationApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.exception.ClientException;
@@ -23,7 +21,11 @@ import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.services.LoginService;
 
-import static java.lang.String.format;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import feign.Response;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor

@@ -8,9 +8,6 @@
  */
 package org.bonitasoft.web.client.feign;
 
-import feign.Response;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.invoker.ApiClient;
@@ -21,6 +18,10 @@ import org.bonitasoft.web.client.services.LoginService;
 import org.bonitasoft.web.client.services.ProcessService;
 import org.bonitasoft.web.client.services.SystemService;
 import org.bonitasoft.web.client.services.UserService;
+
+import feign.Response;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Entry point to interact with the REST API of bonita. <br>

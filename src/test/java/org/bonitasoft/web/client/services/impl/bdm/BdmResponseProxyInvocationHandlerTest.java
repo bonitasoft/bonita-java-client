@@ -1,10 +1,10 @@
 package org.bonitasoft.web.client.services.impl.bdm;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.Data;
 
 @ExtendWith(MockitoExtension.class)
 class BdmResponseProxyInvocationHandlerTest {

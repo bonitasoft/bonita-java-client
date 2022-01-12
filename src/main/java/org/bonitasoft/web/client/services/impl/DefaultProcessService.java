@@ -1,12 +1,15 @@
 package org.bonitasoft.web.client.services.impl;
 
+import static java.lang.String.format;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static java.util.Optional.ofNullable;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.ProcessApi;
 import org.bonitasoft.web.client.api.ProcessParameterApi;
 import org.bonitasoft.web.client.api.ProcessResolutionProblemApi;
@@ -30,10 +33,9 @@ import org.bonitasoft.web.client.services.impl.base.AbstractService;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.policies.ProcessImportPolicy;
 
-import static java.lang.String.format;
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
-import static java.util.Optional.ofNullable;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DefaultProcessService extends AbstractService implements ProcessService {
