@@ -51,7 +51,7 @@
 		<jackson-databind-nullable.version>0.2.2</jackson-databind-nullable.version>
 		<jackson.version>2.13.0</jackson.version>
 		<lombok.version>1.18.22</lombok.version>
-		<slf4j-api.version>1.7.32</slf4j-api.version>
+		<slf4j-api.version>1.7.33</slf4j-api.version>
 
 		<!-- Tests -->
 		<junit-jupiter-engine.version>5.8.2</junit-jupiter-engine.version>
