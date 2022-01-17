@@ -1,8 +1,11 @@
 package org.bonitasoft.web.client.services.impl;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.util.UUID;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bonitasoft.web.client.api.UserTaskApi;
 import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.feign.ApiProvider;
@@ -13,9 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultProcessServiceTest {

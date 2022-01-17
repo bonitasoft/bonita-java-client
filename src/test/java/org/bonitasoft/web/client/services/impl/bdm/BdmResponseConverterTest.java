@@ -1,13 +1,12 @@
 package org.bonitasoft.web.client.services.impl.bdm;
 
+import static java.util.Arrays.asList;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +14,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static java.util.Arrays.asList;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @ExtendWith(MockitoExtension.class)
 class BdmResponseConverterTest {
@@ -54,8 +56,8 @@ class BdmResponseConverterTest {
 		List<Integer> converted = converter.convertToList(value, Integer.class);
 
 		// Then
-		assertThat(converted).hasSize(5);
-		assertThat(converted).containsAll(asList(1, 2, 3, 4, 5));
+		assertThat(converted).hasSize(5)
+		                     .containsAll(asList(1, 2, 3, 4, 5));
 	}
 
 	@Test

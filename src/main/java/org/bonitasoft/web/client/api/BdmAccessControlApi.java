@@ -2,12 +2,13 @@ package org.bonitasoft.web.client.api;
 
 import java.io.File;
 
-import feign.Headers;
-import feign.Param;
-import feign.RequestLine;
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.model.ApiResponse;
 import org.bonitasoft.web.client.model.BDMAccessControl;
+
+import feign.Headers;
+import feign.Param;
+import feign.RequestLine;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface BdmAccessControlApi extends ApiClient.Api {

@@ -1,7 +1,8 @@
 package org.bonitasoft.web.client.feign;
 
-import feign.Feign;
 import org.bonitasoft.web.client.BonitaClientBuilder;
+
+import feign.Feign;
 
 public interface BonitaFeignClientBuilder extends BonitaClientBuilder<BonitaFeignClientBuilder> {
 

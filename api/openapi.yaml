@@ -134,8 +134,8 @@ info:
   license:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
-  title: Bonita 7.13 HTTP API
-  version: 0.0.4
+  title: Bonita HTTP API
+  version: 0.0.6
   x-logo:
     url: images/logo_bonitasoft_white.png
     backgroundColor: '#003355'
@@ -154,6 +154,9 @@ tags:
 - description: ActivityVariable
   name: ActivityVariable
   x-displayName: ActivityVariable
+- description: ArchivedActivityVariable
+  name: ArchivedActivityVariable
+  x-displayName: ArchivedActivityVariable
 - description: Actor
   name: Actor
   x-displayName: Actor
@@ -254,6 +257,9 @@ tags:
 - description: ProcessInstanceVariable
   name: ProcessInstanceVariable
   x-displayName: ProcessInstanceVariable
+- description: ArchivedProcessInstanceVariable
+  name: ArchivedProcessInstanceVariable
+  x-displayName: ArchivedProcessInstanceVariable
 - description: ConnectorFailure
   name: ConnectorFailure
   x-displayName: ConnectorFailure
@@ -4861,6 +4867,83 @@ paths:
       tags:
       - ActivityVariable
       x-accepts: application/json
+  /API/bpm/archivedActivityVariable/{id}/{variableName}:
+    get:
+      description: |
+        Since 2022.1
+
+        Returns the single ArchivedActivityVariable for the given activity ID and variable name
+      operationId: getArchivedActivityInstanceVariable
+      parameters:
+      - description: The identifier of the activity from which to retrieve the variable
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the variable to retrieve
+        explode: false
+        in: path
+        name: variableName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArchivedActivityVariable'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Finds the ArchivedActivityVariable by case ID and name
+      tags:
+      - ArchivedActivityVariable
+      x-accepts: application/json
   /API/bpm/caseVariable:
     get:
       description: |
@@ -4964,6 +5047,101 @@ paths:
       summary: Finds ProcessInstance Variables
       tags:
       - ProcessInstanceVariable
+      x-accepts: application/json
+  /API/bpm/archivedCaseVariable:
+    get:
+      description: |
+        Since 2022.1
+
+        Finds ArchivedProcessInstance Variables with pagination params and filters
+      operationId: getArchivedProcessInstanceVariables
+      parameters:
+      - description: index of the page to display
+        example: "0"
+        explode: true
+        in: query
+        name: p
+        required: true
+        schema:
+          default: 0
+          minimum: 0
+          type: integer
+        style: form
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          minimum: 1
+          type: integer
+        style: form
+      - description: 'Filter for the case id before it was archived (eg: case_id=10001
+          )'
+        example: case_id%3d1001
+        explode: true
+        in: query
+        name: f
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArchivedProcessInstanceVariable'
+                type: array
+          description: 'Success '
+          headers:
+            Content-Range:
+              description: The total number of matching items
+              explode: false
+              schema:
+                format: int64
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Finds ArchivedProcessInstance Variables
+      tags:
+      - ArchivedProcessInstanceVariable
       x-accepts: application/json
   /API/bpm/caseVariable/{id}/{variableName}:
     get:
@@ -5121,6 +5299,84 @@ paths:
       tags:
       - ProcessInstanceVariable
       x-contentType: application/json
+      x-accepts: application/json
+  /API/bpm/archivedCaseVariable/{id}/{variableName}:
+    get:
+      description: |
+        Since 2022.1
+
+        Returns the single ArchivedProcessInstanceVariable for the given ProcessInstance ID and variable name
+      operationId: getArchivedVariableByProcessInstance
+      parameters:
+      - description: The identifier of the process instance from which to retrieve
+          the archived variable
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The name of the archived variable to retrieve
+        explode: false
+        in: path
+        name: variableName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArchivedProcessInstanceVariable'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Finds an archived Variable by ProcessInstance ID and variable name
+      tags:
+      - ArchivedProcessInstanceVariable
       x-accepts: application/json
   /API/bpm/caseDocument:
     get:
@@ -9913,6 +10169,63 @@ paths:
       summary: Send BPM message events
       tags:
       - Message
+      x-codegen-request-body-name: body
+      x-contentType: application/json
+      x-accepts: application/json
+  /API/bpm/signal:
+    post:
+      description: |
+        Since 2022.1
+
+        Use this resource to broadcast BPM signal events. Signal events are caught by processes using `catch signal event` flow nodes (Start, intermediate or boundary).
+      operationId: broadcastSignal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Signal'
+        description: A Signal event
+        required: true
+      responses:
+        "204":
+          description: OK (no content).
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: Forbidden, The request contained valid data and was understood
+                  by the server, but the server is refusing action.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden, The request contained valid data and was understood
+            by the server, but the server is refusing action.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Broadcast BPM signal events
+      tags:
+      - Signal
       x-codegen-request-body-name: body
       x-contentType: application/json
       x-accepts: application/json
@@ -17002,6 +17315,48 @@ components:
             on the type of the variable
           type: string
       type: object
+    ArchivedActivityVariable:
+      description: This resource enables you to retrieve the value of a specific archived
+        variable name for a specific case (or process instance). Only persistent variables
+        are concerned by this resource, not transient variables.
+      example:
+        name: RequestValidationData
+        description: null
+        type: java.lang.String
+        containerId: 20004
+        containerType: ACTIVITY_INSTANCE
+        value: Confirmed
+        archivedDate: 2021-12-27 23:10:59.342
+        sourceObjectId: 42
+      properties:
+        name:
+          description: The name of the archived  activity variable
+          type: string
+        description:
+          description: The description of the variable if any
+          type: string
+        type:
+          description: The fully qualified class name of the variable type
+          type: string
+        containerId:
+          description: The ID of the activity containing this variable (same as the
+            one passed as parameter)
+          type: string
+        containerType:
+          description: ACTIVITY_INSTANCE
+          type: string
+        value:
+          description: the value of this variable. The format of the value depends
+            on the type of the variable
+          type: string
+        archivedDate:
+          description: The date when this variable was archived. The date format is
+            yyyy-MM-dd HH:mm:ss.SSS
+          type: string
+        sourcedObjectId:
+          description: The id of the activity variable before it was archived
+          type: string
+      type: object
     ProcessInstanceVariable:
       description: A process instance  variable
       example:
@@ -17026,6 +17381,42 @@ components:
           type: string
         type:
           description: the Java type of the variable
+          type: string
+      type: object
+    ArchivedProcessInstanceVariable:
+      description: An archived case variable
+      example:
+        name: RequestValidationData
+        description: null
+        type: java.lang.String
+        case_id: 20004
+        value: Confirmed
+        archivedDate: 2021-12-27 23:10:59.342
+        sourceObjectId: 42
+      properties:
+        name:
+          description: The name of the variable
+          type: string
+        description:
+          description: Detailed description of the case variable, as set in the definition
+            at design-time
+          type: string
+        type:
+          description: The fully qualified class name of the variable type
+          type: string
+        case_id:
+          description: ID of the case this variable belongs to
+          type: string
+        value:
+          description: the value of this variable. The format of the value depends
+            on the type of the variable
+          type: string
+        archivedDate:
+          description: The date when this variable was archived. The date format is
+            yyyy-MM-dd HH:mm:ss.SSS
+          type: string
+        sourcedObjectId:
+          description: The id of the variable before it was archived
           type: string
       type: object
     ProcessInstanceVariableUpdateRequest:
@@ -18268,6 +18659,15 @@ components:
           description: the message correlations
           maxItems: 5
           type: object
+      type: object
+    Signal:
+      description: Signal
+      example:
+        name: name
+      properties:
+        name:
+          description: the signal name
+          type: string
       type: object
     CustomUserDefinition:
       description: Custom user definition
@@ -19839,7 +20239,9 @@ x-tagGroups:
   - ArchivedTask
   - ArchivedUserTask
   - ActivityVariable
+  - ArchivedActivityVariable
   - ProcessInstanceVariable
+  - ArchivedProcessInstanceVariable
   - ProcessInstanceDocument
   - ArchivedProcessInstanceDocument
   - Actor
@@ -19862,6 +20264,7 @@ x-tagGroups:
   - ArchivedFlowNode
   - TimerEventTrigger
   - Message
+  - Signal
 - name: Custom user info
   tags:
   - CustomUserDefinition

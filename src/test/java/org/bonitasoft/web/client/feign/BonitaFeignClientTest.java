@@ -1,6 +1,10 @@
 package org.bonitasoft.web.client.feign;
 
-import feign.FeignException;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import org.bonitasoft.web.client.api.HumanTaskApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.model.Session;
@@ -16,10 +20,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import feign.FeignException;
 
 @ExtendWith(MockitoExtension.class)
 class BonitaFeignClientTest {
