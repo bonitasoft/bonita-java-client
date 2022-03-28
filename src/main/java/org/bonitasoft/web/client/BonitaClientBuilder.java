@@ -4,6 +4,7 @@ import org.bonitasoft.web.client.log.LogContentLevel;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import feign.Retryer;
 import okhttp3.OkHttpClient;
 
 /** Builder class for {@link BonitaClient} */
@@ -74,4 +75,13 @@ public interface BonitaClientBuilder<T extends BonitaClientBuilder<T>> {
      * @return the current builder
      */
     T logContentLevel(LogContentLevel level);
+    
+    /**
+     * Configure the client retry mechanism. Enabled by default. 
+     * 
+     * @see Retryer.Default
+     * @param disableRetry
+     * @return the current builder
+     */
+    T disableRetry(boolean disableRetry);
 }

@@ -51,6 +51,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import feign.Feign;
 import feign.Request;
+import feign.Retryer;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -78,6 +79,9 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
 	@Setter
 	private int writeTimeoutInSeconds = 10;
+	
+	@Setter
+    private boolean disableRetry = false;
 
 	@Setter
 	private boolean disableCertificateCheck = false;
@@ -159,7 +163,8 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 				// Map feign exception to ours
 				.errorDecoder(new BonitaErrorDecoder())
 				// bad charset handling in bonita version. Fixed in 7.11.3
-				.requestInterceptor(new BonitaCharsetBugInterceptor());
+				.requestInterceptor(new BonitaCharsetBugInterceptor())
+				.retryer(disableRetry ? Retryer.NEVER_RETRY : new Retryer.Default());
 	}
 
 	ObjectMapper configureJackson(ObjectMapper objectMapper) {
@@ -246,4 +251,5 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 			}
 		};
 	}
+
 }
