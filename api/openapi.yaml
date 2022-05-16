@@ -135,7 +135,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita HTTP API
-  version: 0.0.6
+  version: 0.0.7
   x-logo:
     url: images/logo_bonitasoft_white.png
     backgroundColor: '#003355'
@@ -16545,6 +16545,8 @@ components:
       - cancelled
       - aborted
       - cancelling subtasks
+      - aborting activity with boundary
+      - completing activity with boundary
       type: string
     ActivityPriority:
       description: the priority of the current activity
