@@ -135,7 +135,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita HTTP API
-  version: 0.0.7
+  version: 0.0.8
   x-logo:
     url: images/logo_bonitasoft_white.png
     backgroundColor: '#003355'
@@ -16821,19 +16821,7 @@ components:
           description: the human readable task description
           type: string
         state:
-          description: the current state of the task
-          enum:
-          - initializing
-          - ready
-          - executing
-          - completing
-          - waiting
-          - completed
-          - failed
-          - skipped
-          - cancelled
-          - aborted
-          type: string
+          $ref: '#/components/schemas/ActivityState'
         reached_state_date:
           description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when this task reached
             the current state for example '2014-10-17 16:05:42.626'

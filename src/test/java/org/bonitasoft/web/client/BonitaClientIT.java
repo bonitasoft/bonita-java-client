@@ -30,6 +30,7 @@ import org.bonitasoft.web.client.exception.process.DuplicatedProcessException;
 import org.bonitasoft.web.client.exception.process.ProcessActivationException;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.model.ActivationState;
+import org.bonitasoft.web.client.model.ActivityState;
 import org.bonitasoft.web.client.model.Application;
 import org.bonitasoft.web.client.model.ArchivedProcessInstance;
 import org.bonitasoft.web.client.model.Bdm;
@@ -429,7 +430,7 @@ class BonitaClientIT {
         UserTask userTaskAfterAssignation = bonitaClient.processes().getUserTask(taskId);
         log.info("User task after assignation: {}", userTaskAfterAssignation);
         assertThat(userTaskAfterAssignation.getAssignedId()).as("Assigned id").isEqualTo(user.getId());
-        assertThat(userTaskAfterAssignation.getState()).as("state").isEqualTo(UserTask.StateEnum.READY);
+        assertThat(userTaskAfterAssignation.getState()).as("state").isEqualTo(ActivityState.READY);
 
         // When:
         log.info("User to is going to execute the task {}", user);
@@ -535,7 +536,7 @@ class BonitaClientIT {
                 .until(() -> {
                     try {
                         UserTask userTask = bonitaClient.processes().getUserTask(taskId);
-                        if (UserTask.StateEnum.COMPLETED.equals(userTask.getState())) {
+                        if (ActivityState.COMPLETED.equals(userTask.getState())) {
                             log.debug("User task found in state COMPLETED, so stop waiting");
                             return true;
                         }
