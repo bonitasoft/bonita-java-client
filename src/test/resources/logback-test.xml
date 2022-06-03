@@ -5,13 +5,16 @@
         </encoder>
     </appender>
 
-    <logger name="org.testcontainers" level="INFO"/>
+    <logger name="org.testcontainers" level="ERROR"/>
+    <logger name="org.bonitasoft.testcontainers" level="ERROR"/>
     <logger name="com.github.dockerjava" level="WARN"/>
 
-    <logger name="org.bonitasoft.web.client.BonitaClient" level="DEBUG"/>
-    <logger name="org.bonitasoft.web.client" level="INFO"/>
+	<logger name="com.bonitasoft" level="INFO"/>
+	<logger name="org.bonitasoft" level="INFO"/>
+    <logger name="org.bonitasoft.web.client" level="WARN"/>
 
-    <root level="ERROR">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
+
 </configuration>

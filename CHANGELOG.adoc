@@ -2,7 +2,7 @@
 
 :project-group-id: org.bonitasoft.web
 :project-artifact-id: bonita-java-client
-:project-version: 0.0.7
+:project-version: 0.0.8
 :bonita-short-version: 7.11
 :orga: bonitasoft
 :uri-org: https://github.com/{orga}
