@@ -97,7 +97,7 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 
 	@Override
 	public Bdm getBdmStatus() {
-		log.info("Get BDM status");
+		log.debug("Get BDM status");
 		BdmApi bdmApi = apiProvider.get(BdmApi.class);
 		Bdm bdm = bdmApi.getBdm();
 		log.debug("BDM status: {}", bdm);
@@ -106,7 +106,7 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 
 	@Override
 	public BDMAccessControl getBdmAccessControlStatus() {
-		log.info("Get BDM AccessControl status");
+		log.debug("Get BDM AccessControl status");
 		if (isCommunity()) {
 			String message = "BDM AccessControl management skipped: your current Bonita license is 'Community' and this feature is only supported in 'Subscription' editions.";
 			throw new LicenseException(message);

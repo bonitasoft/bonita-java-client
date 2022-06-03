@@ -55,11 +55,11 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
 			switch (policy) {
 				case REPLACE_DUPLICATES:
 					// simulate a REPLACE_DUPLICATES policy here because it is not implemented in engine side
-					log.debug("Policy REPLACE_DUPLICATES: deleting existing process...");
+					log.info("Policy REPLACE_DUPLICATES: deleting existing process...");
 					deleteExistingProcess(process);
 					break;
 				case IGNORE_DUPLICATES:
-					log.debug("Policy IGNORE_DUPLICATES: skip deployment of existing process.");
+					log.info("Policy IGNORE_DUPLICATES: skip deployment of existing process.");
 					return;
 				case FAIL_ON_DUPLICATES:
 				default:
@@ -133,7 +133,7 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
 			log.debug("Can't find any existing process with name '{}' and version '{}'.", name, version);
 			throw new NotFoundException(format("No process found for name '%s' and version '%s'", name, version));
 		}
-		log.debug("Process '{}' with version '{}' found successfully.", name, version);
+		log.debug("Process '{}' in version '{}' found.", name, version);
 		return processes.get(0);
 	}
 
@@ -197,7 +197,7 @@ public class DefaultProcessService extends AbstractService implements ProcessSer
 		return ofNullable(apiProvider.get(UserTaskApi.class).getUserTaskById(taskId))
 				.map(
 						userTask -> {
-							log.debug("Found successfully User Task: {}", userTask);
+							log.debug("Found User Task: {}", userTask);
 							return userTask;
 						})
 				.orElseThrow(() -> new NotFoundException("No user task found for id: " + taskId));

@@ -49,9 +49,9 @@ public class DefaultApplicationService extends AbstractService implements Applic
 		// temporary simulate a REPLACE_DUPLICATES policy here because it is not implemented in engine
 		// side
 		if (policy.equals(ApplicationImportPolicy.REPLACE_DUPLICATES)) {
-			log.debug("Policy REPLACE_DUPLICATES: deleting existing applications...");
+			log.info("Policy REPLACE_DUPLICATES: deleting existing applications...");
 			readApplicationTokensFromFile(applicationFile).forEach(this::silentDeleteApplication);
-			log.debug("Existing applicationFile deleted successfully.");
+			log.info("Existing applicationFile deleted successfully.");
 			// reset policy
 			policy = ApplicationImportPolicy.FAIL_ON_DUPLICATES;
 		}
@@ -145,7 +145,7 @@ public class DefaultApplicationService extends AbstractService implements Applic
 		try {
 			page = getPage(pageZip);
 			// page already exists, we update it
-			log.debug("Updating existing page...");
+			log.info("Updating existing page...");
 			pageApi.updatePageById(page.getId(), new PageUpdateRequest().pageZip(uploadedFileName));
 		}
 		catch (NotFoundException e) {
@@ -204,7 +204,7 @@ public class DefaultApplicationService extends AbstractService implements Applic
 			log.debug("Can't find any existing page with the token '{}'.", token);
 			throw new NotFoundException("No page found for token: " + token);
 		}
-		log.debug("Page '{}' found successfully.", token);
+		log.debug("Page '{}' found.", token);
 		return pages.get(0);
 	}
 
