@@ -158,6 +158,30 @@ class BdmResponseConverterTest {
 		assertThat(converted.get(0).getA()).isEqualTo(a);
 		assertThat(converted.get(0).getB()).isEqualTo(b);
 	}
+	
+	@Test
+    void null_multiple_reference_should_not_be_converted() {
+        // Given
+        Object value = null;
+
+        // When
+        List<DummyInterface> converted = converter.convertToList(value, DummyInterface.class);
+
+        // Then
+        assertThat(converted).isEmpty();
+    }
+	
+	@Test
+    void null_reference_should_not_be_converted() {
+        // Given
+        Object value = null;
+
+        // When
+        DummyInterface converted = converter.convert(value, DummyInterface.class);
+
+        // Then
+        assertThat(converted).isNull();
+    }
 
 	public interface DummyInterface {
 		String getA();

@@ -1,6 +1,7 @@
 package org.bonitasoft.web.client.services.impl.bdm;
 
 import java.lang.reflect.Proxy;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -28,6 +29,9 @@ public class BdmResponseConverter {
 	}
 
 	public <T> List<T> convertToList(Object o, Class<T> elementClass) {
+	    if(o == null) {
+            return Collections.emptyList();
+        }
 		try {
 			if (!elementClass.isInterface()) {
 				CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, elementClass);
@@ -45,6 +49,9 @@ public class BdmResponseConverter {
 	}
 
 	public <T> T convert(Object o, Class<T> targetType) {
+	    if(o == null) {
+	        return null;
+	    }
 		try {
 			if (!targetType.isInterface()) {
 				return convertToClass(o, targetType);
