@@ -14,147 +14,128 @@
 package org.bonitasoft.web.client.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ApplicationMenuCreateRequest
+ * InstanciateProcess400Response
  */
 @JsonPropertyOrder({
-  ApplicationMenuCreateRequest.JSON_PROPERTY_DISPLAY_NAME,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_APPLICATION_PAGE_ID,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_MENU_INDEX,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_PARENT_MENU_ID
+  InstanciateProcess400Response.JSON_PROPERTY_MESSAGE,
+  InstanciateProcess400Response.JSON_PROPERTY_EXCEPTION,
+  InstanciateProcess400Response.JSON_PROPERTY_EXPLANATIONS
 })
+@JsonTypeName("instanciateProcess_400_response")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ApplicationMenuCreateRequest implements Serializable {
+public class InstanciateProcess400Response implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  private String message;
 
-  public static final String JSON_PROPERTY_APPLICATION_PAGE_ID = "applicationPageId";
-  private String applicationPageId;
+  public static final String JSON_PROPERTY_EXCEPTION = "exception";
+  private String exception;
 
-  public static final String JSON_PROPERTY_MENU_INDEX = "menuIndex";
-  private String menuIndex;
+  public static final String JSON_PROPERTY_EXPLANATIONS = "explanations";
+  private List<String> explanations = null;
 
-  public static final String JSON_PROPERTY_PARENT_MENU_ID = "parentMenuId";
-  private String parentMenuId;
-
-  public ApplicationMenuCreateRequest() { 
+  public InstanciateProcess400Response() { 
   }
 
-  public ApplicationMenuCreateRequest displayName(String displayName) {
+  public InstanciateProcess400Response message(String message) {
     
-    this.displayName = displayName;
+    this.message = message;
     return this;
   }
 
    /**
-   * display name of the application menu
-   * @return displayName
+   * The error message
+   * @return message
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name of the application menu")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @ApiModelProperty(value = "The error message")
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getDisplayName() {
-    return displayName;
+  public String getMessage() {
+    return message;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
-  public ApplicationMenuCreateRequest applicationPageId(String applicationPageId) {
+  public InstanciateProcess400Response exception(String exception) {
     
-    this.applicationPageId = applicationPageId;
+    this.exception = exception;
     return this;
   }
 
    /**
-   * the application menu page ID
-   * @return applicationPageId
+   * The exception type
+   * @return exception
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application menu page ID")
-  @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
+  @ApiModelProperty(value = "The exception type")
+  @JsonProperty(JSON_PROPERTY_EXCEPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getApplicationPageId() {
-    return applicationPageId;
+  public String getException() {
+    return exception;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
+  @JsonProperty(JSON_PROPERTY_EXCEPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApplicationPageId(String applicationPageId) {
-    this.applicationPageId = applicationPageId;
+  public void setException(String exception) {
+    this.exception = exception;
   }
 
 
-  public ApplicationMenuCreateRequest menuIndex(String menuIndex) {
+  public InstanciateProcess400Response explanations(List<String> explanations) {
     
-    this.menuIndex = menuIndex;
+    this.explanations = explanations;
+    return this;
+  }
+
+  public InstanciateProcess400Response addExplanationsItem(String explanationsItem) {
+    if (this.explanations == null) {
+      this.explanations = new ArrayList<>();
+    }
+    this.explanations.add(explanationsItem);
     return this;
   }
 
    /**
-   * the application menu index
-   * @return menuIndex
+   * Further details on the error
+   * @return explanations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application menu index")
-  @JsonProperty(JSON_PROPERTY_MENU_INDEX)
+  @ApiModelProperty(value = "Further details on the error")
+  @JsonProperty(JSON_PROPERTY_EXPLANATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getMenuIndex() {
-    return menuIndex;
+  public List<String> getExplanations() {
+    return explanations;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MENU_INDEX)
+  @JsonProperty(JSON_PROPERTY_EXPLANATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMenuIndex(String menuIndex) {
-    this.menuIndex = menuIndex;
-  }
-
-
-  public ApplicationMenuCreateRequest parentMenuId(String parentMenuId) {
-    
-    this.parentMenuId = parentMenuId;
-    return this;
-  }
-
-   /**
-   * the application parent menu ID
-   * @return parentMenuId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application parent menu ID")
-  @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getParentMenuId() {
-    return parentMenuId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParentMenuId(String parentMenuId) {
-    this.parentMenuId = parentMenuId;
+  public void setExplanations(List<String> explanations) {
+    this.explanations = explanations;
   }
 
 
@@ -166,26 +147,24 @@ public class ApplicationMenuCreateRequest implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApplicationMenuCreateRequest applicationMenuCreateRequest = (ApplicationMenuCreateRequest) o;
-    return Objects.equals(this.displayName, applicationMenuCreateRequest.displayName) &&
-        Objects.equals(this.applicationPageId, applicationMenuCreateRequest.applicationPageId) &&
-        Objects.equals(this.menuIndex, applicationMenuCreateRequest.menuIndex) &&
-        Objects.equals(this.parentMenuId, applicationMenuCreateRequest.parentMenuId);
+    InstanciateProcess400Response instanciateProcess400Response = (InstanciateProcess400Response) o;
+    return Objects.equals(this.message, instanciateProcess400Response.message) &&
+        Objects.equals(this.exception, instanciateProcess400Response.exception) &&
+        Objects.equals(this.explanations, instanciateProcess400Response.explanations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, applicationPageId, menuIndex, parentMenuId);
+    return Objects.hash(message, exception, explanations);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApplicationMenuCreateRequest {\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    applicationPageId: ").append(toIndentedString(applicationPageId)).append("\n");
-    sb.append("    menuIndex: ").append(toIndentedString(menuIndex)).append("\n");
-    sb.append("    parentMenuId: ").append(toIndentedString(parentMenuId)).append("\n");
+    sb.append("class InstanciateProcess400Response {\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    exception: ").append(toIndentedString(exception)).append("\n");
+    sb.append("    explanations: ").append(toIndentedString(explanations)).append("\n");
     sb.append("}");
     return sb.toString();
   }

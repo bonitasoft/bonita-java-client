@@ -22,8 +22,8 @@ public interface AuthenticationApi extends ApiClient.Api {
    * @param username the username (required)
    * @param password the password (required)
    * @param tenant the user tenant (optional)
-   * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal (after a successful login) or to the login page (after a login failure). (optional, default to &quot;false&quot;)
-   * @param redirectURL the URL of the page to be displayed after login (optional, default to &quot;&quot;)
+   * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal (after a successful login) or to the login page (after a login failure). (optional, default to false)
+   * @param redirectURL the URL of the page to be displayed after login (optional, default to )
    * @return String
    */
   @RequestLine("POST /loginservice")
@@ -40,8 +40,8 @@ public interface AuthenticationApi extends ApiClient.Api {
    * @param username the username (required)
    * @param password the password (required)
    * @param tenant the user tenant (optional)
-   * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal (after a successful login) or to the login page (after a login failure). (optional, default to &quot;false&quot;)
-   * @param redirectURL the URL of the page to be displayed after login (optional, default to &quot;&quot;)
+   * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal (after a successful login) or to the login page (after a login failure). (optional, default to false)
+   * @param redirectURL the URL of the page to be displayed after login (optional, default to )
    * @return A ApiResponse that wraps the response boyd and the http headers.
    */
   @RequestLine("POST /loginservice")

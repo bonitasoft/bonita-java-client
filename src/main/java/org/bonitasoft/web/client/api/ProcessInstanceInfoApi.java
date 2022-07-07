@@ -14,7 +14,7 @@ public interface ProcessInstanceInfoApi extends ApiClient.Api {
 
   /**
    * Finds the ProcessInstanceInfo by ID
-   * Returns the single ProcessInstanceInfo for the given ID 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue) since 2022.2  Returns the single ProcessInstanceInfo for the given ID 
    * @param id ID of the ProcessInstanceInfo to return (required)
    * @return ProcessInstanceInfo
    */
@@ -27,7 +27,7 @@ public interface ProcessInstanceInfoApi extends ApiClient.Api {
   /**
    * Finds the ProcessInstanceInfo by ID
    * Similar to <code>getProcessInstanceInfoById</code> but it also returns the http response headers .
-   * Returns the single ProcessInstanceInfo for the given ID 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue) since 2022.2  Returns the single ProcessInstanceInfo for the given ID 
    * @param id ID of the ProcessInstanceInfo to return (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.
    */
