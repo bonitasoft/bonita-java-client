@@ -1,5 +1,7 @@
 package org.bonitasoft.web.client.services.impl.bdm;
 
+import static java.util.Objects.requireNonNull;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -25,7 +27,7 @@ public class BdmResponseProxyInvocationHandler implements InvocationHandler {
 
     public BdmResponseProxyInvocationHandler(BdmResponseConverter bdmResponseConverter, Map<String, Object> jsonData) {
         this.bdmResponseConverter = bdmResponseConverter;
-        this.jsonData = jsonData;
+        this.jsonData = requireNonNull(jsonData);
         processLinks(this.jsonData);
     }
 

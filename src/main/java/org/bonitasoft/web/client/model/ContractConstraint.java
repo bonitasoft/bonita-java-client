@@ -14,6 +14,8 @@
 package org.bonitasoft.web.client.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -23,138 +25,146 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ApplicationMenuCreateRequest
+ * ContractConstraint
  */
 @JsonPropertyOrder({
-  ApplicationMenuCreateRequest.JSON_PROPERTY_DISPLAY_NAME,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_APPLICATION_PAGE_ID,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_MENU_INDEX,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_PARENT_MENU_ID
+  ContractConstraint.JSON_PROPERTY_NAME,
+  ContractConstraint.JSON_PROPERTY_EXPRESSION,
+  ContractConstraint.JSON_PROPERTY_EXPLANATION,
+  ContractConstraint.JSON_PROPERTY_INPUT_NAMES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ApplicationMenuCreateRequest implements Serializable {
+public class ContractConstraint implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
 
-  public static final String JSON_PROPERTY_APPLICATION_PAGE_ID = "applicationPageId";
-  private String applicationPageId;
+  public static final String JSON_PROPERTY_EXPRESSION = "expression";
+  private String expression;
 
-  public static final String JSON_PROPERTY_MENU_INDEX = "menuIndex";
-  private String menuIndex;
+  public static final String JSON_PROPERTY_EXPLANATION = "explanation";
+  private String explanation;
 
-  public static final String JSON_PROPERTY_PARENT_MENU_ID = "parentMenuId";
-  private String parentMenuId;
+  public static final String JSON_PROPERTY_INPUT_NAMES = "inputNames";
+  private List<String> inputNames = null;
 
-  public ApplicationMenuCreateRequest() { 
+  public ContractConstraint() { 
   }
 
-  public ApplicationMenuCreateRequest displayName(String displayName) {
+  public ContractConstraint name(String name) {
     
-    this.displayName = displayName;
+    this.name = name;
     return this;
   }
 
    /**
-   * display name of the application menu
-   * @return displayName
+   * constraint name
+   * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name of the application menu")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @ApiModelProperty(value = "constraint name")
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getDisplayName() {
-    return displayName;
+  public String getName() {
+    return name;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
-  public ApplicationMenuCreateRequest applicationPageId(String applicationPageId) {
+  public ContractConstraint expression(String expression) {
     
-    this.applicationPageId = applicationPageId;
+    this.expression = expression;
     return this;
   }
 
    /**
-   * the application menu page ID
-   * @return applicationPageId
+   * constraint expression
+   * @return expression
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application menu page ID")
-  @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
+  @ApiModelProperty(value = "constraint expression")
+  @JsonProperty(JSON_PROPERTY_EXPRESSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getApplicationPageId() {
-    return applicationPageId;
+  public String getExpression() {
+    return expression;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
+  @JsonProperty(JSON_PROPERTY_EXPRESSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApplicationPageId(String applicationPageId) {
-    this.applicationPageId = applicationPageId;
+  public void setExpression(String expression) {
+    this.expression = expression;
   }
 
 
-  public ApplicationMenuCreateRequest menuIndex(String menuIndex) {
+  public ContractConstraint explanation(String explanation) {
     
-    this.menuIndex = menuIndex;
+    this.explanation = explanation;
     return this;
   }
 
    /**
-   * the application menu index
-   * @return menuIndex
+   * constraint explanation
+   * @return explanation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application menu index")
-  @JsonProperty(JSON_PROPERTY_MENU_INDEX)
+  @ApiModelProperty(value = "constraint explanation")
+  @JsonProperty(JSON_PROPERTY_EXPLANATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getMenuIndex() {
-    return menuIndex;
+  public String getExplanation() {
+    return explanation;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MENU_INDEX)
+  @JsonProperty(JSON_PROPERTY_EXPLANATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMenuIndex(String menuIndex) {
-    this.menuIndex = menuIndex;
+  public void setExplanation(String explanation) {
+    this.explanation = explanation;
   }
 
 
-  public ApplicationMenuCreateRequest parentMenuId(String parentMenuId) {
+  public ContractConstraint inputNames(List<String> inputNames) {
     
-    this.parentMenuId = parentMenuId;
+    this.inputNames = inputNames;
+    return this;
+  }
+
+  public ContractConstraint addInputNamesItem(String inputNamesItem) {
+    if (this.inputNames == null) {
+      this.inputNames = new ArrayList<>();
+    }
+    this.inputNames.add(inputNamesItem);
     return this;
   }
 
    /**
-   * the application parent menu ID
-   * @return parentMenuId
+   * Get inputNames
+   * @return inputNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application parent menu ID")
-  @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INPUT_NAMES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getParentMenuId() {
-    return parentMenuId;
+  public List<String> getInputNames() {
+    return inputNames;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
+  @JsonProperty(JSON_PROPERTY_INPUT_NAMES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParentMenuId(String parentMenuId) {
-    this.parentMenuId = parentMenuId;
+  public void setInputNames(List<String> inputNames) {
+    this.inputNames = inputNames;
   }
 
 
@@ -166,26 +176,26 @@ public class ApplicationMenuCreateRequest implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApplicationMenuCreateRequest applicationMenuCreateRequest = (ApplicationMenuCreateRequest) o;
-    return Objects.equals(this.displayName, applicationMenuCreateRequest.displayName) &&
-        Objects.equals(this.applicationPageId, applicationMenuCreateRequest.applicationPageId) &&
-        Objects.equals(this.menuIndex, applicationMenuCreateRequest.menuIndex) &&
-        Objects.equals(this.parentMenuId, applicationMenuCreateRequest.parentMenuId);
+    ContractConstraint contractConstraint = (ContractConstraint) o;
+    return Objects.equals(this.name, contractConstraint.name) &&
+        Objects.equals(this.expression, contractConstraint.expression) &&
+        Objects.equals(this.explanation, contractConstraint.explanation) &&
+        Objects.equals(this.inputNames, contractConstraint.inputNames);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, applicationPageId, menuIndex, parentMenuId);
+    return Objects.hash(name, expression, explanation, inputNames);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApplicationMenuCreateRequest {\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    applicationPageId: ").append(toIndentedString(applicationPageId)).append("\n");
-    sb.append("    menuIndex: ").append(toIndentedString(menuIndex)).append("\n");
-    sb.append("    parentMenuId: ").append(toIndentedString(parentMenuId)).append("\n");
+    sb.append("class ContractConstraint {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    explanation: ").append(toIndentedString(explanation)).append("\n");
+    sb.append("    inputNames: ").append(toIndentedString(inputNames)).append("\n");
     sb.append("}");
     return sb.toString();
   }

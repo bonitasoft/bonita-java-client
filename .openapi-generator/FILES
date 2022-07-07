@@ -1,3 +1,4 @@
+.github/workflows/maven.yml
 api/openapi.yaml
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
@@ -44,6 +45,7 @@ src/main/java/org/bonitasoft/web/client/api/PlatformApi.java
 src/main/java/org/bonitasoft/web/client/api/PlatformAuthenticationApi.java
 src/main/java/org/bonitasoft/web/client/api/ProcessApi.java
 src/main/java/org/bonitasoft/web/client/api/ProcessConnectorDependencyApi.java
+src/main/java/org/bonitasoft/web/client/api/ProcessInfoApi.java
 src/main/java/org/bonitasoft/web/client/api/ProcessInstanceApi.java
 src/main/java/org/bonitasoft/web/client/api/ProcessInstanceCommentApi.java
 src/main/java/org/bonitasoft/web/client/api/ProcessInstanceDocumentApi.java
@@ -123,8 +125,9 @@ src/main/java/org/bonitasoft/web/client/model/ConfigurationState.java
 src/main/java/org/bonitasoft/web/client/model/ConnectorFailure.java
 src/main/java/org/bonitasoft/web/client/model/ConnectorInstance.java
 src/main/java/org/bonitasoft/web/client/model/Contract.java
-src/main/java/org/bonitasoft/web/client/model/ContractConstraints.java
+src/main/java/org/bonitasoft/web/client/model/ContractConstraint.java
 src/main/java/org/bonitasoft/web/client/model/ContractInput.java
+src/main/java/org/bonitasoft/web/client/model/ContractInputType.java
 src/main/java/org/bonitasoft/web/client/model/CreateApplicationRequest.java
 src/main/java/org/bonitasoft/web/client/model/CustomUser.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserDefinition.java
@@ -133,9 +136,7 @@ src/main/java/org/bonitasoft/web/client/model/CustomUserValue.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserValueUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinition.java
 src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinitionContext.java
-src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinitionContract.java
-src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinitionContractConstraints.java
-src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinitionParameters.java
+src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinitionParamater.java
 src/main/java/org/bonitasoft/web/client/model/Error.java
 src/main/java/org/bonitasoft/web/client/model/Expression.java
 src/main/java/org/bonitasoft/web/client/model/FlowElementContainerDefinition.java
@@ -149,7 +150,7 @@ src/main/java/org/bonitasoft/web/client/model/GroupUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/HumanTask.java
 src/main/java/org/bonitasoft/web/client/model/HumanTaskUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/I18nlocale.java
-src/main/java/org/bonitasoft/web/client/model/InputDefinition.java
+src/main/java/org/bonitasoft/web/client/model/InstanciateProcess400Response.java
 src/main/java/org/bonitasoft/web/client/model/License.java
 src/main/java/org/bonitasoft/web/client/model/ManualTask.java
 src/main/java/org/bonitasoft/web/client/model/ManualTaskCreateRequest.java
@@ -157,7 +158,7 @@ src/main/java/org/bonitasoft/web/client/model/ManualTaskUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/Membership.java
 src/main/java/org/bonitasoft/web/client/model/MembershipCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/Message.java
-src/main/java/org/bonitasoft/web/client/model/MessageMessageContent.java
+src/main/java/org/bonitasoft/web/client/model/MessageMessageContentValue.java
 src/main/java/org/bonitasoft/web/client/model/Page.java
 src/main/java/org/bonitasoft/web/client/model/PageCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/PageUpdateRequest.java
@@ -167,6 +168,8 @@ src/main/java/org/bonitasoft/web/client/model/PlatformUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessConnectorDependency.java
 src/main/java/org/bonitasoft/web/client/model/ProcessCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessDefinition.java
+src/main/java/org/bonitasoft/web/client/model/ProcessInfo.java
+src/main/java/org/bonitasoft/web/client/model/ProcessInfoFlowNodeStatesCountersValue.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstance.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceComment.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceCommentCreateRequest.java
@@ -175,7 +178,7 @@ src/main/java/org/bonitasoft/web/client/model/ProcessInstanceDocument.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceDocumentCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceDocumentUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceInfo.java
-src/main/java/org/bonitasoft/web/client/model/ProcessInstanceInfoFlowNodeStatesCounters.java
+src/main/java/org/bonitasoft/web/client/model/ProcessInstanceInfoFlowNodeStatesCountersValue.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceVariable.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceVariableUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstantiationResponse.java
@@ -184,6 +187,7 @@ src/main/java/org/bonitasoft/web/client/model/ProcessParameterUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessResolutionProblem.java
 src/main/java/org/bonitasoft/web/client/model/ProcessSupervisor.java
 src/main/java/org/bonitasoft/web/client/model/ProcessUpdateRequest.java
+src/main/java/org/bonitasoft/web/client/model/ProcessVariable.java
 src/main/java/org/bonitasoft/web/client/model/ProfessionalContactData.java
 src/main/java/org/bonitasoft/web/client/model/Profile.java
 src/main/java/org/bonitasoft/web/client/model/ProfileCreateRequest.java
@@ -211,6 +215,7 @@ src/main/java/org/bonitasoft/web/client/model/TimerEventTrigger.java
 src/main/java/org/bonitasoft/web/client/model/TimerEventTriggerUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/TimerEventTriggerUpdateResponse.java
 src/main/java/org/bonitasoft/web/client/model/UpdateProcessConnectorByProcessIdRequest.java
+src/main/java/org/bonitasoft/web/client/model/UpdateTaskByIdRequest.java
 src/main/java/org/bonitasoft/web/client/model/User.java
 src/main/java/org/bonitasoft/web/client/model/UserCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/UserTask.java
