@@ -3,11 +3,11 @@ package org.bonitasoft.web.client.model;
 import java.util.List;
 import java.util.Map;
 
-public class ApiResponse<T>{
+public class ApiResponse<T> {
 
-    final private int statusCode;
-    final private Map<String, List<String>> headers;
-    final private T data;
+    private final int statusCode;
+    private final Map<String, List<String>> headers;
+    private final T data;
 
     /**
      * @param statusCode The status code of HTTP response
@@ -39,5 +39,5 @@ public class ApiResponse<T>{
     public T getData() {
         return data;
     }
-  
+
 }

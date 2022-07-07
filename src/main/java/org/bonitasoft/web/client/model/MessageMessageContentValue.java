@@ -16,145 +16,138 @@ package org.bonitasoft.web.client.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ApplicationMenuCreateRequest
+ * MessageMessageContentValue
  */
 @JsonPropertyOrder({
-  ApplicationMenuCreateRequest.JSON_PROPERTY_DISPLAY_NAME,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_APPLICATION_PAGE_ID,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_MENU_INDEX,
-  ApplicationMenuCreateRequest.JSON_PROPERTY_PARENT_MENU_ID
+  MessageMessageContentValue.JSON_PROPERTY_VALUE,
+  MessageMessageContentValue.JSON_PROPERTY_TYPE
 })
+@JsonTypeName("Message_messageContent_value")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ApplicationMenuCreateRequest implements Serializable {
+public class MessageMessageContentValue implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName;
+  public static final String JSON_PROPERTY_VALUE = "value";
+  private String value;
 
-  public static final String JSON_PROPERTY_APPLICATION_PAGE_ID = "applicationPageId";
-  private String applicationPageId;
+  /**
+   * Date types must be in the ISO-8601 format. When not set, the type is guessed using the value. Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer) 
+   */
+  public enum TypeEnum {
+    LANG_STRING("java.lang.String"),
+    
+    LANG_BOOLEAN("java.lang.Boolean"),
+    
+    LANG_INTEGER("java.lang.Integer"),
+    
+    LANG_DOUBLE("java.lang.Double"),
+    
+    LANG_FLOAT("java.lang.Float"),
+    
+    LANG_LONG("java.lang.Long"),
+    
+    UTIL_DATE("java.util.Date"),
+    
+    TIME_LOCALDATE("java.time.LocalDate"),
+    
+    TIME_LOCALDATETIME("java.time.LocalDateTime"),
+    
+    TIME_OFFSETDATETIME("java.time.OffsetDateTime");
 
-  public static final String JSON_PROPERTY_MENU_INDEX = "menuIndex";
-  private String menuIndex;
+    private String value;
 
-  public static final String JSON_PROPERTY_PARENT_MENU_ID = "parentMenuId";
-  private String parentMenuId;
+    TypeEnum(String value) {
+      this.value = value;
+    }
 
-  public ApplicationMenuCreateRequest() { 
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
   }
 
-  public ApplicationMenuCreateRequest displayName(String displayName) {
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private TypeEnum type;
+
+  public MessageMessageContentValue() { 
+  }
+
+  public MessageMessageContentValue value(String value) {
     
-    this.displayName = displayName;
+    this.value = value;
     return this;
   }
 
    /**
-   * display name of the application menu
-   * @return displayName
+   * 
+   * @return value
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "display name of the application menu")
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getDisplayName() {
-    return displayName;
+  public String getValue() {
+    return value;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
-  public ApplicationMenuCreateRequest applicationPageId(String applicationPageId) {
+  public MessageMessageContentValue type(TypeEnum type) {
     
-    this.applicationPageId = applicationPageId;
+    this.type = type;
     return this;
   }
 
    /**
-   * the application menu page ID
-   * @return applicationPageId
+   * Date types must be in the ISO-8601 format. When not set, the type is guessed using the value. Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer) 
+   * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application menu page ID")
-  @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
+  @ApiModelProperty(value = "Date types must be in the ISO-8601 format. When not set, the type is guessed using the value. Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer) ")
+  @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getApplicationPageId() {
-    return applicationPageId;
+  public TypeEnum getType() {
+    return type;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
+  @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApplicationPageId(String applicationPageId) {
-    this.applicationPageId = applicationPageId;
-  }
-
-
-  public ApplicationMenuCreateRequest menuIndex(String menuIndex) {
-    
-    this.menuIndex = menuIndex;
-    return this;
-  }
-
-   /**
-   * the application menu index
-   * @return menuIndex
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application menu index")
-  @JsonProperty(JSON_PROPERTY_MENU_INDEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getMenuIndex() {
-    return menuIndex;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MENU_INDEX)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMenuIndex(String menuIndex) {
-    this.menuIndex = menuIndex;
-  }
-
-
-  public ApplicationMenuCreateRequest parentMenuId(String parentMenuId) {
-    
-    this.parentMenuId = parentMenuId;
-    return this;
-  }
-
-   /**
-   * the application parent menu ID
-   * @return parentMenuId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "the application parent menu ID")
-  @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getParentMenuId() {
-    return parentMenuId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParentMenuId(String parentMenuId) {
-    this.parentMenuId = parentMenuId;
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
 
@@ -166,26 +159,22 @@ public class ApplicationMenuCreateRequest implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApplicationMenuCreateRequest applicationMenuCreateRequest = (ApplicationMenuCreateRequest) o;
-    return Objects.equals(this.displayName, applicationMenuCreateRequest.displayName) &&
-        Objects.equals(this.applicationPageId, applicationMenuCreateRequest.applicationPageId) &&
-        Objects.equals(this.menuIndex, applicationMenuCreateRequest.menuIndex) &&
-        Objects.equals(this.parentMenuId, applicationMenuCreateRequest.parentMenuId);
+    MessageMessageContentValue messageMessageContentValue = (MessageMessageContentValue) o;
+    return Objects.equals(this.value, messageMessageContentValue.value) &&
+        Objects.equals(this.type, messageMessageContentValue.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, applicationPageId, menuIndex, parentMenuId);
+    return Objects.hash(value, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApplicationMenuCreateRequest {\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    applicationPageId: ").append(toIndentedString(applicationPageId)).append("\n");
-    sb.append("    menuIndex: ").append(toIndentedString(menuIndex)).append("\n");
-    sb.append("    parentMenuId: ").append(toIndentedString(parentMenuId)).append("\n");
+    sb.append("class MessageMessageContentValue {\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
