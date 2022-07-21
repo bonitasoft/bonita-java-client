@@ -2703,7 +2703,7 @@ paths:
         \ on `name`, `priority`, `dueDate`, `state`, `processDefinitionId`, `processInstanceId`,\
         \ `parentActivityInstanceId`, `assigneeId`, `parentContainerId`, `displayName`,\
         \ `reachedStateDate`\n- can search on any field that can be used to order\
-        \ results\n- can filter on `assigned_id`, `state`, `name`, `displayName`,\
+        \ results\n- can filter on `assigned_id`, `user_id`, `show_assigned_to_others`, `state`, `name`, `displayName`,\
         \ `processDefinitionId`, `caseId`, `rootProcessInstanceId`, `parentProcessInstanceId`\n"
       operationId: searchHumanTasks
       parameters:
