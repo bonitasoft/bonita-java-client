@@ -377,8 +377,8 @@ public class UserCreateRequest implements Serializable {
     sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
     sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    passwordConfirm: ").append(toIndentedString(passwordConfirm)).append("\n");
+    sb.append("    password: ").append(toIndentedString("***")).append("\n");
+    sb.append("    passwordConfirm: ").append(toIndentedString("***")).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    jobTitle: ").append(toIndentedString(jobTitle)).append("\n");
