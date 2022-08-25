@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NoPasswordLeakTest {
+class NoPasswordLeakTest {
 
 	@Test
 	void no_tenant_password_should_leak_via_toString() {
