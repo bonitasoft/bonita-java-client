@@ -1,20 +1,19 @@
 package org.bonitasoft.web.client.api;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApiResponse;
+
+import org.bonitasoft.web.client.model.Error;
 import org.bonitasoft.web.client.model.ProfileEntry;
 import org.bonitasoft.web.client.model.ProfileEntryCreateRequest;
 import org.bonitasoft.web.client.model.ProfileEntryUpdateRequest;
 
-import feign.Headers;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import feign.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ProfileEntryApi extends ApiClient.Api {
@@ -22,10 +21,12 @@ public interface ProfileEntryApi extends ApiClient.Api {
 
   /**
    * Create the ProfileEntry
-   * Create the ProfileEntry 
+   * Create the ProfileEntry Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * @param body Partial ProfileEntry description (required)
    * @return ProfileEntry
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("POST /API/portal/profileEntry")
   @Headers({
     "Content-Type: application/json",
@@ -36,10 +37,12 @@ public interface ProfileEntryApi extends ApiClient.Api {
   /**
    * Create the ProfileEntry
    * Similar to <code>createProfileEntry</code> but it also returns the http response headers .
-   * Create the ProfileEntry 
+   * Create the ProfileEntry Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * @param body Partial ProfileEntry description (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("POST /API/portal/profileEntry")
   @Headers({
     "Content-Type: application/json",
@@ -53,7 +56,9 @@ public interface ProfileEntryApi extends ApiClient.Api {
    * Delete the ProfileEntry by ID
    * Delete the single ProfileEntry for the given ID 
    * @param id ID of the ProfileEntry to delete (required)
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("DELETE /API/portal/profileEntry/{id}")
   @Headers({
     "Accept: application/json",
@@ -65,7 +70,9 @@ public interface ProfileEntryApi extends ApiClient.Api {
    * Similar to <code>deleteProfileEntryById</code> but it also returns the http response headers .
    * Delete the single ProfileEntry for the given ID 
    * @param id ID of the ProfileEntry to delete (required)
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("DELETE /API/portal/profileEntry/{id}")
   @Headers({
     "Accept: application/json",
@@ -76,10 +83,12 @@ public interface ProfileEntryApi extends ApiClient.Api {
 
   /**
    * Finds the ProfileEntry by ID
-   * Returns the single ProfileEntry for the given ID 
+   * Returns the single ProfileEntry for the given ID Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * @param id ID of the ProfileEntry to return (required)
    * @return ProfileEntry
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/portal/profileEntry/{id}")
   @Headers({
     "Accept: application/json",
@@ -89,10 +98,12 @@ public interface ProfileEntryApi extends ApiClient.Api {
   /**
    * Finds the ProfileEntry by ID
    * Similar to <code>getProfileEntryById</code> but it also returns the http response headers .
-   * Returns the single ProfileEntry for the given ID 
+   * Returns the single ProfileEntry for the given ID Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * @param id ID of the ProfileEntry to return (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/portal/profileEntry/{id}")
   @Headers({
     "Accept: application/json",
@@ -103,13 +114,15 @@ public interface ProfileEntryApi extends ApiClient.Api {
 
   /**
    * Finds ProfileEntries
-   * Finds ProfileEntries with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;page&#x60;,&#x60;name&#x60; and &#x60;parent_id&#x60; 
+   * Finds ProfileEntries with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;page&#x60;,&#x60;name&#x60; and &#x60;parent_id&#x60;  Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * @param p index of the page to display (required)
    * @param c maximum number of elements to retrieve (required)
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param s can search on attributes (optional)
    * @return List&lt;ProfileEntry&gt;
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/portal/profileEntry?p={p}&c={c}&f={f}&s={s}")
   @Headers({
     "Accept: application/json",
@@ -119,13 +132,15 @@ public interface ProfileEntryApi extends ApiClient.Api {
   /**
    * Finds ProfileEntries
    * Similar to <code>searchProfileEntries</code> but it also returns the http response headers .
-   * Finds ProfileEntries with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;page&#x60;,&#x60;name&#x60; and &#x60;parent_id&#x60; 
+   * Finds ProfileEntries with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;page&#x60;,&#x60;name&#x60; and &#x60;parent_id&#x60;  Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * @param p index of the page to display (required)
    * @param c maximum number of elements to retrieve (required)
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param s can search on attributes (optional)
    * @return A ApiResponse that wraps the response boyd and the http headers.
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/portal/profileEntry?p={p}&c={c}&f={f}&s={s}")
   @Headers({
     "Accept: application/json",
@@ -135,7 +150,7 @@ public interface ProfileEntryApi extends ApiClient.Api {
 
   /**
    * Finds ProfileEntries
-   * Finds ProfileEntries with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;page&#x60;,&#x60;name&#x60; and &#x60;parent_id&#x60; 
+   * Finds ProfileEntries with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;page&#x60;,&#x60;name&#x60; and &#x60;parent_id&#x60;  Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * Note, this is equivalent to the other <code>searchProfileEntries</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
@@ -150,7 +165,9 @@ public interface ProfileEntryApi extends ApiClient.Api {
    *   <li>s - can search on attributes (optional)</li>
    *   </ul>
    * @return List&lt;ProfileEntry&gt;
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/portal/profileEntry?p={p}&c={c}&f={f}&s={s}")
   @Headers({
   "Accept: application/json",
@@ -159,7 +176,7 @@ public interface ProfileEntryApi extends ApiClient.Api {
 
   /**
   * Finds ProfileEntries
-  * Finds ProfileEntries with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;page&#x60;,&#x60;name&#x60; and &#x60;parent_id&#x60; 
+  * Finds ProfileEntries with pagination params and filters  - can search on &#x60;name&#x60; - can filter on &#x60;page&#x60;,&#x60;name&#x60; and &#x60;parent_id&#x60;  Warning: Since Bonita 7.13, ProfileEntry is deprecated 
   * Note, this is equivalent to the other <code>searchProfileEntries</code> that receives the query parameters as a map,
   * but this one also exposes the Http response headers
       * @param queryParams Map of query parameters as name-value pairs
@@ -171,7 +188,9 @@ public interface ProfileEntryApi extends ApiClient.Api {
           *   <li>s - can search on attributes (optional)</li>
       *   </ul>
           * @return List&lt;ProfileEntry&gt;
+          * @deprecated
       */
+          @Deprecated
       @RequestLine("GET /API/portal/profileEntry?p={p}&c={c}&f={f}&s={s}")
       @Headers({
     "Accept: application/json",
@@ -204,10 +223,12 @@ public interface ProfileEntryApi extends ApiClient.Api {
 
   /**
    * Update the ProfileEntry by ID
-   * Update the ProfileEntry for the given ID 
+   * Update the ProfileEntry for the given ID Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * @param id ID of the ProfileEntry to return (required)
    * @param profileEntryUpdateRequest Partial ProfileEntry description (required)
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("PUT /API/portal/profileEntry/{id}")
   @Headers({
     "Content-Type: application/json",
@@ -218,10 +239,12 @@ public interface ProfileEntryApi extends ApiClient.Api {
   /**
    * Update the ProfileEntry by ID
    * Similar to <code>updateProfileEntryById</code> but it also returns the http response headers .
-   * Update the ProfileEntry for the given ID 
+   * Update the ProfileEntry for the given ID Warning: Since Bonita 7.13, ProfileEntry is deprecated 
    * @param id ID of the ProfileEntry to return (required)
    * @param profileEntryUpdateRequest Partial ProfileEntry description (required)
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("PUT /API/portal/profileEntry/{id}")
   @Headers({
     "Content-Type: application/json",

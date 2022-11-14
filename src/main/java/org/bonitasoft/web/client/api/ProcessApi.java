@@ -1,25 +1,25 @@
 package org.bonitasoft.web.client.api;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApiResponse;
+
 import org.bonitasoft.web.client.model.Contract;
 import org.bonitasoft.web.client.model.DesignProcessDefinition;
+import org.bonitasoft.web.client.model.Error;
+import java.io.File;
+import org.bonitasoft.web.client.model.InstanciateProcess400Response;
 import org.bonitasoft.web.client.model.ProcessCreateRequest;
 import org.bonitasoft.web.client.model.ProcessDefinition;
 import org.bonitasoft.web.client.model.ProcessInstantiationResponse;
 import org.bonitasoft.web.client.model.ProcessUpdateRequest;
 import org.bonitasoft.web.client.model.UpdateProcessConnectorByProcessIdRequest;
 
-import feign.Headers;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import feign.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface ProcessApi extends ApiClient.Api {

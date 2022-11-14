@@ -1,20 +1,19 @@
 package org.bonitasoft.web.client.api;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApiResponse;
+
+import org.bonitasoft.web.client.model.Error;
 import org.bonitasoft.web.client.model.Tenant;
 import org.bonitasoft.web.client.model.TenantCreateRequest;
 import org.bonitasoft.web.client.model.TenantUpdateRequest;
 
-import feign.Headers;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import feign.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface TenantApi extends ApiClient.Api {
@@ -22,10 +21,12 @@ public interface TenantApi extends ApiClient.Api {
 
   /**
    * Create the Tenant
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Create the Tenant 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Create the Tenant.  Warning: Since Bonita 7.12, multi-tenancy is deprecated. Creating new tenants is strongly discouraged. 
    * @param body Partial Tenant description (required)
    * @return Tenant
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("POST /API/platform/tenant")
   @Headers({
     "Content-Type: application/json",
@@ -36,10 +37,12 @@ public interface TenantApi extends ApiClient.Api {
   /**
    * Create the Tenant
    * Similar to <code>createTenant</code> but it also returns the http response headers .
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Create the Tenant 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Create the Tenant.  Warning: Since Bonita 7.12, multi-tenancy is deprecated. Creating new tenants is strongly discouraged. 
    * @param body Partial Tenant description (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("POST /API/platform/tenant")
   @Headers({
     "Content-Type: application/json",
@@ -53,7 +56,9 @@ public interface TenantApi extends ApiClient.Api {
    * Delete the Tenant by ID
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Delete the single Tenant for the given ID 
    * @param id ID of the Tenant to delete (required)
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("DELETE /API/platform/tenant/{id}")
   @Headers({
     "Accept: application/json",
@@ -65,7 +70,9 @@ public interface TenantApi extends ApiClient.Api {
    * Similar to <code>deleteTenantById</code> but it also returns the http response headers .
    * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Delete the single Tenant for the given ID 
    * @param id ID of the Tenant to delete (required)
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("DELETE /API/platform/tenant/{id}")
   @Headers({
     "Accept: application/json",
@@ -76,10 +83,12 @@ public interface TenantApi extends ApiClient.Api {
 
   /**
    * Finds the Tenant by ID
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Returns the single Tenant for the given ID 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Returns the single Tenant for the given ID Warning: Since Bonita 7.12, multi-tenancy is deprecated 
    * @param id ID of the Tenant to return (required)
    * @return Tenant
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/platform/tenant/{id}")
   @Headers({
     "Accept: application/json",
@@ -89,10 +98,12 @@ public interface TenantApi extends ApiClient.Api {
   /**
    * Finds the Tenant by ID
    * Similar to <code>getTenantById</code> but it also returns the http response headers .
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Returns the single Tenant for the given ID 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Returns the single Tenant for the given ID Warning: Since Bonita 7.12, multi-tenancy is deprecated 
    * @param id ID of the Tenant to return (required)
    * @return A ApiResponse that wraps the response boyd and the http headers.
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/platform/tenant/{id}")
   @Headers({
     "Accept: application/json",
@@ -103,14 +114,16 @@ public interface TenantApi extends ApiClient.Api {
 
   /**
    * Finds Tenants
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60;  Warning: Since Bonita 7.12, multi-tenancy is deprecated 
    * @param p index of the page to display (required)
    * @param c maximum number of elements to retrieve (required)
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param o can order on attributes (optional)
    * @param s can search on attributes (optional)
    * @return List&lt;Tenant&gt;
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/platform/tenant?p={p}&c={c}&f={f}&o={o}&s={s}")
   @Headers({
     "Accept: application/json",
@@ -120,14 +133,16 @@ public interface TenantApi extends ApiClient.Api {
   /**
    * Finds Tenants
    * Similar to <code>searchTenants</code> but it also returns the http response headers .
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60;  Warning: Since Bonita 7.12, multi-tenancy is deprecated 
    * @param p index of the page to display (required)
    * @param c maximum number of elements to retrieve (required)
    * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
    * @param o can order on attributes (optional)
    * @param s can search on attributes (optional)
    * @return A ApiResponse that wraps the response boyd and the http headers.
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/platform/tenant?p={p}&c={c}&f={f}&o={o}&s={s}")
   @Headers({
     "Accept: application/json",
@@ -137,7 +152,7 @@ public interface TenantApi extends ApiClient.Api {
 
   /**
    * Finds Tenants
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60;  Warning: Since Bonita 7.12, multi-tenancy is deprecated 
    * Note, this is equivalent to the other <code>searchTenants</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
@@ -153,7 +168,9 @@ public interface TenantApi extends ApiClient.Api {
    *   <li>s - can search on attributes (optional)</li>
    *   </ul>
    * @return List&lt;Tenant&gt;
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("GET /API/platform/tenant?p={p}&c={c}&f={f}&o={o}&s={s}")
   @Headers({
   "Accept: application/json",
@@ -162,7 +179,7 @@ public interface TenantApi extends ApiClient.Api {
 
   /**
   * Finds Tenants
-  * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60; 
+  * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Finds Tenants with pagination params and filters  - can order on &#x60;id&#x60; - can search on &#x60;displayName&#x60; - can filter on &#x60;displayName&#x60;  Warning: Since Bonita 7.12, multi-tenancy is deprecated 
   * Note, this is equivalent to the other <code>searchTenants</code> that receives the query parameters as a map,
   * but this one also exposes the Http response headers
       * @param queryParams Map of query parameters as name-value pairs
@@ -175,7 +192,9 @@ public interface TenantApi extends ApiClient.Api {
           *   <li>s - can search on attributes (optional)</li>
       *   </ul>
           * @return List&lt;Tenant&gt;
+          * @deprecated
       */
+          @Deprecated
       @RequestLine("GET /API/platform/tenant?p={p}&c={c}&f={f}&o={o}&s={s}")
       @Headers({
     "Accept: application/json",
@@ -212,10 +231,12 @@ public interface TenantApi extends ApiClient.Api {
 
   /**
    * Update the Tenant by ID
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Update the Tenant for the given ID 
-   * @param id ID of the Tenant to return (required)
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)  Update a Tenant  Warning: Since Bonita 7.12, multi-tenancy is deprecated 
+   * @param id ID of the Tenant to update. In Subscription edition, it is mandatory; not in Community edition, as there is only one tenant (required)
    * @param tenantUpdateRequest Partial Tenant description (required)
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("PUT /API/platform/tenant/{id}")
   @Headers({
     "Content-Type: application/json",
@@ -226,10 +247,12 @@ public interface TenantApi extends ApiClient.Api {
   /**
    * Update the Tenant by ID
    * Similar to <code>updateTenantById</code> but it also returns the http response headers .
-   * ![edition](https://img.shields.io/badge/edition-entreprise-blue)  Update the Tenant for the given ID 
-   * @param id ID of the Tenant to return (required)
+   * ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)  Update a Tenant  Warning: Since Bonita 7.12, multi-tenancy is deprecated 
+   * @param id ID of the Tenant to update. In Subscription edition, it is mandatory; not in Community edition, as there is only one tenant (required)
    * @param tenantUpdateRequest Partial Tenant description (required)
+   * @deprecated
    */
+  @Deprecated
   @RequestLine("PUT /API/platform/tenant/{id}")
   @Headers({
     "Content-Type: application/json",

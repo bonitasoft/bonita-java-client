@@ -1,20 +1,19 @@
 package org.bonitasoft.web.client.api;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApiResponse;
+
+import org.bonitasoft.web.client.model.Error;
 import org.bonitasoft.web.client.model.TimerEventTrigger;
 import org.bonitasoft.web.client.model.TimerEventTriggerUpdateRequest;
 import org.bonitasoft.web.client.model.TimerEventTriggerUpdateResponse;
 
-import feign.Headers;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import feign.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface TimerEventTriggerApi extends ApiClient.Api {

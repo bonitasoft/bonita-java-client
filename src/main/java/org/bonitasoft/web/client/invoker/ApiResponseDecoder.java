@@ -1,5 +1,10 @@
 package org.bonitasoft.web.client.invoker;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import feign.Response;
+import feign.Types;
+import feign.jackson.JacksonDecoder;
+
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -8,12 +13,6 @@ import java.util.Collections;
 import java.util.Map;
 
 import org.bonitasoft.web.client.model.ApiResponse;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import feign.Response;
-import feign.Types;
-import feign.jackson.JacksonDecoder;
 
 public class ApiResponseDecoder extends JacksonDecoder {
 

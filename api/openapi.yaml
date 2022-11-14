@@ -1,103 +1,141 @@
 openapi: 3.0.2
 info:
-  description: "\nThe REST API lets you access the data with HTTP requests; it is\
-    \ useful when implementing rich web forms / pages for a good user experience.\n\
-    \nIf your application is using a technology other than Java, you can integrate\
-    \ it with the Bonita solution using the Web REST API. This API provides\naccess\
-    \ to all Bonita objects (like processes, tasks, users, connectors etc.), to execute\
-    \ operations on them (create, retrieve, update, delete).\nYou can use these operations\
-    \ to create a workflow with Bonita and integrate it into your application. The\
-    \ Bonita Engine remains responsible for executing\nthe workflow logic (connectors,\
-    \ gateways with conditions, messages, timers etc.) while your application gives\
-    \ access to the workflow.\nUsers can manage processes and tasks, and perform administrative\
-    \ activities.\n\n![diagram of architecture of a REST client integrated with Bonita](images/rest_overview_v2.png)\n\
-    \n### API Extensions\n\nYou can create [Rest API Extensions](rest-api-extensions.md)\
-    \ to extend the Rest API by adding missing ressources (not provided by the Rest\
-    \ API).\nIt is possible for an extension to interact with the engine (via the\
-    \ API) or with any other external service (for example a database, a directory,\
-    \ or a web service).\n\n### Create a resource\n\n| Request URL | `http://.../API/{API_name}/{resource_name}/\
-    \  `|\n|:-|:-|\n| Request Method | POST|\n| Request Payload | an item in JSON|\n\
-    | Response | the same item in JSON, containing the values provided in the posted\
-    \ item, completed with default values and identifiers provided by Bonita Engine.|\n\
-    \n### Read a resource\n\n| Request URL | `http://.../API/{API_name}/{resource_name}/{id}\
-    \ `|\n|:-|:-|\n| Request Method | GET|\n| Response | an item in JSON|\n\nExample\
-    \ `http://.../API/identity/user/5 `\n\n#### Extend resource response\n\nOn some\
-    \ resources, in GET methods the `d` (deploy) URL query parameter can be used to\
-    \ extend the response objects. The value of this parameter consists of an attribute\
-    \ for which you want to make an extended request (called a deploy) and retrieve\
-    \ attributes of a linked resource.\nThis means that instead of retrieving the\
-    \ ID or a parent or referenced resource, you can retrieve the full object.\n\n\
-    For example, when you retrieve a task, you can also retrieve the process definition\
-    \ attributes in addition to the process definition ID that is already part of\
-    \ the task resource.\nThe supported deploy values for a task include its process\
-    \ (d=processId).\n\nSpecifiy multiple `d` parameter to extend several resources.\
-    \ For instance, to retrieve the flow node of id 143 and the associated process,\
-    \ process instance and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`\n\
-    \n#### With compound identifier\n\nThe order of the identifier parts for each\
-    \ resource type is given in the table above.\n\n| Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2}\
-    \ `|\n|:-|:-|\n| Request Method | GET|\n| Response | an item in JSON|\n\nExample\
-    \ `http://.../API/identity/membership/5/12/24 `\n\n### Update a resource\n\n|\
-    \ Request URL | `http://.../API/{API_name}/{resource_name}/{id} `|\n|:-|:-|\n\
-    | Request Method | PUT|\n| Request Payload | a map in JSON containing the new\
-    \ values for the attributes you want to change.|\n| Response | the corresponding\
-    \ item in JSON with new values where you requested a modification|\n\nExample\
-    \ `http://.../API/identity/user/5`\n\n#### With compound identifier:\n\nResponse:\
-    \ the corresponding item in JSON with new values where you requested a modification.\n\
-    \n| Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2}\
-    \ `|\n|:-|:-|\n| Request Method | PUT|\n| Request Payload | ` a map in JSON containing\
-    \ the new values for the attributes you want to change `|\n| Response | ` the\
-    \ corresponding item in JSON with new values where you requested a modification`|\n\
-    \nExample\n`http://.../API/identity/membership/5/12/24 `\n\n### Delete resources\n\
-    \nUse the DELETE request to remove multiple resources.\n\n| Request URL | `http://.../API/{API_name}/{resource_name}/\
-    \ `|\n|:-|:-|\n| Request Method | DELETE|\n| Request Payload | A list of identifiers\
-    \ in JSON, for example `[\"id1\",\"id2\",\"id3\"]`. Compound identifiers are separated\
-    \ by '/' characters.|\n| Response | `empty `|\n\nExample\n`http://.../API/identity/membership/\
-    \ `\n\n### Search for a resource\n\nThe required object is specified with a set\
-    \ of filters in the request URL. The URL parameters must be URL-encoded.\n\nResults\
-    \ are returned in a paged list, so you have to specify the page (counting from\
-    \ zero), and the number of results per page (count), additionally you can define\
-    \ a sort key (order). You can see the total number of matching results in the\
-    \ HTTP response header Content-Range.\nIf you are searching for business data\
-    \ using a custom query, there must be a [count query in the BDM](define-and-deploy-the-bdm.md).\
-    \ If there is no count query, results from a custom query on business data cannot\
-    \ be paged properly (the header Content-Range will be absent).\nFor business data\
-    \ default queries, the count query is defined automatically.\n\nThe available\
-    \ filters are the attributes of the item plus some specific filters defined by\
-    \ each item.\n\n| Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=...\
-    \ `|\n|:-|:-|\n| Request Method | GET|\n| Response | an array of items in JSON|\n\
-    \nExample\n`/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`\n\n\
-    For a GET method that retrieves more than one instance of a resource, you can\
-    \ specify the following request parameters:\n\n* p (Mandatory): index of the page\
-    \ to display\n* c (Mandatory): maximum number of elements to retrieve\n* o: order\
-    \ of presentation of values in response: must be either `attributeName ASC` or\
-    \ `attributeName DESC`. The final order parameter value must be URL encoded.\n\
-    * f: list of filters, specified as `attributeName=attributeValue`. To filter on\
-    \ more than one attribute, specify an f parameters for each attribute. The final\
-    \ filter parameter value must be URL encoded.\n  The attributes you can filter\
-    \ on are specific to the resource.\n* s: search on name or search indexes. The\
-    \ matching policy depends on the configuration of [word-based search](using-list-and-search-methods.md).\n\
-    \  For example, if word-based search is enabled, `s=Valid` returns matches containing\
-    \ the string \"valid\" at the start of any word in the attribute value word,\n\
-    \  such as \"Valid address\", \"Not a valid address\", and \"Validated request\"\
-    \ but not \"Invalid request\".\n  If word-based search is disabled, `s=Valid`\
-    \ returns matches containing the string \"valid\" at the start of the attribute\
-    \ value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid\
-    \ address\" or \"Invalid request\".\n\n### Errors\n\nThe API uses standard HTTP\
-    \ status codes to indicate the success or failure of the API call.\n\nIf you get\
-    \ a `401` response code :\n  - make sure that the cookies have been transfered\
-    \ with the call\n  - make sure that the cookies transfered are the ones generated\
-    \ during the last sucessfull login call\n  - if one of the PUT, DELETE or POST\
-    \ method is used, make sure that the `X-Bonita-API-Token` header is included\n\
-    \  - if the X-Bonita-API-Token header is included, make sure that the value is\
-    \ the same as the one of the cookie generated during the last login\n  - Maybe\
-    \ a logout was issued or the session has expired; try to log in again, and re\
-    \ run the request with the new cookies and the new value for the `X-Bonita-API-Token`\
-    \ header."
+  description: |2-
+
+    The REST API lets you access the data with HTTP requests; it is useful when implementing rich web forms / pages for a good user experience.
+
+    If your application is using a technology other than Java, you can integrate it with the Bonita solution using the Web REST API. This API provides
+    access to all Bonita objects (like processes, tasks, users, connectors etc.), to execute operations on them (create, retrieve, update, delete).
+    You can use these operations to create a workflow with Bonita and integrate it into your application. The Bonita Engine remains responsible for executing
+    the workflow logic (connectors, gateways with conditions, messages, timers etc.) while your application gives access to the workflow.
+    Users can manage processes and tasks, and perform administrative activities.
+
+    ![diagram of architecture of a REST client integrated with Bonita](images/rest_overview_v2.png)
+
+    ### API Extensions
+
+    You can create [Rest API Extensions](rest-api-extensions.md) to extend the Rest API by adding missing ressources (not provided by the Rest API).
+    It is possible for an extension to interact with the engine (via the API) or with any other external service (for example a database, a directory, or a web service).
+
+    ### Create a resource
+
+    | Request URL | `http://.../API/{API_name}/{resource_name}/  `|
+    |:-|:-|
+    | Request Method | POST|
+    | Request Payload | an item in JSON|
+    | Response | the same item in JSON, containing the values provided in the posted item, completed with default values and identifiers provided by Bonita Engine.|
+
+    ### Read a resource
+
+    | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `|
+    |:-|:-|
+    | Request Method | GET|
+    | Response | an item in JSON|
+
+    Example `http://.../API/identity/user/5 `
+
+    #### Extend resource response
+
+    On some resources, in GET methods the `d` (deploy) URL query parameter can be used to extend the response objects. The value of this parameter consists of an attribute for which you want to make an extended request (called a deploy) and retrieve attributes of a linked resource.
+    This means that instead of retrieving the ID or a parent or referenced resource, you can retrieve the full object.
+
+    For example, when you retrieve a task, you can also retrieve the process definition attributes in addition to the process definition ID that is already part of the task resource.
+    The supported deploy values for a task include its process (d=processId).
+
+    Specifiy multiple `d` parameter to extend several resources. For instance, to retrieve the flow node of id 143 and the associated process, process instance and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`
+
+    #### With compound identifier
+
+    The order of the identifier parts for each resource type is given in the table above.
+
+    | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `|
+    |:-|:-|
+    | Request Method | GET|
+    | Response | an item in JSON|
+
+    Example `http://.../API/identity/membership/5/12/24 `
+
+    ### Update a resource
+
+    | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `|
+    |:-|:-|
+    | Request Method | PUT|
+    | Request Payload | a map in JSON containing the new values for the attributes you want to change.|
+    | Response | the corresponding item in JSON with new values where you requested a modification|
+
+    Example `http://.../API/identity/user/5`
+
+    #### With compound identifier:
+
+    Response: the corresponding item in JSON with new values where you requested a modification.
+
+    | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `|
+    |:-|:-|
+    | Request Method | PUT|
+    | Request Payload | ` a map in JSON containing the new values for the attributes you want to change `|
+    | Response | ` the corresponding item in JSON with new values where you requested a modification`|
+
+    Example
+    `http://.../API/identity/membership/5/12/24 `
+
+    ### Delete resources
+
+    Use the DELETE request to remove multiple resources.
+
+    | Request URL | `http://.../API/{API_name}/{resource_name}/ `|
+    |:-|:-|
+    | Request Method | DELETE|
+    | Request Payload | A list of identifiers in JSON, for example `["id1","id2","id3"]`. Compound identifiers are separated by '/' characters.|
+    | Response | `empty `|
+
+    Example
+    `http://.../API/identity/membership/ `
+
+    ### Search for a resource
+
+    The required object is specified with a set of filters in the request URL. The URL parameters must be URL-encoded.
+
+    Results are returned in a paged list, so you have to specify the page (counting from zero), and the number of results per page (count), additionally you can define a sort key (order). You can see the total number of matching results in the HTTP response header Content-Range.
+    If you are searching for business data using a custom query, there must be a [count query in the BDM](define-and-deploy-the-bdm.md). If there is no count query, results from a custom query on business data cannot be paged properly (the header Content-Range will be absent).
+    For business data default queries, the count query is defined automatically.
+
+    The available filters are the attributes of the item plus some specific filters defined by each item.
+
+    | Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=... `|
+    |:-|:-|
+    | Request Method | GET|
+    | Response | an array of items in JSON|
+
+    Example
+    `/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`
+
+    For a GET method that retrieves more than one instance of a resource, you can specify the following request parameters:
+
+    * p (Mandatory): index of the page to display
+    * c (Mandatory): maximum number of elements to retrieve
+    * o: order of presentation of values in response: must be either `attributeName ASC` or `attributeName DESC`. The final order parameter value must be URL encoded.
+    * f: list of filters, specified as `attributeName=attributeValue`. To filter on more than one attribute, specify an f parameters for each attribute. The final filter parameter value must be URL encoded.
+      The attributes you can filter on are specific to the resource.
+    * s: search on name or search indexes. The matching policy depends on the configuration of [word-based search](using-list-and-search-methods.md).
+      For example, if word-based search is enabled, `s=Valid` returns matches containing the string "valid" at the start of any word in the attribute value word,
+      such as "Valid address", "Not a valid address", and "Validated request" but not "Invalid request".
+      If word-based search is disabled, `s=Valid` returns matches containing the string "valid" at the start of the attribute value, such as "Valid address" or "Validated request" but not "Not a valid address" or "Invalid request".
+
+    ### Errors
+
+    The API uses standard HTTP status codes to indicate the success or failure of the API call.
+
+    If you get a `401` response code :
+      - make sure that the cookies have been transfered with the call
+      - make sure that the cookies transfered are the ones generated during the last sucessfull login call
+      - if one of the PUT, DELETE or POST method is used, make sure that the `X-Bonita-API-Token` header is included
+      - if the X-Bonita-API-Token header is included, make sure that the value is the same as the one of the cookie generated during the last login
+      - Maybe a logout was issued or the session has expired; try to log in again, and re run the request with the new cookies and the new value for the `X-Bonita-API-Token` header.
   license:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita HTTP API
-  version: 0.0.9
+  version: 0.0.10
   x-logo:
     url: images/logo_bonitasoft_white.png
     backgroundColor: '#003355'
@@ -130,16 +168,14 @@ tags:
     data from one place.
   name: Application
   x-displayName: Application
-- description: "Manage the set of menus in an application. This set of menus enables\
-    \ a user to navigate to the application pages.\n\nThere are two types of menu\
-    \ item:\n\nA top-level item appears in the navigation bar of the application.\
-    \ A top-level item can be clickable, leading to a page, or can be a parent for\
-    \ a menu of clickable items.\nA child menu item becomes visible in a menu when\
-    \ the parent is selected. A child menu item is clickable and leads to a page.\n\
-    Each menu item has an index that defines the position in the menu. For a top-level\
-    \ menu item, this is the position in the the navigation bar counting from the\
-    \ left. For a child menu item, this is the position in the menu counting from\
-    \ the top.\n"
+- description: |
+    Manage the set of menus in an application. This set of menus enables a user to navigate to the application pages.
+
+    There are two types of menu item:
+
+    A top-level item appears in the navigation bar of the application. A top-level item can be clickable, leading to a page, or can be a parent for a menu of clickable items.
+    A child menu item becomes visible in a menu when the parent is selected. A child menu item is clickable and leads to a page.
+    Each menu item has an index that defines the position in the menu. For a top-level menu item, this is the position in the the navigation bar counting from the left. For a child menu item, this is the position in the menu counting from the top.
   name: ApplicationMenu
   x-displayName: ApplicationMenu
 - description: |
@@ -182,12 +218,17 @@ tags:
 - description: Platform Authentication
   name: PlatformAuthentication
   x-displayName: Platform Authentication
-- description: "Show status or install or update the Business Data Model.\n\nInstalling\
-    \ or updating a BDM on your tenant needs to be done in two successive steps:\n\
-    \n1. Upload a BDM file\n2. Install/Update the previously uploaded file\n\n**To\
-    \ do this, your tenant services need to be paused.**\n\n**In Enterprise editions,\
-    \ if you have an access control file installed on your tenant, you need to delete\
-    \ it before installing or updating your BDM.**\n"
+- description: |
+    Show status or install or update the Business Data Model.
+
+    Installing or updating a BDM on your tenant needs to be done in two successive steps:
+
+    1. Upload a BDM file
+    2. Install/Update the previously uploaded file
+
+    **To do this, your tenant services need to be paused.**
+
+    **In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.**
   name: BDM
   x-displayName: Business Data Model
 - description: "BDM Access control is available to protect the tenant BDM. You can\
@@ -259,9 +300,9 @@ tags:
 - description: I18nTranslation
   name: I18ntranslation
   x-displayName: I18nTranslation
-- description: "Handle the license information. This requires a platform session.\
-    \ Log in using the platform login service.\nThis Web REST API is available in\
-    \ **Enterprise editions only**, since version 7.11.\n"
+- description: |
+    Handle the license information. This requires a platform session. Log in using the platform login service.
+    This Web REST API is available in **Enterprise editions only**, since version 7.11.
   name: License
   x-displayName: License
 - description: ManualTask
@@ -341,12 +382,10 @@ tags:
 - description: UserTask
   name: UserTask
   x-displayName: UserTask
-- description: "Create REST API extensions to use third party systems (databases,\
-    \ web services, Bonita Engine, etc) data in forms and pages.\n\nREST API extensions\
-    \ can be used to query business data, Bonita Engine APIs, or an external information\
-    \ system (such as a database, web service, LDAP directory...). They also help\
-    \ to keep a clean separation between the front-end (forms, pages, and interfaces\
-    \ visible to users) and the back-end (processes).\n"
+- description: |
+    Create REST API extensions to use third party systems (databases, web services, Bonita Engine, etc) data in forms and pages.
+
+    REST API extensions can be used to query business data, Bonita Engine APIs, or an external information system (such as a database, web service, LDAP directory...). They also help to keep a clean separation between the front-end (forms, pages, and interfaces visible to users) and the back-end (processes).
   externalDocs:
     url: https://documentation.bonitasoft.com/bonita/latest/rest-api-extensions
   name: RestAPIextensions
@@ -354,17 +393,17 @@ tags:
 paths:
   /loginservice:
     post:
-      description: "A call to the `/loginservice` will generates a set-cookie header\
-        \ in the response.\n\nThe `JSESSIONID` cookie must be transfered with each\
-        \ subsequent calls. (If the REST API is used in an application running in\
-        \ a web browser, this is handled automatically by the web browser just like\
-        \ any cookies).\n\nAdditional protection agains CSRF attacks is enabled by\
-        \ default for all fresh installations This security relies on `X-Bonita-API-Token`\
-        \ information.\nThe `X-Bonita-API-Token` value can be found in the cookie\
-        \ named: `X-Bonita-API-Token`.\n\nAll the subsequence REST API calls performing\
-        \ changes in the system using DELETE, POST, or PUT HTTP methods must contain\
-        \ the **HTTP header** below:\n\n``` X-Bonita-API-Token: example-dummy-not-be-used-value\
-        \ ```\n"
+      description: |
+        A call to the `/loginservice` will generates a set-cookie header in the response.
+
+        The `JSESSIONID` cookie must be transfered with each subsequent calls. (If the REST API is used in an application running in a web browser, this is handled automatically by the web browser just like any cookies).
+
+        Additional protection agains CSRF attacks is enabled by default for all fresh installations This security relies on `X-Bonita-API-Token` information.
+        The `X-Bonita-API-Token` value can be found in the cookie named: `X-Bonita-API-Token`.
+
+        All the subsequence REST API calls performing changes in the system using DELETE, POST, or PUT HTTP methods must contain the **HTTP header** below:
+
+        ``` X-Bonita-API-Token: example-dummy-not-be-used-value ```
       operationId: login
       requestBody:
         content:
@@ -372,7 +411,7 @@ paths:
             schema:
               $ref: '#/components/schemas/LoginRequest'
       responses:
-        "200":
+        "204":
           content:
             text/plain:
               schema:
@@ -511,11 +550,12 @@ paths:
       x-accepts: application/json
   /API/living/application:
     get:
-      description: "Finds living applications with pagination params and filters\n\
-        \n- can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`,\
-        \ `updatedBy`, `lastUpdateDate`, `version`\n- can search on `token`, `displayName`,\
-        \ `version`\n- can filter on `token`, `displayName`, `version`, `profileId`,\
-        \ `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`\n"
+      description: |
+        Finds living applications with pagination params and filters
+
+        - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`
+        - can search on `token`, `displayName`, `version`
+        - can filter on `token`, `displayName`, `version`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`
       operationId: searchApplications
       parameters:
       - description: index of the page to display
@@ -1005,11 +1045,12 @@ paths:
       x-accepts: application/json
   /API/living/application-menu:
     get:
-      description: "Returns application menus with pagination params and filters\n\
-        \n- can order on `id`, `displayName`, `applicationId`, `applicationPageId`,\
-        \ `menuIndex`, `parentMenuId`\n- can search on `displayName`\n- can filter\
-        \ on `id`, `displayName`, `applicationId`, `applicationPageId`, `menuIndex`,\
-        \ `parentMenuId`\n"
+      description: |
+        Returns application menus with pagination params and filters
+
+        - can order on `id`, `displayName`, `applicationId`, `applicationPageId`, `menuIndex`, `parentMenuId`
+        - can search on `displayName`
+        - can filter on `id`, `displayName`, `applicationId`, `applicationPageId`, `menuIndex`, `parentMenuId`
       operationId: searchApplicationMenus
       parameters:
       - description: index of the page to display
@@ -1380,9 +1421,12 @@ paths:
       x-accepts: application/json
   /API/living/application-page:
     get:
-      description: "Finds application pages with pagination params and filters\n\n\
-        - can order on `id`, `token`, `applicationId`, `pageId`\n- can search on `token`\n\
-        - can filter on `id`, `token`, `applicationId`, `pageId`\n"
+      description: |
+        Finds application pages with pagination params and filters
+
+        - can order on `id`, `token`, `applicationId`, `pageId`
+        - can search on `token`
+        - can filter on `id`, `token`, `applicationId`, `pageId`
       operationId: searchApplicationPages
       parameters:
       - description: index of the page to display
@@ -1680,17 +1724,26 @@ paths:
       x-accepts: application/json
   /API/bdm/businessData/{businessDataType}:
     get:
-      description: "Finds Business Data with pagination params and filters by calling\
-        \ a `Named Query`.\nThe business data query REST API resource is used to call\
-        \ a default or custom business data query. It is available from version 6.5.\n\
-        \n**Data parameters**:\n\n  * businessDataType - the fully-qualified business\
-        \ data type name\n  * q=queryName - the query name\n  * p=0 - the page number\n\
-        \  * c=10 - the maximum number of results in the page\n  * f=parameter=value\
-        \ - sets the parameter value according to business data query parameters defined\
-        \ in Bonita Studio\n  For a Boolean parameter, the accepted values are `true`\
-        \ or `false`.\n\n  By default, for a Date parameter can use the following\
-        \ formats:\n\n  * yyyy-MM-dd\n  * HH:mm:ss\n  * yyyy-MM-dd HH:mm:ss\n  * yyyy-MM-dd'T'HH:mm:ss\n\
-        \  * yyyy-MM-dd'T'HH:mm:ss.SSS\n"
+      description: |
+        Finds Business Data with pagination params and filters by calling a `Named Query`.
+        The business data query REST API resource is used to call a default or custom business data query. It is available from version 6.5.
+
+        **Data parameters**:
+
+          * businessDataType - the fully-qualified business data type name
+          * q=queryName - the query name
+          * p=0 - the page number
+          * c=10 - the maximum number of results in the page
+          * f=parameter=value - sets the parameter value according to business data query parameters defined in Bonita Studio
+          For a Boolean parameter, the accepted values are `true` or `false`.
+
+          By default, for a Date parameter can use the following formats:
+
+          * yyyy-MM-dd
+          * HH:mm:ss
+          * yyyy-MM-dd HH:mm:ss
+          * yyyy-MM-dd'T'HH:mm:ss
+          * yyyy-MM-dd'T'HH:mm:ss.SSS
       operationId: searchBusinessData
       parameters:
       - description: Business Data Type
@@ -2038,8 +2091,10 @@ paths:
       x-accepts: application/json
   /API/accessControl/bdm:
     delete:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nDelete the BDM access control\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Delete the BDM access control
       operationId: deleteBDMAccessControl
       responses:
         "204":
@@ -2083,8 +2138,10 @@ paths:
       - BDMAccessControl
       x-accepts: application/json
     get:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nGet the BDM access control status.\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Get the BDM access control status.
       operationId: getBDMAccessControlStatus
       responses:
         "200":
@@ -2133,8 +2190,10 @@ paths:
       x-accepts: application/json
   /portal/bdmAccessControlUpload:
     post:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nUpload BDM Access Control\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Upload BDM Access Control
       operationId: uploadBDMAccessControl
       requestBody:
         content:
@@ -2191,8 +2250,10 @@ paths:
       x-accepts: application/json
   /services/bdmAccessControl/install:
     post:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nImport a BDM Access Control\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Import a BDM Access Control
       operationId: importBDMAccessControl
       requestBody:
         content:
@@ -2253,16 +2314,12 @@ paths:
       x-accepts: application/json
   /API/bpm/activity:
     get:
-      description: "Finds Activities with pagination params and filters. Activities\
-        \ in states completed, cancelled, or aborted are not retrieved. The search\
-        \ returns an array of activities.\n\n- can order on `name`, `displayName`,\
-        \ `state`, `processDefinitionId`, `parentProcessInstanceId`, `parentActivityInstanceId`\
-        \ (order by parent activity id), `rootProcessInstanceId`, `lastUpdateDate`\n\
-        - can search on `name`, `displayName`, `state`, `processDefinitionId`, `parentProcessInstanceId`,\
-        \ `parentActivityInstanceId` (order by parent activity id), `rootProcessInstanceId`,\
-        \ `lastUpdateDate`\n- can filter on `name`, `state`, `processId`, `parentProcessInstanceId`,\
-        \ `rootProcessInstanceId`, `last_update_date`, `supervisor_id` (only in Enterprise\
-        \ editions)\n"
+      description: |
+        Finds Activities with pagination params and filters. Activities in states completed, cancelled, or aborted are not retrieved. The search returns an array of activities.
+
+        - can order on `name`, `displayName`, `state`, `processDefinitionId`, `parentProcessInstanceId`, `parentActivityInstanceId` (order by parent activity id), `rootProcessInstanceId`, `lastUpdateDate`
+        - can search on `name`, `displayName`, `state`, `processDefinitionId`, `parentProcessInstanceId`, `parentActivityInstanceId` (order by parent activity id), `rootProcessInstanceId`, `lastUpdateDate`
+        - can filter on `name`, `state`, `processId`, `parentProcessInstanceId`, `rootProcessInstanceId`, `last_update_date`, `supervisor_id` (only in Enterprise editions)
       operationId: searchActivities
       parameters:
       - description: index of the page to display
@@ -2510,18 +2567,22 @@ paths:
       x-accepts: application/json
   /API/bpm/archivedActivity:
     get:
-      description: "Finds Archived  Activities with pagination params and filters.\
-        \ Activities in states completed, cancelled, or aborted are not retrieved.\
-        \ The search returns an array of activities.\n\nCan order on:\n  - `name`\
-        \ : the name of this activity\n  - `displayName` : the display name of this\
-        \ activity\n  - `state` : the current state of the activity\n  - `type` :\
-        \ the activity type\n  - `isTerminal` : say whether or not the activity is\
-        \ in a terminal state\n  - `processId` : the process this activity is associated\
-        \ to\n  - `caseId` : the process instance initiator this activity is associated\
-        \ to\n  - `reached_state_date` : the date when this activity arrived in this\
-        \ state\n\nCan filter on:\n  - `supervisor_id`: retrieve the information the\
-        \ process manager associated to this id has access to (only in Enterprise\
-        \ editions)\n  - f: same as the sort order fields\n"
+      description: |
+        Finds Archived  Activities with pagination params and filters. Activities in states completed, cancelled, or aborted are not retrieved. The search returns an array of activities.
+
+        Can order on:
+          - `name` : the name of this activity
+          - `displayName` : the display name of this activity
+          - `state` : the current state of the activity
+          - `type` : the activity type
+          - `isTerminal` : say whether or not the activity is in a terminal state
+          - `processId` : the process this activity is associated to
+          - `caseId` : the process instance initiator this activity is associated to
+          - `reached_state_date` : the date when this activity arrived in this state
+
+        Can filter on:
+          - `supervisor_id`: retrieve the information the process manager associated to this id has access to (only in Enterprise editions)
+          - f: same as the sort order fields
       operationId: searchArchivedActivities
       parameters:
       - description: index of the page to display
@@ -2699,12 +2760,12 @@ paths:
       x-accepts: application/json
   /API/bpm/humanTask:
     get:
-      description: "Finds HumanTasks with pagination params and filters\n\n- can order\
-        \ on `name`, `priority`, `dueDate`, `state`, `processDefinitionId`, `processInstanceId`,\
-        \ `parentActivityInstanceId`, `assigneeId`, `parentContainerId`, `displayName`,\
-        \ `reachedStateDate`\n- can search on any field that can be used to order\
-        \ results\n- can filter on `assigned_id`, `state`, `name`, `displayName`,\
-        \ `processDefinitionId`, `caseId`, `rootProcessInstanceId`, `parentProcessInstanceId`\n"
+      description: |
+        Finds HumanTasks with pagination params and filters
+
+        - can order on `name`, `priority`, `dueDate`, `state`, `processDefinitionId`, `processInstanceId`, `parentActivityInstanceId`, `assigneeId`, `parentContainerId`, `displayName`, `reachedStateDate`
+        - can search on any field that can be used to order results
+        - can filter on `assigned_id`, `user_id`, `show_assigned_to_others` (since 2022.2), `state`, `name`, `displayName`, `processDefinitionId`, `caseId`, `rootProcessInstanceId`, `parentProcessInstanceId`
       operationId: searchHumanTasks
       parameters:
       - description: index of the page to display
@@ -2953,20 +3014,19 @@ paths:
       x-accepts: application/json
   /API/bpm/manualTask:
     get:
-      description: "Finds ManualTasks with pagination params and filters\n\nYou can\
-        \ filter on:\n\n* `assigned_id={user_id}`: retrieve only the manual tasks\
-        \ assigned to the specified user. For example, retrieve the manual tasks assigned\
-        \ to user with id 1: `/API/bpm/manualTask?p=0&c=10&f=assigned_id%3d1`.\n*\
-        \ `state=skipped | ready | completed | failed` : retrieve only the manual\
-        \ tasks with the specified state. For example, retrieve the ready tasks: `/API/bpm/manualTask?p=0&c=10&f=state%3dready`.\n\
-        * `caseId={case_id}`: retrieve only the manual tasks created in the specified\
-        \ process instances. For example, retrieve the manual tasks for the case\\\
-        _id 2: `/API/bpm/manualTask?p=0&c=10&f=caseId%3d2`.\n* `parentTaskId={parentTask_id}`:\
-        \ retrieve only the manual tasks for a specific parentTask. For example, retrieve\
-        \ the manual tasks for the parentTask\\_id 40001: `/API/bpm/manualTask?p=0&c=10&f=parentTaskId%3d40001`.\n\
-        \nYou can search on:\n\n* name: search all manual tasks with a name that starts\
-        \ with the search string. For example, search for all manual tasks that have\
-        \ a name that starts with MySubTask: `/API/bpm/manualTask?p=0&c=10&s=MySubTask`.\n"
+      description: |
+        Finds ManualTasks with pagination params and filters
+
+        You can filter on:
+
+        * `assigned_id={user_id}`: retrieve only the manual tasks assigned to the specified user. For example, retrieve the manual tasks assigned to user with id 1: `/API/bpm/manualTask?p=0&c=10&f=assigned_id%3d1`.
+        * `state=skipped | ready | completed | failed` : retrieve only the manual tasks with the specified state. For example, retrieve the ready tasks: `/API/bpm/manualTask?p=0&c=10&f=state%3dready`.
+        * `caseId={case_id}`: retrieve only the manual tasks created in the specified process instances. For example, retrieve the manual tasks for the case\_id 2: `/API/bpm/manualTask?p=0&c=10&f=caseId%3d2`.
+        * `parentTaskId={parentTask_id}`: retrieve only the manual tasks for a specific parentTask. For example, retrieve the manual tasks for the parentTask\_id 40001: `/API/bpm/manualTask?p=0&c=10&f=parentTaskId%3d40001`.
+
+        You can search on:
+
+        * name: search all manual tasks with a name that starts with the search string. For example, search for all manual tasks that have a name that starts with MySubTask: `/API/bpm/manualTask?p=0&c=10&s=MySubTask`.
       operationId: searchManualTasks
       parameters:
       - description: index of the page to display
@@ -3275,9 +3335,11 @@ paths:
       x-accepts: application/json
   /API/bpm/task:
     get:
-      description: "Finds Tasks with pagination params and filters\n\n- can order\
-        \ on `caseId`, `processId`, `state`, `type`, `supervisor_id`, `last_update_date`\n\
-        - can filter on `caseId`, `processId`, `state`, `type`, `supervisor_id`, `last_update_date`\n"
+      description: |
+        Finds Tasks with pagination params and filters
+
+        - can order on `caseId`, `processId`, `state`, `type`, `supervisor_id`, `last_update_date`
+        - can filter on `caseId`, `processId`, `state`, `type`, `supervisor_id`, `last_update_date`
       operationId: searchTasks
       parameters:
       - description: index of the page to display
@@ -3842,8 +3904,8 @@ paths:
       x-accepts: application/json
   /API/bpm/userTask/{id}/execution:
     post:
-      description: "Execute the UserTask. In order to execute a task, the task contract\
-        \ values have to be provided.\n"
+      description: |
+        Execute the UserTask. In order to execute a task, the task contract values have to be provided.
       operationId: executeUserTask
       parameters:
       - description: ID of the UserTask to execute
@@ -4008,18 +4070,15 @@ paths:
       x-accepts: application/json
   /API/bpm/archivedHumanTask:
     get:
-      description: "Finds ArchivedHumanTasks with pagination params and filters\n\n\
-        You can filter on:\n\n* `assigned_id={user_id}`: retrieve only the human tasks\
-        \ assigned to the specified ID. For example, retrieve the human tasks assigned\
-        \ to user with id 2: `/API/bpm/archivedHumanTask?p=0&c=10&f=assigned_id%3d2`\n\
-        * `state=`: retrieve only the archived user tasks with the specified state.\
-        \ For example, retrieve the skipped tasks: `/API/bpm/archivedHumanTask?p=0&c=10&f=state=skipped`\n\
-        * `name=`: retrieve only the human tasks with the specified name. For example,\
-        \ retrieve the human tasks with the name \"Analyse ProcessInstance\": `/API/bpm/archivedHumanTask?p=0&c=10&f=name=Analyse\
-        \ ProcessInstance`\n* `displayName=`: retrieve only the archived user tasks\
-        \ with the specified displayName. For example, retrieve the human tasks with\
-        \ the displayName \"Analyse ProcessInstance\": `/API/bpm/archivedHumanTask?p=0&c=10&f=displayName=Analyse\
-        \ ProcessInstance`\n"
+      description: |
+        Finds ArchivedHumanTasks with pagination params and filters
+
+        You can filter on:
+
+        * `assigned_id={user_id}`: retrieve only the human tasks assigned to the specified ID. For example, retrieve the human tasks assigned to user with id 2: `/API/bpm/archivedHumanTask?p=0&c=10&f=assigned_id%3d2`
+        * `state=`: retrieve only the archived user tasks with the specified state. For example, retrieve the skipped tasks: `/API/bpm/archivedHumanTask?p=0&c=10&f=state=skipped`
+        * `name=`: retrieve only the human tasks with the specified name. For example, retrieve the human tasks with the name "Analyse ProcessInstance": `/API/bpm/archivedHumanTask?p=0&c=10&f=name=Analyse ProcessInstance`
+        * `displayName=`: retrieve only the archived user tasks with the specified displayName. For example, retrieve the human tasks with the displayName "Analyse ProcessInstance": `/API/bpm/archivedHumanTask?p=0&c=10&f=displayName=Analyse ProcessInstance`
       operationId: searchArchivedHumanTasks
       parameters:
       - description: index of the page to display
@@ -4189,18 +4248,15 @@ paths:
       x-accepts: application/json
   /API/bpm/archivedManualTask:
     get:
-      description: "Finds ArchivedManualTasks with pagination params and filters\n\
-        \nYou can filter on:\n\n* `assigned_id={user_id}`: retrieve only the human\
-        \ tasks assigned to the specified ID. For example, retrieve the human tasks\
-        \ assigned to user with id 2: `/API/bpm/archivedHumanTask?p=0&c=10&f=assigned_id%3d2`\n\
-        * `state=`: retrieve only the archived user tasks with the specified state.\
-        \ For example, retrieve the skipped tasks: `/API/bpm/archivedHumanTask?p=0&c=10&f=state=skipped`\n\
-        * `name=`: retrieve only the human tasks with the specified name. For example,\
-        \ retrieve the human tasks with the name \"Analyse ProcessInstance\": `/API/bpm/archivedHumanTask?p=0&c=10&f=name=Analyse\
-        \ ProcessInstance`\n* `displayName=`: retrieve only the archived user tasks\
-        \ with the specified displayName. For example, retrieve the human tasks with\
-        \ the displayName \"Analyse ProcessInstance\": `/API/bpm/archivedHumanTask?p=0&c=10&f=displayName=Analyse\
-        \ ProcessInstance`\n"
+      description: |
+        Finds ArchivedManualTasks with pagination params and filters
+
+        You can filter on:
+
+        * `assigned_id={user_id}`: retrieve only the human tasks assigned to the specified ID. For example, retrieve the human tasks assigned to user with id 2: `/API/bpm/archivedHumanTask?p=0&c=10&f=assigned_id%3d2`
+        * `state=`: retrieve only the archived user tasks with the specified state. For example, retrieve the skipped tasks: `/API/bpm/archivedHumanTask?p=0&c=10&f=state=skipped`
+        * `name=`: retrieve only the human tasks with the specified name. For example, retrieve the human tasks with the name "Analyse ProcessInstance": `/API/bpm/archivedHumanTask?p=0&c=10&f=name=Analyse ProcessInstance`
+        * `displayName=`: retrieve only the archived user tasks with the specified displayName. For example, retrieve the human tasks with the displayName "Analyse ProcessInstance": `/API/bpm/archivedHumanTask?p=0&c=10&f=displayName=Analyse ProcessInstance`
       operationId: searchArchivedManualTasks
       parameters:
       - description: index of the page to display
@@ -4370,19 +4426,16 @@ paths:
       x-accepts: application/json
   /API/bpm/archivedUserTask:
     get:
-      description: "Finds ArchivedUserTasks with pagination params and filters.\n\
-        An ArchivedUserTask is an executable task that has been performed by a user\
-        \ or skipped and is archived.\n\nYou can filter on:\n\n* `assigned_id={user_id}`:\
-        \ retrieve only the user tasks assigned to the specified ID. For example,\
-        \ retrieve the user tasks assigned to user with id 2: `/API/bpm/archivedUserTask?p=0&c=10&f=assigned_id%3d2`\n\
-        * `state=`: retrieve only the archived user tasks with the specified state.\
-        \ For example, retrieve the skipped tasks: `/API/bpm/archivedUserTask?p=0&c=10&f=state=skipped`\n\
-        * `name=`: retrieve only the user tasks with the specified name. For example,\
-        \ retrieve the user tasks with the name \"Analyse ProcessInstance\": `/API/bpm/archivedUserTask?p=0&c=10&f=name=Analyse\
-        \ ProcessInstance`\n* `displayName=`: retrieve only the archived user tasks\
-        \ with the specified displayName. For example, retrieve the user tasks with\
-        \ the displayName \"Analyse ProcessInstance\": `/API/bpm/archivedUserTask?p=0&c=10&f=displayName=Analyse\
-        \ ProcessInstance`\n"
+      description: |
+        Finds ArchivedUserTasks with pagination params and filters.
+        An ArchivedUserTask is an executable task that has been performed by a user or skipped and is archived.
+
+        You can filter on:
+
+        * `assigned_id={user_id}`: retrieve only the user tasks assigned to the specified ID. For example, retrieve the user tasks assigned to user with id 2: `/API/bpm/archivedUserTask?p=0&c=10&f=assigned_id%3d2`
+        * `state=`: retrieve only the archived user tasks with the specified state. For example, retrieve the skipped tasks: `/API/bpm/archivedUserTask?p=0&c=10&f=state=skipped`
+        * `name=`: retrieve only the user tasks with the specified name. For example, retrieve the user tasks with the name "Analyse ProcessInstance": `/API/bpm/archivedUserTask?p=0&c=10&f=name=Analyse ProcessInstance`
+        * `displayName=`: retrieve only the archived user tasks with the specified displayName. For example, retrieve the user tasks with the displayName "Analyse ProcessInstance": `/API/bpm/archivedUserTask?p=0&c=10&f=displayName=Analyse ProcessInstance`
       operationId: searchArchivedUserTasks
       parameters:
       - description: index of the page to display
@@ -4552,11 +4605,11 @@ paths:
       x-accepts: application/json
   /API/bpm/archivedTask:
     get:
-      description: "Finds ArchivedTasks with pagination params and filters\n\n- Can\
-        \ order on `caseId`, `name`, `displayName`, `processId`, `state`, `type`,\
-        \ `archivedDate`, `reached_state_date`, `assigned_id`\n- Can filter on `caseId`,\
-        \ `name`, `displayName`, `processId`, `state`, `type`, `archivedDate`, `reached_state_date`,\
-        \ `assigned_id`, `isTerminal`\n"
+      description: |
+        Finds ArchivedTasks with pagination params and filters
+
+        - Can order on `caseId`, `name`, `displayName`, `processId`, `state`, `type`, `archivedDate`, `reached_state_date`, `assigned_id`
+        - Can filter on `caseId`, `name`, `displayName`, `processId`, `state`, `type`, `archivedDate`, `reached_state_date`, `assigned_id`, `isTerminal`
       operationId: searchArchivedTasks
       parameters:
       - description: index of the page to display
@@ -5152,10 +5205,10 @@ paths:
       - ProcessInstanceVariable
       x-accepts: application/json
     put:
-      description: "Update the variable for the given ProcessInstance ID.\n\n**Warning**\
-        \ : only following types are supported for javaTypeclassname: `java.lang.String`,\
-        \ `java.lang.Integer`, `java.lang.Double`, `java.lang.Long`, `java.lang.Boolean`,\
-        \ `java.util.Date`\n"
+      description: |
+        Update the variable for the given ProcessInstance ID.
+
+        **Warning** : only following types are supported for javaTypeclassname: `java.lang.String`, `java.lang.Integer`, `java.lang.Double`, `java.lang.Long`, `java.lang.Boolean`, `java.util.Date`
       operationId: updateVariableByProcessInstanceId
       parameters:
       - description: The identifier of the process instance from which to retrieve
@@ -5312,18 +5365,16 @@ paths:
       x-accepts: application/json
   /API/bpm/caseDocument:
     get:
-      description: "Finds ProcessInstanceDocuments with pagination params and filters\n\
-        \nIt is possible to filter on three parameters: `submittedBy`, `name` and\
-        \ `description`.\n\n * `submittedBy=\"id\"`: search for documents that were\
-        \ submitted by the user with the specified identifier.\n * `name=\"string\"\
-        `: search for documents with names that contain _string_.\n   Depending on\
-        \ the setting for [word-based search](using-list-and-search-methods.md), the\
-        \ search returns documents with _string_ at the start of the name or the start\
-        \ of a word in the name.\n * `description=\"string\"`: search for documents\
-        \ with descriptions that contain _string_.\n   Depending on the setting for\
-        \ [word-based search](using-list-and-search-methods.md), the search returns\
-        \ documents with _string_ at the start of the description or the start of\
-        \ a word in the description.\n"
+      description: |
+        Finds ProcessInstanceDocuments with pagination params and filters
+
+        It is possible to filter on three parameters: `submittedBy`, `name` and `description`.
+
+         * `submittedBy="id"`: search for documents that were submitted by the user with the specified identifier.
+         * `name="string"`: search for documents with names that contain _string_.
+           Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the name or the start of a word in the name.
+         * `description="string"`: search for documents with descriptions that contain _string_.
+           Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the description or the start of a word in the description.
       operationId: searchProcessInstanceDocuments
       parameters:
       - description: index of the page to display
@@ -5425,15 +5476,13 @@ paths:
       - ProcessInstanceDocument
       x-accepts: application/json
     post:
-      description: "Create the ProcessInstanceDocument.\n\nUse a POST method to add\
-        \ a document to a process instances. You can upload a document from the local\
-        \ file system or by URL.\nSpecify the process instance id and the document\
-        \ name in the payload. The document description is optional: if you do not\
-        \ specify a description, the description in the response is empty.\nThe response\
-        \ contains a version, which is managed automatically. You cannot currently\
-        \ retrieve a specific version of a document, only the most recent version.\n\
-        To retrieve earlier versions of a ProcessInstanceDocument, use the archivedProcessInstanceDocument\
-        \ resource.\n"
+      description: |
+        Create the ProcessInstanceDocument.
+
+        Use a POST method to add a document to a process instances. You can upload a document from the local file system or by URL.
+        Specify the process instance id and the document name in the payload. The document description is optional: if you do not specify a description, the description in the response is empty.
+        The response contains a version, which is managed automatically. You cannot currently retrieve a specific version of a document, only the most recent version.
+        To retrieve earlier versions of a ProcessInstanceDocument, use the archivedProcessInstanceDocument resource.
       operationId: createProcessInstanceDocument
       requestBody:
         content:
@@ -5553,11 +5602,9 @@ paths:
       - ProcessInstanceDocument
       x-accepts: application/json
     get:
-      description: "Returns the single ProcessInstanceDocument for the given ID.\n\
-        Use a GET method to get a document from a process instances. First you get\
-        \ the document information, then you download the content. To get the document\
-        \ information, specify the document id in the URL. The document id is created\
-        \ when you upload a document to a process instances. There is no payload.\n"
+      description: |
+        Returns the single ProcessInstanceDocument for the given ID.
+        Use a GET method to get a document from a process instances. First you get the document information, then you download the content. To get the document information, specify the document id in the URL. The document id is created when you upload a document to a process instances. There is no payload.
       operationId: getProcessInstanceDocumentById
       parameters:
       - description: ID of the ProcessInstanceDocument to return
@@ -5574,14 +5621,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessInstanceDocument'
-          description: "\"Success \".\nThe response includes the \"url\" to use to\
-            \ download the content. Call the documentDownload servlet with this URL:\
-            \ /portal/documentDownload?fileName=doc.jpg&contentStorageId=4. Note:\
-            \ Since Bonita 7.10, document url fileName is now URL encoded. This will\
-            \ avoid errors when a document to be downloaded contains special characters\
-            \ in its name.\nIn the previous versions, a workaround was necessary client-side\
-            \ using the javascript native function \"encodeURI\" to generate document\
-            \ download url. You can now remove this workaround.\n"
+          description: |
+            "Success ".
+            The response includes the "url" to use to download the content. Call the documentDownload servlet with this URL: /portal/documentDownload?fileName=doc.jpg&contentStorageId=4. Note: Since Bonita 7.10, document url fileName is now URL encoded. This will avoid errors when a document to be downloaded contains special characters in its name.
+            In the previous versions, a workaround was necessary client-side using the javascript native function "encodeURI" to generate document download url. You can now remove this workaround.
         "400":
           content:
             application/json:
@@ -5629,14 +5672,12 @@ paths:
       - ProcessInstanceDocument
       x-accepts: application/json
     put:
-      description: "Update the ProcessInstanceDocument for the given ID\n\nYou update\
-        \ a document in a process instance by uploading a new version of the document\
-        \ using a PUT method. You can upload a document version from the local file\
-        \ system or by URL. The document name will be used in all the process instances\
-        \ of the process, but the combination of process instance id and document\
-        \ name is unique.\nIn the URL, you specify to supply the document id. This\
-        \ is included in the response when you first add a document to a process instances.\n\
-        The response to PUT methods is the same as for POST methods.\n"
+      description: |
+        Update the ProcessInstanceDocument for the given ID
+
+        You update a document in a process instance by uploading a new version of the document using a PUT method. You can upload a document version from the local file system or by URL. The document name will be used in all the process instances of the process, but the combination of process instance id and document name is unique.
+        In the URL, you specify to supply the document id. This is included in the response when you first add a document to a process instances.
+        The response to PUT methods is the same as for POST methods.
       operationId: updateProcessInstanceDocumentById
       parameters:
       - description: ID of the ProcessInstanceDocument to return
@@ -5706,22 +5747,20 @@ paths:
       x-accepts: application/json
   /API/bpm/archivedCaseDocument:
     get:
-      description: "Finds ArchivedProcessInstanceDocuments with pagination params\
-        \ and filters\n\nYou can filter on :\n\n* `sourceObjectId=\"id\"`: search\
-        \ for documents by specifying the original document id.\n  This is useful\
-        \ if you know the id of a ProcessInstanceDocument and you wish to retrieve\
-        \ all its previous versions..\n* `caseId=\"id\"`: search for documents with\
-        \ the specified open process instance id.\n* `archivedProcessInstanceId=\"\
-        id\"`: search for documents with the specified archvied process instance id.\n\
-        * `submittedBy=\"id\"`: search for documents that were submitted by the user\
-        \ with the specified identifier.\n* `name=\"string\"`: search for documents\
-        \ with names that contain _string_.\n  Depending on the setting for [word-based\
-        \ search](using-list-and-search-methods.md), the search returns documents\
-        \ with _string_ at the start of the name or the start of a word in the name.\n\
-        * `description=\"string\"`: search for documents with descriptions that contain\
-        \ _string_.\n  Depending on the setting for [word-based search](using-list-and-search-methods.md),\
-        \ the search returns documents with _string_ at the start of the description\
-        \ or the start of a word in the description.\n"
+      description: |
+        Finds ArchivedProcessInstanceDocuments with pagination params and filters
+
+        You can filter on :
+
+        * `sourceObjectId="id"`: search for documents by specifying the original document id.
+          This is useful if you know the id of a ProcessInstanceDocument and you wish to retrieve all its previous versions..
+        * `caseId="id"`: search for documents with the specified open process instance id.
+        * `archivedProcessInstanceId="id"`: search for documents with the specified archvied process instance id.
+        * `submittedBy="id"`: search for documents that were submitted by the user with the specified identifier.
+        * `name="string"`: search for documents with names that contain _string_.
+          Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the name or the start of a word in the name.
+        * `description="string"`: search for documents with descriptions that contain _string_.
+          Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the description or the start of a word in the description.
       operationId: searchArchivedProcessInstanceDocuments
       parameters:
       - description: index of the page to display
@@ -6128,16 +6167,19 @@ paths:
       x-accepts: application/json
   /API/bpm/actorMember:
     get:
-      description: "Finds ActorMembers with pagination params and filters\n\nThere\
-        \ is a **mandatory** filter on:\n\n* `actor_id` For example, retrieve the\
-        \ actorMembers related to the specified actor_id. http://localhost:8080/bonita/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1\n\
-        \nYou can also filter also on:\n\n* `member_type` (user|role|group|roleAndGroup)\
-        \ retrieve only the actorMembers of type user. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=member_type%3duser`\n\
-        * `user_id`: retrieve only the actorMembers related to the specified user_id.\
-        \ `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=user_id%3d101`\n* `role_id`:\
-        \ retrieve only the actorMembers related to the specified role_id. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=role_id%3d101`\n\
-        * `group_id`: retrieve only the actorMembers related to the specified group_id.\
-        \ `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=group_id%3d101`\n"
+      description: |
+        Finds ActorMembers with pagination params and filters
+
+        There is a **mandatory** filter on:
+
+        * `actor_id` For example, retrieve the actorMembers related to the specified actor_id. http://localhost:8080/bonita/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1
+
+        You can also filter also on:
+
+        * `member_type` (user|role|group|roleAndGroup) retrieve only the actorMembers of type user. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=member_type%3duser`
+        * `user_id`: retrieve only the actorMembers related to the specified user_id. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=user_id%3d101`
+        * `role_id`: retrieve only the actorMembers related to the specified role_id. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=role_id%3d101`
+        * `group_id`: retrieve only the actorMembers related to the specified group_id. `/API/bpm/actorMember?p=0&c=10&f=actor_id%3d1&f=group_id%3d101`
       operationId: searchActorMembers
       parameters:
       - description: index of the page to display
@@ -6369,9 +6411,10 @@ paths:
       x-accepts: application/json
   /API/bpm/case:
     delete:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\
-        \ ![edition](https://img.shields.io/badge/edition-community-brightgreen)\n\
-        \nDelete a list of ProcessInstances for the given IDs\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)
+
+        Delete a list of ProcessInstances for the given IDs
       operationId: deleteProcessInstanceByIds
       requestBody:
         content:
@@ -6432,14 +6475,16 @@ paths:
       x-content-type: application/json
       x-accepts: application/json
     get:
-      description: "Finds ProcessInstances with pagination params and filters\n\n\
-        You can filter on:\n\n* `processDefinitionId`: The process derfinition ID\n\
-        * `name`: the process name\n* `started_by`: the ID of the user who started\
-        \ the process\n* `team_manager_id`: allow to retrieve the process instances\
-        \ in which all users with this manager ID ar involved)\n* `supervisor_id`:\
-        \ allow the retrived the process instances of all processes the user with\
-        \ this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id\
-        \ at the same time\n"
+      description: |
+        Finds ProcessInstances with pagination params and filters
+
+        You can filter on:
+
+        * `processDefinitionId`: The process derfinition ID
+        * `name`: the process name
+        * `started_by`: the ID of the user who started the process
+        * `team_manager_id`: allow to retrieve the process instances in which all users with this manager ID ar involved)
+        * `supervisor_id`: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
       operationId: searchProcessInstances
       parameters:
       - description: index of the page to display
@@ -6541,23 +6586,19 @@ paths:
       - ProcessInstance
       x-accepts: application/json
     post:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\
-        \ ![edition](https://img.shields.io/badge/edition-community-brightgreen)\n\
-        \nCreate the ProcessInstance\nThis way of creating a process instance using\
-        \ this method will only work for processes in which no contract is defined.\
-        \ To instantiate a process with a contract, check the process instantiation\
-        \ resource documentation.\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)
+
+        Create the ProcessInstance
+        This way of creating a process instance using this method will only work for processes in which no contract is defined. To instantiate a process with a contract, check the process instantiation resource documentation.
       operationId: createProcessInstance
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ProcessInstanceCreateRequest'
-        description: "**Warning**: The attribute `variables` on the request payload\
-          \ is used to initialize the process variables (not BDM variables). If you\
-          \ want to initialize BDM variables at process instantiation, add a contract\
-          \ on the process and map BDM variables to the contract data. See Start a\
-          \ process using an instantiation contract for usage.\n"
+        description: |
+          **Warning**: The attribute `variables` on the request payload is used to initialize the process variables (not BDM variables). If you want to initialize BDM variables at process instantiation, add a contract on the process and map BDM variables to the contract data. See Start a process using an instantiation contract for usage.
         required: true
       responses:
         "200":
@@ -6837,17 +6878,19 @@ paths:
       x-accepts: application/json
   /API/bpm/archivedCase:
     get:
-      description: "Finds archived ProcessInstances (or ProcessInstance) with pagination\
-        \ params and filters\n\nYou can order on `id`, `processDefinitionId`, `startedBy`,\
-        \ `startedBySubstitute`, `startDate`, `endDate`, `lastUpdate`, `archivedDate`,\
-        \ `sourceObjectId`\n\nYou can filter on :\n\n* `sourceObjectId`: The original\
-        \ process instance ID before the process instance was archived\n* `processDefinitionId`:\
-        \ The process derfinition ID\n* `name`: the process name\n* `started_by`:\
-        \ the ID of the user who started the process\n* `team_manager_id`: allow to\
-        \ retrieve the process instances in which all users with this manager ID ar\
-        \ involved)\n* `supervisor_id`: allow the retrived the process instances of\
-        \ all processes the user with this ID is supervisor of) beware you cannot\
-        \ use team_manager_id and supervisor_id at the same time\n"
+      description: |
+        Finds archived ProcessInstances (or ProcessInstance) with pagination params and filters
+
+        You can order on `id`, `processDefinitionId`, `startedBy`, `startedBySubstitute`, `startDate`, `endDate`, `lastUpdate`, `archivedDate`, `sourceObjectId`
+
+        You can filter on :
+
+        * `sourceObjectId`: The original process instance ID before the process instance was archived
+        * `processDefinitionId`: The process derfinition ID
+        * `name`: the process name
+        * `started_by`: the ID of the user who started the process
+        * `team_manager_id`: allow to retrieve the process instances in which all users with this manager ID ar involved)
+        * `supervisor_id`: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
       operationId: searchArchivedProcessInstances
       parameters:
       - description: index of the page to display
@@ -7168,8 +7211,10 @@ paths:
       x-accepts: application/json
   /API/bpm/caseInfo/{id}:
     get:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\
-        \ since 2022.2\n\nReturns the single ProcessInstanceInfo for the given ID\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue) since 2022.2
+
+        Returns the single ProcessInstanceInfo for the given ID
       operationId: getProcessInstanceInfoById
       parameters:
       - description: ID of the ProcessInstanceInfo to return
@@ -7235,9 +7280,11 @@ paths:
       x-accepts: application/json
   /API/bpm/comment:
     get:
-      description: "Finds ProcessInstanceComments with pagination params and filters\n\
-        \n- can order on `postDate`\n- can filter on `supervisor_id`,`user_id`,`processInstanceId`\
-        \ - You cannot use supervisor_id and user_id filter at the same time\n"
+      description: |
+        Finds ProcessInstanceComments with pagination params and filters
+
+        - can order on `postDate`
+        - can filter on `supervisor_id`,`user_id`,`processInstanceId` - You cannot use supervisor_id and user_id filter at the same time
       operationId: searchProcessInstanceComments
       parameters:
       - description: index of the page to display
@@ -7514,12 +7561,15 @@ paths:
       x-accepts: application/json
   /API/bpm/process:
     delete:
-      description: "Delete Process for the given list of ID.\n\n**Warning: Beware!\
-        \ Data loss risk!**\n\nDeleting a process will automatically delete all its\
-        \ process instances (on-going and archived alike).\nThus, the operation may\
-        \ take a long time, and fail if the transaction timeout is not large enough.\
-        \ This feature should only be used on non-production environments.\n\n**Please\
-        \ proceed at your own risk.**\n"
+      description: |
+        Delete Process for the given list of ID.
+
+        **Warning: Beware! Data loss risk!**
+
+        Deleting a process will automatically delete all its process instances (on-going and archived alike).
+        Thus, the operation may take a long time, and fail if the transaction timeout is not large enough. This feature should only be used on non-production environments.
+
+        **Please proceed at your own risk.**
       operationId: deleteProcessByIds
       requestBody:
         content:
@@ -7575,14 +7625,12 @@ paths:
       x-content-type: application/json
       x-accepts: application/json
     get:
-      description: "Finds Processes with pagination params and filters\n\n- can order\
-        \ (default is ASC) on `name`, `version`, `deploymentDate`, `deployedBy`, `activationState`,\
-        \ `configurationState`, `processId`, `displayName`, `lastUpdateDate`, `categoryId`,\
-        \ `label`\n- can search on `name`, `displayName` or `version`\n- can filter\
-        \ on `name`, `version`, `deploymentDate`, `deployedBy`, `activationState`\
-        \ with the value DISABLED or ENABLED, `configurationState` with the value\
-        \ UNRESOLVED, or RESOLVED, `processId`, `displayName`, `lastUpdateDate`, `categoryId`,\
-        \ `label`, `supervisor_id`\n"
+      description: |
+        Finds Processes with pagination params and filters
+
+        - can order (default is ASC) on `name`, `version`, `deploymentDate`, `deployedBy`, `activationState`, `configurationState`, `processId`, `displayName`, `lastUpdateDate`, `categoryId`, `label`
+        - can search on `name`, `displayName` or `version`
+        - can filter on `name`, `version`, `deploymentDate`, `deployedBy`, `activationState` with the value DISABLED or ENABLED, `configurationState` with the value UNRESOLVED, or RESOLVED, `processId`, `displayName`, `lastUpdateDate`, `categoryId`, `label`, `supervisor_id`
       operationId: searchProcesses
       parameters:
       - description: index of the page to display
@@ -7692,9 +7740,9 @@ paths:
       - Process
       x-accepts: application/json
     post:
-      description: "Create the Process.\nA process resource is created using the content\
-        \ of a .bar file that has previously been uploaded, using the [processUpload\
-        \ servlet](#operation/uploadProcess), to get the process archive path.\n"
+      description: |
+        Create the Process.
+        A process resource is created using the content of a .bar file that has previously been uploaded, using the [processUpload servlet](#operation/uploadProcess), to get the process archive path.
       operationId: createProcess
       requestBody:
         content:
@@ -7752,12 +7800,15 @@ paths:
       x-accepts: application/json
   /API/bpm/process/{id}:
     delete:
-      description: "Delete the single Process for the given ID.\n\n**Warning: Beware!\
-        \ Data loss risk!**\n\nDeleting a process will automatically delete all its\
-        \ process instances (on-going and archived alike).\nThus, the operation may\
-        \ take a long time, and fail if the transaction timeout is not large enough.\
-        \ This feature should only be used on non-production environments.\n\n**Please\
-        \ proceed at your own risk.**\n"
+      description: |
+        Delete the single Process for the given ID.
+
+        **Warning: Beware! Data loss risk!**
+
+        Deleting a process will automatically delete all its process instances (on-going and archived alike).
+        Thus, the operation may take a long time, and fail if the transaction timeout is not large enough. This feature should only be used on non-production environments.
+
+        **Please proceed at your own risk.**
       operationId: deleteProcessById
       parameters:
       - description: ID of the Process to delete
@@ -8167,8 +8218,11 @@ paths:
       x-accepts: application/json
   /API/bpm/processInfo/{id}:
     get:
-      description: "Since 2022.2\n![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nReturns the single ProcessInfo for the given ID\n"
+      description: |
+        Since 2022.2
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the single ProcessInfo for the given ID
       operationId: getProcessInfoById
       parameters:
       - description: ID of the ProcessInfo to return
@@ -8311,9 +8365,10 @@ paths:
       x-accepts: application/json
   /API/bpm/diagram/{id}:
     get:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nUse the diagram resource to access the process diagram xml representation.\
-        \ This is necessary for drawing the diagram.\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Use the diagram resource to access the process diagram xml representation. This is necessary for drawing the diagram.
       operationId: getProcessDiagramById
       parameters:
       - description: ID of the process to get the diagram from
@@ -8567,8 +8622,10 @@ paths:
       - ProcessParameter
       x-accepts: application/json
     put:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nUpdate the ProcessParameter for the given ID\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Update the ProcessParameter for the given ID
       operationId: updateProcessParameterById
       parameters:
       - description: ID of the process to get parameter from
@@ -8762,9 +8819,10 @@ paths:
       x-accepts: application/json
   /API/bpm/processSupervisor:
     delete:
-      description: "Delete the ProcessSupervisor for the given compoound IDs\n\nYou\
-        \ can delete a process supervisor by specifying its compound Id in the body\
-        \ of the request with the following format: `process_id/user_id/role_id/group_id`\n"
+      description: |
+        Delete the ProcessSupervisor for the given compoound IDs
+
+        You can delete a process supervisor by specifying its compound Id in the body of the request with the following format: `process_id/user_id/role_id/group_id`
       operationId: deleteProcessSupervisorById
       requestBody:
         content:
@@ -8830,10 +8888,12 @@ paths:
       x-content-type: application/json
       x-accepts: application/json
     get:
-      description: "Finds ProcessSupervisors with pagination params and filters\n\n\
-        To filter, you need to specify the `process_id`, and then the `user_id`, `group_id`\
-        \ and `role_id` with one of them\n(two if you want to filter on group and\
-        \ role) set to `>0` and the other ones set to `-1`.\nE.g.: `f=process_id%3D8040901857674754544&f=user_id%3D>0&f=group_id%3D-1&f=role_id%3D-1`\n"
+      description: |
+        Finds ProcessSupervisors with pagination params and filters
+
+        To filter, you need to specify the `process_id`, and then the `user_id`, `group_id` and `role_id` with one of them
+        (two if you want to filter on group and role) set to `>0` and the other ones set to `-1`.
+        E.g.: `f=process_id%3D8040901857674754544&f=user_id%3D>0&f=group_id%3D-1&f=role_id%3D-1`
       operationId: searchProcessSupervisors
       parameters:
       - description: index of the page to display
@@ -9006,9 +9066,10 @@ paths:
       x-accepts: application/json
   /API/bpm/processConnectorDependency:
     get:
-      description: "Finds ProcessConnectorDependencies with pagination params and\
-        \ filters\n\n**Mandatory filters: `connector_process_id`, `connector_name`,\
-        \ `connector_version`**\n"
+      description: |
+        Finds ProcessConnectorDependencies with pagination params and filters
+
+        **Mandatory filters: `connector_process_id`, `connector_name`, `connector_version`**
       operationId: searchProcessConnectorDependencies
       parameters:
       - description: index of the page to display
@@ -9411,13 +9472,12 @@ paths:
       x-accepts: application/json
   /API/bpm/flowNode:
     get:
-      description: "Finds FlowNodes with pagination params and filters\n\n- can order\
-        \ on `name`, `displayName`, `state`, `processDefinitionId`, `parentProcessInstanceId`,\
-        \ `parentActivityInstanceId` (if the retrieved flow nodes are activities,\
-        \ order by parent activity id), `rootProcessInstanceId`, `lastUpdateDate`\n\
-        - can search on any field that can be used to order results\n- can filter\
-        \ on `name`, `state`, `processId`, `parentProcessInstanceId`, `rootProcessInstanceId`,\
-        \ `last_update_date`\n"
+      description: |
+        Finds FlowNodes with pagination params and filters
+
+        - can order on `name`, `displayName`, `state`, `processDefinitionId`, `parentProcessInstanceId`, `parentActivityInstanceId` (if the retrieved flow nodes are activities, order by parent activity id), `rootProcessInstanceId`, `lastUpdateDate`
+        - can search on any field that can be used to order results
+        - can filter on `name`, `state`, `processId`, `parentProcessInstanceId`, `rootProcessInstanceId`, `last_update_date`
       operationId: searchFlowNodes
       parameters:
       - description: index of the page to display
@@ -9594,8 +9654,10 @@ paths:
       - FlowNode
       x-accepts: application/json
     put:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nReplay the flow node for the given ID.\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Replay the flow node for the given ID.
       operationId: updateFlowNodeById
       parameters:
       - description: ID of the FlowNode to return
@@ -9665,12 +9727,12 @@ paths:
       x-accepts: application/json
   /API/bpm/archivedFlowNode:
     get:
-      description: "Finds ArchivedFlowNodes with pagination params and filters\n\n\
-        - can order on `name`, `displayName`, `state`, `type`, `isTerminal`, `processId`,\
-        \ `caseId`, `archivedDate`\n- can search on any field that can be used to\
-        \ order results\n- can filter on `name`, `displayName`, `state`, `stateId`,\
-        \ `kind`, `terminal`, `processDefinitionId`, `parentProcessInstanceId`, `rootProcessInstanceId`,\
-        \ `parentActivityInstanceId`, `archivedDate`, `reachedStateDate`, `sourceObjectId`\n"
+      description: |
+        Finds ArchivedFlowNodes with pagination params and filters
+
+        - can order on `name`, `displayName`, `state`, `type`, `isTerminal`, `processId`, `caseId`, `archivedDate`
+        - can search on any field that can be used to order results
+        - can filter on `name`, `displayName`, `state`, `stateId`, `kind`, `terminal`, `processDefinitionId`, `parentProcessInstanceId`, `rootProcessInstanceId`, `parentActivityInstanceId`, `archivedDate`, `reachedStateDate`, `sourceObjectId`
       operationId: searchArchivedFlowNodes
       parameters:
       - description: index of the page to display
@@ -10114,9 +10176,8 @@ paths:
       x-accepts: application/json
   /API/bpm/message:
     post:
-      description: "Use this resource to send BPM message events. Message events are\
-        \ caught by processes using `catch message event` flow nodes (Start, intermediate,\
-        \ boundary or receive tasks).\n"
+      description: |
+        Use this resource to send BPM message events. Message events are caught by processes using `catch message event` flow nodes (Start, intermediate, boundary or receive tasks).
       operationId: createMessage
       requestBody:
         content:
@@ -10170,9 +10231,10 @@ paths:
       x-accepts: application/json
   /API/bpm/signal:
     post:
-      description: "Since 2022.1\n\nUse this resource to broadcast BPM signal events.\
-        \ Signal events are caught by processes using `catch signal event` flow nodes\
-        \ (Start, intermediate or boundary).\n"
+      description: |
+        Since 2022.1
+
+        Use this resource to broadcast BPM signal events. Signal events are caught by processes using `catch signal event` flow nodes (Start, intermediate or boundary).
       operationId: broadcastSignal
       requestBody:
         content:
@@ -10226,8 +10288,8 @@ paths:
       x-accepts: application/json
   /API/customuserinfo/definition:
     get:
-      description: "Finds CustomUserDefinitions. There are no filters, and no search\
-        \ terms. All the definitions are returned.\n"
+      description: |
+        Finds CustomUserDefinitions. There are no filters, and no search terms. All the definitions are returned.
       operationId: searchCustomUserDefinitions
       parameters:
       - description: index of the page to display
@@ -10496,8 +10558,10 @@ paths:
       x-accepts: application/json
   /API/customuserinfo/value:
     get:
-      description: "Finds CustomUserValues with pagination params and filters\n\n\
-        You can filter on `userId`, `value`, `definitionId`\n"
+      description: |
+        Finds CustomUserValues with pagination params and filters
+
+        You can filter on `userId`, `value`, `definitionId`
       operationId: searchCustomUserValues
       parameters:
       - description: index of the page to display
@@ -10767,8 +10831,10 @@ paths:
       x-accepts: application/json
   /API/form/mapping:
     get:
-      description: "Finds FormMappings with pagination params and filters\n\n- can\
-        \ filter on `processDefinitionId`,`type`\n"
+      description: |
+        Finds FormMappings with pagination params and filters
+
+        - can filter on `processDefinitionId`,`type`
       operationId: searchFormMappings
       parameters:
       - description: index of the page to display
@@ -10879,8 +10945,10 @@ paths:
       x-accepts: application/json
   /API/form/mapping/{id}:
     put:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nUpdate the FormMapping for the given ID\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Update the FormMapping for the given ID
       operationId: updateFormMappingById
       parameters:
       - description: ID of the FormMapping to return
@@ -11426,8 +11494,11 @@ paths:
       x-accepts: application/json
   /API/identity/group:
     get:
-      description: "Finds Groups with pagination params and filters.\n\n- can order\
-        \ on `id`,`name`,`displayName`\n- can filter on `name`,`displayName`,`parent_path`\n"
+      description: |
+        Finds Groups with pagination params and filters.
+
+        - can order on `id`,`name`,`displayName`
+        - can filter on `name`,`displayName`,`parent_path`
       operationId: searchGroups
       parameters:
       - description: index of the page to display
@@ -11787,9 +11858,12 @@ paths:
       x-accepts: application/json
   /API/identity/membership:
     get:
-      description: "Finds Memberships with pagination params and filters\n\n**Filter\
-        \ `user_id` is mandatory**\n\nYou can order with the values: `ROLE_NAME_ASC`,`ROLE_NAME_DESC`,\
-        \ `GROUP_NAME_ASC`,`GROUP_NAME_DESC`, `ASSIGNED_DATE_ASC`, `ASSIGNED_DATE_DESC`\n"
+      description: |
+        Finds Memberships with pagination params and filters
+
+        **Filter `user_id` is mandatory**
+
+        You can order with the values: `ROLE_NAME_ASC`,`ROLE_NAME_DESC`, `GROUP_NAME_ASC`,`GROUP_NAME_DESC`, `ASSIGNED_DATE_ASC`, `ASSIGNED_DATE_DESC`
       operationId: searchMemberships
       parameters:
       - description: index of the page to display
@@ -12037,8 +12111,11 @@ paths:
       x-accepts: application/json
   /API/identity/role:
     get:
-      description: "Finds Roles with pagination params and filters\n\n- can order\
-        \ on `id`, `name` and `displayName`\n- can filter on `name` and `displayName`\n"
+      description: |
+        Finds Roles with pagination params and filters
+
+        - can order on `id`, `name` and `displayName`
+        - can filter on `name` and `displayName`
       operationId: searchRoles
       parameters:
       - description: index of the page to display
@@ -12580,11 +12657,11 @@ paths:
       x-accepts: application/json
   /API/identity/user/{id}:
     delete:
-      description: "Delete the single User for the given ID.\n\n**Use this method\
-        \ with caution**: some artifacts like applications, process instances or users\
-        \ may present display problems in the Bonita Portal if the referenced user\
-        \ was deleted.\nNote that you can disable a user instead of deleting it. To\
-        \ do so, use the UPDATE method and set the attribute 'enabled' to false\n"
+      description: |
+        Delete the single User for the given ID.
+
+        **Use this method with caution**: some artifacts like applications, process instances or users may present display problems in the Bonita Portal if the referenced user was deleted.
+        Note that you can disable a user instead of deleting it. To do so, use the UPDATE method and set the attribute 'enabled' to false
       operationId: deleteUserById
       parameters:
       - description: ID of the User to delete
@@ -12959,8 +13036,8 @@ paths:
       - Platform
       x-accepts: application/json
     put:
-      description: "Start or stop the current node, that is, start or stop all services\
-        \ of the current JVM.\n"
+      description: |
+        Start or stop the current node, that is, start or stop all services of the current JVM.
       operationId: updatePlatformById
       requestBody:
         content:
@@ -13021,9 +13098,17 @@ paths:
       x-accepts: application/json
   /API/platform/tenant:
     get:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nFinds Tenants with pagination params and filters\n\n- can order on `id`\n\
-        - can search on `displayName`\n- can filter on `displayName`\n"
+      deprecated: true
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Finds Tenants with pagination params and filters
+
+        - can order on `id`
+        - can search on `displayName`
+        - can filter on `displayName`
+
+        Warning: Since Bonita 7.12, multi-tenancy is deprecated
       operationId: searchTenants
       parameters:
       - description: index of the page to display
@@ -13133,8 +13218,13 @@ paths:
       - Tenant
       x-accepts: application/json
     post:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nCreate the Tenant\n"
+      deprecated: true
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Create the Tenant.
+
+        Warning: Since Bonita 7.12, multi-tenancy is deprecated. Creating new tenants is strongly discouraged.
       operationId: createTenant
       requestBody:
         content:
@@ -13192,8 +13282,11 @@ paths:
       x-accepts: application/json
   /API/platform/tenant/{id}:
     delete:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nDelete the single Tenant for the given ID\n"
+      deprecated: true
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Delete the single Tenant for the given ID
       operationId: deleteTenantById
       parameters:
       - description: ID of the Tenant to delete
@@ -13254,8 +13347,12 @@ paths:
       - Tenant
       x-accepts: application/json
     get:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nReturns the single Tenant for the given ID\n"
+      deprecated: true
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the single Tenant for the given ID
+        Warning: Since Bonita 7.12, multi-tenancy is deprecated
       operationId: getTenantById
       parameters:
       - description: ID of the Tenant to return
@@ -13320,11 +13417,17 @@ paths:
       - Tenant
       x-accepts: application/json
     put:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nUpdate the Tenant for the given ID\n"
+      deprecated: true
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)
+
+        Update a Tenant
+
+        Warning: Since Bonita 7.12, multi-tenancy is deprecated
       operationId: updateTenantById
       parameters:
-      - description: ID of the Tenant to return
+      - description: "ID of the Tenant to update. In Subscription edition, it is mandatory;\
+          \ not in Community edition, as there is only one tenant"
         explode: false
         in: path
         name: id
@@ -13565,10 +13668,11 @@ paths:
       x-accepts: application/json
   /portal/fileUpload:
     post:
-      description: "Upload file.\n\n**NOTE:** If this file is a BDM zip, to do this,\
-        \ your tenant services need to be paused.\nIn Enterprise editions, if you\
-        \ have an access control file installed on your tenant, you need to delete\
-        \ it before installing or updating your BDM.\n"
+      description: |
+        Upload file.
+
+        **NOTE:** If this file is a BDM zip, to do this, your tenant services need to be paused.
+        In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.
       operationId: uploadFile
       requestBody:
         content:
@@ -13624,8 +13728,11 @@ paths:
       x-accepts: application/json
   /API/portal/page:
     get:
-      description: "Finds Pages with pagination params and filters\n\n- can search\
-        \ on `displayName`,`description`\n- can filter on `createdBy`,`contentType`\n"
+      description: |
+        Finds Pages with pagination params and filters
+
+        - can search on `displayName`,`description`
+        - can filter on `createdBy`,`contentType`
       operationId: searchPages
       parameters:
       - description: index of the page to display
@@ -13922,10 +14029,8 @@ paths:
       - Page
       x-accepts: application/json
     put:
-      description: "Use the PUT method to update an existing custom page. To update\
-        \ a custom page, upload the new page content using the pageUpload servlet,\
-        \ which returns a temporary file name, and then call this API with the temporary\
-        \ file name.\n"
+      description: |
+        Use the PUT method to update an existing custom page. To update a custom page, upload the new page content using the pageUpload servlet, which returns a temporary file name, and then call this API with the temporary file name.
       operationId: updatePageById
       parameters:
       - description: ID of the Page to return
@@ -13995,8 +14100,12 @@ paths:
       x-accepts: application/json
   /API/portal/profile:
     get:
-      description: "Finds Profiles with pagination params and filters\n\n- can search\
-        \ on `name`\n- can filter on `name`,`hasNavigation`\n- can order on `name`\n"
+      description: |
+        Finds Profiles with pagination params and filters
+
+        - can search on `name`
+        - can filter on `name`,`hasNavigation`
+        - can order on `name`
       operationId: searchProfiles
       parameters:
       - description: index of the page to display
@@ -14364,8 +14473,14 @@ paths:
       x-accepts: application/json
   /API/portal/profileEntry:
     get:
-      description: "Finds ProfileEntries with pagination params and filters\n\n- can\
-        \ search on `name`\n- can filter on `page`,`name` and `parent_id`\n"
+      deprecated: true
+      description: |
+        Finds ProfileEntries with pagination params and filters
+
+        - can search on `name`
+        - can filter on `page`,`name` and `parent_id`
+
+        Warning: Since Bonita 7.13, ProfileEntry is deprecated
       operationId: searchProfileEntries
       parameters:
       - description: index of the page to display
@@ -14466,8 +14581,10 @@ paths:
       - ProfileEntry
       x-accepts: application/json
     post:
+      deprecated: true
       description: |
         Create the ProfileEntry
+        Warning: Since Bonita 7.13, ProfileEntry is deprecated
       operationId: createProfileEntry
       requestBody:
         content:
@@ -14525,6 +14642,7 @@ paths:
       x-accepts: application/json
   /API/portal/profileEntry/{id}:
     delete:
+      deprecated: true
       description: |
         Delete the single ProfileEntry for the given ID
       operationId: deleteProfileEntryById
@@ -14587,8 +14705,10 @@ paths:
       - ProfileEntry
       x-accepts: application/json
     get:
+      deprecated: true
       description: |
         Returns the single ProfileEntry for the given ID
+        Warning: Since Bonita 7.13, ProfileEntry is deprecated
       operationId: getProfileEntryById
       parameters:
       - description: ID of the ProfileEntry to return
@@ -14653,8 +14773,10 @@ paths:
       - ProfileEntry
       x-accepts: application/json
     put:
+      deprecated: true
       description: |
         Update the ProfileEntry for the given ID
+        Warning: Since Bonita 7.13, ProfileEntry is deprecated
       operationId: updateProfileEntryById
       parameters:
       - description: ID of the ProfileEntry to return
@@ -14724,9 +14846,12 @@ paths:
       x-accepts: application/json
   /API/portal/profileMember:
     get:
-      description: "Finds ProfileMembers with pagination params and filters\n\n**Filter\
-        \ `member_type` is mandatory**\n\nYou can filter on `profile_id`, `user_id`,\
-        \ `role_id` and `group_id`\n"
+      description: |
+        Finds ProfileMembers with pagination params and filters
+
+        **Filter `member_type` is mandatory**
+
+        You can filter on `profile_id`, `user_id`, `role_id` and `group_id`
       operationId: searchProfileMembers
       parameters:
       - description: index of the page to display
@@ -15007,8 +15132,10 @@ paths:
       x-accepts: application/json
   /API/portal/theme:
     post:
+      deprecated: true
       description: |
         Create the Theme
+        Warning: Since Bonita 7.13, theme management is deprecated
       operationId: createTheme
       requestBody:
         content:
@@ -15062,8 +15189,10 @@ paths:
       x-accepts: application/json
   /API/portal/theme/unusedId:
     put:
+      deprecated: true
       description: |
         Restore the default theme
+        Warning: Since Bonita 7.13, theme management is deprecated
       operationId: restoreTheme
       requestBody:
         content:
@@ -15207,11 +15336,12 @@ paths:
       x-accepts: application/json
   /API/system/i18ntranslation:
     get:
-      description: "List the available I18ntranslations with pagination params and\
-        \ filters\nReturns all translations of the product. If a locale is specified\
-        \ in the filter, that translation for that locale are returned.\nIf no locale\
-        \ is specified, the translations in English are returned.\n\nYou can filter\
-        \ on `locale`\n"
+      description: |
+        List the available I18ntranslations with pagination params and filters
+        Returns all translations of the product. If a locale is specified in the filter, that translation for that locale are returned.
+        If no locale is specified, the translations in English are returned.
+
+        You can filter on `locale`
       operationId: searchI18ntranslations
       parameters:
       - description: index of the page to display
@@ -15547,8 +15677,10 @@ paths:
       x-accepts: application/json
   /APIv2/service/install:
     post:
-      description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-        \nUpload an application configuration file in the `bconf` format.\n"
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Upload an application configuration file in the `bconf` format.
       operationId: uploadApplicationConfiguration
       requestBody:
         content:
@@ -16197,8 +16329,10 @@ components:
           description: version of the application
           type: string
         themeId:
-          description: "![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-            \ntheme id for the application\n"
+          description: |
+            ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+            theme id for the application
           type: string
       type: object
     FileUploadRequest:
@@ -16325,19 +16459,36 @@ components:
       nullable: true
     BusinessData:
       additionalProperties: true
-      description: "Retrieve business data value. Depending on the object attribute\
-        \ loading policy,\nthe API returns either the full object in JSON representation\
-        \ or the HATEOAS links to the object attributes.\n\nLong attributes use a\
-        \ string representation added in 7.0.1 as a workaround for the JavaScript\
-        \ integer spectrum issue.\n\nRepresentation of object attributes with an _always\
-        \ load_ policy:\n\n```json\n{\n  \"persistenceId\": _number_, // <-- deprecated\n\
-        \  \"persistenceId_string\": \"_number_\"\n  \"persistenceVersion\": _number_,\
-        \ // <-- deprecated\n  \"persistenceVersion_string\": \"_number_\"\n  \"attributeName\"\
-        :_attributeType_\n  ...\n}\n```\n\nThe string representation added in 7.0.1\
-        \ for Long attributes is a workaround for the JavaScript integer spectrum\
-        \ issue.\n\nHATEOAS representation of object attribute with a _load when needed_\
-        \ policy:\n```json\n\"links\":[\n   {\n   \"rel\":_string_\n   \"href\":_uri_\n\
-        \   }\n]\n```\n"
+      description: |
+        Retrieve business data value. Depending on the object attribute loading policy,
+        the API returns either the full object in JSON representation or the HATEOAS links to the object attributes.
+
+        Long attributes use a string representation added in 7.0.1 as a workaround for the JavaScript integer spectrum issue.
+
+        Representation of object attributes with an _always load_ policy:
+
+        ```json
+        {
+          "persistenceId": _number_, // <-- deprecated
+          "persistenceId_string": "_number_"
+          "persistenceVersion": _number_, // <-- deprecated
+          "persistenceVersion_string": "_number_"
+          "attributeName":_attributeType_
+          ...
+        }
+        ```
+
+        The string representation added in 7.0.1 for Long attributes is a workaround for the JavaScript integer spectrum issue.
+
+        HATEOAS representation of object attribute with a _load when needed_ policy:
+        ```json
+        "links":[
+           {
+           "rel":_string_
+           "href":_uri_
+           }
+        ]
+        ```
       example:
         persistenceId_string: "1"
         persistenceVersion_string: "0"
@@ -16448,10 +16599,9 @@ components:
       - lowest
       type: string
     Activity:
-      description: "Use this resource to retrieve activities (human or service tasks),\
-        \ call activities, and subprocesses currently running on the platform.\nIt\
-        \ enables you to perform maintenance tasks like skipping or replaying a failed\
-        \ task and modifying variables.\n"
+      description: |
+        Use this resource to retrieve activities (human or service tasks), call activities, and subprocesses currently running on the platform.
+        It enables you to perform maintenance tasks like skipping or replaying a failed task and modifying variables.
       example:
         displayDescription: validate expense request
         executedBySubstitute: "0"
@@ -16551,18 +16701,20 @@ components:
         state: completed
       properties:
         variables:
-          description: "Activity variables to update.\n\n**Note**: if there is no\
-            \ data with the specified name in the activity,\nthe update will be applied\
-            \ to the process data if a variable with the specified name exists.\n\n\
-            **Note**: if the task definition includes a connector that is executed\
-            \ on finish and updates the value of a variable, the value set by the\
-            \ REST API call is overwritten.\n"
+          description: |
+            Activity variables to update.
+
+            **Note**: if there is no data with the specified name in the activity,
+            the update will be applied to the process data if a variable with the specified name exists.
+
+            **Note**: if the task definition includes a connector that is executed on finish and updates the value of a variable, the value set by the REST API call is overwritten.
           type: string
         state:
-          description: "The target state of the activity\n- Execute a task: `completed`\n\
-            - Skip activity: `skipped` - Make this call after all failed connectors\
-            \ have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue)\n\
-            - Replay activity: `replay`\n"
+          description: |
+            The target state of the activity
+            - Execute a task: `completed`
+            - Skip activity: `skipped` - Make this call after all failed connectors have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+            - Replay activity: `replay`
           type: string
       type: object
     ArchivedActivity:
@@ -16776,9 +16928,9 @@ components:
     HumanTask:
       allOf:
       - $ref: '#/components/schemas/AbstractTask'
-      - description: "A Human task is Manual task or a User task. A User task is a\
-          \ task that can be done by a user.\nA Manual task is a subtask of a user\
-          \ task, and is also done by a user.\n"
+      - description: |
+          A Human task is Manual task or a User task. A User task is a task that can be done by a user.
+          A Manual task is a subtask of a user task, and is also done by a user.
         example:
           displayDescription: null
           executedBySubstitute: 0
@@ -19291,7 +19443,8 @@ components:
           type: string
       type: object
     Tenant:
-      description: ""
+      deprecated: true
+      description: "Since Bonita 7.12, tenant management is deprecated"
       example:
         id: 1
         creation: 2014-12-04 15:46:46.256
@@ -19322,6 +19475,7 @@ components:
           type: string
         password:
           description: the password
+          format: password
           type: string
         state:
           description: the tenant state
@@ -19331,6 +19485,8 @@ components:
           type: string
       type: object
     TenantCreateRequest:
+      deprecated: true
+      description: "Since Bonita 7.12, tenant creation is deprecated"
       example:
         name: MyTenant
         description: My tenant
@@ -19348,14 +19504,19 @@ components:
           type: string
         password:
           description: the password
+          format: password
           type: string
       type: object
     TenantUpdateRequest:
+      deprecated: true
+      description: "Since Bonita 7.12, tenant update is deprecated"
       example:
         name: MyTenant
-        description: My tenant
+        description: My new tenant description
         username: john
         password: bpm
+        icon: /default.png
+        state: ACTIVATED
       properties:
         name:
           description: the name of the tenant
@@ -19368,6 +19529,16 @@ components:
           type: string
         password:
           description: the password
+          format: password
+          type: string
+        icon:
+          description: the path of the icon
+          type: string
+        state:
+          description: the tenant state
+          enum:
+          - ACTIVATED
+          - DEACTIVATED
           type: string
       type: object
     PlatformLicense:
@@ -19406,9 +19577,9 @@ components:
           description: available mode enabled by the license
           type: string
         requestKey:
-          description: "request key to use to generate a new license on the customer\
-            \ portal\nIf you have a subscription that specifies case-counter licensing,\
-            \ additional fields are present:\n"
+          description: |
+            request key to use to generate a new license on the customer portal
+            If you have a subscription that specifies case-counter licensing, additional fields are present:
           type: string
         subscriptionStartPeriod:
           description: date with format `yyyy-MM-dd` - first day (included) of current
@@ -19716,6 +19887,8 @@ components:
           type: string
       type: object
     ThemeCreateRequest:
+      deprecated: true
+      description: "Since Bonita 7.13, theme management is deprecated"
       example:
         type: portal
         zipFilePathportal: tmp_1939634566964075173.zip
@@ -19731,6 +19904,8 @@ components:
           type: string
       type: object
     ThemeRestoreRequest:
+      deprecated: true
+      description: "Since Bonita 7.13, theme management is deprecated"
       example:
         type: portal
       properties:
@@ -19812,7 +19987,7 @@ components:
           description: system tenant id
           type: string
         paused:
-          description: wether the system tenant is paused or not
+          description: whether the system tenant is paused or not
           type: boolean
       type: object
     TenantPauseRequest:
@@ -19950,6 +20125,7 @@ components:
           pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
           type: string
       type: object
+      example: null
     ArchivedProcessInstanceDocument_allOf:
       description: A document in an active case
       example: "{\"id\":\"1\",\"creationDate\":\"2014-10-09 16:39:52.472\",\"author\"\
@@ -20080,6 +20256,7 @@ components:
           pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
           type: string
       type: object
+      example: null
     ArchivedFlowNode_allOf:
       description: A flow node (gateway or event or task) in an archived instance
         of a process.
@@ -20093,6 +20270,7 @@ components:
           pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
           type: string
       type: object
+      example: null
     Message_messageContent_value:
       example:
         type: java.lang.String
@@ -20102,10 +20280,9 @@ components:
           description: ""
           type: string
         type:
-          description: "Date types must be in the ISO-8601 format. When not set, the\
-            \ type is guessed using the value.\nBe careful as it can lead to type\
-            \ inconsistency in the target process (eg: a java.lang.Long is expected\
-            \ and the guessed type is a java.lang.Integer)\n"
+          description: |
+            Date types must be in the ISO-8601 format. When not set, the type is guessed using the value.
+            Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer)
           enum:
           - java.lang.String
           - java.lang.Boolean
@@ -20123,16 +20300,14 @@ components:
       type: object
   securitySchemes:
     bonita_auth:
-      description: "To call the REST API, you must first log on with a user registered\
-        \ in the Engine database. Please refer to the __[Login API](#operation/login)__\
-        \ operations section.\n"
+      description: |
+        To call the REST API, you must first log on with a user registered in the Engine database. Please refer to the __[Login API](#operation/login)__ operations section.
       in: cookie
       name: JSESSIONID
       type: apiKey
     bonita_token:
-      description: "To call the REST API, you must first log on with a user registered\
-        \ in the Engine database. Please refer to the __[Login API](#operation/login)__\
-        \ operations section.\n"
+      description: |
+        To call the REST API, you must first log on with a user registered in the Engine database. Please refer to the __[Login API](#operation/login)__ operations section.
       in: header
       name: X-Bonita-API-Token
       type: apiKey
