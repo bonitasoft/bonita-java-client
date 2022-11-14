@@ -1,10 +1,9 @@
 package org.bonitasoft.web.client.services.impl;
 
-import static java.util.stream.Collectors.toList;
-
 import java.io.File;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.BdmAccessControlApi;
 import org.bonitasoft.web.client.api.BdmApi;
@@ -27,12 +26,12 @@ import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.impl.bdm.BdmResponseConverter;
 import org.jetbrains.annotations.Nullable;
 
-import lombok.extern.slf4j.Slf4j;
+import static java.util.stream.Collectors.toList;
 
 @Slf4j
 public class DefaultBdmService extends AbstractService implements BdmService {
 
-	private BdmResponseConverter bdmResponseConverter;
+	private final BdmResponseConverter bdmResponseConverter;
 
 	public DefaultBdmService(
 			ClientContext clientContext, ApiProvider apiProvider, BdmResponseConverter bdmResponseConverter) {

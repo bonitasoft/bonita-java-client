@@ -6,17 +6,17 @@ import org.bonitasoft.web.client.model.License;
 
 public interface ClientContext {
 
-    License getLicense();
+	License getLicense();
 
-    void setLicense(License license);
+	void setLicense(License license);
 
-    License getLicense(Function<String, Object> value);
+	License getLicense(Function<String, Object> value);
 
-    <T> T get(String key);
+	<T> T get(String key);
 
-    void put(String key, Object o);
+	void put(String key, Object o);
 
-    <T> T remove(String key);
+	<T> T remove(String key);
 
-    void clear();
+	void clear();
 }

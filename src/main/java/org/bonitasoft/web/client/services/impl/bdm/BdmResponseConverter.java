@@ -6,18 +6,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.bonitasoft.web.client.exception.ClientException;
-import org.bonitasoft.web.client.feign.ApiProvider;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-
 import lombok.RequiredArgsConstructor;
+import org.bonitasoft.web.client.exception.ClientException;
+import org.bonitasoft.web.client.feign.ApiProvider;
 
 @RequiredArgsConstructor
 public class BdmResponseConverter {
 
 	private final ObjectMapper objectMapper;
+
 	private final ApiProvider apiProvider;
 
 	public ObjectMapper getObjectMapper() {
@@ -29,9 +28,9 @@ public class BdmResponseConverter {
 	}
 
 	public <T> List<T> convertToList(Object o, Class<T> elementClass) {
-	    if(o == null) {
-            return Collections.emptyList();
-        }
+		if (o == null) {
+			return Collections.emptyList();
+		}
 		try {
 			if (!elementClass.isInterface()) {
 				CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, elementClass);
@@ -49,9 +48,9 @@ public class BdmResponseConverter {
 	}
 
 	public <T> T convert(Object o, Class<T> targetType) {
-	    if(o == null) {
-	        return null;
-	    }
+		if (o == null) {
+			return null;
+		}
 		try {
 			if (!targetType.isInterface()) {
 				return convertToClass(o, targetType);

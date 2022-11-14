@@ -19,35 +19,35 @@ import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 
 public interface UserService {
 
-    void importOrganization(File organization, OrganizationImportPolicy policy);
+	void importOrganization(File organization, OrganizationImportPolicy policy);
 
-    User getUser(String username);
+	User getUser(String username);
 
-    User createUser(UserCreateRequest userCreateRequest);
+	User createUser(UserCreateRequest userCreateRequest);
 
-    List<User> searchUsers(UserApi.SearchUsersQueryParams params);
+	List<User> searchUsers(UserApi.SearchUsersQueryParams params);
 
-    void importProfiles(File profiles, ProfileImportPolicy policy);
+	void importProfiles(File profiles, ProfileImportPolicy policy);
 
-    List<Profile> searchProfiles(int page, int count);
+	List<Profile> searchProfiles(int page, int count);
 
-    List<Profile> searchProfiles(ProfileApi.SearchProfilesQueryParams params);
+	List<Profile> searchProfiles(ProfileApi.SearchProfilesQueryParams params);
 
-    String addUserToProfile(String userId, String profileId);
+	String addUserToProfile(String userId, String profileId);
 
-    List<Role> searchRoles(RoleApi.SearchRolesQueryParams params);
+	List<Role> searchRoles(RoleApi.SearchRolesQueryParams params);
 
-    Role createRole(RoleCreateRequest roleCreateRequest);
+	Role createRole(RoleCreateRequest roleCreateRequest);
 
-    Role getRoleByName(String name);
+	Role getRoleByName(String name);
 
-    Group createGroup(GroupCreateRequest groupCreateRequest);
+	Group createGroup(GroupCreateRequest groupCreateRequest);
 
-    Profile getProfileByName(String name);
+	Profile getProfileByName(String name);
 
-    Profile createProfile(ProfileCreateRequest profileCreateRequest);
+	Profile createProfile(ProfileCreateRequest profileCreateRequest);
 
-    String addRoleToProfile(String roleId, String profileId);
+	String addRoleToProfile(String roleId, String profileId);
 
-    String addUserToProfileByNames(String username, String profileName);
+	String addUserToProfileByNames(String username, String profileName);
 }

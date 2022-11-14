@@ -10,5 +10,5 @@ package org.bonitasoft.web.client.services.policies;
 
 /** Created by laurentleseigneur on 06/07/2017. */
 public enum ProfileImportPolicy {
-    REPLACE_DUPLICATES, IGNORE_IF_ANY_EXISTS;
+	REPLACE_DUPLICATES, IGNORE_IF_ANY_EXISTS
 }
