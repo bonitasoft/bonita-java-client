@@ -4,40 +4,43 @@ import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
 public class ApiKeyAuth implements RequestInterceptor {
-    private final String location;
-    private final String paramName;
+	private final String location;
 
-    private String apiKey;
+	private final String paramName;
 
-    public ApiKeyAuth(String location, String paramName) {
-        this.location = location;
-        this.paramName = paramName;
-    }
+	private String apiKey;
 
-    public String getLocation() {
-        return location;
-    }
+	public ApiKeyAuth(String location, String paramName) {
+		this.location = location;
+		this.paramName = paramName;
+	}
 
-    public String getParamName() {
-        return paramName;
-    }
+	public String getLocation() {
+		return location;
+	}
 
-    public String getApiKey() {
-        return apiKey;
-    }
+	public String getParamName() {
+		return paramName;
+	}
 
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
+	public String getApiKey() {
+		return apiKey;
+	}
 
-    @Override
-    public void apply(RequestTemplate template) {
-        if ("query".equals(location)) {
-            template.query(paramName, apiKey);
-        } else if ("header".equals(location)) {
-            template.header(paramName, apiKey);
-        } else if ("cookie".equals(location)) {
-            template.header("Cookie", String.format("%s=%s", paramName, apiKey));
-        }
-    }
+	public void setApiKey(String apiKey) {
+		this.apiKey = apiKey;
+	}
+
+	@Override
+	public void apply(RequestTemplate template) {
+		if ("query".equals(location)) {
+			template.query(paramName, apiKey);
+		}
+		else if ("header".equals(location)) {
+			template.header(paramName, apiKey);
+		}
+		else if ("cookie".equals(location)) {
+			template.header("Cookie", String.format("%s=%s", paramName, apiKey));
+		}
+	}
 }

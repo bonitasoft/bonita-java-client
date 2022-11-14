@@ -12,36 +12,37 @@ import com.github.scribejava.core.oauth2.clientauthentication.RequestBodyAuthent
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DefaultApi20Impl extends DefaultApi20 {
 
-    private final String accessTokenEndpoint;
-    private final String authorizationBaseUrl;
+	private final String accessTokenEndpoint;
 
-    protected DefaultApi20Impl(String authorizationBaseUrl, String accessTokenEndpoint) {
-        this.authorizationBaseUrl = authorizationBaseUrl;
-        this.accessTokenEndpoint = accessTokenEndpoint;
-    }
+	private final String authorizationBaseUrl;
 
-    @Override
-    public String getAccessTokenEndpoint() {
-        return accessTokenEndpoint;
-    }
+	protected DefaultApi20Impl(String authorizationBaseUrl, String accessTokenEndpoint) {
+		this.authorizationBaseUrl = authorizationBaseUrl;
+		this.accessTokenEndpoint = accessTokenEndpoint;
+	}
 
-    @Override
-    protected String getAuthorizationBaseUrl() {
-        return authorizationBaseUrl;
-    }
+	@Override
+	public String getAccessTokenEndpoint() {
+		return accessTokenEndpoint;
+	}
 
-    @Override
-    public BearerSignature getBearerSignature() {
-        return BearerSignatureURIQueryParameter.instance();
-    }
+	@Override
+	protected String getAuthorizationBaseUrl() {
+		return authorizationBaseUrl;
+	}
 
-    @Override
-    public ClientAuthentication getClientAuthentication() {
-        return RequestBodyAuthenticationScheme.instance();
-    }
+	@Override
+	public BearerSignature getBearerSignature() {
+		return BearerSignatureURIQueryParameter.instance();
+	}
 
-    @Override
-    public TokenExtractor<OAuth2AccessToken> getAccessTokenExtractor() {
-        return OAuth2AccessTokenJsonExtractor.instance();
-    }
+	@Override
+	public ClientAuthentication getClientAuthentication() {
+		return RequestBodyAuthenticationScheme.instance();
+	}
+
+	@Override
+	public TokenExtractor<OAuth2AccessToken> getAccessTokenExtractor() {
+		return OAuth2AccessTokenJsonExtractor.instance();
+	}
 }

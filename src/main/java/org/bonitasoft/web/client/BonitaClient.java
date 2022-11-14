@@ -12,103 +12,105 @@ import org.bonitasoft.web.client.services.UserService;
 /** A Bonita client that communicate via http request with a Bonita running instance. */
 public interface BonitaClient extends ApiProvider {
 
-    String DEFAULT_TENANT_ID = "1";
-    String USER_PROFILE_NAME = "User";
-    String ADMIN_PROFILE_NAME = "Administrator";
+	String DEFAULT_TENANT_ID = "1";
 
-    /**
-     * Create a client builder for the given bonita URL
-     *
-     * @param url the bonita instance url
-     * @return a builder instance
-     */
-    static <T extends BonitaClientBuilder<T>> BonitaClientBuilder<T> builder(String url) {
-        return (BonitaClientBuilder<T>) new BonitaFeignClientBuilderImpl(url);
-    }
+	String USER_PROFILE_NAME = "User";
 
-    /**
-     * Perform client authentication. Authentication will be stored internally to be used for the
-     * future requests <br>
-     * Account tenant default to 1
-     *
-     * @param username Account username
-     * @param password Account password
-     * @return A session with the authenticated user info
-     * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
-     */
-    Session login(String username, String password);
+	String ADMIN_PROFILE_NAME = "Administrator";
 
-    /**
-     * Perform client authentication. Authentication will be stored internally to be used for the
-     * future requests
-     *
-     * @param username Account username
-     * @param password Account password
-     * @param tenant Account tenant
-     * @return A session with the authenticated user info
-     * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
-     */
-    Session login(String username, String password, String tenant);
+	/**
+	 * Create a client builder for the given bonita URL
+	 *
+	 * @param url the bonita instance url
+	 * @return a builder instance
+	 */
+	static <T extends BonitaClientBuilder<T>> BonitaClientBuilder<T> builder(String url) {
+		return (BonitaClientBuilder<T>) new BonitaFeignClientBuilderImpl(url);
+	}
 
-    /** Logout the current user */
-    void logout();
+	/**
+	 * Perform client authentication. Authentication will be stored internally to be used for the
+	 * future requests <br>
+	 * Account tenant default to 1
+	 *
+	 * @param username Account username
+	 * @param password Account password
+	 * @return A session with the authenticated user info
+	 * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
+	 */
+	Session login(String username, String password);
 
-    /** Logout the current user (with no exceptions) */
-    void logoutSilent();
+	/**
+	 * Perform client authentication. Authentication will be stored internally to be used for the
+	 * future requests
+	 *
+	 * @param username Account username
+	 * @param password Account password
+	 * @param tenant Account tenant
+	 * @return A session with the authenticated user info
+	 * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
+	 */
+	Session login(String username, String password, String tenant);
 
-    /**
-     * Return true if platform is up
-     *
-     * @return
-     */
-    boolean isPlatformUpAndRunning();
+	/** Logout the current user */
+	void logout();
 
-    /**
-     * The Bonita target url (ie. http://localhost:8080/bonita/)
-     *
-     * @return
-     */
-    String getUrl();
+	/** Logout the current user (with no exceptions) */
+	void logoutSilent();
 
-    /**
-     * The targeted Bonita version
-     *
-     * @return
-     */
-    String getVersion();
+	/**
+	 * Return true if platform is up
+	 *
+	 * @return
+	 */
+	boolean isPlatformUpAndRunning();
 
-    /**
-     * Return the application API
-     *
-     * @return
-     */
-    ApplicationService applications();
+	/**
+	 * The Bonita target url (ie. http://localhost:8080/bonita/)
+	 *
+	 * @return
+	 */
+	String getUrl();
 
-    /**
-     * Return the BDM API
-     *
-     * @return
-     */
-    BdmService bdm();
+	/**
+	 * The targeted Bonita version
+	 *
+	 * @return
+	 */
+	String getVersion();
 
-    /**
-     * Return the user API
-     *
-     * @return
-     */
-    UserService users();
+	/**
+	 * Return the application API
+	 *
+	 * @return
+	 */
+	ApplicationService applications();
 
-    /**
-     * Return the process API
-     *
-     * @return
-     */
-    ProcessService processes();
+	/**
+	 * Return the BDM API
+	 *
+	 * @return
+	 */
+	BdmService bdm();
 
-    /**
-     * Return the system tenant API
-     *
-     * @return
-     */
-    SystemService system();
+	/**
+	 * Return the user API
+	 *
+	 * @return
+	 */
+	UserService users();
+
+	/**
+	 * Return the process API
+	 *
+	 * @return
+	 */
+	ProcessService processes();
+
+	/**
+	 * Return the system tenant API
+	 *
+	 * @return
+	 */
+	SystemService system();
 }
