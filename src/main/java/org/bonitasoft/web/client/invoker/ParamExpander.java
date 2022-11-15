@@ -10,13 +10,13 @@ import feign.Param;
  */
 public class ParamExpander implements Param.Expander {
 
-  private static final DateFormat dateformat = new RFC3339DateFormat();
+	private static final DateFormat dateformat = new RFC3339DateFormat();
 
-  @Override
-  public String expand(Object value) {
-    if (value instanceof Date) {
-      return dateformat.format(value);
-    }
-    return value.toString();
-  }
+	@Override
+	public String expand(Object value) {
+		if (value instanceof Date) {
+			return dateformat.format(value);
+		}
+		return value.toString();
+	}
 }

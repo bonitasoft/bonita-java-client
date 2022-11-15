@@ -11,11 +11,11 @@ package org.bonitasoft.web.client.exception;
 /** Base class for all exceptions that occur with the deployer client. */
 public class ClientException extends RuntimeException {
 
-    public ClientException(String message) {
-        super(message);
-    }
+	public ClientException(String message) {
+		super(message);
+	}
 
-    public ClientException(String message, Throwable cause) {
-        super(message, cause);
-    }
+	public ClientException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

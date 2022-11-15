@@ -5,39 +5,41 @@ import java.util.Map;
 
 public class ApiResponse<T> {
 
-    private final int statusCode;
-    private final Map<String, List<String>> headers;
-    private final T data;
+	final private int statusCode;
 
-    /**
-     * @param statusCode The status code of HTTP response
-     * @param headers The headers of HTTP response
-     */
-    public ApiResponse(int statusCode, Map<String, List<String>> headers) {
-        this(statusCode, headers, null);
-    }
+	final private Map<String, List<String>> headers;
 
-    /**
-     * @param statusCode The status code of HTTP response
-     * @param headers The headers of HTTP response
-     * @param data The object deserialized from response bod
-     */
-    public ApiResponse(int statusCode, Map<String, List<String>> headers, T data) {
-        this.statusCode = statusCode;
-        this.headers = headers;
-        this.data = data;
-    }
+	final private T data;
 
-    public int getStatusCode() {
-        return statusCode;
-    }
+	/**
+	 * @param statusCode The status code of HTTP response
+	 * @param headers The headers of HTTP response
+	 */
+	public ApiResponse(int statusCode, Map<String, List<String>> headers) {
+		this(statusCode, headers, null);
+	}
 
-    public Map<String, List<String>> getHeaders() {
-        return headers;
-    }
+	/**
+	 * @param statusCode The status code of HTTP response
+	 * @param headers The headers of HTTP response
+	 * @param data The object deserialized from response bod
+	 */
+	public ApiResponse(int statusCode, Map<String, List<String>> headers, T data) {
+		this.statusCode = statusCode;
+		this.headers = headers;
+		this.data = data;
+	}
 
-    public T getData() {
-        return data;
-    }
+	public int getStatusCode() {
+		return statusCode;
+	}
+
+	public Map<String, List<String>> getHeaders() {
+		return headers;
+	}
+
+	public T getData() {
+		return data;
+	}
 
 }

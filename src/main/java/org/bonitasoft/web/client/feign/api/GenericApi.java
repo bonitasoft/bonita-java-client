@@ -3,11 +3,10 @@ package org.bonitasoft.web.client.feign.api;
 import java.util.List;
 import java.util.Map;
 
-import org.bonitasoft.web.client.invoker.ApiClient.Api;
-
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+import org.bonitasoft.web.client.invoker.ApiClient.Api;
 
 /**
  * Generic HTTP interface. This allows to perform query against url not known in advance and benefit from the authenticated client.

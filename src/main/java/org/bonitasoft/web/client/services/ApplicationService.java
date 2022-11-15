@@ -12,7 +12,7 @@ import org.bonitasoft.web.client.services.policies.ApplicationImportPolicy;
 
 public interface ApplicationService {
 
-    void importApplications(File application, ApplicationImportPolicy policy);
+	void importApplications(File application, ApplicationImportPolicy policy);
 
 	/**
 	 * Return The application for the given token or throw a {@link NotFoundException}
@@ -20,21 +20,21 @@ public interface ApplicationService {
 	 * @return The corresponding application
 	 * @throws NotFoundException
 	 */
-    Application getApplication(String applicationToken);
+	Application getApplication(String applicationToken);
 
-    List<Application> searchApplications(int page, int count);
+	List<Application> searchApplications(int page, int count);
 
-    List<Application> searchApplications(ApplicationApi.SearchApplicationsQueryParams params);
+	List<Application> searchApplications(ApplicationApi.SearchApplicationsQueryParams params);
 
 	void deleteApplication(String applicationToken);
 
-    void importBonitaConfiguration(File configurationFile);
+	void importBonitaConfiguration(File configurationFile);
 
-    Page importPage(File pageZip);
+	Page importPage(File pageZip);
 
-    List<Page> searchPages(int page, int count);
+	List<Page> searchPages(int page, int count);
 
-    List<Page> searchPages(PageApi.SearchPagesQueryParams params);
+	List<Page> searchPages(PageApi.SearchPagesQueryParams params);
 
 	/**
 	 * Return the page for the given toke or throw a {@link NotFoundException}
@@ -42,7 +42,7 @@ public interface ApplicationService {
 	 * @return
 	 * @throws NotFoundException
 	 */
-    Page getPage(String token);
+	Page getPage(String token);
 
 	void deletePage(String token);
 }

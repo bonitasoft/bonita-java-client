@@ -1,4 +1,3 @@
-.github/workflows/maven.yml
 api/openapi.yaml
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
