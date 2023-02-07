@@ -55,7 +55,7 @@
 		<!-- Tests -->
 		<junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
 		<assertj-core.version>3.24.2</assertj-core.version>
-		<mockito-core.version>4.11.0</mockito-core.version>
+		<mockito-core.version>5.1.1</mockito-core.version>
 		<logback-classic.version>1.2.11</logback-classic.version>
 		<testcontainers.version>1.17.6</testcontainers.version>
 		<awaitility.version>4.2.0</awaitility.version>
