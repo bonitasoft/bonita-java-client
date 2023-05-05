@@ -10,13 +10,14 @@ package org.bonitasoft.web.client.services.impl;
 
 import java.io.File;
 
-import lombok.Builder;
-import lombok.Value;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.services.impl.xml.XmlDocumentParser;
 import org.bonitasoft.web.client.services.utils.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
+
+import lombok.Builder;
+import lombok.Value;
 
 @Value
 @Builder

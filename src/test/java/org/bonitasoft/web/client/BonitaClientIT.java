@@ -486,7 +486,7 @@ class BonitaClientIT {
     }
 
     @Test
-    void should_create_all_elements_of_the_organisation() {
+    void should_create_all_elements_of_the_organization() {
         // Given
         loggedInAsTechnicalUser();
 
@@ -507,10 +507,9 @@ class BonitaClientIT {
                 .description("staff of the given group"));
         bonitaClient.users().searchRoles(new RoleApi.SearchRolesQueryParams().p(0).c(1).f(asList("")));
         Group group = bonitaClient.users().createGroup(new GroupCreateRequest()
-                .name("RD")
+                .name("rd")
                 .displayName("RnD")
-                .description("Research and dev.")
-                .path("/rd"));
+                .description("Research and dev."));
     }
 
     private void importOrganization() throws Exception {
@@ -596,7 +595,7 @@ class BonitaClientIT {
                 ProcessInstanceApi processInstanceApi = bonitaClient.get(ProcessInstanceApi.class);
                 ProcessInstance instance = processInstanceApi.getProcessInstanceById(processInstance.getCaseId(),
                         (String) null);
-                return "completed".equalsIgnoreCase(instance.getState());
+                return "completed".equalsIgnoreCase(instance.getState().getValue());
             } catch (NotFoundException e) {
                 // Search in "archived" process instances
                 ArchivedProcessInstanceApi archivedProcessInstanceApi = bonitaClient
@@ -607,7 +606,7 @@ class BonitaClientIT {
                                         .c(1).p(0)
                                         .f(asList("sourceObjectId=" + processInstance.getCaseId())));
                 if (!archivedProcessInstances.isEmpty()) {
-                    return "completed".equalsIgnoreCase(archivedProcessInstances.get(0).getState());
+                    return "completed".equalsIgnoreCase(archivedProcessInstances.get(0).getState().getValue());
                 }
                 return false;
             }

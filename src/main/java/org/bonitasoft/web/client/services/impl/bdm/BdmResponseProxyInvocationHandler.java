@@ -1,5 +1,7 @@
 package org.bonitasoft.web.client.services.impl.bdm;
 
+import static java.util.Objects.requireNonNull;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -10,10 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.feign.api.GenericApi;
 
-import static java.util.Objects.requireNonNull;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class BdmResponseProxyInvocationHandler implements InvocationHandler {

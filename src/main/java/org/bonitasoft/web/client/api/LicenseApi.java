@@ -1,10 +1,11 @@
 package org.bonitasoft.web.client.api;
 
+import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.model.PlatformLicense;
+
 import feign.Headers;
 import feign.RequestLine;
 import feign.Response;
-import org.bonitasoft.web.client.invoker.ApiClient;
-import org.bonitasoft.web.client.model.PlatformLicense;
 
 public interface LicenseApi extends ApiClient.Api {
 
