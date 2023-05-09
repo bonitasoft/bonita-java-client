@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateTaskByIdRequest.JSON_PROPERTY_STATE,
   UpdateTaskByIdRequest.JSON_PROPERTY_DISPLAY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -52,7 +52,7 @@ public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Se
    * state of the Task (completed)
    * @return state
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -78,7 +78,7 @@ public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Se
    * display name of the Task
    * @return displayName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

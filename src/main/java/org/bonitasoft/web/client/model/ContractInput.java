@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ContractInput.JSON_PROPERTY_TYPE,
   ContractInput.JSON_PROPERTY_INPUTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContractInput implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -64,7 +64,7 @@ public class ContractInput implements Serializable {
    * input description
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -90,7 +90,7 @@ public class ContractInput implements Serializable {
    * input name
    * @return name
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -116,7 +116,7 @@ public class ContractInput implements Serializable {
    * true if input contains multiple values
    * @return multiple
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MULTIPLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -142,7 +142,7 @@ public class ContractInput implements Serializable {
    * Get type
    * @return type
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -176,7 +176,7 @@ public class ContractInput implements Serializable {
    * Get inputs
    * @return inputs
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_INPUTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

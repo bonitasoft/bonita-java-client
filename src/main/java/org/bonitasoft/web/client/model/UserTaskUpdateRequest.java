@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserTaskUpdateRequest.JSON_PROPERTY_STATE,
   UserTaskUpdateRequest.JSON_PROPERTY_ASSIGNED_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UserTaskUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class UserTaskUpdateRequest implements Serializable {
    * The UserTask state
    * @return state
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -76,7 +76,7 @@ public class UserTaskUpdateRequest implements Serializable {
    * The id of the user assign to  the UserTask
    * @return assignedId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

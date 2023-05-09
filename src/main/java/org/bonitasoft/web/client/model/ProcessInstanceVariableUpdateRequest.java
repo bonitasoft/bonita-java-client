@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ProcessInstanceVariableUpdateRequest.JSON_PROPERTY_TYPE,
   ProcessInstanceVariableUpdateRequest.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceVariableUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class ProcessInstanceVariableUpdateRequest implements Serializable {
    * the java class name
    * @return type
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -76,7 +76,7 @@ public class ProcessInstanceVariableUpdateRequest implements Serializable {
    * the new value
    * @return value
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

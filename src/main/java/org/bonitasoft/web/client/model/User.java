@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   User.JSON_PROPERTY_CREATION_DATE,
   User.JSON_PROPERTY_LAST_UPDATE_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class User implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -98,7 +98,7 @@ public class User implements Serializable {
    * user id
    * @return id
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -124,7 +124,7 @@ public class User implements Serializable {
    * if \&quot;true\&quot;, user is active.
    * @return enabled
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ENABLED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -150,7 +150,7 @@ public class User implements Serializable {
    * user name
    * @return userName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -176,7 +176,7 @@ public class User implements Serializable {
    * user last name
    * @return firstname
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FIRSTNAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -202,7 +202,7 @@ public class User implements Serializable {
    * user last name
    * @return lastname
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LASTNAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -228,7 +228,7 @@ public class User implements Serializable {
    * user password
    * @return password
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PASSWORD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -254,7 +254,7 @@ public class User implements Serializable {
    *  bonita icon path (ie. /default/icon_user.png)
    * @return icon
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ICON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -280,7 +280,7 @@ public class User implements Serializable {
    * user title
    * @return title
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TITLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -306,7 +306,7 @@ public class User implements Serializable {
    * user job title
    * @return jobTitle
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_JOB_TITLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -332,7 +332,7 @@ public class User implements Serializable {
    * user manager id
    * @return managerId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MANAGER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -358,7 +358,7 @@ public class User implements Serializable {
    * last connection date
    * @return lastConnection
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LAST_CONNECTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -384,7 +384,7 @@ public class User implements Serializable {
    * created by
    * @return createdByUserId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -410,7 +410,7 @@ public class User implements Serializable {
    * creation date
    * @return creationDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CREATION_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -436,7 +436,7 @@ public class User implements Serializable {
    * user last update date
    * @return lastUpdateDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

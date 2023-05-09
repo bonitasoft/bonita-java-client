@@ -47,7 +47,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Task.JSON_PROPERTY_ASSIGNED_DATE,
   Task.JSON_PROPERTY_IS_TERMINAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Task implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -130,7 +130,7 @@ public class Task implements Serializable {
    * the task id
    * @return id
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -156,7 +156,7 @@ public class Task implements Serializable {
    * the task type
    * @return type
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -182,7 +182,7 @@ public class Task implements Serializable {
    * the task technical name
    * @return name
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -208,7 +208,7 @@ public class Task implements Serializable {
    * the human readable task name
    * @return displayName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -234,7 +234,7 @@ public class Task implements Serializable {
    * the task description
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -260,7 +260,7 @@ public class Task implements Serializable {
    * the human readable task description
    * @return displayDescription
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -286,7 +286,7 @@ public class Task implements Serializable {
    * Get state
    * @return state
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -312,7 +312,7 @@ public class Task implements Serializable {
    * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task reached the current state for example &#39;2014-10-17 16:05:42.626&#39;
    * @return reachedStateDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -338,7 +338,7 @@ public class Task implements Serializable {
    * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task was last updated for example &#39;2014-10-17 16:05:42.626)
    * @return lastUpdateDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -364,7 +364,7 @@ public class Task implements Serializable {
    * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task is due for example &#39;2014-10-17 16:05:42.626&#39;
    * @return dueDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DUE_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -390,7 +390,7 @@ public class Task implements Serializable {
    * the priority (string) of the current task
    * @return priority
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PRIORITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -416,7 +416,7 @@ public class Task implements Serializable {
    * the process definition id of the process instance which define this task
    * @return processId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROCESS_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -442,7 +442,7 @@ public class Task implements Serializable {
    * the immediate containing process instance id (case id)
    * @return parentCaseId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -468,7 +468,7 @@ public class Task implements Serializable {
    * the parent Task id
    * @return parentTaskId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -494,7 +494,7 @@ public class Task implements Serializable {
    * the top/root process instance id (case id). In case of an \&quot;event sub process\&quot; &#x60;parentCaseId&#x60; will the id of the process instance called while &#x60;rootCaseId&#x60; will be the one from the caller process instance
    * @return rootCaseId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -520,7 +520,7 @@ public class Task implements Serializable {
    * same as rootCaseId
    * @return rootContainerId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -546,7 +546,7 @@ public class Task implements Serializable {
    * the id of the user who performed this task. The task has to be a human task otherwise its value will be 0
    * @return executedBy
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -572,7 +572,7 @@ public class Task implements Serializable {
    * the id of the user who did actually performed the task when it has been done in the name of someone else. Value is 0 otherwise
    * @return executedBySubstitute
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -598,7 +598,7 @@ public class Task implements Serializable {
    * the id of the actor that can execute this task null otherwise
    * @return actorId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ACTOR_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -624,7 +624,7 @@ public class Task implements Serializable {
    * the user id that this task is assigned to or 0 if it is unassigned
    * @return assignedId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -650,7 +650,7 @@ public class Task implements Serializable {
    * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example &#39;2014-10-17 16:05:42.626&#39;
    * @return assignedDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -676,7 +676,7 @@ public class Task implements Serializable {
    * True if the task is the last one in a flow
    * @return isTerminal
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_IS_TERMINAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

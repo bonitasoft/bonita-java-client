@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   ProcessCreateRequest.JSON_PROPERTY_FILEUPLOAD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class ProcessCreateRequest implements Serializable {
    * the bar file to deploy (previously uploaded in tmp folder)
    * @return fileupload
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FILEUPLOAD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

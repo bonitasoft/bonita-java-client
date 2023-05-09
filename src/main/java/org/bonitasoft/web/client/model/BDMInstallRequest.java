@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   BDMInstallRequest.JSON_PROPERTY_FILE_UPLOAD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BDMInstallRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class BDMInstallRequest implements Serializable {
    * the temporary file name once uploaded on the server
    * @return fileUpload
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FILE_UPLOAD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

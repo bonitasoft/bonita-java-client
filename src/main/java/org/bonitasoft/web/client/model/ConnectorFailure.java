@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConnectorFailure.JSON_PROPERTY_CONNECTOR_INSTANCE_ID,
   ConnectorFailure.JSON_PROPERTY_ERROR_STACK_TRACE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConnectorFailure implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public class ConnectorFailure implements Serializable {
    * the message of the connector failure
    * @return errorMessage
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ERROR_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -80,7 +80,7 @@ public class ConnectorFailure implements Serializable {
    * the ID of the connector instance (see connectorInstance resource documentation)
    * @return connectorInstanceId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONNECTOR_INSTANCE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -106,7 +106,7 @@ public class ConnectorFailure implements Serializable {
    * the stack trace of the error
    * @return errorStackTrace
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ERROR_STACK_TRACE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

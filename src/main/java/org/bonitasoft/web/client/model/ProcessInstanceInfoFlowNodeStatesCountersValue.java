@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ProcessInstanceInfoFlowNodeStatesCountersValue.JSON_PROPERTY_COMPLETING
 })
 @JsonTypeName("ProcessInstanceInfo_flowNodeStatesCounters_value")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -84,7 +84,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in completed state
    * @return completed
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_COMPLETED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -110,7 +110,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in skipped state
    * @return skipped
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SKIPPED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -136,7 +136,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in cancelled state
    * @return cancelled
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CANCELLED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -162,7 +162,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in aborted state
    * @return aborted
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ABORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -188,7 +188,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in ready state
    * @return ready
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_READY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -214,7 +214,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in failed state
    * @return failed
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FAILED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -240,7 +240,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in executing state
    * @return executing
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EXECUTING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -266,7 +266,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in waiting state
    * @return waiting
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_WAITING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -292,7 +292,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in initializing state
    * @return initializing
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_INITIALIZING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -318,7 +318,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
    * number of instance of the given Flow Node in completing state
    * @return completing
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_COMPLETING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

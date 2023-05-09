@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonPropertyOrder({
   PlatformUpdateRequest.JSON_PROPERTY_STATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlatformUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -83,7 +83,7 @@ public class PlatformUpdateRequest implements Serializable {
    * Platform state
    * @return state
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

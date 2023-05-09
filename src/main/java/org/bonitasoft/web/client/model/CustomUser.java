@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CustomUser.JSON_PROPERTY_VALUE,
   CustomUser.JSON_PROPERTY_DEFINITION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CustomUser implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public class CustomUser implements Serializable {
    * user id
    * @return userId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -80,7 +80,7 @@ public class CustomUser implements Serializable {
    * definition value
    * @return value
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -106,7 +106,7 @@ public class CustomUser implements Serializable {
    * Get definitionId
    * @return definitionId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

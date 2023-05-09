@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CreateApplicationRequest.JSON_PROPERTY_TOKEN,
   CreateApplicationRequest.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateApplicationRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -62,7 +62,7 @@ public class CreateApplicationRequest implements Serializable {
    * description of the application
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -88,7 +88,7 @@ public class CreateApplicationRequest implements Serializable {
    * display name of the application
    * @return displayName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -114,7 +114,7 @@ public class CreateApplicationRequest implements Serializable {
    * profile authorized to access this application
    * @return profileId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROFILE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -140,7 +140,7 @@ public class CreateApplicationRequest implements Serializable {
    * token of the application used to build the application URL
    * @return token
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -166,7 +166,7 @@ public class CreateApplicationRequest implements Serializable {
    * version of the application
    * @return version
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VERSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

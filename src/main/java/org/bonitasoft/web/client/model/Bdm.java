@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Bdm.JSON_PROPERTY_LAST_UPDATED_BY,
   Bdm.JSON_PROPERTY_LAST_UPDATE_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Bdm implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -66,7 +66,7 @@ public class Bdm implements Serializable {
    * BDM id
    * @return id
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -92,7 +92,7 @@ public class Bdm implements Serializable {
    * BDM name
    * @return name
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -118,7 +118,7 @@ public class Bdm implements Serializable {
    * BDM type
    * @return type
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -144,7 +144,7 @@ public class Bdm implements Serializable {
    * Get state
    * @return state
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -170,7 +170,7 @@ public class Bdm implements Serializable {
    * This value is always -1 because only the tenant_technical_user can install BDM.
    * @return lastUpdatedBy
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -196,7 +196,7 @@ public class Bdm implements Serializable {
    * Last date when the BDM was installed or updated.
    * @return lastUpdateDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

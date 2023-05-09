@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
   ThemeCreateRequest.JSON_PROPERTY_TYPE,
   ThemeCreateRequest.JSON_PROPERTY_ZIP_FILE_PATHPORTAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ThemeCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -89,7 +89,7 @@ public class ThemeCreateRequest implements Serializable {
    * theme type
    * @return type
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -115,7 +115,7 @@ public class ThemeCreateRequest implements Serializable {
    * tmp zip file Path as uploaded to portal
    * @return zipFilePathportal
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ZIP_FILE_PATHPORTAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

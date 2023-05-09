@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ProcessResolutionProblem.JSON_PROPERTY_RESOURCE_ID,
   ProcessResolutionProblem.JSON_PROPERTY_TARGET_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessResolutionProblem implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public class ProcessResolutionProblem implements Serializable {
    * resolution problem
    * @return message
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -80,7 +80,7 @@ public class ProcessResolutionProblem implements Serializable {
    * id of the unresolved resource
    * @return resourceId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_RESOURCE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -106,7 +106,7 @@ public class ProcessResolutionProblem implements Serializable {
    * the type of the unresolved resource (parameter, actor, or connector)
    * @return targetType
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TARGET_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

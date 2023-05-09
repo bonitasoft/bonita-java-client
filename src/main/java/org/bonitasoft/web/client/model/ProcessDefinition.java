@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ProcessDefinition.JSON_PROPERTY_CONFIGURATION_STATE,
   ProcessDefinition.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessDefinition implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -94,7 +94,7 @@ public class ProcessDefinition implements Serializable {
    * the identifier of the process definition (long)
    * @return id
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -120,7 +120,7 @@ public class ProcessDefinition implements Serializable {
    * icon path
    * @return icon
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ICON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -146,7 +146,7 @@ public class ProcessDefinition implements Serializable {
    * the human readable activity description
    * @return displayDescription
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -172,7 +172,7 @@ public class ProcessDefinition implements Serializable {
    * the date when the process definition was deployed
    * @return deploymentDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DEPLOYMENT_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -198,7 +198,7 @@ public class ProcessDefinition implements Serializable {
    * the process description
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -224,7 +224,7 @@ public class ProcessDefinition implements Serializable {
    * Get activationState
    * @return activationState
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -250,7 +250,7 @@ public class ProcessDefinition implements Serializable {
    * the process name
    * @return name
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -276,7 +276,7 @@ public class ProcessDefinition implements Serializable {
    * the id of the user who deployed the process
    * @return deployedBy
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DEPLOYED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -302,7 +302,7 @@ public class ProcessDefinition implements Serializable {
    * the human readable process description
    * @return displayName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -328,7 +328,7 @@ public class ProcessDefinition implements Serializable {
    * the id of the actor that can initiate process instances of the process
    * @return actorinitiatorid
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ACTORINITIATORID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -354,7 +354,7 @@ public class ProcessDefinition implements Serializable {
    * the date when the process definition was last updated
    * @return lastUpdateDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -380,7 +380,7 @@ public class ProcessDefinition implements Serializable {
    * Get configurationState
    * @return configurationState
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONFIGURATION_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -406,7 +406,7 @@ public class ProcessDefinition implements Serializable {
    * the version of the process
    * @return version
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VERSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

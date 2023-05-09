@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ActorDefinition.JSON_PROPERTY_DESCRIPTION,
   ActorDefinition.JSON_PROPERTY_INITIATOR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActorDefinition implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public class ActorDefinition implements Serializable {
    * the actor name
    * @return name
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -80,7 +80,7 @@ public class ActorDefinition implements Serializable {
    * the actor description
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -106,7 +106,7 @@ public class ActorDefinition implements Serializable {
    * true, if this actor can start the process
    * @return initiator
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_INITIATOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

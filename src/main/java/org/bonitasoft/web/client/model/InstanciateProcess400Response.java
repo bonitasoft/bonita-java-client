@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   InstanciateProcess400Response.JSON_PROPERTY_EXPLANATIONS
 })
 @JsonTypeName("instanciateProcess_400_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstanciateProcess400Response implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class InstanciateProcess400Response implements Serializable {
    * The error message
    * @return message
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -84,7 +84,7 @@ public class InstanciateProcess400Response implements Serializable {
    * The exception type
    * @return exception
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EXCEPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -118,7 +118,7 @@ public class InstanciateProcess400Response implements Serializable {
    * Further details on the error
    * @return explanations
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EXPLANATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

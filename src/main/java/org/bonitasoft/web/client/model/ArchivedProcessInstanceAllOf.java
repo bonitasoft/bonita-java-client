@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ArchivedProcessInstanceAllOf.JSON_PROPERTY_ARCHIVED_DATE
 })
 @JsonTypeName("ArchivedProcessInstance_allOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedProcessInstanceAllOf implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -52,7 +52,7 @@ public class ArchivedProcessInstanceAllOf implements Serializable {
    * the id of the process instance before it was archived
    * @return sourceObjectId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -78,7 +78,7 @@ public class ArchivedProcessInstanceAllOf implements Serializable {
    * the date set when the process instance was archived
    * @return archivedDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

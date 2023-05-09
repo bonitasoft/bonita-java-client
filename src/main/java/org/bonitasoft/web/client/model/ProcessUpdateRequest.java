@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ProcessUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
   ProcessUpdateRequest.JSON_PROPERTY_ACTIVATION_STATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public class ProcessUpdateRequest implements Serializable {
    * description of the Process
    * @return displaydescription
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAYDESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -80,7 +80,7 @@ public class ProcessUpdateRequest implements Serializable {
    * display name of the Process
    * @return displayName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -106,7 +106,7 @@ public class ProcessUpdateRequest implements Serializable {
    * Get activationState
    * @return activationState
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

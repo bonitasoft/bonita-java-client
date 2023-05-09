@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TenantCreateRequest.JSON_PROPERTY_USERNAME,
   TenantCreateRequest.JSON_PROPERTY_PASSWORD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TenantCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -60,7 +60,7 @@ public class TenantCreateRequest implements Serializable {
    * the name of the tenant
    * @return name
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -86,7 +86,7 @@ public class TenantCreateRequest implements Serializable {
    * the description
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -112,7 +112,7 @@ public class TenantCreateRequest implements Serializable {
    * the username
    * @return username
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USERNAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -138,7 +138,7 @@ public class TenantCreateRequest implements Serializable {
    * the password
    * @return password
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PASSWORD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

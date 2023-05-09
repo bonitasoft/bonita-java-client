@@ -20,6 +20,8 @@ import java.util.concurrent.Callable;
 import org.bonitasoft.testcontainers.BonitaContainer;
 import org.bonitasoft.web.client.api.ApplicationApi.SearchApplicationsQueryParams;
 import org.bonitasoft.web.client.api.ArchivedProcessInstanceApi;
+import org.bonitasoft.web.client.api.GroupApi;
+import org.bonitasoft.web.client.api.GroupApi.SearchGroupsQueryParams;
 import org.bonitasoft.web.client.api.ProcessInstanceApi;
 import org.bonitasoft.web.client.api.RoleApi;
 import org.bonitasoft.web.client.api.UserApi.SearchUsersQueryParams;
@@ -38,6 +40,7 @@ import org.bonitasoft.web.client.model.BusinessData;
 import org.bonitasoft.web.client.model.ConfigurationState;
 import org.bonitasoft.web.client.model.Group;
 import org.bonitasoft.web.client.model.GroupCreateRequest;
+import org.bonitasoft.web.client.model.GroupUpdateRequest;
 import org.bonitasoft.web.client.model.Page;
 import org.bonitasoft.web.client.model.ProcessDefinition;
 import org.bonitasoft.web.client.model.ProcessInstance;
@@ -501,15 +504,34 @@ class BonitaClientIT {
                 .searchUsers(new SearchUsersQueryParams().p(0).c(1).f(asList("userName=john.doe")));
         assertThat(users).anyMatch(user -> user.getFirstname().equals("John"));
 
-        Role role = bonitaClient.users().createRole(new RoleCreateRequest()
+       bonitaClient.users().createRole(new RoleCreateRequest()
                 .name("staff")
                 .displayName("staff")
                 .description("staff of the given group"));
-        bonitaClient.users().searchRoles(new RoleApi.SearchRolesQueryParams().p(0).c(1).f(asList("")));
-        Group group = bonitaClient.users().createGroup(new GroupCreateRequest()
+       List<Role> result = bonitaClient.users().searchRoles(new RoleApi.SearchRolesQueryParams().p(0).c(10));
+       assertThat(result).extracting(Role::getName).contains("staff");
+        
+       Group engineering = bonitaClient.users().createGroup(new GroupCreateRequest()
+               .name("engineering")
+               .displayName("Engineering")
+               .description("Engineering dept"));
+       assertThat(engineering.getName()).isEqualTo("engineering");
+        
+       Group rdGroup = bonitaClient.users().createGroup(new GroupCreateRequest()
                 .name("rd")
                 .displayName("RnD")
-                .description("Research and dev."));
+                .description("Research and dev.")
+                .parentGroupId(engineering.getId()));
+        assertThat(rdGroup.getName()).isEqualTo("rd");
+        assertThat(rdGroup.getParentGroupId()).isEqualTo(engineering.getParentGroupId());
+        
+        GroupApi groupApi = bonitaClient.get(GroupApi.class);
+        groupApi.updateGroupById(rdGroup.getId(), new GroupUpdateRequest()
+                .name("rd")
+                .parentGroupId(""));
+        
+       var r = groupApi.searchGroups(new SearchGroupsQueryParams().p(0).c(1).f(List.of("name=rd")));
+       assertThat(r).hasSize(1).allSatisfy( g -> assertThat(g.getParentGroupId()).isNull());
     }
 
     private void importOrganization() throws Exception {

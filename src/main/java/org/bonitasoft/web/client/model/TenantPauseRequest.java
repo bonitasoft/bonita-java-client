@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   TenantPauseRequest.JSON_PROPERTY_PAUSED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TenantPauseRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class TenantPauseRequest implements Serializable {
    * wether the system tenant should be paused or not
    * @return paused
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PAUSED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

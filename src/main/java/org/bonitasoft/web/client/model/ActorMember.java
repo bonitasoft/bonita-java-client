@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ActorMember.JSON_PROPERTY_GROUP_ID,
   ActorMember.JSON_PROPERTY_USER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActorMember implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -62,7 +62,7 @@ public class ActorMember implements Serializable {
    * actor member id
    * @return id
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -88,7 +88,7 @@ public class ActorMember implements Serializable {
    * id of the actor for this mapping
    * @return actorId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ACTOR_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -114,7 +114,7 @@ public class ActorMember implements Serializable {
    * id of role, or -1 if the member type is not role
    * @return roleId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ROLE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -140,7 +140,7 @@ public class ActorMember implements Serializable {
    * id of group, or -1 if the member type is not group
    * @return groupId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_GROUP_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -166,7 +166,7 @@ public class ActorMember implements Serializable {
    * id of user, or -1 if the member type is not user
    * @return userId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

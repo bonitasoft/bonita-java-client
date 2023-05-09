@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Session.JSON_PROPERTY_VERSION,
   Session.JSON_PROPERTY_COPYRIGHT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Session implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -74,7 +74,7 @@ public class Session implements Serializable {
    * user id
    * @return userId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -100,7 +100,7 @@ public class Session implements Serializable {
    * user name
    * @return userName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -126,7 +126,7 @@ public class Session implements Serializable {
    * the session id
    * @return sessionId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SESSION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -152,7 +152,7 @@ public class Session implements Serializable {
    * conf
    * @return conf
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONF)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -178,7 +178,7 @@ public class Session implements Serializable {
    * is technical user: true|false
    * @return isTechnicalUser
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_IS_TECHNICAL_USER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -204,7 +204,7 @@ public class Session implements Serializable {
    * is technical user: true|false
    * @return isGuestUser
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_IS_GUEST_USER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -230,7 +230,7 @@ public class Session implements Serializable {
    * bonita version
    * @return version
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VERSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -256,7 +256,7 @@ public class Session implements Serializable {
    * bonita copyright
    * @return copyright
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_COPYRIGHT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   GroupCreateRequest.JSON_PROPERTY_DESCRIPTION,
   GroupCreateRequest.JSON_PROPERTY_ICON
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GroupCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -62,7 +62,7 @@ public class GroupCreateRequest implements Serializable {
    * name
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -88,7 +88,7 @@ public class GroupCreateRequest implements Serializable {
    * display name
    * @return displayName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -114,7 +114,7 @@ public class GroupCreateRequest implements Serializable {
    * the id of the parent group of this group (empty if the group has no parent)
    * @return parentGroupId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PARENT_GROUP_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -140,7 +140,7 @@ public class GroupCreateRequest implements Serializable {
    * description
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -166,7 +166,7 @@ public class GroupCreateRequest implements Serializable {
    * icon path
    * @return icon
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ICON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

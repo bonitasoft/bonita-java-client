@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ApplicationMenuUpdateRequest.JSON_PROPERTY_MENU_INDEX,
   ApplicationMenuUpdateRequest.JSON_PROPERTY_DISPLAY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationMenuUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -62,7 +62,7 @@ public class ApplicationMenuUpdateRequest implements Serializable {
    * id of the parent menu of this menu item, or -1 for a top-level item
    * @return parentMenuId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -88,7 +88,7 @@ public class ApplicationMenuUpdateRequest implements Serializable {
    * id of the application page targeted by this menu item, or -1 if there is no targeted page (that is, the item is a parent menu)
    * @return applicationPageId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -114,7 +114,7 @@ public class ApplicationMenuUpdateRequest implements Serializable {
    * id of the application related to this menu item
    * @return applicationId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -140,7 +140,7 @@ public class ApplicationMenuUpdateRequest implements Serializable {
    * index of the menu item
    * @return menuIndex
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MENU_INDEX)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -166,7 +166,7 @@ public class ApplicationMenuUpdateRequest implements Serializable {
    * label to display for this menu in the application navigation bar or menu
    * @return displayName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

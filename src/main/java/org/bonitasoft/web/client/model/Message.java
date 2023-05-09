@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Message.JSON_PROPERTY_MESSAGE_CONTENT,
   Message.JSON_PROPERTY_CORRELATIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Message implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -64,7 +64,7 @@ public class Message implements Serializable {
    * the message name
    * @return messageName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MESSAGE_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -90,7 +90,7 @@ public class Message implements Serializable {
    * the target process name
    * @return targetProcess
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TARGET_PROCESS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -116,7 +116,7 @@ public class Message implements Serializable {
    * the target FlowNode name
    * @return targetFlowNode
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TARGET_FLOW_NODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -150,7 +150,7 @@ public class Message implements Serializable {
    * the message content
    * @return messageContent
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MESSAGE_CONTENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -184,7 +184,7 @@ public class Message implements Serializable {
    * the message correlations
    * @return correlations
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CORRELATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
