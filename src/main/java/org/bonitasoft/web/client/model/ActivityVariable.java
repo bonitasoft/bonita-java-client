@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
   ActivityVariable.JSON_PROPERTY_CONTAINER_TYPE,
   ActivityVariable.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActivityVariable implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -127,7 +127,7 @@ public class ActivityVariable implements Serializable {
    * The ID of the tenant where the current user is logged in (technical information)
    * @return tenantId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TENANT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -153,7 +153,7 @@ public class ActivityVariable implements Serializable {
    * number (since 7.0.1)
    * @return tenantIdString
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TENANT_ID_STRING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -179,7 +179,7 @@ public class ActivityVariable implements Serializable {
    * The identifier of the variable
    * @return id
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -205,7 +205,7 @@ public class ActivityVariable implements Serializable {
    * number (since 7.0.1)
    * @return idString
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID_STRING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -231,7 +231,7 @@ public class ActivityVariable implements Serializable {
    * The name of the activity variable
    * @return name
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -257,7 +257,7 @@ public class ActivityVariable implements Serializable {
    * The description of the variable if any
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -283,7 +283,7 @@ public class ActivityVariable implements Serializable {
    * FALSE
    * @return transientData
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TRANSIENT_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -309,7 +309,7 @@ public class ActivityVariable implements Serializable {
    * The fully qualified class name of the variable type
    * @return className
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CLASS_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -335,7 +335,7 @@ public class ActivityVariable implements Serializable {
    * The ID of the activity containing this variable (same as the one passed as parameter) if the variable is defined at activity level or ID of the process instance if the variable is defined on the process
    * @return containerId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -361,7 +361,7 @@ public class ActivityVariable implements Serializable {
    * number (since 7.0.1)
    * @return containerIdString
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONTAINER_ID_STRING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -387,7 +387,7 @@ public class ActivityVariable implements Serializable {
    * ACTIVITY_INSTANCE | PROCESS_INSTANCE depending on whether the variable is defined at activity or process level.
    * @return containerType
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -413,7 +413,7 @@ public class ActivityVariable implements Serializable {
    * the value of this variable. The format of the value depends on the type of the variable
    * @return value
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

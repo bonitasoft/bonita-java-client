@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   PageUpdateRequest.JSON_PROPERTY_PAGE_ZIP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PageUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class PageUpdateRequest implements Serializable {
    * pageZip as named in the temp folder after upload
    * @return pageZip
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PAGE_ZIP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

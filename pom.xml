@@ -32,16 +32,16 @@
 
 	<properties>
 		<!-- Maven -->
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Bonita -->
-		<bonita.version>7.11.1</bonita.version>
+		<bonita.version>7.13.0</bonita.version>
 		<bonita-openapi.version>0.0.13</bonita-openapi.version>
 
 		<swagger-annotations.version>1.6.10</swagger-annotations.version>
-		<javax-annotation.version>1.3.2</javax-annotation.version>
+		<jakarta-annotation.version>2.1.1</jakarta-annotation.version>
 		<jsr305.version>3.0.2</jsr305.version>
 		<feign.version>12.3</feign.version>
 		<feign-form.version>3.8.0</feign-form.version>
@@ -62,8 +62,7 @@
 
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.release>${java.version}</maven.compiler.release>
 		<maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
 		<maven-failsafe-plugin.version>3.1.0</maven-failsafe-plugin.version>
 		<jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
@@ -138,9 +137,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
-			<version>${javax-annotation.version}</version>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+			<version>${jakarta-annotation.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -342,12 +341,8 @@
 							<exclude>org/bonitasoft/web/client/invoker/*</exclude>
 							<exclude>org/bonitasoft/web/client/model/*</exclude>
 							<exclude>org/bonitasoft/web/client/invoker/auth/ApiKeyAuth*</exclude>
-							<exclude>
-								org/bonitasoft/web/client/invoker/auth/HttpBasicAuth*
-							</exclude>
-							<exclude>
-								org/bonitasoft/web/client/invoker/auth/HttpBearerAuth*
-							</exclude>
+							<exclude>org/bonitasoft/web/client/invoker/auth/HttpBasicAuth*</exclude>
+							<exclude>org/bonitasoft/web/client/invoker/auth/HttpBearerAuth*</exclude>
 						</excludes>
 					</configuration>
 					<executions>
@@ -422,7 +417,8 @@
 							<modelPackage>org.bonitasoft.web.client.model</modelPackage>
 							<configOptions>
 								<dateLibrary>java8</dateLibrary>
-								<java8>true</java8>
+								<java8>false</java8>
+								<useJakartaEe>true</useJakartaEe>
 								<serializableModel>true</serializableModel>
 								<serializationLibrary>jackson</serializationLibrary>
 								<library>feign</library>
@@ -486,7 +482,8 @@
 	</build>
 
 	<profiles>
-		<!-- Deployment profile (required so these plugins are only used when deploying) -->
+		<!-- Deployment profile (required so these plugins are only used when
+		deploying) -->
 		<profile>
 			<id>deploy</id>
 			<properties>
@@ -507,7 +504,6 @@
 									<goal>sign</goal>
 								</goals>
 								<configuration>
-									<!-- Prevent `gpg` from using pinentry programs -->
 									<gpgArguments>
 										<arg>--pinentry-mode</arg>
 										<arg>loopback</arg>

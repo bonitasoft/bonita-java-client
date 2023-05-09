@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ArchivedFlowNodeAllOf.JSON_PROPERTY_ARCHIVED_DATE
 })
 @JsonTypeName("ArchivedFlowNode_allOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ArchivedFlowNodeAllOf implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -52,7 +52,7 @@ public class ArchivedFlowNodeAllOf implements Serializable {
    * the original id of the flowNode before it was archived
    * @return sourceObjectId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -78,7 +78,7 @@ public class ArchivedFlowNodeAllOf implements Serializable {
    * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example &#39;2014-10-17 16:05:42.626&#39;
    * @return archivedDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

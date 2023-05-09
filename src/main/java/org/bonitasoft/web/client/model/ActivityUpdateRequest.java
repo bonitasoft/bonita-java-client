@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ActivityUpdateRequest.JSON_PROPERTY_VARIABLES,
   ActivityUpdateRequest.JSON_PROPERTY_STATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ActivityUpdateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class ActivityUpdateRequest implements Serializable {
    * Activity variables to update.  **Note**: if there is no data with the specified name in the activity, the update will be applied to the process data if a variable with the specified name exists.  **Note**: if the task definition includes a connector that is executed on finish and updates the value of a variable, the value set by the REST API call is overwritten. 
    * @return variables
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VARIABLES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -76,7 +76,7 @@ public class ActivityUpdateRequest implements Serializable {
    * The target state of the activity - Execute a task: &#x60;completed&#x60; - Skip activity: &#x60;skipped&#x60; - Make this call after all failed connectors have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue) - Replay activity: &#x60;replay&#x60; 
    * @return state
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UpdateProcessConnectorByProcessIdRequest.JSON_PROPERTY_ID,
   UpdateProcessConnectorByProcessIdRequest.JSON_PROPERTY_IMPLEMENTATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateProcessConnectorByProcessIdRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class UpdateProcessConnectorByProcessIdRequest implements Serializable {
    * Id of the process for which to update the connector, combined with connector name and version separated by slashes (x/y/z)
    * @return id
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -76,7 +76,7 @@ public class UpdateProcessConnectorByProcessIdRequest implements Serializable {
    * Previously uploaded temp file name of the updated version of the connector (returned by the  [upload file api](#operation/uploadFile))
    * @return implementation
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_IMPLEMENTATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

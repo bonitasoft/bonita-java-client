@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ProcessInstanceDocument.JSON_PROPERTY_URL,
   ProcessInstanceDocument.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessInstanceDocument implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -98,7 +98,7 @@ public class ProcessInstanceDocument implements Serializable {
    * documentId
    * @return id
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -124,7 +124,7 @@ public class ProcessInstanceDocument implements Serializable {
    * date and time
    * @return creationDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CREATION_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -152,7 +152,7 @@ public class ProcessInstanceDocument implements Serializable {
    * @deprecated
   **/
   @Deprecated
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_AUTHOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -178,7 +178,7 @@ public class ProcessInstanceDocument implements Serializable {
    * index in a list of documents, or -1 for a single document
    * @return index
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_INDEX)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -204,7 +204,7 @@ public class ProcessInstanceDocument implements Serializable {
    * MIME type
    * @return contentMimetype
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONTENT_MIMETYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -230,7 +230,7 @@ public class ProcessInstanceDocument implements Serializable {
    * caseId
    * @return caseId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CASE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -256,7 +256,7 @@ public class ProcessInstanceDocument implements Serializable {
    * storageId
    * @return contentStorageId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONTENT_STORAGE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -282,7 +282,7 @@ public class ProcessInstanceDocument implements Serializable {
    * &#x60;true&#x60; if  the the document object contains the content directly. &#x60;false&#x60; if the document is specified by URL so the document object contains a reference to the content, not the content itself.
    * @return isInternal
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_IS_INTERNAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -308,7 +308,7 @@ public class ProcessInstanceDocument implements Serializable {
    * description
    * @return description
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -334,7 +334,7 @@ public class ProcessInstanceDocument implements Serializable {
    * name
    * @return name
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -360,7 +360,7 @@ public class ProcessInstanceDocument implements Serializable {
    * filename
    * @return fileName
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FILE_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -386,7 +386,7 @@ public class ProcessInstanceDocument implements Serializable {
    * submittorUserId
    * @return submittedBy
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SUBMITTED_BY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -412,7 +412,7 @@ public class ProcessInstanceDocument implements Serializable {
    * urlForDownload
    * @return url
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -438,7 +438,7 @@ public class ProcessInstanceDocument implements Serializable {
    * version
    * @return version
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VERSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

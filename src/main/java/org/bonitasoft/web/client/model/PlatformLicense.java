@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PlatformLicense.JSON_PROPERTY_CASE_COUNTER_LIMIT,
   PlatformLicense.JSON_PROPERTY_CASE_COUNTER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlatformLicense implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -86,7 +86,7 @@ public class PlatformLicense implements Serializable {
    * date with format &#x60;yyyy-MM-dd&#x60; - first day (included) of license file validity
    * @return licenseStartDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LICENSE_START_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -112,7 +112,7 @@ public class PlatformLicense implements Serializable {
    * number of days for license file validity
    * @return duration
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -138,7 +138,7 @@ public class PlatformLicense implements Serializable {
    * date with format &#x60;yyyy-MM-dd&#x60; - last day (included) of license file validity
    * @return licenseExpirationDate
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LICENSE_EXPIRATION_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -164,7 +164,7 @@ public class PlatformLicense implements Serializable {
    * number of CPUs
    * @return numberOfCPUCores
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NUMBER_OF_C_P_U_CORES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -190,7 +190,7 @@ public class PlatformLicense implements Serializable {
    * name of the Bonita edition enabled by the license
    * @return edition
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EDITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -216,7 +216,7 @@ public class PlatformLicense implements Serializable {
    * available mode enabled by the license
    * @return licenseMode
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LICENSE_MODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -242,7 +242,7 @@ public class PlatformLicense implements Serializable {
    * request key to use to generate a new license on the customer portal If you have a subscription that specifies case-counter licensing, additional fields are present: 
    * @return requestKey
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_REQUEST_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -268,7 +268,7 @@ public class PlatformLicense implements Serializable {
    * date with format &#x60;yyyy-MM-dd&#x60; - first day (included) of current period for number of process instances provisioned
    * @return subscriptionStartPeriod
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_START_PERIOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -294,7 +294,7 @@ public class PlatformLicense implements Serializable {
    * date with format &#x60;yyyy-MM-dd&#x60; - last day (included) of current period for number of process instances provisioned
    * @return subscriptionEndPeriod
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_END_PERIOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -320,7 +320,7 @@ public class PlatformLicense implements Serializable {
    * number of process instances provisioned for period between &#x60;subscriptionStartPeriod&#x60; and &#x60;subscriptionEndPeriod&#x60;
    * @return caseCounterLimit
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CASE_COUNTER_LIMIT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -346,7 +346,7 @@ public class PlatformLicense implements Serializable {
    * number of consumed process instances for period between &#x60;subscriptionStartPeriod&#x60; and &#x60;subscriptionEndPeriod&#x60;
    * @return caseCounter
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CASE_COUNTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

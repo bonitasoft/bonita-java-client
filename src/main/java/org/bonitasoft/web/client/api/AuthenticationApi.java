@@ -11,7 +11,7 @@ import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public interface AuthenticationApi extends ApiClient.Api {
 
 

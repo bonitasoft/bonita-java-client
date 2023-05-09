@@ -26,7 +26,7 @@ endif::[]
 :project-group-id: org.bonitasoft.web
 :project-artifact-id: bonita-java-client
 :project-version: 0.0.11-SNAPSHOT
-:bonita-short-version: 7.11
+:bonita-short-version: 7.13
 :orga: bonitasoft
 :uri-org: https://github.com/{orga}
 :uri-repo: {uri-org}/{project-artifact-id}

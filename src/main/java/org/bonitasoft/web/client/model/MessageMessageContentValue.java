@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
   MessageMessageContentValue.JSON_PROPERTY_TYPE
 })
 @JsonTypeName("Message_messageContent_value")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageMessageContentValue implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -105,7 +105,7 @@ public class MessageMessageContentValue implements Serializable {
    * 
    * @return value
   **/
-  @javax.annotation.Nonnull
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -131,7 +131,7 @@ public class MessageMessageContentValue implements Serializable {
    * Date types must be in the ISO-8601 format. When not set, the type is guessed using the value. Be careful as it can lead to type inconsistency in the target process (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer) 
    * @return type
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

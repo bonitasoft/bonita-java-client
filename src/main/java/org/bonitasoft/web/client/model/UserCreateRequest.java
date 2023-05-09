@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserCreateRequest.JSON_PROPERTY_MANAGER_ID,
   UserCreateRequest.JSON_PROPERTY_ENABLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UserCreateRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -82,7 +82,7 @@ public class UserCreateRequest implements Serializable {
    * user name
    * @return userName
   **/
-  @javax.annotation.Nonnull
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_USER_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -108,7 +108,7 @@ public class UserCreateRequest implements Serializable {
    * user last name
    * @return firstname
   **/
-  @javax.annotation.Nonnull
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_FIRSTNAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -134,7 +134,7 @@ public class UserCreateRequest implements Serializable {
    * user last name
    * @return lastname
   **/
-  @javax.annotation.Nonnull
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_LASTNAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -160,7 +160,7 @@ public class UserCreateRequest implements Serializable {
    * user password
    * @return password
   **/
-  @javax.annotation.Nonnull
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PASSWORD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -186,7 +186,7 @@ public class UserCreateRequest implements Serializable {
    * user password confirmation
    * @return passwordConfirm
   **/
-  @javax.annotation.Nonnull
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PASSWORD_CONFIRM)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -212,7 +212,7 @@ public class UserCreateRequest implements Serializable {
    *  bonita icon path (ie. /default/icon_user.png)
    * @return icon
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ICON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -238,7 +238,7 @@ public class UserCreateRequest implements Serializable {
    * user title
    * @return title
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TITLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -264,7 +264,7 @@ public class UserCreateRequest implements Serializable {
    * user job title
    * @return jobTitle
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_JOB_TITLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -290,7 +290,7 @@ public class UserCreateRequest implements Serializable {
    * user manager id
    * @return managerId
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_MANAGER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -316,7 +316,7 @@ public class UserCreateRequest implements Serializable {
    * true|false if the user is enabled or not
    * @return enabled
   **/
-  @javax.annotation.Nonnull
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_ENABLED)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

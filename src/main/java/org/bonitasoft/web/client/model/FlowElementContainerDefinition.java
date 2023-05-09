@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FlowElementContainerDefinition.JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS,
   FlowElementContainerDefinition.JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlowElementContainerDefinition implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -101,7 +101,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get activities
    * @return activities
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ACTIVITIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -135,7 +135,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get transitions
    * @return transitions
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TRANSITIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -169,7 +169,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get gatewaysList
    * @return gatewaysList
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_GATEWAYS_LIST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -203,7 +203,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get startEvents
    * @return startEvents
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_START_EVENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -237,7 +237,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get intermediateCatchEvents
    * @return intermediateCatchEvents
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -271,7 +271,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get intermediateThrowEvents
    * @return intermediateThrowEvents
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -305,7 +305,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get endEvents
    * @return endEvents
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_END_EVENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -339,7 +339,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get dataDefinitions
    * @return dataDefinitions
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DATA_DEFINITIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -373,7 +373,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get documentDefinitions
    * @return documentDefinitions
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DOCUMENT_DEFINITIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -407,7 +407,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get connectors
    * @return connectors
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CONNECTORS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -441,7 +441,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get businessDataDefinitions
    * @return businessDataDefinitions
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -475,7 +475,7 @@ public class FlowElementContainerDefinition implements Serializable {
    * Get documentListDefinitions
    * @return documentListDefinitions
   **/
-  @javax.annotation.Nullable
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
