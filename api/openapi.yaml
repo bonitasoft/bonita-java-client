@@ -1,149 +1,115 @@
 openapi: 3.0.2
 info:
-  description: |2-
-
-    The REST API lets you access the data with HTTP requests; it is useful when implementing rich web forms / pages for a good user experience.
-
-    If your application is using a technology other than Java, you can integrate it with the Bonita solution using the Web REST API. This API provides
-    access to all Bonita objects (like processes, tasks, users, connectors etc.), to execute operations on them (create, retrieve, update, delete).
-    You can use these operations to create a workflow with Bonita and integrate it into your application. The Bonita Engine remains responsible for executing
-    the workflow logic (connectors, gateways with conditions, messages, timers etc.) while your application gives access to the workflow.
-    Users can manage processes and tasks, and perform administrative activities.
-
-    ![diagram of architecture of a REST client integrated with Bonita](images/rest_overview_v2.png)
-
-    ### API Extensions
-
-    You can create [Rest API Extensions](rest-api-extensions.md) to extend the Rest API by adding missing ressources (not provided by the Rest API).
-    It is possible for an extension to interact with the engine (via the API) or with any other external service (for example a database, a directory, or a web service).
-
-    ### Create a resource
-
-    | Request URL | `http://.../API/{API_name}/{resource_name}/  `|
-    |:-|:-|
-    | Request Method | POST|
-    | Request Payload | an item in JSON|
-    | Response | the same item in JSON, containing the values provided in the posted item, completed with default values and identifiers provided by Bonita Engine.|
-
-    ### Read a resource
-
-    | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `|
-    |:-|:-|
-    | Request Method | GET|
-    | Response | an item in JSON|
-
-    Example `http://.../API/identity/user/5 `
-
-    #### Extend resource response
-
-    On some resources, in GET methods the `d` (deploy) URL query parameter can be used to extend the response objects. The value of this parameter consists of an attribute for which you want to make an extended request (called a deploy) and retrieve attributes of a linked resource.
-    This means that instead of retrieving the ID or a parent or referenced resource, you can retrieve the full object.
-
-    For example, when you retrieve a task, you can also retrieve the process definition attributes in addition to the process definition ID that is already part of the task resource.
-    The supported deploy values for a task include its process (d=processId).
-
-    Specifiy multiple `d` parameter to extend several resources. For instance, to retrieve the flow node of id 143 and the associated process, process instance and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`
-
-    #### With compound identifier
-
-    The order of the identifier parts for each resource type is given in the table above.
-
-    | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `|
-    |:-|:-|
-    | Request Method | GET|
-    | Response | an item in JSON|
-
-    Example `http://.../API/identity/membership/5/12/24 `
-
-    ### Update a resource
-
-    | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `|
-    |:-|:-|
-    | Request Method | PUT|
-    | Request Payload | a map in JSON containing the new values for the attributes you want to change.|
-    | Response | the corresponding item in JSON with new values where you requested a modification|
-
-    Example `http://.../API/identity/user/5`
-
-    #### With compound identifier:
-
-    Response: the corresponding item in JSON with new values where you requested a modification.
-
-    | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `|
-    |:-|:-|
-    | Request Method | PUT|
-    | Request Payload | ` a map in JSON containing the new values for the attributes you want to change `|
-    | Response | ` the corresponding item in JSON with new values where you requested a modification`|
-
-    Example
-    `http://.../API/identity/membership/5/12/24 `
-
-    ### Delete resources
-
-    Use the DELETE request to remove multiple resources.
-
-    | Request URL | `http://.../API/{API_name}/{resource_name}/ `|
-    |:-|:-|
-    | Request Method | DELETE|
-    | Request Payload | A list of identifiers in JSON, for example `["id1","id2","id3"]`. Compound identifiers are separated by '/' characters.|
-    | Response | `empty `|
-
-    Example
-    `http://.../API/identity/membership/ `
-
-    ### Search for a resource
-
-    The required object is specified with a set of filters in the request URL. The URL parameters must be URL-encoded.
-
-    Results are returned in a paged list, so you have to specify the page (counting from zero), and the number of results per page (count), additionally you can define a sort key (order). You can see the total number of matching results in the HTTP response header Content-Range.
-    If you are searching for business data using a custom query, there must be a [count query in the BDM](define-and-deploy-the-bdm.md). If there is no count query, results from a custom query on business data cannot be paged properly (the header Content-Range will be absent).
-    For business data default queries, the count query is defined automatically.
-
-    The available filters are the attributes of the item plus some specific filters defined by each item.
-
-    | Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=... `|
-    |:-|:-|
-    | Request Method | GET|
-    | Response | an array of items in JSON|
-
-    Example
-    `/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`
-
-    For a GET method that retrieves more than one instance of a resource, you can specify the following request parameters:
-
-    * p (Mandatory): index of the page to display
-    * c (Mandatory): maximum number of elements to retrieve
-    * o: order of presentation of values in response: must be either `attributeName ASC` or `attributeName DESC`. The final order parameter value must be URL encoded.
-    * f: list of filters, specified as `attributeName=attributeValue`. To filter on more than one attribute, specify an f parameters for each attribute. The final filter parameter value must be URL encoded.
-      The attributes you can filter on are specific to the resource.
-    * s: search on name or search indexes. The matching policy depends on the configuration of [word-based search](using-list-and-search-methods.md).
-      For example, if word-based search is enabled, `s=Valid` returns matches containing the string "valid" at the start of any word in the attribute value word,
-      such as "Valid address", "Not a valid address", and "Validated request" but not "Invalid request".
-      If word-based search is disabled, `s=Valid` returns matches containing the string "valid" at the start of the attribute value, such as "Valid address" or "Validated request" but not "Not a valid address" or "Invalid request".
-
-    ### Errors
-
-    The API uses standard HTTP status codes to indicate the success or failure of the API call.
-
-    If you get a `401` response code :
-      - make sure that the cookies have been transfered with the call
-      - make sure that the cookies transfered are the ones generated during the last sucessfull login call
-      - if one of the PUT, DELETE or POST method is used, make sure that the `X-Bonita-API-Token` header is included
-      - if the X-Bonita-API-Token header is included, make sure that the value is the same as the one of the cookie generated during the last login
-      - Maybe a logout was issued or the session has expired; try to log in again, and re run the request with the new cookies and the new value for the `X-Bonita-API-Token` header.
+  description: "<p> \n<a download=\"openapi.yaml\" href=\"./openapi.yaml\" target=\"\
+    _blank\" class=\"btn-download\">Download OpenAPI specification</a>\n<a download=\"\
+    postman.json\" href=\"./postman.json\" target=\"_blank\" class=\"btn-download\"\
+    >Download Postman collection</a>\n</p>\n\n<hr>\n\nThe REST API lets you access\
+    \ the data with HTTP requests; it is useful when implementing rich web forms /\
+    \ pages for a good user experience.\n\nAn open source [java client](https://github.com/bonitasoft/bonita-java-client)\
+    \ is implemented above the HTTP API. It is available on [Maven central](https://search.maven.org/search?q=g:%22org.bonitasoft.web%22%20AND%20a:%22bonita-java-client%22).\n\
+    \nIf your application is using a technology other than Java, you can integrate\
+    \ it with the Bonita solution using the Web REST API. This API provides\naccess\
+    \ to all Bonita objects (like processes, tasks, users, connectors etc.), to execute\
+    \ operations on them (create, retrieve, update, delete).\nYou can use these operations\
+    \ to create a workflow with Bonita and integrate it into your application. The\
+    \ Bonita Engine remains responsible for executing\nthe workflow logic (connectors,\
+    \ gateways with conditions, messages, timers etc.) while your application gives\
+    \ access to the workflow.\nUsers can manage processes and tasks, and perform administrative\
+    \ activities.\n\n### API Extensions\n\nYou can create [Rest API Extensions](https://documentation.bonitasoft.com/bonita/latest/api/rest-api-extensions)\
+    \ to extend the Rest API by adding missing resources (not provided by the Rest\
+    \ API).\nIt is possible for an extension to interact with the engine (via the\
+    \ API) or with any other external service (for example a database, a directory,\
+    \ or a web service).\n\n### Create a resource\n\n| Request URL | `http://.../API/{API_name}/{resource_name}/\
+    \  `|\n|:-|:-|\n| Request Method | POST|\n| Request Payload | an item in JSON|\n\
+    | Response | the same item in JSON, containing the values provided in the posted\
+    \ item, completed with default values and identifiers provided by Bonita Engine.|\n\
+    \n### Read a resource\n\n| Request URL | `http://.../API/{API_name}/{resource_name}/{id}\
+    \ `|\n|:-|:-|\n| Request Method | GET|\n| Response | an item in JSON|\n\nExample\
+    \ `http://.../API/identity/user/5 `\n\n#### Extend resource response\n\nOn some\
+    \ resources, in GET methods the `d` (deploy) URL query parameter can be used to\
+    \ extend the response objects. The value of this parameter consists of an attribute\
+    \ for which you want to make an extended request (called a deploy) and retrieve\
+    \ attributes of a linked resource.\nThis means that instead of retrieving the\
+    \ ID or a parent or referenced resource, you can retrieve the full object.\n\n\
+    For example, when you retrieve a task, you can also retrieve the process definition\
+    \ attributes in addition to the process definition ID that is already part of\
+    \ the task resource.\nThe supported deploy values for a task include its process\
+    \ (d=processId).\n\nSpecifiy multiple `d` parameter to extend several resources.\
+    \ For instance, to retrieve the flow node of id 143 and the associated process,\
+    \ process instance and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`\n\
+    \n#### With compound identifier\n\nThe order of the identifier parts for each\
+    \ resource type is given in the table above.\n\n| Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2}\
+    \ `|\n|:-|:-|\n| Request Method | GET|\n| Response | an item in JSON|\n\nExample\
+    \ `http://.../API/identity/membership/5/12/24 `\n\n### Update a resource\n\n|\
+    \ Request URL | `http://.../API/{API_name}/{resource_name}/{id} `|\n|:-|:-|\n\
+    | Request Method | PUT|\n| Request Payload | a map in JSON containing the new\
+    \ values for the attributes you want to change.|\n| Response | the corresponding\
+    \ item in JSON with new values where you requested a modification|\n\nExample\
+    \ `http://.../API/identity/user/5`\n\n#### With compound identifier:\n\nResponse:\
+    \ the corresponding item in JSON with new values where you requested a modification.\n\
+    \n| Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2}\
+    \ `|\n|:-|:-|\n| Request Method | PUT|\n| Request Payload | ` a map in JSON containing\
+    \ the new values for the attributes you want to change `|\n| Response | ` the\
+    \ corresponding item in JSON with new values where you requested a modification`|\n\
+    \nExample\n`http://.../API/identity/membership/5/12/24 `\n\n### Delete resources\n\
+    \nUse the DELETE request to remove multiple resources.\n\n| Request URL | `http://.../API/{API_name}/{resource_name}/\
+    \ `|\n|:-|:-|\n| Request Method | DELETE|\n| Request Payload | A list of identifiers\
+    \ in JSON, for example `[\"id1\",\"id2\",\"id3\"]`. Compound identifiers are separated\
+    \ by '/' characters.|\n| Response | `empty `|\n\nExample\n`http://.../API/identity/membership/\
+    \ `\n\n### Search for a resource\n\nThe required object is specified with a set\
+    \ of filters in the request URL. The URL parameters must be URL-encoded.\n\nResults\
+    \ are returned in a paged list, so you have to specify the page (counting from\
+    \ zero), and the number of results per page (count), additionally you can define\
+    \ a sort key (order). You can see the total number of matching results in the\
+    \ HTTP response header Content-Range.\nIf you are searching for business data\
+    \ using a custom query, there must be a [count query in the BDM](https://documentation.bonitasoft.com/bonita/latest/data/define-and-deploy-the-bdm).\
+    \ If there is no count query, results from a custom query on business data cannot\
+    \ be paged properly (the header Content-Range will be absent).\nFor business data\
+    \ default queries, the count query is defined automatically.\n\nThe available\
+    \ filters are the attributes of the item plus some specific filters defined by\
+    \ each item.\n\n| Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=...\
+    \ `|\n|:-|:-|\n| Request Method | GET|\n| Response | an array of items in JSON|\n\
+    \nExample\n`/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`\n\n\
+    For a GET method that retrieves more than one instance of a resource, you can\
+    \ specify the following request parameters:\n\n* p (Mandatory): index of the page\
+    \ to display\n* c (Mandatory): maximum number of elements to retrieve\n* o: order\
+    \ of presentation of values in response: must be either `attributeName ASC` or\
+    \ `attributeName DESC`. The final order parameter value must be URL encoded.\n\
+    * f: list of filters, specified as `attributeName=attributeValue`. To filter on\
+    \ more than one attribute, specify an f parameters for each attribute. The final\
+    \ filter parameter value must be URL encoded.\n  The attributes you can filter\
+    \ on are specific to the resource.\n* s: search on name or search indexes. The\
+    \ matching policy depends on the configuration of [word-based search](https://documentation.bonitasoft.com/bonita/2022.2/api/using-list-and-search-methods#word_based_search).\n\
+    \  For example, if word-based search is enabled, `s=Valid` returns matches containing\
+    \ the string \"valid\" at the start of any word in the attribute value word,\n\
+    \  such as \"Valid address\", \"Not a valid address\", and \"Validated request\"\
+    \ but not \"Invalid request\".\n  If word-based search is disabled, `s=Valid`\
+    \ returns matches containing the string \"valid\" at the start of the attribute\
+    \ value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid\
+    \ address\" or \"Invalid request\".\n\n### Errors\n\nThe API uses standard HTTP\
+    \ status codes to indicate the success or failure of the API call.\n\nIf you get\
+    \ a `401` response code :\n  - make sure that the cookies have been transfered\
+    \ with the call\n  - make sure that the cookies transfered are the ones generated\
+    \ during the last sucessfull login call\n  - if one of the PUT, DELETE or POST\
+    \ method is used, make sure that the `X-Bonita-API-Token` header is included\n\
+    \  - if the X-Bonita-API-Token header is included, make sure that the value is\
+    \ the same as the one of the cookie generated during the last login\n  - Maybe\
+    \ a logout was issued or the session has expired; try to log in again, and re\
+    \ run the request with the new cookies and the new value for the `X-Bonita-API-Token`\
+    \ header.\n"
   license:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
-  title: Bonita HTTP API
-  version: 0.0.10
+  title: Bonita API
+  version: 0.0.13
   x-logo:
-    url: images/logo_bonitasoft_white.png
-    backgroundColor: '#003355'
+    url: images/bonitasoft-logo.svg
+    backgroundColor: '#19465f'
     altText: Bonita API
-    href: https://documentation.bonitasoft.com/bonita/latest/rest-api-overview
+    href: /
 servers:
-- url: https://localhost:8080/bonita
-- url: https://bonita.localhost/bonita
+- description: Sample url for a local development server.
+  url: http://localhost:8080/bonita
 security:
 - bonita_auth: []
   bonita_token: []
@@ -477,11 +443,11 @@ paths:
       - lang: Shell
         label: Curl
         source: "# Generate cookie file\ncurl -v -c saved_cookies.txt \\\n--url 'http://localhost:8080/bonita/loginservice'\
-          \ \\\n--header 'Content-Type: application/x-www-form-urlencoded'\n--data-urlencode\
-          \ 'username=install' \\\n--data-urlencode 'password=install' \\\n--data-urlencode\
-          \ 'redirect=false' \\\n--data-urlencode 'redirectURL=' \n\n\n\n# Reuse the\
-          \ cookie file and set the `X-Bonita-API-Token` header\ncurl -b saved_cookies.txt\
-          \ -X GET \\\n-- header 'X-Bonita-API-Token: <token>' \\\n--url 'http://localhost:8080/bonita/API/bpm/process?c=100&p=0'"
+          \ \\\n--header 'Content-Type: application/x-www-form-urlencoded'\n  --data-urlencode\
+          \ 'username=install' \\\n  --data-urlencode 'password=install' \\\n  --data-urlencode\
+          \ 'redirect=false' \\\n  --data-urlencode 'redirectURL='\n  \n  # Reuse\
+          \ the cookie file and set the `X-Bonita-API-Token` header\n  curl -b saved_cookies.txt\
+          \ -X GET \\\n-- header 'X-Bonita-API-Token: <token>' \\\n--url 'http://localhost:8080/bonita/API/bpm/process?c=100&p=0'\n"
       x-content-type: application/x-www-form-urlencoded
       x-accepts: application/json
   /logoutservice:
@@ -500,6 +466,8 @@ paths:
         name: redirect
         required: false
         schema:
+          maxLength: 5
+          pattern: ^(?:tru|fals)e$
           type: string
         style: form
       responses:
@@ -546,7 +514,8 @@ paths:
       x-codeSamples:
       - lang: Shell
         label: Curl
-        source: curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/logoutservice?redirect=false'
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/logoutservice?redirect=false'
       x-accepts: application/json
   /API/living/application:
     get:
@@ -566,6 +535,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -577,6 +547,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -589,6 +560,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -599,6 +572,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -607,6 +582,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -734,6 +711,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -796,6 +775,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -862,6 +843,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -1001,6 +984,8 @@ paths:
             text/plain:
               schema:
                 example: tmp_application_data.xml
+                maxLength: 250
+                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
                 type: string
           description: 'Success '
         "400":
@@ -1061,6 +1046,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -1072,6 +1058,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -1084,6 +1071,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -1094,6 +1083,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -1102,6 +1093,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -1226,6 +1219,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -1288,6 +1283,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -1360,6 +1357,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -1437,6 +1436,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -1448,6 +1448,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -1460,6 +1461,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -1470,6 +1473,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -1478,6 +1483,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -1605,6 +1612,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -1667,6 +1676,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -1753,6 +1764,8 @@ paths:
         name: businessDataType
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Named query to use
@@ -1762,6 +1775,8 @@ paths:
         name: q
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: form
       - description: index of the page to display
@@ -1772,6 +1787,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -1783,6 +1799,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -1795,6 +1812,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -1874,6 +1893,8 @@ paths:
         name: businessDataType
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: list of persistenceIds (comma separated)
@@ -1883,6 +1904,8 @@ paths:
         name: ids
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: form
       responses:
@@ -1945,6 +1968,8 @@ paths:
         name: businessDataType
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Business data ID
@@ -1954,6 +1979,8 @@ paths:
         name: persistenceId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -2012,6 +2039,8 @@ paths:
         name: businessDataType
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Business data ID
@@ -2021,6 +2050,8 @@ paths:
         name: persistenceId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Business data attribute name
@@ -2030,6 +2061,8 @@ paths:
         name: attributeName
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -2206,6 +2239,8 @@ paths:
             text/plain:
               example: tmp_accessControlFileToUpload.xml
               schema:
+                maxLength: 250
+                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
                 type: string
           description: 'Success '
         "400":
@@ -2330,6 +2365,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -2341,6 +2377,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -2353,6 +2390,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -2363,6 +2402,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -2371,6 +2412,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -2440,6 +2483,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -2506,6 +2551,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -2593,6 +2640,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -2604,6 +2652,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -2616,6 +2665,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -2626,6 +2677,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -2634,6 +2687,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -2703,6 +2758,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -2776,6 +2833,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -2787,6 +2845,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -2799,6 +2858,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -2809,6 +2870,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -2817,6 +2880,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -2886,6 +2951,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -2952,6 +3019,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -3037,6 +3106,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -3048,6 +3118,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -3060,6 +3131,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -3070,6 +3143,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -3078,6 +3153,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -3206,6 +3283,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -3274,6 +3353,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -3350,6 +3431,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -3361,6 +3443,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -3373,6 +3456,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -3383,6 +3468,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -3452,6 +3539,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -3518,6 +3607,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -3598,6 +3689,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -3609,6 +3701,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -3621,6 +3714,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -3631,6 +3726,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -3639,6 +3736,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -3708,6 +3807,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -3776,6 +3877,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -3847,6 +3950,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -3914,6 +4019,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: "if true, assign the task to the current user and execute the\
@@ -3991,6 +4098,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -4089,6 +4198,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -4100,6 +4210,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -4112,6 +4223,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -4122,6 +4235,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -4191,6 +4306,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -4267,6 +4384,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -4278,6 +4396,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -4290,6 +4409,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -4300,6 +4421,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -4369,6 +4492,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -4446,6 +4571,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -4457,6 +4583,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -4469,6 +4596,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -4479,6 +4608,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -4548,6 +4679,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -4620,6 +4753,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -4631,6 +4765,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -4643,6 +4778,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -4653,6 +4790,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -4722,6 +4861,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -4789,6 +4930,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: The name of the variable to retrieve
@@ -4797,6 +4940,8 @@ paths:
         name: variableName
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -4866,6 +5011,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: The name of the variable to retrieve
@@ -4874,6 +5021,8 @@ paths:
         name: variableName
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -4943,6 +5092,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -4954,6 +5104,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -4966,6 +5117,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -4976,6 +5129,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -5049,6 +5204,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -5060,6 +5216,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -5071,6 +5228,8 @@ paths:
         name: f
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%\\_\\-\\.]{0,250}$"
           type: string
         style: form
       responses:
@@ -5141,6 +5300,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: The name of the variable to retrieve
@@ -5149,6 +5310,8 @@ paths:
         name: variableName
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -5218,6 +5381,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: The name of the variable to retrieve
@@ -5226,6 +5391,8 @@ paths:
         name: variableName
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -5300,6 +5467,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: The name of the archived variable to retrieve
@@ -5308,6 +5477,8 @@ paths:
         name: variableName
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -5372,9 +5543,9 @@ paths:
 
          * `submittedBy="id"`: search for documents that were submitted by the user with the specified identifier.
          * `name="string"`: search for documents with names that contain _string_.
-           Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the name or the start of a word in the name.
+           Depending on the setting for [word-based search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the name or the start of a word in the name.
          * `description="string"`: search for documents with descriptions that contain _string_.
-           Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the description or the start of a word in the description.
+           Depending on the setting for [word-based search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the description or the start of a word in the description.
       operationId: searchProcessInstanceDocuments
       parameters:
       - description: index of the page to display
@@ -5385,6 +5556,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -5396,6 +5568,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -5408,6 +5581,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -5418,6 +5593,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -5550,6 +5727,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -5613,6 +5792,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -5686,6 +5867,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -5755,12 +5938,12 @@ paths:
         * `sourceObjectId="id"`: search for documents by specifying the original document id.
           This is useful if you know the id of a ProcessInstanceDocument and you wish to retrieve all its previous versions..
         * `caseId="id"`: search for documents with the specified open process instance id.
-        * `archivedProcessInstanceId="id"`: search for documents with the specified archvied process instance id.
+        * `archivedCaseId="id"`: search for documents with the specified archived process instance id.
         * `submittedBy="id"`: search for documents that were submitted by the user with the specified identifier.
         * `name="string"`: search for documents with names that contain _string_.
-          Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the name or the start of a word in the name.
+          Depending on the setting for [word-based search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the name or the start of a word in the name.
         * `description="string"`: search for documents with descriptions that contain _string_.
-          Depending on the setting for [word-based search](using-list-and-search-methods.md), the search returns documents with _string_ at the start of the description or the start of a word in the description.
+          Depending on the setting for [word-based search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the description or the start of a word in the description.
       operationId: searchArchivedProcessInstanceDocuments
       parameters:
       - description: index of the page to display
@@ -5771,6 +5954,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -5782,6 +5966,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -5794,6 +5979,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -5804,6 +5991,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -5873,6 +6062,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -5938,6 +6129,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -5949,6 +6141,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -5961,6 +6154,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -5971,6 +6166,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -6040,6 +6237,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -6106,6 +6305,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -6190,6 +6391,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -6201,6 +6403,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -6213,6 +6416,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -6223,6 +6428,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -6292,6 +6499,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -6354,6 +6563,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -6495,6 +6706,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -6506,6 +6718,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -6518,6 +6731,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -6528,6 +6743,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -6659,6 +6876,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -6721,6 +6940,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Count of related resources
@@ -6799,6 +7020,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -6901,6 +7124,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -6912,6 +7136,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -6924,6 +7149,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -6934,6 +7161,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -7003,6 +7232,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -7065,6 +7296,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -7132,6 +7365,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -7223,6 +7458,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -7295,6 +7532,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -7306,6 +7544,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -7318,6 +7557,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -7328,6 +7569,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -7461,6 +7704,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -7472,6 +7716,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -7484,6 +7729,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -7494,6 +7741,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -7502,6 +7751,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -7641,6 +7892,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -7652,6 +7904,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -7664,6 +7917,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -7674,6 +7929,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -7682,6 +7939,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -7817,6 +8076,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -7879,6 +8140,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -7945,6 +8208,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -8016,6 +8281,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -8083,6 +8350,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -8150,6 +8419,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -8231,6 +8502,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -8298,6 +8571,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: ID of the Process Connector implementation to update
@@ -8306,6 +8581,8 @@ paths:
         name: connectorImplId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Version of the Process Connector implementation to update
@@ -8314,6 +8591,8 @@ paths:
         name: connectorImplVersion
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -8377,6 +8656,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -8448,6 +8729,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -8459,6 +8741,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -8471,6 +8754,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -8481,6 +8766,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -8489,6 +8776,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -8558,6 +8847,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Name of the process parameter to return
@@ -8566,6 +8857,8 @@ paths:
         name: name
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.\\s]{0,250}$"
           type: string
         style: simple
       responses:
@@ -8634,6 +8927,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Name of the process parameter to return
@@ -8642,6 +8937,8 @@ paths:
         name: name
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -8719,6 +9016,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -8730,6 +9028,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -8742,6 +9041,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -8752,6 +9053,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -8760,6 +9063,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -8904,6 +9209,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -8915,6 +9221,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -8927,6 +9234,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -8937,6 +9246,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -8945,6 +9256,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -9080,6 +9393,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -9091,6 +9405,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -9103,6 +9418,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -9113,6 +9430,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -9121,6 +9440,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -9190,6 +9511,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -9260,6 +9583,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -9271,6 +9595,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -9283,6 +9608,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -9293,6 +9620,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -9301,6 +9630,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -9372,6 +9703,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -9383,6 +9715,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -9395,6 +9728,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -9405,6 +9740,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -9413,6 +9750,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -9488,6 +9827,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -9499,6 +9839,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -9511,6 +9852,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -9521,6 +9864,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -9529,6 +9874,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -9598,6 +9945,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -9666,6 +10015,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -9743,6 +10094,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -9754,6 +10106,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -9766,6 +10119,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -9776,6 +10131,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -9784,6 +10141,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -9853,6 +10212,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -9926,6 +10287,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -9937,6 +10299,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -9949,6 +10312,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -9959,6 +10324,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -9967,6 +10334,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: the process instance id
@@ -9975,6 +10344,8 @@ paths:
         name: caseId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: form
       responses:
@@ -10044,6 +10415,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -10110,6 +10483,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -10300,6 +10675,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -10311,6 +10687,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -10439,6 +10816,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -10501,6 +10880,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -10572,6 +10953,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -10583,6 +10965,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -10595,6 +10978,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -10665,6 +11050,8 @@ paths:
         name: userId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: definition ID
@@ -10673,6 +11060,8 @@ paths:
         name: definitionId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -10748,6 +11137,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -10759,6 +11149,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -10771,6 +11162,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -10845,6 +11238,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -10856,6 +11250,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -10868,6 +11263,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -10878,6 +11275,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -10886,6 +11285,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -10957,6 +11358,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -11035,6 +11438,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -11046,6 +11450,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -11058,6 +11463,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -11068,6 +11475,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -11076,6 +11485,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -11086,7 +11497,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ProfessionalContactData'
                 type: array
-          description: 'Success '
+          description: Success
           headers:
             Content-Range:
               description: The total number of matching items
@@ -11162,7 +11573,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfessionalContactData'
-          description: '"Success "'
+          description: Success
         "400":
           content:
             application/json:
@@ -11207,6 +11618,8 @@ paths:
         name: userId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -11273,6 +11686,8 @@ paths:
         name: userId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -11356,6 +11771,8 @@ paths:
         name: userId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -11422,6 +11839,8 @@ paths:
         name: userId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -11509,6 +11928,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -11520,6 +11940,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -11532,6 +11953,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -11542,6 +11965,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -11669,6 +12094,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -11731,6 +12158,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -11797,6 +12226,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -11874,6 +12305,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -11885,6 +12317,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -11897,6 +12330,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -11907,6 +12342,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -11915,6 +12352,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -12042,6 +12481,8 @@ paths:
         name: userId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Group ID of the Membership to delete
@@ -12050,6 +12491,8 @@ paths:
         name: groupId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       - description: Role ID of the Membership to delete
@@ -12058,6 +12501,8 @@ paths:
         name: roleId
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -12126,6 +12571,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -12137,6 +12583,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -12149,6 +12596,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -12159,6 +12608,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -12167,6 +12618,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -12294,6 +12747,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -12356,6 +12811,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -12422,6 +12879,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -12499,6 +12958,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -12510,6 +12970,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -12522,6 +12983,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -12532,6 +12995,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -12540,6 +13005,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -12670,6 +13137,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -12732,6 +13201,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -12798,6 +13269,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -12881,6 +13354,7 @@ paths:
               schema:
                 example: JSESSIONID=C5385BFEE2969D9E46F0160C1952B0F1; Path=/bonita;
                   HttpOnly; SameSite=Lax
+                pattern: "([^;]+);?"
                 type: string
               style: simple
             X-Bonita-API-Token:
@@ -12889,6 +13363,8 @@ paths:
               example: ed27cbeb-9953-4d77-b5a2-1f62a6c2e0bb
               explode: false
               schema:
+                maxLength: 250
+                pattern: "^[A-Za-z0-9\\-]{0,250}$"
                 type: string
               style: simple
         "400":
@@ -13119,6 +13595,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -13130,6 +13607,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -13142,6 +13620,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -13152,6 +13632,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -13160,6 +13642,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -13295,6 +13779,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -13361,6 +13847,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -13433,6 +13921,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -13567,6 +14057,8 @@ paths:
             text/plain:
               schema:
                 example: tmp_11199343585454336281.bar
+                maxLength: 250
+                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
                 type: string
           description: the temporary file name once uploaded on the server
         "400":
@@ -13624,6 +14116,8 @@ paths:
           content:
             text/plain:
               schema:
+                maxLength: 250
+                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
                 type: string
           description: "Success: the temp file name as present on the server"
         "400":
@@ -13684,6 +14178,8 @@ paths:
           content:
             text/plain:
               schema:
+                maxLength: 250
+                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
                 type: string
           description: "Success: the temp file name as present on the server"
         "400":
@@ -13743,6 +14239,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -13754,6 +14251,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -13766,6 +14264,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -13776,6 +14276,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can search on attributes
@@ -13784,6 +14286,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -13911,6 +14415,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -13973,6 +14479,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -14039,6 +14547,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -14116,6 +14626,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -14127,6 +14638,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -14139,6 +14651,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -14148,6 +14662,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       - description: can order on attributes
@@ -14157,6 +14673,8 @@ paths:
         name: o
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -14284,6 +14802,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -14346,6 +14866,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -14412,6 +14934,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -14491,6 +15015,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -14502,6 +15027,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -14514,6 +15040,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -14523,6 +15051,8 @@ paths:
         name: s
         required: false
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         style: form
       responses:
@@ -14653,6 +15183,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -14717,6 +15249,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -14785,6 +15319,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -14862,6 +15398,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -14873,6 +15410,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -14885,6 +15423,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -15013,6 +15553,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -15265,6 +15807,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -15276,6 +15819,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -15352,6 +15896,7 @@ paths:
         required: true
         schema:
           default: 0
+          format: int32
           minimum: 0
           type: integer
         style: form
@@ -15363,6 +15908,7 @@ paths:
         required: true
         schema:
           default: 20
+          format: int32
           minimum: 1
           type: integer
         style: form
@@ -15375,6 +15921,8 @@ paths:
         required: false
         schema:
           items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
             type: string
           type: array
         style: form
@@ -15500,6 +16048,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       responses:
@@ -15566,6 +16116,8 @@ paths:
         name: id
         required: true
         schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         style: simple
       requestBody:
@@ -15858,6 +16410,8 @@ paths:
             text/plain:
               schema:
                 example: tmp_organization_data.xml
+                maxLength: 250
+                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
                 type: string
           description: 'Success '
         "400":
@@ -15976,6 +16530,8 @@ paths:
             text/plain:
               schema:
                 example: tmp_profiles_data.xml
+                maxLength: 250
+                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
                 type: string
           description: 'Success '
         "400":
@@ -16089,6 +16645,7 @@ components:
       required: true
       schema:
         default: 0
+        format: int32
         minimum: 0
         type: integer
       style: form
@@ -16101,6 +16658,7 @@ components:
       required: true
       schema:
         default: 20
+        format: int32
         minimum: 1
         type: integer
       style: form
@@ -16114,6 +16672,8 @@ components:
       required: false
       schema:
         items:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
           type: string
         type: array
       style: form
@@ -16125,6 +16685,8 @@ components:
       name: o
       required: false
       schema:
+        maxLength: 250
+        pattern: "^[A-Za-z0-9%]{0,250}$"
         type: string
       style: form
     pageSearch:
@@ -16134,6 +16696,8 @@ components:
       name: s
       required: false
       schema:
+        maxLength: 250
+        pattern: "^[A-Za-z0-9%]{0,250}$"
         type: string
       style: form
   responses:
@@ -16249,6 +16813,8 @@ components:
       properties:
         createdBy:
           description: Author user ID
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         creationDate:
           description: creation date of the application
@@ -16261,15 +16827,21 @@ components:
           type: string
         homePageId:
           description: id of the application page used as the home page
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         id:
           description: id of the application
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         lastUpdateDate:
           description: last update date of the application
           type: string
         profileId:
           description: profile authorized to access this application
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         token:
           description: token of the application used to build the application URL
@@ -16457,6 +17029,7 @@ components:
       description: "Can be any value - string, number, boolean, array or object or\
         \ null depending on your query."
       nullable: true
+      type: object
     BusinessData:
       additionalProperties: true
       description: |
@@ -16627,6 +17200,8 @@ components:
       properties:
         id:
           description: the activity id
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         type:
           $ref: '#/components/schemas/ActivityType'
@@ -16661,23 +17236,33 @@ components:
         processId:
           description: the process definition id of the process instance which define
             this activity
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         parentCaseId:
           description: "the immediate containing process instance id (long, a.k.a\
             \ process instance id)"
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         rootCaseId:
           description: "the top/root process instance id (long, a.k.a case id). In\
             \ case of an event sub process, `parentCaseId` will the id of the process\
             \ instance called while `rootCaseId` will be the one from the caller process\
             \ instance"
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         rootContainerId:
           description: same as rootCaseId
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         executedBy:
           description: the id of the user who performed this activity. The activity
             has to be a human task otherwise its value will be 0
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         executedBySubstitute:
           description: the id of the user who did actually performed the activity
@@ -16685,14 +17270,19 @@ components:
           type: string
         actorId:
           description: "the id of the actor that can execute this activity, null otherwise"
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         assigned_id:
           description: "the user id that this activity is assigned to, or 0 if it\
             \ is unassigned"
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         assigned_date:
           description: "the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current activity\
             \ was assigned, for example '2014-10-17 16:05:42.626'"
+          pattern: "^\\d{4}-\\d{2}-\\d{2}\\s\\d+:\\d+:\\d+\\.\\d+$"
           type: string
       type: object
     ActivityUpdateRequest:
@@ -16848,6 +17438,8 @@ components:
       properties:
         id:
           description: the task id
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         type:
           description: the task type
@@ -16887,24 +17479,36 @@ components:
         processId:
           description: the process definition id of the process instance which define
             this task
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         parentCaseId:
           description: the immediate containing process instance id (case id)
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         parentTaskId:
           description: the parent Task id
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         rootCaseId:
           description: the top/root process instance id (case id). In case of an "event
             sub process" `parentCaseId` will the id of the process instance called
             while `rootCaseId` will be the one from the caller process instance
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         rootContainerId:
           description: same as rootCaseId
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         executedBy:
           description: the id of the user who performed this task. The task has to
             be a human task otherwise its value will be 0
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         executedBySubstitute:
           description: the id of the user who did actually performed the task when
@@ -16912,9 +17516,13 @@ components:
           type: string
         actorId:
           description: the id of the actor that can execute this task null otherwise
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         assigned_id:
           description: the user id that this task is assigned to or 0 if it is unassigned
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         assigned_date:
           description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
@@ -17352,15 +17960,21 @@ components:
         tenantId:
           description: The ID of the tenant where the current user is logged in (technical
             information)
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         tenantId_string:
           description: number (since 7.0.1)
           type: string
         id:
           description: The identifier of the variable
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         id_string:
           description: number (since 7.0.1)
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         name:
           description: The name of the activity variable
@@ -17675,26 +18289,36 @@ components:
         \ = USER, GROUP, ROLE and MEMBERSHIP (role in a group). You can assign a actor\
         \ to a user by specifying a role and or a group, or specific user."
       example:
-        id: 206
-        actor_id: 2
-        role_id: 4
-        group_id: 8
-        user_id: -1
+        id: "206"
+        actor_id: "2"
+        role_id: "4"
+        group_id: "8"
+        user_id: "-1"
       properties:
         id:
           description: actor member id
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         actor_id:
           description: id of the actor for this mapping
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         role_id:
           description: "id of role, or -1 if the member type is not role"
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         group_id:
           description: "id of group, or -1 if the member type is not group"
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         user_id:
           description: "id of user, or -1 if the member type is not user"
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
       type: object
     ProcessInstance:
@@ -17746,9 +18370,17 @@ components:
             given
           type: string
         state:
-          description: "state: an enum that represent the state of the process instances,\
-            \ it can be INITIALIZING, STARTED, SUSPENDED, CANCELLED, ABORTED, COMPLETING,\
-            \ COMPLETED, ERROR, ABORTING"
+          description: "state: an enum that represent the state of the process instances"
+          enum:
+          - initializing
+          - started
+          - suspended
+          - cancelled
+          - aborted
+          - completing
+          - completed
+          - error
+          - aborting
           type: string
         rootCaseId:
           description: the identifier of the container of the case
@@ -18569,10 +19201,20 @@ components:
           description: the connector name
           type: string
         activationEvent:
-          description: the name of hte event that activated the connector instance
+          description: the name of the event that activated the connector instance
+          enum:
+          - ON_ENTER
+          - ON_FINISH
           type: string
         state:
           description: the connector state
+          enum:
+          - TO_BE_EXECUTED
+          - EXECUTING
+          - TO_RE_EXECUTE
+          - DONE
+          - FAILED
+          - SKIPPED
           type: string
         containerId:
           description: the containing activity instance id
@@ -19027,6 +19669,10 @@ components:
           description: the path of the parent group of this group (empty if the group
             has no parent)
           type: string
+        parent_group_id:
+          description: the id of the parent group of this group (empty if the group
+            has no parent)
+          type: string
         path:
           description: the full path of the group (including its parent path)
           type: string
@@ -19062,12 +19708,9 @@ components:
         displayName:
           description: display name
           type: string
-        parent_path:
-          description: the path of the parent group of this group (empty if the group
+        parent_group_id:
+          description: the id of the parent group of this group (empty if the group
             has no parent)
-          type: string
-        path:
-          description: the full path of the group (including its parent path)
           type: string
         description:
           description: description
@@ -19089,25 +19732,12 @@ components:
         displayName:
           description: display name
           type: string
-        parent_path:
-          description: the path of the parent group of this group (empty if the group
+        parent_group_id:
+          description: the id of the parent group of this group (empty if the group
             has no parent)
-          type: string
-        path:
-          description: the full path of the group (including its parent path)
           type: string
         description:
           description: description
-          type: string
-        creation_date:
-          description: "creation date (format: `2014-12-31 15:17:24.736`)"
-          type: string
-        created_by_user_id:
-          description: id of the user who created the group (-1 if the group was created
-            by the tenant admin or by an organisation import)
-          type: string
-        last_update_date:
-          description: "last update date (format: `2014-12-31 15:17:24.736`)"
           type: string
         icon:
           description: icon path
@@ -20118,6 +20748,8 @@ components:
       properties:
         sourceObjectId:
           description: the original id of the task before it was archived
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         archivedDate:
           description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task

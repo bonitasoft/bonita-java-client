@@ -3,8 +3,9 @@ package org.bonitasoft.web.client.feign;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import lombok.RequiredArgsConstructor;
 import org.bonitasoft.web.client.invoker.ApiClient;
+
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class CachingApiProvider implements ApiProvider {

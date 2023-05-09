@@ -8,7 +8,6 @@ import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
 import static org.bonitasoft.web.client.invoker.EncodingUtils.encode;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
@@ -81,7 +80,7 @@ class DefaultUserServiceTest {
         UserApi userApi = mock(UserApi.class);
         when(apiProvider.get(UserApi.class)).thenReturn(userApi);
         final User mockUser = mock(User.class);
-        when(userApi.searchUsers(anyMap())).thenReturn(singletonList(mockUser));
+        when(userApi.searchUsers(any())).thenReturn(singletonList(mockUser));
         final ArgumentCaptor<UserApi.SearchUsersQueryParams> captor = ArgumentCaptor
                 .forClass(UserApi.SearchUsersQueryParams.class);
         final String username = "walter.bates";
@@ -106,7 +105,7 @@ class DefaultUserServiceTest {
 
         final String profile1name = "profile1name";
         final String profile2name = "profile2name";
-        when(profileApi.searchProfiles(anyMap())).thenReturn(emptyList());
+        when(profileApi.searchProfiles(any())).thenReturn(emptyList());
 
         // When
         final boolean anyProfileExist = service.anyProfileExist(asList(profile1name, profile2name));
@@ -123,7 +122,7 @@ class DefaultUserServiceTest {
 
         final String profile1name = "profile1name";
         final String profile2name = "profile2name";
-        when(profileApi.searchProfiles(anyMap()))
+        when(profileApi.searchProfiles(any()))
                 // first call
                 .thenReturn(emptyList())
                 // second call
@@ -146,7 +145,7 @@ class DefaultUserServiceTest {
         doReturn(false).when(service).isCommunity();
 
         // pretend profile exist
-        when(profileApi.searchProfiles(anyMap())).thenReturn(singletonList(new Profile()));
+        when(profileApi.searchProfiles(any())).thenReturn(singletonList(new Profile()));
 
         // When
         final File profileFile = getClasspathFile("/CustomProfile_Data.xml");

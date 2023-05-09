@@ -2,13 +2,15 @@ package org.bonitasoft.web.client.services.impl.base;
 
 import java.io.InputStream;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import feign.Response;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.api.LicenseApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.License;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import feign.Response;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
