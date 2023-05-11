@@ -25,10 +25,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          ./mvnw versions:set-property -DnewVersion=${{inputs.specVersion}} -Dproperty=bonita-openapi.version
-          ./mvnw groovy:execute@update-spec
-          ./mvnw generate-sources -Dcodegen.skip=false
-          ./mvnw spotless:apply
+          ./mvnw -ntp versions:set-property -DnewVersion=${{inputs.specVersion}} -Dproperty=bonita-openapi.version
+          ./mvnw -ntp groovy:execute@update-spec
+          ./mvnw -ntp generate-sources -Dcodegen.skip=false
+          ./mvnw -ntp spotless:apply
           ./mvnw -B -ntp clean verify sonar:sonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
       - name: Open Pull Request
