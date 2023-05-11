@@ -1,10 +1,18 @@
-/*
- * Copyright (C) 2018 Bonitasoft S.A.
- * Bonitasoft is a trademark of Bonitasoft SA.
- * This software file is BONITASOFT CONFIDENTIAL. Not For Distribution.
- * For commercial licensing information, contact:
- * Bonitasoft, 32 rue Gustave Eiffel - 38000 Grenoble
- * or Bonitasoft US, 51 Federal Street, Suite 305, San Francisco, CA 94107
+/** 
+ * Copyright (C) 2018 BonitaSoft S.A.
+ * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2.0 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package org.bonitasoft.web.client.feign;
 
@@ -67,193 +75,193 @@ import okhttp3.logging.HttpLoggingInterceptor;
 @RequiredArgsConstructor
 public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
 
-	@NonNull
-	@Setter(AccessLevel.NONE)
-	private final String url;
+    @NonNull
+    @Setter(AccessLevel.NONE)
+    private final String url;
 
-	/** Note about timeouts: default values are the same as in OkHttpClient (10 seconds). */
-	@Setter
-	private int connectTimeoutInSeconds = 10;
+    /** Note about timeouts: default values are the same as in OkHttpClient (10 seconds). */
+    @Setter
+    private int connectTimeoutInSeconds = 10;
 
-	@Setter
-	private int readTimeoutInSeconds = 10;
+    @Setter
+    private int readTimeoutInSeconds = 10;
 
-	@Setter
-	private int writeTimeoutInSeconds = 10;
+    @Setter
+    private int writeTimeoutInSeconds = 10;
 
-	@Setter
-	private boolean disableRetry = false;
+    @Setter
+    private boolean disableRetry = false;
 
-	@Setter
-	private boolean disableCertificateCheck = false;
+    @Setter
+    private boolean disableCertificateCheck = false;
 
-	@Setter
-	private Feign.Builder feignBuilder;
+    @Setter
+    private Feign.Builder feignBuilder;
 
-	@Setter
-	private OkHttpClient okHttpClient;
+    @Setter
+    private OkHttpClient okHttpClient;
 
-	@Setter
-	private ObjectMapper objectMapper;
+    @Setter
+    private ObjectMapper objectMapper;
 
-	@Setter
-	private LogContentLevel logContentLevel = LogContentLevel.OFF;
+    @Setter
+    private LogContentLevel logContentLevel = LogContentLevel.OFF;
 
-	@Override
-	public BonitaClient build() {
+    @Override
+    public BonitaClient build() {
 
-		ApiClient apiClient = new ApiClient();
+        ApiClient apiClient = new ApiClient();
 
-		// Bonita url
-		apiClient.setBasePath(url);
+        // Bonita url
+        apiClient.setBasePath(url);
 
-		// OkHttp
-		okHttpClient = ofNullable(okHttpClient)
-				.orElseGet(() -> configureHttpClient(new OkHttpClient.Builder()).build());
+        // OkHttp
+        okHttpClient = ofNullable(okHttpClient)
+                .orElseGet(() -> configureHttpClient(new OkHttpClient.Builder()).build());
 
-		// Jackson
-		objectMapper = configureJackson(ofNullable(this.objectMapper).orElseGet(apiClient::getObjectMapper));
+        // Jackson
+        objectMapper = configureJackson(ofNullable(this.objectMapper).orElseGet(apiClient::getObjectMapper));
 
-		// Feign
-		feignBuilder = ofNullable(feignBuilder).orElseGet(() -> configureFeign(apiClient.getFeignBuilder()));
-		apiClient.setFeignBuilder(feignBuilder);
+        // Feign
+        feignBuilder = ofNullable(feignBuilder).orElseGet(() -> configureFeign(apiClient.getFeignBuilder()));
+        apiClient.setFeignBuilder(feignBuilder);
 
-		// Http proxies
-		ApiProvider apiProvider = new CachingApiProvider(apiClient);
+        // Http proxies
+        ApiProvider apiProvider = new CachingApiProvider(apiClient);
 
-		// Bonita Auth
-		BonitaCookieAuth authorization = new BonitaCookieAuth();
-		apiClient.addAuthorization("bonita", authorization);
-		LoginService loginService = new BonitaLoginService(apiProvider, this.objectMapper, authorization);
+        // Bonita Auth
+        BonitaCookieAuth authorization = new BonitaCookieAuth();
+        apiClient.addAuthorization("bonita", authorization);
+        LoginService loginService = new BonitaLoginService(apiProvider, this.objectMapper, authorization);
 
-		// Delegate services
-		final ClientContext clientContext = new CachingClientContext();
-		ApplicationService applicationService = new DefaultApplicationService(clientContext, apiProvider,
-				this.objectMapper);
+        // Delegate services
+        final ClientContext clientContext = new CachingClientContext();
+        ApplicationService applicationService = new DefaultApplicationService(clientContext, apiProvider,
+                this.objectMapper);
 
-		BdmResponseConverter bdmResponseConverter = new BdmResponseConverter(this.objectMapper, apiProvider);
-		BdmService bdmService = new DefaultBdmService(clientContext, apiProvider, bdmResponseConverter);
+        BdmResponseConverter bdmResponseConverter = new BdmResponseConverter(this.objectMapper, apiProvider);
+        BdmService bdmService = new DefaultBdmService(clientContext, apiProvider, bdmResponseConverter);
 
-		UserService userService = new DefaultUserService(clientContext, apiProvider, this.objectMapper);
-		ProcessService processService = new DefaultProcessService(clientContext, apiProvider, this.objectMapper);
-		SystemService systemService = new DefaultSystemService(clientContext, apiProvider, this.objectMapper);
+        UserService userService = new DefaultUserService(clientContext, apiProvider, this.objectMapper);
+        ProcessService processService = new DefaultProcessService(clientContext, apiProvider, this.objectMapper);
+        SystemService systemService = new DefaultSystemService(clientContext, apiProvider, this.objectMapper);
 
-		return new BonitaFeignClient(
-				apiClient.getBasePath(),
-				apiProvider,
-				loginService,
-				applicationService,
-				bdmService,
-				userService,
-				processService,
-				systemService);
-	}
+        return new BonitaFeignClient(
+                apiClient.getBasePath(),
+                apiProvider,
+                loginService,
+                applicationService,
+                bdmService,
+                userService,
+                processService,
+                systemService);
+    }
 
-	Feign.Builder configureFeign(Feign.Builder feignBuilder) {
-		log.debug("Configuring Feign builder ...");
-		return feignBuilder
-				.client(new feign.okhttp.OkHttpClient(okHttpClient))
-				.options(new Request.Options(okHttpClient.connectTimeoutMillis(), TimeUnit.MILLISECONDS,
-						okHttpClient.readTimeoutMillis(), TimeUnit.MILLISECONDS,
-						okHttpClient.followRedirects()))
-				.decoder(
-						new DelegatingDecoder()
-								// Register custom decoders for certain content-type
-								.register("application/json", new ApiResponseDecoder(objectMapper)))
-				// Map feign exception to ours
-				.errorDecoder(new BonitaErrorDecoder())
-				// bad charset handling in bonita version. Fixed in 7.11.3
-				.requestInterceptor(new BonitaCharsetBugInterceptor())
-				.retryer(disableRetry ? Retryer.NEVER_RETRY : new Retryer.Default());
-	}
+    Feign.Builder configureFeign(Feign.Builder feignBuilder) {
+        log.debug("Configuring Feign builder ...");
+        return feignBuilder
+                .client(new feign.okhttp.OkHttpClient(okHttpClient))
+                .options(new Request.Options(okHttpClient.connectTimeoutMillis(), TimeUnit.MILLISECONDS,
+                        okHttpClient.readTimeoutMillis(), TimeUnit.MILLISECONDS,
+                        okHttpClient.followRedirects()))
+                .decoder(
+                        new DelegatingDecoder()
+                                // Register custom decoders for certain content-type
+                                .register("application/json", new ApiResponseDecoder(objectMapper)))
+                // Map feign exception to ours
+                .errorDecoder(new BonitaErrorDecoder())
+                // bad charset handling in bonita version. Fixed in 7.11.3
+                .requestInterceptor(new BonitaCharsetBugInterceptor())
+                .retryer(disableRetry ? Retryer.NEVER_RETRY : new Retryer.Default());
+    }
 
-	ObjectMapper configureJackson(ObjectMapper objectMapper) {
-		log.debug("Configuring Object mapper ...");
-		objectMapper
-				.findAndRegisterModules()
-				.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    ObjectMapper configureJackson(ObjectMapper objectMapper) {
+        log.debug("Configuring Object mapper ...");
+        objectMapper
+                .findAndRegisterModules()
+                .setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-		// Contracts are serialized as Map and null values must be kept in the request body
-		objectMapper.configOverride(Map.class).setInclude(JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.ALWAYS));
-		return objectMapper;
-	}
+        // Contracts are serialized as Map and null values must be kept in the request body
+        objectMapper.configOverride(Map.class)
+                .setInclude(JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.ALWAYS));
+        return objectMapper;
+    }
 
-	OkHttpClient.Builder configureHttpClient(OkHttpClient.Builder builder) {
-		log.debug("Configuring OkHttp client ...");
-		OkHttpClient.Builder okHttpClientBuilder = addTrustAllCertificateManagerIfNeeded(builder)
-				.connectTimeout(connectTimeoutInSeconds, SECONDS)
-				.readTimeout(readTimeoutInSeconds, SECONDS)
-				.writeTimeout(writeTimeoutInSeconds, SECONDS)
-				.followRedirects(Boolean.TRUE);
+    OkHttpClient.Builder configureHttpClient(OkHttpClient.Builder builder) {
+        log.debug("Configuring OkHttp client ...");
+        OkHttpClient.Builder okHttpClientBuilder = addTrustAllCertificateManagerIfNeeded(builder)
+                .connectTimeout(connectTimeoutInSeconds, SECONDS)
+                .readTimeout(readTimeoutInSeconds, SECONDS)
+                .writeTimeout(writeTimeoutInSeconds, SECONDS)
+                .followRedirects(Boolean.TRUE);
 
-		if (!LogContentLevel.OFF.equals(logContentLevel)) {
-			HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(
-					message -> LoggerFactory.getLogger(BonitaClient.class).info(message));
-			switch (logContentLevel) {
-				case FULL:
-					logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-					break;
-				case HEADER:
-					logInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
-					break;
-				default:
-					logInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
-					break;
-			}
-			okHttpClientBuilder.addInterceptor(logInterceptor);
-		}
+        if (!LogContentLevel.OFF.equals(logContentLevel)) {
+            HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(
+                    message -> LoggerFactory.getLogger(BonitaClient.class).info(message));
+            switch (logContentLevel) {
+                case FULL:
+                    logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                    break;
+                case HEADER:
+                    logInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+                    break;
+                default:
+                    logInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+                    break;
+            }
+            okHttpClientBuilder.addInterceptor(logInterceptor);
+        }
 
-		return okHttpClientBuilder;
-	}
+        return okHttpClientBuilder;
+    }
 
-	OkHttpClient.Builder addTrustAllCertificateManagerIfNeeded(OkHttpClient.Builder builder) {
-		if (disableCertificateCheck) {
-			log.debug("Configuring client Certificate manager ...");
-			try {
-				// Create a trust manager that does not validate certificate chains
-				final TrustManager[] trustAllCerts = new TrustManager[] { newTrustAllCertManager() };
+    OkHttpClient.Builder addTrustAllCertificateManagerIfNeeded(OkHttpClient.Builder builder) {
+        if (disableCertificateCheck) {
+            log.debug("Configuring client Certificate manager ...");
+            try {
+                // Create a trust manager that does not validate certificate chains
+                final TrustManager[] trustAllCerts = new TrustManager[] { newTrustAllCertManager() };
 
-				// Install the all-trusting trust manager
-				final SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
-				sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+                // Install the all-trusting trust manager
+                final SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+                sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
 
-				// Create an ssl socket factory with our all-trusting manager
-				final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+                // Create an ssl socket factory with our all-trusting manager
+                final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
 
-				builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
-				builder.hostnameVerifier((hostname, session) -> true);
+                builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
+                builder.hostnameVerifier((hostname, session) -> true);
 
-			}
-			catch (Exception e) {
-				throw new ClientException(
-						"An internal error has occurred while building the insecure HttpClient", e);
-			}
-			log.warn("Certificate Manager is configured to trust all ! (no check)");
-		}
-		return builder;
-	}
+            } catch (Exception e) {
+                throw new ClientException(
+                        "An internal error has occurred while building the insecure HttpClient", e);
+            }
+            log.warn("Certificate Manager is configured to trust all ! (no check)");
+        }
+        return builder;
+    }
 
-	@NotNull
-	TrustManager newTrustAllCertManager() {
-		return new X509TrustManager() {
+    @NotNull
+    TrustManager newTrustAllCertManager() {
+        return new X509TrustManager() {
 
-			@Override
-			public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
-					throws CertificateException {
-				// noop
-			}
+            @Override
+            public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
+                    throws CertificateException {
+                // noop
+            }
 
-			@Override
-			public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
-					throws CertificateException {
-				// noop
-			}
+            @Override
+            public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
+                    throws CertificateException {
+                // noop
+            }
 
-			@Override
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return new java.security.cert.X509Certificate[] {};
-			}
-		};
-	}
+            @Override
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return new java.security.cert.X509Certificate[] {};
+            }
+        };
+    }
 
 }
