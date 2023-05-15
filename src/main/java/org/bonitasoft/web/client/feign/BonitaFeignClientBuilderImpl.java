@@ -28,6 +28,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.bonitasoft.web.client.AuthBuilder;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.feign.decoder.BonitaErrorDecoder;
@@ -107,7 +108,9 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
     @Setter
     private LogContentLevel logContentLevel = LogContentLevel.OFF;
 
-    @Override
+	private AuthBuilder authBuilder;
+
+	@Override
     public BonitaClient build() {
 
         ApiClient apiClient = new ApiClient();
@@ -130,8 +133,8 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         ApiProvider apiProvider = new CachingApiProvider(apiClient);
 
         // Bonita Auth
-        BonitaCookieAuth authorization = new BonitaCookieAuth();
-        apiClient.addAuthorization("bonita", authorization);
+		apiClient.addAuthorization("bonita",authBuilder.build());
+
         LoginService loginService = new BonitaLoginService(apiProvider, this.objectMapper, authorization);
 
         // Delegate services
@@ -157,7 +160,13 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                 systemService);
     }
 
-    Feign.Builder configureFeign(Feign.Builder feignBuilder) {
+	@Override
+	public BonitaFeignClientBuilder auth(AuthBuilder authBuilder) {
+		this.authBuilder = authBuilder;
+		return this;
+	}
+
+	Feign.Builder configureFeign(Feign.Builder feignBuilder) {
         log.debug("Configuring Feign builder ...");
         return feignBuilder
                 .client(new feign.okhttp.OkHttpClient(okHttpClient))

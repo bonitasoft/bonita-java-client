@@ -23,7 +23,11 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
+import org.bonitasoft.web.client.AuthBuilder;
+import org.bonitasoft.web.client.AuthBuilder.Type;
 import org.bonitasoft.web.client.BonitaClient;
+import org.bonitasoft.web.client.BonitaCookieAuthBuilder;
+import org.bonitasoft.web.client.feign.auth.BonitaCookieFeignAuthBuilder;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -132,4 +136,16 @@ class BonitaFeignClientBuilderImplTest {
         // Then
         verify(clientBuilder, atMostOnce()).newTrustAllCertManager();
     }
+
+
+	@Test
+	void can_configure_cookie_auth() {
+		// Given
+
+		// When
+		clientBuilder.auth(AuthBuilder.cookieAuth());
+
+		// Then
+		assertThat(clientBuilder.).isTrue();
+	}
 }

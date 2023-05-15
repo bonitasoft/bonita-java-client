@@ -62,7 +62,7 @@ class BonitaClientTest {
         assertThat(client.processes()).isNotNull();
     }
 
-    @Test
+	@Test
     void when_no_tenant_provided_should_log_with_default_tenant() {
         // Given
         client = spy(client);

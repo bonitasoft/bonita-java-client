@@ -21,9 +21,15 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.bonitasoft.web.client.invoker.auth.ApiErrorDecoder;
 import org.bonitasoft.web.client.invoker.auth.ApiKeyAuth;
 import org.bonitasoft.web.client.invoker.auth.HttpBasicAuth;
 import org.bonitasoft.web.client.invoker.auth.HttpBearerAuth;
+import org.bonitasoft.web.client.invoker.auth.OAuth;
+import org.bonitasoft.web.client.invoker.auth.OAuth.AccessTokenListener;
+import org.bonitasoft.web.client.invoker.auth.OAuthFlow;
+import org.bonitasoft.web.client.invoker.auth.OauthClientCredentialsGrant;
+import org.bonitasoft.web.client.invoker.auth.OauthPasswordGrant;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -33,6 +39,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import feign.Feign;
 import feign.RequestInterceptor;
+import feign.Retryer;
 import feign.form.FormEncoder;
 import feign.jackson.JacksonEncoder;
 import feign.okhttp.OkHttpClient;
@@ -58,6 +65,8 @@ public class ApiClient {
                 .client(new OkHttpClient())
                 .encoder(new FormEncoder(new JacksonEncoder(objectMapper)))
                 .decoder(new ApiResponseDecoder(objectMapper))
+                .errorDecoder(new ApiErrorDecoder())
+                .retryer(new Retryer.Default(0, 0, 2))
                 .logger(new Slf4jLogger());
     }
 
@@ -66,7 +75,11 @@ public class ApiClient {
         for (String authName : authNames) {
             log.log(Level.FINE, "Creating authentication {0}", authName);
             RequestInterceptor auth;
-            if ("bonita_auth".equals(authName)) {
+            if ("oauth_access_code".equals(authName)) {
+                auth = buildOauthRequestInterceptor(OAuthFlow.ACCESS_CODE, "", "", "");
+            } else if ("oauth_password".equals(authName)) {
+                auth = buildOauthRequestInterceptor(OAuthFlow.PASSWORD, "", "", "");
+            } else if ("bonita_auth".equals(authName)) {
                 auth = new ApiKeyAuth("cookie", "JSESSIONID");
             } else if ("bonita_token".equals(authName)) {
                 auth = new ApiKeyAuth("header", "X-Bonita-API-Token");
@@ -135,6 +148,18 @@ public class ApiClient {
         JsonNullableModule jnm = new JsonNullableModule();
         objectMapper.registerModule(jnm);
         return objectMapper;
+    }
+
+    private RequestInterceptor buildOauthRequestInterceptor(OAuthFlow flow, String authorizationUrl, String tokenUrl,
+            String scopes) {
+        switch (flow) {
+            case PASSWORD:
+                return new OauthPasswordGrant(tokenUrl, scopes);
+            case APPLICATION:
+                return new OauthClientCredentialsGrant(authorizationUrl, tokenUrl, scopes);
+            default:
+                throw new RuntimeException("Oauth flow \"" + flow + "\" is not implemented");
+        }
     }
 
     public ObjectMapper getObjectMapper() {
@@ -224,6 +249,62 @@ public class ApiClient {
     public void setCredentials(String username, String password) {
         HttpBasicAuth apiAuthorization = getAuthorization(HttpBasicAuth.class);
         apiAuthorization.setCredentials(username, password);
+    }
+
+    /**
+     * Helper method to configure the client credentials for Oauth
+     * 
+     * @param clientId Client ID
+     * @param clientSecret Client secret
+     */
+    public void setClientCredentials(String clientId, String clientSecret) {
+        OauthClientCredentialsGrant authorization = getAuthorization(OauthClientCredentialsGrant.class);
+        authorization.configure(clientId, clientSecret);
+    }
+
+    /**
+     * Helper method to configure the username/password for Oauth password grant
+     * 
+     * @param username Username
+     * @param password Password
+     * @param clientId Client ID
+     * @param clientSecret Client secret
+     */
+    public void setOauthPassword(String username, String password, String clientId, String clientSecret) {
+        OauthPasswordGrant apiAuthorization = getAuthorization(OauthPasswordGrant.class);
+        apiAuthorization.configure(username, password, clientId, clientSecret);
+    }
+
+    /**
+     * Helper method to pre-set the oauth access token of the first oauth found in the apiAuthorizations (there should be only one)
+     * 
+     * @param accessToken Access Token
+     * @param expiresIn Validity period in seconds
+     */
+    public void setAccessToken(String accessToken, Integer expiresIn) {
+        OAuth apiAuthorization = getAuthorization(OAuth.class);
+        apiAuthorization.setAccessToken(accessToken, expiresIn);
+    }
+
+    /**
+     * Helper method to configure the oauth accessCode/implicit flow parameters
+     * 
+     * @param clientId Client ID
+     * @param clientSecret Client secret
+     * @param redirectURI Redirect URI
+     */
+    public void configureAuthorizationFlow(String clientId, String clientSecret, String redirectURI) {
+        throw new RuntimeException("Not implemented");
+    }
+
+    /**
+     * Configures a listener which is notified when a new access token is received.
+     * 
+     * @param accessTokenListener Access token listener
+     */
+    public void registerAccessTokenListener(AccessTokenListener accessTokenListener) {
+        OAuth apiAuthorization = getAuthorization(OAuth.class);
+        apiAuthorization.registerAccessTokenListener(accessTokenListener);
     }
 
     /**
