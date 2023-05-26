@@ -16,8 +16,6 @@
  */
 package org.bonitasoft.web.client.api;
 
-import java.util.Map;
-
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.model.ApiResponse;
 
@@ -32,13 +30,13 @@ public interface DiagramApi extends ApiClient.Api {
      * for drawing the diagram.
      * 
      * @param id ID of the process to get the diagram from (required)
-     * @return Map&lt;String, Object&gt;
+     * @return String
      */
     @RequestLine("GET /API/bpm/diagram/{id}")
     @Headers({
             "Accept: application/json",
     })
-    Map<String, Object> getProcessDiagramById(@Param("id") String id);
+    String getProcessDiagramById(@Param("id") String id);
 
     /**
      * Finds the diagram process by ID
@@ -53,6 +51,6 @@ public interface DiagramApi extends ApiClient.Api {
     @Headers({
             "Accept: application/json",
     })
-    ApiResponse<Map<String, Object>> getProcessDiagramByIdWithHttpInfo(@Param("id") String id);
+    ApiResponse<String> getProcessDiagramByIdWithHttpInfo(@Param("id") String id);
 
 }

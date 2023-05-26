@@ -101,7 +101,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.13
+  version: 0.0.14
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -8665,9 +8665,8 @@ paths:
           content:
             application/xml:
               schema:
-                additionalProperties: true
-                description: Raw XML file containing the diagram definition
-                type: object
+                description: BPMN XML representation of the process definition
+                type: string
           description: 'Success '
         "400":
           content:
