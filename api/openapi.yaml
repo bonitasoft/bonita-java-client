@@ -8667,7 +8667,7 @@ paths:
               schema:
                 additionalProperties: true
                 description: Raw XML file containing the diagram definition
-                type: string
+                type: object
           description: 'Success '
         "400":
           content:
