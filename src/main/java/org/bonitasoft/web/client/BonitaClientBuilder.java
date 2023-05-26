@@ -99,4 +99,12 @@ public interface BonitaClientBuilder<T extends BonitaClientBuilder<T>> {
      * @return the current builder
      */
     T disableRetry(boolean disableRetry);
+
+
+	/**
+	 * Configure the client authentication method
+	 * @param authBuilder
+	 * @return
+	 */
+	T auth(AuthBuilder authBuilder);
 }

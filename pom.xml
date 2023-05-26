@@ -450,7 +450,7 @@
               <generateModelDocumentation>false</generateModelDocumentation>
               <output>${project.basedir}</output>
               <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
-              <inputSpec>${project.basedir}/api/openapi.yaml</inputSpec>
+              <inputSpec>${project.basedir}/oidc-spec.yaml</inputSpec>
               <generatorName>java</generatorName>
               <invokerPackage>org.bonitasoft.web.client.invoker</invokerPackage>
               <apiPackage>org.bonitasoft.web.client.api</apiPackage>

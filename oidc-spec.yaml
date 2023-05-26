@@ -113,9 +113,9 @@ servers:
 security:
 - bonita_auth: []
   bonita_token: []
-- openId:
-  - admin
-  - user
+- openId: # <--- Use the same name as specified in securitySchemes
+    - admin
+    - user
 tags:
 - description: Activity
   name: Activity
@@ -20935,15 +20935,18 @@ components:
       type: object
   securitySchemes:
     oauth_access_code:
+      type: oauth2
       flows:
         authorizationCode:
-          scopes: {}
-      type: oauth2
+          authorizationUrl:
+          tokenUrl:
+          scopes: { }
     oauth_password:
+      type: oauth2
       flows:
         password:
-          scopes: {}
-      type: oauth2
+          tokenUrl:
+          scopes: { }
     bonita_auth:
       description: |
         To call the REST API, you must first log on with a user registered in the Engine database. Please refer to the __[Login API](#operation/login)__ operations section.
