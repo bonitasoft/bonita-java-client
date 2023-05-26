@@ -57,7 +57,7 @@
     <scribejava.version>8.3.3</scribejava.version>
     <jackson.version>2.14.2</jackson.version>
     <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
-    <lombok.version>1.18.26</lombok.version>
+    <lombok.version>1.18.28</lombok.version>
     <slf4j-api.version>1.7.36</slf4j-api.version>
     <!-- Tests -->
     <junit-jupiter-engine.version>5.9.3</junit-jupiter-engine.version>
