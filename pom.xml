@@ -64,7 +64,7 @@
     <assertj-core.version>3.24.2</assertj-core.version>
     <mockito-core.version>5.3.1</mockito-core.version>
     <logback-classic.version>1.2.11</logback-classic.version>
-    <testcontainers.version>1.18.1</testcontainers.version>
+    <testcontainers.version>1.18.2</testcontainers.version>
     <awaitility.version>4.2.0</awaitility.version>
     <!-- Maven plugins -->
     <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
