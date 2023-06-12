@@ -1,3 +1,19 @@
+/** 
+ * Copyright (C) 2023 BonitaSoft S.A.
+ * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2.0 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package org.bonitasoft.web.client.services.impl;
 
 import static java.util.Arrays.asList;
@@ -8,7 +24,6 @@ import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
 import static org.bonitasoft.web.client.invoker.EncodingUtils.encode;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
@@ -57,8 +72,6 @@ class DefaultUserServiceTest {
     @Mock
     private RoleApi roleApi;
 
-
-
     @Test
     void orga_should_be_imported() throws Exception {
         // Given
@@ -81,7 +94,7 @@ class DefaultUserServiceTest {
         UserApi userApi = mock(UserApi.class);
         when(apiProvider.get(UserApi.class)).thenReturn(userApi);
         final User mockUser = mock(User.class);
-        when(userApi.searchUsers(anyMap())).thenReturn(singletonList(mockUser));
+        when(userApi.searchUsers(any())).thenReturn(singletonList(mockUser));
         final ArgumentCaptor<UserApi.SearchUsersQueryParams> captor = ArgumentCaptor
                 .forClass(UserApi.SearchUsersQueryParams.class);
         final String username = "walter.bates";
@@ -106,7 +119,7 @@ class DefaultUserServiceTest {
 
         final String profile1name = "profile1name";
         final String profile2name = "profile2name";
-        when(profileApi.searchProfiles(anyMap())).thenReturn(emptyList());
+        when(profileApi.searchProfiles(any())).thenReturn(emptyList());
 
         // When
         final boolean anyProfileExist = service.anyProfileExist(asList(profile1name, profile2name));
@@ -123,7 +136,7 @@ class DefaultUserServiceTest {
 
         final String profile1name = "profile1name";
         final String profile2name = "profile2name";
-        when(profileApi.searchProfiles(anyMap()))
+        when(profileApi.searchProfiles(any()))
                 // first call
                 .thenReturn(emptyList())
                 // second call
@@ -146,7 +159,7 @@ class DefaultUserServiceTest {
         doReturn(false).when(service).isCommunity();
 
         // pretend profile exist
-        when(profileApi.searchProfiles(anyMap())).thenReturn(singletonList(new Profile()));
+        when(profileApi.searchProfiles(any())).thenReturn(singletonList(new Profile()));
 
         // When
         final File profileFile = getClasspathFile("/CustomProfile_Data.xml");

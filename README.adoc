@@ -25,8 +25,8 @@ endif::[]
 // Vars
 :project-group-id: org.bonitasoft.web
 :project-artifact-id: bonita-java-client
-:project-version: 0.0.10
-:bonita-short-version: 7.11
+:project-version: 1.0.0
+:bonita-short-version: 7.13
 :orga: bonitasoft
 :uri-org: https://github.com/{orga}
 :uri-repo: {uri-org}/{project-artifact-id}
@@ -278,6 +278,30 @@ mvn install
 The build should produce under the `target/` folder (and in your local maven repository) a jar archive named `bonita-java-client-1.0.0-SNAPSHOT.jar`
 
 For more details about apache maven, please refer to the https://maven.apache.org/guides/getting-started/[documentation]
+
+=== Format source code
+
+This project uses Spotless to ensure a consistent formatting.
+To apply the configured formatting rules use the following Maven command: 
+
+[source, bash]
+----
+./mvnw spotless:apply
+----
+
+=== Update OpenAPI spec version
+
+The OpenAPI spec is retrieve from the [bonita-openapi](https://github.com/bonitasoft/bonita-openapi/) repository releases. To  update the spec version you must:
+
+* Update the `bonita-openapi.version` property in the `pom.xml`
+* Run the following Maven command:
+
+[source, bash]
+----
+./mvnw groovy:execute@update-spec
+----
+
+You can then regenerate the feign stubs.
 
 === Regenerate feign stubs
 

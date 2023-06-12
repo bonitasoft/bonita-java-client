@@ -1,3 +1,19 @@
+/** 
+ * Copyright (C) 2023 BonitaSoft S.A.
+ * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2.0 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package org.bonitasoft.web.client.services;
 
 import java.io.File;
@@ -19,35 +35,35 @@ import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
 
 public interface UserService {
 
-	void importOrganization(File organization, OrganizationImportPolicy policy);
+    void importOrganization(File organization, OrganizationImportPolicy policy);
 
-	User getUser(String username);
+    User getUser(String username);
 
-	User createUser(UserCreateRequest userCreateRequest);
+    User createUser(UserCreateRequest userCreateRequest);
 
-	List<User> searchUsers(UserApi.SearchUsersQueryParams params);
+    List<User> searchUsers(UserApi.SearchUsersQueryParams params);
 
-	void importProfiles(File profiles, ProfileImportPolicy policy);
+    void importProfiles(File profiles, ProfileImportPolicy policy);
 
-	List<Profile> searchProfiles(int page, int count);
+    List<Profile> searchProfiles(int page, int count);
 
-	List<Profile> searchProfiles(ProfileApi.SearchProfilesQueryParams params);
+    List<Profile> searchProfiles(ProfileApi.SearchProfilesQueryParams params);
 
-	String addUserToProfile(String userId, String profileId);
+    String addUserToProfile(String userId, String profileId);
 
-	List<Role> searchRoles(RoleApi.SearchRolesQueryParams params);
+    List<Role> searchRoles(RoleApi.SearchRolesQueryParams params);
 
-	Role createRole(RoleCreateRequest roleCreateRequest);
+    Role createRole(RoleCreateRequest roleCreateRequest);
 
-	Role getRoleByName(String name);
+    Role getRoleByName(String name);
 
-	Group createGroup(GroupCreateRequest groupCreateRequest);
+    Group createGroup(GroupCreateRequest groupCreateRequest);
 
-	Profile getProfileByName(String name);
+    Profile getProfileByName(String name);
 
-	Profile createProfile(ProfileCreateRequest profileCreateRequest);
+    Profile createProfile(ProfileCreateRequest profileCreateRequest);
 
-	String addRoleToProfile(String roleId, String profileId);
+    String addRoleToProfile(String roleId, String profileId);
 
-	String addUserToProfileByNames(String username, String profileName);
+    String addUserToProfileByNames(String username, String profileName);
 }

@@ -1,16 +1,19 @@
-/*
- * Bonita HTTP API
- *  The REST API lets you access the data with HTTP requests; it is useful when implementing rich web forms / pages for a good user experience.  If your application is using a technology other than Java, you can integrate it with the Bonita solution using the Web REST API. This API provides access to all Bonita objects (like processes, tasks, users, connectors etc.), to execute operations on them (create, retrieve, update, delete). You can use these operations to create a workflow with Bonita and integrate it into your application. The Bonita Engine remains responsible for executing the workflow logic (connectors, gateways with conditions, messages, timers etc.) while your application gives access to the workflow. Users can manage processes and tasks, and perform administrative activities.  ![diagram of architecture of a REST client integrated with Bonita](images/rest_overview_v2.png)  ### API Extensions  You can create [Rest API Extensions](rest-api-extensions.md) to extend the Rest API by adding missing ressources (not provided by the Rest API). It is possible for an extension to interact with the engine (via the API) or with any other external service (for example a database, a directory, or a web service).  ### Create a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/  `| |:-|:-| | Request Method | POST| | Request Payload | an item in JSON| | Response | the same item in JSON, containing the values provided in the posted item, completed with default values and identifiers provided by Bonita Engine.|  ### Read a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/user/5 `  #### Extend resource response  On some resources, in GET methods the `d` (deploy) URL query parameter can be used to extend the response objects. The value of this parameter consists of an attribute for which you want to make an extended request (called a deploy) and retrieve attributes of a linked resource. This means that instead of retrieving the ID or a parent or referenced resource, you can retrieve the full object.  For example, when you retrieve a task, you can also retrieve the process definition attributes in addition to the process definition ID that is already part of the task resource. The supported deploy values for a task include its process (d=processId).  Specifiy multiple `d` parameter to extend several resources. For instance, to retrieve the flow node of id 143 and the associated process, process instance and assigned user, call `/API/bpm/flowNode/143?d=processId&d=caseId&d=assigned_id`  #### With compound identifier  The order of the identifier parts for each resource type is given in the table above.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | GET| | Response | an item in JSON|  Example `http://.../API/identity/membership/5/12/24 `  ### Update a resource  | Request URL | `http://.../API/{API_name}/{resource_name}/{id} `| |:-|:-| | Request Method | PUT| | Request Payload | a map in JSON containing the new values for the attributes you want to change.| | Response | the corresponding item in JSON with new values where you requested a modification|  Example `http://.../API/identity/user/5`  #### With compound identifier:  Response: the corresponding item in JSON with new values where you requested a modification.  | Request URL | `http://.../API/{API_name}/{resource_name}/{id_part1}/{id_part2} `| |:-|:-| | Request Method | PUT| | Request Payload | ` a map in JSON containing the new values for the attributes you want to change `| | Response | ` the corresponding item in JSON with new values where you requested a modification`|  Example `http://.../API/identity/membership/5/12/24 `  ### Delete resources  Use the DELETE request to remove multiple resources.  | Request URL | `http://.../API/{API_name}/{resource_name}/ `| |:-|:-| | Request Method | DELETE| | Request Payload | A list of identifiers in JSON, for example `[\"id1\",\"id2\",\"id3\"]`. Compound identifiers are separated by '/' characters.| | Response | `empty `|  Example `http://.../API/identity/membership/ `  ### Search for a resource  The required object is specified with a set of filters in the request URL. The URL parameters must be URL-encoded.  Results are returned in a paged list, so you have to specify the page (counting from zero), and the number of results per page (count), additionally you can define a sort key (order). You can see the total number of matching results in the HTTP response header Content-Range. If you are searching for business data using a custom query, there must be a [count query in the BDM](define-and-deploy-the-bdm.md). If there is no count query, results from a custom query on business data cannot be paged properly (the header Content-Range will be absent). For business data default queries, the count query is defined automatically.  The available filters are the attributes of the item plus some specific filters defined by each item.  | Request URL | `http://.../API/{API_name}/{resource_name}?p={page}&c={count}&o={order}&s={query}&f={filter_name}={filter_value}&f=... `| |:-|:-| | Request Method | GET| | Response | an array of items in JSON|  Example `/API/identity/user?p=0&c=10&o=firstname&s=test&f=manager_id=3`  For a GET method that retrieves more than one instance of a resource, you can specify the following request parameters:  * p (Mandatory): index of the page to display * c (Mandatory): maximum number of elements to retrieve * o: order of presentation of values in response: must be either `attributeName ASC` or `attributeName DESC`. The final order parameter value must be URL encoded. * f: list of filters, specified as `attributeName=attributeValue`. To filter on more than one attribute, specify an f parameters for each attribute. The final filter parameter value must be URL encoded.   The attributes you can filter on are specific to the resource. * s: search on name or search indexes. The matching policy depends on the configuration of [word-based search](using-list-and-search-methods.md).   For example, if word-based search is enabled, `s=Valid` returns matches containing the string \"valid\" at the start of any word in the attribute value word,   such as \"Valid address\", \"Not a valid address\", and \"Validated request\" but not \"Invalid request\".   If word-based search is disabled, `s=Valid` returns matches containing the string \"valid\" at the start of the attribute value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid address\" or \"Invalid request\".  ### Errors  The API uses standard HTTP status codes to indicate the success or failure of the API call.  If you get a `401` response code :   - make sure that the cookies have been transfered with the call   - make sure that the cookies transfered are the ones generated during the last sucessfull login call   - if one of the PUT, DELETE or POST method is used, make sure that the `X-Bonita-API-Token` header is included   - if the X-Bonita-API-Token header is included, make sure that the value is the same as the one of the cookie generated during the last login   - Maybe a logout was issued or the session has expired; try to log in again, and re run the request with the new cookies and the new value for the `X-Bonita-API-Token` header.
+/** 
+ * Copyright (C) 2022 BonitaSoft S.A.
+ * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2.0 of the License, or
+ * (at your option) any later version.
  *
- * The version of the OpenAPI document: 0.0.10
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *
- * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
- * https://openapi-generator.tech
- * Do not edit the class manually.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-
 package org.bonitasoft.web.client.model;
 
 import java.io.Serializable;
@@ -19,156 +22,146 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * ApplicationPageCreateRequest
  */
 @JsonPropertyOrder({
-		ApplicationPageCreateRequest.JSON_PROPERTY_TOKEN,
-		ApplicationPageCreateRequest.JSON_PROPERTY_APPLICATION_ID,
-		ApplicationPageCreateRequest.JSON_PROPERTY_PAGE_ID
+        ApplicationPageCreateRequest.JSON_PROPERTY_TOKEN,
+        ApplicationPageCreateRequest.JSON_PROPERTY_APPLICATION_ID,
+        ApplicationPageCreateRequest.JSON_PROPERTY_PAGE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationPageCreateRequest implements Serializable {
-	public static final String JSON_PROPERTY_TOKEN = "token";
 
-	public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
+    private static final long serialVersionUID = 1L;
 
-	public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+    public static final String JSON_PROPERTY_TOKEN = "token";
+    private String token;
 
-	private static final long serialVersionUID = 1L;
+    public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
+    private String applicationId;
 
-	private String token;
+    public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+    private String pageId;
 
-	private String applicationId;
+    public ApplicationPageCreateRequest() {
+    }
 
-	private String pageId;
+    public ApplicationPageCreateRequest token(String token) {
 
-	public ApplicationPageCreateRequest() {
-	}
+        this.token = token;
+        return this;
+    }
 
-	public ApplicationPageCreateRequest token(String token) {
+    /**
+     * token use to access the page using a URL : ../appName/pageToken/
+     * 
+     * @return token
+     **/
+    @jakarta.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-		this.token = token;
-		return this;
-	}
+    public String getToken() {
+        return token;
+    }
 
-	/**
-	 * token use to access the page using a URL : ../appName/pageToken/
-	 * @return token
-	 **/
-	@javax.annotation.Nullable
-	@ApiModelProperty(value = "token use to access the page using a URL : ../appName/pageToken/")
-	@JsonProperty(JSON_PROPERTY_TOKEN)
-	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    @JsonProperty(JSON_PROPERTY_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-	public String getToken() {
-		return token;
-	}
+    public ApplicationPageCreateRequest applicationId(String applicationId) {
 
+        this.applicationId = applicationId;
+        return this;
+    }
 
-	@JsonProperty(JSON_PROPERTY_TOKEN)
-	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-	public void setToken(String token) {
-		this.token = token;
-	}
+    /**
+     * id of the application related to this page
+     * 
+     * @return applicationId
+     **/
+    @jakarta.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
+    public String getApplicationId() {
+        return applicationId;
+    }
 
-	public ApplicationPageCreateRequest applicationId(String applicationId) {
+    @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
+    }
 
-		this.applicationId = applicationId;
-		return this;
-	}
+    public ApplicationPageCreateRequest pageId(String pageId) {
 
-	/**
-	 * id of the application related to this page
-	 * @return applicationId
-	 **/
-	@javax.annotation.Nullable
-	@ApiModelProperty(value = "id of the application related to this page")
-	@JsonProperty(JSON_PROPERTY_APPLICATION_ID)
-	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+        this.pageId = pageId;
+        return this;
+    }
 
-	public String getApplicationId() {
-		return applicationId;
-	}
+    /**
+     * id of the custom page to display
+     * 
+     * @return pageId
+     **/
+    @jakarta.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PAGE_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
+    public String getPageId() {
+        return pageId;
+    }
 
-	@JsonProperty(JSON_PROPERTY_APPLICATION_ID)
-	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-	public void setApplicationId(String applicationId) {
-		this.applicationId = applicationId;
-	}
+    @JsonProperty(JSON_PROPERTY_PAGE_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPageId(String pageId) {
+        this.pageId = pageId;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ApplicationPageCreateRequest applicationPageCreateRequest = (ApplicationPageCreateRequest) o;
+        return Objects.equals(this.token, applicationPageCreateRequest.token) &&
+                Objects.equals(this.applicationId, applicationPageCreateRequest.applicationId) &&
+                Objects.equals(this.pageId, applicationPageCreateRequest.pageId);
+    }
 
-	public ApplicationPageCreateRequest pageId(String pageId) {
+    @Override
+    public int hashCode() {
+        return Objects.hash(token, applicationId, pageId);
+    }
 
-		this.pageId = pageId;
-		return this;
-	}
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ApplicationPageCreateRequest {\n");
+        sb.append("    token: ").append(toIndentedString(token)).append("\n");
+        sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+        sb.append("    pageId: ").append(toIndentedString(pageId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
 
-	/**
-	 * id of the custom page to display
-	 * @return pageId
-	 **/
-	@javax.annotation.Nullable
-	@ApiModelProperty(value = "id of the custom page to display")
-	@JsonProperty(JSON_PROPERTY_PAGE_ID)
-	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-	public String getPageId() {
-		return pageId;
-	}
-
-
-	@JsonProperty(JSON_PROPERTY_PAGE_ID)
-	@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-	public void setPageId(String pageId) {
-		this.pageId = pageId;
-	}
-
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		ApplicationPageCreateRequest applicationPageCreateRequest = (ApplicationPageCreateRequest) o;
-		return Objects.equals(this.token, applicationPageCreateRequest.token) &&
-				Objects.equals(this.applicationId, applicationPageCreateRequest.applicationId) &&
-				Objects.equals(this.pageId, applicationPageCreateRequest.pageId);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(token, applicationId, pageId);
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("class ApplicationPageCreateRequest {\n");
-		sb.append("    token: ").append(toIndentedString(token)).append("\n");
-		sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
-		sb.append("    pageId: ").append(toIndentedString(pageId)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
-
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
 }
-

@@ -1,0 +1,49 @@
+name: workflow-update-spec
+
+on:
+  repository_dispatch:
+    types: [new-bonita-openapi-spec-release]
+  workflow_dispatch:
+    inputs:
+      specVersion:
+        description: 'The version of the Bonita OpenAPI spec'
+        required: true
+        type: string
+        
+env:
+  spec_version: ${{ github.event.client_payload.spec_version || inputs.specVersion }}
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: temurin
+          cache: maven
+
+      - name: Compile and test project
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ./mvnw -ntp versions:set-property -DnewVersion=${{env.spec_version}} -Dproperty=bonita-openapi.version
+          ./mvnw -ntp groovy:execute@update-spec
+          ./mvnw -ntp generate-sources -Dcodegen.skip=false
+          ./mvnw -ntp spotless:apply
+          ./mvnw -B -ntp clean verify
+
+      - name: Open Pull Request
+        uses: peter-evans/create-pull-request@v5
+        id: create-pr
+        with:
+          branch: feat/update-bonita-openapi-spec
+          base: dev
+          commit-message: "feat(openapi): update version"
+          title: "feat(openapi): update version"
+          body: |
+            Update Bonita OpenAPI spec with ${{env.spec_version}} version.
+          

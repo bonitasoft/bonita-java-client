@@ -1,3 +1,19 @@
+/** 
+ * Copyright (C) 2023 BonitaSoft S.A.
+ * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2.0 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package org.bonitasoft.web.client;
 
 import static java.util.Arrays.asList;
@@ -20,6 +36,8 @@ import java.util.concurrent.Callable;
 import org.bonitasoft.testcontainers.BonitaContainer;
 import org.bonitasoft.web.client.api.ApplicationApi.SearchApplicationsQueryParams;
 import org.bonitasoft.web.client.api.ArchivedProcessInstanceApi;
+import org.bonitasoft.web.client.api.GroupApi;
+import org.bonitasoft.web.client.api.GroupApi.SearchGroupsQueryParams;
 import org.bonitasoft.web.client.api.ProcessInstanceApi;
 import org.bonitasoft.web.client.api.RoleApi;
 import org.bonitasoft.web.client.api.UserApi.SearchUsersQueryParams;
@@ -38,6 +56,7 @@ import org.bonitasoft.web.client.model.BusinessData;
 import org.bonitasoft.web.client.model.ConfigurationState;
 import org.bonitasoft.web.client.model.Group;
 import org.bonitasoft.web.client.model.GroupCreateRequest;
+import org.bonitasoft.web.client.model.GroupUpdateRequest;
 import org.bonitasoft.web.client.model.Page;
 import org.bonitasoft.web.client.model.ProcessDefinition;
 import org.bonitasoft.web.client.model.ProcessInstance;
@@ -117,7 +136,7 @@ class BonitaClientIT {
         final ProcessService processes = bonitaClient.processes();
         assertThatThrownBy(
                 () -> processes.importProcess(processFile, ProcessImportPolicy.IGNORE_DUPLICATES))
-                        .isInstanceOf(ProcessActivationException.class);
+                .isInstanceOf(ProcessActivationException.class);
     }
 
     @Test
@@ -136,7 +155,7 @@ class BonitaClientIT {
         final ProcessService processes = bonitaClient.processes();
         assertThatThrownBy(
                 () -> processes.importProcess(processFile, ProcessImportPolicy.FAIL_ON_DUPLICATES))
-                        .isInstanceOf(DuplicatedProcessException.class);
+                .isInstanceOf(DuplicatedProcessException.class);
 
         // Then
         ProcessDefinition process = bonitaClient.processes().getProcess("CreateAndUpdateData", "1.0");
@@ -469,9 +488,9 @@ class BonitaClientIT {
         final ProcessService processes = bonitaClient.processes();
         assertThatThrownBy(
                 () -> processes.importProcess(processFile, ProcessImportPolicy.REPLACE_DUPLICATES))
-                        .isInstanceOf(ProcessActivationException.class)
-                        .hasFieldOrPropertyWithValue("processName", processName)
-                        .hasFieldOrPropertyWithValue("processVersion", processVersion);
+                .isInstanceOf(ProcessActivationException.class)
+                .hasFieldOrPropertyWithValue("processName", processName)
+                .hasFieldOrPropertyWithValue("processVersion", processVersion);
 
         ProcessDefinition process = bonitaClient.processes().getProcess(processName, processVersion);
         assertThat(process.getConfigurationState()).isEqualTo(ConfigurationState.UNRESOLVED);
@@ -486,7 +505,7 @@ class BonitaClientIT {
     }
 
     @Test
-    void should_create_all_elements_of_the_organisation() {
+    void should_create_all_elements_of_the_organization() {
         // Given
         loggedInAsTechnicalUser();
 
@@ -501,16 +520,34 @@ class BonitaClientIT {
                 .searchUsers(new SearchUsersQueryParams().p(0).c(1).f(asList("userName=john.doe")));
         assertThat(users).anyMatch(user -> user.getFirstname().equals("John"));
 
-        Role role = bonitaClient.users().createRole(new RoleCreateRequest()
+        bonitaClient.users().createRole(new RoleCreateRequest()
                 .name("staff")
                 .displayName("staff")
                 .description("staff of the given group"));
-        bonitaClient.users().searchRoles(new RoleApi.SearchRolesQueryParams().p(0).c(1).f(asList("")));
-        Group group = bonitaClient.users().createGroup(new GroupCreateRequest()
-                .name("RD")
+        List<Role> result = bonitaClient.users().searchRoles(new RoleApi.SearchRolesQueryParams().p(0).c(10));
+        assertThat(result).extracting(Role::getName).contains("staff");
+
+        Group engineering = bonitaClient.users().createGroup(new GroupCreateRequest()
+                .name("engineering")
+                .displayName("Engineering")
+                .description("Engineering dept"));
+        assertThat(engineering.getName()).isEqualTo("engineering");
+
+        Group rdGroup = bonitaClient.users().createGroup(new GroupCreateRequest()
+                .name("rd")
                 .displayName("RnD")
                 .description("Research and dev.")
-                .path("/rd"));
+                .parentGroupId(engineering.getId()));
+        assertThat(rdGroup.getName()).isEqualTo("rd");
+        assertThat(rdGroup.getParentGroupId()).isEqualTo(engineering.getParentGroupId());
+
+        GroupApi groupApi = bonitaClient.get(GroupApi.class);
+        groupApi.updateGroupById(rdGroup.getId(), new GroupUpdateRequest()
+                .name("rd")
+                .parentGroupId(""));
+
+        var r = groupApi.searchGroups(new SearchGroupsQueryParams().p(0).c(1).f(List.of("name=rd")));
+        assertThat(r).hasSize(1).allSatisfy(g -> assertThat(g.getParentGroupId()).isNull());
     }
 
     private void importOrganization() throws Exception {
@@ -566,7 +603,8 @@ class BonitaClientIT {
         // When
         Integer count = bonitaClient.bdm().querySingle("com.company.model.Comment", "countForFind", Integer.class);
         List<Post> posts = bonitaClient.bdm().query("com.company.model.Post", "find", Post.class);
-        List<PostWithAuthorPojo> postsWithAuthorPojo = bonitaClient.bdm().query("com.company.model.Post", "find", PostWithAuthorPojo.class);
+        List<PostWithAuthorPojo> postsWithAuthorPojo = bonitaClient.bdm().query("com.company.model.Post", "find",
+                PostWithAuthorPojo.class);
         List<Comment> comments = bonitaClient.bdm().query("com.company.model.Comment", "find", Comment.class);
         List<BusinessData> commentBOs = bonitaClient.bdm().query("com.company.model.Comment", "find",
                 BusinessData.class);
@@ -577,7 +615,7 @@ class BonitaClientIT {
         Post post = posts.get(0);
         Author author = post.getAuthor();
         assertThat(author.getFirstName()).isEqualTo("Mi");
-        
+
         PostWithAuthorPojo postWithAuthorPojo = postsWithAuthorPojo.get(0);
         AuthorPojo authorPojo = postWithAuthorPojo.getAuthor();
         assertThat(authorPojo.getFirstName()).isEqualTo("Mi");
@@ -596,7 +634,7 @@ class BonitaClientIT {
                 ProcessInstanceApi processInstanceApi = bonitaClient.get(ProcessInstanceApi.class);
                 ProcessInstance instance = processInstanceApi.getProcessInstanceById(processInstance.getCaseId(),
                         (String) null);
-                return "completed".equalsIgnoreCase(instance.getState());
+                return "completed".equalsIgnoreCase(instance.getState().getValue());
             } catch (NotFoundException e) {
                 // Search in "archived" process instances
                 ArchivedProcessInstanceApi archivedProcessInstanceApi = bonitaClient
@@ -607,7 +645,7 @@ class BonitaClientIT {
                                         .c(1).p(0)
                                         .f(asList("sourceObjectId=" + processInstance.getCaseId())));
                 if (!archivedProcessInstances.isEmpty()) {
-                    return "completed".equalsIgnoreCase(archivedProcessInstances.get(0).getState());
+                    return "completed".equalsIgnoreCase(archivedProcessInstances.get(0).getState().getValue());
                 }
                 return false;
             }
@@ -617,18 +655,18 @@ class BonitaClientIT {
     public interface Post {
 
         Author getAuthor();
-        
+
         String getTitle();
 
         String getContent();
 
         List<Comment> getComments();
     }
-    
+
     public interface PostWithAuthorPojo {
-        
+
         AuthorPojo getAuthor();
-        
+
     }
 
     public interface Comment {

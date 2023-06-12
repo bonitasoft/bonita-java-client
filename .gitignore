@@ -27,3 +27,5 @@ gradle/
 # Idea
 .idea
 *.iml
+
+pom.xml.versionBackup
