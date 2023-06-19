@@ -124,7 +124,6 @@ class BonitaFeignClientBuilderImplTest {
     void trust_all_certs_should_be_configured() {
         // Given
         clientBuilder.disableCertificateCheck(true);
-        clientBuilder = spy(clientBuilder);
 
         // When
         clientBuilder.addTrustAllCertificateManagerIfNeeded(new OkHttpClient.Builder());
