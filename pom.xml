@@ -51,11 +51,11 @@
     <swagger-annotations.version>1.6.11</swagger-annotations.version>
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
     <jsr305.version>3.0.2</jsr305.version>
-    <feign.version>12.3</feign.version>
+    <feign.version>12.4</feign.version>
     <feign-form.version>3.8.0</feign-form.version>
     <okhttp.version>4.11.0</okhttp.version>
     <scribejava.version>8.3.3</scribejava.version>
-    <jackson.version>2.14.2</jackson.version>
+    <jackson.version>2.15.0</jackson.version>
     <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
     <lombok.version>1.18.28</lombok.version>
     <slf4j-api.version>1.7.36</slf4j-api.version>
@@ -195,6 +195,10 @@
       <groupId>org.openapitools</groupId>
       <artifactId>jackson-databind-nullable</artifactId>
       <version>${jackson-databind-nullable.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-blackbird</artifactId>
     </dependency>
     <!-- Misc -->
     <dependency>
@@ -551,7 +555,7 @@
   </build>
   <profiles>
     <!-- Deployment profile (required so these plugins are only used when
-        deploying) -->
+			deploying) -->
     <profile>
       <id>deploy</id>
       <properties>
