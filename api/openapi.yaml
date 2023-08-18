@@ -101,7 +101,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.14
+  version: 0.0.15
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -17561,11 +17561,11 @@ components:
         type: object
     HumanTaskUpdateRequest:
       example:
-        assignedId: new_user_id
+        assigned_id: "1234"
         state: new_state
       properties:
-        assignedId:
-          description: assignedId of the HumanTask
+        assigned_id:
+          description: The id of the user to assign this Human task to
           type: string
         state:
           description: state of the HumanTask

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bonitasoft.web</groupId>
   <artifactId>bonita-java-client</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
   <name>bonita-java-client</name>
   <description>Java client for Bonita REST API</description>
@@ -47,7 +47,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Bonita -->
     <bonita.version>7.13.0</bonita.version>
-    <bonita-openapi.version>0.0.14</bonita-openapi.version>
+    <bonita-openapi.version>0.0.15</bonita-openapi.version>
     <swagger-annotations.version>1.6.11</swagger-annotations.version>
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
     <jsr305.version>3.0.2</jsr305.version>
