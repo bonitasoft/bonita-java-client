@@ -35,7 +35,7 @@ public class HumanTaskUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public static final String JSON_PROPERTY_ASSIGNED_ID = "assignedId";
+    public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
     private String assignedId;
 
     public static final String JSON_PROPERTY_STATE = "state";
@@ -51,7 +51,7 @@ public class HumanTaskUpdateRequest implements Serializable {
     }
 
     /**
-     * assignedId of the HumanTask
+     * The id of the user to assign this Human task to
      * 
      * @return assignedId
      **/
