@@ -59,10 +59,12 @@ public interface BdmApi extends ApiClient.Api {
 
     /**
      * Install a BDM
-     * Install a BDM
+     * Install a BDM Warning: as of 9.0.0, importing a BDM using this API is deprecated.
      * 
      * @param bdMInstallRequest (optional)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/tenant/bdm")
     @Headers({
             "Content-Type: application/json",
@@ -73,10 +75,12 @@ public interface BdmApi extends ApiClient.Api {
     /**
      * Install a BDM
      * Similar to <code>installBDM</code> but it also returns the http response headers .
-     * Install a BDM
+     * Install a BDM Warning: as of 9.0.0, importing a BDM using this API is deprecated.
      * 
      * @param bdMInstallRequest (optional)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/tenant/bdm")
     @Headers({
             "Content-Type: application/json",

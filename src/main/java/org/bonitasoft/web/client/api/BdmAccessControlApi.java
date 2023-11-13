@@ -75,10 +75,13 @@ public interface BdmAccessControlApi extends ApiClient.Api {
 
     /**
      * Import a BDM Access Control
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Import a BDM Access Control
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Import a BDM Access Control Warning: as of 9.0.0, importing a BDM Access Control using this
+     * service is deprecated.
      * 
      * @param bdmAccessControlUpload The temporary name of the previously uploaded file to install (optional)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /services/bdmAccessControl/install")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
@@ -89,10 +92,13 @@ public interface BdmAccessControlApi extends ApiClient.Api {
     /**
      * Import a BDM Access Control
      * Similar to <code>importBDMAccessControl</code> but it also returns the http response headers .
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Import a BDM Access Control
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Import a BDM Access Control Warning: as of 9.0.0, importing a BDM Access Control using this
+     * service is deprecated.
      * 
      * @param bdmAccessControlUpload The temporary name of the previously uploaded file to install (optional)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /services/bdmAccessControl/install")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
@@ -103,11 +109,14 @@ public interface BdmAccessControlApi extends ApiClient.Api {
 
     /**
      * Upload a BDM Access Control
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control Warning: as of 9.0.0, uploading a BDM Access Control using the
+     * portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/bdmAccessControlUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -118,11 +127,14 @@ public interface BdmAccessControlApi extends ApiClient.Api {
     /**
      * Upload a BDM Access Control
      * Similar to <code>uploadBDMAccessControl</code> but it also returns the http response headers .
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control Warning: as of 9.0.0, uploading a BDM Access Control using the
+     * portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/bdmAccessControlUpload")
     @Headers({
             "Content-Type: multipart/form-data",

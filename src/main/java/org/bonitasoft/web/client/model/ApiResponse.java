@@ -16,20 +16,20 @@
  */
 package org.bonitasoft.web.client.model;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 
 public class ApiResponse<T> {
 
     final private int statusCode;
-    final private Map<String, List<String>> headers;
+    final private Map<String, Collection<String>> headers;
     final private T data;
 
     /**
      * @param statusCode The status code of HTTP response
      * @param headers The headers of HTTP response
      */
-    public ApiResponse(int statusCode, Map<String, List<String>> headers) {
+    public ApiResponse(int statusCode, Map<String, Collection<String>> headers) {
         this(statusCode, headers, null);
     }
 
@@ -38,7 +38,7 @@ public class ApiResponse<T> {
      * @param headers The headers of HTTP response
      * @param data The object deserialized from response bod
      */
-    public ApiResponse(int statusCode, Map<String, List<String>> headers, T data) {
+    public ApiResponse(int statusCode, Map<String, Collection<String>> headers, T data) {
         this.statusCode = statusCode;
         this.headers = headers;
         this.data = data;
@@ -48,7 +48,7 @@ public class ApiResponse<T> {
         return statusCode;
     }
 
-    public Map<String, List<String>> getHeaders() {
+    public Map<String, Collection<String>> getHeaders() {
         return headers;
     }
 

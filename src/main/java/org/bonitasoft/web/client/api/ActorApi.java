@@ -170,11 +170,13 @@ public interface ActorApi extends ApiClient.Api {
 
     /**
      * Update the Actor by ID
-     * Update the Actor for the given ID
+     * Update the Actor for the given ID Warning: as of 9.0.0, updating an Actor using this API is deprecated.
      * 
      * @param id ID of the Actor to return (required)
      * @param actorUpdateRequest Fields that can be upated are &#x60;displayName&#x60; and &#x60;description&#x60; (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/actor/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -185,11 +187,13 @@ public interface ActorApi extends ApiClient.Api {
     /**
      * Update the Actor by ID
      * Similar to <code>updateActorById</code> but it also returns the http response headers .
-     * Update the Actor for the given ID
+     * Update the Actor for the given ID Warning: as of 9.0.0, updating an Actor using this API is deprecated.
      * 
      * @param id ID of the Actor to return (required)
      * @param actorUpdateRequest Fields that can be upated are &#x60;displayName&#x60; and &#x60;description&#x60; (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/actor/{id}")
     @Headers({
             "Content-Type: application/json",

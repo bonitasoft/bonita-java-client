@@ -18,12 +18,12 @@ package org.bonitasoft.web.client.api;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApiResponse;
 import org.bonitasoft.web.client.model.Task;
+import org.bonitasoft.web.client.model.UpdateTaskByIdRequest;
 
 import feign.*;
 
@@ -181,15 +181,15 @@ public interface TaskApi extends ApiClient.Api {
      * Update the Task for the given ID
      * 
      * @param id ID of the Task to return (required)
-     * @param requestBody Task fields to update (forbidden fields are : &#x60;caseId&#x60;, &#x60;processId&#x60;, &#x60;name&#x60;, &#x60;executedBy&#x60;,
-     *        &#x60;type&#x60;, &#x60;id&#x60;, &#x60;reached_state_date&#x60;, &#x60;last_update_date&#x60;) (required)
+     * @param updateTaskByIdRequest Task fields to update (forbidden fields are : &#x60;caseId&#x60;, &#x60;processId&#x60;, &#x60;name&#x60;,
+     *        &#x60;executedBy&#x60;, &#x60;type&#x60;, &#x60;id&#x60;, &#x60;reached_state_date&#x60;, &#x60;last_update_date&#x60;) (required)
      */
     @RequestLine("PUT /API/bpm/task/{id}")
     @Headers({
             "Content-Type: application/json",
             "Accept: application/json",
     })
-    void updateTaskById(@Param("id") String id, Map<String, Object> requestBody);
+    void updateTaskById(@Param("id") String id, UpdateTaskByIdRequest updateTaskByIdRequest);
 
     /**
      * Update the Task by ID
@@ -197,14 +197,14 @@ public interface TaskApi extends ApiClient.Api {
      * Update the Task for the given ID
      * 
      * @param id ID of the Task to return (required)
-     * @param requestBody Task fields to update (forbidden fields are : &#x60;caseId&#x60;, &#x60;processId&#x60;, &#x60;name&#x60;, &#x60;executedBy&#x60;,
-     *        &#x60;type&#x60;, &#x60;id&#x60;, &#x60;reached_state_date&#x60;, &#x60;last_update_date&#x60;) (required)
+     * @param updateTaskByIdRequest Task fields to update (forbidden fields are : &#x60;caseId&#x60;, &#x60;processId&#x60;, &#x60;name&#x60;,
+     *        &#x60;executedBy&#x60;, &#x60;type&#x60;, &#x60;id&#x60;, &#x60;reached_state_date&#x60;, &#x60;last_update_date&#x60;) (required)
      */
     @RequestLine("PUT /API/bpm/task/{id}")
     @Headers({
             "Content-Type: application/json",
             "Accept: application/json",
     })
-    ApiResponse<Void> updateTaskByIdWithHttpInfo(@Param("id") String id, Map<String, Object> requestBody);
+    ApiResponse<Void> updateTaskByIdWithHttpInfo(@Param("id") String id, UpdateTaskByIdRequest updateTaskByIdRequest);
 
 }

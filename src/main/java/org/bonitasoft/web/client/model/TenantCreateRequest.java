@@ -182,7 +182,7 @@ public class TenantCreateRequest implements Serializable {
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    username: ").append(toIndentedString(username)).append("\n");
-        sb.append("    password: ").append(toIndentedString(password)).append("\n");
+        sb.append("    password: ").append("*").append("\n");
         sb.append("}");
         return sb.toString();
     }
