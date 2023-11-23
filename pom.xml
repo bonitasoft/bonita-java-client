@@ -42,11 +42,11 @@
   </distributionManagement>
   <properties>
     <!-- Maven -->
+    <!-- Compiled with Java 17, but use bytecode version 11 to ensure compatibility with older maintenance versions. -->
     <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Bonita -->
-    <bonita.version>7.13.0</bonita.version>
     <bonita-openapi.version>0.0.15</bonita-openapi.version>
     <swagger-annotations.version>1.6.11</swagger-annotations.version>
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
@@ -57,7 +57,7 @@
     <scribejava.version>8.3.3</scribejava.version>
     <jackson.version>2.15.2</jackson.version>
     <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
-    <lombok.version>1.18.28</lombok.version>
+    <lombok.version>1.18.30</lombok.version>
     <slf4j-api.version>1.7.36</slf4j-api.version>
     <!-- Tests -->
     <junit-jupiter-engine.version>5.10.0</junit-jupiter-engine.version>
