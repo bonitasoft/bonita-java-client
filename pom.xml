@@ -55,7 +55,7 @@
     <feign-form.version>3.8.0</feign-form.version>
     <okhttp.version>4.11.0</okhttp.version>
     <scribejava.version>8.3.3</scribejava.version>
-    <jackson.version>2.15.2</jackson.version>
+    <jackson.version>2.16.0</jackson.version>
     <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
     <lombok.version>1.18.30</lombok.version>
     <slf4j-api.version>1.7.36</slf4j-api.version>
