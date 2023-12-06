@@ -34,11 +34,13 @@ public interface ProfileApi extends ApiClient.Api {
 
     /**
      * Create the Profile
-     * Create the Profile
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Create the Profile Warning: as of 9.0.0, creating profiles using this API is deprecated.
      * 
      * @param body Partial Profile description (required)
      * @return Profile
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/portal/profile")
     @Headers({
             "Content-Type: application/json",
@@ -49,11 +51,13 @@ public interface ProfileApi extends ApiClient.Api {
     /**
      * Create the Profile
      * Similar to <code>createProfile</code> but it also returns the http response headers .
-     * Create the Profile
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Create the Profile Warning: as of 9.0.0, creating profiles using this API is deprecated.
      * 
      * @param body Partial Profile description (required)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/portal/profile")
     @Headers({
             "Content-Type: application/json",
@@ -115,11 +119,13 @@ public interface ProfileApi extends ApiClient.Api {
 
     /**
      * Import profiles
-     * Import profiles
+     * Import profiles Warning: as of 9.0.0, importing profiles using this service is deprecated.
      * 
      * @param profilesDataUpload Uploaded file (optional)
      * @param importPolicy Import policy (optional)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /services/profile/import")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
@@ -131,11 +137,13 @@ public interface ProfileApi extends ApiClient.Api {
     /**
      * Import profiles
      * Similar to <code>importProfiles</code> but it also returns the http response headers .
-     * Import profiles
+     * Import profiles Warning: as of 9.0.0, importing profiles using this service is deprecated.
      * 
      * @param profilesDataUpload Uploaded file (optional)
      * @param importPolicy Import policy (optional)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /services/profile/import")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
@@ -271,11 +279,14 @@ public interface ProfileApi extends ApiClient.Api {
 
     /**
      * Update the Profile by ID
-     * Update the Profile for the given ID
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the Profile for the given ID Warning: as of 9.0.0, updating a profile using this API
+     * is deprecated.
      * 
      * @param id ID of the Profile to return (required)
      * @param profileUpdateRequest Partial Profile description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/portal/profile/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -286,11 +297,14 @@ public interface ProfileApi extends ApiClient.Api {
     /**
      * Update the Profile by ID
      * Similar to <code>updateProfileById</code> but it also returns the http response headers .
-     * Update the Profile for the given ID
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the Profile for the given ID Warning: as of 9.0.0, updating a profile using this API
+     * is deprecated.
      * 
      * @param id ID of the Profile to return (required)
      * @param profileUpdateRequest Partial Profile description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/portal/profile/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -300,11 +314,13 @@ public interface ProfileApi extends ApiClient.Api {
 
     /**
      * Upload profiles
-     * Upload profiles
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload profiles Warning: as of 9.0.0, uploading profiles using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/profilesUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -315,11 +331,13 @@ public interface ProfileApi extends ApiClient.Api {
     /**
      * Upload profiles
      * Similar to <code>uploadprofiles</code> but it also returns the http response headers .
-     * Upload profiles
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload profiles Warning: as of 9.0.0, uploading profiles using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/profilesUpload")
     @Headers({
             "Content-Type: multipart/form-data",

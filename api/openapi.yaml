@@ -101,7 +101,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.15
+  version: 0.0.16
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -642,8 +642,11 @@ paths:
       - Application
       x-accepts: application/json
     post:
+      deprecated: true
       description: |
         Create a living applications
+
+        Warning: as of 9.0.0, creating a living application using this API is deprecated.
       operationId: createApplication
       requestBody:
         content:
@@ -693,7 +696,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unexpected error.
-      summary: Create a living applications
+      summary: Create a living application
       tags:
       - Application
       x-codegen-request-body-name: body
@@ -833,8 +836,11 @@ paths:
       - Application
       x-accepts: application/json
     put:
+      deprecated: true
       description: |
         Update a single application for the given ID
+
+        Warning: as of 9.0.0, updating a living application using this API is deprecated.
       operationId: updateApplicationById
       parameters:
       - description: ID of application to return
@@ -910,8 +916,11 @@ paths:
       x-accepts: application/json
   /services/application/import:
     post:
+      deprecated: true
       description: |
         Import a single application
+
+        Warning: as of 9.0.0, importing a living application using this service is deprecated.
       operationId: importApplication
       requestBody:
         content:
@@ -970,8 +979,11 @@ paths:
       x-accepts: application/json
   /portal/applicationsUpload:
     post:
+      deprecated: true
       description: |
         Upload application
+
+        Warning: as of 9.0.0, uploading a living application using the portal is deprecated.
       operationId: uploadApplication
       requestBody:
         content:
@@ -1153,8 +1165,11 @@ paths:
       - ApplicationMenu
       x-accepts: application/json
     post:
+      deprecated: true
       description: |
         Create an application menu item
+
+        Warning: as of 9.0.0, creating an application menu item using this API is deprecated.
       operationId: createApplicationMenu
       requestBody:
         content:
@@ -1348,7 +1363,11 @@ paths:
       - ApplicationMenu
       x-accepts: application/json
     put:
-      description: Update a application menu for the given ID
+      deprecated: true
+      description: |
+        Update an application menu for the given ID
+
+        Warning: as of 9.0.0, updating an application menu item using this API is deprecated.
       operationId: updateApplicationMenuById
       parameters:
       - description: ID of the application menu to return
@@ -1413,7 +1432,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unexpected error.
-      summary: Update a application menu by ID
+      summary: Update an application menu by ID
       tags:
       - ApplicationMenu
       x-content-type: application/json
@@ -1543,8 +1562,11 @@ paths:
       - ApplicationPage
       x-accepts: application/json
     post:
+      deprecated: true
       description: |
         Create an application page
+
+        Warning: as of 9.0.0, creating an application page using this API is deprecated.
       operationId: createApplicationPage
       requestBody:
         content:
@@ -2223,10 +2245,13 @@ paths:
       x-accepts: application/json
   /portal/bdmAccessControlUpload:
     post:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Upload BDM Access Control
+
+        Warning: as of 9.0.0, uploading a BDM Access Control using the portal is deprecated.
       operationId: uploadBDMAccessControl
       requestBody:
         content:
@@ -2285,10 +2310,13 @@ paths:
       x-accepts: application/json
   /services/bdmAccessControl/install:
     post:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Import a BDM Access Control
+
+        Warning: as of 9.0.0, importing a BDM Access Control using this service is deprecated.
       operationId: importBDMAccessControl
       requestBody:
         content:
@@ -6295,8 +6323,11 @@ paths:
       - Actor
       x-accepts: application/json
     put:
+      deprecated: true
       description: |
         Update the Actor for the given ID
+
+        Warning: as of 9.0.0, updating an Actor using this API is deprecated.
       operationId: updateActorById
       parameters:
       - description: ID of the Actor to return
@@ -7999,9 +8030,12 @@ paths:
       - Process
       x-accepts: application/json
     post:
+      deprecated: true
       description: |
         Create the Process.
         A process resource is created using the content of a .bar file that has previously been uploaded, using the [processUpload servlet](#operation/uploadProcess), to get the process archive path.
+
+        Warning: as of 9.0.0, creating a process using this API is deprecated.
       operationId: createProcess
       requestBody:
         content:
@@ -8198,8 +8232,11 @@ paths:
       - Process
       x-accepts: application/json
     put:
+      deprecated: true
       description: |
         Update the Process for the given ID
+
+        Warning: as of 9.0.0, updating a process using this API is deprecated.
       operationId: updateProcessById
       parameters:
       - description: ID of the Process to return
@@ -8453,7 +8490,8 @@ paths:
                 - "Expected input [ticket_description] is missing"
                 - "Expected input [ticket_subject] is missing"
               schema:
-                $ref: '#/components/schemas/instanciateProcess_400_response'
+                allOf:
+                - $ref: '#/components/schemas/Error'
           description: Bad request.
         "401":
           content:
@@ -8561,8 +8599,13 @@ paths:
       x-accepts: application/json
   /API/bpm/processConnector/{id}/{connectorImplId}/{connectorImplVersion}:
     put:
+      deprecated: true
       description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
         Update the ProcessConnector for the given ID
+
+        Warning: as of 9.0.0, updating a Process Connector using this API is deprecated.
       operationId: updateProcessConnectorByProcessId
       parameters:
       - description: ID of the process to update
@@ -8914,10 +8957,13 @@ paths:
       - ProcessParameter
       x-accepts: application/json
     put:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Update the ProcessParameter for the given ID
+
+        Warning: as of 9.0.0, importing a Process parameter using this API is deprecated.
       operationId: updateProcessParameterById
       parameters:
       - description: ID of the process to get parameter from
@@ -11345,10 +11391,13 @@ paths:
       x-accepts: application/json
   /API/form/mapping/{id}:
     put:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Update the FormMapping for the given ID
+
+        Warning: as of 9.0.0, updating a Form Mapping using this API is deprecated.
       operationId: updateFormMappingById
       parameters:
       - description: ID of the FormMapping to return
@@ -14042,8 +14091,11 @@ paths:
       x-accepts: application/json
   /portal/processUpload:
     post:
+      deprecated: true
       description: |
         Upload a bar file
+
+        Warning: as of 9.0.0, uploading a bar file using the portal is deprecated.
       operationId: uploadProcess
       requestBody:
         content:
@@ -14102,8 +14154,11 @@ paths:
       x-accepts: application/json
   /portal/pageUpload:
     post:
+      deprecated: true
       description: |
         Upload Page
+
+        Warning: as of 9.0.0, uploading a page using the portal is deprecated.
       operationId: uploadPage
       requestBody:
         content:
@@ -14345,8 +14400,11 @@ paths:
       - Page
       x-accepts: application/json
     post:
+      deprecated: true
       description: |
-        Upload the page content using the `portal/pageUpload` . This returns a temporary file name that can be used as input for this operation.
+        Upload the page content using the `portal/pageUpload`. This returns a temporary file name that can be used as input for this operation.
+
+        Warning: as of 9.0.0, creating a page using this API is deprecated.
       operationId: createPage
       requestBody:
         content:
@@ -14536,8 +14594,11 @@ paths:
       - Page
       x-accepts: application/json
     put:
+      deprecated: true
       description: |
         Use the PUT method to update an existing custom page. To update a custom page, upload the new page content using the pageUpload servlet, which returns a temporary file name, and then call this API with the temporary file name.
+
+        Warning: as of 9.0.0, updating a page using this API is deprecated.
       operationId: updatePageById
       parameters:
       - description: ID of the Page to return
@@ -14732,8 +14793,13 @@ paths:
       - Profile
       x-accepts: application/json
     post:
+      deprecated: true
       description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
         Create the Profile
+
+        Warning: as of 9.0.0, creating profiles using this API is deprecated.
       operationId: createProfile
       requestBody:
         content:
@@ -14923,8 +14989,13 @@ paths:
       - Profile
       x-accepts: application/json
     put:
+      deprecated: true
       description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
         Update the Profile for the given ID
+
+        Warning: as of 9.0.0, updating a profile using this API is deprecated.
       operationId: updateProfileById
       parameters:
       - description: ID of the Profile to return
@@ -16037,8 +16108,11 @@ paths:
       x-accepts: application/json
   /API/system/tenant/{id}:
     get:
+      deprecated: true
       description: |
         Pause and resume tenant services in order to do maintenance on a tenant.
+
+        Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to retrieve the maintenance state.
       operationId: getSystemTenant
       parameters:
       - description: ID of the tenant
@@ -16105,8 +16179,11 @@ paths:
       - SystemTenant
       x-accepts: application/json
     put:
+      deprecated: true
       description: |
         Pause or resume the current tenant.
+
+        Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to enable the maintenance mode (same behavior as pausing the tenant).
       operationId: updateSystemTenant
       parameters:
       - description: ID of the tenant
@@ -16176,6 +16253,118 @@ paths:
       - SystemTenant
       x-content-type: application/json
       x-accepts: application/json
+  /API/system/maintenance:
+    get:
+      description: |
+        Returns maintenance details of the platform
+      operationId: getMaintenanceDetails
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaintenanceDetails'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Get the maintenance details
+      tags:
+      - Maintenance
+      x-codeSamples:
+      - lang: Shell
+        label: Curl
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/maintenance'
+      x-accepts: application/json
+    put:
+      description: |
+        Update maintenance details
+      operationId: updateMaintenanceDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaintenanceDetails'
+        description: Maintenance details; One or all attributes can be updated
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaintenanceDetails'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update the maintenance details
+      tags:
+      - Maintenance
+      x-content-type: application/json
+      x-accepts: application/json
   /API/system/license/unusedid:
     get:
       description: |
@@ -16228,10 +16417,13 @@ paths:
       x-accepts: application/json
   /APIv2/service/install:
     post:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Upload an application configuration file in the `bconf` format.
+
+        Warning: as of 9.0.0, uploading an application configuration file using this API is deprecated.
       operationId: uploadApplicationConfiguration
       requestBody:
         content:
@@ -16343,8 +16535,11 @@ paths:
       - BDM
       x-accepts: application/json
     post:
+      deprecated: true
       description: |
         Install a BDM
+
+        Warning: as of 9.0.0, importing a BDM using this API is deprecated.
       operationId: installBDM
       requestBody:
         content:
@@ -16515,8 +16710,13 @@ paths:
       x-accepts: application/json
   /portal/profilesUpload:
     post:
+      deprecated: true
       description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
         Upload profiles
+
+        Warning: as of 9.0.0, uploading profiles using the portal is deprecated.
       operationId: uploadprofiles
       requestBody:
         content:
@@ -16575,8 +16775,11 @@ paths:
       x-accepts: application/json
   /services/profile/import:
     post:
+      deprecated: true
       description: |
         Import profiles
+
+        Warning: as of 9.0.0, importing profiles using this service is deprecated.
       operationId: importProfiles
       requestBody:
         content:
@@ -16883,6 +17086,8 @@ components:
         token: myapp
         displayName: My app
         description: My application description
+        themeId: "2"
+        layoutId: "17"
       properties:
         description:
           description: description of the application
@@ -16904,6 +17109,12 @@ components:
             ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
             theme id for the application
+          type: string
+        layoutId:
+          description: |
+            ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+            layout id for the application
           type: string
       type: object
     FileUploadRequest:
@@ -17673,6 +17884,9 @@ components:
         type: object
     UpdateTaskByIdRequest:
       additionalProperties: true
+      example:
+        displayName: displayName
+        state: state
       properties:
         state:
           description: state of the Task (completed)
@@ -17825,7 +18039,19 @@ components:
     AbstractArchivedTask:
       allOf:
       - $ref: '#/components/schemas/AbstractTask'
-      - $ref: '#/components/schemas/AbstractArchivedTask_allOf'
+      - description: An Archived task is a task that has been archived
+        properties:
+          sourceObjectId:
+            description: the original id of the task before it was archived
+            maxLength: 250
+            pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+            type: string
+          archivedDate:
+            description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
+              was assigned for example '2014-10-17 16:05:42.626'
+            pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
+            type: string
+        type: object
     ArchivedHumanTask:
       allOf:
       - $ref: '#/components/schemas/AbstractArchivedTask'
@@ -18241,7 +18467,34 @@ components:
     ArchivedProcessInstanceDocument:
       allOf:
       - $ref: '#/components/schemas/ProcessInstanceDocument'
-      - $ref: '#/components/schemas/ArchivedProcessInstanceDocument_allOf'
+      - description: A document in an active case
+        example:
+          id: "1"
+          creationDate: 2014-10-09 16:39:52.472
+          author: "1"
+          index: "0"
+          contentMimetype: text/plain
+          caseId: "1"
+          contentStorageId: "1"
+          isInternal: "true"
+          description: ""
+          name: myDoc
+          fileName: test1.txt
+          submittedBy: "1"
+          url: documentDownload?fileName=test1.txt&contentStorageId=1
+          version: "1"
+          sourceObjectId: "1"
+          archivedDate: 2014-10-09 17:39:52.473
+        properties:
+          sourceObjectId:
+            description: original document id
+            type: string
+          archivedDate:
+            description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
+              was assigned for example '2014-10-17 16:05:42.626'
+            pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
+            type: string
+        type: object
     Actor:
       description: ""
       example:
@@ -18465,7 +18718,37 @@ components:
     ArchivedProcessInstance:
       allOf:
       - $ref: '#/components/schemas/ProcessInstance'
-      - $ref: '#/components/schemas/ArchivedProcessInstance_allOf'
+      - description: A completed instance of a process.
+        example:
+          id: 9
+          end_date: 2014-10-22 10:57:00.299
+          startedBySubstitute: "4"
+          sourceObjectId: "3"
+          start: 2014-10-22 10:56:53.415
+          state: completed
+          rootCaseId: "3"
+          started_by: "4"
+          archivedDate: 2014-10-22 10:57:00.299
+          processDefinitionId: "6054482369194211518"
+          last_update_date": 2014-10-22 10:57:00.299
+          searchIndex1Label: case9SearchIndex1Label
+          searchIndex2Label: case9SearchIndex2Label
+          searchIndex3Label: case9SearchIndex3Label
+          searchIndex4Label: case9SearchIndex4Label
+          searchIndex5Label: case9SearchIndex5Label
+          searchIndex1Value: case9SearchIndex1Value
+          searchIndex2Value: case9SearchIndex2Value
+          searchIndex3Value: case9SearchIndex3Value
+          searchIndex4Value: case9SearchIndex4Value
+          searchIndex5Value: case9SearchIndex5Value
+        properties:
+          sourceObjectId:
+            description: the id of the process instance before it was archived
+            type: string
+          archivedDate:
+            description: the date set when the process instance was archived
+            type: string
+        type: object
     ProcessInstanceInfo:
       description: "Retrieves information about a process instances. It returns counters\
         \ for each flow node in the process instances, showing the number of flow\
@@ -18537,7 +18820,19 @@ components:
     ArchivedProcessInstanceComment:
       allOf:
       - $ref: '#/components/schemas/ProcessInstanceComment'
-      - $ref: '#/components/schemas/ArchivedProcessInstanceComment_allOf'
+      - description: Information about the comment of an archived process instances.
+        example:
+          id: 20005
+          content: Need to review the last inputs of this case
+          processInstanceId: 1
+          postDate: 2016-06-16 14:51:33.053
+          archivedDate: 2016-06-17 10:18:24.723
+          userId: 30
+        properties:
+          archivedDate:
+            description: the date set when the process instance comment was archived
+            type: string
+        type: object
     ActivationState:
       description: the state of the process definition (ENABLED or DISABLED)
       enum:
@@ -19225,7 +19520,15 @@ components:
     ArchivedConnectorInstance:
       allOf:
       - $ref: '#/components/schemas/ConnectorInstance'
-      - $ref: '#/components/schemas/ArchivedConnectorInstance_allOf'
+      - description: Information about archived connector instances attached to an
+          archived process or an archived flow node.
+        properties:
+          archivedDate:
+            description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
+              was assigned for example '2014-10-17 16:05:42.626'
+            pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
+            type: string
+        type: object
     FlowNode:
       description: "A flow node (gateway, event, or task) in an open instance of a\
         \ process."
@@ -19341,7 +19644,18 @@ components:
     ArchivedFlowNode:
       allOf:
       - $ref: '#/components/schemas/FlowNode'
-      - $ref: '#/components/schemas/ArchivedFlowNode_allOf'
+      - description: A flow node (gateway or event or task) in an archived instance
+          of a process.
+        properties:
+          sourceObjectId:
+            description: the original id of the flowNode before it was archived
+            type: string
+          archivedDate:
+            description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
+              was assigned for example '2014-10-17 16:05:42.626'
+            pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
+            type: string
+        type: object
     TimerEventTrigger:
       description: BPM timer event triggers
       example:
@@ -20627,6 +20941,25 @@ components:
           description: wether the system tenant should be paused or not
           type: string
       type: object
+    MaintenanceDetails:
+      example:
+        maintenanceState: DISABLED
+        maintenanceMessage: maintenance msg
+        maintenanceMessageActive: true
+      properties:
+        maintenanceState:
+          description: maintenance state
+          enum:
+          - ENABLED
+          - DISABLED
+          type: string
+        maintenanceMessage:
+          description: maintenance message
+          type: string
+        maintenanceMessageActive:
+          description: is maintenance message active
+          type: boolean
+      type: object
     License:
       description: Bonita license
       example:
@@ -20700,9 +21033,6 @@ components:
         bdmAccessControlUpload:
           description: The temporary name of the previously uploaded file to install
           type: string
-    instanciateProcess_400_response:
-      allOf:
-      - $ref: '#/components/schemas/Error'
     platformLogin_request:
       properties:
         username:
@@ -20742,61 +21072,6 @@ components:
         importPolicy:
           description: Import policy
           type: string
-    AbstractArchivedTask_allOf:
-      description: An Archived task is a task that has been archived
-      properties:
-        sourceObjectId:
-          description: the original id of the task before it was archived
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        archivedDate:
-          description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
-            was assigned for example '2014-10-17 16:05:42.626'
-          pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
-          type: string
-      type: object
-      example: null
-    ArchivedProcessInstanceDocument_allOf:
-      description: A document in an active case
-      example: "{\"id\":\"1\",\"creationDate\":\"2014-10-09 16:39:52.472\",\"author\"\
-        :\"1\",\"index\":\"0\",\"contentMimetype\":\"text/plain\",\"caseId\":\"1\"\
-        ,\"contentStorageId\":\"1\",\"isInternal\":\"true\",\"description\":\"\",\"\
-        name\":\"myDoc\",\"fileName\":\"test1.txt\",\"submittedBy\":\"1\",\"url\"\
-        :\"documentDownload?fileName=test1.txt&contentStorageId=1\",\"version\":\"\
-        1\",\"sourceObjectId\":\"1\",\"archivedDate\":\"2014-10-09 17:39:52.473\"}"
-      properties:
-        sourceObjectId:
-          description: original document id
-          type: string
-        archivedDate:
-          description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
-            was assigned for example '2014-10-17 16:05:42.626'
-          pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
-          type: string
-      type: object
-    ArchivedProcessInstance_allOf:
-      description: A completed instance of a process.
-      example: "{\"id\":9,\"end_date\":\"2014-10-22 10:57:00.299\",\"startedBySubstitute\"\
-        :\"4\",\"sourceObjectId\":\"3\",\"start\":\"2014-10-22 10:56:53.415\",\"state\"\
-        :\"completed\",\"rootCaseId\":\"3\",\"started_by\":\"4\",\"archivedDate\"\
-        :\"2014-10-22 10:57:00.299\",\"processDefinitionId\":\"6054482369194211518\"\
-        ,\"last_update_date\\\"\":\"2014-10-22 10:57:00.299\",\"searchIndex1Label\"\
-        :\"case9SearchIndex1Label\",\"searchIndex2Label\":\"case9SearchIndex2Label\"\
-        ,\"searchIndex3Label\":\"case9SearchIndex3Label\",\"searchIndex4Label\":\"\
-        case9SearchIndex4Label\",\"searchIndex5Label\":\"case9SearchIndex5Label\"\
-        ,\"searchIndex1Value\":\"case9SearchIndex1Value\",\"searchIndex2Value\":\"\
-        case9SearchIndex2Value\",\"searchIndex3Value\":\"case9SearchIndex3Value\"\
-        ,\"searchIndex4Value\":\"case9SearchIndex4Value\",\"searchIndex5Value\":\"\
-        case9SearchIndex5Value\"}"
-      properties:
-        sourceObjectId:
-          description: the id of the process instance before it was archived
-          type: string
-        archivedDate:
-          description: the date set when the process instance was archived
-          type: string
-      type: object
     ProcessInstanceInfo_flowNodeStatesCounters_value:
       properties:
         completed:
@@ -20840,16 +21115,6 @@ components:
           format: int64
           type: integer
       type: object
-    ArchivedProcessInstanceComment_allOf:
-      description: Information about the comment of an archived process instances.
-      example: "{\"id\":20005,\"content\":\"Need to review the last inputs of this\
-        \ case\",\"processInstanceId\":1,\"postDate\":\"2016-06-16 14:51:33.053\"\
-        ,\"archivedDate\":\"2016-06-17 10:18:24.723\",\"userId\":30}"
-      properties:
-        archivedDate:
-          description: the date set when the process instance comment was archived
-          type: string
-      type: object
     ProcessInfo_flowNodeStatesCounters_value:
       properties:
         ready:
@@ -20877,31 +21142,6 @@ components:
           format: int64
           type: integer
       type: object
-    ArchivedConnectorInstance_allOf:
-      description: Information about archived connector instances attached to an archived
-        process or an archived flow node.
-      properties:
-        archivedDate:
-          description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
-            was assigned for example '2014-10-17 16:05:42.626'
-          pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
-          type: string
-      type: object
-      example: null
-    ArchivedFlowNode_allOf:
-      description: A flow node (gateway or event or task) in an archived instance
-        of a process.
-      properties:
-        sourceObjectId:
-          description: the original id of the flowNode before it was archived
-          type: string
-        archivedDate:
-          description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
-            was assigned for example '2014-10-17 16:05:42.626'
-          pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
-          type: string
-      type: object
-      example: null
     Message_messageContent_value:
       example:
         type: java.lang.String
@@ -21031,6 +21271,7 @@ x-tagGroups:
   - I18nlocale
   - I18ntranslation
   - Session
+  - Maintenance
   - SystemTenant
 - name: Other
   tags:

@@ -28,11 +28,13 @@ public interface UploadApi extends ApiClient.Api {
 
     /**
      * Upload a living application
-     * Upload application
+     * Upload application Warning: as of 9.0.0, uploading a living application using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/applicationsUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -43,11 +45,13 @@ public interface UploadApi extends ApiClient.Api {
     /**
      * Upload a living application
      * Similar to <code>uploadApplication</code> but it also returns the http response headers .
-     * Upload application
+     * Upload application Warning: as of 9.0.0, uploading a living application using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/applicationsUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -57,11 +61,14 @@ public interface UploadApi extends ApiClient.Api {
 
     /**
      * Upload a BDM Access Control
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control Warning: as of 9.0.0, uploading a BDM Access Control using the
+     * portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/bdmAccessControlUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -72,11 +79,14 @@ public interface UploadApi extends ApiClient.Api {
     /**
      * Upload a BDM Access Control
      * Similar to <code>uploadBDMAccessControl</code> but it also returns the http response headers .
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control Warning: as of 9.0.0, uploading a BDM Access Control using the
+     * portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/bdmAccessControlUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -146,11 +156,13 @@ public interface UploadApi extends ApiClient.Api {
 
     /**
      * Upload a Page
-     * Upload Page
+     * Upload Page Warning: as of 9.0.0, uploading a page using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/pageUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -161,11 +173,13 @@ public interface UploadApi extends ApiClient.Api {
     /**
      * Upload a Page
      * Similar to <code>uploadPage</code> but it also returns the http response headers .
-     * Upload Page
+     * Upload Page Warning: as of 9.0.0, uploading a page using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/pageUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -175,11 +189,13 @@ public interface UploadApi extends ApiClient.Api {
 
     /**
      * Upload a bar file
-     * Upload a bar file
+     * Upload a bar file Warning: as of 9.0.0, uploading a bar file using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/processUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -190,11 +206,13 @@ public interface UploadApi extends ApiClient.Api {
     /**
      * Upload a bar file
      * Similar to <code>uploadProcess</code> but it also returns the http response headers .
-     * Upload a bar file
+     * Upload a bar file Warning: as of 9.0.0, uploading a bar file using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/processUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -204,11 +222,13 @@ public interface UploadApi extends ApiClient.Api {
 
     /**
      * Upload profiles
-     * Upload profiles
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload profiles Warning: as of 9.0.0, uploading profiles using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/profilesUpload")
     @Headers({
             "Content-Type: multipart/form-data",
@@ -219,11 +239,13 @@ public interface UploadApi extends ApiClient.Api {
     /**
      * Upload profiles
      * Similar to <code>uploadprofiles</code> but it also returns the http response headers .
-     * Upload profiles
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload profiles Warning: as of 9.0.0, uploading profiles using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/profilesUpload")
     @Headers({
             "Content-Type: multipart/form-data",

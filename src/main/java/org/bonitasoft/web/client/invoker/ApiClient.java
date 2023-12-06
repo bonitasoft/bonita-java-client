@@ -65,7 +65,7 @@ public class ApiClient {
         this();
         for (String authName : authNames) {
             log.log(Level.FINE, "Creating authentication {0}", authName);
-            RequestInterceptor auth;
+            RequestInterceptor auth = null;
             if ("bonita_auth".equals(authName)) {
                 auth = new ApiKeyAuth("cookie", "JSESSIONID");
             } else if ("bonita_token".equals(authName)) {
@@ -73,7 +73,9 @@ public class ApiClient {
             } else {
                 throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
             }
-            addAuthorization(authName, auth);
+            if (auth != null) {
+                addAuthorization(authName, auth);
+            }
         }
     }
 

@@ -153,12 +153,15 @@ public interface FormMappingApi extends ApiClient.Api {
 
     /**
      * Update the FormMapping by ID
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the FormMapping for the given ID
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the FormMapping for the given ID Warning: as of 9.0.0, updating a Form Mapping using
+     * this API is deprecated.
      * 
      * @param id ID of the FormMapping to return (required)
      * @param formMappingUpdateRequest Representation of the form mapping attribute to update - {&#39;pageId&#39;: (long)} or {&#39;url&#39;: (string)} or {} to set
      *        the mapping type to NONE (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/form/mapping/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -169,12 +172,15 @@ public interface FormMappingApi extends ApiClient.Api {
     /**
      * Update the FormMapping by ID
      * Similar to <code>updateFormMappingById</code> but it also returns the http response headers .
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the FormMapping for the given ID
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the FormMapping for the given ID Warning: as of 9.0.0, updating a Form Mapping using
+     * this API is deprecated.
      * 
      * @param id ID of the FormMapping to return (required)
      * @param formMappingUpdateRequest Representation of the form mapping attribute to update - {&#39;pageId&#39;: (long)} or {&#39;url&#39;: (string)} or {} to set
      *        the mapping type to NONE (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/form/mapping/{id}")
     @Headers({
             "Content-Type: application/json",

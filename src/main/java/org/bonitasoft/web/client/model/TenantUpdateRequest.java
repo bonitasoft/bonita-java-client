@@ -280,7 +280,7 @@ public class TenantUpdateRequest implements Serializable {
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    username: ").append(toIndentedString(username)).append("\n");
-        sb.append("    password: ").append(toIndentedString(password)).append("\n");
+        sb.append("    password: ").append("*").append("\n");
         sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
         sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("}");

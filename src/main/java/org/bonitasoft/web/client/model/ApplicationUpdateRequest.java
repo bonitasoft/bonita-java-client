@@ -32,7 +32,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationUpdateRequest.JSON_PROPERTY_PROFILE_ID,
         ApplicationUpdateRequest.JSON_PROPERTY_TOKEN,
         ApplicationUpdateRequest.JSON_PROPERTY_VERSION,
-        ApplicationUpdateRequest.JSON_PROPERTY_THEME_ID
+        ApplicationUpdateRequest.JSON_PROPERTY_THEME_ID,
+        ApplicationUpdateRequest.JSON_PROPERTY_LAYOUT_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationUpdateRequest implements Serializable {
@@ -56,6 +57,9 @@ public class ApplicationUpdateRequest implements Serializable {
 
     public static final String JSON_PROPERTY_THEME_ID = "themeId";
     private String themeId;
+
+    public static final String JSON_PROPERTY_LAYOUT_ID = "layoutId";
+    private String layoutId;
 
     public ApplicationUpdateRequest() {
     }
@@ -210,6 +214,31 @@ public class ApplicationUpdateRequest implements Serializable {
         this.themeId = themeId;
     }
 
+    public ApplicationUpdateRequest layoutId(String layoutId) {
+
+        this.layoutId = layoutId;
+        return this;
+    }
+
+    /**
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) layout id for the application
+     * 
+     * @return layoutId
+     **/
+    @jakarta.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_LAYOUT_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getLayoutId() {
+        return layoutId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LAYOUT_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLayoutId(String layoutId) {
+        this.layoutId = layoutId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -224,12 +253,13 @@ public class ApplicationUpdateRequest implements Serializable {
                 Objects.equals(this.profileId, applicationUpdateRequest.profileId) &&
                 Objects.equals(this.token, applicationUpdateRequest.token) &&
                 Objects.equals(this.version, applicationUpdateRequest.version) &&
-                Objects.equals(this.themeId, applicationUpdateRequest.themeId);
+                Objects.equals(this.themeId, applicationUpdateRequest.themeId) &&
+                Objects.equals(this.layoutId, applicationUpdateRequest.layoutId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, displayName, profileId, token, version, themeId);
+        return Objects.hash(description, displayName, profileId, token, version, themeId, layoutId);
     }
 
     @Override
@@ -242,6 +272,7 @@ public class ApplicationUpdateRequest implements Serializable {
         sb.append("    token: ").append(toIndentedString(token)).append("\n");
         sb.append("    version: ").append(toIndentedString(version)).append("\n");
         sb.append("    themeId: ").append(toIndentedString(themeId)).append("\n");
+        sb.append("    layoutId: ").append(toIndentedString(layoutId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
