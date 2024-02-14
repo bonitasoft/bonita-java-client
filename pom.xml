@@ -48,7 +48,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Bonita -->
     <bonita-openapi.version>0.0.16</bonita-openapi.version>
-    <swagger-annotations.version>1.6.11</swagger-annotations.version>
+    <swagger-annotations.version>1.6.13</swagger-annotations.version>
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
     <jsr305.version>3.0.2</jsr305.version>
     <feign.version>13.1</feign.version>
