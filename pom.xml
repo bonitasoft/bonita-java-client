@@ -58,14 +58,14 @@
     <jackson.version>2.17.1</jackson.version>
     <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
     <lombok.version>1.18.30</lombok.version>
-    <slf4j-api.version>1.7.36</slf4j-api.version>
+    <slf4j-api.version>2.0.13</slf4j-api.version>
     <!-- Tests -->
     <junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
-    <assertj-core.version>3.24.2</assertj-core.version>
-    <mockito-core.version>5.7.0</mockito-core.version>
-    <logback-classic.version>1.2.13</logback-classic.version>
+    <assertj-core.version>3.25.3</assertj-core.version>
+    <mockito-core.version>5.12.0</mockito-core.version>
+    <logback-classic.version>1.5.6</logback-classic.version>
     <testcontainers.version>1.19.5</testcontainers.version>
-    <awaitility.version>4.2.0</awaitility.version>
+    <awaitility.version>4.2.1</awaitility.version>
     <!-- Maven plugins -->
     <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
