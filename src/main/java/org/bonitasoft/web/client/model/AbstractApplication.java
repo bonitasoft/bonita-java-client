@@ -26,34 +26,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Application
+ * AbstractApplication
  */
 @JsonPropertyOrder({
-        Application.JSON_PROPERTY_ADVANCED,
-        Application.JSON_PROPERTY_CREATED_BY,
-        Application.JSON_PROPERTY_CREATION_DATE,
-        Application.JSON_PROPERTY_DESCRIPTION,
-        Application.JSON_PROPERTY_DISPLAY_NAME,
-        Application.JSON_PROPERTY_ID,
-        Application.JSON_PROPERTY_LAST_UPDATE_DATE,
-        Application.JSON_PROPERTY_PROFILE_ID,
-        Application.JSON_PROPERTY_TOKEN,
-        Application.JSON_PROPERTY_UPDATED_BY,
-        Application.JSON_PROPERTY_VERSION,
-        Application.JSON_PROPERTY_STATE,
-        Application.JSON_PROPERTY_VISIBILITY,
-        Application.JSON_PROPERTY_EDITABLE,
-        Application.JSON_PROPERTY_HOME_PAGE_ID,
-        Application.JSON_PROPERTY_LAYOUT_ID,
-        Application.JSON_PROPERTY_THEME_ID
+        AbstractApplication.JSON_PROPERTY_CREATED_BY,
+        AbstractApplication.JSON_PROPERTY_CREATION_DATE,
+        AbstractApplication.JSON_PROPERTY_DESCRIPTION,
+        AbstractApplication.JSON_PROPERTY_DISPLAY_NAME,
+        AbstractApplication.JSON_PROPERTY_ID,
+        AbstractApplication.JSON_PROPERTY_LAST_UPDATE_DATE,
+        AbstractApplication.JSON_PROPERTY_PROFILE_ID,
+        AbstractApplication.JSON_PROPERTY_TOKEN,
+        AbstractApplication.JSON_PROPERTY_UPDATED_BY,
+        AbstractApplication.JSON_PROPERTY_VERSION,
+        AbstractApplication.JSON_PROPERTY_STATE,
+        AbstractApplication.JSON_PROPERTY_VISIBILITY,
+        AbstractApplication.JSON_PROPERTY_EDITABLE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
-public class Application implements Serializable {
+public class AbstractApplication implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    public static final String JSON_PROPERTY_ADVANCED = "advanced";
-    private Boolean advanced;
 
     public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
     private String createdBy;
@@ -169,44 +162,10 @@ public class Application implements Serializable {
     public static final String JSON_PROPERTY_EDITABLE = "editable";
     private Boolean editable;
 
-    public static final String JSON_PROPERTY_HOME_PAGE_ID = "homePageId";
-    private String homePageId;
-
-    public static final String JSON_PROPERTY_LAYOUT_ID = "layoutId";
-    private String layoutId;
-
-    public static final String JSON_PROPERTY_THEME_ID = "themeId";
-    private String themeId;
-
-    public Application() {
+    public AbstractApplication() {
     }
 
-    public Application advanced(Boolean advanced) {
-
-        this.advanced = advanced;
-        return this;
-    }
-
-    /**
-     * false for a legacy application
-     * 
-     * @return advanced
-     **/
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public Boolean getAdvanced() {
-        return advanced;
-    }
-
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAdvanced(Boolean advanced) {
-        this.advanced = advanced;
-    }
-
-    public Application createdBy(String createdBy) {
+    public AbstractApplication createdBy(String createdBy) {
 
         this.createdBy = createdBy;
         return this;
@@ -231,7 +190,7 @@ public class Application implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public Application creationDate(String creationDate) {
+    public AbstractApplication creationDate(String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -256,7 +215,7 @@ public class Application implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public Application description(String description) {
+    public AbstractApplication description(String description) {
 
         this.description = description;
         return this;
@@ -281,7 +240,7 @@ public class Application implements Serializable {
         this.description = description;
     }
 
-    public Application displayName(String displayName) {
+    public AbstractApplication displayName(String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -306,7 +265,7 @@ public class Application implements Serializable {
         this.displayName = displayName;
     }
 
-    public Application id(String id) {
+    public AbstractApplication id(String id) {
 
         this.id = id;
         return this;
@@ -331,7 +290,7 @@ public class Application implements Serializable {
         this.id = id;
     }
 
-    public Application lastUpdateDate(String lastUpdateDate) {
+    public AbstractApplication lastUpdateDate(String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -356,7 +315,7 @@ public class Application implements Serializable {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Application profileId(String profileId) {
+    public AbstractApplication profileId(String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -381,7 +340,7 @@ public class Application implements Serializable {
         this.profileId = profileId;
     }
 
-    public Application token(String token) {
+    public AbstractApplication token(String token) {
 
         this.token = token;
         return this;
@@ -406,7 +365,7 @@ public class Application implements Serializable {
         this.token = token;
     }
 
-    public Application updatedBy(String updatedBy) {
+    public AbstractApplication updatedBy(String updatedBy) {
 
         this.updatedBy = updatedBy;
         return this;
@@ -431,7 +390,7 @@ public class Application implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public Application version(String version) {
+    public AbstractApplication version(String version) {
 
         this.version = version;
         return this;
@@ -456,7 +415,7 @@ public class Application implements Serializable {
         this.version = version;
     }
 
-    public Application state(StateEnum state) {
+    public AbstractApplication state(StateEnum state) {
 
         this.state = state;
         return this;
@@ -481,7 +440,7 @@ public class Application implements Serializable {
         this.state = state;
     }
 
-    public Application visibility(VisibilityEnum visibility) {
+    public AbstractApplication visibility(VisibilityEnum visibility) {
 
         this.visibility = visibility;
         return this;
@@ -507,7 +466,7 @@ public class Application implements Serializable {
         this.visibility = visibility;
     }
 
-    public Application editable(Boolean editable) {
+    public AbstractApplication editable(Boolean editable) {
 
         this.editable = editable;
         return this;
@@ -532,81 +491,6 @@ public class Application implements Serializable {
         this.editable = editable;
     }
 
-    public Application homePageId(String homePageId) {
-
-        this.homePageId = homePageId;
-        return this;
-    }
-
-    /**
-     * id of the application page used as the home page
-     * 
-     * @return homePageId
-     **/
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_HOME_PAGE_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public String getHomePageId() {
-        return homePageId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_HOME_PAGE_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setHomePageId(String homePageId) {
-        this.homePageId = homePageId;
-    }
-
-    public Application layoutId(String layoutId) {
-
-        this.layoutId = layoutId;
-        return this;
-    }
-
-    /**
-     * id of the layout used by the application
-     * 
-     * @return layoutId
-     **/
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_LAYOUT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public String getLayoutId() {
-        return layoutId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_LAYOUT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLayoutId(String layoutId) {
-        this.layoutId = layoutId;
-    }
-
-    public Application themeId(String themeId) {
-
-        this.themeId = themeId;
-        return this;
-    }
-
-    /**
-     * id of the theme used by the application
-     * 
-     * @return themeId
-     **/
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_THEME_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public String getThemeId() {
-        return themeId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_THEME_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setThemeId(String themeId) {
-        this.themeId = themeId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -615,37 +499,32 @@ public class Application implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Application application = (Application) o;
-        return Objects.equals(this.advanced, application.advanced) &&
-                Objects.equals(this.createdBy, application.createdBy) &&
-                Objects.equals(this.creationDate, application.creationDate) &&
-                Objects.equals(this.description, application.description) &&
-                Objects.equals(this.displayName, application.displayName) &&
-                Objects.equals(this.id, application.id) &&
-                Objects.equals(this.lastUpdateDate, application.lastUpdateDate) &&
-                Objects.equals(this.profileId, application.profileId) &&
-                Objects.equals(this.token, application.token) &&
-                Objects.equals(this.updatedBy, application.updatedBy) &&
-                Objects.equals(this.version, application.version) &&
-                Objects.equals(this.state, application.state) &&
-                Objects.equals(this.visibility, application.visibility) &&
-                Objects.equals(this.editable, application.editable) &&
-                Objects.equals(this.homePageId, application.homePageId) &&
-                Objects.equals(this.layoutId, application.layoutId) &&
-                Objects.equals(this.themeId, application.themeId);
+        AbstractApplication abstractApplication = (AbstractApplication) o;
+        return Objects.equals(this.createdBy, abstractApplication.createdBy) &&
+                Objects.equals(this.creationDate, abstractApplication.creationDate) &&
+                Objects.equals(this.description, abstractApplication.description) &&
+                Objects.equals(this.displayName, abstractApplication.displayName) &&
+                Objects.equals(this.id, abstractApplication.id) &&
+                Objects.equals(this.lastUpdateDate, abstractApplication.lastUpdateDate) &&
+                Objects.equals(this.profileId, abstractApplication.profileId) &&
+                Objects.equals(this.token, abstractApplication.token) &&
+                Objects.equals(this.updatedBy, abstractApplication.updatedBy) &&
+                Objects.equals(this.version, abstractApplication.version) &&
+                Objects.equals(this.state, abstractApplication.state) &&
+                Objects.equals(this.visibility, abstractApplication.visibility) &&
+                Objects.equals(this.editable, abstractApplication.editable);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(advanced, createdBy, creationDate, description, displayName, id, lastUpdateDate, profileId,
-                token, updatedBy, version, state, visibility, editable, homePageId, layoutId, themeId);
+        return Objects.hash(createdBy, creationDate, description, displayName, id, lastUpdateDate, profileId, token,
+                updatedBy, version, state, visibility, editable);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Application {\n");
-        sb.append("    advanced: ").append(toIndentedString(advanced)).append("\n");
+        sb.append("class AbstractApplication {\n");
         sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
         sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -659,9 +538,6 @@ public class Application implements Serializable {
         sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
         sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
-        sb.append("    homePageId: ").append(toIndentedString(homePageId)).append("\n");
-        sb.append("    layoutId: ").append(toIndentedString(layoutId)).append("\n");
-        sb.append("    themeId: ").append(toIndentedString(themeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

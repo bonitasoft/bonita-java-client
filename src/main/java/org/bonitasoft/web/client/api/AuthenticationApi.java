@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ import org.bonitasoft.web.client.model.ApiResponse;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public interface AuthenticationApi extends ApiClient.Api {
 
     /**
@@ -47,7 +47,7 @@ public interface AuthenticationApi extends ApiClient.Api {
     @RequestLine("POST /loginservice")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String login(@Param("username") String username, @Param("password") String password, @Param("tenant") String tenant,
             @Param("redirect") String redirect, @Param("redirectURL") String redirectURL);
@@ -73,7 +73,7 @@ public interface AuthenticationApi extends ApiClient.Api {
     @RequestLine("POST /loginservice")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> loginWithHttpInfo(@Param("username") String username, @Param("password") String password,
             @Param("tenant") String tenant, @Param("redirect") String redirect,

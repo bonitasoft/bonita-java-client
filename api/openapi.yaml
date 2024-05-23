@@ -78,30 +78,33 @@ info:
     * f: list of filters, specified as `attributeName=attributeValue`. To filter on\
     \ more than one attribute, specify an f parameters for each attribute. The final\
     \ filter parameter value must be URL encoded.\n  The attributes you can filter\
-    \ on are specific to the resource.\n* s: search on name or search indexes. The\
-    \ matching policy depends on the configuration of [word-based search](https://documentation.bonitasoft.com/bonita/2022.2/api/using-list-and-search-methods#word_based_search).\n\
-    \  For example, if word-based search is enabled, `s=Valid` returns matches containing\
+    \ on are specific to the resource.\n* s: search on name or search indexes. Before\
+    \ Bonita 2024.1, the matching policy depended on the configuration of [word-based\
+    \ search](https://documentation.bonitasoft.com/bonita/2023.2/api/using-list-and-search-methods#word_based_search).\n\
+    \  For example, if word-based search was enabled, `s=Valid` returned matches containing\
     \ the string \"valid\" at the start of any word in the attribute value word,\n\
     \  such as \"Valid address\", \"Not a valid address\", and \"Validated request\"\
-    \ but not \"Invalid request\".\n  If word-based search is disabled, `s=Valid`\
-    \ returns matches containing the string \"valid\" at the start of the attribute\
+    \ but not \"Invalid request\".\n  If word-based search was disabled, `s=Valid`\
+    \ returned matches containing the string \"valid\" at the start of the attribute\
     \ value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid\
-    \ address\" or \"Invalid request\".\n\n### Errors\n\nThe API uses standard HTTP\
-    \ status codes to indicate the success or failure of the API call.\n\nIf you get\
-    \ a `401` response code :\n  - make sure that the cookies have been transfered\
-    \ with the call\n  - make sure that the cookies transfered are the ones generated\
-    \ during the last sucessfull login call\n  - if one of the PUT, DELETE or POST\
-    \ method is used, make sure that the `X-Bonita-API-Token` header is included\n\
-    \  - if the X-Bonita-API-Token header is included, make sure that the value is\
-    \ the same as the one of the cookie generated during the last login\n  - Maybe\
-    \ a logout was issued or the session has expired; try to log in again, and re\
-    \ run the request with the new cookies and the new value for the `X-Bonita-API-Token`\
-    \ header.\n"
+    \ address\" or \"Invalid request\".\n  Since Bonita 2024.1, the search mode can\
+    \ no longer be configured and a \"like-based\" algorithm is used. This means all\
+    \ the matching records for which the search term occurs anywhere in a phrase or\
+    \ a word are returned.\n\n### Errors\n\nThe API uses standard HTTP status codes\
+    \ to indicate the success or failure of the API call.\n\nIf you get a `401` response\
+    \ code :\n  - make sure that the cookies have been transfered with the call\n\
+    \  - make sure that the cookies transfered are the ones generated during the last\
+    \ sucessfull login call\n  - if one of the PUT, DELETE or POST method is used,\
+    \ make sure that the `X-Bonita-API-Token` header is included\n  - if the X-Bonita-API-Token\
+    \ header is included, make sure that the value is the same as the one of the cookie\
+    \ generated during the last login\n  - Maybe a logout was issued or the session\
+    \ has expired; try to log in again, and re run the request with the new cookies\
+    \ and the new value for the `X-Bonita-API-Token` header.\n"
   license:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.16
+  version: 0.0.17
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -449,7 +452,9 @@ paths:
           \ the cookie file and set the `X-Bonita-API-Token` header\n  curl -b saved_cookies.txt\
           \ -X GET \\\n-- header 'X-Bonita-API-Token: <token>' \\\n--url 'http://localhost:8080/bonita/API/bpm/process?c=100&p=0'\n"
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /logoutservice:
     get:
       description: |
@@ -516,15 +521,16 @@ paths:
         label: Curl
         source: |
           curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/logoutservice?redirect=false'
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application:
     get:
       description: |
         Finds living applications with pagination params and filters
 
-        - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`
-        - can search on `token`, `displayName`, `version`
-        - can filter on `token`, `displayName`, `version`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`
+        - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`, `advanced`
+        - can search on `token`, `displayName`, `version`, `advanced`
+        - can filter on `token`, `displayName`, `version`, `advanced`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`
       operationId: searchApplications
       parameters:
       - description: index of the page to display
@@ -590,6 +596,40 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "306"
+                advanced: true
+                creationDate: "1411548289900"
+                icon: ""
+                createdBy": "1"
+                profileId: "2"
+                description: My advanced application description
+                token: myadvapp
+                state: ACTIVATED
+                displayName: My advanced app
+                updatedBy: "1"
+                visibility: ALL
+                editable: true
+                lastUpdateDate: "1411548289900"
+                version: "1.0"
+              - id: "305"
+                advanced: false
+                creationDate: "1411548289900"
+                icon: ""
+                createdBy": "1"
+                profileId: "2"
+                description: My application description
+                token: myapp
+                state: DEACTIVATED
+                displayName: My app
+                updatedBy: "1"
+                visibility: ALL
+                editable: true
+                lastUpdateDate: "1411548289900"
+                version: "1.0"
+                homePageId: "26"
+                themeId: "1"
+                layoutId: "3"
               schema:
                 items:
                   $ref: '#/components/schemas/Application'
@@ -640,7 +680,8 @@ paths:
       summary: Finds living applications
       tags:
       - Application
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -660,7 +701,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Application'
+                $ref: '#/components/schemas/LegacyApplication'
           description: 'Success '
         "400":
           content:
@@ -701,7 +742,8 @@ paths:
       - Application
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application/{id}:
     delete:
       description: |
@@ -766,7 +808,8 @@ paths:
       summary: Delete a living application by ID
       tags:
       - Application
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns a single application for the given ID
@@ -834,7 +877,8 @@ paths:
       summary: Finds a living application by ID
       tags:
       - Application
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -865,7 +909,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Application'
+                $ref: '#/components/schemas/LegacyApplication'
           description: 'Success '
         "400":
           content:
@@ -913,7 +957,8 @@ paths:
       tags:
       - Application
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /services/application/import:
     post:
       deprecated: true
@@ -976,7 +1021,8 @@ paths:
       tags:
       - Application
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/applicationsUpload:
     post:
       deprecated: true
@@ -1039,7 +1085,9 @@ paths:
       - Application
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /API/living/application-menu:
     get:
       description: |
@@ -1163,7 +1211,8 @@ paths:
       summary: Finds application menus
       tags:
       - ApplicationMenu
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -1222,7 +1271,8 @@ paths:
       tags:
       - ApplicationMenu
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application-menu/{id}:
     delete:
       description: Delete a single application menu for the given ID
@@ -1286,7 +1336,8 @@ paths:
       summary: Delete an application menu by ID
       tags:
       - ApplicationMenu
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns a single application menu for the given ID
@@ -1361,7 +1412,8 @@ paths:
       summary: Finds a application menu by ID
       tags:
       - ApplicationMenu
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -1436,7 +1488,8 @@ paths:
       tags:
       - ApplicationMenu
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application-page:
     get:
       description: |
@@ -1560,7 +1613,9 @@ paths:
       summary: Finds application pages
       tags:
       - ApplicationPage
-      x-accepts: application/json
+      x-accepts:
+      - ApplicationPage/json
+      - application/json
     post:
       deprecated: true
       description: |
@@ -1621,7 +1676,8 @@ paths:
       - ApplicationPage
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application-page/{id}:
     delete:
       description: |
@@ -1686,7 +1742,8 @@ paths:
       summary: Delete an application page by ID
       tags:
       - ApplicationPage
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns a single application page for the given ID
@@ -1754,7 +1811,8 @@ paths:
       summary: Finds an application page by ID
       tags:
       - ApplicationPage
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}:
     get:
       description: |
@@ -1901,7 +1959,8 @@ paths:
       summary: Finds Business Data
       tags:
       - BusinessDataQuery
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}/findByIds:
     get:
       description: |
@@ -1976,7 +2035,8 @@ paths:
       summary: Finds business data By Ids
       tags:
       - BDM
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}/{persistenceId}:
     get:
       description: |
@@ -2047,7 +2107,8 @@ paths:
       summary: Finds business data by Id
       tags:
       - BDM
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}/{persistenceId}/{attributeName}:
     get:
       description: |
@@ -2143,7 +2204,8 @@ paths:
       summary: Finds business data attribute by id
       tags:
       - BDM
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/accessControl/bdm:
     delete:
       description: |
@@ -2191,7 +2253,8 @@ paths:
       summary: Delete the BDM Access Control
       tags:
       - BDMAccessControl
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
@@ -2242,7 +2305,8 @@ paths:
       summary: BDM access control status
       tags:
       - BDMAccessControl
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/bdmAccessControlUpload:
     post:
       deprecated: true
@@ -2307,7 +2371,9 @@ paths:
       - BDMAccessControl
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /services/bdmAccessControl/install:
     post:
       deprecated: true
@@ -2374,7 +2440,8 @@ paths:
       tags:
       - BDMAccessControl
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/activity:
     get:
       description: |
@@ -2498,7 +2565,8 @@ paths:
       summary: Finds Activities
       tags:
       - Activity
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/activity/{id}:
     get:
       description: |
@@ -2567,7 +2635,8 @@ paths:
       summary: Finds the Activity by ID
       tags:
       - Activity
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the Activity for the given ID
@@ -2639,7 +2708,8 @@ paths:
       tags:
       - Activity
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedActivity:
     get:
       description: |
@@ -2773,7 +2843,8 @@ paths:
       summary: Finds Archived Activities
       tags:
       - ArchivedActivity
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedActivity/{id}:
     get:
       description: |
@@ -2842,7 +2913,8 @@ paths:
       summary: Finds the Archived Activity by ID
       tags:
       - ArchivedActivity
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/humanTask:
     get:
       description: |
@@ -2966,7 +3038,8 @@ paths:
       summary: Finds HumanTasks
       tags:
       - HumanTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/humanTask/{id}:
     get:
       description: |
@@ -3035,7 +3108,8 @@ paths:
       summary: Finds the HumanTask by ID
       tags:
       - HumanTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the HumanTask for the given ID
@@ -3108,7 +3182,8 @@ paths:
       tags:
       - HumanTask
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/manualTask:
     get:
       description: |
@@ -3239,7 +3314,8 @@ paths:
       summary: Finds ManualTasks
       tags:
       - ManualTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ManualTask.
@@ -3298,7 +3374,8 @@ paths:
       - ManualTask
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/manualTask/{id}:
     get:
       description: |
@@ -3367,7 +3444,8 @@ paths:
       summary: Finds the ManualTask by ID
       tags:
       - ManualTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the ManualTask for the given ID.
@@ -3441,7 +3519,8 @@ paths:
       tags:
       - ManualTask
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/task:
     get:
       description: |
@@ -3554,7 +3633,8 @@ paths:
       summary: Finds Tasks
       tags:
       - Task
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/task/{id}:
     get:
       description: |
@@ -3623,7 +3703,8 @@ paths:
       summary: Finds the Task by ID
       tags:
       - Task
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the Task for the given ID
@@ -3698,7 +3779,8 @@ paths:
       tags:
       - Task
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask:
     get:
       description: |
@@ -3822,7 +3904,8 @@ paths:
       summary: Finds UserTasks
       tags:
       - UserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask/{id}:
     get:
       description: |
@@ -3891,7 +3974,8 @@ paths:
       summary: Finds the UserTask by ID
       tags:
       - UserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the UserTask for the given ID.
@@ -3965,7 +4049,8 @@ paths:
       tags:
       - UserTask
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask/{id}/contract:
     get:
       description: |
@@ -4034,7 +4119,8 @@ paths:
       summary: Finds the Contract by UserTask ID
       tags:
       - UserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask/{id}/execution:
     post:
       description: |
@@ -4113,7 +4199,8 @@ paths:
       - UserTask
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask/{id}/context:
     get:
       description: |
@@ -4204,7 +4291,8 @@ paths:
       summary: Finds the Context by UserTask ID
       tags:
       - UserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedHumanTask:
     get:
       description: |
@@ -4321,7 +4409,8 @@ paths:
       summary: Finds ArchivedHumanTasks
       tags:
       - ArchivedHumanTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedHumanTask/{id}:
     get:
       description: |
@@ -4390,7 +4479,8 @@ paths:
       summary: Finds the ArchivedHumanTask by ID
       tags:
       - ArchivedHumanTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedManualTask:
     get:
       description: |
@@ -4507,7 +4597,8 @@ paths:
       summary: Finds ArchivedManualTasks
       tags:
       - ArchivedManualTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedManualTask/{id}:
     get:
       description: |
@@ -4576,7 +4667,8 @@ paths:
       summary: Finds the ArchivedManualTask by ID
       tags:
       - ArchivedManualTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedUserTask:
     get:
       description: |
@@ -4694,7 +4786,8 @@ paths:
       summary: Finds ArchivedUserTasks
       tags:
       - ArchivedUserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedUserTask/{id}:
     get:
       description: |
@@ -4763,7 +4856,8 @@ paths:
       summary: Finds the ArchivedUserTask by ID
       tags:
       - ArchivedUserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedTask:
     get:
       description: |
@@ -4876,7 +4970,8 @@ paths:
       summary: Finds ArchivedTasks
       tags:
       - ArchivedTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedTask/{id}:
     get:
       description: |
@@ -4945,7 +5040,8 @@ paths:
       summary: Finds the ArchivedTask by ID
       tags:
       - ArchivedTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/activityVariable/{id}/{variableName}:
     get:
       description: |
@@ -5024,7 +5120,8 @@ paths:
       summary: Finds the ActivityVariable by ID
       tags:
       - ActivityVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedActivityVariable/{id}/{variableName}:
     get:
       description: |
@@ -5105,7 +5202,8 @@ paths:
       summary: Finds the ArchivedActivityVariable by case ID and name
       tags:
       - ArchivedActivityVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseVariable:
     get:
       description: |
@@ -5215,7 +5313,8 @@ paths:
       summary: Finds ProcessInstance Variables
       tags:
       - ProcessInstanceVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCaseVariable:
     get:
       description: |
@@ -5314,7 +5413,8 @@ paths:
       summary: Finds ArchivedProcessInstance Variables
       tags:
       - ArchivedProcessInstanceVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseVariable/{id}/{variableName}:
     get:
       description: |
@@ -5394,7 +5494,8 @@ paths:
       summary: Finds the Variable by ProcessInstance ID
       tags:
       - ProcessInstanceVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the variable for the given ProcessInstance ID.
@@ -5479,7 +5580,8 @@ paths:
       tags:
       - ProcessInstanceVariable
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCaseVariable/{id}/{variableName}:
     get:
       description: |
@@ -5561,7 +5663,8 @@ paths:
       summary: Finds an archived Variable by ProcessInstance ID and variable name
       tags:
       - ArchivedProcessInstanceVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseDocument:
     get:
       description: |
@@ -5679,7 +5782,8 @@ paths:
       summary: Finds ProcessInstanceDocuments
       tags:
       - ProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProcessInstanceDocument.
@@ -5742,7 +5846,8 @@ paths:
       - ProcessInstanceDocument
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseDocument/{id}:
     delete:
       description: |
@@ -5807,7 +5912,8 @@ paths:
       summary: Delete the ProcessInstanceDocument by ID
       tags:
       - ProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ProcessInstanceDocument for the given ID.
@@ -5879,7 +5985,8 @@ paths:
       summary: Finds the ProcessInstanceDocument by ID
       tags:
       - ProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the ProcessInstanceDocument for the given ID
@@ -5955,7 +6062,8 @@ paths:
       tags:
       - ProcessInstanceDocument
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCaseDocument:
     get:
       description: |
@@ -6077,7 +6185,8 @@ paths:
       summary: Finds ArchivedProcessInstanceDocuments
       tags:
       - ArchivedProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCaseDocument/{id}:
     delete:
       description: |
@@ -6142,7 +6251,8 @@ paths:
       summary: Delete the ArchivedProcessInstanceDocument by ID
       tags:
       - ArchivedProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/actor:
     get:
       description: |
@@ -6252,7 +6362,8 @@ paths:
       summary: Finds Actors
       tags:
       - Actor
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/actor/{id}:
     get:
       description: |
@@ -6321,7 +6432,8 @@ paths:
       summary: Finds the Actor by ID
       tags:
       - Actor
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -6396,7 +6508,8 @@ paths:
       tags:
       - Actor
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/actorMember:
     get:
       description: |
@@ -6517,7 +6630,8 @@ paths:
       summary: Finds ActorMembers
       tags:
       - ActorMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/actorMember/{id}:
     delete:
       description: |
@@ -6582,7 +6696,8 @@ paths:
       summary: Delete the ActorMember by ID
       tags:
       - ActorMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ActorMember for the given ID
@@ -6650,7 +6765,8 @@ paths:
       summary: Finds the ActorMember by ID
       tags:
       - ActorMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/case:
     delete:
       description: |
@@ -6715,7 +6831,8 @@ paths:
       tags:
       - ProcessInstance
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Finds ProcessInstances with pagination params and filters
@@ -6832,7 +6949,8 @@ paths:
       summary: Finds ProcessInstances
       tags:
       - ProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)
@@ -6894,7 +7012,8 @@ paths:
       - ProcessInstance
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/case/{id}:
     delete:
       description: |
@@ -6959,7 +7078,8 @@ paths:
       summary: Delete the ProcessInstance by ID
       tags:
       - ProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ProcessInstance for the given ID
@@ -7038,7 +7158,8 @@ paths:
       summary: Finds the ProcessInstance by ID
       tags:
       - ProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/case/{id}/context:
     get:
       description: |
@@ -7129,7 +7250,8 @@ paths:
       summary: Finds the Context by ProcessInstance ID
       tags:
       - ProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCase:
     get:
       description: |
@@ -7250,7 +7372,8 @@ paths:
       summary: Finds ArchivedProcessInstances
       tags:
       - ArchivedProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCase/{id}:
     delete:
       description: |
@@ -7315,7 +7438,8 @@ paths:
       summary: Delete the ArchivedProcessInstance by ID
       tags:
       - ArchivedProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ArchivedProcessInstance for the given ID
@@ -7383,7 +7507,8 @@ paths:
       summary: Finds the ArchivedProcessInstance by ID
       tags:
       - ArchivedProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCase/{id}/context:
     get:
       description: |
@@ -7474,7 +7599,8 @@ paths:
       summary: Finds the Context by ArchivedProcessInstance ID
       tags:
       - ArchivedProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseInfo/{id}:
     get:
       description: |
@@ -7545,7 +7671,8 @@ paths:
       summary: Finds the ProcessInstanceInfo by ID
       tags:
       - ProcessInstanceInfo
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/comment:
     get:
       description: |
@@ -7658,7 +7785,8 @@ paths:
       summary: Finds ProcessInstanceComments
       tags:
       - ProcessInstanceComment
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProcessInstanceComment
@@ -7716,7 +7844,8 @@ paths:
       - ProcessInstanceComment
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedComment:
     get:
       description: |
@@ -7840,7 +7969,8 @@ paths:
       summary: Finds ArchivedProcessInstanceComments
       tags:
       - ArchivedProcessInstanceComment
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process:
     delete:
       description: |
@@ -7905,7 +8035,8 @@ paths:
       tags:
       - Process
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Finds Processes with pagination params and filters
@@ -8028,7 +8159,8 @@ paths:
       summary: Finds Processes
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -8090,7 +8222,8 @@ paths:
       - Process
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process/{id}:
     delete:
       description: |
@@ -8162,7 +8295,8 @@ paths:
       summary: Delete the Process by ID
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Process for the given ID
@@ -8230,7 +8364,8 @@ paths:
       summary: Finds the Process by ID
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -8305,7 +8440,8 @@ paths:
       tags:
       - Process
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process/{id}/design:
     get:
       description: |
@@ -8374,7 +8510,8 @@ paths:
       summary: Finds the Process design by ID
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process/{id}/contract:
     get:
       description: |
@@ -8443,7 +8580,8 @@ paths:
       summary: Finds the Process contract by ID
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process/{id}/instantiation:
     post:
       description: |
@@ -8524,7 +8662,8 @@ paths:
       - Process
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processInfo/{id}:
     get:
       description: |
@@ -8596,7 +8735,8 @@ paths:
       summary: Finds the ProcessInfo by ID
       tags:
       - ProcessInfo
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processConnector/{id}/{connectorImplId}/{connectorImplVersion}:
     put:
       deprecated: true
@@ -8684,7 +8824,8 @@ paths:
       tags:
       - Process
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/diagram/{id}:
     get:
       description: |
@@ -8756,7 +8897,9 @@ paths:
       summary: Finds the diagram process by ID
       tags:
       - Diagram
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - application/xml
   /API/bpm/processParameter:
     get:
       description: |
@@ -8876,7 +9019,8 @@ paths:
       summary: Finds ProcessParameters
       tags:
       - ProcessParameter
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processParameter/{id}/{name}:
     get:
       description: |
@@ -8955,7 +9099,8 @@ paths:
       summary: Finds the ProcessParameter by ID
       tags:
       - ProcessParameter
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -9044,7 +9189,8 @@ paths:
       tags:
       - ProcessParameter
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processResolutionProblem:
     get:
       description: |
@@ -9166,7 +9312,8 @@ paths:
       summary: Finds ProcessResolutionProblems
       tags:
       - ProcessResolutionProblem
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processSupervisor:
     delete:
       description: |
@@ -9236,7 +9383,8 @@ paths:
       tags:
       - ProcessSupervisor
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Finds ProcessSupervisors with pagination params and filters
@@ -9359,7 +9507,8 @@ paths:
       summary: Finds ProcessSupervisors
       tags:
       - ProcessSupervisor
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProcessSupervisor
@@ -9421,7 +9570,8 @@ paths:
       - ProcessSupervisor
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processConnectorDependency:
     get:
       description: |
@@ -9543,7 +9693,8 @@ paths:
       summary: Finds ProcessConnectorDependencies
       tags:
       - ProcessConnectorDependency
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/connectorFailure/{id}:
     get:
       description: |
@@ -9612,7 +9763,8 @@ paths:
       summary: Finds the ConnectorFailure by ID
       tags:
       - ConnectorFailure
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/connectorInstance:
     get:
       description: |
@@ -9733,7 +9885,8 @@ paths:
       summary: Finds ConnectorInstances
       tags:
       - ConnectorInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedConnectorInstance:
     get:
       description: |
@@ -9853,7 +10006,8 @@ paths:
       summary: Finds ArchivedConnectorInstances
       tags:
       - ArchivedConnectorInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/flowNode:
     get:
       description: |
@@ -9977,7 +10131,8 @@ paths:
       summary: Finds FlowNodes
       tags:
       - FlowNode
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/flowNode/{id}:
     get:
       description: |
@@ -10046,7 +10201,8 @@ paths:
       summary: Finds the FlowNode by ID
       tags:
       - FlowNode
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
@@ -10120,7 +10276,8 @@ paths:
       tags:
       - FlowNode
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedFlowNode:
     get:
       description: |
@@ -10244,7 +10401,8 @@ paths:
       summary: Finds ArchivedFlowNodes
       tags:
       - ArchivedFlowNode
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedFlowNode/{id}:
     get:
       description: |
@@ -10313,7 +10471,8 @@ paths:
       summary: Finds the ArchivedFlowNode by ID
       tags:
       - ArchivedFlowNode
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/timerEventTrigger:
     get:
       description: |
@@ -10447,7 +10606,8 @@ paths:
       summary: Finds TimerEventTriggers
       tags:
       - TimerEventTrigger
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/timerEventTrigger/{id}:
     get:
       description: |
@@ -10516,7 +10676,8 @@ paths:
       summary: Finds the TimerEventTrigger by ID
       tags:
       - TimerEventTrigger
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the TimerEventTrigger for the given ID
@@ -10593,7 +10754,8 @@ paths:
       tags:
       - TimerEventTrigger
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/message:
     post:
       description: |
@@ -10648,7 +10810,8 @@ paths:
       - Message
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/signal:
     post:
       description: |
@@ -10705,7 +10868,8 @@ paths:
       - Signal
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/definition:
     get:
       description: |
@@ -10790,7 +10954,8 @@ paths:
       summary: Finds CustomUserDefinitions
       tags:
       - CustomUserDefinition
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the CustomUserDefinition
@@ -10848,7 +11013,8 @@ paths:
       - CustomUserDefinition
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/definition/{id}:
     delete:
       description: |
@@ -10913,7 +11079,8 @@ paths:
       summary: Delete the CustomUserDefinition by ID
       tags:
       - CustomUserDefinition
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single CustomUserDefinition for the given ID
@@ -10981,7 +11148,8 @@ paths:
       summary: Finds the CustomUserDefinition by ID
       tags:
       - CustomUserDefinition
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/value:
     get:
       description: |
@@ -11082,7 +11250,8 @@ paths:
       summary: Finds CustomUserValues
       tags:
       - CustomUserValue
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/value/{userId}/{definitionId}:
     put:
       description: |
@@ -11165,7 +11334,8 @@ paths:
       tags:
       - CustomUserValue
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/user:
     get:
       description: |
@@ -11266,7 +11436,8 @@ paths:
       summary: Finds CustomUsers
       tags:
       - CustomUser
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/form/mapping:
     get:
       description: |
@@ -11388,7 +11559,8 @@ paths:
       summary: Finds FormMappings
       tags:
       - FormMapping
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/form/mapping/{id}:
     put:
       deprecated: true
@@ -11467,7 +11639,8 @@ paths:
       tags:
       - FormMapping
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/professionalcontactdata:
     get:
       description: |
@@ -11591,7 +11764,8 @@ paths:
       summary: Finds ProfessionalContactData
       tags:
       - ProfessionalContactData
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProfessionalContactData
@@ -11653,7 +11827,8 @@ paths:
       - ProfessionalContactData
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/professionalcontactdata/{userId}:
     get:
       description: |
@@ -11722,7 +11897,8 @@ paths:
       summary: Finds the ProfessionalContactData by ID
       tags:
       - ProfessionalContactData
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the ProfessionalContactData for the given ID
@@ -11806,7 +11982,8 @@ paths:
       tags:
       - ProfessionalContactData
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/personalcontactdata/{userId}:
     get:
       description: |
@@ -11875,7 +12052,8 @@ paths:
       summary: Finds the PersonalContactData by ID
       tags:
       - ProfessionalContactData
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the PersonalContactData for the given ID
@@ -11958,7 +12136,8 @@ paths:
       tags:
       - ProfessionalContactData
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/group:
     get:
       description: |
@@ -12071,7 +12250,8 @@ paths:
       summary: Finds Groups
       tags:
       - Group
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the Group
@@ -12129,7 +12309,8 @@ paths:
       - Group
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/group/{id}:
     delete:
       description: |
@@ -12194,7 +12375,8 @@ paths:
       summary: Delete the Group by ID
       tags:
       - Group
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Group for the given ID
@@ -12262,7 +12444,8 @@ paths:
       summary: Finds the Group by ID
       tags:
       - Group
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the Group for the given ID
@@ -12334,7 +12517,8 @@ paths:
       tags:
       - Group
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/membership:
     get:
       description: |
@@ -12458,7 +12642,8 @@ paths:
       summary: Finds Memberships
       tags:
       - Membership
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the Membership
@@ -12516,7 +12701,8 @@ paths:
       - Membership
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/membership/{userId}/{groupId}/{roleId}:
     delete:
       description: |
@@ -12601,7 +12787,8 @@ paths:
       summary: Delete the Membership by ID
       tags:
       - Membership
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/role:
     get:
       description: |
@@ -12724,7 +12911,8 @@ paths:
       summary: Finds Roles
       tags:
       - Role
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the Role
@@ -12782,7 +12970,8 @@ paths:
       - Role
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/role/{id}:
     delete:
       description: |
@@ -12847,7 +13036,8 @@ paths:
       summary: Delete the Role by ID
       tags:
       - Role
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Role for the given ID
@@ -12915,7 +13105,8 @@ paths:
       summary: Finds the Role by ID
       tags:
       - Role
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the Role for the given ID
@@ -12987,7 +13178,8 @@ paths:
       tags:
       - Role
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/user:
     get:
       description: |
@@ -13111,7 +13303,8 @@ paths:
       summary: Finds Users
       tags:
       - User
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the User
@@ -13169,7 +13362,8 @@ paths:
       - User
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/user/{id}:
     delete:
       description: |
@@ -13237,7 +13431,8 @@ paths:
       summary: Delete the User by ID
       tags:
       - User
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single User for the given ID
@@ -13305,7 +13500,8 @@ paths:
       summary: Finds the User by ID
       tags:
       - User
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the User for the given ID
@@ -13377,7 +13573,8 @@ paths:
       tags:
       - User
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /platformloginservice:
     post:
       description: |
@@ -13454,7 +13651,8 @@ paths:
       - Platform
       - PlatformAuthentication
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /platformlogoutservice:
     post:
       description: ""
@@ -13500,7 +13698,8 @@ paths:
       tags:
       - Platform
       - PlatformAuthentication
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/platform/platform/unusedid:
     get:
       description: |
@@ -13558,7 +13757,8 @@ paths:
       summary: Finds the Platform by ID
       tags:
       - Platform
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Start or stop the current node, that is, start or stop all services of the current JVM.
@@ -13619,7 +13819,8 @@ paths:
       tags:
       - Platform
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/platform/tenant:
     get:
       deprecated: true
@@ -13748,7 +13949,8 @@ paths:
       summary: Finds Tenants
       tags:
       - Tenant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -13811,7 +14013,8 @@ paths:
       - Tenant
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/platform/tenant/{id}:
     delete:
       deprecated: true
@@ -13879,7 +14082,8 @@ paths:
       summary: Delete the Tenant by ID
       tags:
       - Tenant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       deprecated: true
       description: |
@@ -13951,7 +14155,8 @@ paths:
       summary: Finds the Tenant by ID
       tags:
       - Tenant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -14029,7 +14234,8 @@ paths:
       tags:
       - Tenant
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/platform/license:
     get:
       description: |
@@ -14088,7 +14294,8 @@ paths:
       summary: Get the platform License
       tags:
       - License
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/processUpload:
     post:
       deprecated: true
@@ -14151,7 +14358,9 @@ paths:
       - Process
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /portal/pageUpload:
     post:
       deprecated: true
@@ -14213,7 +14422,9 @@ paths:
       - Page
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /portal/fileUpload:
     post:
       description: |
@@ -14275,7 +14486,9 @@ paths:
       - Upload
       - BDM
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /API/portal/page:
     get:
       description: |
@@ -14398,7 +14611,8 @@ paths:
       summary: Finds Pages
       tags:
       - Page
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -14459,7 +14673,8 @@ paths:
       - Page
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/page/{id}:
     delete:
       description: |
@@ -14524,7 +14739,8 @@ paths:
       summary: Delete the Page by ID
       tags:
       - Page
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Page for the given ID
@@ -14592,7 +14808,8 @@ paths:
       summary: Finds the Page by ID
       tags:
       - Page
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -14667,7 +14884,8 @@ paths:
       tags:
       - Page
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profile:
     get:
       description: |
@@ -14791,7 +15009,8 @@ paths:
       summary: Finds Profiles
       tags:
       - Profile
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -14854,7 +15073,8 @@ paths:
       - Profile
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profile/{id}:
     delete:
       description: |
@@ -14919,7 +15139,8 @@ paths:
       summary: Delete the Profile by ID
       tags:
       - Profile
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Profile for the given ID
@@ -14987,7 +15208,8 @@ paths:
       summary: Finds the Profile by ID
       tags:
       - Profile
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -15064,7 +15286,8 @@ paths:
       tags:
       - Profile
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profileEntry:
     get:
       deprecated: true
@@ -15179,7 +15402,8 @@ paths:
       summary: Finds ProfileEntries
       tags:
       - ProfileEntry
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -15239,7 +15463,8 @@ paths:
       - ProfileEntry
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profileEntry/{id}:
     delete:
       deprecated: true
@@ -15305,7 +15530,8 @@ paths:
       summary: Delete the ProfileEntry by ID
       tags:
       - ProfileEntry
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       deprecated: true
       description: |
@@ -15375,7 +15601,8 @@ paths:
       summary: Finds the ProfileEntry by ID
       tags:
       - ProfileEntry
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -15449,7 +15676,8 @@ paths:
       tags:
       - ProfileEntry
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profileMember:
     get:
       description: |
@@ -15552,7 +15780,8 @@ paths:
       summary: Finds ProfileMembers
       tags:
       - ProfileMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProfileMember
@@ -15610,7 +15839,8 @@ paths:
       - ProfileMember
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profileMember/{id}:
     delete:
       description: |
@@ -15675,7 +15905,8 @@ paths:
       summary: Delete the ProfileMember by ID
       tags:
       - ProfileMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ProfileMember for the given ID
@@ -15741,7 +15972,8 @@ paths:
       summary: Finds the ProfileMember by ID
       tags:
       - ProfileMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/theme:
     post:
       deprecated: true
@@ -15798,7 +16030,8 @@ paths:
       - Theme
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/theme/unusedId:
     put:
       deprecated: true
@@ -15862,7 +16095,8 @@ paths:
       tags:
       - Theme
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/i18nlocale:
     get:
       description: |
@@ -15947,7 +16181,8 @@ paths:
       summary: Finds I18nlocales
       tags:
       - I18nlocale
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/i18ntranslation:
     get:
       description: |
@@ -16050,7 +16285,8 @@ paths:
       summary: Finds I18ntranslations
       tags:
       - I18ntranslation
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/session/unusedId:
     get:
       description: |
@@ -16105,7 +16341,8 @@ paths:
         label: Curl
         source: |
           curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/session/unusedId'
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/tenant/{id}:
     get:
       deprecated: true
@@ -16177,7 +16414,8 @@ paths:
       summary: Get the current Tenant
       tags:
       - SystemTenant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -16252,7 +16490,8 @@ paths:
       tags:
       - SystemTenant
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/maintenance:
     get:
       description: |
@@ -16307,7 +16546,8 @@ paths:
         label: Curl
         source: |
           curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/maintenance'
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update maintenance details
@@ -16364,7 +16604,8 @@ paths:
       tags:
       - Maintenance
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/license/unusedid:
     get:
       description: |
@@ -16414,7 +16655,8 @@ paths:
       summary: Get the current server license
       tags:
       - License
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /APIv2/service/install:
     post:
       deprecated: true
@@ -16475,7 +16717,9 @@ paths:
       tags:
       - Application
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /API/tenant/bdm:
     get:
       description: |
@@ -16533,7 +16777,8 @@ paths:
       summary: Get the BDM
       tags:
       - BDM
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -16587,7 +16832,8 @@ paths:
       tags:
       - BDM
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/organizationUpload:
     post:
       description: |
@@ -16647,7 +16893,9 @@ paths:
       - Organization
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /services/organization/import:
     post:
       description: |
@@ -16707,7 +16955,8 @@ paths:
       tags:
       - Organization
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/profilesUpload:
     post:
       deprecated: true
@@ -16772,7 +17021,9 @@ paths:
       - Profile
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /services/profile/import:
     post:
       deprecated: true
@@ -16835,7 +17086,8 @@ paths:
       tags:
       - Profile
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
 components:
   parameters:
     pageIndex:
@@ -16984,6 +17236,12 @@ components:
       type: object
     Error:
       additionalProperties: true
+      example:
+        exception: exception
+        explanations:
+        - explanations
+        - explanations
+        message: message
       properties:
         message:
           description: The error message
@@ -16997,21 +17255,7 @@ components:
             type: string
           type: array
       type: object
-    Application:
-      example:
-        id: "305"
-        creationDate: "1411548289900"
-        iconPath: ""
-        createdBy": "1"
-        profileId: "2"
-        description: My application description
-        token: myapp
-        state: DEACTIVATED
-        displayName: My app
-        updatedBy: "1"
-        lastUpdateDate: "1411548289900"
-        version: "1.0"
-        homePageId: "-1"
+    AbstractApplication:
       properties:
         createdBy:
           description: Author user ID
@@ -17026,11 +17270,6 @@ components:
           type: string
         displayName:
           description: display name of the application
-          type: string
-        homePageId:
-          description: id of the application page used as the home page
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         id:
           description: id of the application
@@ -17054,7 +17293,108 @@ components:
         version:
           description: version of the application
           type: string
+        state:
+          description: application state
+          enum:
+          - ACTIVATED
+          - DEACTIVATED
+          type: string
+        visibility:
+          description: "visibility of the Application. This value is purely indicative,\
+            \ changing it in the application object won't change the accessibility\
+            \ to the actual application."
+          enum:
+          - ALL
+          - TECHNICAL_USER
+          - RESTRICTED
+          type: string
+          x-enumDescriptions:
+            ALL: Everyone can use the application
+            TECHNICAL_USER: Only the technical user can use the application
+            RESTRICTED: Access to the application is determined by the user profile
+        editable:
+          description: Indicates whether the application can be modified
+          type: boolean
       type: object
+    AdvancedApplication:
+      allOf:
+      - properties:
+          advanced:
+            description: true for an advanced application
+            type: boolean
+        type: object
+      - $ref: '#/components/schemas/AbstractApplication'
+      - description: Contains the meta information of an advanced Bonita Living Application.
+        type: object
+      description: Contains the meta information of an advanced Bonita Living Application.
+      example:
+        id: "306"
+        advanced: true
+        creationDate: "1411548289900"
+        icon: ""
+        createdBy": "1"
+        profileId: "2"
+        description: My advanced application description
+        token: myadvapp
+        state: ACTIVATED
+        displayName: My advanced app
+        updatedBy: "1"
+        visibility: ALL
+        editable: true
+        lastUpdateDate: "1411548289900"
+        version: "1.0"
+      title: Advanced application
+    LegacyApplication:
+      allOf:
+      - properties:
+          advanced:
+            description: false for a legacy application
+            type: boolean
+        type: object
+      - $ref: '#/components/schemas/AbstractApplication'
+      - description: Contains the meta information of a legacy Bonita Living Application.
+        properties:
+          homePageId:
+            description: id of the application page used as the home page
+            maxLength: 250
+            pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+            type: string
+          layoutId:
+            description: id of the layout used by the application
+            maxLength: 250
+            pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+            type: string
+          themeId:
+            description: id of the theme used by the application
+            maxLength: 250
+            pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+            type: string
+        type: object
+      description: Contains the meta information of a legacy Bonita Living Application.
+      example:
+        id: "305"
+        advanced: false
+        creationDate: "1411548289900"
+        icon: ""
+        createdBy": "1"
+        profileId: "2"
+        description: My application description
+        token: myapp
+        state: DEACTIVATED
+        displayName: My app
+        updatedBy: "1"
+        visibility: ALL
+        editable: true
+        lastUpdateDate: "1411548289900"
+        version: "1.0"
+        homePageId: "26"
+        themeId: "1"
+        layoutId: "3"
+      title: Legacy application
+    Application:
+      oneOf:
+      - $ref: '#/components/schemas/AdvancedApplication'
+      - $ref: '#/components/schemas/LegacyApplication'
     CreateApplicationRequest:
       example:
         version: "1.0"
@@ -17770,6 +18110,29 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-05 11:11:30.808
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: null
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     HumanTaskUpdateRequest:
       example:
         assigned_id: "1234"
@@ -17811,6 +18174,29 @@ components:
           dueDate: 2014-12-25 00:00:00.000
           last_update_date: 2014-12-01 17:39:53.784
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: null
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     ManualTaskCreateRequest:
       example:
         parentTaskId: "40001"
@@ -17882,6 +18268,29 @@ components:
           dueDate: 2014-12-01 17:22:50.809
           last_update_date: 2014-12-01 16:22:50.814
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: null
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     UpdateTaskByIdRequest:
       additionalProperties: true
       example:
@@ -17920,6 +18329,29 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-05 11:11:30.808
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: null
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     UserTaskUpdateRequest:
       example:
         assigned_id: "1"
@@ -18079,6 +18511,7 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-09 17:21:51.946
         type: object
+      example: {}
     ArchivedManualTask:
       allOf:
       - $ref: '#/components/schemas/AbstractArchivedTask'
@@ -18109,6 +18542,7 @@ components:
           dueDate: 2014-12-17 00:00:00.000
           last_update_date: 2014-12-01 17:20:47.200
         type: object
+      example: {}
     ArchivedUserTask:
       allOf:
       - $ref: '#/components/schemas/AbstractArchivedTask'
@@ -18135,6 +18569,7 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-09 17:21:51.946
         type: object
+      example: {}
     ArchivedTask:
       allOf:
       - $ref: '#/components/schemas/AbstractArchivedTask'
@@ -18164,6 +18599,7 @@ components:
           dueDate: 2014-12-01 17:22:50.809
           last_update_date: 2014-12-01 16:24:32.457
         type: object
+      example: {}
     ActivityVariable:
       description: "This resource enables you to retrieve the value of a specific\
         \ variable name for a specific process instance (or case). Only persistent\
@@ -18495,6 +18931,23 @@ components:
             pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
             type: string
         type: object
+      example:
+        submittedBy: submittedBy
+        archivedDate: archivedDate
+        fileName: fileName
+        author: author
+        contentStorageId: contentStorageId
+        index: index
+        description: description
+        sourceObjectId: sourceObjectId
+        creationDate: creationDate
+        contentMimetype: contentMimetype
+        version: version
+        url: url
+        isInternal: true
+        caseId: caseId
+        name: name
+        id: id
     Actor:
       description: ""
       example:
@@ -18749,6 +19202,30 @@ components:
             description: the date set when the process instance was archived
             type: string
         type: object
+      example:
+        end_date: end_date
+        searchIndex5Label: searchIndex5Label
+        archivedDate: archivedDate
+        processDefinitionId: processDefinitionId
+        searchIndex3Value: searchIndex3Value
+        searchIndex4Value: searchIndex4Value
+        searchIndex2Label: searchIndex2Label
+        start: start
+        searchIndex1Value: searchIndex1Value
+        sourceObjectId: sourceObjectId
+        searchIndex3Label: searchIndex3Label
+        failedFlowNodes: failedFlowNodes
+        startedBySubstitute: startedBySubstitute
+        searchIndex5Value: searchIndex5Value
+        searchIndex2Value: searchIndex2Value
+        rootCaseId: rootCaseId
+        id: id
+        state: initializing
+        searchIndex1Label: searchIndex1Label
+        activeFlowNodes: activeFlowNodes
+        started_by: started_by
+        searchIndex4Label: searchIndex4Label
+        last_update_date: last_update_date
     ProcessInstanceInfo:
       description: "Retrieves information about a process instances. It returns counters\
         \ for each flow node in the process instances, showing the number of flow\
@@ -18833,6 +19310,14 @@ components:
             description: the date set when the process instance comment was archived
             type: string
         type: object
+      example:
+        archivedDate: archivedDate
+        processInstanceId: processInstanceId
+        tenantId: tenantId
+        postDate: postDate
+        id: id
+        userId: userId
+        content: content
     ActivationState:
       description: the state of the process definition (ENABLED or DISABLED)
       enum:
@@ -19529,6 +20014,16 @@ components:
             pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
             type: string
         type: object
+      example:
+        archivedDate: archivedDate
+        containerType: containerType
+        connectorId: connectorId
+        name: name
+        activationEvent: ON_ENTER
+        id: 0
+        state: TO_BE_EXECUTED
+        containerId: containerId
+        version: version
     FlowNode:
       description: "A flow node (gateway, event, or task) in an open instance of a\
         \ process."
@@ -19656,6 +20151,31 @@ components:
             pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
             type: string
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        archivedDate: archivedDate
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        parentTaskId": parentTaskId"
+        displayName: displayName
+        executedBySubstitute: executedBySubstitute
+        dueDate: dueDate
+        description: description
+        sourceObjectId: sourceObjectId
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        caseId: caseId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: state
+        parentCaseId: parentCaseId
+        assigned_id: assigned_id
+        last_update_date: last_update_date
     TimerEventTrigger:
       description: BPM timer event triggers
       example:

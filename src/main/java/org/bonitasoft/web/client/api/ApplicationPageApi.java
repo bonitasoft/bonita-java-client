@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import org.bonitasoft.web.client.model.ApplicationPageCreateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public interface ApplicationPageApi extends ApiClient.Api {
 
     /**
@@ -129,7 +129,7 @@ public interface ApplicationPageApi extends ApiClient.Api {
      */
     @RequestLine("GET /API/living/application-page?p={p}&c={c}&f={f}&o={o}&s={s}")
     @Headers({
-            "Accept: application/json",
+            "Accept: ApplicationPage/json,application/json",
     })
     List<ApplicationPage> searchApplicationPages(@Param("p") Integer p, @Param("c") Integer c,
             @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
@@ -149,7 +149,7 @@ public interface ApplicationPageApi extends ApiClient.Api {
      */
     @RequestLine("GET /API/living/application-page?p={p}&c={c}&f={f}&o={o}&s={s}")
     @Headers({
-            "Accept: application/json",
+            "Accept: ApplicationPage/json,application/json",
     })
     ApiResponse<List<ApplicationPage>> searchApplicationPagesWithHttpInfo(@Param("p") Integer p, @Param("c") Integer c,
             @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
@@ -178,7 +178,7 @@ public interface ApplicationPageApi extends ApiClient.Api {
      */
     @RequestLine("GET /API/living/application-page?p={p}&c={c}&f={f}&o={o}&s={s}")
     @Headers({
-            "Accept: application/json",
+            "Accept: ApplicationPage/json,application/json",
     })
     List<ApplicationPage> searchApplicationPages(
             @QueryMap(encoded = true) SearchApplicationPagesQueryParams queryParams);
@@ -204,7 +204,7 @@ public interface ApplicationPageApi extends ApiClient.Api {
      */
     @RequestLine("GET /API/living/application-page?p={p}&c={c}&f={f}&o={o}&s={s}")
     @Headers({
-            "Accept: application/json",
+            "Accept: ApplicationPage/json,application/json",
     })
     ApiResponse<List<ApplicationPage>> searchApplicationPagesWithHttpInfo(
             @QueryMap(encoded = true) SearchApplicationPagesQueryParams queryParams);

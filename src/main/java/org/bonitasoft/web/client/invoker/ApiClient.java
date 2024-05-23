@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@ package org.bonitasoft.web.client.invoker;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,7 +39,7 @@ import feign.jackson.JacksonEncoder;
 import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class ApiClient {
 
     private static final Logger log = Logger.getLogger(ApiClient.class.getName());
@@ -205,6 +206,16 @@ public class ApiClient {
     public void setBearerToken(String bearerToken) {
         HttpBearerAuth apiAuthorization = getAuthorization(HttpBearerAuth.class);
         apiAuthorization.setBearerToken(bearerToken);
+    }
+
+    /**
+     * Helper method to configure the supplier of bearer tokens.
+     * 
+     * @param tokenSupplier the supplier of bearer tokens.
+     */
+    public void setBearerToken(Supplier<String> tokenSupplier) {
+        HttpBearerAuth apiAuthorization = getAuthorization(HttpBearerAuth.class);
+        apiAuthorization.setBearerToken(tokenSupplier);
     }
 
     /**

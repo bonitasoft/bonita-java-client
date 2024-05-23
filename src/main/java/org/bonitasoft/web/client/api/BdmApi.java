@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import org.bonitasoft.web.client.model.BusinessData;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public interface BdmApi extends ApiClient.Api {
 
     /**
@@ -253,7 +253,7 @@ public interface BdmApi extends ApiClient.Api {
     @RequestLine("POST /portal/fileUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadFile(@Param("file") File file);
 
@@ -269,7 +269,7 @@ public interface BdmApi extends ApiClient.Api {
     @RequestLine("POST /portal/fileUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadFileWithHttpInfo(@Param("file") File file);
 

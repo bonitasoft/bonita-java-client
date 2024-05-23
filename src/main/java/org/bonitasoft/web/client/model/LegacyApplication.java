@@ -26,34 +26,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Application
+ * Contains the meta information of a legacy Bonita Living Application.
  */
 @JsonPropertyOrder({
-        Application.JSON_PROPERTY_ADVANCED,
-        Application.JSON_PROPERTY_CREATED_BY,
-        Application.JSON_PROPERTY_CREATION_DATE,
-        Application.JSON_PROPERTY_DESCRIPTION,
-        Application.JSON_PROPERTY_DISPLAY_NAME,
-        Application.JSON_PROPERTY_ID,
-        Application.JSON_PROPERTY_LAST_UPDATE_DATE,
-        Application.JSON_PROPERTY_PROFILE_ID,
-        Application.JSON_PROPERTY_TOKEN,
-        Application.JSON_PROPERTY_UPDATED_BY,
-        Application.JSON_PROPERTY_VERSION,
-        Application.JSON_PROPERTY_STATE,
-        Application.JSON_PROPERTY_VISIBILITY,
-        Application.JSON_PROPERTY_EDITABLE,
-        Application.JSON_PROPERTY_HOME_PAGE_ID,
-        Application.JSON_PROPERTY_LAYOUT_ID,
-        Application.JSON_PROPERTY_THEME_ID
+        LegacyApplication.JSON_PROPERTY_CREATED_BY,
+        LegacyApplication.JSON_PROPERTY_CREATION_DATE,
+        LegacyApplication.JSON_PROPERTY_DESCRIPTION,
+        LegacyApplication.JSON_PROPERTY_DISPLAY_NAME,
+        LegacyApplication.JSON_PROPERTY_ID,
+        LegacyApplication.JSON_PROPERTY_LAST_UPDATE_DATE,
+        LegacyApplication.JSON_PROPERTY_PROFILE_ID,
+        LegacyApplication.JSON_PROPERTY_TOKEN,
+        LegacyApplication.JSON_PROPERTY_UPDATED_BY,
+        LegacyApplication.JSON_PROPERTY_VERSION,
+        LegacyApplication.JSON_PROPERTY_STATE,
+        LegacyApplication.JSON_PROPERTY_VISIBILITY,
+        LegacyApplication.JSON_PROPERTY_EDITABLE,
+        LegacyApplication.JSON_PROPERTY_ADVANCED,
+        LegacyApplication.JSON_PROPERTY_HOME_PAGE_ID,
+        LegacyApplication.JSON_PROPERTY_LAYOUT_ID,
+        LegacyApplication.JSON_PROPERTY_THEME_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
-public class Application implements Serializable {
+public class LegacyApplication implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    public static final String JSON_PROPERTY_ADVANCED = "advanced";
-    private Boolean advanced;
 
     public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
     private String createdBy;
@@ -169,6 +166,9 @@ public class Application implements Serializable {
     public static final String JSON_PROPERTY_EDITABLE = "editable";
     private Boolean editable;
 
+    public static final String JSON_PROPERTY_ADVANCED = "advanced";
+    private Boolean advanced;
+
     public static final String JSON_PROPERTY_HOME_PAGE_ID = "homePageId";
     private String homePageId;
 
@@ -178,35 +178,10 @@ public class Application implements Serializable {
     public static final String JSON_PROPERTY_THEME_ID = "themeId";
     private String themeId;
 
-    public Application() {
+    public LegacyApplication() {
     }
 
-    public Application advanced(Boolean advanced) {
-
-        this.advanced = advanced;
-        return this;
-    }
-
-    /**
-     * false for a legacy application
-     * 
-     * @return advanced
-     **/
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public Boolean getAdvanced() {
-        return advanced;
-    }
-
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAdvanced(Boolean advanced) {
-        this.advanced = advanced;
-    }
-
-    public Application createdBy(String createdBy) {
+    public LegacyApplication createdBy(String createdBy) {
 
         this.createdBy = createdBy;
         return this;
@@ -231,7 +206,7 @@ public class Application implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public Application creationDate(String creationDate) {
+    public LegacyApplication creationDate(String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -256,7 +231,7 @@ public class Application implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public Application description(String description) {
+    public LegacyApplication description(String description) {
 
         this.description = description;
         return this;
@@ -281,7 +256,7 @@ public class Application implements Serializable {
         this.description = description;
     }
 
-    public Application displayName(String displayName) {
+    public LegacyApplication displayName(String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -306,7 +281,7 @@ public class Application implements Serializable {
         this.displayName = displayName;
     }
 
-    public Application id(String id) {
+    public LegacyApplication id(String id) {
 
         this.id = id;
         return this;
@@ -331,7 +306,7 @@ public class Application implements Serializable {
         this.id = id;
     }
 
-    public Application lastUpdateDate(String lastUpdateDate) {
+    public LegacyApplication lastUpdateDate(String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -356,7 +331,7 @@ public class Application implements Serializable {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Application profileId(String profileId) {
+    public LegacyApplication profileId(String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -381,7 +356,7 @@ public class Application implements Serializable {
         this.profileId = profileId;
     }
 
-    public Application token(String token) {
+    public LegacyApplication token(String token) {
 
         this.token = token;
         return this;
@@ -406,7 +381,7 @@ public class Application implements Serializable {
         this.token = token;
     }
 
-    public Application updatedBy(String updatedBy) {
+    public LegacyApplication updatedBy(String updatedBy) {
 
         this.updatedBy = updatedBy;
         return this;
@@ -431,7 +406,7 @@ public class Application implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public Application version(String version) {
+    public LegacyApplication version(String version) {
 
         this.version = version;
         return this;
@@ -456,7 +431,7 @@ public class Application implements Serializable {
         this.version = version;
     }
 
-    public Application state(StateEnum state) {
+    public LegacyApplication state(StateEnum state) {
 
         this.state = state;
         return this;
@@ -481,7 +456,7 @@ public class Application implements Serializable {
         this.state = state;
     }
 
-    public Application visibility(VisibilityEnum visibility) {
+    public LegacyApplication visibility(VisibilityEnum visibility) {
 
         this.visibility = visibility;
         return this;
@@ -507,7 +482,7 @@ public class Application implements Serializable {
         this.visibility = visibility;
     }
 
-    public Application editable(Boolean editable) {
+    public LegacyApplication editable(Boolean editable) {
 
         this.editable = editable;
         return this;
@@ -532,7 +507,32 @@ public class Application implements Serializable {
         this.editable = editable;
     }
 
-    public Application homePageId(String homePageId) {
+    public LegacyApplication advanced(Boolean advanced) {
+
+        this.advanced = advanced;
+        return this;
+    }
+
+    /**
+     * false for a legacy application
+     * 
+     * @return advanced
+     **/
+    @jakarta.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ADVANCED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getAdvanced() {
+        return advanced;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ADVANCED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setAdvanced(Boolean advanced) {
+        this.advanced = advanced;
+    }
+
+    public LegacyApplication homePageId(String homePageId) {
 
         this.homePageId = homePageId;
         return this;
@@ -557,7 +557,7 @@ public class Application implements Serializable {
         this.homePageId = homePageId;
     }
 
-    public Application layoutId(String layoutId) {
+    public LegacyApplication layoutId(String layoutId) {
 
         this.layoutId = layoutId;
         return this;
@@ -582,7 +582,7 @@ public class Application implements Serializable {
         this.layoutId = layoutId;
     }
 
-    public Application themeId(String themeId) {
+    public LegacyApplication themeId(String themeId) {
 
         this.themeId = themeId;
         return this;
@@ -615,37 +615,36 @@ public class Application implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Application application = (Application) o;
-        return Objects.equals(this.advanced, application.advanced) &&
-                Objects.equals(this.createdBy, application.createdBy) &&
-                Objects.equals(this.creationDate, application.creationDate) &&
-                Objects.equals(this.description, application.description) &&
-                Objects.equals(this.displayName, application.displayName) &&
-                Objects.equals(this.id, application.id) &&
-                Objects.equals(this.lastUpdateDate, application.lastUpdateDate) &&
-                Objects.equals(this.profileId, application.profileId) &&
-                Objects.equals(this.token, application.token) &&
-                Objects.equals(this.updatedBy, application.updatedBy) &&
-                Objects.equals(this.version, application.version) &&
-                Objects.equals(this.state, application.state) &&
-                Objects.equals(this.visibility, application.visibility) &&
-                Objects.equals(this.editable, application.editable) &&
-                Objects.equals(this.homePageId, application.homePageId) &&
-                Objects.equals(this.layoutId, application.layoutId) &&
-                Objects.equals(this.themeId, application.themeId);
+        LegacyApplication legacyApplication = (LegacyApplication) o;
+        return Objects.equals(this.createdBy, legacyApplication.createdBy) &&
+                Objects.equals(this.creationDate, legacyApplication.creationDate) &&
+                Objects.equals(this.description, legacyApplication.description) &&
+                Objects.equals(this.displayName, legacyApplication.displayName) &&
+                Objects.equals(this.id, legacyApplication.id) &&
+                Objects.equals(this.lastUpdateDate, legacyApplication.lastUpdateDate) &&
+                Objects.equals(this.profileId, legacyApplication.profileId) &&
+                Objects.equals(this.token, legacyApplication.token) &&
+                Objects.equals(this.updatedBy, legacyApplication.updatedBy) &&
+                Objects.equals(this.version, legacyApplication.version) &&
+                Objects.equals(this.state, legacyApplication.state) &&
+                Objects.equals(this.visibility, legacyApplication.visibility) &&
+                Objects.equals(this.editable, legacyApplication.editable) &&
+                Objects.equals(this.advanced, legacyApplication.advanced) &&
+                Objects.equals(this.homePageId, legacyApplication.homePageId) &&
+                Objects.equals(this.layoutId, legacyApplication.layoutId) &&
+                Objects.equals(this.themeId, legacyApplication.themeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(advanced, createdBy, creationDate, description, displayName, id, lastUpdateDate, profileId,
-                token, updatedBy, version, state, visibility, editable, homePageId, layoutId, themeId);
+        return Objects.hash(createdBy, creationDate, description, displayName, id, lastUpdateDate, profileId, token,
+                updatedBy, version, state, visibility, editable, advanced, homePageId, layoutId, themeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Application {\n");
-        sb.append("    advanced: ").append(toIndentedString(advanced)).append("\n");
+        sb.append("class LegacyApplication {\n");
         sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
         sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -659,6 +658,7 @@ public class Application implements Serializable {
         sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
         sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
+        sb.append("    advanced: ").append(toIndentedString(advanced)).append("\n");
         sb.append("    homePageId: ").append(toIndentedString(homePageId)).append("\n");
         sb.append("    layoutId: ").append(toIndentedString(layoutId)).append("\n");
         sb.append("    themeId: ").append(toIndentedString(themeId)).append("\n");

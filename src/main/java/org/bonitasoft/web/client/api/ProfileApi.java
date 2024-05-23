@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import org.bonitasoft.web.client.model.ProfileUpdateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public interface ProfileApi extends ApiClient.Api {
 
     /**
@@ -324,7 +324,7 @@ public interface ProfileApi extends ApiClient.Api {
     @RequestLine("POST /portal/profilesUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadprofiles(@Param("file") File file);
 
@@ -341,7 +341,7 @@ public interface ProfileApi extends ApiClient.Api {
     @RequestLine("POST /portal/profilesUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadprofilesWithHttpInfo(@Param("file") File file);
 
