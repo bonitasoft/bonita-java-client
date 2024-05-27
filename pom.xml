@@ -49,7 +49,7 @@
     <!-- Bonita -->
     <bonita-openapi.version>0.0.16</bonita-openapi.version>
     <swagger-annotations.version>1.6.14</swagger-annotations.version>
-    <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
+    <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
     <jsr305.version>3.0.2</jsr305.version>
     <feign.version>13.2.1</feign.version>
     <feign-form.version>3.8.0</feign-form.version>
