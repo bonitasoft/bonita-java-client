@@ -61,7 +61,7 @@
     <slf4j-api.version>2.0.13</slf4j-api.version>
     <!-- Tests -->
     <junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
-    <assertj-core.version>3.25.3</assertj-core.version>
+    <assertj-core.version>3.26.0</assertj-core.version>
     <mockito-core.version>5.12.0</mockito-core.version>
     <logback-classic.version>1.5.6</logback-classic.version>
     <testcontainers.version>1.19.5</testcontainers.version>
