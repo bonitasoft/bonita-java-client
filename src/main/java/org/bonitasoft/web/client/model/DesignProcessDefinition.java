@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         DesignProcessDefinition.JSON_PROPERTY_CONTRACT,
         DesignProcessDefinition.JSON_PROPERTY_CONTEXT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class DesignProcessDefinition implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,25 +55,25 @@ public class DesignProcessDefinition implements Serializable {
     private FlowElementContainerDefinition flowElementContainer;
 
     public static final String JSON_PROPERTY_PARAMETERS = "parameters";
-    private List<DesignProcessDefinitionParamater> parameters;
+    private List<DesignProcessDefinitionParamater> parameters = new ArrayList<>();
 
     public static final String JSON_PROPERTY_ACTORS_LIST = "actorsList";
-    private List<ActorDefinition> actorsList;
+    private List<ActorDefinition> actorsList = new ArrayList<>();
 
     public static final String JSON_PROPERTY_ACTOR_INITIATOR = "actorInitiator";
     private ActorDefinition actorInitiator;
 
     public static final String JSON_PROPERTY_STRING_INDEX_LABELS = "stringIndexLabels";
-    private List<String> stringIndexLabels;
+    private List<String> stringIndexLabels = new ArrayList<>();
 
     public static final String JSON_PROPERTY_STRING_INDEX_VALUES = "stringIndexValues";
-    private List<Expression> stringIndexValues;
+    private List<Expression> stringIndexValues = new ArrayList<>();
 
     public static final String JSON_PROPERTY_CONTRACT = "contract";
     private Contract contract;
 
     public static final String JSON_PROPERTY_CONTEXT = "context";
-    private List<DesignProcessDefinitionContext> context;
+    private List<DesignProcessDefinitionContext> context = new ArrayList<>();
 
     public DesignProcessDefinition() {
     }
