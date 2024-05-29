@@ -26,7 +26,8 @@ endif::[]
 :project-group-id: org.bonitasoft.web
 :project-artifact-id: bonita-java-client
 :project-version: 1.0.2-SNAPSHOT
-:bonita-short-version: 7.13
+:bonita-short-version: 10.2
+:bonita-marketing-version: 2024.3
 :orga: bonitasoft
 :uri-org: https://github.com/{orga}
 :uri-repo: {uri-org}/{project-artifact-id}
@@ -54,16 +55,32 @@ endif::[]
 
 This project is the official web client for Bonita when working with Java (or on the JVM).
 
-It is based on an https://swagger.io/specification/[OpenAPI image:openapi.png[OpenAPI,width=30px]^] specification for **Bonita {bonita-short-version}** `Enterprise` edition.
+It is based on an https://swagger.io/specification/[OpenAPI image:openapi.png[OpenAPI,width=30px]^] specification for **Bonita {bonita-marketing-version} ({bonita-short-version})** `Enterprise` edition.
 This means that this client includes all `Community` operations plus some that are only supported by `Enterprise` editions servers.
 
 '''
 
-== Features
+== Features and compatibility
 
-* Cover publicly available http endpoints of Bonita Platform {bonita-short-version} and onwards
+* Cover publicly available http endpoints of Bonita Platform {bonita-marketing-version} and onwards
 * Built-in Bonita authentication support (SSO not supported yet)
 * Higher level code than raw openapi client to ease developer journey
+
+This matrix gives you the compatibility between this library and the Bonita versions. In case you are using an older version of Bonita, refer to the corresponding tagged version of this library's documentation.
+[cols="1,1"]
+|===
+|Bonita Java Client version |Bonita version 
+
+|{project-version}
+|{bonita-marketing-version} ({bonita-short-version}) or higher
+
+|https://github.com/bonitasoft/bonita-java-client/tree/1.0.1[1.0.1] or 1.0.0
+|2021.2 (7.13) to 2024.2 (10.1)
+
+|https://github.com/bonitasoft/bonita-java-client/tree/0.0.10[0.0.10] or prior
+|7.11 to 2021.1 (7.12)
+|===
+
 
 == Getting started
 
