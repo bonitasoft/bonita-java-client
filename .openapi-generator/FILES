@@ -5,6 +5,7 @@ src/main/java/org/bonitasoft/web/client/api/ActivityApi.java
 src/main/java/org/bonitasoft/web/client/api/ActivityVariableApi.java
 src/main/java/org/bonitasoft/web/client/api/ActorApi.java
 src/main/java/org/bonitasoft/web/client/api/ActorMemberApi.java
+src/main/java/org/bonitasoft/web/client/api/ApplicationApi.java
 src/main/java/org/bonitasoft/web/client/api/ApplicationMenuApi.java
 src/main/java/org/bonitasoft/web/client/api/ApplicationPageApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedActivityApi.java
@@ -77,6 +78,7 @@ src/main/java/org/bonitasoft/web/client/invoker/StringUtil.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/ApiKeyAuth.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/HttpBasicAuth.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/HttpBearerAuth.java
+src/main/java/org/bonitasoft/web/client/model/AbstractApplication.java
 src/main/java/org/bonitasoft/web/client/model/AbstractArchivedTask.java
 src/main/java/org/bonitasoft/web/client/model/AbstractTask.java
 src/main/java/org/bonitasoft/web/client/model/ActivationState.java
@@ -90,6 +92,7 @@ src/main/java/org/bonitasoft/web/client/model/Actor.java
 src/main/java/org/bonitasoft/web/client/model/ActorDefinition.java
 src/main/java/org/bonitasoft/web/client/model/ActorMember.java
 src/main/java/org/bonitasoft/web/client/model/ActorUpdateRequest.java
+src/main/java/org/bonitasoft/web/client/model/AdvancedApplication.java
 src/main/java/org/bonitasoft/web/client/model/ApiResponse.java
 src/main/java/org/bonitasoft/web/client/model/Application.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenu.java
@@ -143,6 +146,7 @@ src/main/java/org/bonitasoft/web/client/model/GroupUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/HumanTask.java
 src/main/java/org/bonitasoft/web/client/model/HumanTaskUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/I18nlocale.java
+src/main/java/org/bonitasoft/web/client/model/LegacyApplication.java
 src/main/java/org/bonitasoft/web/client/model/License.java
 src/main/java/org/bonitasoft/web/client/model/MaintenanceDetails.java
 src/main/java/org/bonitasoft/web/client/model/ManualTask.java
