@@ -19,7 +19,6 @@ package org.bonitasoft.web.client.services.impl;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doReturn;
@@ -103,7 +102,8 @@ class DefaultApplicationServiceTest {
         applicationService.importApplications(dummyApps, ApplicationImportPolicy.REPLACE_DUPLICATES);
 
         // Then
-        verify(applicationApi, atLeast(fakeAppTokens.size())).searchApplications(anyMap());
+        verify(applicationApi, atLeast(fakeAppTokens.size()))
+                .searchApplications(any(ApplicationApi.SearchApplicationsQueryParams.class));
         verify(applicationService, times(fakeAppTokens.size())).silentDeleteApplication(anyString());
         verify(applicationApi).uploadApplication(dummyApps);
         verify(applicationApi).importApplication(anyString(), captor.capture());

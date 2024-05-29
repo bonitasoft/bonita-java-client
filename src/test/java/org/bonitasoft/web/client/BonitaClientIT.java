@@ -93,8 +93,11 @@ class BonitaClientIT {
 
     private static final int MAX_SEARCH_COUNT = 100;
 
+    private static final String BONITA_DOCKER_IMAGE = "bonitasoft.jfrog.io/docker-snapshots/bonita-community:10.2-SNAPSHOT";
+
     @Container
-    private static final BonitaContainer<? extends BonitaContainer<?>> BONITA_CONTAINER = new BonitaContainer<>();
+    private static final BonitaContainer<? extends BonitaContainer<?>> BONITA_CONTAINER = new BonitaContainer<>(
+            BONITA_DOCKER_IMAGE);
 
     private BonitaClient bonitaClient;
 
@@ -196,11 +199,12 @@ class BonitaClientIT {
     }
 
     @Test
-    void applications_should_be_uploaded() throws Exception {
+    void legacy_applications_should_be_uploaded() throws Exception {
         // Given
         loggedInAsTechnicalUser();
         final List<Application> applicationsBefore = bonitaClient.applications().searchApplications(0,
                 MAX_SEARCH_COUNT);
+        var expectedAppTokens = List.of("MyApplication_Client_tests", "HR-dashboard_Client_tests");
 
         // When
         File application = getClasspathFile("/application.xml");
@@ -216,7 +220,42 @@ class BonitaClientIT {
         assertThat(applications)
                 .as("Application names")
                 .extracting(Application::getToken)
-                .contains("MyApplication_Client_tests", "HR-dashboard_Client_tests");
+                .contains(expectedAppTokens.toArray(new String[0]));
+        assertThat(applications)
+                .as("Applications must not be advanced")
+                .filteredOn(app -> expectedAppTokens.contains(app.getToken()))
+                .extracting(Application::getAdvanced)
+                .containsExactly(false, false);
+    }
+
+    @Test
+    void advanced_applications_should_be_uploaded() throws Exception {
+        // Given
+        loggedInAsTechnicalUser();
+        final List<Application> applicationsBefore = bonitaClient.applications().searchApplications(0,
+                MAX_SEARCH_COUNT);
+        var expectedAppTokens = List.of("app1", "app2");
+
+        // When
+        File application = getClasspathFile("/advanced-application.xml");
+        bonitaClient
+                .applications()
+                .importApplications(application, ApplicationImportPolicy.REPLACE_DUPLICATES);
+
+        // Then
+        List<Application> applications = bonitaClient
+                .applications()
+                .searchApplications(new SearchApplicationsQueryParams().p(0).c(MAX_SEARCH_COUNT));
+        assertThat(applications).isNotEmpty().hasSize(applicationsBefore.size() + 2);
+        assertThat(applications)
+                .as("Application names")
+                .extracting(Application::getToken)
+                .contains(expectedAppTokens.toArray(new String[0]));
+        assertThat(applications)
+                .as("Applications must be advanced")
+                .filteredOn(app -> expectedAppTokens.contains(app.getToken()))
+                .extracting(Application::getAdvanced)
+                .containsExactly(true, true);
     }
 
     @Test
