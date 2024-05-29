@@ -78,7 +78,6 @@ src/main/java/org/bonitasoft/web/client/invoker/StringUtil.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/ApiKeyAuth.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/HttpBasicAuth.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/HttpBearerAuth.java
-src/main/java/org/bonitasoft/web/client/model/AbstractApplication.java
 src/main/java/org/bonitasoft/web/client/model/AbstractArchivedTask.java
 src/main/java/org/bonitasoft/web/client/model/AbstractTask.java
 src/main/java/org/bonitasoft/web/client/model/ActivationState.java
