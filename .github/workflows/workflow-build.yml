@@ -7,28 +7,38 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+
+      - uses: Keeper-Security/ksm-action@v1
+        with:
+          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
+          secrets: |
+            ${{ vars.KEEPER_SONARCLOUD_RECORD_ID }}/field/password > env:SONAR_TOKEN
+            ${{ vars.KEEPER_OSSRH_RECORD_ID }}/field/login > env:MAVEN_USERNAME
+            ${{ vars.KEEPER_OSSRH_RECORD_ID }}/field/password > env:MAVEN_PASSWORD
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/field/login > env:GPG_KEYNAME
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/custom_field/gpg-private-key > env:GPG_PRIVATE_KEY
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/field/password > env:MAVEN_GPG_PASSPHRASE
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: temurin
           cache: maven
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ env.GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
       - name: Compile and test project
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./mvnw -B -ntp clean verify sonar:sonar -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.scanner.force-deprecated-java-version=true
+        run: ./mvnw -B -ntp clean verify sonar:sonar -Dsonar.scanner.force-deprecated-java-version=true
 
-      # Build and Push snapshots to maven central
-      - name: Build and Push snapshots to Maven central
-        uses: samuelmeuli/action-maven-publish@v1.4.0
-        with:
-          maven_args: "-DskipTests=true"
-          gpg_private_key: ${{ secrets.gpg_private_key }}
-          gpg_passphrase: ${{ secrets.gpg_passphrase }}
-          nexus_username: ${{ secrets.ossrh_username }}
-          nexus_password: ${{ secrets.ossrh_password }}
+       # Build and Push snapshots to maven central
+      - name: Deploy snapshots to Maven central
+        run: ./mvnw -B -ntp deploy -DskipTests=true -Pdeploy
