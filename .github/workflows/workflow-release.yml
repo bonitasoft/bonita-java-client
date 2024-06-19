@@ -8,17 +8,32 @@ on:
       - closed
 
 jobs:
-
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+
+      - uses: Keeper-Security/ksm-action@v1
+        with:
+          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
+          secrets: |
+            ${{ vars.KEEPER_OSSRH_RECORD_ID }}/field/login > env:MAVEN_USERNAME
+            ${{ vars.KEEPER_OSSRH_RECORD_ID }}/field/password > env:MAVEN_PASSWORD
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/field/login > env:GPG_KEYNAME
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/custom_field/gpg-private-key > env:GPG_PRIVATE_KEY
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/field/password > env:MAVEN_GPG_PASSPHRASE
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: temurin
           cache: maven
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ env.GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
       # Extract version
       - name: Extract version
@@ -28,13 +43,8 @@ jobs:
 
       # Build and Push release to maven central
       - name: Build and Push release to Maven central
-        uses: samuelmeuli/action-maven-publish@v1.4.0
-        with:
-          gpg_private_key: ${{ secrets.gpg_private_key }}
-          gpg_passphrase: ${{ secrets.gpg_passphrase }}
-          nexus_username: ${{ secrets.ossrh_username }}
-          nexus_password: ${{ secrets.ossrh_password }}
-
+        run: ./mvnw -B -ntp deploy -DskipTests -Pdeploy
+        
       # Create tag and GitHub release
       - name: Create Release
         id: create_release
