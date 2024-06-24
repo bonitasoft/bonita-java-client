@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ import org.bonitasoft.web.client.model.ApiResponse;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public interface DiagramApi extends ApiClient.Api {
 
     /**
@@ -34,7 +34,7 @@ public interface DiagramApi extends ApiClient.Api {
      */
     @RequestLine("GET /API/bpm/diagram/{id}")
     @Headers({
-            "Accept: application/json",
+            "Accept: application/json,application/xml",
     })
     String getProcessDiagramById(@Param("id") String id);
 
@@ -49,7 +49,7 @@ public interface DiagramApi extends ApiClient.Api {
      */
     @RequestLine("GET /API/bpm/diagram/{id}")
     @Headers({
-            "Accept: application/json",
+            "Accept: application/json,application/xml",
     })
     ApiResponse<String> getProcessDiagramByIdWithHttpInfo(@Param("id") String id);
 
