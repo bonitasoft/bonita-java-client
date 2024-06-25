@@ -75,6 +75,7 @@
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     <sonar-maven-plugin.version>4.0.0.4121</sonar-maven-plugin.version>
     <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
+    <gitflow-maven-plugin.version>1.21.0</gitflow-maven-plugin.version>
     <maven-javadoc-plugin.version>3.7.0</maven-javadoc-plugin.version>
     <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
     <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
@@ -393,6 +394,17 @@
             <serverId>ossrh</serverId>
             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
             <autoReleaseAfterClose>false</autoReleaseAfterClose>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.amashchenko.maven.plugin</groupId>
+          <artifactId>gitflow-maven-plugin</artifactId>
+          <version>${gitflow-maven-plugin.version}</version>
+          <configuration>
+            <versionsMavenPluginVersion>${versions-maven-plugin.version}</versionsMavenPluginVersion>
+            <!-- 0: increment major digit on develop, 1: increment minor digit on develop, 2: increment patch digit on develop -->
+            <versionDigitToIncrement>1</versionDigitToIncrement>
+            <commitMessagePrefix xml:space="preserve">chore(release): </commitMessagePrefix>
           </configuration>
         </plugin>
         <plugin>
