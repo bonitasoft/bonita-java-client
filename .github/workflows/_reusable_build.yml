@@ -6,6 +6,9 @@ on:
       ossrh-publication:
         type: boolean
         default: false
+    secrets:
+      KSM_CONFIG:
+        required: true
 
 jobs:
 
