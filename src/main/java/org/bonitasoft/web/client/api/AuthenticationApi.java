@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ import org.bonitasoft.web.client.model.ApiResponse;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public interface AuthenticationApi extends ApiClient.Api {
 
     /**
@@ -42,14 +42,13 @@ public interface AuthenticationApi extends ApiClient.Api {
      * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal
      *        (after a successful login) or to the login page (after a login failure). (optional, default to false)
      * @param redirectURL the URL of the page to be displayed after login (optional, default to )
-     * @return String
      */
     @RequestLine("POST /loginservice")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
             "Accept: application/json",
     })
-    String login(@Param("username") String username, @Param("password") String password, @Param("tenant") String tenant,
+    void login(@Param("username") String username, @Param("password") String password, @Param("tenant") String tenant,
             @Param("redirect") String redirect, @Param("redirectURL") String redirectURL);
 
     /**
@@ -68,14 +67,13 @@ public interface AuthenticationApi extends ApiClient.Api {
      * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal
      *        (after a successful login) or to the login page (after a login failure). (optional, default to false)
      * @param redirectURL the URL of the page to be displayed after login (optional, default to )
-     * @return A ApiResponse that wraps the response boyd and the http headers.
      */
     @RequestLine("POST /loginservice")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
             "Accept: application/json",
     })
-    ApiResponse<String> loginWithHttpInfo(@Param("username") String username, @Param("password") String password,
+    ApiResponse<Void> loginWithHttpInfo(@Param("username") String username, @Param("password") String password,
             @Param("tenant") String tenant, @Param("redirect") String redirect,
             @Param("redirectURL") String redirectURL);
 

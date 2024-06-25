@@ -22,10 +22,14 @@
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
 
+# Ignore below APIs to keep client iso to legacy Bonita APIs
 **/org/bonitasoft/web/client/api/PortalAuthenticationApi.java
 **/org/bonitasoft/web/client/api/LicenseApi.java
 **/org/bonitasoft/web/client/api/SessionApi.java
-**/org/bonitasoft/web/client/api/ApplicationApi.java
+
+# As long as OpenAPI Generator does not handle inheritance and the usage of allOf, anyOf and oneOf,
+# we ignore this incorrect abstraction generation to prevent its usage.
+**/org/bonitasoft/web/client/model/AbstractApplication.java
 
 **/org/bonitasoft/web/client/model/Inline*.java
 **/org/bonitasoft/web/client/invoker/ServerConfiguration.java

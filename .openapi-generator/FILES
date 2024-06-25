@@ -5,6 +5,7 @@ src/main/java/org/bonitasoft/web/client/api/ActivityApi.java
 src/main/java/org/bonitasoft/web/client/api/ActivityVariableApi.java
 src/main/java/org/bonitasoft/web/client/api/ActorApi.java
 src/main/java/org/bonitasoft/web/client/api/ActorMemberApi.java
+src/main/java/org/bonitasoft/web/client/api/ApplicationApi.java
 src/main/java/org/bonitasoft/web/client/api/ApplicationMenuApi.java
 src/main/java/org/bonitasoft/web/client/api/ApplicationPageApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedActivityApi.java
@@ -92,6 +93,7 @@ src/main/java/org/bonitasoft/web/client/model/ActorMember.java
 src/main/java/org/bonitasoft/web/client/model/ActorUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ApiResponse.java
 src/main/java/org/bonitasoft/web/client/model/Application.java
+src/main/java/org/bonitasoft/web/client/model/ApplicationLink.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenu.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenuCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenuUpdateRequest.java
@@ -143,6 +145,7 @@ src/main/java/org/bonitasoft/web/client/model/GroupUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/HumanTask.java
 src/main/java/org/bonitasoft/web/client/model/HumanTaskUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/I18nlocale.java
+src/main/java/org/bonitasoft/web/client/model/LegacyApplication.java
 src/main/java/org/bonitasoft/web/client/model/License.java
 src/main/java/org/bonitasoft/web/client/model/MaintenanceDetails.java
 src/main/java/org/bonitasoft/web/client/model/ManualTask.java

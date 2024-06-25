@@ -1,5 +1,5 @@
 <applications
-	xmlns="http://documentation.bonitasoft.com/application-xml-schema/1.1">
+	xmlns="http://documentation.bonitasoft.com/application-xml-schema/1.0">
 	<application profile="User" state="ACTIVATED"
 		token="HR-dashboard_Client_tests" version="2.0"
 		homePage="my-new-custom-page"
