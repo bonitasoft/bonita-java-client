@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2024 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         LegacyApplication.JSON_PROPERTY_STATE,
         LegacyApplication.JSON_PROPERTY_VISIBILITY,
         LegacyApplication.JSON_PROPERTY_EDITABLE,
-        LegacyApplication.JSON_PROPERTY_ADVANCED,
+        LegacyApplication.JSON_PROPERTY_LINK,
         LegacyApplication.JSON_PROPERTY_HOME_PAGE_ID,
         LegacyApplication.JSON_PROPERTY_LAYOUT_ID,
         LegacyApplication.JSON_PROPERTY_THEME_ID
@@ -166,8 +166,8 @@ public class LegacyApplication implements Serializable {
     public static final String JSON_PROPERTY_EDITABLE = "editable";
     private Boolean editable;
 
-    public static final String JSON_PROPERTY_ADVANCED = "advanced";
-    private Boolean advanced;
+    public static final String JSON_PROPERTY_LINK = "link";
+    private Boolean link;
 
     public static final String JSON_PROPERTY_HOME_PAGE_ID = "homePageId";
     private String homePageId;
@@ -507,29 +507,29 @@ public class LegacyApplication implements Serializable {
         this.editable = editable;
     }
 
-    public LegacyApplication advanced(Boolean advanced) {
+    public LegacyApplication link(Boolean link) {
 
-        this.advanced = advanced;
+        this.link = link;
         return this;
     }
 
     /**
      * false for a legacy application
      * 
-     * @return advanced
+     * @return link
      **/
     @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
+    @JsonProperty(JSON_PROPERTY_LINK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-    public Boolean getAdvanced() {
-        return advanced;
+    public Boolean getLink() {
+        return link;
     }
 
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
+    @JsonProperty(JSON_PROPERTY_LINK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAdvanced(Boolean advanced) {
-        this.advanced = advanced;
+    public void setLink(Boolean link) {
+        this.link = link;
     }
 
     public LegacyApplication homePageId(String homePageId) {
@@ -629,7 +629,7 @@ public class LegacyApplication implements Serializable {
                 Objects.equals(this.state, legacyApplication.state) &&
                 Objects.equals(this.visibility, legacyApplication.visibility) &&
                 Objects.equals(this.editable, legacyApplication.editable) &&
-                Objects.equals(this.advanced, legacyApplication.advanced) &&
+                Objects.equals(this.link, legacyApplication.link) &&
                 Objects.equals(this.homePageId, legacyApplication.homePageId) &&
                 Objects.equals(this.layoutId, legacyApplication.layoutId) &&
                 Objects.equals(this.themeId, legacyApplication.themeId);
@@ -638,7 +638,7 @@ public class LegacyApplication implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(createdBy, creationDate, description, displayName, id, lastUpdateDate, profileId, token,
-                updatedBy, version, state, visibility, editable, advanced, homePageId, layoutId, themeId);
+                updatedBy, version, state, visibility, editable, link, homePageId, layoutId, themeId);
     }
 
     @Override
@@ -658,7 +658,7 @@ public class LegacyApplication implements Serializable {
         sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
         sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
-        sb.append("    advanced: ").append(toIndentedString(advanced)).append("\n");
+        sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    homePageId: ").append(toIndentedString(homePageId)).append("\n");
         sb.append("    layoutId: ").append(toIndentedString(layoutId)).append("\n");
         sb.append("    themeId: ").append(toIndentedString(themeId)).append("\n");

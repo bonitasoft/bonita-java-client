@@ -91,9 +91,9 @@ src/main/java/org/bonitasoft/web/client/model/Actor.java
 src/main/java/org/bonitasoft/web/client/model/ActorDefinition.java
 src/main/java/org/bonitasoft/web/client/model/ActorMember.java
 src/main/java/org/bonitasoft/web/client/model/ActorUpdateRequest.java
-src/main/java/org/bonitasoft/web/client/model/AdvancedApplication.java
 src/main/java/org/bonitasoft/web/client/model/ApiResponse.java
 src/main/java/org/bonitasoft/web/client/model/Application.java
+src/main/java/org/bonitasoft/web/client/model/ApplicationLink.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenu.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenuCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenuUpdateRequest.java

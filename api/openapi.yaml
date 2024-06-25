@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.17
+  version: 0.0.18
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -523,9 +523,9 @@ paths:
       description: |
         Finds living applications with pagination params and filters
 
-        - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`, `advanced`
-        - can search on `token`, `displayName`, `version`, `advanced`
-        - can filter on `token`, `displayName`, `version`, `advanced`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`
+        - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`, `link`
+        - can search on `token`, `displayName`, `version`, `link`
+        - can filter on `token`, `displayName`, `version`, `link`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`
       operationId: searchApplications
       parameters:
       - description: index of the page to display
@@ -593,22 +593,22 @@ paths:
             application/json:
               example:
               - id: "306"
-                advanced: true
+                link: "true"
                 creationDate: "1411548289900"
                 icon: ""
                 createdBy": "1"
                 profileId: "2"
-                description: My advanced application description
+                description: My application link description
                 token: myadvapp
                 state: ACTIVATED
-                displayName: My advanced app
+                displayName: My app link
                 updatedBy: "1"
                 visibility: ALL
-                editable: true
+                editable: "true"
                 lastUpdateDate: "1411548289900"
                 version: "1.0"
               - id: "305"
-                advanced: false
+                link: "false"
                 creationDate: "1411548289900"
                 icon: ""
                 createdBy": "1"
@@ -619,7 +619,7 @@ paths:
                 displayName: My app
                 updatedBy: "1"
                 visibility: ALL
-                editable: true
+                editable: "true"
                 lastUpdateDate: "1411548289900"
                 version: "1.0"
                 homePageId: "26"
@@ -17310,38 +17310,39 @@ components:
           description: Indicates whether the application can be modified
           type: boolean
       type: object
-    AdvancedApplication:
+    ApplicationLink:
       allOf:
       - properties:
-          advanced:
-            description: true for an advanced application
+          link:
+            description: true for an application link
             type: boolean
         type: object
       - $ref: '#/components/schemas/AbstractApplication'
-      - description: Contains the meta information of an advanced Bonita Living Application.
+      - description: Contains the meta information of a Bonita Living Application
+          Link.
         type: object
-      description: Contains the meta information of an advanced Bonita Living Application.
+      description: Contains the meta information of a Bonita Living Application Link.
       example:
         id: "306"
-        advanced: true
+        link: "true"
         creationDate: "1411548289900"
         icon: ""
         createdBy": "1"
         profileId: "2"
-        description: My advanced application description
+        description: My application link description
         token: myadvapp
         state: ACTIVATED
-        displayName: My advanced app
+        displayName: My app link
         updatedBy: "1"
         visibility: ALL
-        editable: true
+        editable: "true"
         lastUpdateDate: "1411548289900"
         version: "1.0"
-      title: Advanced application
+      title: Application Link
     LegacyApplication:
       allOf:
       - properties:
-          advanced:
+          link:
             description: false for a legacy application
             type: boolean
         type: object
@@ -17367,7 +17368,7 @@ components:
       description: Contains the meta information of a legacy Bonita Living Application.
       example:
         id: "305"
-        advanced: false
+        link: "false"
         creationDate: "1411548289900"
         icon: ""
         createdBy": "1"
@@ -17378,7 +17379,7 @@ components:
         displayName: My app
         updatedBy: "1"
         visibility: ALL
-        editable: true
+        editable: "true"
         lastUpdateDate: "1411548289900"
         version: "1.0"
         homePageId: "26"
@@ -17387,9 +17388,8 @@ components:
       title: Legacy application
     Application:
       oneOf:
-      - $ref: '#/components/schemas/AdvancedApplication'
+      - $ref: '#/components/schemas/ApplicationLink'
       - $ref: '#/components/schemas/LegacyApplication'
-      x-one-of-name: Application
     CreateApplicationRequest:
       example:
         version: "1.0"

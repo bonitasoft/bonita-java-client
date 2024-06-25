@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2024 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,26 +26,26 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Contains the meta information of an advanced Bonita Living Application.
+ * Contains the meta information of a Bonita Living Application Link.
  */
 @JsonPropertyOrder({
-        AdvancedApplication.JSON_PROPERTY_CREATED_BY,
-        AdvancedApplication.JSON_PROPERTY_CREATION_DATE,
-        AdvancedApplication.JSON_PROPERTY_DESCRIPTION,
-        AdvancedApplication.JSON_PROPERTY_DISPLAY_NAME,
-        AdvancedApplication.JSON_PROPERTY_ID,
-        AdvancedApplication.JSON_PROPERTY_LAST_UPDATE_DATE,
-        AdvancedApplication.JSON_PROPERTY_PROFILE_ID,
-        AdvancedApplication.JSON_PROPERTY_TOKEN,
-        AdvancedApplication.JSON_PROPERTY_UPDATED_BY,
-        AdvancedApplication.JSON_PROPERTY_VERSION,
-        AdvancedApplication.JSON_PROPERTY_STATE,
-        AdvancedApplication.JSON_PROPERTY_VISIBILITY,
-        AdvancedApplication.JSON_PROPERTY_EDITABLE,
-        AdvancedApplication.JSON_PROPERTY_ADVANCED
+        ApplicationLink.JSON_PROPERTY_CREATED_BY,
+        ApplicationLink.JSON_PROPERTY_CREATION_DATE,
+        ApplicationLink.JSON_PROPERTY_DESCRIPTION,
+        ApplicationLink.JSON_PROPERTY_DISPLAY_NAME,
+        ApplicationLink.JSON_PROPERTY_ID,
+        ApplicationLink.JSON_PROPERTY_LAST_UPDATE_DATE,
+        ApplicationLink.JSON_PROPERTY_PROFILE_ID,
+        ApplicationLink.JSON_PROPERTY_TOKEN,
+        ApplicationLink.JSON_PROPERTY_UPDATED_BY,
+        ApplicationLink.JSON_PROPERTY_VERSION,
+        ApplicationLink.JSON_PROPERTY_STATE,
+        ApplicationLink.JSON_PROPERTY_VISIBILITY,
+        ApplicationLink.JSON_PROPERTY_EDITABLE,
+        ApplicationLink.JSON_PROPERTY_LINK
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
-public class AdvancedApplication implements Serializable {
+public class ApplicationLink implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -163,13 +163,13 @@ public class AdvancedApplication implements Serializable {
     public static final String JSON_PROPERTY_EDITABLE = "editable";
     private Boolean editable;
 
-    public static final String JSON_PROPERTY_ADVANCED = "advanced";
-    private Boolean advanced;
+    public static final String JSON_PROPERTY_LINK = "link";
+    private Boolean link;
 
-    public AdvancedApplication() {
+    public ApplicationLink() {
     }
 
-    public AdvancedApplication createdBy(String createdBy) {
+    public ApplicationLink createdBy(String createdBy) {
 
         this.createdBy = createdBy;
         return this;
@@ -194,7 +194,7 @@ public class AdvancedApplication implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public AdvancedApplication creationDate(String creationDate) {
+    public ApplicationLink creationDate(String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -219,7 +219,7 @@ public class AdvancedApplication implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public AdvancedApplication description(String description) {
+    public ApplicationLink description(String description) {
 
         this.description = description;
         return this;
@@ -244,7 +244,7 @@ public class AdvancedApplication implements Serializable {
         this.description = description;
     }
 
-    public AdvancedApplication displayName(String displayName) {
+    public ApplicationLink displayName(String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -269,7 +269,7 @@ public class AdvancedApplication implements Serializable {
         this.displayName = displayName;
     }
 
-    public AdvancedApplication id(String id) {
+    public ApplicationLink id(String id) {
 
         this.id = id;
         return this;
@@ -294,7 +294,7 @@ public class AdvancedApplication implements Serializable {
         this.id = id;
     }
 
-    public AdvancedApplication lastUpdateDate(String lastUpdateDate) {
+    public ApplicationLink lastUpdateDate(String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -319,7 +319,7 @@ public class AdvancedApplication implements Serializable {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public AdvancedApplication profileId(String profileId) {
+    public ApplicationLink profileId(String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -344,7 +344,7 @@ public class AdvancedApplication implements Serializable {
         this.profileId = profileId;
     }
 
-    public AdvancedApplication token(String token) {
+    public ApplicationLink token(String token) {
 
         this.token = token;
         return this;
@@ -369,7 +369,7 @@ public class AdvancedApplication implements Serializable {
         this.token = token;
     }
 
-    public AdvancedApplication updatedBy(String updatedBy) {
+    public ApplicationLink updatedBy(String updatedBy) {
 
         this.updatedBy = updatedBy;
         return this;
@@ -394,7 +394,7 @@ public class AdvancedApplication implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public AdvancedApplication version(String version) {
+    public ApplicationLink version(String version) {
 
         this.version = version;
         return this;
@@ -419,7 +419,7 @@ public class AdvancedApplication implements Serializable {
         this.version = version;
     }
 
-    public AdvancedApplication state(StateEnum state) {
+    public ApplicationLink state(StateEnum state) {
 
         this.state = state;
         return this;
@@ -444,7 +444,7 @@ public class AdvancedApplication implements Serializable {
         this.state = state;
     }
 
-    public AdvancedApplication visibility(VisibilityEnum visibility) {
+    public ApplicationLink visibility(VisibilityEnum visibility) {
 
         this.visibility = visibility;
         return this;
@@ -470,7 +470,7 @@ public class AdvancedApplication implements Serializable {
         this.visibility = visibility;
     }
 
-    public AdvancedApplication editable(Boolean editable) {
+    public ApplicationLink editable(Boolean editable) {
 
         this.editable = editable;
         return this;
@@ -495,29 +495,29 @@ public class AdvancedApplication implements Serializable {
         this.editable = editable;
     }
 
-    public AdvancedApplication advanced(Boolean advanced) {
+    public ApplicationLink link(Boolean link) {
 
-        this.advanced = advanced;
+        this.link = link;
         return this;
     }
 
     /**
-     * true for an advanced application
+     * true for an application link
      * 
-     * @return advanced
+     * @return link
      **/
     @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
+    @JsonProperty(JSON_PROPERTY_LINK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-    public Boolean getAdvanced() {
-        return advanced;
+    public Boolean getLink() {
+        return link;
     }
 
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
+    @JsonProperty(JSON_PROPERTY_LINK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAdvanced(Boolean advanced) {
-        this.advanced = advanced;
+    public void setLink(Boolean link) {
+        this.link = link;
     }
 
     @Override
@@ -528,33 +528,33 @@ public class AdvancedApplication implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        AdvancedApplication advancedApplication = (AdvancedApplication) o;
-        return Objects.equals(this.createdBy, advancedApplication.createdBy) &&
-                Objects.equals(this.creationDate, advancedApplication.creationDate) &&
-                Objects.equals(this.description, advancedApplication.description) &&
-                Objects.equals(this.displayName, advancedApplication.displayName) &&
-                Objects.equals(this.id, advancedApplication.id) &&
-                Objects.equals(this.lastUpdateDate, advancedApplication.lastUpdateDate) &&
-                Objects.equals(this.profileId, advancedApplication.profileId) &&
-                Objects.equals(this.token, advancedApplication.token) &&
-                Objects.equals(this.updatedBy, advancedApplication.updatedBy) &&
-                Objects.equals(this.version, advancedApplication.version) &&
-                Objects.equals(this.state, advancedApplication.state) &&
-                Objects.equals(this.visibility, advancedApplication.visibility) &&
-                Objects.equals(this.editable, advancedApplication.editable) &&
-                Objects.equals(this.advanced, advancedApplication.advanced);
+        ApplicationLink applicationLink = (ApplicationLink) o;
+        return Objects.equals(this.createdBy, applicationLink.createdBy) &&
+                Objects.equals(this.creationDate, applicationLink.creationDate) &&
+                Objects.equals(this.description, applicationLink.description) &&
+                Objects.equals(this.displayName, applicationLink.displayName) &&
+                Objects.equals(this.id, applicationLink.id) &&
+                Objects.equals(this.lastUpdateDate, applicationLink.lastUpdateDate) &&
+                Objects.equals(this.profileId, applicationLink.profileId) &&
+                Objects.equals(this.token, applicationLink.token) &&
+                Objects.equals(this.updatedBy, applicationLink.updatedBy) &&
+                Objects.equals(this.version, applicationLink.version) &&
+                Objects.equals(this.state, applicationLink.state) &&
+                Objects.equals(this.visibility, applicationLink.visibility) &&
+                Objects.equals(this.editable, applicationLink.editable) &&
+                Objects.equals(this.link, applicationLink.link);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(createdBy, creationDate, description, displayName, id, lastUpdateDate, profileId, token,
-                updatedBy, version, state, visibility, editable, advanced);
+                updatedBy, version, state, visibility, editable, link);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class AdvancedApplication {\n");
+        sb.append("class ApplicationLink {\n");
         sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
         sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -568,7 +568,7 @@ public class AdvancedApplication implements Serializable {
         sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
         sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
-        sb.append("    advanced: ").append(toIndentedString(advanced)).append("\n");
+        sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("}");
         return sb.toString();
     }

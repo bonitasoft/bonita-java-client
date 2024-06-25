@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2024 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Application
  */
 @JsonPropertyOrder({
-        Application.JSON_PROPERTY_ADVANCED,
+        Application.JSON_PROPERTY_LINK,
         Application.JSON_PROPERTY_CREATED_BY,
         Application.JSON_PROPERTY_CREATION_DATE,
         Application.JSON_PROPERTY_DESCRIPTION,
@@ -52,8 +52,8 @@ public class Application implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public static final String JSON_PROPERTY_ADVANCED = "advanced";
-    private Boolean advanced;
+    public static final String JSON_PROPERTY_LINK = "link";
+    private Boolean link;
 
     public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
     private String createdBy;
@@ -181,29 +181,29 @@ public class Application implements Serializable {
     public Application() {
     }
 
-    public Application advanced(Boolean advanced) {
+    public Application link(Boolean link) {
 
-        this.advanced = advanced;
+        this.link = link;
         return this;
     }
 
     /**
      * false for a legacy application
      * 
-     * @return advanced
+     * @return link
      **/
     @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
+    @JsonProperty(JSON_PROPERTY_LINK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-    public Boolean getAdvanced() {
-        return advanced;
+    public Boolean getLink() {
+        return link;
     }
 
-    @JsonProperty(JSON_PROPERTY_ADVANCED)
+    @JsonProperty(JSON_PROPERTY_LINK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAdvanced(Boolean advanced) {
-        this.advanced = advanced;
+    public void setLink(Boolean link) {
+        this.link = link;
     }
 
     public Application createdBy(String createdBy) {
@@ -616,7 +616,7 @@ public class Application implements Serializable {
             return false;
         }
         Application application = (Application) o;
-        return Objects.equals(this.advanced, application.advanced) &&
+        return Objects.equals(this.link, application.link) &&
                 Objects.equals(this.createdBy, application.createdBy) &&
                 Objects.equals(this.creationDate, application.creationDate) &&
                 Objects.equals(this.description, application.description) &&
@@ -637,7 +637,7 @@ public class Application implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(advanced, createdBy, creationDate, description, displayName, id, lastUpdateDate, profileId,
+        return Objects.hash(link, createdBy, creationDate, description, displayName, id, lastUpdateDate, profileId,
                 token, updatedBy, version, state, visibility, editable, homePageId, layoutId, themeId);
     }
 
@@ -645,7 +645,7 @@ public class Application implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class Application {\n");
-        sb.append("    advanced: ").append(toIndentedString(advanced)).append("\n");
+        sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
         sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");

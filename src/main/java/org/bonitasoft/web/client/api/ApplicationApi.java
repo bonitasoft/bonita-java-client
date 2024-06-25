@@ -156,10 +156,10 @@ public interface ApplicationApi extends ApiClient.Api {
     /**
      * Finds living applications
      * Finds living applications with pagination params and filters - can order on &#x60;id&#x60;,&#x60;creationDate&#x60;, &#x60;createdBy&#x60;,
-     * &#x60;profileId&#x60;, &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;updatedBy&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;version&#x60;,
-     * &#x60;advanced&#x60; - can search on &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;advanced&#x60; - can filter on &#x60;token&#x60;,
-     * &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;advanced&#x60;, &#x60;profileId&#x60;, &#x60;creationDate&#x60;, &#x60;createdBy&#x60;,
-     * &#x60;updatedBy&#x60; , &#x60;lastUpdateDate&#x60;, &#x60;userId&#x60;
+     * &#x60;profileId&#x60;, &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;updatedBy&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;version&#x60;, &#x60;link&#x60; -
+     * can search on &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;link&#x60; - can filter on &#x60;token&#x60;, &#x60;displayName&#x60;,
+     * &#x60;version&#x60;, &#x60;link&#x60;, &#x60;profileId&#x60;, &#x60;creationDate&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60; ,
+     * &#x60;lastUpdateDate&#x60;, &#x60;userId&#x60;
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -179,10 +179,10 @@ public interface ApplicationApi extends ApiClient.Api {
      * Finds living applications
      * Similar to <code>searchApplications</code> but it also returns the http response headers .
      * Finds living applications with pagination params and filters - can order on &#x60;id&#x60;,&#x60;creationDate&#x60;, &#x60;createdBy&#x60;,
-     * &#x60;profileId&#x60;, &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;updatedBy&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;version&#x60;,
-     * &#x60;advanced&#x60; - can search on &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;advanced&#x60; - can filter on &#x60;token&#x60;,
-     * &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;advanced&#x60;, &#x60;profileId&#x60;, &#x60;creationDate&#x60;, &#x60;createdBy&#x60;,
-     * &#x60;updatedBy&#x60; , &#x60;lastUpdateDate&#x60;, &#x60;userId&#x60;
+     * &#x60;profileId&#x60;, &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;updatedBy&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;version&#x60;, &#x60;link&#x60; -
+     * can search on &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;link&#x60; - can filter on &#x60;token&#x60;, &#x60;displayName&#x60;,
+     * &#x60;version&#x60;, &#x60;link&#x60;, &#x60;profileId&#x60;, &#x60;creationDate&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60; ,
+     * &#x60;lastUpdateDate&#x60;, &#x60;userId&#x60;
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -201,10 +201,10 @@ public interface ApplicationApi extends ApiClient.Api {
     /**
      * Finds living applications
      * Finds living applications with pagination params and filters - can order on &#x60;id&#x60;,&#x60;creationDate&#x60;, &#x60;createdBy&#x60;,
-     * &#x60;profileId&#x60;, &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;updatedBy&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;version&#x60;,
-     * &#x60;advanced&#x60; - can search on &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;advanced&#x60; - can filter on &#x60;token&#x60;,
-     * &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;advanced&#x60;, &#x60;profileId&#x60;, &#x60;creationDate&#x60;, &#x60;createdBy&#x60;,
-     * &#x60;updatedBy&#x60; , &#x60;lastUpdateDate&#x60;, &#x60;userId&#x60;
+     * &#x60;profileId&#x60;, &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;updatedBy&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;version&#x60;, &#x60;link&#x60; -
+     * can search on &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;link&#x60; - can filter on &#x60;token&#x60;, &#x60;displayName&#x60;,
+     * &#x60;version&#x60;, &#x60;link&#x60;, &#x60;profileId&#x60;, &#x60;creationDate&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60; ,
+     * &#x60;lastUpdateDate&#x60;, &#x60;userId&#x60;
      * Note, this is equivalent to the other <code>searchApplications</code> method,
      * but with the query parameters collected into a single Map parameter. This
      * is convenient for services with optional query parameters, especially when
@@ -232,10 +232,10 @@ public interface ApplicationApi extends ApiClient.Api {
     /**
      * Finds living applications
      * Finds living applications with pagination params and filters - can order on &#x60;id&#x60;,&#x60;creationDate&#x60;, &#x60;createdBy&#x60;,
-     * &#x60;profileId&#x60;, &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;updatedBy&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;version&#x60;,
-     * &#x60;advanced&#x60; - can search on &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;advanced&#x60; - can filter on &#x60;token&#x60;,
-     * &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;advanced&#x60;, &#x60;profileId&#x60;, &#x60;creationDate&#x60;, &#x60;createdBy&#x60;,
-     * &#x60;updatedBy&#x60; , &#x60;lastUpdateDate&#x60;, &#x60;userId&#x60;
+     * &#x60;profileId&#x60;, &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;updatedBy&#x60;, &#x60;lastUpdateDate&#x60;, &#x60;version&#x60;, &#x60;link&#x60; -
+     * can search on &#x60;token&#x60;, &#x60;displayName&#x60;, &#x60;version&#x60;, &#x60;link&#x60; - can filter on &#x60;token&#x60;, &#x60;displayName&#x60;,
+     * &#x60;version&#x60;, &#x60;link&#x60;, &#x60;profileId&#x60;, &#x60;creationDate&#x60;, &#x60;createdBy&#x60;, &#x60;updatedBy&#x60; ,
+     * &#x60;lastUpdateDate&#x60;, &#x60;userId&#x60;
      * Note, this is equivalent to the other <code>searchApplications</code> that receives the query parameters as a map,
      * but this one also exposes the Http response headers
      * 

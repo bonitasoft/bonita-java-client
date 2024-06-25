@@ -77,10 +77,14 @@ import org.bonitasoft.web.client.services.policies.ApplicationImportPolicy;
 import org.bonitasoft.web.client.services.policies.OrganizationImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProcessImportPolicy;
 import org.bonitasoft.web.client.services.policies.ProfileImportPolicy;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import com.vdurmont.semver4j.Semver;
+import com.vdurmont.semver4j.Semver.SemverType;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -93,11 +97,15 @@ class BonitaClientIT {
 
     private static final int MAX_SEARCH_COUNT = 100;
 
-    private static final String BONITA_DOCKER_IMAGE = "bonitasoft.jfrog.io/docker-snapshots/bonita-community:10.2-SNAPSHOT";
+    private static final String BONITA_DOCKER_IMAGE_PROPERTY = "bonita.image";
+
+    private static final String BONITA_DOCKER_IMAGE = System.getProperty(BONITA_DOCKER_IMAGE_PROPERTY, "");
 
     @Container
     private static final BonitaContainer<? extends BonitaContainer<?>> BONITA_CONTAINER = new BonitaContainer<>(
             BONITA_DOCKER_IMAGE);
+
+    private static final Semver _10_2 = new Semver("10.2", SemverType.LOOSE);
 
     private BonitaClient bonitaClient;
 
@@ -200,6 +208,7 @@ class BonitaClientIT {
 
     @Test
     void legacy_applications_should_be_uploaded() throws Exception {
+
         // Given
         loggedInAsTechnicalUser();
         final List<Application> applicationsBefore = bonitaClient.applications().searchApplications(0,
@@ -207,7 +216,8 @@ class BonitaClientIT {
         var expectedAppTokens = List.of("MyApplication_Client_tests", "HR-dashboard_Client_tests");
 
         // When
-        File application = getClasspathFile("/application.xml");
+        File application = getClasspathFile(BONITA_CONTAINER.getImageVersion().isGreaterThanOrEqualTo(_10_2)
+                ? "/application.xml" : "/application_1.0.xml");
         bonitaClient
                 .applications()
                 .importApplications(application, ApplicationImportPolicy.REPLACE_DUPLICATES);
@@ -221,15 +231,29 @@ class BonitaClientIT {
                 .as("Application names")
                 .extracting(Application::getToken)
                 .contains(expectedAppTokens.toArray(new String[0]));
-        assertThat(applications)
-                .as("Applications must not be advanced")
-                .filteredOn(app -> expectedAppTokens.contains(app.getToken()))
-                .extracting(Application::getAdvanced)
-                .containsExactly(false, false);
+
+        if (BONITA_CONTAINER.getImageVersion().isGreaterThanOrEqualTo(_10_2)) {
+            assertThat(applications)
+                    .as("Applications must not be linked")
+                    .filteredOn(app -> expectedAppTokens.contains(app.getToken()))
+                    .extracting(Application::getLink)
+                    .containsExactly(false, false);
+        } else {
+            assertThat(applications)
+                    .as("Applications must not be linked")
+                    .filteredOn(app -> expectedAppTokens.contains(app.getToken()))
+                    .extracting(Application::getLink)
+                    .containsExactly(null, null);
+        }
+
     }
 
     @Test
-    void advanced_applications_should_be_uploaded() throws Exception {
+    void linked_applications_should_be_uploaded() throws Exception {
+        // Execute for runtime version > 10.2
+        Assumptions.assumeTrue(() -> BONITA_CONTAINER.getImageVersion().isGreaterThanOrEqualTo(_10_2),
+                "Linked applications does not exists in versions below 10.2.");
+
         // Given
         loggedInAsTechnicalUser();
         final List<Application> applicationsBefore = bonitaClient.applications().searchApplications(0,
@@ -237,7 +261,7 @@ class BonitaClientIT {
         var expectedAppTokens = List.of("app1", "app2");
 
         // When
-        File application = getClasspathFile("/advanced-application.xml");
+        File application = getClasspathFile("/application-link.xml");
         bonitaClient
                 .applications()
                 .importApplications(application, ApplicationImportPolicy.REPLACE_DUPLICATES);
@@ -252,9 +276,9 @@ class BonitaClientIT {
                 .extracting(Application::getToken)
                 .contains(expectedAppTokens.toArray(new String[0]));
         assertThat(applications)
-                .as("Applications must be advanced")
+                .as("Applications must be linked")
                 .filteredOn(app -> expectedAppTokens.contains(app.getToken()))
-                .extracting(Application::getAdvanced)
+                .extracting(Application::getLink)
                 .containsExactly(true, true);
     }
 
