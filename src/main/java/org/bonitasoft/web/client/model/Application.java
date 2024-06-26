@@ -28,4 +28,29 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "", visible = true)
 
 public interface Application extends Serializable {
+
+    public String getCreatedBy();
+
+    public String getCreationDate();
+
+    public String getDescription();
+
+    public String getDisplayName();
+
+    public String getId();
+
+    public String getLastUpdateDate();
+
+    public String getProfileId();
+
+    public String getToken();
+
+    public String getUpdatedBy();
+
+    public String getVersion();
+
+    public Boolean getEditable();
+
+    public Boolean getLink();
+
 }
