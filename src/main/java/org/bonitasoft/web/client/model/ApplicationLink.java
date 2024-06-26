@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ApplicationLink.JSON_PROPERTY_LINK
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
-public class ApplicationLink implements Serializable {
+public class ApplicationLink implements Serializable, Application {
 
     private static final long serialVersionUID = 1L;
 

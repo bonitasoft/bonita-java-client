@@ -489,6 +489,7 @@
                 <serializationLibrary>jackson</serializationLibrary>
                 <library>feign</library>
                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <useOneOfInterfaces>true</useOneOfInterfaces>
               </configOptions>
             </configuration>
           </execution>
