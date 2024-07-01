@@ -83,7 +83,7 @@
     <openapi-generator-maven-plugin.version>7.6.0</openapi-generator-maven-plugin.version>
     <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
     <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
-    <groovy.version>3.0.21</groovy.version>
+    <groovy.version>3.0.22</groovy.version>
     <!-- Configuration properties -->
     <codegen.skip>true</codegen.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
