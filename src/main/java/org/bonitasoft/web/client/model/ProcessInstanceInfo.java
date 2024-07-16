@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceInfo.JSON_PROPERTY_ID,
         ProcessInstanceInfo.JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProcessInstanceInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,7 +58,7 @@ public class ProcessInstanceInfo implements Serializable {
      * case identifier
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -93,7 +93,7 @@ public class ProcessInstanceInfo implements Serializable {
      * flow nodes counters
      * 
      * @return flowNodeStatesCounters
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

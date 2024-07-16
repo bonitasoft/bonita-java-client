@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ContractConstraint.JSON_PROPERTY_EXPLANATION,
         ContractConstraint.JSON_PROPERTY_INPUT_NAMES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ContractConstraint implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,7 +64,7 @@ public class ContractConstraint implements Serializable {
      * constraint name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -89,7 +89,7 @@ public class ContractConstraint implements Serializable {
      * constraint expression
      * 
      * @return expression
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXPRESSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -114,7 +114,7 @@ public class ContractConstraint implements Serializable {
      * constraint explanation
      * 
      * @return explanation
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXPLANATION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -147,7 +147,7 @@ public class ContractConstraint implements Serializable {
      * Get inputNames
      * 
      * @return inputNames
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_INPUT_NAMES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

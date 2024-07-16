@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
         ProcessInstanceInfoFlowNodeStatesCountersValue.JSON_PROPERTY_COMPLETING
 })
 @JsonTypeName("ProcessInstanceInfo_flowNodeStatesCounters_value")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -88,7 +88,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in completed state
      * 
      * @return completed
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_COMPLETED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -113,7 +113,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in skipped state
      * 
      * @return skipped
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SKIPPED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -138,7 +138,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in cancelled state
      * 
      * @return cancelled
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CANCELLED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -163,7 +163,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in aborted state
      * 
      * @return aborted
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ABORTED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -188,7 +188,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in ready state
      * 
      * @return ready
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_READY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -213,7 +213,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in failed state
      * 
      * @return failed
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FAILED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -238,7 +238,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in executing state
      * 
      * @return executing
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -263,7 +263,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in waiting state
      * 
      * @return waiting
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_WAITING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -288,7 +288,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in initializing state
      * 
      * @return initializing
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_INITIALIZING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -313,7 +313,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
      * number of instance of the given Flow Node in completing state
      * 
      * @return completing
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_COMPLETING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

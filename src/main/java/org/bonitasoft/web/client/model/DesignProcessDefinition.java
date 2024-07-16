@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         DesignProcessDefinition.JSON_PROPERTY_CONTRACT,
         DesignProcessDefinition.JSON_PROPERTY_CONTEXT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class DesignProcessDefinition implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -88,7 +88,7 @@ public class DesignProcessDefinition implements Serializable {
      * The process definition display name
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -113,7 +113,7 @@ public class DesignProcessDefinition implements Serializable {
      * The process definition display description name
      * 
      * @return displayDescription
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -138,7 +138,7 @@ public class DesignProcessDefinition implements Serializable {
      * Get flowElementContainer
      * 
      * @return flowElementContainer
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FLOW_ELEMENT_CONTAINER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -171,7 +171,7 @@ public class DesignProcessDefinition implements Serializable {
      * The process parameter definitions
      * 
      * @return parameters
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARAMETERS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -204,7 +204,7 @@ public class DesignProcessDefinition implements Serializable {
      * The list of process actor definitions
      * 
      * @return actorsList
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ACTORS_LIST)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -229,7 +229,7 @@ public class DesignProcessDefinition implements Serializable {
      * Get actorInitiator
      * 
      * @return actorInitiator
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ACTOR_INITIATOR)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -262,7 +262,7 @@ public class DesignProcessDefinition implements Serializable {
      * The process definition labels
      * 
      * @return stringIndexLabels
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STRING_INDEX_LABELS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -295,7 +295,7 @@ public class DesignProcessDefinition implements Serializable {
      * The process definition expressions
      * 
      * @return stringIndexValues
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STRING_INDEX_VALUES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -320,7 +320,7 @@ public class DesignProcessDefinition implements Serializable {
      * Get contract
      * 
      * @return contract
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTRACT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -353,7 +353,7 @@ public class DesignProcessDefinition implements Serializable {
      * The process definition expressions
      * 
      * @return context
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTEXT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         FormMapping.JSON_PROPERTY_LAST_UPDATE_DATE,
         FormMapping.JSON_PROPERTY_URL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class FormMapping implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -169,7 +169,7 @@ public class FormMapping implements Serializable {
      * the form mapping identifier
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -194,7 +194,7 @@ public class FormMapping implements Serializable {
      * the process identifier related to this form mapping
      * 
      * @return processDefinitionId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -219,7 +219,7 @@ public class FormMapping implements Serializable {
      * the form mapping type
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -244,7 +244,7 @@ public class FormMapping implements Serializable {
      * the target
      * 
      * @return target
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TARGET)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -269,7 +269,7 @@ public class FormMapping implements Serializable {
      * the task name when type is TASK - null otherwise
      * 
      * @return task
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TASK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -294,7 +294,7 @@ public class FormMapping implements Serializable {
      * the custom page identifier when type is INTERNAL - null otherwise
      * 
      * @return pageId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -319,7 +319,7 @@ public class FormMapping implements Serializable {
      * the page mapping key part used to generate the form URL
      * 
      * @return pageMappingKey
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PAGE_MAPPING_KEY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -344,7 +344,7 @@ public class FormMapping implements Serializable {
      * the identifier of the user who last updated this form mapping - 0 if no update has been done yet
      * 
      * @return lastUpdateBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -369,7 +369,7 @@ public class FormMapping implements Serializable {
      * the last update date in milliseconds - null if no update has been done yet
      * 
      * @return lastUpdateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -394,7 +394,7 @@ public class FormMapping implements Serializable {
      * the external URL (string) when type is URL - null otherwise
      * 
      * @return url
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_URL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

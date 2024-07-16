@@ -49,7 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Activity.JSON_PROPERTY_ASSIGNED_ID,
         Activity.JSON_PROPERTY_ASSIGNED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Activity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -127,7 +127,7 @@ public class Activity implements Serializable {
      * the activity id
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -152,7 +152,7 @@ public class Activity implements Serializable {
      * Get type
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -177,7 +177,7 @@ public class Activity implements Serializable {
      * the activity technical name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -202,7 +202,7 @@ public class Activity implements Serializable {
      * the human readable activity name
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -227,7 +227,7 @@ public class Activity implements Serializable {
      * the activity description
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -252,7 +252,7 @@ public class Activity implements Serializable {
      * the human readable activity description
      * 
      * @return displayDescription
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -277,7 +277,7 @@ public class Activity implements Serializable {
      * Get state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -302,7 +302,7 @@ public class Activity implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity reached the current state, for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return reachedStateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -327,7 +327,7 @@ public class Activity implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity was last updated, for example &#39;2014-10-17 16:05:42.626)
      * 
      * @return lastUpdateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -352,7 +352,7 @@ public class Activity implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this activity is due, for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return dueDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DUE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -377,7 +377,7 @@ public class Activity implements Serializable {
      * Get priority
      * 
      * @return priority
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PRIORITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -402,7 +402,7 @@ public class Activity implements Serializable {
      * the process definition id of the process instance which define this activity
      * 
      * @return processId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -427,7 +427,7 @@ public class Activity implements Serializable {
      * the immediate containing process instance id (long, a.k.a process instance id)
      * 
      * @return parentCaseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -453,7 +453,7 @@ public class Activity implements Serializable {
      * while &#x60;rootCaseId&#x60; will be the one from the caller process instance
      * 
      * @return rootCaseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -478,7 +478,7 @@ public class Activity implements Serializable {
      * same as rootCaseId
      * 
      * @return rootContainerId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -503,7 +503,7 @@ public class Activity implements Serializable {
      * the id of the user who performed this activity. The activity has to be a human task otherwise its value will be 0
      * 
      * @return executedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -528,7 +528,7 @@ public class Activity implements Serializable {
      * the id of the user who did actually performed the activity when it has been done in the name of someone else. Value is 0 otherwise
      * 
      * @return executedBySubstitute
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -553,7 +553,7 @@ public class Activity implements Serializable {
      * the id of the actor that can execute this activity, null otherwise
      * 
      * @return actorId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ACTOR_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -578,7 +578,7 @@ public class Activity implements Serializable {
      * the user id that this activity is assigned to, or 0 if it is unassigned
      * 
      * @return assignedId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -603,7 +603,7 @@ public class Activity implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current activity was assigned, for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return assignedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

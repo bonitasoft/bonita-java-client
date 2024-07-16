@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonPropertyOrder({
         PlatformUpdateRequest.JSON_PROPERTY_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class PlatformUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -88,7 +88,7 @@ public class PlatformUpdateRequest implements Serializable {
      * Platform state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

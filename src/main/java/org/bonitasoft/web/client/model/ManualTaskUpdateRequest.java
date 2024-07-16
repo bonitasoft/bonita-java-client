@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ManualTaskUpdateRequest.JSON_PROPERTY_STATE,
         ManualTaskUpdateRequest.JSON_PROPERTY_EXECUTED_BY
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ManualTaskUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,7 +54,7 @@ public class ManualTaskUpdateRequest implements Serializable {
      * State of the ManualTask (completed)
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -79,7 +79,7 @@ public class ManualTaskUpdateRequest implements Serializable {
      * Id of the task executor
      * 
      * @return executedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

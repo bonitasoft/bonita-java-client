@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessConnectorDependency.JSON_PROPERTY_FILENAME,
         ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProcessConnectorDependency implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,7 +62,7 @@ public class ProcessConnectorDependency implements Serializable {
      * &lt;connector version&gt;
      * 
      * @return connectorVersion
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONNECTOR_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -87,7 +87,7 @@ public class ProcessConnectorDependency implements Serializable {
      * &lt;process id&gt;
      * 
      * @return connectorProcessId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONNECTOR_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -112,7 +112,7 @@ public class ProcessConnectorDependency implements Serializable {
      * &lt;filename representing the connector&gt;
      * 
      * @return filename
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FILENAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -137,7 +137,7 @@ public class ProcessConnectorDependency implements Serializable {
      * &lt;connector name&gt;
      * 
      * @return connectorName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONNECTOR_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         MaintenanceDetails.JSON_PROPERTY_MAINTENANCE_MESSAGE,
         MaintenanceDetails.JSON_PROPERTY_MAINTENANCE_MESSAGE_ACTIVE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class MaintenanceDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -96,7 +96,7 @@ public class MaintenanceDetails implements Serializable {
      * maintenance state
      * 
      * @return maintenanceState
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MAINTENANCE_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -121,7 +121,7 @@ public class MaintenanceDetails implements Serializable {
      * maintenance message
      * 
      * @return maintenanceMessage
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MAINTENANCE_MESSAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -146,7 +146,7 @@ public class MaintenanceDetails implements Serializable {
      * is maintenance message active
      * 
      * @return maintenanceMessageActive
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MAINTENANCE_MESSAGE_ACTIVE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

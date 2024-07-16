@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Error.JSON_PROPERTY_EXCEPTION,
         Error.JSON_PROPERTY_EXPLANATIONS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Error extends HashMap<String, Object> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -65,7 +65,7 @@ public class Error extends HashMap<String, Object> implements Serializable {
      * The error message
      * 
      * @return message
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MESSAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -90,7 +90,7 @@ public class Error extends HashMap<String, Object> implements Serializable {
      * The exception type
      * 
      * @return exception
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXCEPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -123,7 +123,7 @@ public class Error extends HashMap<String, Object> implements Serializable {
      * Further details on the error
      * 
      * @return explanations
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXPLANATIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
