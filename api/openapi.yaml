@@ -17390,6 +17390,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ApplicationLink'
       - $ref: '#/components/schemas/LegacyApplication'
+      x-one-of-name: Application
     CreateApplicationRequest:
       example:
         version: "1.0"
