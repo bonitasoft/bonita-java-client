@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.18
+  version: 0.0.19
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -680,7 +680,7 @@ paths:
     post:
       deprecated: true
       description: |
-        Create a living applications
+        Create a living application (legacy application or application link).
 
         Warning: as of 9.0.0, creating a living application using this API is deprecated.
       operationId: createApplication
@@ -696,7 +696,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LegacyApplication'
+                $ref: '#/components/schemas/Application'
           description: 'Success '
         "400":
           content:
@@ -877,7 +877,7 @@ paths:
     put:
       deprecated: true
       description: |
-        Update a single application for the given ID
+        Update a single application for the given ID (legacy application or application link).
 
         Warning: as of 9.0.0, updating a living application using this API is deprecated.
       operationId: updateApplicationById
@@ -904,7 +904,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LegacyApplication'
+                $ref: '#/components/schemas/Application'
           description: 'Success '
         "400":
           content:
@@ -17393,12 +17393,17 @@ components:
       x-one-of-name: Application
     CreateApplicationRequest:
       example:
+        link: "false"
         version: "1.0"
         profileId: "2"
         token: myapp
         displayName: My app
         description: My application description
       properties:
+        link:
+          default: false
+          description: "true for an application link, false for a legacy application"
+          type: boolean
         description:
           description: description of the application
           type: string

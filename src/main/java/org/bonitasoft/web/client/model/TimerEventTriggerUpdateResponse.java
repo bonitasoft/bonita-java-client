@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         TimerEventTriggerUpdateResponse.JSON_PROPERTY_EXECUTION_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class TimerEventTriggerUpdateResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,7 +50,7 @@ public class TimerEventTriggerUpdateResponse implements Serializable {
      * executionDate of the TimerEventTrigger
      * 
      * @return executionDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

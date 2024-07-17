@@ -27,7 +27,7 @@ import org.bonitasoft.web.client.model.MembershipCreateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public interface MembershipApi extends ApiClient.Api {
 
     /**

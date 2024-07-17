@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedActivityVariable.JSON_PROPERTY_ARCHIVED_DATE,
         ArchivedActivityVariable.JSON_PROPERTY_SOURCED_OBJECT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ArchivedActivityVariable implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -79,7 +79,7 @@ public class ArchivedActivityVariable implements Serializable {
      * The name of the archived activity variable
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -104,7 +104,7 @@ public class ArchivedActivityVariable implements Serializable {
      * The description of the variable if any
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -129,7 +129,7 @@ public class ArchivedActivityVariable implements Serializable {
      * The fully qualified class name of the variable type
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -154,7 +154,7 @@ public class ArchivedActivityVariable implements Serializable {
      * The ID of the activity containing this variable (same as the one passed as parameter)
      * 
      * @return containerId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -179,7 +179,7 @@ public class ArchivedActivityVariable implements Serializable {
      * ACTIVITY_INSTANCE
      * 
      * @return containerType
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -204,7 +204,7 @@ public class ArchivedActivityVariable implements Serializable {
      * the value of this variable. The format of the value depends on the type of the variable
      * 
      * @return value
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -229,7 +229,7 @@ public class ArchivedActivityVariable implements Serializable {
      * The date when this variable was archived. The date format is yyyy-MM-dd HH:mm:ss.SSS
      * 
      * @return archivedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -254,7 +254,7 @@ public class ArchivedActivityVariable implements Serializable {
      * The id of the activity variable before it was archived
      * 
      * @return sourcedObjectId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SOURCED_OBJECT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

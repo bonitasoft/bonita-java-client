@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ApplicationLink.JSON_PROPERTY_EDITABLE,
         ApplicationLink.JSON_PROPERTY_LINK
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ApplicationLink implements Serializable, Application {
 
     private static final long serialVersionUID = 1L;
@@ -179,7 +179,7 @@ public class ApplicationLink implements Serializable, Application {
      * Author user ID
      * 
      * @return createdBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CREATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -204,7 +204,7 @@ public class ApplicationLink implements Serializable, Application {
      * creation date of the application
      * 
      * @return creationDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -229,7 +229,7 @@ public class ApplicationLink implements Serializable, Application {
      * description of the application
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -254,7 +254,7 @@ public class ApplicationLink implements Serializable, Application {
      * display name of the application
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -279,7 +279,7 @@ public class ApplicationLink implements Serializable, Application {
      * id of the application
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -304,7 +304,7 @@ public class ApplicationLink implements Serializable, Application {
      * last update date of the application
      * 
      * @return lastUpdateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -329,7 +329,7 @@ public class ApplicationLink implements Serializable, Application {
      * profile authorized to access this application
      * 
      * @return profileId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -354,7 +354,7 @@ public class ApplicationLink implements Serializable, Application {
      * token of the application used to build the application URL
      * 
      * @return token
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -379,7 +379,7 @@ public class ApplicationLink implements Serializable, Application {
      * Last updating user ID
      * 
      * @return updatedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_UPDATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -404,7 +404,7 @@ public class ApplicationLink implements Serializable, Application {
      * version of the application
      * 
      * @return version
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -429,7 +429,7 @@ public class ApplicationLink implements Serializable, Application {
      * application state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -455,7 +455,7 @@ public class ApplicationLink implements Serializable, Application {
      * application.
      * 
      * @return visibility
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VISIBILITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -480,7 +480,7 @@ public class ApplicationLink implements Serializable, Application {
      * Indicates whether the application can be modified
      * 
      * @return editable
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EDITABLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -505,7 +505,7 @@ public class ApplicationLink implements Serializable, Application {
      * true for an application link
      * 
      * @return link
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LINK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

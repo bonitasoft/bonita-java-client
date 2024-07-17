@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessSupervisor.JSON_PROPERTY_GROUP_ID,
         ProcessSupervisor.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProcessSupervisor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,7 +64,7 @@ public class ProcessSupervisor implements Serializable {
      * Id of the process
      * 
      * @return processId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -89,7 +89,7 @@ public class ProcessSupervisor implements Serializable {
      * Id of role, or -1 if the supervisor type is not role or membership
      * 
      * @return roleId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROLE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -114,7 +114,7 @@ public class ProcessSupervisor implements Serializable {
      * Id of group, or -1 if the supervisor type is not group or membership
      * 
      * @return groupId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -139,7 +139,7 @@ public class ProcessSupervisor implements Serializable {
      * Id of user, or -1 if the supervisor type is not user
      * 
      * @return userId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

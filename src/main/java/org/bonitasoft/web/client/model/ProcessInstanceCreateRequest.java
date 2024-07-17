@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceCreateRequest.JSON_PROPERTY_PROCESS_DEFINITION_ID,
         ProcessInstanceCreateRequest.JSON_PROPERTY_VARIABLES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProcessInstanceCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,7 +56,7 @@ public class ProcessInstanceCreateRequest implements Serializable {
      * the process definition Id
      * 
      * @return processDefinitionId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -89,7 +89,7 @@ public class ProcessInstanceCreateRequest implements Serializable {
      * process variables initial values
      * 
      * @return variables
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VARIABLES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

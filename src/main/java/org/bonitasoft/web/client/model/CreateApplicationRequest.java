@@ -27,16 +27,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * CreateApplicationRequest
  */
 @JsonPropertyOrder({
+        CreateApplicationRequest.JSON_PROPERTY_LINK,
         CreateApplicationRequest.JSON_PROPERTY_DESCRIPTION,
         CreateApplicationRequest.JSON_PROPERTY_DISPLAY_NAME,
         CreateApplicationRequest.JSON_PROPERTY_PROFILE_ID,
         CreateApplicationRequest.JSON_PROPERTY_TOKEN,
         CreateApplicationRequest.JSON_PROPERTY_VERSION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class CreateApplicationRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public static final String JSON_PROPERTY_LINK = "link";
+    private Boolean link = false;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
     private String description;
@@ -56,6 +60,31 @@ public class CreateApplicationRequest implements Serializable {
     public CreateApplicationRequest() {
     }
 
+    public CreateApplicationRequest link(Boolean link) {
+
+        this.link = link;
+        return this;
+    }
+
+    /**
+     * true for an application link, false for a legacy application
+     * 
+     * @return link
+     */
+    @jakarta.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_LINK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getLink() {
+        return link;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LINK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLink(Boolean link) {
+        this.link = link;
+    }
+
     public CreateApplicationRequest description(String description) {
 
         this.description = description;
@@ -66,7 +95,7 @@ public class CreateApplicationRequest implements Serializable {
      * description of the application
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -91,7 +120,7 @@ public class CreateApplicationRequest implements Serializable {
      * display name of the application
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -116,7 +145,7 @@ public class CreateApplicationRequest implements Serializable {
      * profile authorized to access this application
      * 
      * @return profileId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -141,7 +170,7 @@ public class CreateApplicationRequest implements Serializable {
      * token of the application used to build the application URL
      * 
      * @return token
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -166,7 +195,7 @@ public class CreateApplicationRequest implements Serializable {
      * version of the application
      * 
      * @return version
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -190,7 +219,8 @@ public class CreateApplicationRequest implements Serializable {
             return false;
         }
         CreateApplicationRequest createApplicationRequest = (CreateApplicationRequest) o;
-        return Objects.equals(this.description, createApplicationRequest.description) &&
+        return Objects.equals(this.link, createApplicationRequest.link) &&
+                Objects.equals(this.description, createApplicationRequest.description) &&
                 Objects.equals(this.displayName, createApplicationRequest.displayName) &&
                 Objects.equals(this.profileId, createApplicationRequest.profileId) &&
                 Objects.equals(this.token, createApplicationRequest.token) &&
@@ -199,13 +229,14 @@ public class CreateApplicationRequest implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, displayName, profileId, token, version);
+        return Objects.hash(link, description, displayName, profileId, token, version);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CreateApplicationRequest {\n");
+        sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
         sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");

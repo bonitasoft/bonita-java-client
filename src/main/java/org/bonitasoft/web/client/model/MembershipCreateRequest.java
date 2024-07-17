@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         MembershipCreateRequest.JSON_PROPERTY_GROUP_ID,
         MembershipCreateRequest.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class MembershipCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,7 +58,7 @@ public class MembershipCreateRequest implements Serializable {
      * id of the role of this membership
      * 
      * @return roleId
-     **/
+     */
     @jakarta.annotation.Nonnull
     @JsonProperty(JSON_PROPERTY_ROLE_ID)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -83,7 +83,7 @@ public class MembershipCreateRequest implements Serializable {
      * id of the group of this membership
      * 
      * @return groupId
-     **/
+     */
     @jakarta.annotation.Nonnull
     @JsonProperty(JSON_PROPERTY_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -108,7 +108,7 @@ public class MembershipCreateRequest implements Serializable {
      * id of the user in this membership
      * 
      * @return userId
-     **/
+     */
     @jakarta.annotation.Nonnull
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)

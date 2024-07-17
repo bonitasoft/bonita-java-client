@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationPage.JSON_PROPERTY_APPLICATION_ID,
         ApplicationPage.JSON_PROPERTY_PAGE_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ApplicationPage implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,7 +62,7 @@ public class ApplicationPage implements Serializable {
      * id of the application page item
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -87,7 +87,7 @@ public class ApplicationPage implements Serializable {
      * token use to access the page using a URL : ../appName/pageToken/
      * 
      * @return token
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -112,7 +112,7 @@ public class ApplicationPage implements Serializable {
      * id of the application related to this page
      * 
      * @return applicationId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -137,7 +137,7 @@ public class ApplicationPage implements Serializable {
      * id of the custom page to display
      * 
      * @return pageId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Contract.JSON_PROPERTY_CONSTRAINTS,
         Contract.JSON_PROPERTY_INPUTS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Contract implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,7 +64,7 @@ public class Contract implements Serializable {
      * Get constraints
      * 
      * @return constraints
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -97,7 +97,7 @@ public class Contract implements Serializable {
      * Get inputs
      * 
      * @return inputs
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_INPUTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

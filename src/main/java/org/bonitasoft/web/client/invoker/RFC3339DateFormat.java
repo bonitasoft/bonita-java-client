@@ -26,7 +26,7 @@ import java.util.TimeZone;
 
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class RFC3339DateFormat extends DateFormat {
 
     private static final long serialVersionUID = 1L;

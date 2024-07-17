@@ -26,19 +26,18 @@ import org.bonitasoft.web.client.model.ApiResponse;
 import org.bonitasoft.web.client.model.Application;
 import org.bonitasoft.web.client.model.ApplicationUpdateRequest;
 import org.bonitasoft.web.client.model.CreateApplicationRequest;
-import org.bonitasoft.web.client.model.LegacyApplication;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public interface ApplicationApi extends ApiClient.Api {
 
     /**
      * Create a living application
-     * Create a living applications Warning: as of 9.0.0, creating a living application using this API is deprecated.
+     * Create a living application (legacy application or application link). Warning: as of 9.0.0, creating a living application using this API is deprecated.
      * 
      * @param body Partial living application description (required)
-     * @return LegacyApplication
+     * @return Application
      * @deprecated
      */
     @Deprecated
@@ -47,12 +46,12 @@ public interface ApplicationApi extends ApiClient.Api {
             "Content-Type: application/json",
             "Accept: application/json",
     })
-    LegacyApplication createApplication(CreateApplicationRequest body);
+    Application createApplication(CreateApplicationRequest body);
 
     /**
      * Create a living application
      * Similar to <code>createApplication</code> but it also returns the http response headers .
-     * Create a living applications Warning: as of 9.0.0, creating a living application using this API is deprecated.
+     * Create a living application (legacy application or application link). Warning: as of 9.0.0, creating a living application using this API is deprecated.
      * 
      * @param body Partial living application description (required)
      * @return A ApiResponse that wraps the response boyd and the http headers.
@@ -64,7 +63,7 @@ public interface ApplicationApi extends ApiClient.Api {
             "Content-Type: application/json",
             "Accept: application/json",
     })
-    ApiResponse<LegacyApplication> createApplicationWithHttpInfo(CreateApplicationRequest body);
+    ApiResponse<Application> createApplicationWithHttpInfo(CreateApplicationRequest body);
 
     /**
      * Delete a living application by ID
@@ -292,11 +291,12 @@ public interface ApplicationApi extends ApiClient.Api {
 
     /**
      * Update a living application by ID
-     * Update a single application for the given ID Warning: as of 9.0.0, updating a living application using this API is deprecated.
+     * Update a single application for the given ID (legacy application or application link). Warning: as of 9.0.0, updating a living application using this API is
+     * deprecated.
      * 
      * @param id ID of application to return (required)
      * @param applicationUpdateRequest Partial living application description (required)
-     * @return LegacyApplication
+     * @return Application
      * @deprecated
      */
     @Deprecated
@@ -305,12 +305,13 @@ public interface ApplicationApi extends ApiClient.Api {
             "Content-Type: application/json",
             "Accept: application/json",
     })
-    LegacyApplication updateApplicationById(@Param("id") String id, ApplicationUpdateRequest applicationUpdateRequest);
+    Application updateApplicationById(@Param("id") String id, ApplicationUpdateRequest applicationUpdateRequest);
 
     /**
      * Update a living application by ID
      * Similar to <code>updateApplicationById</code> but it also returns the http response headers .
-     * Update a single application for the given ID Warning: as of 9.0.0, updating a living application using this API is deprecated.
+     * Update a single application for the given ID (legacy application or application link). Warning: as of 9.0.0, updating a living application using this API is
+     * deprecated.
      * 
      * @param id ID of application to return (required)
      * @param applicationUpdateRequest Partial living application description (required)
@@ -323,7 +324,7 @@ public interface ApplicationApi extends ApiClient.Api {
             "Content-Type: application/json",
             "Accept: application/json",
     })
-    ApiResponse<LegacyApplication> updateApplicationByIdWithHttpInfo(@Param("id") String id,
+    ApiResponse<Application> updateApplicationByIdWithHttpInfo(@Param("id") String id,
             ApplicationUpdateRequest applicationUpdateRequest);
 
     /**

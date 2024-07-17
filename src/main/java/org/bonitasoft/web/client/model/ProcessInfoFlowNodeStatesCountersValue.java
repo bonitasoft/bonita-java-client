@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
         ProcessInfoFlowNodeStatesCountersValue.JSON_PROPERTY_COMPLETING
 })
 @JsonTypeName("ProcessInfo_flowNodeStatesCounters_value")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ProcessInfoFlowNodeStatesCountersValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -72,7 +72,7 @@ public class ProcessInfoFlowNodeStatesCountersValue implements Serializable {
      * number of instance of the given Flow Node in ready state
      * 
      * @return ready
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_READY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -97,7 +97,7 @@ public class ProcessInfoFlowNodeStatesCountersValue implements Serializable {
      * number of instance of the given Flow Node in failed state
      * 
      * @return failed
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FAILED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -122,7 +122,7 @@ public class ProcessInfoFlowNodeStatesCountersValue implements Serializable {
      * number of instance of the given Flow Node in executing state
      * 
      * @return executing
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -147,7 +147,7 @@ public class ProcessInfoFlowNodeStatesCountersValue implements Serializable {
      * number of instance of the given Flow Node in waiting state
      * 
      * @return waiting
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_WAITING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -172,7 +172,7 @@ public class ProcessInfoFlowNodeStatesCountersValue implements Serializable {
      * number of instance of the given Flow Node in initializing state
      * 
      * @return initializing
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_INITIALIZING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -197,7 +197,7 @@ public class ProcessInfoFlowNodeStatesCountersValue implements Serializable {
      * number of instance of the given Flow Node in completing state
      * 
      * @return completing
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_COMPLETING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

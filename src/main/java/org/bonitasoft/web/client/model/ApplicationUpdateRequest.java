@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationUpdateRequest.JSON_PROPERTY_THEME_ID,
         ApplicationUpdateRequest.JSON_PROPERTY_LAYOUT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class ApplicationUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,7 +74,7 @@ public class ApplicationUpdateRequest implements Serializable {
      * description of the application
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -99,7 +99,7 @@ public class ApplicationUpdateRequest implements Serializable {
      * display name of the application
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -124,7 +124,7 @@ public class ApplicationUpdateRequest implements Serializable {
      * profile authorized to access this application
      * 
      * @return profileId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -149,7 +149,7 @@ public class ApplicationUpdateRequest implements Serializable {
      * token of the application used to build the application URL
      * 
      * @return token
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -174,7 +174,7 @@ public class ApplicationUpdateRequest implements Serializable {
      * version of the application
      * 
      * @return version
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -199,7 +199,7 @@ public class ApplicationUpdateRequest implements Serializable {
      * ![edition](https://img.shields.io/badge/edition-entreprise-blue) theme id for the application
      * 
      * @return themeId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_THEME_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -224,7 +224,7 @@ public class ApplicationUpdateRequest implements Serializable {
      * ![edition](https://img.shields.io/badge/edition-entreprise-blue) layout id for the application
      * 
      * @return layoutId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAYOUT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
