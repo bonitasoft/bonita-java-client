@@ -37,11 +37,11 @@ jobs:
           ./mvnw -B -ntp clean verify
 
       - name: Open Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         id: create-pr
         with:
           branch: feat/update-bonita-openapi-spec
-          base: dev
+          base: develop
           commit-message: "feat(openapi): update version"
           title: "feat(openapi): update version"
           body: |
