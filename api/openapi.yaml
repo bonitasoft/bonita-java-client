@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.19
+  version: 0.0.20
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -270,6 +270,11 @@ tags:
   name: I18ntranslation
   x-displayName: I18nTranslation
 - description: |
+    Handle the platform information.
+    This Web REST API is available since version 10.2 (2024.3). Most of the information returned is only for Subscription editions.
+  name: Information
+  x-displayName: Information
+- description: |
     Handle the license information. This requires a platform session. Log in using the platform login service.
     This Web REST API is available in **Enterprise editions only**, since version 7.11.
   name: License
@@ -359,6 +364,10 @@ tags:
     url: https://documentation.bonitasoft.com/bonita/latest/rest-api-extensions
   name: RestAPIextensions
   x-displayName: API extensions
+- description: "Supports any type of files, used to upload a file before submitting\
+    \ a process or task form with a document in its contract."
+  name: FormFileUpload
+  x-displayName: Form file upload
 paths:
   /loginservice:
     post:
@@ -14232,9 +14241,11 @@ paths:
       - application/json
   /API/platform/license:
     get:
+      deprecated: true
       description: |
         Returns the current platform License.
         This requires a platform session. Log in using the platform login service.
+        Warning: Since Bonita 10.2 (2024.3), this API is deprecated: use the API `GET /system/information` instead.
       operationId: getPlatformLicense
       responses:
         "200":
@@ -14242,7 +14253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PlatformLicense'
-          description: 'Success '
+          description: Success
         "400":
           content:
             application/json:
@@ -16600,10 +16611,68 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /API/system/information:
+    get:
+      description: |
+        Returns system information details of the platform.
+        Requires to be logged in as a user having the Admin profile.
+      operationId: getSystemInformation
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemInformation'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Get the system information
+      tags:
+      - Information
+      x-codeSamples:
+      - lang: Shell
+        label: Curl
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/information'
+      x-accepts:
+      - application/json
   /API/system/license/unusedid:
     get:
       description: |
-        Returns license information for the current server
+        Returns license information for the current server. Requires to be logged in as a tenant technical administrator.
+        The same information can be retrieved as a user having simply the Admin profile through the API `GET /system/information`.
       operationId: getLicense
       responses:
         "200":
@@ -16611,7 +16680,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/License'
-          description: 'Success '
+          description: Success
         "400":
           content:
             application/json:
@@ -17082,6 +17151,64 @@ paths:
       x-content-type: application/x-www-form-urlencoded
       x-accepts:
       - application/json
+  /API/formFileUpload:
+    post:
+      description: |
+        Supports any type of files, used to upload a file before submitting a process or task form with a document in its contract
+      operationId: formFileUpload
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FormFileUploadRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FormFileUploadResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Upload a file
+      tags:
+      - FormFileUpload
+      x-content-type: multipart/form-data
+      x-accepts:
+      - application/json
+      - text/plain
 components:
   parameters:
     pageIndex:
@@ -21577,6 +21704,102 @@ components:
           description: is maintenance message active
           type: boolean
       type: object
+    SystemInformation:
+      description: ""
+      example:
+        activeFeatures: activeFeatures
+        subscriptionStartPeriod: subscriptionStartPeriod
+        licenseMode: licenseMode
+        licensee: licensee
+        contactInfo: contactInfo
+        requestKey: requestKey
+        subscriptionEndPeriod: subscriptionEndPeriod
+        caseCounter: 5
+        licenseStartDate: licenseStartDate
+        licenseExpirationDate: licenseExpirationDate
+        edition: edition
+        caseCounterLimit: 1
+        duration: duration
+        numberOfCPUCores: numberOfCPUCores
+        subscriptionType: subscriptionType
+        managedAppsLimit: 0
+        expirationDate: 6
+      properties:
+        licenseStartDate:
+          description: date in milliseconds timestamp since Epoch - first day (included)
+            of license file validity - Subscription editions only
+          type: string
+        duration:
+          description: number of days for license file validity - Subscription editions
+            only
+          type: string
+        licenseExpirationDate:
+          description: date in milliseconds timestamp since Epoch - last day (included)
+            of license file validity - Subscription editions only
+          type: string
+        numberOfCPUCores:
+          description: "number of CPUs allowed by the license, if license mode is\
+            \ CPU-based - Subscription editions only"
+          type: string
+        edition:
+          description: name of the Bonita edition enabled by the license - Community
+            & Subscription editions
+          type: string
+        subscriptionType:
+          description: type of the Subscription the customer has purchased with Bonitasoft
+            - Subscription editions only
+          type: string
+        licenseMode:
+          description: available mode enabled by the license - Subscription editions
+            only
+          type: string
+        managedAppsLimit:
+          description: number of managed apps provisioned for in a Bonita Central
+            environment - Subscription editions only
+          format: int64
+          type: integer
+        licensee:
+          description: Owner of the license - Subscription editions only
+          type: string
+        contactInfo:
+          description: E-mail address of the owner of the license - Subscription editions
+            only
+          type: string
+        expirationDate:
+          description: License expiration date in milliseconds timestamp since Epoch
+            - Subscription editions only
+          format: int64
+          type: integer
+        activeFeatures:
+          description: List of active features that the license allow access to (separated
+            by comma) - Subscription editions only
+          type: string
+        requestKey:
+          description: "request key to use to generate a new license on the customer\
+            \ portal.  \n\nIf you have a subscription that specifies case-counter\
+            \ licensing, additional fields are present:\n"
+          type: string
+        subscriptionStartPeriod:
+          description: date in milliseconds timestamp since Epoch - first day (included)
+            of current period for number of process instances provisioned - Subscription
+            editions only
+          type: string
+        subscriptionEndPeriod:
+          description: date in milliseconds timestamp since Epoch - last day (included)
+            of current period for number of process instances provisioned - Subscription
+            editions only
+          type: string
+        caseCounterLimit:
+          description: number of maximum process instances that can be started - Community
+            & Subscription editions
+          format: int64
+          type: integer
+        caseCounter:
+          description: number of consumed process instances - Community & Subscription
+            editions
+          format: int64
+          type: integer
+      type: object
     License:
       description: Bonita license
       example:
@@ -21635,6 +21858,30 @@ components:
       properties:
         fileUpload:
           description: the temporary file name once uploaded on the server
+          type: string
+      type: object
+    FormFileUploadRequest:
+      description: A file to upload
+      properties:
+        file:
+          format: binary
+          type: string
+      type: object
+    FormFileUploadResponse:
+      description: Form file upload response
+      example:
+        filename: 66c5d4e99167e.pdf
+        tempPath: 885efa7d-c639-4076-ba5d-04a7fbfc1d11.pdf
+        contentType: application/pdf
+      properties:
+        filename:
+          description: file name
+          type: string
+        tempPath:
+          description: temporary path of a file
+          type: string
+        contentType:
+          description: response content type
           type: string
       type: object
     importApplication_request:
@@ -21875,6 +22122,7 @@ x-tagGroups:
   - PlatformTenant
   - Tenant
   - License
+  - Information
 - name: Portal
   tags:
   - Page
@@ -21893,4 +22141,7 @@ x-tagGroups:
 - name: Other
   tags:
   - RestAPIextensions
+- name: Upload
+  tags:
+  - FormFileUpload
 
