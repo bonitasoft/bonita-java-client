@@ -31,11 +31,13 @@ src/main/java/org/bonitasoft/web/client/api/CustomUserDefinitionApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserValueApi.java
 src/main/java/org/bonitasoft/web/client/api/DiagramApi.java
 src/main/java/org/bonitasoft/web/client/api/FlowNodeApi.java
+src/main/java/org/bonitasoft/web/client/api/FormFileUploadApi.java
 src/main/java/org/bonitasoft/web/client/api/FormMappingApi.java
 src/main/java/org/bonitasoft/web/client/api/GroupApi.java
 src/main/java/org/bonitasoft/web/client/api/HumanTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/I18nlocaleApi.java
 src/main/java/org/bonitasoft/web/client/api/I18ntranslationApi.java
+src/main/java/org/bonitasoft/web/client/api/InformationApi.java
 src/main/java/org/bonitasoft/web/client/api/MaintenanceApi.java
 src/main/java/org/bonitasoft/web/client/api/ManualTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/MembershipApi.java
@@ -136,6 +138,7 @@ src/main/java/org/bonitasoft/web/client/model/Expression.java
 src/main/java/org/bonitasoft/web/client/model/FlowElementContainerDefinition.java
 src/main/java/org/bonitasoft/web/client/model/FlowNode.java
 src/main/java/org/bonitasoft/web/client/model/FlowNodeUpdateRequest.java
+src/main/java/org/bonitasoft/web/client/model/FormFileUploadResponse.java
 src/main/java/org/bonitasoft/web/client/model/FormMapping.java
 src/main/java/org/bonitasoft/web/client/model/FormMappingUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/Group.java
@@ -197,6 +200,7 @@ src/main/java/org/bonitasoft/web/client/model/RoleCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/RoleUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/Session.java
 src/main/java/org/bonitasoft/web/client/model/Signal.java
+src/main/java/org/bonitasoft/web/client/model/SystemInformation.java
 src/main/java/org/bonitasoft/web/client/model/SystemTenant.java
 src/main/java/org/bonitasoft/web/client/model/Task.java
 src/main/java/org/bonitasoft/web/client/model/Tenant.java
