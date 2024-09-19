@@ -92,7 +92,14 @@ public class DefaultApplicationService extends AbstractService implements Applic
         List<String> tokens = new ArrayList<>();
         final XmlDocumentParser documentParser = new XmlDocumentParser();
         Document doc = documentParser.parse(application);
+        // find legacy applications
         NodeList nodeList = documentParser.queryNodeList(doc, "/applications/application/@token");
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node item = nodeList.item(i);
+            tokens.add(item.getNodeValue());
+        }
+        // find application links
+        nodeList = documentParser.queryNodeList(doc, "/applications/applicationLink/@token");
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node item = nodeList.item(i);
             tokens.add(item.getNodeValue());
