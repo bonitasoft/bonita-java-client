@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ManualTaskUpdateRequest.JSON_PROPERTY_STATE,
         ManualTaskUpdateRequest.JSON_PROPERTY_EXECUTED_BY
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ManualTaskUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

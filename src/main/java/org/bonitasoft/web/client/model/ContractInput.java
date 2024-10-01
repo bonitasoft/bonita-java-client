@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ContractInput.JSON_PROPERTY_TYPE,
         ContractInput.JSON_PROPERTY_INPUTS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ContractInput implements Serializable {
 
     private static final long serialVersionUID = 1L;

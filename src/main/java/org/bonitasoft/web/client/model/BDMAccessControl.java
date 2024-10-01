@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         BDMAccessControl.JSON_PROPERTY_LAST_UPDATED_BY,
         BDMAccessControl.JSON_PROPERTY_LAST_UPDATE_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class BDMAccessControl implements Serializable {
 
     private static final long serialVersionUID = 1L;

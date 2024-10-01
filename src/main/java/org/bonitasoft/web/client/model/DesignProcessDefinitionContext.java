@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         DesignProcessDefinitionContext.JSON_PROPERTY_KEY,
         DesignProcessDefinitionContext.JSON_PROPERTY_EXPRESSION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class DesignProcessDefinitionContext implements Serializable {
 
     private static final long serialVersionUID = 1L;

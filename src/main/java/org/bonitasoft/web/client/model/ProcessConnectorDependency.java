@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessConnectorDependency.JSON_PROPERTY_FILENAME,
         ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProcessConnectorDependency implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         SystemInformation.JSON_PROPERTY_CASE_COUNTER_LIMIT,
         SystemInformation.JSON_PROPERTY_CASE_COUNTER
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class SystemInformation implements Serializable {
 
     private static final long serialVersionUID = 1L;

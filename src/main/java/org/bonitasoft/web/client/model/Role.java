@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Role.JSON_PROPERTY_CREATED_BY_USER_ID,
         Role.JSON_PROPERTY_LAST_UPDATE_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;

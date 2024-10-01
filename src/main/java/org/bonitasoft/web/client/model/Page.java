@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Page.JSON_PROPERTY_LAST_UPDATE_DATE,
         Page.JSON_PROPERTY_URL_TOKEN
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Page implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         Platform.JSON_PROPERTY_CREATED_BY,
         Platform.JSON_PROPERTY_CREATED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Platform implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessResolutionProblem.JSON_PROPERTY_RESOURCE_ID,
         ProcessResolutionProblem.JSON_PROPERTY_TARGET_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProcessResolutionProblem implements Serializable {
 
     private static final long serialVersionUID = 1L;

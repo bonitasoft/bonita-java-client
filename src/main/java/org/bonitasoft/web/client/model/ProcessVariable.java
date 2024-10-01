@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ProcessVariable.JSON_PROPERTY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProcessVariable extends HashMap<String, Object> implements Serializable {
 
     private static final long serialVersionUID = 1L;

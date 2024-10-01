@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         BusinessData.JSON_PROPERTY_PERSISTENCE_ID_STRING,
         BusinessData.JSON_PROPERTY_PERSISTENCE_VERSION_STRING
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class BusinessData extends HashMap<String, Object> implements Serializable {
 
     private static final long serialVersionUID = 1L;
