@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
         ProcessUpdateRequest.JSON_PROPERTY_ACTIVATION_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProcessUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

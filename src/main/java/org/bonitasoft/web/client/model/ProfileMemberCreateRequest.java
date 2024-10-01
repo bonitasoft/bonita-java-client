@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ProfileMemberCreateRequest.JSON_PROPERTY_USER_ID,
         ProfileMemberCreateRequest.JSON_PROPERTY_MEMBER_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProfileMemberCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

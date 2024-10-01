@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedProcessInstanceDocument.JSON_PROPERTY_SOURCE_OBJECT_ID,
         ArchivedProcessInstanceDocument.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ArchivedProcessInstanceDocument implements Serializable {
 
     private static final long serialVersionUID = 1L;

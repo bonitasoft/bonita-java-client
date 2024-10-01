@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationMenuUpdateRequest.JSON_PROPERTY_MENU_INDEX,
         ApplicationMenuUpdateRequest.JSON_PROPERTY_DISPLAY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ApplicationMenuUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

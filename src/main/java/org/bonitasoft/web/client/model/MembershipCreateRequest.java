@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         MembershipCreateRequest.JSON_PROPERTY_GROUP_ID,
         MembershipCreateRequest.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class MembershipCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

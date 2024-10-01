@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         UpdateTaskByIdRequest.JSON_PROPERTY_STATE,
         UpdateTaskByIdRequest.JSON_PROPERTY_DISPLAY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Serializable {
 
     private static final long serialVersionUID = 1L;

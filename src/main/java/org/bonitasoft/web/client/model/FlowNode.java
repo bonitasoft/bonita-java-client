@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         FlowNode.JSON_PROPERTY_LAST_UPDATE_DATE,
         FlowNode.JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class FlowNode implements Serializable {
 
     private static final long serialVersionUID = 1L;

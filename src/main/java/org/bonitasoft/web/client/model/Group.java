@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Group.JSON_PROPERTY_LAST_UPDATE_DATE,
         Group.JSON_PROPERTY_ICON
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Group implements Serializable {
 
     private static final long serialVersionUID = 1L;

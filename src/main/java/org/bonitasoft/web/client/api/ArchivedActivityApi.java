@@ -26,7 +26,7 @@ import org.bonitasoft.web.client.model.ArchivedActivity;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface ArchivedActivityApi extends ApiClient.Api {
 
     /**

@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Task.JSON_PROPERTY_ASSIGNED_DATE,
         Task.JSON_PROPERTY_IS_TERMINAL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Task implements Serializable {
 
     private static final long serialVersionUID = 1L;
