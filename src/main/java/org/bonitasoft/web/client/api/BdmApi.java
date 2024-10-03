@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import org.bonitasoft.web.client.model.BusinessData;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface BdmApi extends ApiClient.Api {
 
     /**
@@ -59,10 +59,12 @@ public interface BdmApi extends ApiClient.Api {
 
     /**
      * Install a BDM
-     * Install a BDM
+     * Install a BDM Warning: as of 9.0.0, importing a BDM using this API is deprecated.
      * 
      * @param bdMInstallRequest (optional)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/tenant/bdm")
     @Headers({
             "Content-Type: application/json",
@@ -73,10 +75,12 @@ public interface BdmApi extends ApiClient.Api {
     /**
      * Install a BDM
      * Similar to <code>installBDM</code> but it also returns the http response headers .
-     * Install a BDM
+     * Install a BDM Warning: as of 9.0.0, importing a BDM using this API is deprecated.
      * 
      * @param bdMInstallRequest (optional)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/tenant/bdm")
     @Headers({
             "Content-Type: application/json",
@@ -249,7 +253,7 @@ public interface BdmApi extends ApiClient.Api {
     @RequestLine("POST /portal/fileUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadFile(@Param("file") File file);
 
@@ -265,7 +269,7 @@ public interface BdmApi extends ApiClient.Api {
     @RequestLine("POST /portal/fileUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadFileWithHttpInfo(@Param("file") File file);
 

@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ActivityUpdateRequest.JSON_PROPERTY_VARIABLES,
         ActivityUpdateRequest.JSON_PROPERTY_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ActivityUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,7 +56,7 @@ public class ActivityUpdateRequest implements Serializable {
      * variable, the value set by the REST API call is overwritten.
      * 
      * @return variables
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VARIABLES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -82,7 +82,7 @@ public class ActivityUpdateRequest implements Serializable {
      * have been reset ![edition](https://img.shields.io/badge/edition-entreprise-blue) - Replay activity: &#x60;replay&#x60;
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

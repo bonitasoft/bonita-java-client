@@ -18,11 +18,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
-          java-version: 11
+          java-version: 17
           distribution: temurin
           cache: maven
 
@@ -37,11 +37,11 @@ jobs:
           ./mvnw -B -ntp clean verify
 
       - name: Open Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7
         id: create-pr
         with:
           branch: feat/update-bonita-openapi-spec
-          base: dev
+          base: develop
           commit-message: "feat(openapi): update version"
           title: "feat(openapi): update version"
           body: |

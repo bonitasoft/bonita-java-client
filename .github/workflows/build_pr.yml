@@ -1,0 +1,21 @@
+name: Build Pull Request
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - release/*
+      - support/*
+    paths-ignore:
+      - "README.adoc"
+      - "CHANGELOG.adoc"
+      - ".github/**"
+      - "!.github/workflows/build_pr.yml"
+      - "!.github/workflows/_reusable_build.yml"
+
+jobs:
+  build:
+    uses: ./.github/workflows/_reusable_build.yml
+    with:
+      ossrh-publication: false
+    secrets: inherit

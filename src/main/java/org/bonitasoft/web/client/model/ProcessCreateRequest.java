@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ProcessCreateRequest.JSON_PROPERTY_FILEUPLOAD
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProcessCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,7 +50,7 @@ public class ProcessCreateRequest implements Serializable {
      * the bar file to deploy (previously uploaded in tmp folder)
      * 
      * @return fileupload
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FILEUPLOAD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

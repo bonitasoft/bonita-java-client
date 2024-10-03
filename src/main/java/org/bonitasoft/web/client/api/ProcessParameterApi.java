@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import org.bonitasoft.web.client.model.ProcessParameterUpdateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface ProcessParameterApi extends ApiClient.Api {
 
     /**
@@ -184,13 +184,16 @@ public interface ProcessParameterApi extends ApiClient.Api {
 
     /**
      * Update the ProcessParameter by ID
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the ProcessParameter for the given ID
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the ProcessParameter for the given ID Warning: as of 9.0.0, importing a Process
+     * parameter using this API is deprecated.
      * 
      * @param id ID of the process to get parameter from (required)
      * @param name Name of the process parameter to return (required)
      * @param processParameterUpdateRequest You can update only a process parameter value using the API. If you specify values for other fields in the update
      *        request, they are ignored. (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/processParameter/{id}/{name}")
     @Headers({
             "Content-Type: application/json",
@@ -202,13 +205,16 @@ public interface ProcessParameterApi extends ApiClient.Api {
     /**
      * Update the ProcessParameter by ID
      * Similar to <code>updateProcessParameterById</code> but it also returns the http response headers .
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the ProcessParameter for the given ID
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the ProcessParameter for the given ID Warning: as of 9.0.0, importing a Process
+     * parameter using this API is deprecated.
      * 
      * @param id ID of the process to get parameter from (required)
      * @param name Name of the process parameter to return (required)
      * @param processParameterUpdateRequest You can update only a process parameter value using the API. If you specify values for other fields in the update
      *        request, they are ignored. (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/processParameter/{id}/{name}")
     @Headers({
             "Content-Type: application/json",

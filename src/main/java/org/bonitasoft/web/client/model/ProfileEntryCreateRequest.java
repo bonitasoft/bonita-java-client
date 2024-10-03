@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfileEntryCreateRequest.JSON_PROPERTY_IS_CUSTOM,
         ProfileEntryCreateRequest.JSON_PROPERTY_PARENT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProfileEntryCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,7 +74,7 @@ public class ProfileEntryCreateRequest implements Serializable {
      * id of the profile that contains this profileEntry
      * 
      * @return profileId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -99,7 +99,7 @@ public class ProfileEntryCreateRequest implements Serializable {
      * pageToken (menu name or menu item name) used in a portal menu to identify the page associated with the profileEntry
      * 
      * @return page
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -124,7 +124,7 @@ public class ProfileEntryCreateRequest implements Serializable {
      * description
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -149,7 +149,7 @@ public class ProfileEntryCreateRequest implements Serializable {
      * name of the profileEntry
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -174,7 +174,7 @@ public class ProfileEntryCreateRequest implements Serializable {
      * link (if menu item) | folder (if menu)
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -199,7 +199,7 @@ public class ProfileEntryCreateRequest implements Serializable {
      * true | false
      * 
      * @return isCustom
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_IS_CUSTOM)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -224,7 +224,7 @@ public class ProfileEntryCreateRequest implements Serializable {
      * id or parent profileEntry if in a folder
      * 
      * @return parentId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARENT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

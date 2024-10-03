@@ -1,0 +1,21 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - develop
+      - release/*
+      - support/*
+    paths-ignore:
+      - "README.adoc"
+      - "CHANGELOG.adoc"
+      - ".github/**"
+      - "!.github/workflows/build.yml"
+      - "!.github/workflows/_reusable_build.yml"
+
+jobs:
+  build:
+    uses: ./.github/workflows/_reusable_build.yml
+    with:
+      ossrh-publication: true
+    secrets: inherit

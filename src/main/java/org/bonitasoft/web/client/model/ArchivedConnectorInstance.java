@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ArchivedConnectorInstance.JSON_PROPERTY_VERSION,
         ArchivedConnectorInstance.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ArchivedConnectorInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -164,7 +164,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the type of the containing activity
      * 
      * @return containerType
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -189,7 +189,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the connector id
      * 
      * @return connectorId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONNECTOR_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -214,7 +214,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the connector instance id
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -239,7 +239,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the connector name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -264,7 +264,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the name of the event that activated the connector instance
      * 
      * @return activationEvent
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ACTIVATION_EVENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -289,7 +289,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the connector state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -314,7 +314,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the containing activity instance id
      * 
      * @return containerId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -339,7 +339,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the connector version
      * 
      * @return version
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -364,7 +364,7 @@ public class ArchivedConnectorInstance implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return archivedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

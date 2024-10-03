@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ContractConstraint.JSON_PROPERTY_EXPLANATION,
         ContractConstraint.JSON_PROPERTY_INPUT_NAMES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ContractConstraint implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,7 +49,7 @@ public class ContractConstraint implements Serializable {
     private String explanation;
 
     public static final String JSON_PROPERTY_INPUT_NAMES = "inputNames";
-    private List<String> inputNames;
+    private List<String> inputNames = new ArrayList<>();
 
     public ContractConstraint() {
     }
@@ -64,7 +64,7 @@ public class ContractConstraint implements Serializable {
      * constraint name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -89,7 +89,7 @@ public class ContractConstraint implements Serializable {
      * constraint expression
      * 
      * @return expression
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXPRESSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -114,7 +114,7 @@ public class ContractConstraint implements Serializable {
      * constraint explanation
      * 
      * @return explanation
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXPLANATION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -147,7 +147,7 @@ public class ContractConstraint implements Serializable {
      * Get inputNames
      * 
      * @return inputNames
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_INPUT_NAMES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,64 +23,74 @@ import org.bonitasoft.web.client.model.ApiResponse;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface UploadApi extends ApiClient.Api {
 
     /**
      * Upload a living application
-     * Upload application
+     * Upload application Warning: as of 9.0.0, uploading a living application using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/applicationsUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadApplication(@Param("file") File file);
 
     /**
      * Upload a living application
      * Similar to <code>uploadApplication</code> but it also returns the http response headers .
-     * Upload application
+     * Upload application Warning: as of 9.0.0, uploading a living application using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/applicationsUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadApplicationWithHttpInfo(@Param("file") File file);
 
     /**
      * Upload a BDM Access Control
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control Warning: as of 9.0.0, uploading a BDM Access Control using the
+     * portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/bdmAccessControlUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadBDMAccessControl(@Param("file") File file);
 
     /**
      * Upload a BDM Access Control
      * Similar to <code>uploadBDMAccessControl</code> but it also returns the http response headers .
-     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload BDM Access Control Warning: as of 9.0.0, uploading a BDM Access Control using the
+     * portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/bdmAccessControlUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadBDMAccessControlWithHttpInfo(@Param("file") File file);
 
@@ -95,7 +105,7 @@ public interface UploadApi extends ApiClient.Api {
     @RequestLine("POST /portal/fileUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadFile(@Param("file") File file);
 
@@ -111,7 +121,7 @@ public interface UploadApi extends ApiClient.Api {
     @RequestLine("POST /portal/fileUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadFileWithHttpInfo(@Param("file") File file);
 
@@ -125,7 +135,7 @@ public interface UploadApi extends ApiClient.Api {
     @RequestLine("POST /portal/organizationUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadOrganization(@Param("file") File file);
 
@@ -140,94 +150,106 @@ public interface UploadApi extends ApiClient.Api {
     @RequestLine("POST /portal/organizationUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadOrganizationWithHttpInfo(@Param("file") File file);
 
     /**
      * Upload a Page
-     * Upload Page
+     * Upload Page Warning: as of 9.0.0, uploading a page using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/pageUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadPage(@Param("file") File file);
 
     /**
      * Upload a Page
      * Similar to <code>uploadPage</code> but it also returns the http response headers .
-     * Upload Page
+     * Upload Page Warning: as of 9.0.0, uploading a page using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/pageUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadPageWithHttpInfo(@Param("file") File file);
 
     /**
      * Upload a bar file
-     * Upload a bar file
+     * Upload a bar file Warning: as of 9.0.0, uploading a bar file using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/processUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadProcess(@Param("file") File file);
 
     /**
      * Upload a bar file
      * Similar to <code>uploadProcess</code> but it also returns the http response headers .
-     * Upload a bar file
+     * Upload a bar file Warning: as of 9.0.0, uploading a bar file using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/processUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadProcessWithHttpInfo(@Param("file") File file);
 
     /**
      * Upload profiles
-     * Upload profiles
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload profiles Warning: as of 9.0.0, uploading profiles using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/profilesUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadprofiles(@Param("file") File file);
 
     /**
      * Upload profiles
      * Similar to <code>uploadprofiles</code> but it also returns the http response headers .
-     * Upload profiles
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Upload profiles Warning: as of 9.0.0, uploading profiles using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/profilesUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadprofilesWithHttpInfo(@Param("file") File file);
 

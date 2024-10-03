@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,16 +27,18 @@ import org.bonitasoft.web.client.model.ApplicationPageCreateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface ApplicationPageApi extends ApiClient.Api {
 
     /**
      * Create an application page
-     * Create an application page
+     * Create an application page Warning: as of 9.0.0, creating an application page using this API is deprecated.
      * 
      * @param body Partial application page description (required)
      * @return ApplicationPage
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/living/application-page")
     @Headers({
             "Content-Type: application/json",
@@ -47,11 +49,13 @@ public interface ApplicationPageApi extends ApiClient.Api {
     /**
      * Create an application page
      * Similar to <code>createApplicationPage</code> but it also returns the http response headers .
-     * Create an application page
+     * Create an application page Warning: as of 9.0.0, creating an application page using this API is deprecated.
      * 
      * @param body Partial application page description (required)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/living/application-page")
     @Headers({
             "Content-Type: application/json",

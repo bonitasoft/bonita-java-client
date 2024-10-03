@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,16 +23,19 @@ import org.bonitasoft.web.client.model.TenantPauseRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface SystemTenantApi extends ApiClient.Api {
 
     /**
      * Get the current Tenant
-     * Pause and resume tenant services in order to do maintenance on a tenant.
+     * Pause and resume tenant services in order to do maintenance on a tenant. Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use
+     * /API/system/maintenance instead to retrieve the maintenance state.
      * 
      * @param id ID of the tenant (required)
      * @return SystemTenant
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("GET /API/system/tenant/{id}")
     @Headers({
             "Accept: application/json",
@@ -42,11 +45,14 @@ public interface SystemTenantApi extends ApiClient.Api {
     /**
      * Get the current Tenant
      * Similar to <code>getSystemTenant</code> but it also returns the http response headers .
-     * Pause and resume tenant services in order to do maintenance on a tenant.
+     * Pause and resume tenant services in order to do maintenance on a tenant. Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use
+     * /API/system/maintenance instead to retrieve the maintenance state.
      * 
      * @param id ID of the tenant (required)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("GET /API/system/tenant/{id}")
     @Headers({
             "Accept: application/json",
@@ -55,11 +61,14 @@ public interface SystemTenantApi extends ApiClient.Api {
 
     /**
      * Update the current Tenant
-     * Pause or resume the current tenant.
+     * Pause or resume the current tenant. Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to enable
+     * the maintenance mode (same behavior as pausing the tenant).
      * 
      * @param id ID of the tenant (required)
      * @param tenantPauseRequest Partial SystemTenant description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/system/tenant/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -70,11 +79,14 @@ public interface SystemTenantApi extends ApiClient.Api {
     /**
      * Update the current Tenant
      * Similar to <code>updateSystemTenant</code> but it also returns the http response headers .
-     * Pause or resume the current tenant.
+     * Pause or resume the current tenant. Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to enable
+     * the maintenance mode (same behavior as pausing the tenant).
      * 
      * @param id ID of the tenant (required)
      * @param tenantPauseRequest Partial SystemTenant description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/system/tenant/{id}")
     @Headers({
             "Content-Type: application/json",

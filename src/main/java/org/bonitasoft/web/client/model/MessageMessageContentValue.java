@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         MessageMessageContentValue.JSON_PROPERTY_TYPE
 })
 @JsonTypeName("Message_messageContent_value")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class MessageMessageContentValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,11 +62,11 @@ public class MessageMessageContentValue implements Serializable {
 
         UTIL_DATE("java.util.Date"),
 
-        TIME_LOCALDATE("java.time.LocalDate"),
+        TIME_LOCAL_DATE("java.time.LocalDate"),
 
-        TIME_LOCALDATETIME("java.time.LocalDateTime"),
+        TIME_LOCAL_DATE_TIME("java.time.LocalDateTime"),
 
-        TIME_OFFSETDATETIME("java.time.OffsetDateTime");
+        TIME_OFFSET_DATE_TIME("java.time.OffsetDateTime");
 
         private String value;
 
@@ -109,7 +109,7 @@ public class MessageMessageContentValue implements Serializable {
 
     /**
      * @return value
-     **/
+     */
     @jakarta.annotation.Nonnull
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -135,7 +135,7 @@ public class MessageMessageContentValue implements Serializable {
      * process (eg: a java.lang.Long is expected and the guessed type is a java.lang.Integer)
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

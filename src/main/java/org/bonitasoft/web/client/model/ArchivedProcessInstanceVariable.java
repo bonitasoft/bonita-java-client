@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedProcessInstanceVariable.JSON_PROPERTY_ARCHIVED_DATE,
         ArchivedProcessInstanceVariable.JSON_PROPERTY_SOURCED_OBJECT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ArchivedProcessInstanceVariable implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,7 +74,7 @@ public class ArchivedProcessInstanceVariable implements Serializable {
      * The name of the variable
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -99,7 +99,7 @@ public class ArchivedProcessInstanceVariable implements Serializable {
      * Detailed description of the case variable, as set in the definition at design-time
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -124,7 +124,7 @@ public class ArchivedProcessInstanceVariable implements Serializable {
      * The fully qualified class name of the variable type
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -149,7 +149,7 @@ public class ArchivedProcessInstanceVariable implements Serializable {
      * ID of the case this variable belongs to
      * 
      * @return caseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -174,7 +174,7 @@ public class ArchivedProcessInstanceVariable implements Serializable {
      * the value of this variable. The format of the value depends on the type of the variable
      * 
      * @return value
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -199,7 +199,7 @@ public class ArchivedProcessInstanceVariable implements Serializable {
      * The date when this variable was archived. The date format is yyyy-MM-dd HH:mm:ss.SSS
      * 
      * @return archivedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -224,7 +224,7 @@ public class ArchivedProcessInstanceVariable implements Serializable {
      * The id of the variable before it was archived
      * 
      * @return sourcedObjectId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SOURCED_OBJECT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

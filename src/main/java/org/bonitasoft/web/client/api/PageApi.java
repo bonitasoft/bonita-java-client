@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,16 +29,19 @@ import org.bonitasoft.web.client.model.PageUpdateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface PageApi extends ApiClient.Api {
 
     /**
      * Create the Page
-     * Upload the page content using the &#x60;portal/pageUpload&#x60; . This returns a temporary file name that can be used as input for this operation.
+     * Upload the page content using the &#x60;portal/pageUpload&#x60;. This returns a temporary file name that can be used as input for this operation. Warning: as
+     * of 9.0.0, creating a page using this API is deprecated.
      * 
      * @param body Zip name as named in the temp folder after upload (required)
      * @return Page
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/portal/page")
     @Headers({
             "Content-Type: application/json",
@@ -49,11 +52,14 @@ public interface PageApi extends ApiClient.Api {
     /**
      * Create the Page
      * Similar to <code>createPage</code> but it also returns the http response headers .
-     * Upload the page content using the &#x60;portal/pageUpload&#x60; . This returns a temporary file name that can be used as input for this operation.
+     * Upload the page content using the &#x60;portal/pageUpload&#x60;. This returns a temporary file name that can be used as input for this operation. Warning: as
+     * of 9.0.0, creating a page using this API is deprecated.
      * 
      * @param body Zip name as named in the temp folder after upload (required)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/portal/page")
     @Headers({
             "Content-Type: application/json",
@@ -240,11 +246,13 @@ public interface PageApi extends ApiClient.Api {
     /**
      * Update the Page by ID
      * Use the PUT method to update an existing custom page. To update a custom page, upload the new page content using the pageUpload servlet, which returns a
-     * temporary file name, and then call this API with the temporary file name.
+     * temporary file name, and then call this API with the temporary file name. Warning: as of 9.0.0, updating a page using this API is deprecated.
      * 
      * @param id ID of the Page to return (required)
      * @param pageUpdateRequest Partial Page description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/portal/page/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -256,11 +264,13 @@ public interface PageApi extends ApiClient.Api {
      * Update the Page by ID
      * Similar to <code>updatePageById</code> but it also returns the http response headers .
      * Use the PUT method to update an existing custom page. To update a custom page, upload the new page content using the pageUpload servlet, which returns a
-     * temporary file name, and then call this API with the temporary file name.
+     * temporary file name, and then call this API with the temporary file name. Warning: as of 9.0.0, updating a page using this API is deprecated.
      * 
      * @param id ID of the Page to return (required)
      * @param pageUpdateRequest Partial Page description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/portal/page/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -270,30 +280,34 @@ public interface PageApi extends ApiClient.Api {
 
     /**
      * Upload a Page
-     * Upload Page
+     * Upload Page Warning: as of 9.0.0, uploading a page using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/pageUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadPage(@Param("file") File file);
 
     /**
      * Upload a Page
      * Similar to <code>uploadPage</code> but it also returns the http response headers .
-     * Upload Page
+     * Upload Page Warning: as of 9.0.0, uploading a page using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/pageUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadPageWithHttpInfo(@Param("file") File file);
 

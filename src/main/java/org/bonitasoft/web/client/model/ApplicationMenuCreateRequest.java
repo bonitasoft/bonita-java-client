@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationMenuCreateRequest.JSON_PROPERTY_MENU_INDEX,
         ApplicationMenuCreateRequest.JSON_PROPERTY_PARENT_MENU_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ApplicationMenuCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,7 +62,7 @@ public class ApplicationMenuCreateRequest implements Serializable {
      * display name of the application menu
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -87,7 +87,7 @@ public class ApplicationMenuCreateRequest implements Serializable {
      * the application menu page ID
      * 
      * @return applicationPageId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -112,7 +112,7 @@ public class ApplicationMenuCreateRequest implements Serializable {
      * the application menu index
      * 
      * @return menuIndex
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MENU_INDEX)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -137,7 +137,7 @@ public class ApplicationMenuCreateRequest implements Serializable {
      * the application parent menu ID
      * 
      * @return parentMenuId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

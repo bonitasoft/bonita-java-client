@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         FlowNode.JSON_PROPERTY_LAST_UPDATE_DATE,
         FlowNode.JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class FlowNode implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -134,7 +134,7 @@ public class FlowNode implements Serializable {
      * the flow node id
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -159,7 +159,7 @@ public class FlowNode implements Serializable {
      * the human readable flow node description
      * 
      * @return displayDescription
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -184,7 +184,7 @@ public class FlowNode implements Serializable {
      * the id of the user who really performed this flow node when a substitute did it, or 0 if the flow node was not performed by a substitute
      * 
      * @return executedBySubstitute
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -209,7 +209,7 @@ public class FlowNode implements Serializable {
      * the process instance id that is associated with this flow node
      * 
      * @return caseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -234,7 +234,7 @@ public class FlowNode implements Serializable {
      * the parent process instance id that is associated with this flow node&#39;s case
      * 
      * @return parentCaseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -259,7 +259,7 @@ public class FlowNode implements Serializable {
      * the root process instance initiator id that is associated with this flow node&#39;s case
      * 
      * @return rootCaseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -284,7 +284,7 @@ public class FlowNode implements Serializable {
      * the process id that is associated with this flow node
      * 
      * @return processId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -309,7 +309,7 @@ public class FlowNode implements Serializable {
      * the root process id of the root process instance that is associated with this flow node
      * 
      * @return rootContainerId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -334,7 +334,7 @@ public class FlowNode implements Serializable {
      * the current state of the flow node (ready, completed, failed)
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -359,7 +359,7 @@ public class FlowNode implements Serializable {
      * the flow node type
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -384,7 +384,7 @@ public class FlowNode implements Serializable {
      * the user id that this flow node is assigned to, or 0 if it is unassigned
      * 
      * @return assignedId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -409,7 +409,7 @@ public class FlowNode implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current flow node was assigned, for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return assignedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -434,7 +434,7 @@ public class FlowNode implements Serializable {
      * the id of the user who executed the flow node, or 0 if the flow node has not been executed
      * 
      * @return executedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -459,7 +459,7 @@ public class FlowNode implements Serializable {
      * the priority of the current flow node
      * 
      * @return priority
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PRIORITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -484,7 +484,7 @@ public class FlowNode implements Serializable {
      * the id of the actor that can execute this flow node, null otherwise
      * 
      * @return actorId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ACTOR_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -509,7 +509,7 @@ public class FlowNode implements Serializable {
      * the flow node description
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -534,7 +534,7 @@ public class FlowNode implements Serializable {
      * the flow node name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -559,7 +559,7 @@ public class FlowNode implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node reached the current state, for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return reachedStateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -584,7 +584,7 @@ public class FlowNode implements Serializable {
      * the display name of this flow node
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -609,7 +609,7 @@ public class FlowNode implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node is due, for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return dueDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DUE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -634,7 +634,7 @@ public class FlowNode implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this flow node was last updated, for example &#39;2014-10-17 16:05:42.626)
      * 
      * @return lastUpdateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -659,7 +659,7 @@ public class FlowNode implements Serializable {
      * in case of a subtask, the parent task id
      * 
      * @return parentTaskIdDoubleQuote
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Message.JSON_PROPERTY_MESSAGE_CONTENT,
         Message.JSON_PROPERTY_CORRELATIONS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -69,7 +69,7 @@ public class Message implements Serializable {
      * the message name
      * 
      * @return messageName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MESSAGE_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -94,7 +94,7 @@ public class Message implements Serializable {
      * the target process name
      * 
      * @return targetProcess
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TARGET_PROCESS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -119,7 +119,7 @@ public class Message implements Serializable {
      * the target FlowNode name
      * 
      * @return targetFlowNode
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TARGET_FLOW_NODE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -152,7 +152,7 @@ public class Message implements Serializable {
      * the message content
      * 
      * @return messageContent
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MESSAGE_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -185,7 +185,7 @@ public class Message implements Serializable {
      * the message correlations
      * 
      * @return correlations
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CORRELATIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

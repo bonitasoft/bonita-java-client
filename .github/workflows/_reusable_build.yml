@@ -1,0 +1,94 @@
+name: workflow-build
+
+on:
+  workflow_call: 
+    inputs:
+      ossrh-publication:
+        type: boolean
+        default: false
+    secrets:
+      KSM_CONFIG:
+        required: true
+
+jobs:
+
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: Keeper-Security/ksm-action@v1
+        with:
+          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
+          secrets: |
+            ${{ vars.KEEPER_SONARCLOUD_RECORD_ID }}/field/password > env:SONAR_TOKEN
+            ${{ vars.KEEPER_OSSRH_RECORD_ID }}/field/login > env:MAVEN_USERNAME
+            ${{ vars.KEEPER_OSSRH_RECORD_ID }}/field/password > env:MAVEN_PASSWORD
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/field/login > env:GPG_KEYNAME
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/custom_field/gpg-private-key > env:GPG_PRIVATE_KEY
+            ${{ vars.KEEPER_GPG_ARTIFACT_SIGNING_RECORD_ID }}/field/password > env:MAVEN_GPG_PASSPHRASE
+            ${{ vars.KEEPER_JFROG_RECORD_ID }}/field/login > env:JFROG_USER
+            ${{ vars.KEEPER_JFROG_RECORD_ID }}/field/password > env:JFROG_TOKEN
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: temurin
+          cache: maven
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ env.GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ vars.BONITASOFT_DOCKER_REGISTRY }}
+          username: ${{ env.JFROG_USER }}
+          password: ${{ env.JFROG_TOKEN }}
+
+      - name: Compile and test project
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        run: ./mvnw -B -ntp clean verify sonar:sonar -Dsonar.scanner.force-deprecated-java-version=true -Dbonita.image=${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.DOCKER_SNAPSHOTS_REPOSITORY }}/bonita-community:10.2-SNAPSHOT
+
+       # Build and Push snapshots to maven central
+      - name: Deploy snapshots to Maven central
+        if: ${{ inputs.ossrh-publication }}
+        run: ./mvnw -B -ntp deploy -DskipTests=true -Pdeploy
+
+  test-supported-versions:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        bonita-version: 
+          - '7.15.0'
+          - '8.0.0'
+          - '9.0.0'
+          - '10.0.0'
+          - '10.1.0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Keeper-Security/ksm-action@v1
+        with:
+          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
+          secrets: |
+            ${{ vars.KEEPER_JFROG_RECORD_ID }}/field/login > env:JFROG_USER
+            ${{ vars.KEEPER_JFROG_RECORD_ID }}/field/password > env:JFROG_TOKEN
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: temurin
+          cache: maven
+      
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ vars.BONITASOFT_DOCKER_REGISTRY }}
+          username: ${{ env.JFROG_USER }}
+          password: ${{ env.JFROG_TOKEN }}
+
+      - name: ${{ matrix.bonita-version }} Integration tests
+        run: ./mvnw -B -ntp verify -Dbonita.image=${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.INTERNAL_DOCKER_REPOSITORY_RELEASE }}/bonita-community:${{ matrix.bonita-version }}

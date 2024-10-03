@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,16 +28,18 @@ import org.bonitasoft.web.client.model.ApplicationMenuUpdateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface ApplicationMenuApi extends ApiClient.Api {
 
     /**
      * New application menu item
-     * Create an application menu item
+     * Create an application menu item Warning: as of 9.0.0, creating an application menu item using this API is deprecated.
      * 
      * @param applicationMenuCreateRequest A partial representation of an application menu in JSON (optional)
      * @return ApplicationMenu
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/living/application-menu")
     @Headers({
             "Content-Type: application/json",
@@ -48,11 +50,13 @@ public interface ApplicationMenuApi extends ApiClient.Api {
     /**
      * New application menu item
      * Similar to <code>createApplicationMenu</code> but it also returns the http response headers .
-     * Create an application menu item
+     * Create an application menu item Warning: as of 9.0.0, creating an application menu item using this API is deprecated.
      * 
      * @param applicationMenuCreateRequest A partial representation of an application menu in JSON (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/living/application-menu")
     @Headers({
             "Content-Type: application/json",
@@ -244,12 +248,14 @@ public interface ApplicationMenuApi extends ApiClient.Api {
     }
 
     /**
-     * Update a application menu by ID
-     * Update a application menu for the given ID
+     * Update an application menu by ID
+     * Update an application menu for the given ID Warning: as of 9.0.0, updating an application menu item using this API is deprecated.
      * 
      * @param id ID of the application menu to return (required)
      * @param applicationMenuUpdateRequest Partial application menu description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/living/application-menu/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -258,13 +264,15 @@ public interface ApplicationMenuApi extends ApiClient.Api {
     void updateApplicationMenuById(@Param("id") String id, ApplicationMenuUpdateRequest applicationMenuUpdateRequest);
 
     /**
-     * Update a application menu by ID
+     * Update an application menu by ID
      * Similar to <code>updateApplicationMenuById</code> but it also returns the http response headers .
-     * Update a application menu for the given ID
+     * Update an application menu for the given ID Warning: as of 9.0.0, updating an application menu item using this API is deprecated.
      * 
      * @param id ID of the application menu to return (required)
      * @param applicationMenuUpdateRequest Partial application menu description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/living/application-menu/{id}")
     @Headers({
             "Content-Type: application/json",
