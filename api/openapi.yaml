@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.20
+  version: 0.0.21
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -7002,6 +7002,24 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: "Forbidden, The request contained valid data and was understood\
             \ by the server, but the server is refusing action."
+        "429":
+          content:
+            application/json:
+              example:
+                message: Error occurred when starting process 5524355418393634511.
+                  Case creation limit reached.
+                exception: org.bonitasoft.web.toolkit.client.common.exception.api.APITooManyRequestException
+              schema:
+                $ref: '#/components/schemas/createProcessInstance_429_response'
+          description: Case creation limit reached (Community 2024.3+ only)
+          headers:
+            Retry-After:
+              description: Date when case counter will be refilled
+              explode: false
+              schema:
+                format: date-time
+                type: string
+              style: simple
         "5XX":
           content:
             application/json:
@@ -8652,6 +8670,24 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: "Forbidden, The request contained valid data and was understood\
             \ by the server, but the server is refusing action."
+        "429":
+          content:
+            application/json:
+              example:
+                code: 429
+                description: Unable to start the process with ID 5524355418393634511
+                reasonPhrase: Case creation limit reached.
+              schema:
+                $ref: '#/components/schemas/instanciateProcess_429_response'
+          description: Case creation limit reached (Community 2024.3+ only)
+          headers:
+            Retry-After:
+              description: Date when case counter will be refilled
+              explode: false
+              schema:
+                format: date-time
+                type: string
+              style: simple
         "5XX":
           content:
             application/json:
@@ -21897,6 +21933,34 @@ components:
         bdmAccessControlUpload:
           description: The temporary name of the previously uploaded file to install
           type: string
+    createProcessInstance_429_response:
+      example:
+        exception: exception
+        message: message
+      properties:
+        message:
+          description: The error message
+          type: string
+        exception:
+          description: The exception type
+          type: string
+      type: object
+    instanciateProcess_429_response:
+      example:
+        code: 0.8008281904610115
+        reasonPhrase: reasonPhrase
+        description: description
+      properties:
+        code:
+          description: The response status code
+          type: number
+        description:
+          description: The status description
+          type: string
+        reasonPhrase:
+          description: The detail of the reason
+          type: string
+      type: object
     platformLogin_request:
       properties:
         username:
