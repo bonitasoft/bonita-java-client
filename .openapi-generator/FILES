@@ -125,6 +125,7 @@ src/main/java/org/bonitasoft/web/client/model/ContractConstraint.java
 src/main/java/org/bonitasoft/web/client/model/ContractInput.java
 src/main/java/org/bonitasoft/web/client/model/ContractInputType.java
 src/main/java/org/bonitasoft/web/client/model/CreateApplicationRequest.java
+src/main/java/org/bonitasoft/web/client/model/CreateProcessInstance429Response.java
 src/main/java/org/bonitasoft/web/client/model/CustomUser.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserDefinition.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserDefinitionCreateRequest.java
@@ -147,6 +148,7 @@ src/main/java/org/bonitasoft/web/client/model/GroupUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/HumanTask.java
 src/main/java/org/bonitasoft/web/client/model/HumanTaskUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/I18nlocale.java
+src/main/java/org/bonitasoft/web/client/model/InstanciateProcess429Response.java
 src/main/java/org/bonitasoft/web/client/model/LegacyApplication.java
 src/main/java/org/bonitasoft/web/client/model/License.java
 src/main/java/org/bonitasoft/web/client/model/MaintenanceDetails.java
