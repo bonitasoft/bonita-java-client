@@ -51,7 +51,7 @@
     <swagger-annotations.version>1.6.14</swagger-annotations.version>
     <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
     <jsr305.version>3.0.2</jsr305.version>
-    <feign.version>13.4</feign.version>
+    <feign.version>13.5</feign.version>
     <feign-form.version>3.8.0</feign-form.version>
     <okhttp.version>4.12.0</okhttp.version>
     <scribejava.version>8.3.3</scribejava.version>
