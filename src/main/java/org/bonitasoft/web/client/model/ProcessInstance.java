@@ -49,7 +49,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ProcessInstance.JSON_PROPERTY_SEARCH_INDEX2_VALUE,
         ProcessInstance.JSON_PROPERTY_SEARCH_INDEX3_VALUE,
         ProcessInstance.JSON_PROPERTY_SEARCH_INDEX4_VALUE,
-        ProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_VALUE
+        ProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_VALUE,
+        ProcessInstance.JSON_PROPERTY_CALLER_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProcessInstance implements Serializable {
@@ -168,6 +169,9 @@ public class ProcessInstance implements Serializable {
 
     public static final String JSON_PROPERTY_SEARCH_INDEX5_VALUE = "searchIndex5Value";
     private String searchIndex5Value;
+
+    public static final String JSON_PROPERTY_CALLER_ID = "callerId";
+    private String callerId;
 
     public ProcessInstance() {
     }
@@ -698,6 +702,32 @@ public class ProcessInstance implements Serializable {
         this.searchIndex5Value = searchIndex5Value;
     }
 
+    public ProcessInstance callerId(String callerId) {
+
+        this.callerId = callerId;
+        return this;
+    }
+
+    /**
+     * the identifier of the BPM entity who started the process. E.g. the call activity instance Id if it was started by a call activity or -1 if it was started by
+     * a user (since version 10.3 - 2025.1)
+     * 
+     * @return callerId
+     */
+    @jakarta.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CALLER_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCallerId() {
+        return callerId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CALLER_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCallerId(String callerId) {
+        this.callerId = callerId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -727,7 +757,8 @@ public class ProcessInstance implements Serializable {
                 Objects.equals(this.searchIndex2Value, processInstance.searchIndex2Value) &&
                 Objects.equals(this.searchIndex3Value, processInstance.searchIndex3Value) &&
                 Objects.equals(this.searchIndex4Value, processInstance.searchIndex4Value) &&
-                Objects.equals(this.searchIndex5Value, processInstance.searchIndex5Value);
+                Objects.equals(this.searchIndex5Value, processInstance.searchIndex5Value) &&
+                Objects.equals(this.callerId, processInstance.callerId);
     }
 
     @Override
@@ -735,7 +766,7 @@ public class ProcessInstance implements Serializable {
         return Objects.hash(id, endDate, failedFlowNodes, startedBySubstitute, start, activeFlowNodes, state,
                 rootCaseId, startedBy, processDefinitionId, lastUpdateDate, searchIndex1Label, searchIndex2Label,
                 searchIndex3Label, searchIndex4Label, searchIndex5Label, searchIndex1Value, searchIndex2Value,
-                searchIndex3Value, searchIndex4Value, searchIndex5Value);
+                searchIndex3Value, searchIndex4Value, searchIndex5Value, callerId);
     }
 
     @Override
@@ -763,6 +794,7 @@ public class ProcessInstance implements Serializable {
         sb.append("    searchIndex3Value: ").append(toIndentedString(searchIndex3Value)).append("\n");
         sb.append("    searchIndex4Value: ").append(toIndentedString(searchIndex4Value)).append("\n");
         sb.append("    searchIndex5Value: ").append(toIndentedString(searchIndex5Value)).append("\n");
+        sb.append("    callerId: ").append(toIndentedString(callerId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
