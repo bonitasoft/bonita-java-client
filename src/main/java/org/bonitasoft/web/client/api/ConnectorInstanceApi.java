@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2024 BonitaSoft S.A.
+ * Copyright (C) 2025 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,12 @@ public interface ConnectorInstanceApi extends ApiClient.Api {
 
     /**
      * Finds ConnectorInstances
-     * Finds ConnectorInstances with pagination params and filters. Retrieve a list of connector instances attached to a process or a flow node.
+     * Finds ConnectorInstances attached to a process or a flow node with pagination params and filters. You can filter on: * &#x60;containerId&#x60;: the process
+     * instance or flow node instance ID * &#x60;state&#x60;: the connector state &#x60;TO_BE_EXECUTED&#x60;, &#x60;EXECUTING&#x60;, &#x60;TO_RE_EXECUTE&#x60;,
+     * &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SKIPPED&#x60; * &#x60;containerType&#x60;: the type of container: either &#x60;flowNode&#x60; or
+     * &#x60;process&#x60; (since version 10.3 - 2025.1) * &#x60;name&#x60;: the connector name (since version 10.3 - 2025.1) * &#x60;version&#x60;: the connector
+     * version (since version 10.3 - 2025.1) * &#x60;connectorId&#x60;: the connector definition ID (since version 10.3 - 2025.1) * &#x60;activationEvent&#x60;: the
+     * container event on which the connector is instanciated: either &#x60;ON_ENTER&#x60; or &#x60;ON_FINISH&#x60; (since version 10.3 - 2025.1)
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -50,7 +55,12 @@ public interface ConnectorInstanceApi extends ApiClient.Api {
     /**
      * Finds ConnectorInstances
      * Similar to <code>searchConnectorInstances</code> but it also returns the http response headers .
-     * Finds ConnectorInstances with pagination params and filters. Retrieve a list of connector instances attached to a process or a flow node.
+     * Finds ConnectorInstances attached to a process or a flow node with pagination params and filters. You can filter on: * &#x60;containerId&#x60;: the process
+     * instance or flow node instance ID * &#x60;state&#x60;: the connector state &#x60;TO_BE_EXECUTED&#x60;, &#x60;EXECUTING&#x60;, &#x60;TO_RE_EXECUTE&#x60;,
+     * &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SKIPPED&#x60; * &#x60;containerType&#x60;: the type of container: either &#x60;flowNode&#x60; or
+     * &#x60;process&#x60; (since version 10.3 - 2025.1) * &#x60;name&#x60;: the connector name (since version 10.3 - 2025.1) * &#x60;version&#x60;: the connector
+     * version (since version 10.3 - 2025.1) * &#x60;connectorId&#x60;: the connector definition ID (since version 10.3 - 2025.1) * &#x60;activationEvent&#x60;: the
+     * container event on which the connector is instanciated: either &#x60;ON_ENTER&#x60; or &#x60;ON_FINISH&#x60; (since version 10.3 - 2025.1)
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -68,7 +78,12 @@ public interface ConnectorInstanceApi extends ApiClient.Api {
 
     /**
      * Finds ConnectorInstances
-     * Finds ConnectorInstances with pagination params and filters. Retrieve a list of connector instances attached to a process or a flow node.
+     * Finds ConnectorInstances attached to a process or a flow node with pagination params and filters. You can filter on: * &#x60;containerId&#x60;: the process
+     * instance or flow node instance ID * &#x60;state&#x60;: the connector state &#x60;TO_BE_EXECUTED&#x60;, &#x60;EXECUTING&#x60;, &#x60;TO_RE_EXECUTE&#x60;,
+     * &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SKIPPED&#x60; * &#x60;containerType&#x60;: the type of container: either &#x60;flowNode&#x60; or
+     * &#x60;process&#x60; (since version 10.3 - 2025.1) * &#x60;name&#x60;: the connector name (since version 10.3 - 2025.1) * &#x60;version&#x60;: the connector
+     * version (since version 10.3 - 2025.1) * &#x60;connectorId&#x60;: the connector definition ID (since version 10.3 - 2025.1) * &#x60;activationEvent&#x60;: the
+     * container event on which the connector is instanciated: either &#x60;ON_ENTER&#x60; or &#x60;ON_FINISH&#x60; (since version 10.3 - 2025.1)
      * Note, this is equivalent to the other <code>searchConnectorInstances</code> method,
      * but with the query parameters collected into a single Map parameter. This
      * is convenient for services with optional query parameters, especially when
@@ -96,7 +111,12 @@ public interface ConnectorInstanceApi extends ApiClient.Api {
 
     /**
      * Finds ConnectorInstances
-     * Finds ConnectorInstances with pagination params and filters. Retrieve a list of connector instances attached to a process or a flow node.
+     * Finds ConnectorInstances attached to a process or a flow node with pagination params and filters. You can filter on: * &#x60;containerId&#x60;: the process
+     * instance or flow node instance ID * &#x60;state&#x60;: the connector state &#x60;TO_BE_EXECUTED&#x60;, &#x60;EXECUTING&#x60;, &#x60;TO_RE_EXECUTE&#x60;,
+     * &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SKIPPED&#x60; * &#x60;containerType&#x60;: the type of container: either &#x60;flowNode&#x60; or
+     * &#x60;process&#x60; (since version 10.3 - 2025.1) * &#x60;name&#x60;: the connector name (since version 10.3 - 2025.1) * &#x60;version&#x60;: the connector
+     * version (since version 10.3 - 2025.1) * &#x60;connectorId&#x60;: the connector definition ID (since version 10.3 - 2025.1) * &#x60;activationEvent&#x60;: the
+     * container event on which the connector is instanciated: either &#x60;ON_ENTER&#x60; or &#x60;ON_FINISH&#x60; (since version 10.3 - 2025.1)
      * Note, this is equivalent to the other <code>searchConnectorInstances</code> that receives the query parameters as a map,
      * but this one also exposes the Http response headers
      * 

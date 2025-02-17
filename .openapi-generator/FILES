@@ -11,6 +11,7 @@ src/main/java/org/bonitasoft/web/client/api/ApplicationPageApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedActivityApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedActivityVariableApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedConnectorInstanceApi.java
+src/main/java/org/bonitasoft/web/client/api/ArchivedFailureApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedFlowNodeApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedHumanTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedManualTaskApi.java
@@ -30,6 +31,7 @@ src/main/java/org/bonitasoft/web/client/api/CustomUserApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserDefinitionApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserValueApi.java
 src/main/java/org/bonitasoft/web/client/api/DiagramApi.java
+src/main/java/org/bonitasoft/web/client/api/FailureApi.java
 src/main/java/org/bonitasoft/web/client/api/FlowNodeApi.java
 src/main/java/org/bonitasoft/web/client/api/FormFileUploadApi.java
 src/main/java/org/bonitasoft/web/client/api/FormMappingApi.java
@@ -103,6 +105,7 @@ src/main/java/org/bonitasoft/web/client/model/ApplicationPageCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedActivity.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedActivityVariable.java
+src/main/java/org/bonitasoft/web/client/model/ArchivedBPMFailure.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedConnectorInstance.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedFlowNode.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedHumanTask.java
@@ -115,6 +118,7 @@ src/main/java/org/bonitasoft/web/client/model/ArchivedTask.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedUserTask.java
 src/main/java/org/bonitasoft/web/client/model/BDMAccessControl.java
 src/main/java/org/bonitasoft/web/client/model/BDMInstallRequest.java
+src/main/java/org/bonitasoft/web/client/model/BPMFailure.java
 src/main/java/org/bonitasoft/web/client/model/Bdm.java
 src/main/java/org/bonitasoft/web/client/model/BusinessData.java
 src/main/java/org/bonitasoft/web/client/model/ConfigurationState.java

@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.21
+  version: 0.0.23
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -253,6 +253,16 @@ tags:
 - description: FlowNode
   name: FlowNode
   x-displayName: FlowNode
+- description: |
+    Failure leading a BPM entity instance to a failed state
+    This Web REST API is available in **Enterprise editions only**, since version 10.3 (2025.1).
+  name: Failure
+  x-displayName: BPM Failure
+- description: |
+    Archived version of the Failure leading a BPM entity instance to a failed state.
+    This Web REST API is available in **Enterprise editions only**, since version 10.3 (2025.1).
+  name: ArchivedFailure
+  x-displayName: Archived BPM Failure
 - description: FormMappingBDM
   name: FormMappingBDM
   x-displayName: FormMappingBDM
@@ -6842,11 +6852,13 @@ paths:
 
         You can filter on:
 
-        * `processDefinitionId`: The process derfinition ID
+        * `processDefinitionId`: The process definition ID
+        * `rootCaseId`: the root process instance ID (since version 10.3 - 2025.1)
         * `name`: the process name
         * `started_by`: the ID of the user who started the process
         * `team_manager_id`: allow to retrieve the process instances in which all users with this manager ID ar involved)
         * `supervisor_id`: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
+        * `searchIndex1Value`, `searchIndex2Value`, `searchIndex3Value`, `searchIndex4Value`, `searchIndex5Value`: the value of the corresponding search index (since version 10.3 - 2025.1)
       operationId: searchProcessInstances
       parameters:
       - description: index of the page to display
@@ -7283,11 +7295,13 @@ paths:
         You can filter on :
 
         * `sourceObjectId`: The original process instance ID before the process instance was archived
-        * `processDefinitionId`: The process derfinition ID
+        * `processDefinitionId`: The process definition ID
+        * `rootCaseId`: the root process instance ID (since version 10.3 - 2025.1)
         * `name`: the process name
         * `started_by`: the ID of the user who started the process
         * `team_manager_id`: allow to retrieve the process instances in which all users with this manager ID ar involved)
         * `supervisor_id`: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
+        * `searchIndex1Value`, `searchIndex2Value`, `searchIndex3Value`, `searchIndex4Value`, `searchIndex5Value`: the value of the corresponding search index (since version 10.3 - 2025.1)
       operationId: searchArchivedProcessInstances
       parameters:
       - description: index of the page to display
@@ -9807,8 +9821,17 @@ paths:
   /API/bpm/connectorInstance:
     get:
       description: |
-        Finds ConnectorInstances with pagination params and filters.
-        Retrieve a list of connector instances attached to a process or a flow node.
+        Finds ConnectorInstances attached to a process or a flow node with pagination params and filters.
+
+        You can filter on:
+
+        * `containerId`: the process instance or flow node instance ID
+        * `state`: the connector state `TO_BE_EXECUTED`, `EXECUTING`, `TO_RE_EXECUTE`, `DONE`, `FAILED`, `SKIPPED`
+        * `containerType`: the type of container: either `flowNode` or `process` (since version 10.3 - 2025.1)
+        * `name`: the connector name (since version 10.3 - 2025.1)
+        * `version`: the connector version (since version 10.3 - 2025.1)
+        * `connectorId`: the connector definition ID (since version 10.3 - 2025.1)
+        * `activationEvent`: the container event on which the connector is instanciated: either `ON_ENTER` or `ON_FINISH` (since version 10.3 - 2025.1)
       operationId: searchConnectorInstances
       parameters:
       - description: index of the page to display
@@ -10510,6 +10533,531 @@ paths:
       summary: Finds the ArchivedFlowNode by ID
       tags:
       - ArchivedFlowNode
+      x-accepts:
+      - application/json
+  /API/bpm/failure/flowNode/{flowNodeInstanceId}:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent failures for the given flownode ID
+      operationId: getBPMFailuresByFlowNodeInstanceId
+      parameters:
+      - description: The identifier of the flownode instance from which to retrieve
+          the failures
+        explode: false
+        in: path
+        name: flowNodeInstanceId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the failures of a flownode instance by it's ID
+      tags:
+      - Failure
+      x-accepts:
+      - application/json
+  /API/bpm/achivedFailure/flowNode/{flowNodeInstanceId}:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent failures for the given archived flownode sourceObjectID
+      operationId: getArchivedBPMFailuresByFlowNodeInstanceId
+      parameters:
+      - description: The original identifier (sourceObjectID) of the flownode instance
+          from which to retrieve the failures
+        explode: false
+        in: path
+        name: flowNodeInstanceId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArchivedBPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the archived failures of an archived flownode instance by
+        it's sourceObjectID
+      tags:
+      - ArchivedFailure
+      x-accepts:
+      - application/json
+  /API/bpm/failure/case/{caseId}:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent failures for the given case
+      operationId: getBPMFailuresByCaseId
+      parameters:
+      - description: The identifier of the case from which to retrieve the failures
+        explode: false
+        in: path
+        name: caseId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the failures of a case (process instance) by it's ID
+      tags:
+      - Failure
+      x-accepts:
+      - application/json
+  /API/bpm/achivedFailure/case/{caseId}:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent archived failures for the given archived case sourceObjectID
+      operationId: getArchivedBPMFailuresByCaseId
+      parameters:
+      - description: The original identifier (sourceObjectID) of the case from which
+          to retrieve the failures
+        explode: false
+        in: path
+        name: caseId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArchivedBPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the archived failures of an archived case (process instance)
+        by it's sourceObjectID
+      tags:
+      - Failure
+      x-accepts:
+      - application/json
+  /API/bpm/failure/case/{rootCaseId}/childCases:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent failures among all the child cases (started by call activities) of a case
+      operationId: getBPMFailuresByRootCaseId
+      parameters:
+      - description: The identifier of the root case from which to retrieve the failures
+          (its sourceObjectID if the root case is archived)
+        explode: false
+        in: path
+        name: rootCaseId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the failures of the child cases of a root case (process instance)
+        by it's ID
+      tags:
+      - Failure
+      x-accepts:
+      - application/json
+  /API/bpm/achivedFailure/case/{rootCaseId}/childCases:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent archived failures among all the archived child cases (started by call activities) of a case
+      operationId: getArchivedBPMFailuresByRootCaseId
+      parameters:
+      - description: The identifier of the root case from which to retrieve the archived
+          failures (its sourceObjectID if the root case is archived)
+        explode: false
+        in: path
+        name: rootCaseId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArchivedBPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the archived failures of the archived child cases of a root
+        case (process instance) by it's ID
+      tags:
+      - Failure
       x-accepts:
       - application/json
   /API/bpm/timerEventTrigger:
@@ -19298,6 +19846,7 @@ components:
         activeFlowNodes": "9"
         state": started
         rootCaseId": "1"
+        callerId": "-1"
         started_by": 989
         processDefinitionId": "5777042023671752656"
         last_update_date": 2014-11-27 17:55:00.906
@@ -19399,6 +19948,11 @@ components:
           description: "the 5th search index value (from 6.5, in Subscription editions\
             \ only)"
           type: string
+        callerId:
+          description: the identifier of the BPM entity who started the process. E.g.
+            the call activity instance Id if it was started by a call activity or
+            -1 if it was started by a user (since version 10.3 - 2025.1)
+          type: string
       type: object
     ProcessVariable:
       additionalProperties:
@@ -19440,6 +19994,7 @@ components:
           start: 2014-10-22 10:56:53.415
           state: completed
           rootCaseId: "3"
+          callerId": "-1"
           started_by: "4"
           archivedDate: 2014-10-22 10:57:00.299
           processDefinitionId: "6054482369194211518"
@@ -19482,6 +20037,7 @@ components:
         id: id
         state: initializing
         searchIndex1Label: searchIndex1Label
+        callerId: callerId
         activeFlowNodes: activeFlowNodes
         started_by: started_by
         searchIndex4Label: searchIndex4Label
@@ -20436,6 +20992,114 @@ components:
         parentCaseId: parentCaseId
         assigned_id: assigned_id
         last_update_date: last_update_date
+    BPMFailure:
+      description: "A failure that happened during a BPM instance (flow node, process)\
+        \ execution that led to the instance being in a failed state."
+      example:
+        caseId: "2"
+        rootCaseId: "1"
+        context: expression::setvariable_decision
+        errorMessage: Error while executing operations
+        failureDate: "1732564534177"
+        flowNodeInstanceId: "70"
+        id: "456"
+        processDefinitionId: "45"
+        scope: Operation
+        stackTrace: Exception in thread 'main' org.bonitasoft.engine.core.process.instance.api.exceptions.SActivityStateExecutionException
+      properties:
+        caseId:
+          description: the id of the process instance in which that failure occurred
+          type: string
+        rootCaseId:
+          description: the id of the root process instance in which that failure occurred
+          type: string
+        context:
+          description: Context of the failure
+          type: string
+        errorMessage:
+          description: the message of the exception
+          type: string
+        failureDate:
+          description: the date when the failure occurred in milliseconds since epoch
+          type: string
+        flowNodeInstanceId:
+          description: the id of the flow node instance in which the failure occurred
+          type: string
+        id:
+          description: the failure id
+          type: string
+        processDefinitionId:
+          description: the process id that is associated with the flow node or case
+            instance of the failure
+          type: string
+        scope:
+          description: "the scope of the failure (General information, Operation,\
+            \ Event, Iteration, Connector, Data initialization, Actor mapping, Outgoing\
+            \ transition, or UNKNOWN)"
+          type: string
+        stackTrace:
+          description: the stack trace of the exception
+          type: string
+      type: object
+    ArchivedBPMFailure:
+      description: "The archived version of a failure that happened during a BPM instance\
+        \ (flow node, process) execution that led to the instance being in a failed\
+        \ state."
+      example:
+        archivedDate: "1732564904376"
+        caseId: "10"
+        rootCaseId: "9"
+        context: expression::setvariable_decision
+        errorMessage: Error while executing operations
+        failureDate: "1732564534177"
+        flowNodeInstanceId: "70"
+        id: "456"
+        processDefinitionId: "45"
+        scope: Operation
+        sourceObjectId: "23"
+        stackTrace: Exception in thread 'main' org.bonitasoft.engine.core.process.instance.api.exceptions.SActivityStateExecutionException
+      properties:
+        archivedDate:
+          description: "the date when this failure was archived, in milliseconds since\
+            \ epoch"
+          type: string
+        caseId:
+          description: the id of the process instance in which that failure occurred
+          type: string
+        rootCaseId:
+          description: the id of the root process instance in which that failure occurred
+          type: string
+        context:
+          description: Context of the failure
+          type: string
+        errorMessage:
+          description: the message of the exception
+          type: string
+        failureDate:
+          description: the date when the failure occurred in milliseconds since epoch
+          type: string
+        flowNodeInstanceId:
+          description: the id of the flow node instance in which the failure occurred
+          type: string
+        id:
+          description: the archived failure id
+          type: string
+        processDefinitionId:
+          description: the process id that is associated with the flow node or case
+            instance of the failure
+          type: string
+        scope:
+          description: "the scope of the failure (General information, Operation,\
+            \ Event, Iteration, Connector, Data initialization, Actor mapping, Outgoing\
+            \ transition, or UNKNOWN)"
+          type: string
+        sourceObjectId:
+          description: the original id of the failure before it was archived
+          type: string
+        stackTrace:
+          description: the stack trace of the exception
+          type: string
+      type: object
     TimerEventTrigger:
       description: BPM timer event triggers
       example:
@@ -22163,6 +22827,8 @@ x-tagGroups:
   - ArchivedConnectorInstance
   - FlowNode
   - ArchivedFlowNode
+  - Failure
+  - ArchivedFailure
   - TimerEventTrigger
   - Message
   - Signal
