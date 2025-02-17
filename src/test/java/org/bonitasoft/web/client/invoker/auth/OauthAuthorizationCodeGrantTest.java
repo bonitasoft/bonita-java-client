@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2025 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,45 +16,42 @@
  */
 package org.bonitasoft.web.client.invoker.auth;
 
-import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.bonitasoft.web.client.feign.ApiProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(MockitoExtension.class)
-class BonitaCookieAuthTest {
+import com.github.scribejava.core.model.OAuth2AccessToken;
 
-    private BonitaCookieAuth auth;
+import feign.RequestTemplate;
+
+@ExtendWith(MockitoExtension.class)
+public class OauthAuthorizationCodeGrantTest {
+
+    private OauthAuthorizationCodeGrant auth;
 
     @BeforeEach
     void setUp() {
-        auth = new BonitaCookieAuth(mock(ApiProvider.class));
+        auth = new OauthAuthorizationCodeGrant("authz", "tokenUrl", "");
     }
 
     @Test
-    void cookie_and_csrf_token_should_be_extracted() {
+    void authorization_header_should_be_bearer() {
         // Given
-        Map<String, Collection<String>> headers = new HashMap<>();
-        headers.put(
-                "set-cookie",
-                asList(
-                        "JSESSIONID=C5385BFEE2969D9E46F0160C1952B0F1; Path=/bonita;HttpOnly; SameSite=Lax",
-                        BonitaCookieAuth.CSRF_TOKEN_HEADER + "=ed27cbeb-9953-4d77-b5a2-1f62a6c2e0bb"));
+        auth = spy(auth);
+        var accessToken = "abcd1234";
+        doReturn(new OAuth2AccessToken(accessToken)).when(auth).getOAuth2AccessToken();
+        var template = new RequestTemplate();
 
         // When
-        auth.initFrom(headers);
+        auth.apply(template);
 
         // Then
-        assertThat(auth.getCookie()).isNotNull().isNotEmpty();
-        assertThat(auth.getCsrfHeader()).isNotNull().isNotEmpty();
+        assertThat(template.headers().get("Authorization").iterator().next()).isEqualTo("Bearer abcd1234");
     }
+
 }

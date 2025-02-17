@@ -16,6 +16,7 @@
  */
 package org.bonitasoft.web.client.invoker.auth;
 
+import static java.lang.String.format;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toMap;
@@ -23,10 +24,22 @@ import static java.util.stream.Collectors.toMap;
 import java.util.Collection;
 import java.util.Map;
 
+import org.bonitasoft.web.client.api.PortalAuthenticationApi;
+import org.bonitasoft.web.client.exception.ClientException;
+import org.bonitasoft.web.client.exception.UnauthorizedException;
+import org.bonitasoft.web.client.feign.ApiProvider;
+import org.bonitasoft.web.client.feign.auth.Credentials;
+import org.bonitasoft.web.client.feign.auth.UsernamePasswordCredentials;
+
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import feign.Response;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-public class BonitaCookieAuth implements RequestInterceptor {
+@Slf4j
+@RequiredArgsConstructor
+public class BonitaCookieAuth implements RequestInterceptor, Auth {
 
     public static final String CSRF_TOKEN_HEADER = "X-Bonita-API-Token";
 
@@ -42,12 +55,9 @@ public class BonitaCookieAuth implements RequestInterceptor {
         return csrfHeader;
     }
 
-    public void clearSessionCookie() {
-        this.cookie = null;
-        this.csrfHeader = null;
-    }
+    private final ApiProvider apiProvider;
 
-    public void initFrom(Map<String, Collection<String>> loginHeaders) {
+    void initFrom(Map<String, Collection<String>> loginHeaders) {
         Map<String, String> cookies = loginHeaders.getOrDefault("set-cookie", emptyList()).stream()
                 .map(cookieHeader -> cookieHeader.split("=", 2))
                 .collect(
@@ -71,5 +81,44 @@ public class BonitaCookieAuth implements RequestInterceptor {
         if (this.csrfHeader != null) {
             requestTemplate.header(CSRF_TOKEN_HEADER, csrfHeader);
         }
+    }
+
+    @Override
+    public void login(Credentials credentials) {
+
+        //TODO: use generics or better checks
+        var creds = (UsernamePasswordCredentials) credentials;
+
+        log.debug("Login with user '{}' on tenant '{}'...", creds.getUsername(), creds.getTenant());
+
+        boolean loginSucceeded;
+        int loginStatus;
+        String loginReason = "";
+
+        final PortalAuthenticationApi portalAuthenticationApi = apiProvider.get(PortalAuthenticationApi.class);
+        try (Response loginResponse = portalAuthenticationApi.login(creds.getUsername(), creds.getPassword(),
+                creds.getTenant(), "false", "")) {
+            loginStatus = loginResponse.status();
+            loginSucceeded = (loginStatus == 200 || loginStatus == 204);
+            if (loginSucceeded) {
+                this.initFrom(loginResponse.headers());
+            } else {
+                loginReason = loginResponse.reason();
+            }
+        } catch (Exception e) {
+            throw new ClientException("Login failed", e);
+        }
+
+        if (!loginSucceeded) {
+            throw new UnauthorizedException(
+                    format("Login failed, status: %s %s", loginStatus, loginReason));
+        }
+    }
+
+    @Override
+    public void logout() {
+        apiProvider.get(PortalAuthenticationApi.class).logout("false");
+        this.cookie = null;
+        this.csrfHeader = null;
     }
 }

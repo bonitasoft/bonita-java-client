@@ -18,13 +18,10 @@ package org.bonitasoft.web.client.invoker;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.bonitasoft.web.client.invoker.auth.ApiKeyAuth;
-import org.bonitasoft.web.client.invoker.auth.HttpBasicAuth;
-import org.bonitasoft.web.client.invoker.auth.HttpBearerAuth;
+import org.bonitasoft.web.client.invoker.auth.*;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -34,12 +31,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import feign.Feign;
 import feign.RequestInterceptor;
+import feign.Retryer;
 import feign.form.FormEncoder;
 import feign.jackson.JacksonEncoder;
 import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApiClient {
 
     private static final Logger log = Logger.getLogger(ApiClient.class.getName());
@@ -59,6 +57,8 @@ public class ApiClient {
                 .client(new OkHttpClient())
                 .encoder(new FormEncoder(new JacksonEncoder(objectMapper)))
                 .decoder(new ApiResponseDecoder(objectMapper))
+                .errorDecoder(new ApiErrorDecoder())
+                .retryer(new Retryer.Default(0, 0, 2))
                 .logger(new Slf4jLogger());
     }
 
@@ -66,8 +66,12 @@ public class ApiClient {
         this();
         for (String authName : authNames) {
             log.log(Level.FINE, "Creating authentication {0}", authName);
-            RequestInterceptor auth = null;
-            if ("bonita_auth".equals(authName)) {
+            RequestInterceptor auth;
+            if ("oauth_access_code".equals(authName)) {
+                auth = buildOauthRequestInterceptor(OAuthFlow.ACCESS_CODE, "", "", "");
+            } else if ("oauth_password".equals(authName)) {
+                auth = buildOauthRequestInterceptor(OAuthFlow.PASSWORD, "", "", "");
+            } else if ("bonita_auth".equals(authName)) {
                 auth = new ApiKeyAuth("cookie", "JSESSIONID");
             } else if ("bonita_token".equals(authName)) {
                 auth = new ApiKeyAuth("header", "X-Bonita-API-Token");
@@ -82,7 +86,7 @@ public class ApiClient {
 
     /**
      * Basic constructor for single auth name
-     * 
+     *
      * @param authName
      */
     public ApiClient(String authName) {
@@ -91,7 +95,7 @@ public class ApiClient {
 
     /**
      * Helper constructor for single api key
-     * 
+     *
      * @param authName
      * @param apiKey
      */
@@ -140,6 +144,18 @@ public class ApiClient {
         return objectMapper;
     }
 
+    private RequestInterceptor buildOauthRequestInterceptor(OAuthFlow flow, String authorizationUrl, String tokenUrl,
+            String scopes) {
+        switch (flow) {
+            case PASSWORD:
+                return new OauthPasswordGrant(tokenUrl, scopes);
+            case APPLICATION:
+                return new OauthClientCredentialsGrant(authorizationUrl, tokenUrl, scopes);
+            default:
+                throw new RuntimeException("Oauth flow \"" + flow + "\" is not implemented");
+        }
+    }
+
     public ObjectMapper getObjectMapper() {
         return objectMapper;
     }
@@ -155,7 +171,7 @@ public class ApiClient {
      * apiClient.setBasePath("http://localhost:8080");
      * XYZApi api = apiClient.buildClient(XYZApi.class);
      * XYZResponse response = api.someMethod(...);
-     * 
+     *
      * @param <T> Type
      * @param clientClass Client class
      * @return The Client
@@ -200,7 +216,7 @@ public class ApiClient {
 
     /**
      * Helper method to configure the bearer token.
-     * 
+     *
      * @param bearerToken the bearer token.
      */
     public void setBearerToken(String bearerToken) {
@@ -209,18 +225,8 @@ public class ApiClient {
     }
 
     /**
-     * Helper method to configure the supplier of bearer tokens.
-     * 
-     * @param tokenSupplier the supplier of bearer tokens.
-     */
-    public void setBearerToken(Supplier<String> tokenSupplier) {
-        HttpBearerAuth apiAuthorization = getAuthorization(HttpBearerAuth.class);
-        apiAuthorization.setBearerToken(tokenSupplier);
-    }
-
-    /**
      * Helper method to configure the first api key found
-     * 
+     *
      * @param apiKey API key
      */
     public void setApiKey(String apiKey) {
@@ -230,7 +236,7 @@ public class ApiClient {
 
     /**
      * Helper method to configure the username/password for basic auth
-     * 
+     *
      * @param username Username
      * @param password Password
      */
@@ -241,7 +247,7 @@ public class ApiClient {
 
     /**
      * Gets request interceptor based on authentication name
-     * 
+     *
      * @param authName Authentication name
      * @return Request Interceptor
      */
@@ -251,7 +257,7 @@ public class ApiClient {
 
     /**
      * Adds an authorization to be used by the client
-     * 
+     *
      * @param authName Authentication name
      * @param authorization Request interceptor
      */

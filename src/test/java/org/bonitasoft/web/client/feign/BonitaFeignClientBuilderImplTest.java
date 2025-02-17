@@ -18,11 +18,9 @@ package org.bonitasoft.web.client.feign;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.atMostOnce;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
+import org.bonitasoft.web.client.AuthBuilder;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.junit.jupiter.api.BeforeEach;
@@ -130,5 +128,17 @@ class BonitaFeignClientBuilderImplTest {
 
         // Then
         verify(clientBuilder, atMostOnce()).newTrustAllCertManager();
+    }
+
+    @Test
+    void can_configure_cookie_auth() {
+        // Given
+        clientBuilder.auth(AuthBuilder.cookieAuth());
+
+        // When
+        BonitaClient client = clientBuilder.build();
+
+        // Then
+        assertThat(client).isNotNull().isInstanceOf(BonitaFeignClient.class);
     }
 }

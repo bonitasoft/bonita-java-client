@@ -16,16 +16,13 @@
  */
 package org.bonitasoft.web.client.invoker.auth;
 
-import static java.lang.String.format;
-
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bonitasoft.web.client.api.PortalAuthenticationApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.exception.ClientException;
-import org.bonitasoft.web.client.exception.UnauthorizedException;
 import org.bonitasoft.web.client.feign.ApiProvider;
+import org.bonitasoft.web.client.feign.auth.UsernamePasswordCredentials;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.services.LoginService;
 
@@ -43,34 +40,16 @@ public class BonitaLoginService implements LoginService {
 
     private final ObjectMapper objectMapper;
 
-    private final BonitaCookieAuth bonitaCookieAuth;
+    private final Auth auth;
 
     @Override
     public Session login(String username, String password, String tenant) {
         log.debug("Login with user '{}' on tenant '{}'...", username, tenant);
-
-        boolean loginSucceeded;
-        int loginStatus;
-        String loginReason = "";
-
-        final PortalAuthenticationApi portalAuthenticationApi = apiProvider.get(PortalAuthenticationApi.class);
-        try (Response loginResponse = portalAuthenticationApi.login(username, password, tenant, "false", "")) {
-            loginStatus = loginResponse.status();
-            loginSucceeded = (loginStatus == 200 || loginStatus == 204);
-            if (loginSucceeded) {
-                bonitaCookieAuth.initFrom(loginResponse.headers());
-            } else {
-                loginReason = loginResponse.reason();
-            }
+        try {
+            auth.login(new UsernamePasswordCredentials(username, password, tenant));
         } catch (Exception e) {
             throw new ClientException("Login failed", e);
         }
-
-        if (!loginSucceeded) {
-            throw new UnauthorizedException(
-                    format("Login failed, status: %s %s", loginStatus, loginReason));
-        }
-
         // check the session is ok + it will trigger the loading of servlets
         Session session = getSession();
         log.debug("Login completed. Session: {}", session);
@@ -91,8 +70,7 @@ public class BonitaLoginService implements LoginService {
     @Override
     public void logout() {
         log.debug("Logout...");
-        apiProvider.get(PortalAuthenticationApi.class).logout("false");
-        bonitaCookieAuth.clearSessionCookie();
+        auth.logout();
         log.debug("Logout completed.");
     }
 }
