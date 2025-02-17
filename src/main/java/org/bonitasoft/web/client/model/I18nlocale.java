@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         I18nlocale.JSON_PROPERTY_NAME,
         I18nlocale.JSON_PROPERTY_LOCALE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class I18nlocale implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,7 +54,7 @@ public class I18nlocale implements Serializable {
      * Name of the language
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -79,7 +79,7 @@ public class I18nlocale implements Serializable {
      * code of the locale
      * 
      * @return locale
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LOCALE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

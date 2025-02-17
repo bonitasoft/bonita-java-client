@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Profile.JSON_PROPERTY_LAST_UPDATE_DATE,
         Profile.JSON_PROPERTY_UPDATED_BY
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Profile implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -82,7 +82,7 @@ public class Profile implements Serializable {
      * profile id
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -107,7 +107,7 @@ public class Profile implements Serializable {
      * date and time of profile creation
      * 
      * @return creationDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -132,7 +132,7 @@ public class Profile implements Serializable {
      * icon used in the portal to represent the profile
      * 
      * @return icon
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -157,7 +157,7 @@ public class Profile implements Serializable {
      * id of the uer who created the profile
      * 
      * @return createdBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CREATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -182,7 +182,7 @@ public class Profile implements Serializable {
      * a description of the profile
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -207,7 +207,7 @@ public class Profile implements Serializable {
      * profile name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -232,7 +232,7 @@ public class Profile implements Serializable {
      * true | false
      * 
      * @return isdefault
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ISDEFAULT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -257,7 +257,7 @@ public class Profile implements Serializable {
      * date and time of the last update to the profile
      * 
      * @return lastUpdateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -282,7 +282,7 @@ public class Profile implements Serializable {
      * the id of the user who last updated the profile
      * 
      * @return updatedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_UPDATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

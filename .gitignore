@@ -18,6 +18,7 @@ hs_err_pid*
 **/target
 target
 gradle/
+bin/
 
 # eclipse files
 .classpath
@@ -27,3 +28,6 @@ gradle/
 # Idea
 .idea
 *.iml
+
+pom.xml.versionBackup
+pom.xml.versionsBackup

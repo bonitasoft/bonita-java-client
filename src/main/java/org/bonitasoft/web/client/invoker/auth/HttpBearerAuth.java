@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,9 @@
  */
 package org.bonitasoft.web.client.invoker.auth;
 
+import java.util.Optional;
+import java.util.function.Supplier;
+
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
@@ -25,7 +28,7 @@ import feign.RequestTemplate;
 public class HttpBearerAuth implements RequestInterceptor {
 
     private final String scheme;
-    private String bearerToken;
+    private Supplier<String> tokenSupplier;
 
     public HttpBearerAuth(String scheme) {
         this.scheme = scheme;
@@ -33,20 +36,34 @@ public class HttpBearerAuth implements RequestInterceptor {
 
     /**
      * Gets the token, which together with the scheme, will be sent as the value of the Authorization header.
+     *
+     * @return The bearer token
      */
     public String getBearerToken() {
-        return bearerToken;
+        return tokenSupplier.get();
     }
 
     /**
      * Sets the token, which together with the scheme, will be sent as the value of the Authorization header.
+     *
+     * @param bearerToken The bearer token to send in the Authorization header
      */
     public void setBearerToken(String bearerToken) {
-        this.bearerToken = bearerToken;
+        this.tokenSupplier = () -> bearerToken;
+    }
+
+    /**
+     * Sets the supplier of tokens, which together with the scheme, will be sent as the value of the Authorization header.
+     *
+     * @param tokenSupplier The supplier of bearer tokens to send in the Authorization header
+     */
+    public void setBearerToken(Supplier<String> tokenSupplier) {
+        this.tokenSupplier = tokenSupplier;
     }
 
     @Override
     public void apply(RequestTemplate template) {
+        String bearerToken = Optional.ofNullable(tokenSupplier).map(Supplier::get).orElse(null);
         if (bearerToken == null) {
             return;
         }

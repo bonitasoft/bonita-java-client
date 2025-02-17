@@ -60,10 +60,10 @@ public class OauthPasswordGrant extends OAuth {
         service = getAuth20Service(clientId, clientSecret);
     }
 
-	OAuth20Service getAuth20Service(String clientId, String clientSecret) {
-		return new ServiceBuilder(clientId)
-				.apiSecret(clientSecret)
-				.defaultScope(scopes)
-				.build(new DefaultApi20Impl(authorizationUrl, tokenUrl));
-	}
+    OAuth20Service getAuth20Service(String clientId, String clientSecret) {
+        return new ServiceBuilder(clientId)
+                .apiSecret(clientSecret)
+                .defaultScope(scopes)
+                .build(new DefaultApi20Impl(authorizationUrl, tokenUrl));
+    }
 }

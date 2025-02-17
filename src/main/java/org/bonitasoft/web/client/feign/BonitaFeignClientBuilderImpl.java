@@ -39,17 +39,8 @@ import org.bonitasoft.web.client.invoker.ApiResponseDecoder;
 import org.bonitasoft.web.client.invoker.auth.BonitaCookieAuth;
 import org.bonitasoft.web.client.invoker.auth.BonitaLoginService;
 import org.bonitasoft.web.client.log.LogContentLevel;
-import org.bonitasoft.web.client.services.ApplicationService;
-import org.bonitasoft.web.client.services.BdmService;
-import org.bonitasoft.web.client.services.LoginService;
-import org.bonitasoft.web.client.services.ProcessService;
-import org.bonitasoft.web.client.services.SystemService;
-import org.bonitasoft.web.client.services.UserService;
-import org.bonitasoft.web.client.services.impl.DefaultApplicationService;
-import org.bonitasoft.web.client.services.impl.DefaultBdmService;
-import org.bonitasoft.web.client.services.impl.DefaultProcessService;
-import org.bonitasoft.web.client.services.impl.DefaultSystemService;
-import org.bonitasoft.web.client.services.impl.DefaultUserService;
+import org.bonitasoft.web.client.services.*;
+import org.bonitasoft.web.client.services.impl.*;
 import org.bonitasoft.web.client.services.impl.base.CachingClientContext;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.impl.bdm.BdmResponseConverter;
@@ -61,6 +52,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import feign.Feign;
 import feign.Request;
+import feign.RequestInterceptor;
 import feign.Retryer;
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -80,7 +72,9 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
     @Setter(AccessLevel.NONE)
     private final String url;
 
-    /** Note about timeouts: default values are the same as in OkHttpClient (10 seconds). */
+    /**
+     * Note about timeouts: default values are the same as in OkHttpClient (10 seconds).
+     */
     @Setter
     private int connectTimeoutInSeconds = 10;
 
@@ -108,9 +102,10 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
     @Setter
     private LogContentLevel logContentLevel = LogContentLevel.OFF;
 
-	private AuthBuilder authBuilder;
+    @Setter
+    private AuthBuilder authBuilder;
 
-	@Override
+    @Override
     public BonitaClient build() {
 
         ApiClient apiClient = new ApiClient();
@@ -133,9 +128,16 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         ApiProvider apiProvider = new CachingApiProvider(apiClient);
 
         // Bonita Auth
-		apiClient.addAuthorization("bonita",authBuilder.build());
-
-        LoginService loginService = new BonitaLoginService(apiProvider, this.objectMapper, authorization);
+        if (authBuilder != null) {
+            RequestInterceptor auth = authBuilder.build();
+            if (auth != null) {
+                apiClient.addAuthorization("bonita", auth);
+            }
+        }
+        LoginService loginService = new BonitaLoginService(
+                apiProvider,
+                this.objectMapper,
+                new BonitaCookieAuth(apiProvider));
 
         // Delegate services
         final ClientContext clientContext = new CachingClientContext();
@@ -160,13 +162,13 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                 systemService);
     }
 
-	@Override
-	public BonitaFeignClientBuilder auth(AuthBuilder authBuilder) {
-		this.authBuilder = authBuilder;
-		return this;
-	}
+    @Override
+    public BonitaFeignClientBuilder auth(AuthBuilder authBuilder) {
+        this.authBuilder = authBuilder;
+        return this;
+    }
 
-	Feign.Builder configureFeign(Feign.Builder feignBuilder) {
+    Feign.Builder configureFeign(Feign.Builder feignBuilder) {
         log.debug("Configuring Feign builder ...");
         return feignBuilder
                 .client(new feign.okhttp.OkHttpClient(okHttpClient))

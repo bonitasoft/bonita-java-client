@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedTask.JSON_PROPERTY_SOURCE_OBJECT_ID,
         ArchivedTask.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ArchivedTask implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -142,7 +142,7 @@ public class ArchivedTask implements Serializable {
      * the task id
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -167,7 +167,7 @@ public class ArchivedTask implements Serializable {
      * the task type
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -192,7 +192,7 @@ public class ArchivedTask implements Serializable {
      * the task technical name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -217,7 +217,7 @@ public class ArchivedTask implements Serializable {
      * the human readable task name
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -242,7 +242,7 @@ public class ArchivedTask implements Serializable {
      * the task description
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -267,7 +267,7 @@ public class ArchivedTask implements Serializable {
      * the human readable task description
      * 
      * @return displayDescription
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -292,7 +292,7 @@ public class ArchivedTask implements Serializable {
      * Get state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -317,7 +317,7 @@ public class ArchivedTask implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task reached the current state for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return reachedStateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -342,7 +342,7 @@ public class ArchivedTask implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task was last updated for example &#39;2014-10-17 16:05:42.626)
      * 
      * @return lastUpdateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -367,7 +367,7 @@ public class ArchivedTask implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when this task is due for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return dueDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DUE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -392,7 +392,7 @@ public class ArchivedTask implements Serializable {
      * the priority (string) of the current task
      * 
      * @return priority
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PRIORITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -417,7 +417,7 @@ public class ArchivedTask implements Serializable {
      * the process definition id of the process instance which define this task
      * 
      * @return processId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -442,7 +442,7 @@ public class ArchivedTask implements Serializable {
      * the immediate containing process instance id (case id)
      * 
      * @return parentCaseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -467,7 +467,7 @@ public class ArchivedTask implements Serializable {
      * the parent Task id
      * 
      * @return parentTaskId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -493,7 +493,7 @@ public class ArchivedTask implements Serializable {
      * while &#x60;rootCaseId&#x60; will be the one from the caller process instance
      * 
      * @return rootCaseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -518,7 +518,7 @@ public class ArchivedTask implements Serializable {
      * same as rootCaseId
      * 
      * @return rootContainerId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -543,7 +543,7 @@ public class ArchivedTask implements Serializable {
      * the id of the user who performed this task. The task has to be a human task otherwise its value will be 0
      * 
      * @return executedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -568,7 +568,7 @@ public class ArchivedTask implements Serializable {
      * the id of the user who did actually performed the task when it has been done in the name of someone else. Value is 0 otherwise
      * 
      * @return executedBySubstitute
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -593,7 +593,7 @@ public class ArchivedTask implements Serializable {
      * the id of the actor that can execute this task null otherwise
      * 
      * @return actorId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ACTOR_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -618,7 +618,7 @@ public class ArchivedTask implements Serializable {
      * the user id that this task is assigned to or 0 if it is unassigned
      * 
      * @return assignedId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -643,7 +643,7 @@ public class ArchivedTask implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return assignedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -668,7 +668,7 @@ public class ArchivedTask implements Serializable {
      * True if the task is the last one in a flow
      * 
      * @return isTerminal
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_IS_TERMINAL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -693,7 +693,7 @@ public class ArchivedTask implements Serializable {
      * the original id of the task before it was archived
      * 
      * @return sourceObjectId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -718,7 +718,7 @@ public class ArchivedTask implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return archivedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

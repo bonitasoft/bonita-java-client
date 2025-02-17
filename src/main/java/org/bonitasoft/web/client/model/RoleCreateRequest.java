@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         RoleCreateRequest.JSON_PROPERTY_DESCRIPTION,
         RoleCreateRequest.JSON_PROPERTY_ICON
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class RoleCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,7 +62,7 @@ public class RoleCreateRequest implements Serializable {
      * name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nonnull
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -87,7 +87,7 @@ public class RoleCreateRequest implements Serializable {
      * display name
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -112,7 +112,7 @@ public class RoleCreateRequest implements Serializable {
      * description
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -137,7 +137,7 @@ public class RoleCreateRequest implements Serializable {
      * icon path
      * 
      * @return icon
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

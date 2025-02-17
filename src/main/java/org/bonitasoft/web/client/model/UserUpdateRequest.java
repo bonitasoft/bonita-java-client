@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         UserUpdateRequest.JSON_PROPERTY_JOB_TITLE,
         UserUpdateRequest.JSON_PROPERTY_MANAGER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class UserUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -82,7 +82,7 @@ public class UserUpdateRequest implements Serializable {
      * if \&quot;true\&quot;, user will be activated.
      * 
      * @return enabled
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ENABLED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -107,7 +107,7 @@ public class UserUpdateRequest implements Serializable {
      * user name
      * 
      * @return userName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_USER_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -132,7 +132,7 @@ public class UserUpdateRequest implements Serializable {
      * user last name
      * 
      * @return firstname
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FIRSTNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -157,7 +157,7 @@ public class UserUpdateRequest implements Serializable {
      * user last name
      * 
      * @return lastname
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LASTNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -182,7 +182,7 @@ public class UserUpdateRequest implements Serializable {
      * user password
      * 
      * @return password
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PASSWORD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -207,7 +207,7 @@ public class UserUpdateRequest implements Serializable {
      * bonita icon path (ie. /default/icon_user.png)
      * 
      * @return icon
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -232,7 +232,7 @@ public class UserUpdateRequest implements Serializable {
      * user title
      * 
      * @return title
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TITLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -257,7 +257,7 @@ public class UserUpdateRequest implements Serializable {
      * user job title
      * 
      * @return jobTitle
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_JOB_TITLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -282,7 +282,7 @@ public class UserUpdateRequest implements Serializable {
      * user manager id
      * 
      * @return managerId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MANAGER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -330,7 +330,7 @@ public class UserUpdateRequest implements Serializable {
         sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
         sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
         sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
-        sb.append("    password: ").append(toIndentedString(password)).append("\n");
+        sb.append("    password: ").append("*").append("\n");
         sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("    jobTitle: ").append(toIndentedString(jobTitle)).append("\n");

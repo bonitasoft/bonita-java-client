@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         TimerEventTrigger.JSON_PROPERTY_EXECUTION_DATE,
         TimerEventTrigger.JSON_PROPERTY_EVENT_INSTANCE_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class TimerEventTrigger implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,7 +70,7 @@ public class TimerEventTrigger implements Serializable {
      * the ID of the timer returned
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -95,7 +95,7 @@ public class TimerEventTrigger implements Serializable {
      * the ID of the timer returned
      * 
      * @return idString
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID_STRING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -120,7 +120,7 @@ public class TimerEventTrigger implements Serializable {
      * the ID of the event instance to which this trigger is related
      * 
      * @return eventInstanceId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -145,7 +145,7 @@ public class TimerEventTrigger implements Serializable {
      * the ID of the event instance to which this trigger is related
      * 
      * @return eventInstanceIdString
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_ID_STRING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -170,7 +170,7 @@ public class TimerEventTrigger implements Serializable {
      * the long value of the next execution date (number of milliseconds from January 1st, 1970 00:00:00)
      * 
      * @return executionDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXECUTION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -195,7 +195,7 @@ public class TimerEventTrigger implements Serializable {
      * the name of the event instance to which this trigger is related
      * 
      * @return eventInstanceName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EVENT_INSTANCE_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

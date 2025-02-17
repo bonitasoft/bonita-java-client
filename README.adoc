@@ -25,8 +25,8 @@ endif::[]
 // Vars
 :project-group-id: org.bonitasoft.web
 :project-artifact-id: bonita-java-client
-:project-version: 0.0.11-SNAPSHOT
-:bonita-short-version: 7.13
+:project-version: 2.0.0-SNAPSHOT
+:bonita-short-version: 7.15
 :orga: bonitasoft
 :uri-org: https://github.com/{orga}
 :uri-repo: {uri-org}/{project-artifact-id}
@@ -207,7 +207,7 @@ BonitaClient client = bonitaClientBuilder
 Bonita allow users to define their own custom "named" queries. That's why this client can't have java object ready to be mapped to the query results. But the client allow
 developers to specify the desired returned type when performing custom queries.
 
-As an exmple, let's say with have a model in our client project code for `Post`,`Comment` and `Author` defined this way
+As an example, let's say with have a model in our client project code for `Post`,`Comment` and `Author` defined this way
 
 [source, java]
 ----

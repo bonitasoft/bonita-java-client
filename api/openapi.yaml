@@ -78,30 +78,33 @@ info:
     * f: list of filters, specified as `attributeName=attributeValue`. To filter on\
     \ more than one attribute, specify an f parameters for each attribute. The final\
     \ filter parameter value must be URL encoded.\n  The attributes you can filter\
-    \ on are specific to the resource.\n* s: search on name or search indexes. The\
-    \ matching policy depends on the configuration of [word-based search](https://documentation.bonitasoft.com/bonita/2022.2/api/using-list-and-search-methods#word_based_search).\n\
-    \  For example, if word-based search is enabled, `s=Valid` returns matches containing\
+    \ on are specific to the resource.\n* s: search on name or search indexes. Before\
+    \ Bonita 2024.1, the matching policy depended on the configuration of [word-based\
+    \ search](https://documentation.bonitasoft.com/bonita/2023.2/api/using-list-and-search-methods#word_based_search).\n\
+    \  For example, if word-based search was enabled, `s=Valid` returned matches containing\
     \ the string \"valid\" at the start of any word in the attribute value word,\n\
     \  such as \"Valid address\", \"Not a valid address\", and \"Validated request\"\
-    \ but not \"Invalid request\".\n  If word-based search is disabled, `s=Valid`\
-    \ returns matches containing the string \"valid\" at the start of the attribute\
+    \ but not \"Invalid request\".\n  If word-based search was disabled, `s=Valid`\
+    \ returned matches containing the string \"valid\" at the start of the attribute\
     \ value, such as \"Valid address\" or \"Validated request\" but not \"Not a valid\
-    \ address\" or \"Invalid request\".\n\n### Errors\n\nThe API uses standard HTTP\
-    \ status codes to indicate the success or failure of the API call.\n\nIf you get\
-    \ a `401` response code :\n  - make sure that the cookies have been transfered\
-    \ with the call\n  - make sure that the cookies transfered are the ones generated\
-    \ during the last sucessfull login call\n  - if one of the PUT, DELETE or POST\
-    \ method is used, make sure that the `X-Bonita-API-Token` header is included\n\
-    \  - if the X-Bonita-API-Token header is included, make sure that the value is\
-    \ the same as the one of the cookie generated during the last login\n  - Maybe\
-    \ a logout was issued or the session has expired; try to log in again, and re\
-    \ run the request with the new cookies and the new value for the `X-Bonita-API-Token`\
-    \ header.\n"
+    \ address\" or \"Invalid request\".\n  Since Bonita 2024.1, the search mode can\
+    \ no longer be configured and a \"like-based\" algorithm is used. This means all\
+    \ the matching records for which the search term occurs anywhere in a phrase or\
+    \ a word are returned.\n\n### Errors\n\nThe API uses standard HTTP status codes\
+    \ to indicate the success or failure of the API call.\n\nIf you get a `401` response\
+    \ code :\n  - make sure that the cookies have been transfered with the call\n\
+    \  - make sure that the cookies transfered are the ones generated during the last\
+    \ sucessfull login call\n  - if one of the PUT, DELETE or POST method is used,\
+    \ make sure that the `X-Bonita-API-Token` header is included\n  - if the X-Bonita-API-Token\
+    \ header is included, make sure that the value is the same as the one of the cookie\
+    \ generated during the last login\n  - Maybe a logout was issued or the session\
+    \ has expired; try to log in again, and re run the request with the new cookies\
+    \ and the new value for the `X-Bonita-API-Token` header.\n"
   license:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.13
+  version: 0.0.21
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -270,6 +273,11 @@ tags:
   name: I18ntranslation
   x-displayName: I18nTranslation
 - description: |
+    Handle the platform information.
+    This Web REST API is available since version 10.2 (2024.3). Most of the information returned is only for Subscription editions.
+  name: Information
+  x-displayName: Information
+- description: |
     Handle the license information. This requires a platform session. Log in using the platform login service.
     This Web REST API is available in **Enterprise editions only**, since version 7.11.
   name: License
@@ -359,6 +367,10 @@ tags:
     url: https://documentation.bonitasoft.com/bonita/latest/rest-api-extensions
   name: RestAPIextensions
   x-displayName: API extensions
+- description: "Supports any type of files, used to upload a file before submitting\
+    \ a process or task form with a document in its contract."
+  name: FormFileUpload
+  x-displayName: Form file upload
 paths:
   /loginservice:
     post:
@@ -381,10 +393,6 @@ paths:
               $ref: '#/components/schemas/LoginRequest'
       responses:
         "204":
-          content:
-            text/plain:
-              schema:
-                type: string
           description: Login success
           headers:
             Set-Cookie:
@@ -452,7 +460,8 @@ paths:
           \ the cookie file and set the `X-Bonita-API-Token` header\n  curl -b saved_cookies.txt\
           \ -X GET \\\n-- header 'X-Bonita-API-Token: <token>' \\\n--url 'http://localhost:8080/bonita/API/bpm/process?c=100&p=0'\n"
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /logoutservice:
     get:
       description: |
@@ -519,15 +528,16 @@ paths:
         label: Curl
         source: |
           curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/logoutservice?redirect=false'
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application:
     get:
       description: |
         Finds living applications with pagination params and filters
 
-        - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`
-        - can search on `token`, `displayName`, `version`
-        - can filter on `token`, `displayName`, `version`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`
+        - can order on `id`,`creationDate`, `createdBy`, `profileId`, `token`, `displayName`, `updatedBy`, `lastUpdateDate`, `version`, `link`
+        - can search on `token`, `displayName`, `version`, `link`
+        - can filter on `token`, `displayName`, `version`, `link`, `profileId`, `creationDate`, `createdBy`, `updatedBy` , `lastUpdateDate`, `userId`
       operationId: searchApplications
       parameters:
       - description: index of the page to display
@@ -593,6 +603,40 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "306"
+                link: "true"
+                creationDate: "1411548289900"
+                icon: ""
+                createdBy": "1"
+                profileId: "2"
+                description: My application link description
+                token: myadvapp
+                state: ACTIVATED
+                displayName: My app link
+                updatedBy: "1"
+                visibility: ALL
+                editable: "true"
+                lastUpdateDate: "1411548289900"
+                version: "1.0"
+              - id: "305"
+                link: "false"
+                creationDate: "1411548289900"
+                icon: ""
+                createdBy": "1"
+                profileId: "2"
+                description: My application description
+                token: myapp
+                state: DEACTIVATED
+                displayName: My app
+                updatedBy: "1"
+                visibility: ALL
+                editable: "true"
+                lastUpdateDate: "1411548289900"
+                version: "1.0"
+                homePageId: "26"
+                themeId: "1"
+                layoutId: "3"
               schema:
                 items:
                   $ref: '#/components/schemas/Application'
@@ -643,10 +687,14 @@ paths:
       summary: Finds living applications
       tags:
       - Application
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
+      deprecated: true
       description: |
-        Create a living applications
+        Create a living application (legacy application or application link).
+
+        Warning: as of 9.0.0, creating a living application using this API is deprecated.
       operationId: createApplication
       requestBody:
         content:
@@ -696,12 +744,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unexpected error.
-      summary: Create a living applications
+      summary: Create a living application
       tags:
       - Application
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application/{id}:
     delete:
       description: |
@@ -766,7 +815,8 @@ paths:
       summary: Delete a living application by ID
       tags:
       - Application
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns a single application for the given ID
@@ -834,10 +884,14 @@ paths:
       summary: Finds a living application by ID
       tags:
       - Application
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
+      deprecated: true
       description: |
-        Update a single application for the given ID
+        Update a single application for the given ID (legacy application or application link).
+
+        Warning: as of 9.0.0, updating a living application using this API is deprecated.
       operationId: updateApplicationById
       parameters:
       - description: ID of application to return
@@ -910,11 +964,15 @@ paths:
       tags:
       - Application
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /services/application/import:
     post:
+      deprecated: true
       description: |
         Import a single application
+
+        Warning: as of 9.0.0, importing a living application using this service is deprecated.
       operationId: importApplication
       requestBody:
         content:
@@ -970,11 +1028,15 @@ paths:
       tags:
       - Application
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/applicationsUpload:
     post:
+      deprecated: true
       description: |
         Upload application
+
+        Warning: as of 9.0.0, uploading a living application using the portal is deprecated.
       operationId: uploadApplication
       requestBody:
         content:
@@ -1030,7 +1092,9 @@ paths:
       - Application
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /API/living/application-menu:
     get:
       description: |
@@ -1154,10 +1218,14 @@ paths:
       summary: Finds application menus
       tags:
       - ApplicationMenu
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
+      deprecated: true
       description: |
         Create an application menu item
+
+        Warning: as of 9.0.0, creating an application menu item using this API is deprecated.
       operationId: createApplicationMenu
       requestBody:
         content:
@@ -1210,7 +1278,8 @@ paths:
       tags:
       - ApplicationMenu
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application-menu/{id}:
     delete:
       description: Delete a single application menu for the given ID
@@ -1274,7 +1343,8 @@ paths:
       summary: Delete an application menu by ID
       tags:
       - ApplicationMenu
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns a single application menu for the given ID
@@ -1349,9 +1419,14 @@ paths:
       summary: Finds a application menu by ID
       tags:
       - ApplicationMenu
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
-      description: Update a application menu for the given ID
+      deprecated: true
+      description: |
+        Update an application menu for the given ID
+
+        Warning: as of 9.0.0, updating an application menu item using this API is deprecated.
       operationId: updateApplicationMenuById
       parameters:
       - description: ID of the application menu to return
@@ -1416,11 +1491,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Unexpected error.
-      summary: Update a application menu by ID
+      summary: Update an application menu by ID
       tags:
       - ApplicationMenu
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application-page:
     get:
       description: |
@@ -1493,7 +1569,7 @@ paths:
       responses:
         "200":
           content:
-            ApplicationPage/json:
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/ApplicationPage'
@@ -1544,10 +1620,14 @@ paths:
       summary: Finds application pages
       tags:
       - ApplicationPage
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
+      deprecated: true
       description: |
         Create an application page
+
+        Warning: as of 9.0.0, creating an application page using this API is deprecated.
       operationId: createApplicationPage
       requestBody:
         content:
@@ -1602,7 +1682,8 @@ paths:
       - ApplicationPage
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/living/application-page/{id}:
     delete:
       description: |
@@ -1667,7 +1748,8 @@ paths:
       summary: Delete an application page by ID
       tags:
       - ApplicationPage
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns a single application page for the given ID
@@ -1735,7 +1817,8 @@ paths:
       summary: Finds an application page by ID
       tags:
       - ApplicationPage
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}:
     get:
       description: |
@@ -1882,7 +1965,8 @@ paths:
       summary: Finds Business Data
       tags:
       - BusinessDataQuery
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}/findByIds:
     get:
       description: |
@@ -1957,7 +2041,8 @@ paths:
       summary: Finds business data By Ids
       tags:
       - BDM
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}/{persistenceId}:
     get:
       description: |
@@ -2028,7 +2113,8 @@ paths:
       summary: Finds business data by Id
       tags:
       - BDM
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}/{persistenceId}/{attributeName}:
     get:
       description: |
@@ -2124,7 +2210,8 @@ paths:
       summary: Finds business data attribute by id
       tags:
       - BDM
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/accessControl/bdm:
     delete:
       description: |
@@ -2172,7 +2259,8 @@ paths:
       summary: Delete the BDM Access Control
       tags:
       - BDMAccessControl
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
@@ -2223,13 +2311,17 @@ paths:
       summary: BDM access control status
       tags:
       - BDMAccessControl
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/bdmAccessControlUpload:
     post:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Upload BDM Access Control
+
+        Warning: as of 9.0.0, uploading a BDM Access Control using the portal is deprecated.
       operationId: uploadBDMAccessControl
       requestBody:
         content:
@@ -2285,13 +2377,18 @@ paths:
       - BDMAccessControl
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /services/bdmAccessControl/install:
     post:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Import a BDM Access Control
+
+        Warning: as of 9.0.0, importing a BDM Access Control using this service is deprecated.
       operationId: importBDMAccessControl
       requestBody:
         content:
@@ -2349,7 +2446,8 @@ paths:
       tags:
       - BDMAccessControl
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/activity:
     get:
       description: |
@@ -2473,7 +2571,8 @@ paths:
       summary: Finds Activities
       tags:
       - Activity
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/activity/{id}:
     get:
       description: |
@@ -2542,7 +2641,8 @@ paths:
       summary: Finds the Activity by ID
       tags:
       - Activity
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the Activity for the given ID
@@ -2614,7 +2714,8 @@ paths:
       tags:
       - Activity
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedActivity:
     get:
       description: |
@@ -2748,7 +2849,8 @@ paths:
       summary: Finds Archived Activities
       tags:
       - ArchivedActivity
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedActivity/{id}:
     get:
       description: |
@@ -2817,7 +2919,8 @@ paths:
       summary: Finds the Archived Activity by ID
       tags:
       - ArchivedActivity
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/humanTask:
     get:
       description: |
@@ -2941,7 +3044,8 @@ paths:
       summary: Finds HumanTasks
       tags:
       - HumanTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/humanTask/{id}:
     get:
       description: |
@@ -3010,7 +3114,8 @@ paths:
       summary: Finds the HumanTask by ID
       tags:
       - HumanTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the HumanTask for the given ID
@@ -3083,7 +3188,8 @@ paths:
       tags:
       - HumanTask
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/manualTask:
     get:
       description: |
@@ -3214,7 +3320,8 @@ paths:
       summary: Finds ManualTasks
       tags:
       - ManualTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ManualTask.
@@ -3273,7 +3380,8 @@ paths:
       - ManualTask
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/manualTask/{id}:
     get:
       description: |
@@ -3342,7 +3450,8 @@ paths:
       summary: Finds the ManualTask by ID
       tags:
       - ManualTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the ManualTask for the given ID.
@@ -3416,7 +3525,8 @@ paths:
       tags:
       - ManualTask
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/task:
     get:
       description: |
@@ -3529,7 +3639,8 @@ paths:
       summary: Finds Tasks
       tags:
       - Task
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/task/{id}:
     get:
       description: |
@@ -3598,7 +3709,8 @@ paths:
       summary: Finds the Task by ID
       tags:
       - Task
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the Task for the given ID
@@ -3673,7 +3785,8 @@ paths:
       tags:
       - Task
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask:
     get:
       description: |
@@ -3797,7 +3910,8 @@ paths:
       summary: Finds UserTasks
       tags:
       - UserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask/{id}:
     get:
       description: |
@@ -3866,7 +3980,8 @@ paths:
       summary: Finds the UserTask by ID
       tags:
       - UserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the UserTask for the given ID.
@@ -3940,7 +4055,8 @@ paths:
       tags:
       - UserTask
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask/{id}/contract:
     get:
       description: |
@@ -4009,7 +4125,8 @@ paths:
       summary: Finds the Contract by UserTask ID
       tags:
       - UserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask/{id}/execution:
     post:
       description: |
@@ -4088,7 +4205,8 @@ paths:
       - UserTask
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/userTask/{id}/context:
     get:
       description: |
@@ -4179,7 +4297,8 @@ paths:
       summary: Finds the Context by UserTask ID
       tags:
       - UserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedHumanTask:
     get:
       description: |
@@ -4296,7 +4415,8 @@ paths:
       summary: Finds ArchivedHumanTasks
       tags:
       - ArchivedHumanTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedHumanTask/{id}:
     get:
       description: |
@@ -4365,7 +4485,8 @@ paths:
       summary: Finds the ArchivedHumanTask by ID
       tags:
       - ArchivedHumanTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedManualTask:
     get:
       description: |
@@ -4482,7 +4603,8 @@ paths:
       summary: Finds ArchivedManualTasks
       tags:
       - ArchivedManualTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedManualTask/{id}:
     get:
       description: |
@@ -4551,7 +4673,8 @@ paths:
       summary: Finds the ArchivedManualTask by ID
       tags:
       - ArchivedManualTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedUserTask:
     get:
       description: |
@@ -4669,7 +4792,8 @@ paths:
       summary: Finds ArchivedUserTasks
       tags:
       - ArchivedUserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedUserTask/{id}:
     get:
       description: |
@@ -4738,7 +4862,8 @@ paths:
       summary: Finds the ArchivedUserTask by ID
       tags:
       - ArchivedUserTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedTask:
     get:
       description: |
@@ -4851,7 +4976,8 @@ paths:
       summary: Finds ArchivedTasks
       tags:
       - ArchivedTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedTask/{id}:
     get:
       description: |
@@ -4920,7 +5046,8 @@ paths:
       summary: Finds the ArchivedTask by ID
       tags:
       - ArchivedTask
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/activityVariable/{id}/{variableName}:
     get:
       description: |
@@ -4999,7 +5126,8 @@ paths:
       summary: Finds the ActivityVariable by ID
       tags:
       - ActivityVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedActivityVariable/{id}/{variableName}:
     get:
       description: |
@@ -5080,7 +5208,8 @@ paths:
       summary: Finds the ArchivedActivityVariable by case ID and name
       tags:
       - ArchivedActivityVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseVariable:
     get:
       description: |
@@ -5190,7 +5319,8 @@ paths:
       summary: Finds ProcessInstance Variables
       tags:
       - ProcessInstanceVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCaseVariable:
     get:
       description: |
@@ -5289,7 +5419,8 @@ paths:
       summary: Finds ArchivedProcessInstance Variables
       tags:
       - ArchivedProcessInstanceVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseVariable/{id}/{variableName}:
     get:
       description: |
@@ -5369,7 +5500,8 @@ paths:
       summary: Finds the Variable by ProcessInstance ID
       tags:
       - ProcessInstanceVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the variable for the given ProcessInstance ID.
@@ -5454,7 +5586,8 @@ paths:
       tags:
       - ProcessInstanceVariable
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCaseVariable/{id}/{variableName}:
     get:
       description: |
@@ -5536,7 +5669,8 @@ paths:
       summary: Finds an archived Variable by ProcessInstance ID and variable name
       tags:
       - ArchivedProcessInstanceVariable
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseDocument:
     get:
       description: |
@@ -5654,7 +5788,8 @@ paths:
       summary: Finds ProcessInstanceDocuments
       tags:
       - ProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProcessInstanceDocument.
@@ -5717,7 +5852,8 @@ paths:
       - ProcessInstanceDocument
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseDocument/{id}:
     delete:
       description: |
@@ -5782,7 +5918,8 @@ paths:
       summary: Delete the ProcessInstanceDocument by ID
       tags:
       - ProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ProcessInstanceDocument for the given ID.
@@ -5854,7 +5991,8 @@ paths:
       summary: Finds the ProcessInstanceDocument by ID
       tags:
       - ProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the ProcessInstanceDocument for the given ID
@@ -5930,7 +6068,8 @@ paths:
       tags:
       - ProcessInstanceDocument
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCaseDocument:
     get:
       description: |
@@ -6052,7 +6191,8 @@ paths:
       summary: Finds ArchivedProcessInstanceDocuments
       tags:
       - ArchivedProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCaseDocument/{id}:
     delete:
       description: |
@@ -6117,7 +6257,8 @@ paths:
       summary: Delete the ArchivedProcessInstanceDocument by ID
       tags:
       - ArchivedProcessInstanceDocument
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/actor:
     get:
       description: |
@@ -6227,7 +6368,8 @@ paths:
       summary: Finds Actors
       tags:
       - Actor
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/actor/{id}:
     get:
       description: |
@@ -6296,10 +6438,14 @@ paths:
       summary: Finds the Actor by ID
       tags:
       - Actor
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
+      deprecated: true
       description: |
         Update the Actor for the given ID
+
+        Warning: as of 9.0.0, updating an Actor using this API is deprecated.
       operationId: updateActorById
       parameters:
       - description: ID of the Actor to return
@@ -6368,7 +6514,8 @@ paths:
       tags:
       - Actor
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/actorMember:
     get:
       description: |
@@ -6489,7 +6636,8 @@ paths:
       summary: Finds ActorMembers
       tags:
       - ActorMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/actorMember/{id}:
     delete:
       description: |
@@ -6554,7 +6702,8 @@ paths:
       summary: Delete the ActorMember by ID
       tags:
       - ActorMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ActorMember for the given ID
@@ -6622,7 +6771,8 @@ paths:
       summary: Finds the ActorMember by ID
       tags:
       - ActorMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/case:
     delete:
       description: |
@@ -6687,7 +6837,8 @@ paths:
       tags:
       - ProcessInstance
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Finds ProcessInstances with pagination params and filters
@@ -6804,7 +6955,8 @@ paths:
       summary: Finds ProcessInstances
       tags:
       - ProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)
@@ -6853,6 +7005,24 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: "Forbidden, The request contained valid data and was understood\
             \ by the server, but the server is refusing action."
+        "429":
+          content:
+            application/json:
+              example:
+                message: Error occurred when starting process 5524355418393634511.
+                  Case creation limit reached.
+                exception: org.bonitasoft.web.toolkit.client.common.exception.api.APITooManyRequestException
+              schema:
+                $ref: '#/components/schemas/createProcessInstance_429_response'
+          description: Case creation limit reached (Community 2024.3+ only)
+          headers:
+            Retry-After:
+              description: Date when case counter will be refilled
+              explode: false
+              schema:
+                format: date-time
+                type: string
+              style: simple
         "5XX":
           content:
             application/json:
@@ -6866,7 +7036,8 @@ paths:
       - ProcessInstance
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/case/{id}:
     delete:
       description: |
@@ -6931,7 +7102,8 @@ paths:
       summary: Delete the ProcessInstance by ID
       tags:
       - ProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ProcessInstance for the given ID
@@ -7010,7 +7182,8 @@ paths:
       summary: Finds the ProcessInstance by ID
       tags:
       - ProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/case/{id}/context:
     get:
       description: |
@@ -7101,7 +7274,8 @@ paths:
       summary: Finds the Context by ProcessInstance ID
       tags:
       - ProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCase:
     get:
       description: |
@@ -7222,7 +7396,8 @@ paths:
       summary: Finds ArchivedProcessInstances
       tags:
       - ArchivedProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCase/{id}:
     delete:
       description: |
@@ -7287,7 +7462,8 @@ paths:
       summary: Delete the ArchivedProcessInstance by ID
       tags:
       - ArchivedProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ArchivedProcessInstance for the given ID
@@ -7355,7 +7531,8 @@ paths:
       summary: Finds the ArchivedProcessInstance by ID
       tags:
       - ArchivedProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedCase/{id}/context:
     get:
       description: |
@@ -7446,7 +7623,8 @@ paths:
       summary: Finds the Context by ArchivedProcessInstance ID
       tags:
       - ArchivedProcessInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/caseInfo/{id}:
     get:
       description: |
@@ -7517,7 +7695,8 @@ paths:
       summary: Finds the ProcessInstanceInfo by ID
       tags:
       - ProcessInstanceInfo
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/comment:
     get:
       description: |
@@ -7630,7 +7809,8 @@ paths:
       summary: Finds ProcessInstanceComments
       tags:
       - ProcessInstanceComment
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProcessInstanceComment
@@ -7688,7 +7868,8 @@ paths:
       - ProcessInstanceComment
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedComment:
     get:
       description: |
@@ -7812,7 +7993,8 @@ paths:
       summary: Finds ArchivedProcessInstanceComments
       tags:
       - ArchivedProcessInstanceComment
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process:
     delete:
       description: |
@@ -7877,7 +8059,8 @@ paths:
       tags:
       - Process
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Finds Processes with pagination params and filters
@@ -8000,11 +8183,15 @@ paths:
       summary: Finds Processes
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
+      deprecated: true
       description: |
         Create the Process.
         A process resource is created using the content of a .bar file that has previously been uploaded, using the [processUpload servlet](#operation/uploadProcess), to get the process archive path.
+
+        Warning: as of 9.0.0, creating a process using this API is deprecated.
       operationId: createProcess
       requestBody:
         content:
@@ -8059,7 +8246,8 @@ paths:
       - Process
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process/{id}:
     delete:
       description: |
@@ -8131,7 +8319,8 @@ paths:
       summary: Delete the Process by ID
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Process for the given ID
@@ -8199,10 +8388,14 @@ paths:
       summary: Finds the Process by ID
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
+      deprecated: true
       description: |
         Update the Process for the given ID
+
+        Warning: as of 9.0.0, updating a process using this API is deprecated.
       operationId: updateProcessById
       parameters:
       - description: ID of the Process to return
@@ -8271,7 +8464,8 @@ paths:
       tags:
       - Process
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process/{id}/design:
     get:
       description: |
@@ -8340,7 +8534,8 @@ paths:
       summary: Finds the Process design by ID
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process/{id}/contract:
     get:
       description: |
@@ -8409,7 +8604,8 @@ paths:
       summary: Finds the Process contract by ID
       tags:
       - Process
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/process/{id}/instantiation:
     post:
       description: |
@@ -8456,7 +8652,8 @@ paths:
                 - "Expected input [ticket_description] is missing"
                 - "Expected input [ticket_subject] is missing"
               schema:
-                $ref: '#/components/schemas/instanciateProcess_400_response'
+                allOf:
+                - $ref: '#/components/schemas/Error'
           description: Bad request.
         "401":
           content:
@@ -8476,6 +8673,24 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: "Forbidden, The request contained valid data and was understood\
             \ by the server, but the server is refusing action."
+        "429":
+          content:
+            application/json:
+              example:
+                code: 429
+                description: Unable to start the process with ID 5524355418393634511
+                reasonPhrase: Case creation limit reached.
+              schema:
+                $ref: '#/components/schemas/instanciateProcess_429_response'
+          description: Case creation limit reached (Community 2024.3+ only)
+          headers:
+            Retry-After:
+              description: Date when case counter will be refilled
+              explode: false
+              schema:
+                format: date-time
+                type: string
+              style: simple
         "5XX":
           content:
             application/json:
@@ -8489,7 +8704,8 @@ paths:
       - Process
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processInfo/{id}:
     get:
       description: |
@@ -8561,11 +8777,17 @@ paths:
       summary: Finds the ProcessInfo by ID
       tags:
       - ProcessInfo
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processConnector/{id}/{connectorImplId}/{connectorImplVersion}:
     put:
+      deprecated: true
       description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
         Update the ProcessConnector for the given ID
+
+        Warning: as of 9.0.0, updating a Process Connector using this API is deprecated.
       operationId: updateProcessConnectorByProcessId
       parameters:
       - description: ID of the process to update
@@ -8644,7 +8866,8 @@ paths:
       tags:
       - Process
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/diagram/{id}:
     get:
       description: |
@@ -8668,9 +8891,8 @@ paths:
           content:
             application/xml:
               schema:
-                additionalProperties: true
-                description: Raw XML file containing the diagram definition
-                type: object
+                description: BPMN XML representation of the process definition
+                type: string
           description: 'Success '
         "400":
           content:
@@ -8717,7 +8939,9 @@ paths:
       summary: Finds the diagram process by ID
       tags:
       - Diagram
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - application/xml
   /API/bpm/processParameter:
     get:
       description: |
@@ -8837,7 +9061,8 @@ paths:
       summary: Finds ProcessParameters
       tags:
       - ProcessParameter
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processParameter/{id}/{name}:
     get:
       description: |
@@ -8916,12 +9141,16 @@ paths:
       summary: Finds the ProcessParameter by ID
       tags:
       - ProcessParameter
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Update the ProcessParameter for the given ID
+
+        Warning: as of 9.0.0, importing a Process parameter using this API is deprecated.
       operationId: updateProcessParameterById
       parameters:
       - description: ID of the process to get parameter from
@@ -9002,7 +9231,8 @@ paths:
       tags:
       - ProcessParameter
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processResolutionProblem:
     get:
       description: |
@@ -9124,7 +9354,8 @@ paths:
       summary: Finds ProcessResolutionProblems
       tags:
       - ProcessResolutionProblem
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processSupervisor:
     delete:
       description: |
@@ -9194,7 +9425,8 @@ paths:
       tags:
       - ProcessSupervisor
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Finds ProcessSupervisors with pagination params and filters
@@ -9317,7 +9549,8 @@ paths:
       summary: Finds ProcessSupervisors
       tags:
       - ProcessSupervisor
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProcessSupervisor
@@ -9379,7 +9612,8 @@ paths:
       - ProcessSupervisor
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/processConnectorDependency:
     get:
       description: |
@@ -9501,7 +9735,8 @@ paths:
       summary: Finds ProcessConnectorDependencies
       tags:
       - ProcessConnectorDependency
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/connectorFailure/{id}:
     get:
       description: |
@@ -9570,7 +9805,8 @@ paths:
       summary: Finds the ConnectorFailure by ID
       tags:
       - ConnectorFailure
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/connectorInstance:
     get:
       description: |
@@ -9691,7 +9927,8 @@ paths:
       summary: Finds ConnectorInstances
       tags:
       - ConnectorInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedConnectorInstance:
     get:
       description: |
@@ -9811,7 +10048,8 @@ paths:
       summary: Finds ArchivedConnectorInstances
       tags:
       - ArchivedConnectorInstance
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/flowNode:
     get:
       description: |
@@ -9935,7 +10173,8 @@ paths:
       summary: Finds FlowNodes
       tags:
       - FlowNode
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/flowNode/{id}:
     get:
       description: |
@@ -10004,7 +10243,8 @@ paths:
       summary: Finds the FlowNode by ID
       tags:
       - FlowNode
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
@@ -10078,7 +10318,8 @@ paths:
       tags:
       - FlowNode
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedFlowNode:
     get:
       description: |
@@ -10202,7 +10443,8 @@ paths:
       summary: Finds ArchivedFlowNodes
       tags:
       - ArchivedFlowNode
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/archivedFlowNode/{id}:
     get:
       description: |
@@ -10271,7 +10513,8 @@ paths:
       summary: Finds the ArchivedFlowNode by ID
       tags:
       - ArchivedFlowNode
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/timerEventTrigger:
     get:
       description: |
@@ -10405,7 +10648,8 @@ paths:
       summary: Finds TimerEventTriggers
       tags:
       - TimerEventTrigger
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/timerEventTrigger/{id}:
     get:
       description: |
@@ -10474,7 +10718,8 @@ paths:
       summary: Finds the TimerEventTrigger by ID
       tags:
       - TimerEventTrigger
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the TimerEventTrigger for the given ID
@@ -10551,7 +10796,8 @@ paths:
       tags:
       - TimerEventTrigger
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/message:
     post:
       description: |
@@ -10606,7 +10852,8 @@ paths:
       - Message
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/bpm/signal:
     post:
       description: |
@@ -10663,7 +10910,8 @@ paths:
       - Signal
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/definition:
     get:
       description: |
@@ -10748,7 +10996,8 @@ paths:
       summary: Finds CustomUserDefinitions
       tags:
       - CustomUserDefinition
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the CustomUserDefinition
@@ -10806,7 +11055,8 @@ paths:
       - CustomUserDefinition
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/definition/{id}:
     delete:
       description: |
@@ -10871,7 +11121,8 @@ paths:
       summary: Delete the CustomUserDefinition by ID
       tags:
       - CustomUserDefinition
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single CustomUserDefinition for the given ID
@@ -10939,7 +11190,8 @@ paths:
       summary: Finds the CustomUserDefinition by ID
       tags:
       - CustomUserDefinition
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/value:
     get:
       description: |
@@ -11040,7 +11292,8 @@ paths:
       summary: Finds CustomUserValues
       tags:
       - CustomUserValue
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/value/{userId}/{definitionId}:
     put:
       description: |
@@ -11123,7 +11376,8 @@ paths:
       tags:
       - CustomUserValue
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/customuserinfo/user:
     get:
       description: |
@@ -11224,7 +11478,8 @@ paths:
       summary: Finds CustomUsers
       tags:
       - CustomUser
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/form/mapping:
     get:
       description: |
@@ -11346,13 +11601,17 @@ paths:
       summary: Finds FormMappings
       tags:
       - FormMapping
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/form/mapping/{id}:
     put:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Update the FormMapping for the given ID
+
+        Warning: as of 9.0.0, updating a Form Mapping using this API is deprecated.
       operationId: updateFormMappingById
       parameters:
       - description: ID of the FormMapping to return
@@ -11422,7 +11681,8 @@ paths:
       tags:
       - FormMapping
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/professionalcontactdata:
     get:
       description: |
@@ -11546,7 +11806,8 @@ paths:
       summary: Finds ProfessionalContactData
       tags:
       - ProfessionalContactData
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProfessionalContactData
@@ -11608,7 +11869,8 @@ paths:
       - ProfessionalContactData
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/professionalcontactdata/{userId}:
     get:
       description: |
@@ -11677,7 +11939,8 @@ paths:
       summary: Finds the ProfessionalContactData by ID
       tags:
       - ProfessionalContactData
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the ProfessionalContactData for the given ID
@@ -11761,7 +12024,8 @@ paths:
       tags:
       - ProfessionalContactData
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/personalcontactdata/{userId}:
     get:
       description: |
@@ -11830,7 +12094,8 @@ paths:
       summary: Finds the PersonalContactData by ID
       tags:
       - ProfessionalContactData
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the PersonalContactData for the given ID
@@ -11913,7 +12178,8 @@ paths:
       tags:
       - ProfessionalContactData
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/group:
     get:
       description: |
@@ -12026,7 +12292,8 @@ paths:
       summary: Finds Groups
       tags:
       - Group
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the Group
@@ -12084,7 +12351,8 @@ paths:
       - Group
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/group/{id}:
     delete:
       description: |
@@ -12149,7 +12417,8 @@ paths:
       summary: Delete the Group by ID
       tags:
       - Group
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Group for the given ID
@@ -12217,7 +12486,8 @@ paths:
       summary: Finds the Group by ID
       tags:
       - Group
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the Group for the given ID
@@ -12289,7 +12559,8 @@ paths:
       tags:
       - Group
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/membership:
     get:
       description: |
@@ -12413,7 +12684,8 @@ paths:
       summary: Finds Memberships
       tags:
       - Membership
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the Membership
@@ -12471,7 +12743,8 @@ paths:
       - Membership
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/membership/{userId}/{groupId}/{roleId}:
     delete:
       description: |
@@ -12556,7 +12829,8 @@ paths:
       summary: Delete the Membership by ID
       tags:
       - Membership
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/role:
     get:
       description: |
@@ -12679,7 +12953,8 @@ paths:
       summary: Finds Roles
       tags:
       - Role
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the Role
@@ -12737,7 +13012,8 @@ paths:
       - Role
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/role/{id}:
     delete:
       description: |
@@ -12802,7 +13078,8 @@ paths:
       summary: Delete the Role by ID
       tags:
       - Role
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Role for the given ID
@@ -12870,7 +13147,8 @@ paths:
       summary: Finds the Role by ID
       tags:
       - Role
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the Role for the given ID
@@ -12942,7 +13220,8 @@ paths:
       tags:
       - Role
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/user:
     get:
       description: |
@@ -13066,7 +13345,8 @@ paths:
       summary: Finds Users
       tags:
       - User
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the User
@@ -13124,7 +13404,8 @@ paths:
       - User
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/identity/user/{id}:
     delete:
       description: |
@@ -13192,7 +13473,8 @@ paths:
       summary: Delete the User by ID
       tags:
       - User
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single User for the given ID
@@ -13260,7 +13542,8 @@ paths:
       summary: Finds the User by ID
       tags:
       - User
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Update the User for the given ID
@@ -13332,7 +13615,8 @@ paths:
       tags:
       - User
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /platformloginservice:
     post:
       description: |
@@ -13409,7 +13693,8 @@ paths:
       - Platform
       - PlatformAuthentication
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /platformlogoutservice:
     post:
       description: ""
@@ -13455,7 +13740,8 @@ paths:
       tags:
       - Platform
       - PlatformAuthentication
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/platform/platform/unusedid:
     get:
       description: |
@@ -13513,7 +13799,8 @@ paths:
       summary: Finds the Platform by ID
       tags:
       - Platform
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |
         Start or stop the current node, that is, start or stop all services of the current JVM.
@@ -13574,7 +13861,8 @@ paths:
       tags:
       - Platform
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/platform/tenant:
     get:
       deprecated: true
@@ -13703,7 +13991,8 @@ paths:
       summary: Finds Tenants
       tags:
       - Tenant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -13766,7 +14055,8 @@ paths:
       - Tenant
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/platform/tenant/{id}:
     delete:
       deprecated: true
@@ -13834,7 +14124,8 @@ paths:
       summary: Delete the Tenant by ID
       tags:
       - Tenant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       deprecated: true
       description: |
@@ -13906,7 +14197,8 @@ paths:
       summary: Finds the Tenant by ID
       tags:
       - Tenant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -13984,12 +14276,15 @@ paths:
       tags:
       - Tenant
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/platform/license:
     get:
+      deprecated: true
       description: |
         Returns the current platform License.
         This requires a platform session. Log in using the platform login service.
+        Warning: Since Bonita 10.2 (2024.3), this API is deprecated: use the API `GET /system/information` instead.
       operationId: getPlatformLicense
       responses:
         "200":
@@ -13997,7 +14292,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PlatformLicense'
-          description: 'Success '
+          description: Success
         "400":
           content:
             application/json:
@@ -14043,11 +14338,15 @@ paths:
       summary: Get the platform License
       tags:
       - License
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/processUpload:
     post:
+      deprecated: true
       description: |
         Upload a bar file
+
+        Warning: as of 9.0.0, uploading a bar file using the portal is deprecated.
       operationId: uploadProcess
       requestBody:
         content:
@@ -14103,11 +14402,16 @@ paths:
       - Process
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /portal/pageUpload:
     post:
+      deprecated: true
       description: |
         Upload Page
+
+        Warning: as of 9.0.0, uploading a page using the portal is deprecated.
       operationId: uploadPage
       requestBody:
         content:
@@ -14162,7 +14466,9 @@ paths:
       - Page
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /portal/fileUpload:
     post:
       description: |
@@ -14224,7 +14530,9 @@ paths:
       - Upload
       - BDM
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /API/portal/page:
     get:
       description: |
@@ -14347,10 +14655,14 @@ paths:
       summary: Finds Pages
       tags:
       - Page
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
+      deprecated: true
       description: |
-        Upload the page content using the `portal/pageUpload` . This returns a temporary file name that can be used as input for this operation.
+        Upload the page content using the `portal/pageUpload`. This returns a temporary file name that can be used as input for this operation.
+
+        Warning: as of 9.0.0, creating a page using this API is deprecated.
       operationId: createPage
       requestBody:
         content:
@@ -14405,7 +14717,8 @@ paths:
       - Page
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/page/{id}:
     delete:
       description: |
@@ -14470,7 +14783,8 @@ paths:
       summary: Delete the Page by ID
       tags:
       - Page
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Page for the given ID
@@ -14538,10 +14852,14 @@ paths:
       summary: Finds the Page by ID
       tags:
       - Page
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
+      deprecated: true
       description: |
         Use the PUT method to update an existing custom page. To update a custom page, upload the new page content using the pageUpload servlet, which returns a temporary file name, and then call this API with the temporary file name.
+
+        Warning: as of 9.0.0, updating a page using this API is deprecated.
       operationId: updatePageById
       parameters:
       - description: ID of the Page to return
@@ -14610,7 +14928,8 @@ paths:
       tags:
       - Page
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profile:
     get:
       description: |
@@ -14734,10 +15053,16 @@ paths:
       summary: Finds Profiles
       tags:
       - Profile
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
+      deprecated: true
       description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
         Create the Profile
+
+        Warning: as of 9.0.0, creating profiles using this API is deprecated.
       operationId: createProfile
       requestBody:
         content:
@@ -14792,7 +15117,8 @@ paths:
       - Profile
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profile/{id}:
     delete:
       description: |
@@ -14857,7 +15183,8 @@ paths:
       summary: Delete the Profile by ID
       tags:
       - Profile
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single Profile for the given ID
@@ -14925,10 +15252,16 @@ paths:
       summary: Finds the Profile by ID
       tags:
       - Profile
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
+      deprecated: true
       description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
         Update the Profile for the given ID
+
+        Warning: as of 9.0.0, updating a profile using this API is deprecated.
       operationId: updateProfileById
       parameters:
       - description: ID of the Profile to return
@@ -14997,7 +15330,8 @@ paths:
       tags:
       - Profile
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profileEntry:
     get:
       deprecated: true
@@ -15112,7 +15446,8 @@ paths:
       summary: Finds ProfileEntries
       tags:
       - ProfileEntry
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       deprecated: true
       description: |
@@ -15172,7 +15507,8 @@ paths:
       - ProfileEntry
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profileEntry/{id}:
     delete:
       deprecated: true
@@ -15238,7 +15574,8 @@ paths:
       summary: Delete the ProfileEntry by ID
       tags:
       - ProfileEntry
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       deprecated: true
       description: |
@@ -15308,7 +15645,8 @@ paths:
       summary: Finds the ProfileEntry by ID
       tags:
       - ProfileEntry
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       deprecated: true
       description: |
@@ -15382,7 +15720,8 @@ paths:
       tags:
       - ProfileEntry
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profileMember:
     get:
       description: |
@@ -15485,7 +15824,8 @@ paths:
       summary: Finds ProfileMembers
       tags:
       - ProfileMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |
         Create the ProfileMember
@@ -15543,7 +15883,8 @@ paths:
       - ProfileMember
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/profileMember/{id}:
     delete:
       description: |
@@ -15608,7 +15949,8 @@ paths:
       summary: Delete the ProfileMember by ID
       tags:
       - ProfileMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |
         Returns the single ProfileMember for the given ID
@@ -15674,7 +16016,8 @@ paths:
       summary: Finds the ProfileMember by ID
       tags:
       - ProfileMember
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/theme:
     post:
       deprecated: true
@@ -15731,7 +16074,8 @@ paths:
       - Theme
       x-codegen-request-body-name: body
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/portal/theme/unusedId:
     put:
       deprecated: true
@@ -15795,7 +16139,8 @@ paths:
       tags:
       - Theme
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/i18nlocale:
     get:
       description: |
@@ -15880,7 +16225,8 @@ paths:
       summary: Finds I18nlocales
       tags:
       - I18nlocale
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/i18ntranslation:
     get:
       description: |
@@ -15983,7 +16329,8 @@ paths:
       summary: Finds I18ntranslations
       tags:
       - I18ntranslation
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/session/unusedId:
     get:
       description: |
@@ -16038,11 +16385,15 @@ paths:
         label: Curl
         source: |
           curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/session/unusedId'
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /API/system/tenant/{id}:
     get:
+      deprecated: true
       description: |
         Pause and resume tenant services in order to do maintenance on a tenant.
+
+        Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to retrieve the maintenance state.
       operationId: getSystemTenant
       parameters:
       - description: ID of the tenant
@@ -16107,10 +16458,14 @@ paths:
       summary: Get the current Tenant
       tags:
       - SystemTenant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
+      deprecated: true
       description: |
         Pause or resume the current tenant.
+
+        Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to enable the maintenance mode (same behavior as pausing the tenant).
       operationId: updateSystemTenant
       parameters:
       - description: ID of the tenant
@@ -16179,11 +16534,184 @@ paths:
       tags:
       - SystemTenant
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+  /API/system/maintenance:
+    get:
+      description: |
+        Returns maintenance details of the platform
+      operationId: getMaintenanceDetails
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaintenanceDetails'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Get the maintenance details
+      tags:
+      - Maintenance
+      x-codeSamples:
+      - lang: Shell
+        label: Curl
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/maintenance'
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        Update maintenance details
+      operationId: updateMaintenanceDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaintenanceDetails'
+        description: Maintenance details; One or all attributes can be updated
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaintenanceDetails'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update the maintenance details
+      tags:
+      - Maintenance
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/system/information:
+    get:
+      description: |
+        Returns system information details of the platform.
+        Requires to be logged in as a user having the Admin profile.
+      operationId: getSystemInformation
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemInformation'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Get the system information
+      tags:
+      - Information
+      x-codeSamples:
+      - lang: Shell
+        label: Curl
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/information'
+      x-accepts:
+      - application/json
   /API/system/license/unusedid:
     get:
       description: |
-        Returns license information for the current server
+        Returns license information for the current server. Requires to be logged in as a tenant technical administrator.
+        The same information can be retrieved as a user having simply the Admin profile through the API `GET /system/information`.
       operationId: getLicense
       responses:
         "200":
@@ -16191,7 +16719,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/License'
-          description: 'Success '
+          description: Success
         "400":
           content:
             application/json:
@@ -16229,13 +16757,17 @@ paths:
       summary: Get the current server license
       tags:
       - License
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /APIv2/service/install:
     post:
+      deprecated: true
       description: |
         ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
         Upload an application configuration file in the `bconf` format.
+
+        Warning: as of 9.0.0, uploading an application configuration file using this API is deprecated.
       operationId: uploadApplicationConfiguration
       requestBody:
         content:
@@ -16287,7 +16819,9 @@ paths:
       tags:
       - Application
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /API/tenant/bdm:
     get:
       description: |
@@ -16345,10 +16879,14 @@ paths:
       summary: Get the BDM
       tags:
       - BDM
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
+      deprecated: true
       description: |
         Install a BDM
+
+        Warning: as of 9.0.0, importing a BDM using this API is deprecated.
       operationId: installBDM
       requestBody:
         content:
@@ -16396,7 +16934,8 @@ paths:
       tags:
       - BDM
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/organizationUpload:
     post:
       description: |
@@ -16456,7 +16995,9 @@ paths:
       - Organization
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /services/organization/import:
     post:
       description: |
@@ -16516,11 +17057,17 @@ paths:
       tags:
       - Organization
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /portal/profilesUpload:
     post:
+      deprecated: true
       description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
         Upload profiles
+
+        Warning: as of 9.0.0, uploading profiles using the portal is deprecated.
       operationId: uploadprofiles
       requestBody:
         content:
@@ -16576,11 +17123,16 @@ paths:
       - Profile
       - Upload
       x-content-type: multipart/form-data
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+      - text/plain
   /services/profile/import:
     post:
+      deprecated: true
       description: |
         Import profiles
+
+        Warning: as of 9.0.0, importing profiles using this service is deprecated.
       operationId: importProfiles
       requestBody:
         content:
@@ -16636,7 +17188,66 @@ paths:
       tags:
       - Profile
       x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
+      x-accepts:
+      - application/json
+  /API/formFileUpload:
+    post:
+      description: |
+        Supports any type of files, used to upload a file before submitting a process or task form with a document in its contract
+      operationId: formFileUpload
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FormFileUploadRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FormFileUploadResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Upload a file
+      tags:
+      - FormFileUpload
+      x-content-type: multipart/form-data
+      x-accepts:
+      - application/json
+      - text/plain
 components:
   parameters:
     pageIndex:
@@ -16785,6 +17396,12 @@ components:
       type: object
     Error:
       additionalProperties: true
+      example:
+        exception: exception
+        explanations:
+        - explanations
+        - explanations
+        message: message
       properties:
         message:
           description: The error message
@@ -16798,21 +17415,7 @@ components:
             type: string
           type: array
       type: object
-    Application:
-      example:
-        id: "305"
-        creationDate: "1411548289900"
-        iconPath: ""
-        createdBy": "1"
-        profileId: "2"
-        description: My application description
-        token: myapp
-        state: DEACTIVATED
-        displayName: My app
-        updatedBy: "1"
-        lastUpdateDate: "1411548289900"
-        version: "1.0"
-        homePageId: "-1"
+    AbstractApplication:
       properties:
         createdBy:
           description: Author user ID
@@ -16827,11 +17430,6 @@ components:
           type: string
         displayName:
           description: display name of the application
-          type: string
-        homePageId:
-          description: id of the application page used as the home page
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
           type: string
         id:
           description: id of the application
@@ -16855,15 +17453,123 @@ components:
         version:
           description: version of the application
           type: string
+        state:
+          description: application state
+          enum:
+          - ACTIVATED
+          - DEACTIVATED
+          type: string
+        visibility:
+          description: "visibility of the Application. This value is purely indicative,\
+            \ changing it in the application object won't change the accessibility\
+            \ to the actual application."
+          enum:
+          - ALL
+          - TECHNICAL_USER
+          - RESTRICTED
+          type: string
+          x-enumDescriptions:
+            ALL: Everyone can use the application
+            TECHNICAL_USER: Only the technical user can use the application
+            RESTRICTED: Access to the application is determined by the user profile
+        editable:
+          description: Indicates whether the application can be modified
+          type: boolean
       type: object
+    ApplicationLink:
+      allOf:
+      - properties:
+          link:
+            description: true for an application link
+            type: boolean
+        type: object
+      - $ref: '#/components/schemas/AbstractApplication'
+      - description: Contains the meta information of a Bonita Living Application
+          Link.
+        type: object
+      description: Contains the meta information of a Bonita Living Application Link.
+      example:
+        id: "306"
+        link: "true"
+        creationDate: "1411548289900"
+        icon: ""
+        createdBy": "1"
+        profileId: "2"
+        description: My application link description
+        token: myadvapp
+        state: ACTIVATED
+        displayName: My app link
+        updatedBy: "1"
+        visibility: ALL
+        editable: "true"
+        lastUpdateDate: "1411548289900"
+        version: "1.0"
+      title: Application Link
+    LegacyApplication:
+      allOf:
+      - properties:
+          link:
+            description: false for a legacy application
+            type: boolean
+        type: object
+      - $ref: '#/components/schemas/AbstractApplication'
+      - description: Contains the meta information of a legacy Bonita Living Application.
+        properties:
+          homePageId:
+            description: id of the application page used as the home page
+            maxLength: 250
+            pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+            type: string
+          layoutId:
+            description: id of the layout used by the application
+            maxLength: 250
+            pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+            type: string
+          themeId:
+            description: id of the theme used by the application
+            maxLength: 250
+            pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+            type: string
+        type: object
+      description: Contains the meta information of a legacy Bonita Living Application.
+      example:
+        id: "305"
+        link: "false"
+        creationDate: "1411548289900"
+        icon: ""
+        createdBy": "1"
+        profileId: "2"
+        description: My application description
+        token: myapp
+        state: DEACTIVATED
+        displayName: My app
+        updatedBy: "1"
+        visibility: ALL
+        editable: "true"
+        lastUpdateDate: "1411548289900"
+        version: "1.0"
+        homePageId: "26"
+        themeId: "1"
+        layoutId: "3"
+      title: Legacy application
+    Application:
+      oneOf:
+      - $ref: '#/components/schemas/ApplicationLink'
+      - $ref: '#/components/schemas/LegacyApplication'
+      x-one-of-name: Application
     CreateApplicationRequest:
       example:
+        link: "false"
         version: "1.0"
         profileId: "2"
         token: myapp
         displayName: My app
         description: My application description
       properties:
+        link:
+          default: false
+          description: "true for an application link, false for a legacy application"
+          type: boolean
         description:
           description: description of the application
           type: string
@@ -16887,6 +17593,8 @@ components:
         token: myapp
         displayName: My app
         description: My application description
+        themeId: "2"
+        layoutId: "17"
       properties:
         description:
           description: description of the application
@@ -16908,6 +17616,12 @@ components:
             ![edition](https://img.shields.io/badge/edition-entreprise-blue)
 
             theme id for the application
+          type: string
+        layoutId:
+          description: |
+            ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+            layout id for the application
           type: string
       type: object
     FileUploadRequest:
@@ -17324,15 +18038,15 @@ components:
         executedBySubstitute: executedBySubstitute
         description: description
         sourceObjectId: sourceObjectId
-        type: null
-        priority: null
+        type: AUTOMATIC_TASK
+        priority: highest
         actorId: actorId
         processId: processId
         name: name
         reached_state_date: reached_state_date
         rootCaseId: rootCaseId
         id: id
-        state: null
+        state: failed
         parentCaseId: parentCaseId
         last_update_date: last_update_date
         assigned_id: assigned_id
@@ -17563,13 +18277,36 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-05 11:11:30.808
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: failed
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     HumanTaskUpdateRequest:
       example:
-        assignedId: new_user_id
+        assigned_id: "1234"
         state: new_state
       properties:
-        assignedId:
-          description: assignedId of the HumanTask
+        assigned_id:
+          description: The id of the user to assign this Human task to
           type: string
         state:
           description: state of the HumanTask
@@ -17604,6 +18341,29 @@ components:
           dueDate: 2014-12-25 00:00:00.000
           last_update_date: 2014-12-01 17:39:53.784
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: failed
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     ManualTaskCreateRequest:
       example:
         parentTaskId: "40001"
@@ -17675,8 +18435,34 @@ components:
           dueDate: 2014-12-01 17:22:50.809
           last_update_date: 2014-12-01 16:22:50.814
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: failed
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     UpdateTaskByIdRequest:
       additionalProperties: true
+      example:
+        displayName: displayName
+        state: state
       properties:
         state:
           description: state of the Task (completed)
@@ -17710,6 +18496,29 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-05 11:11:30.808
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: failed
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     UserTaskUpdateRequest:
       example:
         assigned_id: "1"
@@ -17768,7 +18577,7 @@ components:
         name: name
         multiple: multiple
         description: description
-        type: null
+        type: TEXT
       properties:
         description:
           description: input description
@@ -17795,14 +18604,14 @@ components:
           name: name
           multiple: multiple
           description: description
-          type: null
+          type: TEXT
         - inputs:
           - null
           - null
           name: name
           multiple: multiple
           description: description
-          type: null
+          type: TEXT
         constraints:
         - inputNames:
           - inputNames
@@ -17829,7 +18638,19 @@ components:
     AbstractArchivedTask:
       allOf:
       - $ref: '#/components/schemas/AbstractTask'
-      - $ref: '#/components/schemas/AbstractArchivedTask_allOf'
+      - description: An Archived task is a task that has been archived
+        properties:
+          sourceObjectId:
+            description: the original id of the task before it was archived
+            maxLength: 250
+            pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+            type: string
+          archivedDate:
+            description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
+              was assigned for example '2014-10-17 16:05:42.626'
+            pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
+            type: string
+        type: object
     ArchivedHumanTask:
       allOf:
       - $ref: '#/components/schemas/AbstractArchivedTask'
@@ -17857,6 +18678,31 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-09 17:21:51.946
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        archivedDate: archivedDate
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        sourceObjectId: sourceObjectId
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: failed
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     ArchivedManualTask:
       allOf:
       - $ref: '#/components/schemas/AbstractArchivedTask'
@@ -17887,6 +18733,31 @@ components:
           dueDate: 2014-12-17 00:00:00.000
           last_update_date: 2014-12-01 17:20:47.200
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        archivedDate: archivedDate
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        sourceObjectId: sourceObjectId
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: failed
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     ArchivedUserTask:
       allOf:
       - $ref: '#/components/schemas/AbstractArchivedTask'
@@ -17913,6 +18784,31 @@ components:
           dueDate: 2014-09-05 12:11:30.775
           last_update_date: 2014-09-09 17:21:51.946
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        archivedDate: archivedDate
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        sourceObjectId: sourceObjectId
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: failed
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     ArchivedTask:
       allOf:
       - $ref: '#/components/schemas/AbstractArchivedTask'
@@ -17942,6 +18838,31 @@ components:
           dueDate: 2014-12-01 17:22:50.809
           last_update_date: 2014-12-01 16:24:32.457
         type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        archivedDate: archivedDate
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        displayName: displayName
+        parentTaskId: parentTaskId
+        dueDate: dueDate
+        executedBySubstitute: executedBySubstitute
+        description: description
+        isTerminal: true
+        sourceObjectId: sourceObjectId
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: failed
+        parentCaseId: parentCaseId
+        last_update_date: last_update_date
+        assigned_id: assigned_id
     ActivityVariable:
       description: "This resource enables you to retrieve the value of a specific\
         \ variable name for a specific process instance (or case). Only persistent\
@@ -18245,7 +19166,51 @@ components:
     ArchivedProcessInstanceDocument:
       allOf:
       - $ref: '#/components/schemas/ProcessInstanceDocument'
-      - $ref: '#/components/schemas/ArchivedProcessInstanceDocument_allOf'
+      - description: A document in an active case
+        example:
+          id: "1"
+          creationDate: 2014-10-09 16:39:52.472
+          author: "1"
+          index: "0"
+          contentMimetype: text/plain
+          caseId: "1"
+          contentStorageId: "1"
+          isInternal: "true"
+          description: ""
+          name: myDoc
+          fileName: test1.txt
+          submittedBy: "1"
+          url: documentDownload?fileName=test1.txt&contentStorageId=1
+          version: "1"
+          sourceObjectId: "1"
+          archivedDate: 2014-10-09 17:39:52.473
+        properties:
+          sourceObjectId:
+            description: original document id
+            type: string
+          archivedDate:
+            description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
+              was assigned for example '2014-10-17 16:05:42.626'
+            pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
+            type: string
+        type: object
+      example:
+        submittedBy: submittedBy
+        archivedDate: archivedDate
+        fileName: fileName
+        author: author
+        contentStorageId: contentStorageId
+        index: index
+        description: description
+        sourceObjectId: sourceObjectId
+        creationDate: creationDate
+        contentMimetype: contentMimetype
+        version: version
+        url: url
+        isInternal: true
+        caseId: caseId
+        name: name
+        id: id
     Actor:
       description: ""
       example:
@@ -18469,7 +19434,61 @@ components:
     ArchivedProcessInstance:
       allOf:
       - $ref: '#/components/schemas/ProcessInstance'
-      - $ref: '#/components/schemas/ArchivedProcessInstance_allOf'
+      - description: A completed instance of a process.
+        example:
+          id: 9
+          end_date: 2014-10-22 10:57:00.299
+          startedBySubstitute: "4"
+          sourceObjectId: "3"
+          start: 2014-10-22 10:56:53.415
+          state: completed
+          rootCaseId: "3"
+          started_by: "4"
+          archivedDate: 2014-10-22 10:57:00.299
+          processDefinitionId: "6054482369194211518"
+          last_update_date": 2014-10-22 10:57:00.299
+          searchIndex1Label: case9SearchIndex1Label
+          searchIndex2Label: case9SearchIndex2Label
+          searchIndex3Label: case9SearchIndex3Label
+          searchIndex4Label: case9SearchIndex4Label
+          searchIndex5Label: case9SearchIndex5Label
+          searchIndex1Value: case9SearchIndex1Value
+          searchIndex2Value: case9SearchIndex2Value
+          searchIndex3Value: case9SearchIndex3Value
+          searchIndex4Value: case9SearchIndex4Value
+          searchIndex5Value: case9SearchIndex5Value
+        properties:
+          sourceObjectId:
+            description: the id of the process instance before it was archived
+            type: string
+          archivedDate:
+            description: the date set when the process instance was archived
+            type: string
+        type: object
+      example:
+        end_date: end_date
+        searchIndex5Label: searchIndex5Label
+        archivedDate: archivedDate
+        processDefinitionId: processDefinitionId
+        searchIndex3Value: searchIndex3Value
+        searchIndex4Value: searchIndex4Value
+        searchIndex2Label: searchIndex2Label
+        start: start
+        searchIndex1Value: searchIndex1Value
+        sourceObjectId: sourceObjectId
+        searchIndex3Label: searchIndex3Label
+        failedFlowNodes: failedFlowNodes
+        startedBySubstitute: startedBySubstitute
+        searchIndex5Value: searchIndex5Value
+        searchIndex2Value: searchIndex2Value
+        rootCaseId: rootCaseId
+        id: id
+        state: initializing
+        searchIndex1Label: searchIndex1Label
+        activeFlowNodes: activeFlowNodes
+        started_by: started_by
+        searchIndex4Label: searchIndex4Label
+        last_update_date: last_update_date
     ProcessInstanceInfo:
       description: "Retrieves information about a process instances. It returns counters\
         \ for each flow node in the process instances, showing the number of flow\
@@ -18541,7 +19560,27 @@ components:
     ArchivedProcessInstanceComment:
       allOf:
       - $ref: '#/components/schemas/ProcessInstanceComment'
-      - $ref: '#/components/schemas/ArchivedProcessInstanceComment_allOf'
+      - description: Information about the comment of an archived process instances.
+        example:
+          id: 20005
+          content: Need to review the last inputs of this case
+          processInstanceId: 1
+          postDate: 2016-06-16 14:51:33.053
+          archivedDate: 2016-06-17 10:18:24.723
+          userId: 30
+        properties:
+          archivedDate:
+            description: the date set when the process instance comment was archived
+            type: string
+        type: object
+      example:
+        archivedDate: archivedDate
+        processInstanceId: processInstanceId
+        tenantId: tenantId
+        postDate: postDate
+        id: id
+        userId: userId
+        content: content
     ActivationState:
       description: the state of the process definition (ENABLED or DISABLED)
       enum:
@@ -18562,12 +19601,12 @@ components:
         icon: icon
         description: description
         deployedBy: deployedBy
-        activationState: null
+        activationState: ENABLED
         version: version
         deploymentDate: deploymentDate
         name: name
         id: id
-        configurationState: null
+        configurationState: RESOLVED
         actorinitiatorid: actorinitiatorid
         last_update_date: last_update_date
       properties:
@@ -18880,14 +19919,14 @@ components:
             name: name
             multiple: multiple
             description: description
-            type: null
+            type: TEXT
           - inputs:
             - null
             - null
             name: name
             multiple: multiple
             description: description
-            type: null
+            type: TEXT
           constraints:
           - inputNames:
             - inputNames
@@ -19229,7 +20268,25 @@ components:
     ArchivedConnectorInstance:
       allOf:
       - $ref: '#/components/schemas/ConnectorInstance'
-      - $ref: '#/components/schemas/ArchivedConnectorInstance_allOf'
+      - description: Information about archived connector instances attached to an
+          archived process or an archived flow node.
+        properties:
+          archivedDate:
+            description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
+              was assigned for example '2014-10-17 16:05:42.626'
+            pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
+            type: string
+        type: object
+      example:
+        archivedDate: archivedDate
+        containerType: containerType
+        connectorId: connectorId
+        name: name
+        activationEvent: ON_ENTER
+        id: 0
+        state: TO_BE_EXECUTED
+        containerId: containerId
+        version: version
     FlowNode:
       description: "A flow node (gateway, event, or task) in an open instance of a\
         \ process."
@@ -19345,7 +20402,43 @@ components:
     ArchivedFlowNode:
       allOf:
       - $ref: '#/components/schemas/FlowNode'
-      - $ref: '#/components/schemas/ArchivedFlowNode_allOf'
+      - description: A flow node (gateway or event or task) in an archived instance
+          of a process.
+        properties:
+          sourceObjectId:
+            description: the original id of the flowNode before it was archived
+            type: string
+          archivedDate:
+            description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
+              was assigned for example '2014-10-17 16:05:42.626'
+            pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
+            type: string
+        type: object
+      example:
+        displayDescription: displayDescription
+        executedBy: executedBy
+        archivedDate: archivedDate
+        rootContainerId: rootContainerId
+        assigned_date: assigned_date
+        parentTaskId": parentTaskId"
+        displayName: displayName
+        executedBySubstitute: executedBySubstitute
+        dueDate: dueDate
+        description: description
+        sourceObjectId: sourceObjectId
+        type: type
+        priority: priority
+        actorId: actorId
+        processId: processId
+        caseId: caseId
+        name: name
+        reached_state_date: reached_state_date
+        rootCaseId: rootCaseId
+        id: id
+        state: state
+        parentCaseId: parentCaseId
+        assigned_id: assigned_id
+        last_update_date: last_update_date
     TimerEventTrigger:
       description: BPM timer event triggers
       example:
@@ -20631,6 +21724,121 @@ components:
           description: wether the system tenant should be paused or not
           type: string
       type: object
+    MaintenanceDetails:
+      example:
+        maintenanceState: DISABLED
+        maintenanceMessage: maintenance msg
+        maintenanceMessageActive: true
+      properties:
+        maintenanceState:
+          description: maintenance state
+          enum:
+          - ENABLED
+          - DISABLED
+          type: string
+        maintenanceMessage:
+          description: maintenance message
+          type: string
+        maintenanceMessageActive:
+          description: is maintenance message active
+          type: boolean
+      type: object
+    SystemInformation:
+      description: ""
+      example:
+        activeFeatures: activeFeatures
+        subscriptionStartPeriod: subscriptionStartPeriod
+        licenseMode: licenseMode
+        licensee: licensee
+        contactInfo: contactInfo
+        requestKey: requestKey
+        subscriptionEndPeriod: subscriptionEndPeriod
+        caseCounter: 5
+        licenseStartDate: licenseStartDate
+        licenseExpirationDate: licenseExpirationDate
+        edition: edition
+        caseCounterLimit: 1
+        duration: duration
+        numberOfCPUCores: numberOfCPUCores
+        subscriptionType: subscriptionType
+        managedAppsLimit: 0
+        expirationDate: 6
+      properties:
+        licenseStartDate:
+          description: date in milliseconds timestamp since Epoch - first day (included)
+            of license file validity - Subscription editions only
+          type: string
+        duration:
+          description: number of days for license file validity - Subscription editions
+            only
+          type: string
+        licenseExpirationDate:
+          description: date in milliseconds timestamp since Epoch - last day (included)
+            of license file validity - Subscription editions only
+          type: string
+        numberOfCPUCores:
+          description: "number of CPUs allowed by the license, if license mode is\
+            \ CPU-based - Subscription editions only"
+          type: string
+        edition:
+          description: name of the Bonita edition enabled by the license - Community
+            & Subscription editions
+          type: string
+        subscriptionType:
+          description: type of the Subscription the customer has purchased with Bonitasoft
+            - Subscription editions only
+          type: string
+        licenseMode:
+          description: available mode enabled by the license - Subscription editions
+            only
+          type: string
+        managedAppsLimit:
+          description: number of managed apps provisioned for in a Bonita Central
+            environment - Subscription editions only
+          format: int64
+          type: integer
+        licensee:
+          description: Owner of the license - Subscription editions only
+          type: string
+        contactInfo:
+          description: E-mail address of the owner of the license - Subscription editions
+            only
+          type: string
+        expirationDate:
+          description: License expiration date in milliseconds timestamp since Epoch
+            - Subscription editions only
+          format: int64
+          type: integer
+        activeFeatures:
+          description: List of active features that the license allow access to (separated
+            by comma) - Subscription editions only
+          type: string
+        requestKey:
+          description: "request key to use to generate a new license on the customer\
+            \ portal.  \n\nIf you have a subscription that specifies case-counter\
+            \ licensing, additional fields are present:\n"
+          type: string
+        subscriptionStartPeriod:
+          description: date in milliseconds timestamp since Epoch - first day (included)
+            of current period for number of process instances provisioned - Subscription
+            editions only
+          type: string
+        subscriptionEndPeriod:
+          description: date in milliseconds timestamp since Epoch - last day (included)
+            of current period for number of process instances provisioned - Subscription
+            editions only
+          type: string
+        caseCounterLimit:
+          description: number of maximum process instances that can be started - Community
+            & Subscription editions
+          format: int64
+          type: integer
+        caseCounter:
+          description: number of consumed process instances - Community & Subscription
+            editions
+          format: int64
+          type: integer
+      type: object
     License:
       description: Bonita license
       example:
@@ -20691,6 +21899,30 @@ components:
           description: the temporary file name once uploaded on the server
           type: string
       type: object
+    FormFileUploadRequest:
+      description: A file to upload
+      properties:
+        file:
+          format: binary
+          type: string
+      type: object
+    FormFileUploadResponse:
+      description: Form file upload response
+      example:
+        filename: 66c5d4e99167e.pdf
+        tempPath: 885efa7d-c639-4076-ba5d-04a7fbfc1d11.pdf
+        contentType: application/pdf
+      properties:
+        filename:
+          description: file name
+          type: string
+        tempPath:
+          description: temporary path of a file
+          type: string
+        contentType:
+          description: response content type
+          type: string
+      type: object
     importApplication_request:
       properties:
         applicationsDataUpload:
@@ -20704,9 +21936,34 @@ components:
         bdmAccessControlUpload:
           description: The temporary name of the previously uploaded file to install
           type: string
-    instanciateProcess_400_response:
-      allOf:
-      - $ref: '#/components/schemas/Error'
+    createProcessInstance_429_response:
+      example:
+        exception: exception
+        message: message
+      properties:
+        message:
+          description: The error message
+          type: string
+        exception:
+          description: The exception type
+          type: string
+      type: object
+    instanciateProcess_429_response:
+      example:
+        code: 0.8008281904610115
+        reasonPhrase: reasonPhrase
+        description: description
+      properties:
+        code:
+          description: The response status code
+          type: number
+        description:
+          description: The status description
+          type: string
+        reasonPhrase:
+          description: The detail of the reason
+          type: string
+      type: object
     platformLogin_request:
       properties:
         username:
@@ -20746,61 +22003,6 @@ components:
         importPolicy:
           description: Import policy
           type: string
-    AbstractArchivedTask_allOf:
-      description: An Archived task is a task that has been archived
-      properties:
-        sourceObjectId:
-          description: the original id of the task before it was archived
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        archivedDate:
-          description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
-            was assigned for example '2014-10-17 16:05:42.626'
-          pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
-          type: string
-      type: object
-      example: null
-    ArchivedProcessInstanceDocument_allOf:
-      description: A document in an active case
-      example: "{\"id\":\"1\",\"creationDate\":\"2014-10-09 16:39:52.472\",\"author\"\
-        :\"1\",\"index\":\"0\",\"contentMimetype\":\"text/plain\",\"caseId\":\"1\"\
-        ,\"contentStorageId\":\"1\",\"isInternal\":\"true\",\"description\":\"\",\"\
-        name\":\"myDoc\",\"fileName\":\"test1.txt\",\"submittedBy\":\"1\",\"url\"\
-        :\"documentDownload?fileName=test1.txt&contentStorageId=1\",\"version\":\"\
-        1\",\"sourceObjectId\":\"1\",\"archivedDate\":\"2014-10-09 17:39:52.473\"}"
-      properties:
-        sourceObjectId:
-          description: original document id
-          type: string
-        archivedDate:
-          description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
-            was assigned for example '2014-10-17 16:05:42.626'
-          pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
-          type: string
-      type: object
-    ArchivedProcessInstance_allOf:
-      description: A completed instance of a process.
-      example: "{\"id\":9,\"end_date\":\"2014-10-22 10:57:00.299\",\"startedBySubstitute\"\
-        :\"4\",\"sourceObjectId\":\"3\",\"start\":\"2014-10-22 10:56:53.415\",\"state\"\
-        :\"completed\",\"rootCaseId\":\"3\",\"started_by\":\"4\",\"archivedDate\"\
-        :\"2014-10-22 10:57:00.299\",\"processDefinitionId\":\"6054482369194211518\"\
-        ,\"last_update_date\\\"\":\"2014-10-22 10:57:00.299\",\"searchIndex1Label\"\
-        :\"case9SearchIndex1Label\",\"searchIndex2Label\":\"case9SearchIndex2Label\"\
-        ,\"searchIndex3Label\":\"case9SearchIndex3Label\",\"searchIndex4Label\":\"\
-        case9SearchIndex4Label\",\"searchIndex5Label\":\"case9SearchIndex5Label\"\
-        ,\"searchIndex1Value\":\"case9SearchIndex1Value\",\"searchIndex2Value\":\"\
-        case9SearchIndex2Value\",\"searchIndex3Value\":\"case9SearchIndex3Value\"\
-        ,\"searchIndex4Value\":\"case9SearchIndex4Value\",\"searchIndex5Value\":\"\
-        case9SearchIndex5Value\"}"
-      properties:
-        sourceObjectId:
-          description: the id of the process instance before it was archived
-          type: string
-        archivedDate:
-          description: the date set when the process instance was archived
-          type: string
-      type: object
     ProcessInstanceInfo_flowNodeStatesCounters_value:
       properties:
         completed:
@@ -20844,16 +22046,6 @@ components:
           format: int64
           type: integer
       type: object
-    ArchivedProcessInstanceComment_allOf:
-      description: Information about the comment of an archived process instances.
-      example: "{\"id\":20005,\"content\":\"Need to review the last inputs of this\
-        \ case\",\"processInstanceId\":1,\"postDate\":\"2016-06-16 14:51:33.053\"\
-        ,\"archivedDate\":\"2016-06-17 10:18:24.723\",\"userId\":30}"
-      properties:
-        archivedDate:
-          description: the date set when the process instance comment was archived
-          type: string
-      type: object
     ProcessInfo_flowNodeStatesCounters_value:
       properties:
         ready:
@@ -20881,31 +22073,6 @@ components:
           format: int64
           type: integer
       type: object
-    ArchivedConnectorInstance_allOf:
-      description: Information about archived connector instances attached to an archived
-        process or an archived flow node.
-      properties:
-        archivedDate:
-          description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
-            was assigned for example '2014-10-17 16:05:42.626'
-          pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
-          type: string
-      type: object
-      example: null
-    ArchivedFlowNode_allOf:
-      description: A flow node (gateway or event or task) in an archived instance
-        of a process.
-      properties:
-        sourceObjectId:
-          description: the original id of the flowNode before it was archived
-          type: string
-        archivedDate:
-          description: the date ('yyyy-MM-dd HH:mm:ss.SSS') when the current task
-            was assigned for example '2014-10-17 16:05:42.626'
-          pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$"
-          type: string
-      type: object
-      example: null
     Message_messageContent_value:
       example:
         type: java.lang.String
@@ -21032,6 +22199,7 @@ x-tagGroups:
   - PlatformTenant
   - Tenant
   - License
+  - Information
 - name: Portal
   tags:
   - Page
@@ -21045,8 +22213,12 @@ x-tagGroups:
   - I18nlocale
   - I18ntranslation
   - Session
+  - Maintenance
   - SystemTenant
 - name: Other
   tags:
   - RestAPIextensions
+- name: Upload
+  tags:
+  - FormFileUpload
 

@@ -35,7 +35,9 @@ public class ApiErrorDecoder implements ErrorDecoder {
         if (response.status() == 401 || response.status() == 403) {
             return new RetryableException(response.status(),
                     "Received status " + response.status() + " trying to renew access token",
-                    response.request().httpMethod(), httpException, null, response.request());
+                    response.request().httpMethod(), httpException,
+                    //retryAfter => If you don't want to retry, set null.
+                    (Long) null, response.request());
         }
         return httpException;
     }

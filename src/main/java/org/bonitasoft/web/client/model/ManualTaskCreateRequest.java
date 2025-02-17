@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ManualTaskCreateRequest.JSON_PROPERTY_DUE_DATE,
         ManualTaskCreateRequest.JSON_PROPERTY_ASSIGNED_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ManualTaskCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,7 +74,7 @@ public class ManualTaskCreateRequest implements Serializable {
      * The parent task ID
      * 
      * @return parentTaskId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -99,7 +99,7 @@ public class ManualTaskCreateRequest implements Serializable {
      * The task state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -124,7 +124,7 @@ public class ManualTaskCreateRequest implements Serializable {
      * The task name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -149,7 +149,7 @@ public class ManualTaskCreateRequest implements Serializable {
      * The task description
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -174,7 +174,7 @@ public class ManualTaskCreateRequest implements Serializable {
      * The task priority
      * 
      * @return priority
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PRIORITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -199,7 +199,7 @@ public class ManualTaskCreateRequest implements Serializable {
      * The task due date
      * 
      * @return dueDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DUE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -224,7 +224,7 @@ public class ManualTaskCreateRequest implements Serializable {
      * The id of the user assigned to the task
      * 
      * @return assignedId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

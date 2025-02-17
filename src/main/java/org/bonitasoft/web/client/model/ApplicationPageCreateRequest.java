@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationPageCreateRequest.JSON_PROPERTY_APPLICATION_ID,
         ApplicationPageCreateRequest.JSON_PROPERTY_PAGE_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ApplicationPageCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,7 +58,7 @@ public class ApplicationPageCreateRequest implements Serializable {
      * token use to access the page using a URL : ../appName/pageToken/
      * 
      * @return token
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -83,7 +83,7 @@ public class ApplicationPageCreateRequest implements Serializable {
      * id of the application related to this page
      * 
      * @return applicationId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -108,7 +108,7 @@ public class ApplicationPageCreateRequest implements Serializable {
      * id of the custom page to display
      * 
      * @return pageId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

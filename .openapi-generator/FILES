@@ -5,6 +5,7 @@ src/main/java/org/bonitasoft/web/client/api/ActivityApi.java
 src/main/java/org/bonitasoft/web/client/api/ActivityVariableApi.java
 src/main/java/org/bonitasoft/web/client/api/ActorApi.java
 src/main/java/org/bonitasoft/web/client/api/ActorMemberApi.java
+src/main/java/org/bonitasoft/web/client/api/ApplicationApi.java
 src/main/java/org/bonitasoft/web/client/api/ApplicationMenuApi.java
 src/main/java/org/bonitasoft/web/client/api/ApplicationPageApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedActivityApi.java
@@ -30,11 +31,14 @@ src/main/java/org/bonitasoft/web/client/api/CustomUserDefinitionApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserValueApi.java
 src/main/java/org/bonitasoft/web/client/api/DiagramApi.java
 src/main/java/org/bonitasoft/web/client/api/FlowNodeApi.java
+src/main/java/org/bonitasoft/web/client/api/FormFileUploadApi.java
 src/main/java/org/bonitasoft/web/client/api/FormMappingApi.java
 src/main/java/org/bonitasoft/web/client/api/GroupApi.java
 src/main/java/org/bonitasoft/web/client/api/HumanTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/I18nlocaleApi.java
 src/main/java/org/bonitasoft/web/client/api/I18ntranslationApi.java
+src/main/java/org/bonitasoft/web/client/api/InformationApi.java
+src/main/java/org/bonitasoft/web/client/api/MaintenanceApi.java
 src/main/java/org/bonitasoft/web/client/api/ManualTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/MembershipApi.java
 src/main/java/org/bonitasoft/web/client/api/MessageApi.java
@@ -83,7 +87,6 @@ src/main/java/org/bonitasoft/web/client/invoker/auth/OAuthFlow.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/OauthClientCredentialsGrant.java
 src/main/java/org/bonitasoft/web/client/invoker/auth/OauthPasswordGrant.java
 src/main/java/org/bonitasoft/web/client/model/AbstractArchivedTask.java
-src/main/java/org/bonitasoft/web/client/model/AbstractArchivedTaskAllOf.java
 src/main/java/org/bonitasoft/web/client/model/AbstractTask.java
 src/main/java/org/bonitasoft/web/client/model/ActivationState.java
 src/main/java/org/bonitasoft/web/client/model/Activity.java
@@ -97,7 +100,7 @@ src/main/java/org/bonitasoft/web/client/model/ActorDefinition.java
 src/main/java/org/bonitasoft/web/client/model/ActorMember.java
 src/main/java/org/bonitasoft/web/client/model/ActorUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ApiResponse.java
-src/main/java/org/bonitasoft/web/client/model/Application.java
+src/main/java/org/bonitasoft/web/client/model/ApplicationLink.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenu.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenuCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationMenuUpdateRequest.java
@@ -107,17 +110,12 @@ src/main/java/org/bonitasoft/web/client/model/ApplicationUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedActivity.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedActivityVariable.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedConnectorInstance.java
-src/main/java/org/bonitasoft/web/client/model/ArchivedConnectorInstanceAllOf.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedFlowNode.java
-src/main/java/org/bonitasoft/web/client/model/ArchivedFlowNodeAllOf.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedHumanTask.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedManualTask.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedProcessInstance.java
-src/main/java/org/bonitasoft/web/client/model/ArchivedProcessInstanceAllOf.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedProcessInstanceComment.java
-src/main/java/org/bonitasoft/web/client/model/ArchivedProcessInstanceCommentAllOf.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedProcessInstanceDocument.java
-src/main/java/org/bonitasoft/web/client/model/ArchivedProcessInstanceDocumentAllOf.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedProcessInstanceVariable.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedTask.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedUserTask.java
@@ -133,6 +131,7 @@ src/main/java/org/bonitasoft/web/client/model/ContractConstraint.java
 src/main/java/org/bonitasoft/web/client/model/ContractInput.java
 src/main/java/org/bonitasoft/web/client/model/ContractInputType.java
 src/main/java/org/bonitasoft/web/client/model/CreateApplicationRequest.java
+src/main/java/org/bonitasoft/web/client/model/CreateProcessInstance429Response.java
 src/main/java/org/bonitasoft/web/client/model/CustomUser.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserDefinition.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserDefinitionCreateRequest.java
@@ -146,6 +145,7 @@ src/main/java/org/bonitasoft/web/client/model/Expression.java
 src/main/java/org/bonitasoft/web/client/model/FlowElementContainerDefinition.java
 src/main/java/org/bonitasoft/web/client/model/FlowNode.java
 src/main/java/org/bonitasoft/web/client/model/FlowNodeUpdateRequest.java
+src/main/java/org/bonitasoft/web/client/model/FormFileUploadResponse.java
 src/main/java/org/bonitasoft/web/client/model/FormMapping.java
 src/main/java/org/bonitasoft/web/client/model/FormMappingUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/Group.java
@@ -154,8 +154,10 @@ src/main/java/org/bonitasoft/web/client/model/GroupUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/HumanTask.java
 src/main/java/org/bonitasoft/web/client/model/HumanTaskUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/I18nlocale.java
-src/main/java/org/bonitasoft/web/client/model/InstanciateProcess400Response.java
+src/main/java/org/bonitasoft/web/client/model/InstanciateProcess429Response.java
+src/main/java/org/bonitasoft/web/client/model/LegacyApplication.java
 src/main/java/org/bonitasoft/web/client/model/License.java
+src/main/java/org/bonitasoft/web/client/model/MaintenanceDetails.java
 src/main/java/org/bonitasoft/web/client/model/ManualTask.java
 src/main/java/org/bonitasoft/web/client/model/ManualTaskCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ManualTaskUpdateRequest.java
@@ -206,6 +208,7 @@ src/main/java/org/bonitasoft/web/client/model/RoleCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/RoleUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/Session.java
 src/main/java/org/bonitasoft/web/client/model/Signal.java
+src/main/java/org/bonitasoft/web/client/model/SystemInformation.java
 src/main/java/org/bonitasoft/web/client/model/SystemTenant.java
 src/main/java/org/bonitasoft/web/client/model/Task.java
 src/main/java/org/bonitasoft/web/client/model/Tenant.java

@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Bdm.JSON_PROPERTY_LAST_UPDATED_BY,
         Bdm.JSON_PROPERTY_LAST_UPDATE_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Bdm implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,7 +70,7 @@ public class Bdm implements Serializable {
      * BDM id
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -95,7 +95,7 @@ public class Bdm implements Serializable {
      * BDM name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -120,7 +120,7 @@ public class Bdm implements Serializable {
      * BDM type
      * 
      * @return type
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -145,7 +145,7 @@ public class Bdm implements Serializable {
      * Get state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -170,7 +170,7 @@ public class Bdm implements Serializable {
      * This value is always -1 because only the tenant_technical_user can install BDM.
      * 
      * @return lastUpdatedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -195,7 +195,7 @@ public class Bdm implements Serializable {
      * Last date when the BDM was installed or updated.
      * 
      * @return lastUpdateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

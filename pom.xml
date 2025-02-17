@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bonitasoft.web</groupId>
   <artifactId>bonita-java-client</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>2.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>bonita-java-client</name>
   <description>Java client for Bonita REST API</description>
@@ -42,46 +42,48 @@
   </distributionManagement>
   <properties>
     <!-- Maven -->
+    <!-- Compiled with Java 17, but use bytecode version 11 to ensure compatibility with older maintenance versions. -->
     <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Bonita -->
-    <bonita.version>7.13.0</bonita.version>
-    <bonita-openapi.version>0.0.13</bonita-openapi.version>
-    <swagger-annotations.version>1.6.10</swagger-annotations.version>
-    <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
+    <bonita-openapi.version>0.0.21</bonita-openapi.version>
+    <swagger-annotations.version>1.6.14</swagger-annotations.version>
+    <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
     <jsr305.version>3.0.2</jsr305.version>
-    <feign.version>12.3</feign.version>
+    <feign.version>13.5</feign.version>
     <feign-form.version>3.8.0</feign-form.version>
-    <okhttp.version>4.11.0</okhttp.version>
+    <okhttp.version>4.12.0</okhttp.version>
     <scribejava.version>8.3.3</scribejava.version>
-    <jackson.version>2.14.2</jackson.version>
+    <jackson.version>2.18.0</jackson.version>
     <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
-    <lombok.version>1.18.26</lombok.version>
-    <slf4j-api.version>1.7.36</slf4j-api.version>
+    <lombok.version>1.18.34</lombok.version>
+    <slf4j-api.version>2.0.16</slf4j-api.version>
     <!-- Tests -->
-    <junit-jupiter-engine.version>5.9.3</junit-jupiter-engine.version>
-    <assertj-core.version>3.24.2</assertj-core.version>
-    <mockito-core.version>5.3.1</mockito-core.version>
-    <logback-classic.version>1.2.11</logback-classic.version>
-    <testcontainers.version>1.18.0</testcontainers.version>
-    <awaitility.version>4.2.0</awaitility.version>
+    <junit-jupiter-engine.version>5.11.4</junit-jupiter-engine.version>
+    <assertj-core.version>3.27.3</assertj-core.version>
+    <mockito-core.version>5.15.2</mockito-core.version>
+    <logback-classic.version>1.5.16</logback-classic.version>
+    <testcontainers.version>1.20.4</testcontainers.version>
+    <awaitility.version>4.2.2</awaitility.version>
+    <semver4j.version>3.1.0</semver4j.version>
     <!-- Maven plugins -->
-    <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+    <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
-    <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
-    <maven-failsafe-plugin.version>3.1.0</maven-failsafe-plugin.version>
-    <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
-    <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
-    <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-    <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
-    <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-    <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+    <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+    <maven-failsafe-plugin.version>3.5.2</maven-failsafe-plugin.version>
+    <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+    <sonar-maven-plugin.version>4.0.0.4121</sonar-maven-plugin.version>
+    <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
+    <gitflow-maven-plugin.version>1.21.0</gitflow-maven-plugin.version>
+    <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
+    <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+    <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
     <git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
-    <openapi-generator-maven-plugin.version>6.5.0</openapi-generator-maven-plugin.version>
-    <spotless-maven-plugin.version>2.36.0</spotless-maven-plugin.version>
+    <openapi-generator-maven-plugin.version>7.8.0</openapi-generator-maven-plugin.version>
+    <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
     <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
-    <groovy.version>3.0.17</groovy.version>
+    <groovy.version>3.0.22</groovy.version>
     <!-- Configuration properties -->
     <codegen.skip>true</codegen.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -94,6 +96,11 @@
   </properties>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j-api.version}</version>
+      </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson</groupId>
         <artifactId>jackson-bom</artifactId>
@@ -196,6 +203,10 @@
       <artifactId>jackson-databind-nullable</artifactId>
       <version>${jackson-databind-nullable.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-blackbird</artifactId>
+    </dependency>
     <!-- Misc -->
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -249,6 +260,11 @@
       <artifactId>awaitility</artifactId>
       <version>${awaitility.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.vdurmont</groupId>
+      <artifactId>semver4j</artifactId>
+      <version>${semver4j.version}</version>
     </dependency>
   </dependencies>
   <build>
@@ -381,6 +397,17 @@
           </configuration>
         </plugin>
         <plugin>
+          <groupId>com.amashchenko.maven.plugin</groupId>
+          <artifactId>gitflow-maven-plugin</artifactId>
+          <version>${gitflow-maven-plugin.version}</version>
+          <configuration>
+            <versionsMavenPluginVersion>${versions-maven-plugin.version}</versionsMavenPluginVersion>
+            <!-- 0: increment major digit on develop, 1: increment minor digit on develop, 2: increment patch digit on develop -->
+            <versionDigitToIncrement>1</versionDigitToIncrement>
+            <commitMessagePrefix xml:space="preserve">chore(release): </commitMessagePrefix>
+          </configuration>
+        </plugin>
+        <plugin>
           <groupId>com.diffplug.spotless</groupId>
           <artifactId>spotless-maven-plugin</artifactId>
           <version>${spotless-maven-plugin.version}</version>
@@ -462,6 +489,7 @@
                 <serializationLibrary>jackson</serializationLibrary>
                 <library>feign</library>
                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                <useOneOfInterfaces>true</useOneOfInterfaces>
               </configOptions>
             </configuration>
           </execution>
@@ -547,11 +575,15 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+      </plugin>
     </plugins>
   </build>
   <profiles>
     <!-- Deployment profile (required so these plugins are only used when
-        deploying) -->
+			deploying) -->
     <profile>
       <id>deploy</id>
       <properties>

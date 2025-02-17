@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         Platform.JSON_PROPERTY_CREATED_BY,
         Platform.JSON_PROPERTY_CREATED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Platform implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -108,7 +108,7 @@ public class Platform implements Serializable {
      * platform state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -133,7 +133,7 @@ public class Platform implements Serializable {
      * the current version of the platform
      * 
      * @return version
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -158,7 +158,7 @@ public class Platform implements Serializable {
      * the version in which the platform was created
      * 
      * @return initialVersion
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_INITIAL_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -183,7 +183,7 @@ public class Platform implements Serializable {
      * the previous version the platform was in or empty if there is none
      * 
      * @return previousVersion
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PREVIOUS_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -208,7 +208,7 @@ public class Platform implements Serializable {
      * the user name of the platform administrator
      * 
      * @return createdBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CREATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -233,7 +233,7 @@ public class Platform implements Serializable {
      * the creation date
      * 
      * @return created
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CREATED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessResolutionProblem.JSON_PROPERTY_RESOURCE_ID,
         ProcessResolutionProblem.JSON_PROPERTY_TARGET_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProcessResolutionProblem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,7 +59,7 @@ public class ProcessResolutionProblem implements Serializable {
      * resolution problem
      * 
      * @return message
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MESSAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -84,7 +84,7 @@ public class ProcessResolutionProblem implements Serializable {
      * id of the unresolved resource
      * 
      * @return resourceId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_RESOURCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -109,7 +109,7 @@ public class ProcessResolutionProblem implements Serializable {
      * the type of the unresolved resource (parameter, actor, or connector)
      * 
      * @return targetType
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_TARGET_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

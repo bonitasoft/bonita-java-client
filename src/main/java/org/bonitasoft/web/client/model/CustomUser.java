@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         CustomUser.JSON_PROPERTY_VALUE,
         CustomUser.JSON_PROPERTY_DEFINITION_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class CustomUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,7 +58,7 @@ public class CustomUser implements Serializable {
      * user id
      * 
      * @return userId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -83,7 +83,7 @@ public class CustomUser implements Serializable {
      * definition value
      * 
      * @return value
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -108,7 +108,7 @@ public class CustomUser implements Serializable {
      * Get definitionId
      * 
      * @return definitionId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

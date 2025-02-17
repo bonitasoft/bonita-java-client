@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to release (leave empty to use pom version)
+        type: string
+        default: ""
+        required: false
+      nextVersion:
+        description: "Next development version (leave empty to use default version incrementation policy)"
+        type: string
+        required: false
+        default: ""
+      skipMergeReleaseInMaster:
+        description: "Skip merge into master (major/minor version only should be merged)"
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  build:
+    name: Release pipeline
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: "0"
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: 17
+
+      - uses: bonitasoft/git-setup-action@v1
+        with:
+          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
+
+      - name: Create Release
+        run: ./mvnw -ntp --batch-mode -Dstyle.color=always gitflow:release -DgitFlowConfig.developmentBranch=${{ github.ref_name }} -DdevelopmentVersion=${{ github.event.inputs.nextVersion }} -DreleaseVersion=${{ github.event.inputs.version }} -DskipReleaseMergeProdBranch=${{ github.event.inputs.skipMergeReleaseInMaster }} -Dverbose

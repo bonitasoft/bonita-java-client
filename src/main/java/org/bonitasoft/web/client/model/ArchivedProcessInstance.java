@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ArchivedProcessInstance.JSON_PROPERTY_SOURCE_OBJECT_ID,
         ArchivedProcessInstance.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ArchivedProcessInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -190,7 +190,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the identifier of the ProcessInstance (Case)
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -215,7 +215,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the date set when the process instance is closed
      * 
      * @return endDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_END_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -240,7 +240,7 @@ public class ArchivedProcessInstance implements Serializable {
      * count of failed flow nodes if parameter n&#x3D;failedFlowNodes is given
      * 
      * @return failedFlowNodes
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FAILED_FLOW_NODES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -266,7 +266,7 @@ public class ArchivedProcessInstance implements Serializable {
      * d&#x3D;startedBySubstitute is given.
      * 
      * @return startedBySubstitute
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STARTED_BY_SUBSTITUTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -291,7 +291,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the starting date of the case
      * 
      * @return start
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_START)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -316,7 +316,7 @@ public class ArchivedProcessInstance implements Serializable {
      * count of active flow nodes if parameter n&#x3D;activeFlowNodes is given
      * 
      * @return activeFlowNodes
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ACTIVE_FLOW_NODES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -341,7 +341,7 @@ public class ArchivedProcessInstance implements Serializable {
      * state: an enum that represent the state of the process instances
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -366,7 +366,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the identifier of the container of the case
      * 
      * @return rootCaseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -391,7 +391,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the identifier of the user who started the case
      * 
      * @return startedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STARTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -416,7 +416,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the identifier of the process related of the case
      * 
      * @return processDefinitionId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -441,7 +441,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the date of the last update done on the case
      * 
      * @return lastUpdateDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -466,7 +466,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 1st search index label (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex1Label
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -491,7 +491,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 2nd search index label (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex2Label
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -516,7 +516,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 3rd search index label (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex3Label
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -541,7 +541,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 4th search index label (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex4Label
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -566,7 +566,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 5th search index label (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex5Label
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -591,7 +591,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 1st search index value (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex1Value
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -616,7 +616,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 2nd search index value (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex2Value
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -641,7 +641,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 3rd search index value (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex3Value
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -666,7 +666,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 4th search index value (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex4Value
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -691,7 +691,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the 5th search index value (from 6.5, in Subscription editions only)
      * 
      * @return searchIndex5Value
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -716,7 +716,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the id of the process instance before it was archived
      * 
      * @return sourceObjectId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -741,7 +741,7 @@ public class ArchivedProcessInstance implements Serializable {
      * the date set when the process instance was archived
      * 
      * @return archivedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         Tenant.JSON_PROPERTY_PASSWORD,
         Tenant.JSON_PROPERTY_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Tenant implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -119,7 +119,7 @@ public class Tenant implements Serializable {
      * id of the tenant
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -144,7 +144,7 @@ public class Tenant implements Serializable {
      * the creation date
      * 
      * @return creation
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CREATION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -169,7 +169,7 @@ public class Tenant implements Serializable {
      * the path of the icon
      * 
      * @return icon
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -194,7 +194,7 @@ public class Tenant implements Serializable {
      * the name of the tenant
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -219,7 +219,7 @@ public class Tenant implements Serializable {
      * the description
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -244,7 +244,7 @@ public class Tenant implements Serializable {
      * the username
      * 
      * @return username
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_USERNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -269,7 +269,7 @@ public class Tenant implements Serializable {
      * the password
      * 
      * @return password
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PASSWORD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -294,7 +294,7 @@ public class Tenant implements Serializable {
      * the tenant state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -343,7 +343,7 @@ public class Tenant implements Serializable {
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    username: ").append(toIndentedString(username)).append("\n");
-        sb.append("    password: ").append(toIndentedString(password)).append("\n");
+        sb.append("    password: ").append("*").append("\n");
         sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("}");
         return sb.toString();

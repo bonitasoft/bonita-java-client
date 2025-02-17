@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import org.bonitasoft.web.client.model.ApiResponse;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface ActorApi extends ApiClient.Api {
 
     /**
@@ -170,11 +170,13 @@ public interface ActorApi extends ApiClient.Api {
 
     /**
      * Update the Actor by ID
-     * Update the Actor for the given ID
+     * Update the Actor for the given ID Warning: as of 9.0.0, updating an Actor using this API is deprecated.
      * 
      * @param id ID of the Actor to return (required)
      * @param actorUpdateRequest Fields that can be upated are &#x60;displayName&#x60; and &#x60;description&#x60; (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/actor/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -185,11 +187,13 @@ public interface ActorApi extends ApiClient.Api {
     /**
      * Update the Actor by ID
      * Similar to <code>updateActorById</code> but it also returns the http response headers .
-     * Update the Actor for the given ID
+     * Update the Actor for the given ID Warning: as of 9.0.0, updating an Actor using this API is deprecated.
      * 
      * @param id ID of the Actor to return (required)
      * @param actorUpdateRequest Fields that can be upated are &#x60;displayName&#x60; and &#x60;description&#x60; (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/actor/{id}")
     @Headers({
             "Content-Type: application/json",

@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedProcessInstanceDocument.JSON_PROPERTY_SOURCE_OBJECT_ID,
         ArchivedProcessInstanceDocument.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ArchivedProcessInstanceDocument implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -110,7 +110,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * documentId
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -135,7 +135,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * date and time
      * 
      * @return creationDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -161,7 +161,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * 
      * @return author
      * @deprecated
-     **/
+     */
     @Deprecated
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_AUTHOR)
@@ -187,7 +187,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * index in a list of documents, or -1 for a single document
      * 
      * @return index
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_INDEX)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -212,7 +212,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * MIME type
      * 
      * @return contentMimetype
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTENT_MIMETYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -237,7 +237,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * caseId
      * 
      * @return caseId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -262,7 +262,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * storageId
      * 
      * @return contentStorageId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTENT_STORAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -288,7 +288,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * contains a reference to the content, not the content itself.
      * 
      * @return isInternal
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_IS_INTERNAL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -313,7 +313,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * description
      * 
      * @return description
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -338,7 +338,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -363,7 +363,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * filename
      * 
      * @return fileName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FILE_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -388,7 +388,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * submittorUserId
      * 
      * @return submittedBy
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SUBMITTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -413,7 +413,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * urlForDownload
      * 
      * @return url
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_URL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -438,7 +438,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * version
      * 
      * @return version
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -463,7 +463,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * original document id
      * 
      * @return sourceObjectId
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -488,7 +488,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
      * the date (&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;) when the current task was assigned for example &#39;2014-10-17 16:05:42.626&#39;
      * 
      * @return archivedDate
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

@@ -18,16 +18,10 @@ package org.bonitasoft.web.client.feign;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.atMostOnce;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import org.bonitasoft.web.client.AuthBuilder;
-import org.bonitasoft.web.client.AuthBuilder.Type;
 import org.bonitasoft.web.client.BonitaClient;
-import org.bonitasoft.web.client.BonitaCookieAuthBuilder;
-import org.bonitasoft.web.client.feign.auth.BonitaCookieFeignAuthBuilder;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -128,7 +122,6 @@ class BonitaFeignClientBuilderImplTest {
     void trust_all_certs_should_be_configured() {
         // Given
         clientBuilder.disableCertificateCheck(true);
-        clientBuilder = spy(clientBuilder);
 
         // When
         clientBuilder.addTrustAllCertificateManagerIfNeeded(new OkHttpClient.Builder());
@@ -137,15 +130,15 @@ class BonitaFeignClientBuilderImplTest {
         verify(clientBuilder, atMostOnce()).newTrustAllCertManager();
     }
 
+    @Test
+    void can_configure_cookie_auth() {
+        // Given
+        clientBuilder.auth(AuthBuilder.cookieAuth());
 
-	@Test
-	void can_configure_cookie_auth() {
-		// Given
+        // When
+        BonitaClient client = clientBuilder.build();
 
-		// When
-		clientBuilder.auth(AuthBuilder.cookieAuth());
-
-		// Then
-		assertThat(clientBuilder.).isTrue();
-	}
+        // Then
+        assertThat(client).isNotNull().isInstanceOf(BonitaFeignClient.class);
+    }
 }

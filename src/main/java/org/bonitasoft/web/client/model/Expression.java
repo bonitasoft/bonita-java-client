@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Expression.JSON_PROPERTY_INTERPRETER,
         Expression.JSON_PROPERTY_DEPENDENCIES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Expression implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,7 +61,7 @@ public class Expression implements Serializable {
     private String interpreter;
 
     public static final String JSON_PROPERTY_DEPENDENCIES = "dependencies";
-    private List<Expression> dependencies;
+    private List<Expression> dependencies = new ArrayList<>();
 
     public Expression() {
     }
@@ -76,7 +76,7 @@ public class Expression implements Serializable {
      * the expression id
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -101,7 +101,7 @@ public class Expression implements Serializable {
      * the expression name
      * 
      * @return name
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -126,7 +126,7 @@ public class Expression implements Serializable {
      * the expression content
      * 
      * @return content
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -151,7 +151,7 @@ public class Expression implements Serializable {
      * the expression type
      * 
      * @return expressionType
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EXPRESSION_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -176,7 +176,7 @@ public class Expression implements Serializable {
      * the expression return type
      * 
      * @return returnType
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_RETURN_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -201,7 +201,7 @@ public class Expression implements Serializable {
      * the expression interpreter
      * 
      * @return interpreter
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_INTERPRETER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -234,7 +234,7 @@ public class Expression implements Serializable {
      * the expression dependencies
      * 
      * @return dependencies
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DEPENDENCIES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

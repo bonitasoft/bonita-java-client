@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfessionalContactData.JSON_PROPERTY_ROOM,
         ProfessionalContactData.JSON_PROPERTY_EMAIL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProfessionalContactData implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -98,7 +98,7 @@ public class ProfessionalContactData implements Serializable {
      * user ID
      * 
      * @return id
-     **/
+     */
     @jakarta.annotation.Nonnull
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -123,7 +123,7 @@ public class ProfessionalContactData implements Serializable {
      * fax number
      * 
      * @return faxNumber
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_FAX_NUMBER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -148,7 +148,7 @@ public class ProfessionalContactData implements Serializable {
      * building
      * 
      * @return building
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_BUILDING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -173,7 +173,7 @@ public class ProfessionalContactData implements Serializable {
      * phone number
      * 
      * @return phoneNumber
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -198,7 +198,7 @@ public class ProfessionalContactData implements Serializable {
      * website
      * 
      * @return website
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_WEBSITE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -223,7 +223,7 @@ public class ProfessionalContactData implements Serializable {
      * zipcode
      * 
      * @return zipcode
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ZIPCODE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -248,7 +248,7 @@ public class ProfessionalContactData implements Serializable {
      * state
      * 
      * @return state
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -273,7 +273,7 @@ public class ProfessionalContactData implements Serializable {
      * city
      * 
      * @return city
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_CITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -298,7 +298,7 @@ public class ProfessionalContactData implements Serializable {
      * country
      * 
      * @return country
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_COUNTRY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -323,7 +323,7 @@ public class ProfessionalContactData implements Serializable {
      * mobile phone number
      * 
      * @return mobileNumber
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_MOBILE_NUMBER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -348,7 +348,7 @@ public class ProfessionalContactData implements Serializable {
      * address
      * 
      * @return address
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ADDRESS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -373,7 +373,7 @@ public class ProfessionalContactData implements Serializable {
      * room
      * 
      * @return room
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ROOM)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -398,7 +398,7 @@ public class ProfessionalContactData implements Serializable {
      * email
      * 
      * @return email
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_EMAIL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

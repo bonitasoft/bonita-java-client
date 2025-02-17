@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,15 +21,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.bonitasoft.web.client.invoker.auth.ApiErrorDecoder;
-import org.bonitasoft.web.client.invoker.auth.ApiKeyAuth;
-import org.bonitasoft.web.client.invoker.auth.HttpBasicAuth;
-import org.bonitasoft.web.client.invoker.auth.HttpBearerAuth;
-import org.bonitasoft.web.client.invoker.auth.OAuth;
-import org.bonitasoft.web.client.invoker.auth.OAuth.AccessTokenListener;
-import org.bonitasoft.web.client.invoker.auth.OAuthFlow;
-import org.bonitasoft.web.client.invoker.auth.OauthClientCredentialsGrant;
-import org.bonitasoft.web.client.invoker.auth.OauthPasswordGrant;
+import org.bonitasoft.web.client.invoker.auth.*;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -86,13 +78,15 @@ public class ApiClient {
             } else {
                 throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
             }
-            addAuthorization(authName, auth);
+            if (auth != null) {
+                addAuthorization(authName, auth);
+            }
         }
     }
 
     /**
      * Basic constructor for single auth name
-     * 
+     *
      * @param authName
      */
     public ApiClient(String authName) {
@@ -101,7 +95,7 @@ public class ApiClient {
 
     /**
      * Helper constructor for single api key
-     * 
+     *
      * @param authName
      * @param apiKey
      */
@@ -177,7 +171,7 @@ public class ApiClient {
      * apiClient.setBasePath("http://localhost:8080");
      * XYZApi api = apiClient.buildClient(XYZApi.class);
      * XYZResponse response = api.someMethod(...);
-     * 
+     *
      * @param <T> Type
      * @param clientClass Client class
      * @return The Client
@@ -222,7 +216,7 @@ public class ApiClient {
 
     /**
      * Helper method to configure the bearer token.
-     * 
+     *
      * @param bearerToken the bearer token.
      */
     public void setBearerToken(String bearerToken) {
@@ -232,7 +226,7 @@ public class ApiClient {
 
     /**
      * Helper method to configure the first api key found
-     * 
+     *
      * @param apiKey API key
      */
     public void setApiKey(String apiKey) {
@@ -242,7 +236,7 @@ public class ApiClient {
 
     /**
      * Helper method to configure the username/password for basic auth
-     * 
+     *
      * @param username Username
      * @param password Password
      */
@@ -252,64 +246,8 @@ public class ApiClient {
     }
 
     /**
-     * Helper method to configure the client credentials for Oauth
-     * 
-     * @param clientId Client ID
-     * @param clientSecret Client secret
-     */
-    public void setClientCredentials(String clientId, String clientSecret) {
-        OauthClientCredentialsGrant authorization = getAuthorization(OauthClientCredentialsGrant.class);
-        authorization.configure(clientId, clientSecret);
-    }
-
-    /**
-     * Helper method to configure the username/password for Oauth password grant
-     * 
-     * @param username Username
-     * @param password Password
-     * @param clientId Client ID
-     * @param clientSecret Client secret
-     */
-    public void setOauthPassword(String username, String password, String clientId, String clientSecret) {
-        OauthPasswordGrant apiAuthorization = getAuthorization(OauthPasswordGrant.class);
-        apiAuthorization.configure(username, password, clientId, clientSecret);
-    }
-
-    /**
-     * Helper method to pre-set the oauth access token of the first oauth found in the apiAuthorizations (there should be only one)
-     * 
-     * @param accessToken Access Token
-     * @param expiresIn Validity period in seconds
-     */
-    public void setAccessToken(String accessToken, Integer expiresIn) {
-        OAuth apiAuthorization = getAuthorization(OAuth.class);
-        apiAuthorization.setAccessToken(accessToken, expiresIn);
-    }
-
-    /**
-     * Helper method to configure the oauth accessCode/implicit flow parameters
-     * 
-     * @param clientId Client ID
-     * @param clientSecret Client secret
-     * @param redirectURI Redirect URI
-     */
-    public void configureAuthorizationFlow(String clientId, String clientSecret, String redirectURI) {
-        throw new RuntimeException("Not implemented");
-    }
-
-    /**
-     * Configures a listener which is notified when a new access token is received.
-     * 
-     * @param accessTokenListener Access token listener
-     */
-    public void registerAccessTokenListener(AccessTokenListener accessTokenListener) {
-        OAuth apiAuthorization = getAuthorization(OAuth.class);
-        apiAuthorization.registerAccessTokenListener(accessTokenListener);
-    }
-
-    /**
      * Gets request interceptor based on authentication name
-     * 
+     *
      * @param authName Authentication name
      * @return Request Interceptor
      */
@@ -319,7 +257,7 @@ public class ApiClient {
 
     /**
      * Adds an authorization to be used by the client
-     * 
+     *
      * @param authName Authentication name
      * @param authorization Request interceptor
      */

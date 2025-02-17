@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2023 BonitaSoft S.A.
+ * Copyright (C) 2024 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,17 +34,19 @@ import org.bonitasoft.web.client.model.UpdateProcessConnectorByProcessIdRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public interface ProcessApi extends ApiClient.Api {
 
     /**
      * Create the Process
      * Create the Process. A process resource is created using the content of a .bar file that has previously been uploaded, using the [processUpload
-     * servlet](#operation/uploadProcess), to get the process archive path.
+     * servlet](#operation/uploadProcess), to get the process archive path. Warning: as of 9.0.0, creating a process using this API is deprecated.
      * 
      * @param body Partial Process description (required)
      * @return ProcessDefinition
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/bpm/process")
     @Headers({
             "Content-Type: application/json",
@@ -56,11 +58,13 @@ public interface ProcessApi extends ApiClient.Api {
      * Create the Process
      * Similar to <code>createProcess</code> but it also returns the http response headers .
      * Create the Process. A process resource is created using the content of a .bar file that has previously been uploaded, using the [processUpload
-     * servlet](#operation/uploadProcess), to get the process archive path.
+     * servlet](#operation/uploadProcess), to get the process archive path. Warning: as of 9.0.0, creating a process using this API is deprecated.
      * 
      * @param body Partial Process description (required)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /API/bpm/process")
     @Headers({
             "Content-Type: application/json",
@@ -384,11 +388,13 @@ public interface ProcessApi extends ApiClient.Api {
 
     /**
      * Update the Process by ID
-     * Update the Process for the given ID
+     * Update the Process for the given ID Warning: as of 9.0.0, updating a process using this API is deprecated.
      * 
      * @param id ID of the Process to return (required)
      * @param processUpdateRequest Partial Process description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/process/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -399,11 +405,13 @@ public interface ProcessApi extends ApiClient.Api {
     /**
      * Update the Process by ID
      * Similar to <code>updateProcessById</code> but it also returns the http response headers .
-     * Update the Process for the given ID
+     * Update the Process for the given ID Warning: as of 9.0.0, updating a process using this API is deprecated.
      * 
      * @param id ID of the Process to return (required)
      * @param processUpdateRequest Partial Process description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/process/{id}")
     @Headers({
             "Content-Type: application/json",
@@ -413,13 +421,16 @@ public interface ProcessApi extends ApiClient.Api {
 
     /**
      * Update the Process Connector by Process ID
-     * Update the ProcessConnector for the given ID
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the ProcessConnector for the given ID Warning: as of 9.0.0, updating a Process
+     * Connector using this API is deprecated.
      * 
      * @param id ID of the process to update (required)
      * @param connectorImplId ID of the Process Connector implementation to update (required)
      * @param connectorImplVersion Version of the Process Connector implementation to update (required)
      * @param updateProcessConnectorByProcessIdRequest Partial ProcessConnector description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/processConnector/{id}/{connectorImplId}/{connectorImplVersion}")
     @Headers({
             "Content-Type: application/json",
@@ -432,13 +443,16 @@ public interface ProcessApi extends ApiClient.Api {
     /**
      * Update the Process Connector by Process ID
      * Similar to <code>updateProcessConnectorByProcessId</code> but it also returns the http response headers .
-     * Update the ProcessConnector for the given ID
+     * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Update the ProcessConnector for the given ID Warning: as of 9.0.0, updating a Process
+     * Connector using this API is deprecated.
      * 
      * @param id ID of the process to update (required)
      * @param connectorImplId ID of the Process Connector implementation to update (required)
      * @param connectorImplVersion Version of the Process Connector implementation to update (required)
      * @param updateProcessConnectorByProcessIdRequest Partial ProcessConnector description (required)
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("PUT /API/bpm/processConnector/{id}/{connectorImplId}/{connectorImplVersion}")
     @Headers({
             "Content-Type: application/json",
@@ -451,30 +465,34 @@ public interface ProcessApi extends ApiClient.Api {
 
     /**
      * Upload a bar file
-     * Upload a bar file
+     * Upload a bar file Warning: as of 9.0.0, uploading a bar file using the portal is deprecated.
      * 
      * @param file (optional)
      * @return String
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/processUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     String uploadProcess(@Param("file") File file);
 
     /**
      * Upload a bar file
      * Similar to <code>uploadProcess</code> but it also returns the http response headers .
-     * Upload a bar file
+     * Upload a bar file Warning: as of 9.0.0, uploading a bar file using the portal is deprecated.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.
+     * @deprecated
      */
+    @Deprecated
     @RequestLine("POST /portal/processUpload")
     @Headers({
             "Content-Type: multipart/form-data",
-            "Accept: application/json",
+            "Accept: application/json,text/plain",
     })
     ApiResponse<String> uploadProcessWithHttpInfo(@Param("file") File file);
 

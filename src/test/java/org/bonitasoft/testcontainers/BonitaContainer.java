@@ -25,6 +25,9 @@ import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
+import com.vdurmont.semver4j.Semver;
+import com.vdurmont.semver4j.Semver.SemverType;
+
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,7 +46,7 @@ public class BonitaContainer<SELF extends BonitaContainer<SELF>> extends Generic
     public static final String BONITA_CONTEXT_PATH = "bonita.context-path";
     public static final String BONITA_CONTEXT_PATH_DEFAULT = "/bonita";
     public static final String BONITA_VERSION = "bonita.version";
-    public static final String BONITA_VERSION_DEFAULT = "latest";
+    public static final String BONITA_VERSION_DEFAULT = "7.15";
     public static final String BONITA_IMAGE_NAME = "bonita.image.name";
     public static final String BONITA_IMAGE_NAME_DEFAULT = "bonita";
     public static final String BONITA_IMAGE_PREFIX = "bonita.image.prefix";
@@ -71,7 +74,8 @@ public class BonitaContainer<SELF extends BonitaContainer<SELF>> extends Generic
         super(dockerImageName);
         String tmpDockerImageName = dockerImageName;
         if (tmpDockerImageName.isEmpty()) {
-            tmpDockerImageName = addSlashSuffixIfRequired(getImagePrefix()) + getImageName() + ":" + getImageVersion();
+            tmpDockerImageName = addSlashSuffixIfRequired(getImagePrefix()) + getImageName() + ":"
+                    + getImageVersion().getOriginalValue();
         } else {
             DockerImageName dockerImage = DockerImageName.parse(dockerImageName);
             String repository = dockerImage.getRepository();
@@ -113,11 +117,11 @@ public class BonitaContainer<SELF extends BonitaContainer<SELF>> extends Generic
         return imageName;
     }
 
-    protected String getImageVersion() {
+    public Semver getImageVersion() {
         if (imageVersion == null) {
             imageVersion = System.getProperty(BONITA_VERSION, BONITA_VERSION_DEFAULT);
         }
-        return imageVersion;
+        return new Semver(imageVersion.replace("-SNAPSHOT", ""), SemverType.LOOSE);
     }
 
     protected String getBonitaContextPath() {

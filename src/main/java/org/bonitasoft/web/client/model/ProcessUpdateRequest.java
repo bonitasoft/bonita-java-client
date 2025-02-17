@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2022 BonitaSoft S.A.
+ * Copyright (C) 2024-2023 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
         ProcessUpdateRequest.JSON_PROPERTY_ACTIVATION_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class ProcessUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,7 +58,7 @@ public class ProcessUpdateRequest implements Serializable {
      * description of the Process
      * 
      * @return displaydescription
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAYDESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -83,7 +83,7 @@ public class ProcessUpdateRequest implements Serializable {
      * display name of the Process
      * 
      * @return displayName
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -108,7 +108,7 @@ public class ProcessUpdateRequest implements Serializable {
      * Get activationState
      * 
      * @return activationState
-     **/
+     */
     @jakarta.annotation.Nullable
     @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
