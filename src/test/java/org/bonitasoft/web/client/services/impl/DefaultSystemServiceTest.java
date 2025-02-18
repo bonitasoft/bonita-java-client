@@ -17,13 +17,12 @@
 package org.bonitasoft.web.client.services.impl;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.bonitasoft.web.client.BonitaClient.DEFAULT_TENANT_ID;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.bonitasoft.web.client.api.SystemTenantApi;
+import org.bonitasoft.web.client.api.MaintenanceApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
-import org.bonitasoft.web.client.model.SystemTenant;
+import org.bonitasoft.web.client.model.MaintenanceDetails;
 import org.bonitasoft.web.client.services.impl.base.CachingClientContext;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,28 +51,28 @@ class DefaultSystemServiceTest {
     }
 
     @Test
-    void should_return_tenant_status() {
+    void should_return_maintenance_mode() {
         // Given
-        final SystemTenantApi systemTenantApi = mock(SystemTenantApi.class);
-        when(apiProvider.get(SystemTenantApi.class)).thenReturn(systemTenantApi);
-        when(systemTenantApi.getSystemTenant(DEFAULT_TENANT_ID))
-                .thenReturn(new SystemTenant().paused(true));
+        final MaintenanceApi maintenanceApi = mock(MaintenanceApi.class);
+        when(apiProvider.get(MaintenanceApi.class)).thenReturn(maintenanceApi);
+        when(maintenanceApi.getMaintenanceDetails())
+                .thenReturn(new MaintenanceDetails().maintenanceState(MaintenanceDetails.MaintenanceStateEnum.ENABLED));
         // When
-        final boolean tenantPaused = systemService.isTenantPaused();
+        final boolean isMaintenanceModeEnabled = systemService.isMaintenanceModeEnabled();
         // Then
-        assertThat(tenantPaused).isTrue();
+        assertThat(isMaintenanceModeEnabled).isTrue();
     }
 
     @Test
-    void should_return_false_if_tenant_status_not_set() {
+    void should_return_false_if_maintenance_mode_not_set() {
         // Given
-        final SystemTenantApi systemTenantApi = mock(SystemTenantApi.class);
-        when(apiProvider.get(SystemTenantApi.class)).thenReturn(systemTenantApi);
-        when(systemTenantApi.getSystemTenant(DEFAULT_TENANT_ID))
-                .thenReturn(new SystemTenant().paused(null));
+        final MaintenanceApi maintenanceApi = mock(MaintenanceApi.class);
+        when(apiProvider.get(MaintenanceApi.class)).thenReturn(maintenanceApi);
+        when(maintenanceApi.getMaintenanceDetails())
+                .thenReturn(new MaintenanceDetails().maintenanceState(null));
         // When
-        final boolean tenantPaused = systemService.isTenantPaused();
+        final boolean isMaintenanceModeEnabled = systemService.isMaintenanceModeEnabled();
         // Then
-        assertThat(tenantPaused).isFalse();
+        assertThat(isMaintenanceModeEnabled).isFalse();
     }
 }

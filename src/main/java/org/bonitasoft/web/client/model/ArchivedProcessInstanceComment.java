@@ -29,7 +29,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ArchivedProcessInstanceComment.JSON_PROPERTY_ID,
         ArchivedProcessInstanceComment.JSON_PROPERTY_CONTENT,
-        ArchivedProcessInstanceComment.JSON_PROPERTY_TENANT_ID,
         ArchivedProcessInstanceComment.JSON_PROPERTY_PROCESS_INSTANCE_ID,
         ArchivedProcessInstanceComment.JSON_PROPERTY_POST_DATE,
         ArchivedProcessInstanceComment.JSON_PROPERTY_USER_ID,
@@ -45,9 +44,6 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     public static final String JSON_PROPERTY_CONTENT = "content";
     private String content;
-
-    public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-    private String tenantId;
 
     public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
     private String processInstanceId;
@@ -112,31 +108,6 @@ public class ArchivedProcessInstanceComment implements Serializable {
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public ArchivedProcessInstanceComment tenantId(String tenantId) {
-
-        this.tenantId = tenantId;
-        return this;
-    }
-
-    /**
-     * the id of the tenant the comment is associated to
-     * 
-     * @return tenantId
-     */
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_TENANT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public String getTenantId() {
-        return tenantId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_TENANT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTenantId(String tenantId) {
-        this.tenantId = tenantId;
     }
 
     public ArchivedProcessInstanceComment processInstanceId(String processInstanceId) {
@@ -250,7 +221,6 @@ public class ArchivedProcessInstanceComment implements Serializable {
         ArchivedProcessInstanceComment archivedProcessInstanceComment = (ArchivedProcessInstanceComment) o;
         return Objects.equals(this.id, archivedProcessInstanceComment.id) &&
                 Objects.equals(this.content, archivedProcessInstanceComment.content) &&
-                Objects.equals(this.tenantId, archivedProcessInstanceComment.tenantId) &&
                 Objects.equals(this.processInstanceId, archivedProcessInstanceComment.processInstanceId) &&
                 Objects.equals(this.postDate, archivedProcessInstanceComment.postDate) &&
                 Objects.equals(this.userId, archivedProcessInstanceComment.userId) &&
@@ -259,7 +229,7 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, tenantId, processInstanceId, postDate, userId, archivedDate);
+        return Objects.hash(id, content, processInstanceId, postDate, userId, archivedDate);
     }
 
     @Override
@@ -268,7 +238,6 @@ public class ArchivedProcessInstanceComment implements Serializable {
         sb.append("class ArchivedProcessInstanceComment {\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    content: ").append(toIndentedString(content)).append("\n");
-        sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
         sb.append("    processInstanceId: ").append(toIndentedString(processInstanceId)).append("\n");
         sb.append("    postDate: ").append(toIndentedString(postDate)).append("\n");
         sb.append("    userId: ").append(toIndentedString(userId)).append("\n");

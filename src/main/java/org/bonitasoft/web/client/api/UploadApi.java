@@ -96,8 +96,8 @@ public interface UploadApi extends ApiClient.Api {
 
     /**
      * Upload a file
-     * Upload file. **NOTE:** If this file is a BDM zip, to do this, your tenant services need to be paused. In Enterprise editions, if you have an access control
-     * file installed on your tenant, you need to delete it before installing or updating your BDM.
+     * Upload file. **NOTE:** If this file is a BDM zip, to do this, Maintenance mode needs to be enabled. In Enterprise editions, if you have an access control
+     * file installed, you need to delete it before installing or updating your BDM.
      * 
      * @param file (optional)
      * @return String
@@ -112,8 +112,8 @@ public interface UploadApi extends ApiClient.Api {
     /**
      * Upload a file
      * Similar to <code>uploadFile</code> but it also returns the http response headers .
-     * Upload file. **NOTE:** If this file is a BDM zip, to do this, your tenant services need to be paused. In Enterprise editions, if you have an access control
-     * file installed on your tenant, you need to delete it before installing or updating your BDM.
+     * Upload file. **NOTE:** If this file is a BDM zip, to do this, Maintenance mode needs to be enabled. In Enterprise editions, if you have an access control
+     * file installed, you need to delete it before installing or updating your BDM.
      * 
      * @param file (optional)
      * @return A ApiResponse that wraps the response boyd and the http headers.

@@ -287,7 +287,7 @@ public class Group implements Serializable {
     }
 
     /**
-     * id of the user who created the group (-1 if the group was created by the tenant admin or by an organisation import)
+     * id of the user who created the group (-1 if the group was created by the technical admin or by an organisation import)
      * 
      * @return createdByUserId
      */

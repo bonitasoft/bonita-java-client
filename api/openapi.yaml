@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.23
+  version: 1.0.2
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -181,27 +181,27 @@ tags:
 - description: ArchivedUserTask
   name: ArchivedUserTask
   x-displayName: ArchivedUserTask
-- description: Portal Authentication
-  name: PortalAuthentication
-  x-displayName: Portal Authentication
+- description: Authentication
+  name: Authentication
+  x-displayName: Authentication
 - description: Platform Authentication
   name: PlatformAuthentication
   x-displayName: Platform Authentication
 - description: |
     Show status or install or update the Business Data Model.
 
-    Installing or updating a BDM on your tenant needs to be done in two successive steps:
+    Installing or updating a BDM needs to be done in two successive steps:
 
     1. Upload a BDM file
     2. Install/Update the previously uploaded file
 
-    **To do this, your tenant services need to be paused.**
+    **To do this, the maintenance mode needs to be enabled.**
 
-    **In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.**
+    **In Enterprise editions, if you have an access control file installed, you need to delete it before installing or updating your BDM.**
   name: BDM
   x-displayName: Business Data Model
-- description: "BDM Access control is available to protect the tenant BDM. You can\
-    \ use this API to get the access control status (lastUpdatedBy, lastUpdateDate...)."
+- description: "BDM Access control is available to protect the BDM. You can use this\
+    \ API to get the access control status (lastUpdatedBy, lastUpdateDate...)."
   name: BDMAccessControl
   x-displayName: BDMAccessControl
 - description: BDM Rest APIs allow to query Bonita Business Data.
@@ -307,9 +307,6 @@ tags:
     \ get one, log in as the platform administrator using the platform login service."
   name: Platform
   x-displayName: Platform
-- description: PlatformTenant
-  name: PlatformTenant
-  x-displayName: PlatformTenant
 - description: "Deploy and manage process definitions. In addition, you can instantiate\
     \ a process, which will create a new process instance (case)."
   name: Process
@@ -344,16 +341,9 @@ tags:
 - description: Session
   name: Session
   x-displayName: Session
-- description: SystemTenant
-  name: SystemTenant
-  x-displayName: SystemTenant
 - description: Task
   name: Task
   x-displayName: Task
-- description: Handle the tenants (**Enterprise editions only**). This requires a
-    platform session. Log in using the platform login service.
-  name: Tenant
-  x-displayName: Tenant
 - description: Theme
   name: Theme
   x-displayName: Theme
@@ -400,6 +390,10 @@ paths:
               $ref: '#/components/schemas/LoginRequest'
       responses:
         "204":
+          content:
+            text/plain:
+              schema:
+                type: string
           description: Login success
           headers:
             Set-Cookie:
@@ -456,7 +450,6 @@ paths:
       summary: Login
       tags:
       - Authentication
-      - PortalAuthentication
       x-codeSamples:
       - lang: Shell
         label: Curl
@@ -469,6 +462,7 @@ paths:
       x-content-type: application/x-www-form-urlencoded
       x-accepts:
       - application/json
+      - text/plain
   /logoutservice:
     get:
       description: |
@@ -529,7 +523,6 @@ paths:
       summary: Logout the current user
       tags:
       - Authentication
-      - PortalAuthentication
       x-codeSamples:
       - lang: Shell
         label: Curl
@@ -14408,421 +14401,6 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
-  /API/platform/tenant:
-    get:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-        Finds Tenants with pagination params and filters
-
-        - can order on `id`
-        - can search on `displayName`
-        - can filter on `displayName`
-
-        Warning: Since Bonita 7.12, multi-tenancy is deprecated
-      operationId: searchTenants
-      parameters:
-      - description: index of the page to display
-        example: "0"
-        explode: true
-        in: query
-        name: p
-        required: true
-        schema:
-          default: 0
-          format: int32
-          minimum: 0
-          type: integer
-        style: form
-      - description: maximum number of elements to retrieve
-        example: "10"
-        explode: true
-        in: query
-        name: c
-        required: true
-        schema:
-          default: 20
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: "can filter on attributes with the format f={filter\\_name}={filter\\\
-          _value} with the name/value pair as url encoded string."
-        example: abc%3d123
-        explode: true
-        in: query
-        name: f
-        required: false
-        schema:
-          items:
-            maxLength: 250
-            pattern: "^[A-Za-z0-9%]{0,250}$"
-            type: string
-          type: array
-        style: form
-      - description: can order on attributes
-        example: myProp%20ASC
-        explode: true
-        in: query
-        name: o
-        required: false
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9%]{0,250}$"
-          type: string
-        style: form
-      - description: can search on attributes
-        explode: true
-        in: query
-        name: s
-        required: false
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9%]{0,250}$"
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Tenant'
-                type: array
-          description: 'Success '
-          headers:
-            Content-Range:
-              description: The total number of matching items
-              explode: false
-              schema:
-                format: int64
-                type: integer
-              style: simple
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Finds Tenants
-      tags:
-      - Tenant
-      x-accepts:
-      - application/json
-    post:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-        Create the Tenant.
-
-        Warning: Since Bonita 7.12, multi-tenancy is deprecated. Creating new tenants is strongly discouraged.
-      operationId: createTenant
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantCreateRequest'
-        description: Partial Tenant description
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Tenant'
-          description: 'Success '
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Create the Tenant
-      tags:
-      - Tenant
-      x-codegen-request-body-name: body
-      x-content-type: application/json
-      x-accepts:
-      - application/json
-  /API/platform/tenant/{id}:
-    delete:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-        Delete the single Tenant for the given ID
-      operationId: deleteTenantById
-      parameters:
-      - description: ID of the Tenant to delete
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Delete the Tenant by ID
-      tags:
-      - Tenant
-      x-accepts:
-      - application/json
-    get:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-        Returns the single Tenant for the given ID
-        Warning: Since Bonita 7.12, multi-tenancy is deprecated
-      operationId: getTenantById
-      parameters:
-      - description: ID of the Tenant to return
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Tenant'
-          description: 'Success '
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Finds the Tenant by ID
-      tags:
-      - Tenant
-      x-accepts:
-      - application/json
-    put:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)
-
-        Update a Tenant
-
-        Warning: Since Bonita 7.12, multi-tenancy is deprecated
-      operationId: updateTenantById
-      parameters:
-      - description: "ID of the Tenant to update. In Subscription edition, it is mandatory;\
-          \ not in Community edition, as there is only one tenant"
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantUpdateRequest'
-        description: Partial Tenant description
-        required: true
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Update the Tenant by ID
-      tags:
-      - Tenant
-      x-content-type: application/json
-      x-accepts:
-      - application/json
   /API/platform/license:
     get:
       deprecated: true
@@ -15019,8 +14597,8 @@ paths:
       description: |
         Upload file.
 
-        **NOTE:** If this file is a BDM zip, to do this, your tenant services need to be paused.
-        In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.
+        **NOTE:** If this file is a BDM zip, to do this, Maintenance mode needs to be enabled.
+        In Enterprise editions, if you have an access control file installed, you need to delete it before installing or updating your BDM.
       operationId: uploadFile
       requestBody:
         content:
@@ -16932,155 +16510,6 @@ paths:
           curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/session/unusedId'
       x-accepts:
       - application/json
-  /API/system/tenant/{id}:
-    get:
-      deprecated: true
-      description: |
-        Pause and resume tenant services in order to do maintenance on a tenant.
-
-        Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to retrieve the maintenance state.
-      operationId: getSystemTenant
-      parameters:
-      - description: ID of the tenant
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SystemTenant'
-          description: 'Success '
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Get the current Tenant
-      tags:
-      - SystemTenant
-      x-accepts:
-      - application/json
-    put:
-      deprecated: true
-      description: |
-        Pause or resume the current tenant.
-
-        Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to enable the maintenance mode (same behavior as pausing the tenant).
-      operationId: updateSystemTenant
-      parameters:
-      - description: ID of the tenant
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantPauseRequest'
-        description: Partial SystemTenant description
-        required: true
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Update the current Tenant
-      tags:
-      - SystemTenant
-      x-content-type: application/json
-      x-accepts:
-      - application/json
   /API/system/maintenance:
     get:
       description: |
@@ -17255,7 +16684,7 @@ paths:
   /API/system/license/unusedid:
     get:
       description: |
-        Returns license information for the current server. Requires to be logged in as a tenant technical administrator.
+        Returns license information for the current server. Requires to be logged in as a technical administrator.
         The same information can be retrieved as a user having simply the Admin profile through the API `GET /system/information`.
       operationId: getLicense
       responses:
@@ -17921,9 +17350,6 @@ components:
           description: the password
           format: password
           type: string
-        tenant:
-          description: the user tenant
-          type: string
         redirect:
           default: "false"
           description: '"true" or "false". "false" indicates that the service should
@@ -18390,7 +17816,7 @@ components:
           $ref: '#/components/schemas/TenantResourceState'
         lastUpdatedBy:
           description: "If `lastUpdatedBy: -1` it means that the access control were\
-            \ last installed or updated by tenant_technical_user."
+            \ last installed or updated by technical admin."
           type: string
         lastUpdateDate:
           description: Last date when the access control were installed or updated.
@@ -19413,8 +18839,6 @@ components:
         \ variable name for a specific process instance (or case). Only persistent\
         \ variables are concerned by this resource, not transient variables."
       example:
-        tenantId: 0
-        tenantId_string: 0
         id: 5010
         id_string: 5010
         name: RequestValidationData
@@ -19426,15 +18850,6 @@ components:
         containerType: ACTIVITY_INSTANCE
         value: Confirmed
       properties:
-        tenantId:
-          description: The ID of the tenant where the current user is logged in (technical
-            information)
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        tenantId_string:
-          description: number (since 7.0.1)
-          type: string
         id:
           description: The identifier of the variable
           maxLength: 250
@@ -20073,7 +19488,6 @@ components:
       description: ""
       example:
         content: Need to review the last inputs of this case
-        tenantId: "1"
         id: "20005"
         processInstanceId: "1"
         postDate: 2016-06-16 14:51:33.053
@@ -20084,9 +19498,6 @@ components:
           type: string
         content:
           description: the comment content
-          type: string
-        tenantId:
-          description: the id of the tenant the comment is associated to
           type: string
         processInstanceId:
           description: the process instance (case) the comment is associated to
@@ -20129,7 +19540,6 @@ components:
       example:
         archivedDate: archivedDate
         processInstanceId: processInstanceId
-        tenantId: tenantId
         postDate: postDate
         id: id
         userId: userId
@@ -21441,7 +20851,7 @@ components:
           type: string
         created_by_user_id:
           description: id of the user who created the group (-1 if the group was created
-            by the tenant admin or by an organisation import)
+            by the technical admin or by an organisation import)
           type: string
         last_update_date:
           description: "last update date (format: `2014-12-31 15:17:24.736`)"
@@ -21520,7 +20930,7 @@ components:
           type: integer
         assigned_by_user_id:
           description: id of the user who created the membership (-1 if the role was
-            created by the tenant admin or by an organisation import)
+            created by the technical admin or by an organisation import)
           type: string
         group_id:
           description: id of the group of this membership
@@ -21580,7 +20990,7 @@ components:
           type: string
         created_by_user_id:
           description: Id of the user who created the role (-1 if the role was created
-            by the tenant admin or by an organisation import)
+            by the technical admin or by an organisation import)
           type: string
         last_update_date:
           description: "last update date (format: `2014-12-31 15:17:24.736`)"
@@ -21827,105 +21237,6 @@ components:
           enum:
           - start
           - stop
-          type: string
-      type: object
-    Tenant:
-      deprecated: true
-      description: "Since Bonita 7.12, tenant management is deprecated"
-      example:
-        id: 1
-        creation: 2014-12-04 15:46:46.256
-        icon: /default.png
-        username: ""
-        description: Default tenant
-        name: default
-        state: ACTIVATED
-        password: ""
-      properties:
-        id:
-          description: id of the tenant
-          type: string
-        creation:
-          description: the creation date
-          type: string
-        icon:
-          description: the path of the icon
-          type: string
-        name:
-          description: the name of the tenant
-          type: string
-        description:
-          description: the description
-          type: string
-        username:
-          description: the username
-          type: string
-        password:
-          description: the password
-          format: password
-          type: string
-        state:
-          description: the tenant state
-          enum:
-          - ACTIVATED
-          - DEACTIVATED
-          type: string
-      type: object
-    TenantCreateRequest:
-      deprecated: true
-      description: "Since Bonita 7.12, tenant creation is deprecated"
-      example:
-        name: MyTenant
-        description: My tenant
-        username: john
-        password: bpm
-      properties:
-        name:
-          description: the name of the tenant
-          type: string
-        description:
-          description: the description
-          type: string
-        username:
-          description: the username
-          type: string
-        password:
-          description: the password
-          format: password
-          type: string
-      type: object
-    TenantUpdateRequest:
-      deprecated: true
-      description: "Since Bonita 7.12, tenant update is deprecated"
-      example:
-        name: MyTenant
-        description: My new tenant description
-        username: john
-        password: bpm
-        icon: /default.png
-        state: ACTIVATED
-      properties:
-        name:
-          description: the name of the tenant
-          type: string
-        description:
-          description: the description
-          type: string
-        username:
-          description: the username
-          type: string
-        password:
-          description: the password
-          format: password
-          type: string
-        icon:
-          description: the path of the icon
-          type: string
-        state:
-          description: the tenant state
-          enum:
-          - ACTIVATED
-          - DEACTIVATED
           type: string
       type: object
     PlatformLicense:
@@ -22364,27 +21675,6 @@ components:
           description: bonita copyright
           type: string
       type: object
-    SystemTenant:
-      description: ""
-      example:
-        id: 1
-        paused: false
-      properties:
-        id:
-          description: system tenant id
-          type: string
-        paused:
-          description: whether the system tenant is paused or not
-          type: boolean
-      type: object
-    TenantPauseRequest:
-      example:
-        paused: true
-      properties:
-        paused:
-          description: wether the system tenant should be paused or not
-          type: string
-      type: object
     MaintenanceDetails:
       example:
         maintenanceState: DISABLED
@@ -22545,8 +21835,8 @@ components:
           $ref: '#/components/schemas/TenantResourceState'
         lastUpdatedBy:
           default: "-1"
-          description: This value is always -1 because only the tenant_technical_user
-            can install BDM.
+          description: This value is always -1 because only the technical admin can
+            install BDM.
           type: string
         lastUpdateDate:
           description: Last date when the BDM was installed or updated.
@@ -22777,7 +22067,7 @@ components:
 x-tagGroups:
 - name: Authentication
   tags:
-  - PortalAuthentication
+  - Authentication
   - PlatformAuthentication
 - name: Application
   tags:
@@ -22849,8 +22139,6 @@ x-tagGroups:
   tags:
   - PlatformAuthentication
   - Platform
-  - PlatformTenant
-  - Tenant
   - License
   - Information
 - name: Portal
@@ -22867,7 +22155,6 @@ x-tagGroups:
   - I18ntranslation
   - Session
   - Maintenance
-  - SystemTenant
 - name: Other
   tags:
   - RestAPIextensions

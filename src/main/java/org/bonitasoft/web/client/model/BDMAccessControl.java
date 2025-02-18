@@ -138,7 +138,7 @@ public class BDMAccessControl implements Serializable {
     }
 
     /**
-     * If &#x60;lastUpdatedBy: -1&#x60; it means that the access control were last installed or updated by tenant_technical_user.
+     * If &#x60;lastUpdatedBy: -1&#x60; it means that the access control were last installed or updated by technical admin.
      * 
      * @return lastUpdatedBy
      */

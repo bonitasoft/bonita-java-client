@@ -105,7 +105,7 @@ class BonitaClientIT {
     private static final BonitaContainer<? extends BonitaContainer<?>> BONITA_CONTAINER = new BonitaContainer<>(
             BONITA_DOCKER_IMAGE);
 
-    private static final Semver _10_2 = new Semver("10.2", SemverType.LOOSE);
+    private static final Semver _10_2 = new Semver("10.2.0", SemverType.LOOSE);
 
     private BonitaClient bonitaClient;
 

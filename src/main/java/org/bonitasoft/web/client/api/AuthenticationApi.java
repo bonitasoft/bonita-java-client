@@ -38,44 +38,18 @@ public interface AuthenticationApi extends ApiClient.Api {
      * 
      * @param username the username (required)
      * @param password the password (required)
-     * @param tenant the user tenant (optional)
      * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal
      *        (after a successful login) or to the login page (after a login failure). (optional, default to false)
      * @param redirectURL the URL of the page to be displayed after login (optional, default to )
+     * @return Response
      */
     @RequestLine("POST /loginservice")
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
             "Accept: application/json",
     })
-    void login(@Param("username") String username, @Param("password") String password, @Param("tenant") String tenant,
+    Response login(@Param("username") String username, @Param("password") String password,
             @Param("redirect") String redirect, @Param("redirectURL") String redirectURL);
-
-    /**
-     * Login
-     * Similar to <code>login</code> but it also returns the http response headers .
-     * A call to the &#x60;/loginservice&#x60; will generates a set-cookie header in the response. The &#x60;JSESSIONID&#x60; cookie must be transfered with each
-     * subsequent calls. (If the REST API is used in an application running in a web browser, this is handled automatically by the web browser just like any
-     * cookies). Additional protection agains CSRF attacks is enabled by default for all fresh installations This security relies on &#x60;X-Bonita-API-Token&#x60;
-     * information. The &#x60;X-Bonita-API-Token&#x60; value can be found in the cookie named: &#x60;X-Bonita-API-Token&#x60;. All the subsequence REST API calls
-     * performing changes in the system using DELETE, POST, or PUT HTTP methods must contain the **HTTP header** below: &#x60;&#x60;&#x60; X-Bonita-API-Token:
-     * example-dummy-not-be-used-value &#x60;&#x60;&#x60;
-     * 
-     * @param username the username (required)
-     * @param password the password (required)
-     * @param tenant the user tenant (optional)
-     * @param redirect \\\&quot;true\\\&quot; or \\\&quot;false\\\&quot;. \\\&quot;false\\\&quot; indicates that the service should not redirect to Bonita Portal
-     *        (after a successful login) or to the login page (after a login failure). (optional, default to false)
-     * @param redirectURL the URL of the page to be displayed after login (optional, default to )
-     */
-    @RequestLine("POST /loginservice")
-    @Headers({
-            "Content-Type: application/x-www-form-urlencoded",
-            "Accept: application/json",
-    })
-    ApiResponse<Void> loginWithHttpInfo(@Param("username") String username, @Param("password") String password,
-            @Param("tenant") String tenant, @Param("redirect") String redirect,
-            @Param("redirectURL") String redirectURL);
 
     /**
      * Logout the current user
@@ -88,19 +62,6 @@ public interface AuthenticationApi extends ApiClient.Api {
             "Accept: application/json",
     })
     void logout(@Param("redirect") String redirect);
-
-    /**
-     * Logout the current user
-     * Similar to <code>logout</code> but it also returns the http response headers .
-     * Logout the current user from the system
-     * 
-     * @param redirect Setting the redirect parameter to false indicates that the service should not redirect to the login page after logging out. (optional)
-     */
-    @RequestLine("GET /logoutservice?redirect={redirect}")
-    @Headers({
-            "Accept: application/json",
-    })
-    ApiResponse<Void> logoutWithHttpInfo(@Param("redirect") String redirect);
 
     /**
      * Logout the current user

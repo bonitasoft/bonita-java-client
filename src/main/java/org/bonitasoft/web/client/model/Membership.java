@@ -113,7 +113,7 @@ public class Membership implements Serializable {
     }
 
     /**
-     * id of the user who created the membership (-1 if the role was created by the tenant admin or by an organisation import)
+     * id of the user who created the membership (-1 if the role was created by the technical admin or by an organisation import)
      * 
      * @return assignedByUserId
      */

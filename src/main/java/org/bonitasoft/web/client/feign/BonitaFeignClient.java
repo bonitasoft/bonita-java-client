@@ -62,13 +62,8 @@ class BonitaFeignClient implements BonitaClient {
 
     @Override
     public Session login(String username, String password) {
-        return login(username, password, DEFAULT_TENANT_ID);
-    }
-
-    @Override
-    public Session login(String username, String password, String tenant) {
-        log.info("Try login user {} on tenant {}", username, tenant);
-        Session session = loginService.login(username, password, tenant);
+        log.info("Try login user {}", username);
+        Session session = loginService.login(username, password);
         log.debug("User logged in: {}", session);
         return session;
     }

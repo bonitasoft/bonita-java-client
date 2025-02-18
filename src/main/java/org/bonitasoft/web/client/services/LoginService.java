@@ -20,7 +20,7 @@ import org.bonitasoft.web.client.model.Session;
 
 public interface LoginService {
 
-    Session login(String username, String password, String tenant);
+    Session login(String username, String password);
 
     Session getSession();
 

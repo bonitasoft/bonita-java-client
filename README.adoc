@@ -25,8 +25,8 @@ endif::[]
 // Vars
 :project-group-id: org.bonitasoft.web
 :project-artifact-id: bonita-java-client
-:project-version: 2.0.0-SNAPSHOT
-:bonita-short-version: 7.15
+:project-version: 3.0.0-SNAPSHOT
+:bonita-short-version: 9.0
 :orga: bonitasoft
 :uri-org: https://github.com/{orga}
 :uri-repo: {uri-org}/{project-artifact-id}
