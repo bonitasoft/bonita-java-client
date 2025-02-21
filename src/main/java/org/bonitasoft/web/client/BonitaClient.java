@@ -28,8 +28,6 @@ import org.bonitasoft.web.client.services.UserService;
 /** A Bonita client that communicate via http request with a Bonita running instance. */
 public interface BonitaClient extends ApiProvider {
 
-    String DEFAULT_TENANT_ID = "1";
-
     String USER_PROFILE_NAME = "User";
 
     String ADMIN_PROFILE_NAME = "Administrator";
@@ -47,7 +45,6 @@ public interface BonitaClient extends ApiProvider {
     /**
      * Perform client authentication. Authentication will be stored internally to be used for the
      * future requests <br>
-     * Account tenant default to 1
      *
      * @param username Account username
      * @param password Account password
@@ -55,18 +52,6 @@ public interface BonitaClient extends ApiProvider {
      * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
      */
     Session login(String username, String password);
-
-    /**
-     * Perform client authentication. Authentication will be stored internally to be used for the
-     * future requests
-     *
-     * @param username Account username
-     * @param password Account password
-     * @param tenant Account tenant
-     * @return A session with the authenticated user info
-     * @throws org.bonitasoft.web.client.exception.UnauthorizedException if authentication failed
-     */
-    Session login(String username, String password, String tenant);
 
     /** Logout the current user */
     void logout();
@@ -124,7 +109,7 @@ public interface BonitaClient extends ApiProvider {
     ProcessService processes();
 
     /**
-     * Return the system tenant API
+     * Return the system service
      *
      * @return
      */

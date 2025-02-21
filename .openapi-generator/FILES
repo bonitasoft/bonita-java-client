@@ -65,9 +65,7 @@ src/main/java/org/bonitasoft/web/client/api/ProfileEntryApi.java
 src/main/java/org/bonitasoft/web/client/api/ProfileMemberApi.java
 src/main/java/org/bonitasoft/web/client/api/RoleApi.java
 src/main/java/org/bonitasoft/web/client/api/SignalApi.java
-src/main/java/org/bonitasoft/web/client/api/SystemTenantApi.java
 src/main/java/org/bonitasoft/web/client/api/TaskApi.java
-src/main/java/org/bonitasoft/web/client/api/TenantApi.java
 src/main/java/org/bonitasoft/web/client/api/ThemeApi.java
 src/main/java/org/bonitasoft/web/client/api/TimerEventTriggerApi.java
 src/main/java/org/bonitasoft/web/client/api/UploadApi.java
@@ -207,13 +205,8 @@ src/main/java/org/bonitasoft/web/client/model/RoleUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/Session.java
 src/main/java/org/bonitasoft/web/client/model/Signal.java
 src/main/java/org/bonitasoft/web/client/model/SystemInformation.java
-src/main/java/org/bonitasoft/web/client/model/SystemTenant.java
 src/main/java/org/bonitasoft/web/client/model/Task.java
-src/main/java/org/bonitasoft/web/client/model/Tenant.java
-src/main/java/org/bonitasoft/web/client/model/TenantCreateRequest.java
-src/main/java/org/bonitasoft/web/client/model/TenantPauseRequest.java
 src/main/java/org/bonitasoft/web/client/model/TenantResourceState.java
-src/main/java/org/bonitasoft/web/client/model/TenantUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ThemeCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ThemeRestoreRequest.java
 src/main/java/org/bonitasoft/web/client/model/TimerEventTrigger.java

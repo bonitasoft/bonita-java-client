@@ -23,7 +23,7 @@
 #!docs/README.md
 
 # Ignore below APIs to keep client iso to legacy Bonita APIs
-**/org/bonitasoft/web/client/api/PortalAuthenticationApi.java
+**/org/bonitasoft/web/client/api/AuthenticationApi.java
 **/org/bonitasoft/web/client/api/LicenseApi.java
 **/org/bonitasoft/web/client/api/SessionApi.java
 

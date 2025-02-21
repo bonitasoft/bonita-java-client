@@ -51,7 +51,7 @@ jobs:
       - name: Compile and test project
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        run: ./mvnw -B -ntp clean verify sonar:sonar -Dsonar.scanner.force-deprecated-java-version=true -Dbonita.image=${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.DOCKER_SNAPSHOTS_REPOSITORY }}/bonita-community:10.2-SNAPSHOT
+        run: ./mvnw -B -ntp clean verify sonar:sonar -Dsonar.scanner.force-deprecated-java-version=true -Dbonita.image=${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.DOCKER_SNAPSHOTS_REPOSITORY }}/bonita-community:10.3-SNAPSHOT
 
        # Build and Push snapshots to maven central
       - name: Deploy snapshots to Maven central
@@ -62,12 +62,11 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        bonita-version: 
-          - '7.15.0'
-          - '8.0.0'
+        bonita-version:
           - '9.0.0'
           - '10.0.0'
           - '10.1.0'
+          - '10.2.0'
     steps:
       - uses: actions/checkout@v4
       - uses: Keeper-Security/ksm-action@v1

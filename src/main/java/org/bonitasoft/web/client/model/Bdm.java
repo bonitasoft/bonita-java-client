@@ -167,7 +167,7 @@ public class Bdm implements Serializable {
     }
 
     /**
-     * This value is always -1 because only the tenant_technical_user can install BDM.
+     * This value is always -1 because only the technical admin can install BDM.
      * 
      * @return lastUpdatedBy
      */

@@ -30,8 +30,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * concerned by this resource, not transient variables.
  */
 @JsonPropertyOrder({
-        ActivityVariable.JSON_PROPERTY_TENANT_ID,
-        ActivityVariable.JSON_PROPERTY_TENANT_ID_STRING,
         ActivityVariable.JSON_PROPERTY_ID,
         ActivityVariable.JSON_PROPERTY_ID_STRING,
         ActivityVariable.JSON_PROPERTY_NAME,
@@ -47,12 +45,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class ActivityVariable implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-    private String tenantId;
-
-    public static final String JSON_PROPERTY_TENANT_ID_STRING = "tenantId_string";
-    private String tenantIdString;
 
     public static final String JSON_PROPERTY_ID = "id";
     private String id;
@@ -121,56 +113,6 @@ public class ActivityVariable implements Serializable {
     private String value;
 
     public ActivityVariable() {
-    }
-
-    public ActivityVariable tenantId(String tenantId) {
-
-        this.tenantId = tenantId;
-        return this;
-    }
-
-    /**
-     * The ID of the tenant where the current user is logged in (technical information)
-     * 
-     * @return tenantId
-     */
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_TENANT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public String getTenantId() {
-        return tenantId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_TENANT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTenantId(String tenantId) {
-        this.tenantId = tenantId;
-    }
-
-    public ActivityVariable tenantIdString(String tenantIdString) {
-
-        this.tenantIdString = tenantIdString;
-        return this;
-    }
-
-    /**
-     * number (since 7.0.1)
-     * 
-     * @return tenantIdString
-     */
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_TENANT_ID_STRING)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public String getTenantIdString() {
-        return tenantIdString;
-    }
-
-    @JsonProperty(JSON_PROPERTY_TENANT_ID_STRING)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTenantIdString(String tenantIdString) {
-        this.tenantIdString = tenantIdString;
     }
 
     public ActivityVariable id(String id) {
@@ -433,9 +375,7 @@ public class ActivityVariable implements Serializable {
             return false;
         }
         ActivityVariable activityVariable = (ActivityVariable) o;
-        return Objects.equals(this.tenantId, activityVariable.tenantId) &&
-                Objects.equals(this.tenantIdString, activityVariable.tenantIdString) &&
-                Objects.equals(this.id, activityVariable.id) &&
+        return Objects.equals(this.id, activityVariable.id) &&
                 Objects.equals(this.idString, activityVariable.idString) &&
                 Objects.equals(this.name, activityVariable.name) &&
                 Objects.equals(this.description, activityVariable.description) &&
@@ -449,16 +389,14 @@ public class ActivityVariable implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(tenantId, tenantIdString, id, idString, name, description, transientData, className,
-                containerId, containerIdString, containerType, value);
+        return Objects.hash(id, idString, name, description, transientData, className, containerId, containerIdString,
+                containerType, value);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ActivityVariable {\n");
-        sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
-        sb.append("    tenantIdString: ").append(toIndentedString(tenantIdString)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    idString: ").append(toIndentedString(idString)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

@@ -225,7 +225,7 @@ public class Role implements Serializable {
     }
 
     /**
-     * Id of the user who created the role (-1 if the role was created by the tenant admin or by an organisation import)
+     * Id of the user who created the role (-1 if the role was created by the technical admin or by an organisation import)
      * 
      * @return createdByUserId
      */

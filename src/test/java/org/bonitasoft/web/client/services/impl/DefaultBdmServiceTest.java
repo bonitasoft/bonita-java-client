@@ -19,25 +19,15 @@ package org.bonitasoft.web.client.services.impl;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import java.io.File;
 
-import org.bonitasoft.web.client.BonitaClient;
-import org.bonitasoft.web.client.api.BdmAccessControlApi;
-import org.bonitasoft.web.client.api.BdmApi;
-import org.bonitasoft.web.client.api.BusinessDataQueryApi;
-import org.bonitasoft.web.client.api.LicenseApi;
-import org.bonitasoft.web.client.api.SystemTenantApi;
-import org.bonitasoft.web.client.api.UploadApi;
+import org.bonitasoft.web.client.api.*;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.BDMAccessControl;
-import org.bonitasoft.web.client.model.TenantPauseRequest;
+import org.bonitasoft.web.client.model.MaintenanceDetails;
 import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.services.impl.base.CachingClientContext;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
@@ -72,7 +62,7 @@ class DefaultBdmServiceTest {
     private UploadApi uploadApi;
 
     @Mock
-    private SystemTenantApi tenantApi;
+    private MaintenanceApi maintenanceApi;
 
     @Mock
     private LicenseApi licenseApi;
@@ -87,7 +77,7 @@ class DefaultBdmServiceTest {
                 new DefaultBdmService(clientContext, apiProvider, new BdmResponseConverter(objectMapper, apiProvider)));
 
         lenient().when(apiProvider.get(LicenseApi.class)).thenReturn(licenseApi);
-        lenient().when(apiProvider.get(SystemTenantApi.class)).thenReturn(tenantApi);
+        lenient().when(apiProvider.get(MaintenanceApi.class)).thenReturn(maintenanceApi);
         lenient().when(apiProvider.get(BdmApi.class)).thenReturn(bdmApi);
         lenient().when(apiProvider.get(BusinessDataQueryApi.class)).thenReturn(bdmQueryApi);
         lenient().when(apiProvider.get(UploadApi.class)).thenReturn(uploadApi);
@@ -105,18 +95,18 @@ class DefaultBdmServiceTest {
         bdmService.importBDM(bdmFile);
 
         // Then
-        // tenant paused
-        verify(tenantApi)
-                .updateSystemTenant(
-                        BonitaClient.DEFAULT_TENANT_ID, new TenantPauseRequest().paused("true"));
+        // maintenance mode
+        verify(maintenanceApi)
+                .updateMaintenanceDetails(
+                        new MaintenanceDetails().maintenanceState(MaintenanceDetails.MaintenanceStateEnum.ENABLED));
         verify(bdmService).deleteBdmAccessControlIfNeeded();
         // bdm installed
         verify(uploadApi).uploadFile(any());
         verify(bdmApi).installBDM(any());
-        // tenant restarted
-        verify(tenantApi)
-                .updateSystemTenant(
-                        BonitaClient.DEFAULT_TENANT_ID, new TenantPauseRequest().paused("false"));
+        // maintenance mode disabled
+        verify(maintenanceApi)
+                .updateMaintenanceDetails(
+                        new MaintenanceDetails().maintenanceState(MaintenanceDetails.MaintenanceStateEnum.DISABLED));
     }
 
     @Test
