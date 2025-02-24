@@ -30,21 +30,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceCommentCreateRequest.JSON_PROPERTY_PROCESS_INSTANCE_ID,
         ProcessInstanceCommentCreateRequest.JSON_PROPERTY_CONTENT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceCommentCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
+    @jakarta.annotation.Nullable
     private String processInstanceId;
 
     public static final String JSON_PROPERTY_CONTENT = "content";
+    @jakarta.annotation.Nullable
     private String content;
 
     public ProcessInstanceCommentCreateRequest() {
     }
 
-    public ProcessInstanceCommentCreateRequest processInstanceId(String processInstanceId) {
+    public ProcessInstanceCommentCreateRequest processInstanceId(
+            @jakarta.annotation.Nullable String processInstanceId) {
 
         this.processInstanceId = processInstanceId;
         return this;
@@ -65,11 +68,11 @@ public class ProcessInstanceCommentCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessInstanceId(String processInstanceId) {
+    public void setProcessInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
         this.processInstanceId = processInstanceId;
     }
 
-    public ProcessInstanceCommentCreateRequest content(String content) {
+    public ProcessInstanceCommentCreateRequest content(@jakarta.annotation.Nullable String content) {
 
         this.content = content;
         return this;
@@ -90,7 +93,7 @@ public class ProcessInstanceCommentCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContent(String content) {
+    public void setContent(@jakarta.annotation.Nullable String content) {
         this.content = content;
     }
 

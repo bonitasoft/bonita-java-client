@@ -29,18 +29,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         PageCreateRequest.JSON_PROPERTY_PAGE_ZIP
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class PageCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PAGE_ZIP = "pageZip";
+    @jakarta.annotation.Nullable
     private String pageZip;
 
     public PageCreateRequest() {
     }
 
-    public PageCreateRequest pageZip(String pageZip) {
+    public PageCreateRequest pageZip(@jakarta.annotation.Nullable String pageZip) {
 
         this.pageZip = pageZip;
         return this;
@@ -61,7 +62,7 @@ public class PageCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PAGE_ZIP)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPageZip(String pageZip) {
+    public void setPageZip(@jakarta.annotation.Nullable String pageZip) {
         this.pageZip = pageZip;
     }
 

@@ -37,39 +37,47 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedActivityVariable.JSON_PROPERTY_ARCHIVED_DATE,
         ArchivedActivityVariable.JSON_PROPERTY_SOURCED_OBJECT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ArchivedActivityVariable implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
+    @jakarta.annotation.Nullable
     private String containerId;
 
     public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
+    @jakarta.annotation.Nullable
     private String containerType;
 
     public static final String JSON_PROPERTY_VALUE = "value";
+    @jakarta.annotation.Nullable
     private String value;
 
     public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+    @jakarta.annotation.Nullable
     private String archivedDate;
 
     public static final String JSON_PROPERTY_SOURCED_OBJECT_ID = "sourcedObjectId";
+    @jakarta.annotation.Nullable
     private String sourcedObjectId;
 
     public ArchivedActivityVariable() {
     }
 
-    public ArchivedActivityVariable name(String name) {
+    public ArchivedActivityVariable name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -90,11 +98,11 @@ public class ArchivedActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ArchivedActivityVariable description(String description) {
+    public ArchivedActivityVariable description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -115,11 +123,11 @@ public class ArchivedActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ArchivedActivityVariable type(String type) {
+    public ArchivedActivityVariable type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -140,11 +148,11 @@ public class ArchivedActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 
-    public ArchivedActivityVariable containerId(String containerId) {
+    public ArchivedActivityVariable containerId(@jakarta.annotation.Nullable String containerId) {
 
         this.containerId = containerId;
         return this;
@@ -165,11 +173,11 @@ public class ArchivedActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContainerId(String containerId) {
+    public void setContainerId(@jakarta.annotation.Nullable String containerId) {
         this.containerId = containerId;
     }
 
-    public ArchivedActivityVariable containerType(String containerType) {
+    public ArchivedActivityVariable containerType(@jakarta.annotation.Nullable String containerType) {
 
         this.containerType = containerType;
         return this;
@@ -190,11 +198,11 @@ public class ArchivedActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContainerType(String containerType) {
+    public void setContainerType(@jakarta.annotation.Nullable String containerType) {
         this.containerType = containerType;
     }
 
-    public ArchivedActivityVariable value(String value) {
+    public ArchivedActivityVariable value(@jakarta.annotation.Nullable String value) {
 
         this.value = value;
         return this;
@@ -215,11 +223,11 @@ public class ArchivedActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setValue(String value) {
+    public void setValue(@jakarta.annotation.Nullable String value) {
         this.value = value;
     }
 
-    public ArchivedActivityVariable archivedDate(String archivedDate) {
+    public ArchivedActivityVariable archivedDate(@jakarta.annotation.Nullable String archivedDate) {
 
         this.archivedDate = archivedDate;
         return this;
@@ -240,11 +248,11 @@ public class ArchivedActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setArchivedDate(String archivedDate) {
+    public void setArchivedDate(@jakarta.annotation.Nullable String archivedDate) {
         this.archivedDate = archivedDate;
     }
 
-    public ArchivedActivityVariable sourcedObjectId(String sourcedObjectId) {
+    public ArchivedActivityVariable sourcedObjectId(@jakarta.annotation.Nullable String sourcedObjectId) {
 
         this.sourcedObjectId = sourcedObjectId;
         return this;
@@ -265,7 +273,7 @@ public class ArchivedActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SOURCED_OBJECT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSourcedObjectId(String sourcedObjectId) {
+    public void setSourcedObjectId(@jakarta.annotation.Nullable String sourcedObjectId) {
         this.sourcedObjectId = sourcedObjectId;
     }
 

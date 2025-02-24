@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         FormMappingUpdateRequest.JSON_PROPERTY_PAGE_ID,
         FormMappingUpdateRequest.JSON_PROPERTY_URL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class FormMappingUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+    @jakarta.annotation.Nullable
     private String pageId;
 
     public static final String JSON_PROPERTY_URL = "url";
+    @jakarta.annotation.Nullable
     private String url;
 
     public FormMappingUpdateRequest() {
     }
 
-    public FormMappingUpdateRequest pageId(String pageId) {
+    public FormMappingUpdateRequest pageId(@jakarta.annotation.Nullable String pageId) {
 
         this.pageId = pageId;
         return this;
@@ -65,11 +67,11 @@ public class FormMappingUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPageId(String pageId) {
+    public void setPageId(@jakarta.annotation.Nullable String pageId) {
         this.pageId = pageId;
     }
 
-    public FormMappingUpdateRequest url(String url) {
+    public FormMappingUpdateRequest url(@jakarta.annotation.Nullable String url) {
 
         this.url = url;
         return this;
@@ -90,7 +92,7 @@ public class FormMappingUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_URL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUrl(String url) {
+    public void setUrl(@jakarta.annotation.Nullable String url) {
         this.url = url;
     }
 

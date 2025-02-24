@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         MaintenanceDetails.JSON_PROPERTY_MAINTENANCE_MESSAGE,
         MaintenanceDetails.JSON_PROPERTY_MAINTENANCE_MESSAGE_ACTIVE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class MaintenanceDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,9 +43,9 @@ public class MaintenanceDetails implements Serializable {
      */
     public enum MaintenanceStateEnum {
 
-        ENABLED("ENABLED"),
+        ENABLED(String.valueOf("ENABLED")),
 
-        DISABLED("DISABLED");
+        DISABLED(String.valueOf("DISABLED"));
 
         private String value;
 
@@ -75,18 +75,21 @@ public class MaintenanceDetails implements Serializable {
     }
 
     public static final String JSON_PROPERTY_MAINTENANCE_STATE = "maintenanceState";
+    @jakarta.annotation.Nullable
     private MaintenanceStateEnum maintenanceState;
 
     public static final String JSON_PROPERTY_MAINTENANCE_MESSAGE = "maintenanceMessage";
+    @jakarta.annotation.Nullable
     private String maintenanceMessage;
 
     public static final String JSON_PROPERTY_MAINTENANCE_MESSAGE_ACTIVE = "maintenanceMessageActive";
+    @jakarta.annotation.Nullable
     private Boolean maintenanceMessageActive;
 
     public MaintenanceDetails() {
     }
 
-    public MaintenanceDetails maintenanceState(MaintenanceStateEnum maintenanceState) {
+    public MaintenanceDetails maintenanceState(@jakarta.annotation.Nullable MaintenanceStateEnum maintenanceState) {
 
         this.maintenanceState = maintenanceState;
         return this;
@@ -107,11 +110,11 @@ public class MaintenanceDetails implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MAINTENANCE_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMaintenanceState(MaintenanceStateEnum maintenanceState) {
+    public void setMaintenanceState(@jakarta.annotation.Nullable MaintenanceStateEnum maintenanceState) {
         this.maintenanceState = maintenanceState;
     }
 
-    public MaintenanceDetails maintenanceMessage(String maintenanceMessage) {
+    public MaintenanceDetails maintenanceMessage(@jakarta.annotation.Nullable String maintenanceMessage) {
 
         this.maintenanceMessage = maintenanceMessage;
         return this;
@@ -132,11 +135,11 @@ public class MaintenanceDetails implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MAINTENANCE_MESSAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMaintenanceMessage(String maintenanceMessage) {
+    public void setMaintenanceMessage(@jakarta.annotation.Nullable String maintenanceMessage) {
         this.maintenanceMessage = maintenanceMessage;
     }
 
-    public MaintenanceDetails maintenanceMessageActive(Boolean maintenanceMessageActive) {
+    public MaintenanceDetails maintenanceMessageActive(@jakarta.annotation.Nullable Boolean maintenanceMessageActive) {
 
         this.maintenanceMessageActive = maintenanceMessageActive;
         return this;
@@ -157,7 +160,7 @@ public class MaintenanceDetails implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MAINTENANCE_MESSAGE_ACTIVE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMaintenanceMessageActive(Boolean maintenanceMessageActive) {
+    public void setMaintenanceMessageActive(@jakarta.annotation.Nullable Boolean maintenanceMessageActive) {
         this.maintenanceMessageActive = maintenanceMessageActive;
     }
 

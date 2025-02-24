@@ -33,30 +33,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationMenuUpdateRequest.JSON_PROPERTY_MENU_INDEX,
         ApplicationMenuUpdateRequest.JSON_PROPERTY_DISPLAY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ApplicationMenuUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PARENT_MENU_ID = "parentMenuId";
+    @jakarta.annotation.Nullable
     private String parentMenuId;
 
     public static final String JSON_PROPERTY_APPLICATION_PAGE_ID = "applicationPageId";
+    @jakarta.annotation.Nullable
     private String applicationPageId;
 
     public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
+    @jakarta.annotation.Nullable
     private String applicationId;
 
     public static final String JSON_PROPERTY_MENU_INDEX = "menuIndex";
+    @jakarta.annotation.Nullable
     private String menuIndex;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public ApplicationMenuUpdateRequest() {
     }
 
-    public ApplicationMenuUpdateRequest parentMenuId(String parentMenuId) {
+    public ApplicationMenuUpdateRequest parentMenuId(@jakarta.annotation.Nullable String parentMenuId) {
 
         this.parentMenuId = parentMenuId;
         return this;
@@ -77,11 +82,11 @@ public class ApplicationMenuUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_MENU_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentMenuId(String parentMenuId) {
+    public void setParentMenuId(@jakarta.annotation.Nullable String parentMenuId) {
         this.parentMenuId = parentMenuId;
     }
 
-    public ApplicationMenuUpdateRequest applicationPageId(String applicationPageId) {
+    public ApplicationMenuUpdateRequest applicationPageId(@jakarta.annotation.Nullable String applicationPageId) {
 
         this.applicationPageId = applicationPageId;
         return this;
@@ -102,11 +107,11 @@ public class ApplicationMenuUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_APPLICATION_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setApplicationPageId(String applicationPageId) {
+    public void setApplicationPageId(@jakarta.annotation.Nullable String applicationPageId) {
         this.applicationPageId = applicationPageId;
     }
 
-    public ApplicationMenuUpdateRequest applicationId(String applicationId) {
+    public ApplicationMenuUpdateRequest applicationId(@jakarta.annotation.Nullable String applicationId) {
 
         this.applicationId = applicationId;
         return this;
@@ -127,11 +132,11 @@ public class ApplicationMenuUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setApplicationId(String applicationId) {
+    public void setApplicationId(@jakarta.annotation.Nullable String applicationId) {
         this.applicationId = applicationId;
     }
 
-    public ApplicationMenuUpdateRequest menuIndex(String menuIndex) {
+    public ApplicationMenuUpdateRequest menuIndex(@jakarta.annotation.Nullable String menuIndex) {
 
         this.menuIndex = menuIndex;
         return this;
@@ -152,11 +157,11 @@ public class ApplicationMenuUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MENU_INDEX)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMenuIndex(String menuIndex) {
+    public void setMenuIndex(@jakarta.annotation.Nullable String menuIndex) {
         this.menuIndex = menuIndex;
     }
 
-    public ApplicationMenuUpdateRequest displayName(String displayName) {
+    public ApplicationMenuUpdateRequest displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -177,7 +182,7 @@ public class ApplicationMenuUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 

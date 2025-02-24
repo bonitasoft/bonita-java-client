@@ -33,30 +33,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfileMember.JSON_PROPERTY_GROUP_ID,
         ProfileMember.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProfileMember implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
+    @jakarta.annotation.Nullable
     private String profileId;
 
     public static final String JSON_PROPERTY_ROLE_ID = "role_id";
+    @jakarta.annotation.Nullable
     private String roleId;
 
     public static final String JSON_PROPERTY_GROUP_ID = "group_id";
+    @jakarta.annotation.Nullable
     private String groupId;
 
     public static final String JSON_PROPERTY_USER_ID = "user_id";
+    @jakarta.annotation.Nullable
     private String userId;
 
     public ProfileMember() {
     }
 
-    public ProfileMember id(String id) {
+    public ProfileMember id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -77,11 +82,11 @@ public class ProfileMember implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ProfileMember profileId(String profileId) {
+    public ProfileMember profileId(@jakarta.annotation.Nullable String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -102,11 +107,11 @@ public class ProfileMember implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProfileId(String profileId) {
+    public void setProfileId(@jakarta.annotation.Nullable String profileId) {
         this.profileId = profileId;
     }
 
-    public ProfileMember roleId(String roleId) {
+    public ProfileMember roleId(@jakarta.annotation.Nullable String roleId) {
 
         this.roleId = roleId;
         return this;
@@ -127,11 +132,11 @@ public class ProfileMember implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROLE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRoleId(String roleId) {
+    public void setRoleId(@jakarta.annotation.Nullable String roleId) {
         this.roleId = roleId;
     }
 
-    public ProfileMember groupId(String groupId) {
+    public ProfileMember groupId(@jakarta.annotation.Nullable String groupId) {
 
         this.groupId = groupId;
         return this;
@@ -152,11 +157,11 @@ public class ProfileMember implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setGroupId(String groupId) {
+    public void setGroupId(@jakarta.annotation.Nullable String groupId) {
         this.groupId = groupId;
     }
 
-    public ProfileMember userId(String userId) {
+    public ProfileMember userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -177,7 +182,7 @@ public class ProfileMember implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 

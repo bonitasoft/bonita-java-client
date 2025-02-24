@@ -34,22 +34,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         UpdateTaskByIdRequest.JSON_PROPERTY_STATE,
         UpdateTaskByIdRequest.JSON_PROPERTY_DISPLAY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private String state;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public UpdateTaskByIdRequest() {
 
     }
 
-    public UpdateTaskByIdRequest state(String state) {
+    public UpdateTaskByIdRequest state(@jakarta.annotation.Nullable String state) {
 
         this.state = state;
         return this;
@@ -70,11 +72,11 @@ public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Se
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(String state) {
+    public void setState(@jakarta.annotation.Nullable String state) {
         this.state = state;
     }
 
-    public UpdateTaskByIdRequest displayName(String displayName) {
+    public UpdateTaskByIdRequest displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -95,7 +97,7 @@ public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Se
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 

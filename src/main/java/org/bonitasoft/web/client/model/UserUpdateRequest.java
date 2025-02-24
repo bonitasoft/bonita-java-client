@@ -37,42 +37,51 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         UserUpdateRequest.JSON_PROPERTY_JOB_TITLE,
         UserUpdateRequest.JSON_PROPERTY_MANAGER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class UserUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ENABLED = "enabled";
+    @jakarta.annotation.Nullable
     private String enabled;
 
     public static final String JSON_PROPERTY_USER_NAME = "userName";
+    @jakarta.annotation.Nullable
     private String userName;
 
     public static final String JSON_PROPERTY_FIRSTNAME = "firstname";
+    @jakarta.annotation.Nullable
     private String firstname;
 
     public static final String JSON_PROPERTY_LASTNAME = "lastname";
+    @jakarta.annotation.Nullable
     private String lastname;
 
     public static final String JSON_PROPERTY_PASSWORD = "password";
+    @jakarta.annotation.Nullable
     private String password;
 
     public static final String JSON_PROPERTY_ICON = "icon";
+    @jakarta.annotation.Nullable
     private String icon;
 
     public static final String JSON_PROPERTY_TITLE = "title";
+    @jakarta.annotation.Nullable
     private String title;
 
     public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
+    @jakarta.annotation.Nullable
     private String jobTitle;
 
     public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
+    @jakarta.annotation.Nullable
     private String managerId;
 
     public UserUpdateRequest() {
     }
 
-    public UserUpdateRequest enabled(String enabled) {
+    public UserUpdateRequest enabled(@jakarta.annotation.Nullable String enabled) {
 
         this.enabled = enabled;
         return this;
@@ -93,11 +102,11 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ENABLED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setEnabled(String enabled) {
+    public void setEnabled(@jakarta.annotation.Nullable String enabled) {
         this.enabled = enabled;
     }
 
-    public UserUpdateRequest userName(String userName) {
+    public UserUpdateRequest userName(@jakarta.annotation.Nullable String userName) {
 
         this.userName = userName;
         return this;
@@ -118,11 +127,11 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserName(String userName) {
+    public void setUserName(@jakarta.annotation.Nullable String userName) {
         this.userName = userName;
     }
 
-    public UserUpdateRequest firstname(String firstname) {
+    public UserUpdateRequest firstname(@jakarta.annotation.Nullable String firstname) {
 
         this.firstname = firstname;
         return this;
@@ -143,11 +152,11 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FIRSTNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFirstname(String firstname) {
+    public void setFirstname(@jakarta.annotation.Nullable String firstname) {
         this.firstname = firstname;
     }
 
-    public UserUpdateRequest lastname(String lastname) {
+    public UserUpdateRequest lastname(@jakarta.annotation.Nullable String lastname) {
 
         this.lastname = lastname;
         return this;
@@ -168,11 +177,11 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LASTNAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastname(String lastname) {
+    public void setLastname(@jakarta.annotation.Nullable String lastname) {
         this.lastname = lastname;
     }
 
-    public UserUpdateRequest password(String password) {
+    public UserUpdateRequest password(@jakarta.annotation.Nullable String password) {
 
         this.password = password;
         return this;
@@ -193,11 +202,11 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PASSWORD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPassword(String password) {
+    public void setPassword(@jakarta.annotation.Nullable String password) {
         this.password = password;
     }
 
-    public UserUpdateRequest icon(String icon) {
+    public UserUpdateRequest icon(@jakarta.annotation.Nullable String icon) {
 
         this.icon = icon;
         return this;
@@ -218,11 +227,11 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIcon(String icon) {
+    public void setIcon(@jakarta.annotation.Nullable String icon) {
         this.icon = icon;
     }
 
-    public UserUpdateRequest title(String title) {
+    public UserUpdateRequest title(@jakarta.annotation.Nullable String title) {
 
         this.title = title;
         return this;
@@ -243,11 +252,11 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TITLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTitle(String title) {
+    public void setTitle(@jakarta.annotation.Nullable String title) {
         this.title = title;
     }
 
-    public UserUpdateRequest jobTitle(String jobTitle) {
+    public UserUpdateRequest jobTitle(@jakarta.annotation.Nullable String jobTitle) {
 
         this.jobTitle = jobTitle;
         return this;
@@ -268,11 +277,11 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_JOB_TITLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setJobTitle(String jobTitle) {
+    public void setJobTitle(@jakarta.annotation.Nullable String jobTitle) {
         this.jobTitle = jobTitle;
     }
 
-    public UserUpdateRequest managerId(String managerId) {
+    public UserUpdateRequest managerId(@jakarta.annotation.Nullable String managerId) {
 
         this.managerId = managerId;
         return this;
@@ -293,7 +302,7 @@ public class UserUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MANAGER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setManagerId(String managerId) {
+    public void setManagerId(@jakarta.annotation.Nullable String managerId) {
         this.managerId = managerId;
     }
 

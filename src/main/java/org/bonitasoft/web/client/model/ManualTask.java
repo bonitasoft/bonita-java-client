@@ -50,81 +50,103 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ManualTask.JSON_PROPERTY_ASSIGNED_DATE,
         ManualTask.JSON_PROPERTY_IS_TERMINAL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ManualTask implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
+    @jakarta.annotation.Nullable
     private String displayDescription;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private ActivityState state;
 
     public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
+    @jakarta.annotation.Nullable
     private String reachedStateDate;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
+    @jakarta.annotation.Nullable
     private String dueDate;
 
     public static final String JSON_PROPERTY_PRIORITY = "priority";
+    @jakarta.annotation.Nullable
     private String priority;
 
     public static final String JSON_PROPERTY_PROCESS_ID = "processId";
+    @jakarta.annotation.Nullable
     private String processId;
 
     public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
+    @jakarta.annotation.Nullable
     private String parentCaseId;
 
     public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
+    @jakarta.annotation.Nullable
     private String parentTaskId;
 
     public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
+    @jakarta.annotation.Nullable
     private String rootCaseId;
 
     public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
+    @jakarta.annotation.Nullable
     private String rootContainerId;
 
     public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
+    @jakarta.annotation.Nullable
     private String executedBy;
 
     public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
+    @jakarta.annotation.Nullable
     private String executedBySubstitute;
 
     public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
+    @jakarta.annotation.Nullable
     private String actorId;
 
     public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+    @jakarta.annotation.Nullable
     private String assignedId;
 
     public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
+    @jakarta.annotation.Nullable
     private String assignedDate;
 
     public static final String JSON_PROPERTY_IS_TERMINAL = "isTerminal";
+    @jakarta.annotation.Nullable
     private Boolean isTerminal;
 
     public ManualTask() {
     }
 
-    public ManualTask id(String id) {
+    public ManualTask id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -145,11 +167,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ManualTask type(String type) {
+    public ManualTask type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -170,11 +192,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 
-    public ManualTask name(String name) {
+    public ManualTask name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -195,11 +217,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ManualTask displayName(String displayName) {
+    public ManualTask displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -220,11 +242,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public ManualTask description(String description) {
+    public ManualTask description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -245,11 +267,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ManualTask displayDescription(String displayDescription) {
+    public ManualTask displayDescription(@jakarta.annotation.Nullable String displayDescription) {
 
         this.displayDescription = displayDescription;
         return this;
@@ -270,11 +292,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayDescription(String displayDescription) {
+    public void setDisplayDescription(@jakarta.annotation.Nullable String displayDescription) {
         this.displayDescription = displayDescription;
     }
 
-    public ManualTask state(ActivityState state) {
+    public ManualTask state(@jakarta.annotation.Nullable ActivityState state) {
 
         this.state = state;
         return this;
@@ -295,11 +317,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(ActivityState state) {
+    public void setState(@jakarta.annotation.Nullable ActivityState state) {
         this.state = state;
     }
 
-    public ManualTask reachedStateDate(String reachedStateDate) {
+    public ManualTask reachedStateDate(@jakarta.annotation.Nullable String reachedStateDate) {
 
         this.reachedStateDate = reachedStateDate;
         return this;
@@ -320,11 +342,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setReachedStateDate(String reachedStateDate) {
+    public void setReachedStateDate(@jakarta.annotation.Nullable String reachedStateDate) {
         this.reachedStateDate = reachedStateDate;
     }
 
-    public ManualTask lastUpdateDate(String lastUpdateDate) {
+    public ManualTask lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -345,11 +367,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public ManualTask dueDate(String dueDate) {
+    public ManualTask dueDate(@jakarta.annotation.Nullable String dueDate) {
 
         this.dueDate = dueDate;
         return this;
@@ -370,11 +392,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DUE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDueDate(String dueDate) {
+    public void setDueDate(@jakarta.annotation.Nullable String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public ManualTask priority(String priority) {
+    public ManualTask priority(@jakarta.annotation.Nullable String priority) {
 
         this.priority = priority;
         return this;
@@ -395,11 +417,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PRIORITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPriority(String priority) {
+    public void setPriority(@jakarta.annotation.Nullable String priority) {
         this.priority = priority;
     }
 
-    public ManualTask processId(String processId) {
+    public ManualTask processId(@jakarta.annotation.Nullable String processId) {
 
         this.processId = processId;
         return this;
@@ -420,11 +442,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessId(String processId) {
+    public void setProcessId(@jakarta.annotation.Nullable String processId) {
         this.processId = processId;
     }
 
-    public ManualTask parentCaseId(String parentCaseId) {
+    public ManualTask parentCaseId(@jakarta.annotation.Nullable String parentCaseId) {
 
         this.parentCaseId = parentCaseId;
         return this;
@@ -445,11 +467,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentCaseId(String parentCaseId) {
+    public void setParentCaseId(@jakarta.annotation.Nullable String parentCaseId) {
         this.parentCaseId = parentCaseId;
     }
 
-    public ManualTask parentTaskId(String parentTaskId) {
+    public ManualTask parentTaskId(@jakarta.annotation.Nullable String parentTaskId) {
 
         this.parentTaskId = parentTaskId;
         return this;
@@ -470,11 +492,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentTaskId(String parentTaskId) {
+    public void setParentTaskId(@jakarta.annotation.Nullable String parentTaskId) {
         this.parentTaskId = parentTaskId;
     }
 
-    public ManualTask rootCaseId(String rootCaseId) {
+    public ManualTask rootCaseId(@jakarta.annotation.Nullable String rootCaseId) {
 
         this.rootCaseId = rootCaseId;
         return this;
@@ -496,11 +518,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRootCaseId(String rootCaseId) {
+    public void setRootCaseId(@jakarta.annotation.Nullable String rootCaseId) {
         this.rootCaseId = rootCaseId;
     }
 
-    public ManualTask rootContainerId(String rootContainerId) {
+    public ManualTask rootContainerId(@jakarta.annotation.Nullable String rootContainerId) {
 
         this.rootContainerId = rootContainerId;
         return this;
@@ -521,11 +543,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRootContainerId(String rootContainerId) {
+    public void setRootContainerId(@jakarta.annotation.Nullable String rootContainerId) {
         this.rootContainerId = rootContainerId;
     }
 
-    public ManualTask executedBy(String executedBy) {
+    public ManualTask executedBy(@jakarta.annotation.Nullable String executedBy) {
 
         this.executedBy = executedBy;
         return this;
@@ -546,11 +568,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExecutedBy(String executedBy) {
+    public void setExecutedBy(@jakarta.annotation.Nullable String executedBy) {
         this.executedBy = executedBy;
     }
 
-    public ManualTask executedBySubstitute(String executedBySubstitute) {
+    public ManualTask executedBySubstitute(@jakarta.annotation.Nullable String executedBySubstitute) {
 
         this.executedBySubstitute = executedBySubstitute;
         return this;
@@ -571,11 +593,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExecutedBySubstitute(String executedBySubstitute) {
+    public void setExecutedBySubstitute(@jakarta.annotation.Nullable String executedBySubstitute) {
         this.executedBySubstitute = executedBySubstitute;
     }
 
-    public ManualTask actorId(String actorId) {
+    public ManualTask actorId(@jakarta.annotation.Nullable String actorId) {
 
         this.actorId = actorId;
         return this;
@@ -596,11 +618,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTOR_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActorId(String actorId) {
+    public void setActorId(@jakarta.annotation.Nullable String actorId) {
         this.actorId = actorId;
     }
 
-    public ManualTask assignedId(String assignedId) {
+    public ManualTask assignedId(@jakarta.annotation.Nullable String assignedId) {
 
         this.assignedId = assignedId;
         return this;
@@ -621,11 +643,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedId(String assignedId) {
+    public void setAssignedId(@jakarta.annotation.Nullable String assignedId) {
         this.assignedId = assignedId;
     }
 
-    public ManualTask assignedDate(String assignedDate) {
+    public ManualTask assignedDate(@jakarta.annotation.Nullable String assignedDate) {
 
         this.assignedDate = assignedDate;
         return this;
@@ -646,11 +668,11 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedDate(String assignedDate) {
+    public void setAssignedDate(@jakarta.annotation.Nullable String assignedDate) {
         this.assignedDate = assignedDate;
     }
 
-    public ManualTask isTerminal(Boolean isTerminal) {
+    public ManualTask isTerminal(@jakarta.annotation.Nullable Boolean isTerminal) {
 
         this.isTerminal = isTerminal;
         return this;
@@ -671,7 +693,7 @@ public class ManualTask implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IS_TERMINAL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIsTerminal(Boolean isTerminal) {
+    public void setIsTerminal(@jakarta.annotation.Nullable Boolean isTerminal) {
         this.isTerminal = isTerminal;
     }
 

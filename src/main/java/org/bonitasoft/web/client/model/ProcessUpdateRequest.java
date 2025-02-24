@@ -31,24 +31,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
         ProcessUpdateRequest.JSON_PROPERTY_ACTIVATION_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_DISPLAYDESCRIPTION = "displaydescription";
+    @jakarta.annotation.Nullable
     private String displaydescription;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
+    @jakarta.annotation.Nullable
     private ActivationState activationState;
 
     public ProcessUpdateRequest() {
     }
 
-    public ProcessUpdateRequest displaydescription(String displaydescription) {
+    public ProcessUpdateRequest displaydescription(@jakarta.annotation.Nullable String displaydescription) {
 
         this.displaydescription = displaydescription;
         return this;
@@ -69,11 +72,11 @@ public class ProcessUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAYDESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplaydescription(String displaydescription) {
+    public void setDisplaydescription(@jakarta.annotation.Nullable String displaydescription) {
         this.displaydescription = displaydescription;
     }
 
-    public ProcessUpdateRequest displayName(String displayName) {
+    public ProcessUpdateRequest displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -94,11 +97,11 @@ public class ProcessUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public ProcessUpdateRequest activationState(ActivationState activationState) {
+    public ProcessUpdateRequest activationState(@jakarta.annotation.Nullable ActivationState activationState) {
 
         this.activationState = activationState;
         return this;
@@ -119,7 +122,7 @@ public class ProcessUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActivationState(ActivationState activationState) {
+    public void setActivationState(@jakarta.annotation.Nullable ActivationState activationState) {
         this.activationState = activationState;
     }
 

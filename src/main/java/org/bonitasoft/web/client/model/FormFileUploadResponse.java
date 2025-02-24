@@ -31,24 +31,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         FormFileUploadResponse.JSON_PROPERTY_TEMP_PATH,
         FormFileUploadResponse.JSON_PROPERTY_CONTENT_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class FormFileUploadResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_FILENAME = "filename";
+    @jakarta.annotation.Nullable
     private String filename;
 
     public static final String JSON_PROPERTY_TEMP_PATH = "tempPath";
+    @jakarta.annotation.Nullable
     private String tempPath;
 
     public static final String JSON_PROPERTY_CONTENT_TYPE = "contentType";
+    @jakarta.annotation.Nullable
     private String contentType;
 
     public FormFileUploadResponse() {
     }
 
-    public FormFileUploadResponse filename(String filename) {
+    public FormFileUploadResponse filename(@jakarta.annotation.Nullable String filename) {
 
         this.filename = filename;
         return this;
@@ -69,11 +72,11 @@ public class FormFileUploadResponse implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FILENAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFilename(String filename) {
+    public void setFilename(@jakarta.annotation.Nullable String filename) {
         this.filename = filename;
     }
 
-    public FormFileUploadResponse tempPath(String tempPath) {
+    public FormFileUploadResponse tempPath(@jakarta.annotation.Nullable String tempPath) {
 
         this.tempPath = tempPath;
         return this;
@@ -94,11 +97,11 @@ public class FormFileUploadResponse implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TEMP_PATH)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTempPath(String tempPath) {
+    public void setTempPath(@jakarta.annotation.Nullable String tempPath) {
         this.tempPath = tempPath;
     }
 
-    public FormFileUploadResponse contentType(String contentType) {
+    public FormFileUploadResponse contentType(@jakarta.annotation.Nullable String contentType) {
 
         this.contentType = contentType;
         return this;
@@ -119,7 +122,7 @@ public class FormFileUploadResponse implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContentType(String contentType) {
+    public void setContentType(@jakarta.annotation.Nullable String contentType) {
         this.contentType = contentType;
     }
 

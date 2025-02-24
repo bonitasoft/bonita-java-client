@@ -34,24 +34,27 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
         InstanciateProcess429Response.JSON_PROPERTY_REASON_PHRASE
 })
 @JsonTypeName("instanciateProcess_429_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class InstanciateProcess429Response implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_CODE = "code";
+    @jakarta.annotation.Nullable
     private BigDecimal code;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_REASON_PHRASE = "reasonPhrase";
+    @jakarta.annotation.Nullable
     private String reasonPhrase;
 
     public InstanciateProcess429Response() {
     }
 
-    public InstanciateProcess429Response code(BigDecimal code) {
+    public InstanciateProcess429Response code(@jakarta.annotation.Nullable BigDecimal code) {
 
         this.code = code;
         return this;
@@ -72,11 +75,11 @@ public class InstanciateProcess429Response implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CODE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCode(BigDecimal code) {
+    public void setCode(@jakarta.annotation.Nullable BigDecimal code) {
         this.code = code;
     }
 
-    public InstanciateProcess429Response description(String description) {
+    public InstanciateProcess429Response description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -97,11 +100,11 @@ public class InstanciateProcess429Response implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public InstanciateProcess429Response reasonPhrase(String reasonPhrase) {
+    public InstanciateProcess429Response reasonPhrase(@jakarta.annotation.Nullable String reasonPhrase) {
 
         this.reasonPhrase = reasonPhrase;
         return this;
@@ -122,7 +125,7 @@ public class InstanciateProcess429Response implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_REASON_PHRASE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setReasonPhrase(String reasonPhrase) {
+    public void setReasonPhrase(@jakarta.annotation.Nullable String reasonPhrase) {
         this.reasonPhrase = reasonPhrase;
     }
 

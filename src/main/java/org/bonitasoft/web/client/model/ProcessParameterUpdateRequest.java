@@ -29,18 +29,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ProcessParameterUpdateRequest.JSON_PROPERTY_VALUE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessParameterUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_VALUE = "value";
+    @jakarta.annotation.Nullable
     private String value;
 
     public ProcessParameterUpdateRequest() {
     }
 
-    public ProcessParameterUpdateRequest value(String value) {
+    public ProcessParameterUpdateRequest value(@jakarta.annotation.Nullable String value) {
 
         this.value = value;
         return this;
@@ -61,7 +62,7 @@ public class ProcessParameterUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setValue(String value) {
+    public void setValue(@jakarta.annotation.Nullable String value) {
         this.value = value;
     }
 

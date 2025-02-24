@@ -34,33 +34,39 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedProcessInstanceComment.JSON_PROPERTY_USER_ID,
         ArchivedProcessInstanceComment.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ArchivedProcessInstanceComment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_CONTENT = "content";
+    @jakarta.annotation.Nullable
     private String content;
 
     public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
+    @jakarta.annotation.Nullable
     private String processInstanceId;
 
     public static final String JSON_PROPERTY_POST_DATE = "postDate";
+    @jakarta.annotation.Nullable
     private String postDate;
 
     public static final String JSON_PROPERTY_USER_ID = "userId";
+    @jakarta.annotation.Nullable
     private String userId;
 
     public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+    @jakarta.annotation.Nullable
     private String archivedDate;
 
     public ArchivedProcessInstanceComment() {
     }
 
-    public ArchivedProcessInstanceComment id(String id) {
+    public ArchivedProcessInstanceComment id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -81,11 +87,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ArchivedProcessInstanceComment content(String content) {
+    public ArchivedProcessInstanceComment content(@jakarta.annotation.Nullable String content) {
 
         this.content = content;
         return this;
@@ -106,11 +112,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContent(String content) {
+    public void setContent(@jakarta.annotation.Nullable String content) {
         this.content = content;
     }
 
-    public ArchivedProcessInstanceComment processInstanceId(String processInstanceId) {
+    public ArchivedProcessInstanceComment processInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
 
         this.processInstanceId = processInstanceId;
         return this;
@@ -131,11 +137,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessInstanceId(String processInstanceId) {
+    public void setProcessInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
         this.processInstanceId = processInstanceId;
     }
 
-    public ArchivedProcessInstanceComment postDate(String postDate) {
+    public ArchivedProcessInstanceComment postDate(@jakarta.annotation.Nullable String postDate) {
 
         this.postDate = postDate;
         return this;
@@ -156,11 +162,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_POST_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPostDate(String postDate) {
+    public void setPostDate(@jakarta.annotation.Nullable String postDate) {
         this.postDate = postDate;
     }
 
-    public ArchivedProcessInstanceComment userId(String userId) {
+    public ArchivedProcessInstanceComment userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -181,11 +187,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 
-    public ArchivedProcessInstanceComment archivedDate(String archivedDate) {
+    public ArchivedProcessInstanceComment archivedDate(@jakarta.annotation.Nullable String archivedDate) {
 
         this.archivedDate = archivedDate;
         return this;
@@ -206,7 +212,7 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setArchivedDate(String archivedDate) {
+    public void setArchivedDate(@jakarta.annotation.Nullable String archivedDate) {
         this.archivedDate = archivedDate;
     }
 

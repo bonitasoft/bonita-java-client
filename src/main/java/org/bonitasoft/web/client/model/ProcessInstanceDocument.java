@@ -42,57 +42,71 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceDocument.JSON_PROPERTY_URL,
         ProcessInstanceDocument.JSON_PROPERTY_VERSION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceDocument implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+    @jakarta.annotation.Nullable
     private String creationDate;
 
     public static final String JSON_PROPERTY_AUTHOR = "author";
+    @jakarta.annotation.Nullable
     private String author;
 
     public static final String JSON_PROPERTY_INDEX = "index";
+    @jakarta.annotation.Nullable
     private String index;
 
     public static final String JSON_PROPERTY_CONTENT_MIMETYPE = "contentMimetype";
+    @jakarta.annotation.Nullable
     private String contentMimetype;
 
     public static final String JSON_PROPERTY_CASE_ID = "caseId";
+    @jakarta.annotation.Nullable
     private String caseId;
 
     public static final String JSON_PROPERTY_CONTENT_STORAGE_ID = "contentStorageId";
+    @jakarta.annotation.Nullable
     private String contentStorageId;
 
     public static final String JSON_PROPERTY_IS_INTERNAL = "isInternal";
+    @jakarta.annotation.Nullable
     private Boolean isInternal;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_FILE_NAME = "fileName";
+    @jakarta.annotation.Nullable
     private String fileName;
 
     public static final String JSON_PROPERTY_SUBMITTED_BY = "submittedBy";
+    @jakarta.annotation.Nullable
     private String submittedBy;
 
     public static final String JSON_PROPERTY_URL = "url";
+    @jakarta.annotation.Nullable
     private String url;
 
     public static final String JSON_PROPERTY_VERSION = "version";
+    @jakarta.annotation.Nullable
     private String version;
 
     public ProcessInstanceDocument() {
     }
 
-    public ProcessInstanceDocument id(String id) {
+    public ProcessInstanceDocument id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -113,11 +127,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ProcessInstanceDocument creationDate(String creationDate) {
+    public ProcessInstanceDocument creationDate(@jakarta.annotation.Nullable String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -138,11 +152,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(@jakarta.annotation.Nullable String creationDate) {
         this.creationDate = creationDate;
     }
 
-    public ProcessInstanceDocument author(String author) {
+    public ProcessInstanceDocument author(@jakarta.annotation.Nullable String author) {
 
         this.author = author;
         return this;
@@ -165,11 +179,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_AUTHOR)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAuthor(String author) {
+    public void setAuthor(@jakarta.annotation.Nullable String author) {
         this.author = author;
     }
 
-    public ProcessInstanceDocument index(String index) {
+    public ProcessInstanceDocument index(@jakarta.annotation.Nullable String index) {
 
         this.index = index;
         return this;
@@ -190,11 +204,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INDEX)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIndex(String index) {
+    public void setIndex(@jakarta.annotation.Nullable String index) {
         this.index = index;
     }
 
-    public ProcessInstanceDocument contentMimetype(String contentMimetype) {
+    public ProcessInstanceDocument contentMimetype(@jakarta.annotation.Nullable String contentMimetype) {
 
         this.contentMimetype = contentMimetype;
         return this;
@@ -215,11 +229,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT_MIMETYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContentMimetype(String contentMimetype) {
+    public void setContentMimetype(@jakarta.annotation.Nullable String contentMimetype) {
         this.contentMimetype = contentMimetype;
     }
 
-    public ProcessInstanceDocument caseId(String caseId) {
+    public ProcessInstanceDocument caseId(@jakarta.annotation.Nullable String caseId) {
 
         this.caseId = caseId;
         return this;
@@ -240,11 +254,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseId(String caseId) {
+    public void setCaseId(@jakarta.annotation.Nullable String caseId) {
         this.caseId = caseId;
     }
 
-    public ProcessInstanceDocument contentStorageId(String contentStorageId) {
+    public ProcessInstanceDocument contentStorageId(@jakarta.annotation.Nullable String contentStorageId) {
 
         this.contentStorageId = contentStorageId;
         return this;
@@ -265,11 +279,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT_STORAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContentStorageId(String contentStorageId) {
+    public void setContentStorageId(@jakarta.annotation.Nullable String contentStorageId) {
         this.contentStorageId = contentStorageId;
     }
 
-    public ProcessInstanceDocument isInternal(Boolean isInternal) {
+    public ProcessInstanceDocument isInternal(@jakarta.annotation.Nullable Boolean isInternal) {
 
         this.isInternal = isInternal;
         return this;
@@ -291,11 +305,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IS_INTERNAL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIsInternal(Boolean isInternal) {
+    public void setIsInternal(@jakarta.annotation.Nullable Boolean isInternal) {
         this.isInternal = isInternal;
     }
 
-    public ProcessInstanceDocument description(String description) {
+    public ProcessInstanceDocument description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -316,11 +330,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ProcessInstanceDocument name(String name) {
+    public ProcessInstanceDocument name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -341,11 +355,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ProcessInstanceDocument fileName(String fileName) {
+    public ProcessInstanceDocument fileName(@jakarta.annotation.Nullable String fileName) {
 
         this.fileName = fileName;
         return this;
@@ -366,11 +380,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FILE_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFileName(String fileName) {
+    public void setFileName(@jakarta.annotation.Nullable String fileName) {
         this.fileName = fileName;
     }
 
-    public ProcessInstanceDocument submittedBy(String submittedBy) {
+    public ProcessInstanceDocument submittedBy(@jakarta.annotation.Nullable String submittedBy) {
 
         this.submittedBy = submittedBy;
         return this;
@@ -391,11 +405,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SUBMITTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSubmittedBy(String submittedBy) {
+    public void setSubmittedBy(@jakarta.annotation.Nullable String submittedBy) {
         this.submittedBy = submittedBy;
     }
 
-    public ProcessInstanceDocument url(String url) {
+    public ProcessInstanceDocument url(@jakarta.annotation.Nullable String url) {
 
         this.url = url;
         return this;
@@ -416,11 +430,11 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_URL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUrl(String url) {
+    public void setUrl(@jakarta.annotation.Nullable String url) {
         this.url = url;
     }
 
-    public ProcessInstanceDocument version(String version) {
+    public ProcessInstanceDocument version(@jakarta.annotation.Nullable String version) {
 
         this.version = version;
         return this;
@@ -441,7 +455,7 @@ public class ProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVersion(String version) {
+    public void setVersion(@jakarta.annotation.Nullable String version) {
         this.version = version;
     }
 

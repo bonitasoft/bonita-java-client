@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ThemeCreateRequest.JSON_PROPERTY_TYPE,
         ThemeCreateRequest.JSON_PROPERTY_ZIP_FILE_PATHPORTAL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ThemeCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,9 +45,9 @@ public class ThemeCreateRequest implements Serializable {
      */
     public enum TypeEnum {
 
-        PORTAL("portal"),
+        PORTAL(String.valueOf("portal")),
 
-        MOBILE("mobile");
+        MOBILE(String.valueOf("mobile"));
 
         private String value;
 
@@ -77,15 +77,17 @@ public class ThemeCreateRequest implements Serializable {
     }
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private TypeEnum type;
 
     public static final String JSON_PROPERTY_ZIP_FILE_PATHPORTAL = "zipFilePathportal";
+    @jakarta.annotation.Nullable
     private String zipFilePathportal;
 
     public ThemeCreateRequest() {
     }
 
-    public ThemeCreateRequest type(TypeEnum type) {
+    public ThemeCreateRequest type(@jakarta.annotation.Nullable TypeEnum type) {
 
         this.type = type;
         return this;
@@ -106,11 +108,11 @@ public class ThemeCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(TypeEnum type) {
+    public void setType(@jakarta.annotation.Nullable TypeEnum type) {
         this.type = type;
     }
 
-    public ThemeCreateRequest zipFilePathportal(String zipFilePathportal) {
+    public ThemeCreateRequest zipFilePathportal(@jakarta.annotation.Nullable String zipFilePathportal) {
 
         this.zipFilePathportal = zipFilePathportal;
         return this;
@@ -131,7 +133,7 @@ public class ThemeCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ZIP_FILE_PATHPORTAL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setZipFilePathportal(String zipFilePathportal) {
+    public void setZipFilePathportal(@jakarta.annotation.Nullable String zipFilePathportal) {
         this.zipFilePathportal = zipFilePathportal;
     }
 

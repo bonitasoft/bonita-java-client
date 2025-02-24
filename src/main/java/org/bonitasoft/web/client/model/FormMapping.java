@@ -41,15 +41,17 @@ import com.fasterxml.jackson.annotation.JsonValue;
         FormMapping.JSON_PROPERTY_LAST_UPDATE_DATE,
         FormMapping.JSON_PROPERTY_URL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class FormMapping implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
+    @jakarta.annotation.Nullable
     private String processDefinitionId;
 
     /**
@@ -57,11 +59,11 @@ public class FormMapping implements Serializable {
      */
     public enum TypeEnum {
 
-        PROCESSSTART("PROCESSSTART"),
+        PROCESSSTART(String.valueOf("PROCESSSTART")),
 
-        PROCESSOVERVIEW("PROCESSOVERVIEW"),
+        PROCESSOVERVIEW(String.valueOf("PROCESSOVERVIEW")),
 
-        TASK("TASK");
+        TASK(String.valueOf("TASK"));
 
         private String value;
 
@@ -91,6 +93,7 @@ public class FormMapping implements Serializable {
     }
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private TypeEnum type;
 
     /**
@@ -98,15 +101,15 @@ public class FormMapping implements Serializable {
      */
     public enum TargetEnum {
 
-        URL("URL"),
+        URL(String.valueOf("URL")),
 
-        INTERNAL("INTERNAL"),
+        INTERNAL(String.valueOf("INTERNAL")),
 
-        LEGACY("LEGACY"),
+        LEGACY(String.valueOf("LEGACY")),
 
-        UNDEFINED("UNDEFINED"),
+        UNDEFINED(String.valueOf("UNDEFINED")),
 
-        NONE("NONE");
+        NONE(String.valueOf("NONE"));
 
         private String value;
 
@@ -136,30 +139,37 @@ public class FormMapping implements Serializable {
     }
 
     public static final String JSON_PROPERTY_TARGET = "target";
+    @jakarta.annotation.Nullable
     private TargetEnum target;
 
     public static final String JSON_PROPERTY_TASK = "task";
+    @jakarta.annotation.Nullable
     private String task;
 
     public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+    @jakarta.annotation.Nullable
     private String pageId;
 
     public static final String JSON_PROPERTY_PAGE_MAPPING_KEY = "pageMappingKey";
+    @jakarta.annotation.Nullable
     private String pageMappingKey;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_BY = "lastUpdateBy";
+    @jakarta.annotation.Nullable
     private String lastUpdateBy;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public static final String JSON_PROPERTY_URL = "url";
+    @jakarta.annotation.Nullable
     private String url;
 
     public FormMapping() {
     }
 
-    public FormMapping id(String id) {
+    public FormMapping id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -180,11 +190,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public FormMapping processDefinitionId(String processDefinitionId) {
+    public FormMapping processDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
 
         this.processDefinitionId = processDefinitionId;
         return this;
@@ -205,11 +215,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessDefinitionId(String processDefinitionId) {
+    public void setProcessDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
         this.processDefinitionId = processDefinitionId;
     }
 
-    public FormMapping type(TypeEnum type) {
+    public FormMapping type(@jakarta.annotation.Nullable TypeEnum type) {
 
         this.type = type;
         return this;
@@ -230,11 +240,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(TypeEnum type) {
+    public void setType(@jakarta.annotation.Nullable TypeEnum type) {
         this.type = type;
     }
 
-    public FormMapping target(TargetEnum target) {
+    public FormMapping target(@jakarta.annotation.Nullable TargetEnum target) {
 
         this.target = target;
         return this;
@@ -255,11 +265,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TARGET)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTarget(TargetEnum target) {
+    public void setTarget(@jakarta.annotation.Nullable TargetEnum target) {
         this.target = target;
     }
 
-    public FormMapping task(String task) {
+    public FormMapping task(@jakarta.annotation.Nullable String task) {
 
         this.task = task;
         return this;
@@ -280,11 +290,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TASK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTask(String task) {
+    public void setTask(@jakarta.annotation.Nullable String task) {
         this.task = task;
     }
 
-    public FormMapping pageId(String pageId) {
+    public FormMapping pageId(@jakarta.annotation.Nullable String pageId) {
 
         this.pageId = pageId;
         return this;
@@ -305,11 +315,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPageId(String pageId) {
+    public void setPageId(@jakarta.annotation.Nullable String pageId) {
         this.pageId = pageId;
     }
 
-    public FormMapping pageMappingKey(String pageMappingKey) {
+    public FormMapping pageMappingKey(@jakarta.annotation.Nullable String pageMappingKey) {
 
         this.pageMappingKey = pageMappingKey;
         return this;
@@ -330,11 +340,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PAGE_MAPPING_KEY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPageMappingKey(String pageMappingKey) {
+    public void setPageMappingKey(@jakarta.annotation.Nullable String pageMappingKey) {
         this.pageMappingKey = pageMappingKey;
     }
 
-    public FormMapping lastUpdateBy(String lastUpdateBy) {
+    public FormMapping lastUpdateBy(@jakarta.annotation.Nullable String lastUpdateBy) {
 
         this.lastUpdateBy = lastUpdateBy;
         return this;
@@ -355,11 +365,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateBy(String lastUpdateBy) {
+    public void setLastUpdateBy(@jakarta.annotation.Nullable String lastUpdateBy) {
         this.lastUpdateBy = lastUpdateBy;
     }
 
-    public FormMapping lastUpdateDate(String lastUpdateDate) {
+    public FormMapping lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -380,11 +390,11 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public FormMapping url(String url) {
+    public FormMapping url(@jakarta.annotation.Nullable String url) {
 
         this.url = url;
         return this;
@@ -405,7 +415,7 @@ public class FormMapping implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_URL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUrl(String url) {
+    public void setUrl(@jakarta.annotation.Nullable String url) {
         this.url = url;
     }
 

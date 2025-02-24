@@ -32,21 +32,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Contract.JSON_PROPERTY_CONSTRAINTS,
         Contract.JSON_PROPERTY_INPUTS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Contract implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
+    @jakarta.annotation.Nullable
     private List<ContractConstraint> constraints = new ArrayList<>();
 
     public static final String JSON_PROPERTY_INPUTS = "inputs";
+    @jakarta.annotation.Nullable
     private List<ContractInput> inputs = new ArrayList<>();
 
     public Contract() {
     }
 
-    public Contract constraints(List<ContractConstraint> constraints) {
+    public Contract constraints(@jakarta.annotation.Nullable List<ContractConstraint> constraints) {
 
         this.constraints = constraints;
         return this;
@@ -75,11 +77,11 @@ public class Contract implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConstraints(List<ContractConstraint> constraints) {
+    public void setConstraints(@jakarta.annotation.Nullable List<ContractConstraint> constraints) {
         this.constraints = constraints;
     }
 
-    public Contract inputs(List<ContractInput> inputs) {
+    public Contract inputs(@jakarta.annotation.Nullable List<ContractInput> inputs) {
 
         this.inputs = inputs;
         return this;
@@ -108,7 +110,7 @@ public class Contract implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INPUTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setInputs(List<ContractInput> inputs) {
+    public void setInputs(@jakarta.annotation.Nullable List<ContractInput> inputs) {
         this.inputs = inputs;
     }
 

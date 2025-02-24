@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ActorUpdateRequest.JSON_PROPERTY_DISPLAY_NAME,
         ActorUpdateRequest.JSON_PROPERTY_DESCRIPTION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ActorUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public ActorUpdateRequest() {
     }
 
-    public ActorUpdateRequest displayName(String displayName) {
+    public ActorUpdateRequest displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -65,11 +67,11 @@ public class ActorUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public ActorUpdateRequest description(String description) {
+    public ActorUpdateRequest description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -90,7 +92,7 @@ public class ActorUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 

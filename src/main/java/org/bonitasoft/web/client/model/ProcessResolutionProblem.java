@@ -32,24 +32,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessResolutionProblem.JSON_PROPERTY_RESOURCE_ID,
         ProcessResolutionProblem.JSON_PROPERTY_TARGET_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessResolutionProblem implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_MESSAGE = "message";
+    @jakarta.annotation.Nullable
     private String message;
 
     public static final String JSON_PROPERTY_RESOURCE_ID = "resource_id";
+    @jakarta.annotation.Nullable
     private String resourceId;
 
     public static final String JSON_PROPERTY_TARGET_TYPE = "target_type";
+    @jakarta.annotation.Nullable
     private String targetType;
 
     public ProcessResolutionProblem() {
     }
 
-    public ProcessResolutionProblem message(String message) {
+    public ProcessResolutionProblem message(@jakarta.annotation.Nullable String message) {
 
         this.message = message;
         return this;
@@ -70,11 +73,11 @@ public class ProcessResolutionProblem implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MESSAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMessage(String message) {
+    public void setMessage(@jakarta.annotation.Nullable String message) {
         this.message = message;
     }
 
-    public ProcessResolutionProblem resourceId(String resourceId) {
+    public ProcessResolutionProblem resourceId(@jakarta.annotation.Nullable String resourceId) {
 
         this.resourceId = resourceId;
         return this;
@@ -95,11 +98,11 @@ public class ProcessResolutionProblem implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_RESOURCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setResourceId(String resourceId) {
+    public void setResourceId(@jakarta.annotation.Nullable String resourceId) {
         this.resourceId = resourceId;
     }
 
-    public ProcessResolutionProblem targetType(String targetType) {
+    public ProcessResolutionProblem targetType(@jakarta.annotation.Nullable String targetType) {
 
         this.targetType = targetType;
         return this;
@@ -120,7 +123,7 @@ public class ProcessResolutionProblem implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TARGET_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTargetType(String targetType) {
+    public void setTargetType(@jakarta.annotation.Nullable String targetType) {
         this.targetType = targetType;
     }
 

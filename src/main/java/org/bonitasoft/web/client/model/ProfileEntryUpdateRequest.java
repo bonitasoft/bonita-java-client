@@ -35,36 +35,43 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfileEntryUpdateRequest.JSON_PROPERTY_IS_CUSTOM,
         ProfileEntryUpdateRequest.JSON_PROPERTY_PARENT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProfileEntryUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
+    @jakarta.annotation.Nullable
     private String profileId;
 
     public static final String JSON_PROPERTY_PAGE = "page";
+    @jakarta.annotation.Nullable
     private String page;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public static final String JSON_PROPERTY_IS_CUSTOM = "isCustom";
+    @jakarta.annotation.Nullable
     private Boolean isCustom;
 
     public static final String JSON_PROPERTY_PARENT_ID = "parent_id";
+    @jakarta.annotation.Nullable
     private String parentId;
 
     public ProfileEntryUpdateRequest() {
     }
 
-    public ProfileEntryUpdateRequest profileId(String profileId) {
+    public ProfileEntryUpdateRequest profileId(@jakarta.annotation.Nullable String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -85,11 +92,11 @@ public class ProfileEntryUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProfileId(String profileId) {
+    public void setProfileId(@jakarta.annotation.Nullable String profileId) {
         this.profileId = profileId;
     }
 
-    public ProfileEntryUpdateRequest page(String page) {
+    public ProfileEntryUpdateRequest page(@jakarta.annotation.Nullable String page) {
 
         this.page = page;
         return this;
@@ -110,11 +117,11 @@ public class ProfileEntryUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPage(String page) {
+    public void setPage(@jakarta.annotation.Nullable String page) {
         this.page = page;
     }
 
-    public ProfileEntryUpdateRequest description(String description) {
+    public ProfileEntryUpdateRequest description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -135,11 +142,11 @@ public class ProfileEntryUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ProfileEntryUpdateRequest name(String name) {
+    public ProfileEntryUpdateRequest name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -160,11 +167,11 @@ public class ProfileEntryUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ProfileEntryUpdateRequest type(String type) {
+    public ProfileEntryUpdateRequest type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -185,11 +192,11 @@ public class ProfileEntryUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 
-    public ProfileEntryUpdateRequest isCustom(Boolean isCustom) {
+    public ProfileEntryUpdateRequest isCustom(@jakarta.annotation.Nullable Boolean isCustom) {
 
         this.isCustom = isCustom;
         return this;
@@ -210,11 +217,11 @@ public class ProfileEntryUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IS_CUSTOM)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIsCustom(Boolean isCustom) {
+    public void setIsCustom(@jakarta.annotation.Nullable Boolean isCustom) {
         this.isCustom = isCustom;
     }
 
-    public ProfileEntryUpdateRequest parentId(String parentId) {
+    public ProfileEntryUpdateRequest parentId(@jakarta.annotation.Nullable String parentId) {
 
         this.parentId = parentId;
         return this;
@@ -235,7 +242,7 @@ public class ProfileEntryUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentId(String parentId) {
+    public void setParentId(@jakarta.annotation.Nullable String parentId) {
         this.parentId = parentId;
     }
 

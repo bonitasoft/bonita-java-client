@@ -21,7 +21,6 @@ src/main/java/org/bonitasoft/web/client/api/ArchivedProcessInstanceDocumentApi.j
 src/main/java/org/bonitasoft/web/client/api/ArchivedProcessInstanceVariableApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedUserTaskApi.java
-src/main/java/org/bonitasoft/web/client/api/AuthenticationApi.java
 src/main/java/org/bonitasoft/web/client/api/BdmAccessControlApi.java
 src/main/java/org/bonitasoft/web/client/api/BdmApi.java
 src/main/java/org/bonitasoft/web/client/api/BusinessDataQueryApi.java

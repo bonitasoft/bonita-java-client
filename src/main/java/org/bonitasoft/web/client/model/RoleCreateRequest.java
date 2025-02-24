@@ -32,27 +32,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         RoleCreateRequest.JSON_PROPERTY_DESCRIPTION,
         RoleCreateRequest.JSON_PROPERTY_ICON
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class RoleCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nonnull
     private String name;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_ICON = "icon";
+    @jakarta.annotation.Nullable
     private String icon;
 
     public RoleCreateRequest() {
     }
 
-    public RoleCreateRequest name(String name) {
+    public RoleCreateRequest name(@jakarta.annotation.Nonnull String name) {
 
         this.name = name;
         return this;
@@ -73,11 +77,11 @@ public class RoleCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public RoleCreateRequest displayName(String displayName) {
+    public RoleCreateRequest displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -98,11 +102,11 @@ public class RoleCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public RoleCreateRequest description(String description) {
+    public RoleCreateRequest description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -123,11 +127,11 @@ public class RoleCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public RoleCreateRequest icon(String icon) {
+    public RoleCreateRequest icon(@jakarta.annotation.Nullable String icon) {
 
         this.icon = icon;
         return this;
@@ -148,7 +152,7 @@ public class RoleCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIcon(String icon) {
+    public void setIcon(@jakarta.annotation.Nullable String icon) {
         this.icon = icon;
     }
 

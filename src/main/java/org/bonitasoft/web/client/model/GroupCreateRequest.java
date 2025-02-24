@@ -33,30 +33,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         GroupCreateRequest.JSON_PROPERTY_DESCRIPTION,
         GroupCreateRequest.JSON_PROPERTY_ICON
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class GroupCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nonnull
     private String name;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_PARENT_GROUP_ID = "parent_group_id";
+    @jakarta.annotation.Nullable
     private String parentGroupId;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_ICON = "icon";
+    @jakarta.annotation.Nullable
     private String icon;
 
     public GroupCreateRequest() {
     }
 
-    public GroupCreateRequest name(String name) {
+    public GroupCreateRequest name(@jakarta.annotation.Nonnull String name) {
 
         this.name = name;
         return this;
@@ -77,11 +82,11 @@ public class GroupCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public GroupCreateRequest displayName(String displayName) {
+    public GroupCreateRequest displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -102,11 +107,11 @@ public class GroupCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public GroupCreateRequest parentGroupId(String parentGroupId) {
+    public GroupCreateRequest parentGroupId(@jakarta.annotation.Nullable String parentGroupId) {
 
         this.parentGroupId = parentGroupId;
         return this;
@@ -127,11 +132,11 @@ public class GroupCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentGroupId(String parentGroupId) {
+    public void setParentGroupId(@jakarta.annotation.Nullable String parentGroupId) {
         this.parentGroupId = parentGroupId;
     }
 
-    public GroupCreateRequest description(String description) {
+    public GroupCreateRequest description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -152,11 +157,11 @@ public class GroupCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public GroupCreateRequest icon(String icon) {
+    public GroupCreateRequest icon(@jakarta.annotation.Nullable String icon) {
 
         this.icon = icon;
         return this;
@@ -177,7 +182,7 @@ public class GroupCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIcon(String icon) {
+    public void setIcon(@jakarta.annotation.Nullable String icon) {
         this.icon = icon;
     }
 

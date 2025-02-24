@@ -390,10 +390,6 @@ paths:
               $ref: '#/components/schemas/LoginRequest'
       responses:
         "204":
-          content:
-            text/plain:
-              schema:
-                type: string
           description: Login success
           headers:
             Set-Cookie:
@@ -462,7 +458,6 @@ paths:
       x-content-type: application/x-www-form-urlencoded
       x-accepts:
       - application/json
-      - text/plain
   /logoutservice:
     get:
       description: |

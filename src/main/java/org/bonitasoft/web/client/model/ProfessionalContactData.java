@@ -41,54 +41,67 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfessionalContactData.JSON_PROPERTY_ROOM,
         ProfessionalContactData.JSON_PROPERTY_EMAIL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProfessionalContactData implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nonnull
     private String id;
 
     public static final String JSON_PROPERTY_FAX_NUMBER = "fax_number";
+    @jakarta.annotation.Nullable
     private String faxNumber;
 
     public static final String JSON_PROPERTY_BUILDING = "building";
+    @jakarta.annotation.Nullable
     private String building;
 
     public static final String JSON_PROPERTY_PHONE_NUMBER = "phone_number";
+    @jakarta.annotation.Nullable
     private String phoneNumber;
 
     public static final String JSON_PROPERTY_WEBSITE = "website";
+    @jakarta.annotation.Nullable
     private String website;
 
     public static final String JSON_PROPERTY_ZIPCODE = "zipcode";
+    @jakarta.annotation.Nullable
     private String zipcode;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private String state;
 
     public static final String JSON_PROPERTY_CITY = "city";
+    @jakarta.annotation.Nullable
     private String city;
 
     public static final String JSON_PROPERTY_COUNTRY = "country";
+    @jakarta.annotation.Nullable
     private String country;
 
     public static final String JSON_PROPERTY_MOBILE_NUMBER = "mobile_number";
+    @jakarta.annotation.Nullable
     private String mobileNumber;
 
     public static final String JSON_PROPERTY_ADDRESS = "address";
+    @jakarta.annotation.Nullable
     private String address;
 
     public static final String JSON_PROPERTY_ROOM = "room";
+    @jakarta.annotation.Nullable
     private String room;
 
     public static final String JSON_PROPERTY_EMAIL = "email";
+    @jakarta.annotation.Nullable
     private String email;
 
     public ProfessionalContactData() {
     }
 
-    public ProfessionalContactData id(String id) {
+    public ProfessionalContactData id(@jakarta.annotation.Nonnull String id) {
 
         this.id = id;
         return this;
@@ -109,11 +122,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nonnull String id) {
         this.id = id;
     }
 
-    public ProfessionalContactData faxNumber(String faxNumber) {
+    public ProfessionalContactData faxNumber(@jakarta.annotation.Nullable String faxNumber) {
 
         this.faxNumber = faxNumber;
         return this;
@@ -134,11 +147,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FAX_NUMBER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFaxNumber(String faxNumber) {
+    public void setFaxNumber(@jakarta.annotation.Nullable String faxNumber) {
         this.faxNumber = faxNumber;
     }
 
-    public ProfessionalContactData building(String building) {
+    public ProfessionalContactData building(@jakarta.annotation.Nullable String building) {
 
         this.building = building;
         return this;
@@ -159,11 +172,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_BUILDING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setBuilding(String building) {
+    public void setBuilding(@jakarta.annotation.Nullable String building) {
         this.building = building;
     }
 
-    public ProfessionalContactData phoneNumber(String phoneNumber) {
+    public ProfessionalContactData phoneNumber(@jakarta.annotation.Nullable String phoneNumber) {
 
         this.phoneNumber = phoneNumber;
         return this;
@@ -184,11 +197,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(@jakarta.annotation.Nullable String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public ProfessionalContactData website(String website) {
+    public ProfessionalContactData website(@jakarta.annotation.Nullable String website) {
 
         this.website = website;
         return this;
@@ -209,11 +222,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_WEBSITE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setWebsite(String website) {
+    public void setWebsite(@jakarta.annotation.Nullable String website) {
         this.website = website;
     }
 
-    public ProfessionalContactData zipcode(String zipcode) {
+    public ProfessionalContactData zipcode(@jakarta.annotation.Nullable String zipcode) {
 
         this.zipcode = zipcode;
         return this;
@@ -234,11 +247,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ZIPCODE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setZipcode(String zipcode) {
+    public void setZipcode(@jakarta.annotation.Nullable String zipcode) {
         this.zipcode = zipcode;
     }
 
-    public ProfessionalContactData state(String state) {
+    public ProfessionalContactData state(@jakarta.annotation.Nullable String state) {
 
         this.state = state;
         return this;
@@ -259,11 +272,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(String state) {
+    public void setState(@jakarta.annotation.Nullable String state) {
         this.state = state;
     }
 
-    public ProfessionalContactData city(String city) {
+    public ProfessionalContactData city(@jakarta.annotation.Nullable String city) {
 
         this.city = city;
         return this;
@@ -284,11 +297,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCity(String city) {
+    public void setCity(@jakarta.annotation.Nullable String city) {
         this.city = city;
     }
 
-    public ProfessionalContactData country(String country) {
+    public ProfessionalContactData country(@jakarta.annotation.Nullable String country) {
 
         this.country = country;
         return this;
@@ -309,11 +322,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_COUNTRY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCountry(String country) {
+    public void setCountry(@jakarta.annotation.Nullable String country) {
         this.country = country;
     }
 
-    public ProfessionalContactData mobileNumber(String mobileNumber) {
+    public ProfessionalContactData mobileNumber(@jakarta.annotation.Nullable String mobileNumber) {
 
         this.mobileNumber = mobileNumber;
         return this;
@@ -334,11 +347,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MOBILE_NUMBER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMobileNumber(String mobileNumber) {
+    public void setMobileNumber(@jakarta.annotation.Nullable String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
-    public ProfessionalContactData address(String address) {
+    public ProfessionalContactData address(@jakarta.annotation.Nullable String address) {
 
         this.address = address;
         return this;
@@ -359,11 +372,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ADDRESS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAddress(String address) {
+    public void setAddress(@jakarta.annotation.Nullable String address) {
         this.address = address;
     }
 
-    public ProfessionalContactData room(String room) {
+    public ProfessionalContactData room(@jakarta.annotation.Nullable String room) {
 
         this.room = room;
         return this;
@@ -384,11 +397,11 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROOM)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRoom(String room) {
+    public void setRoom(@jakarta.annotation.Nullable String room) {
         this.room = room;
     }
 
-    public ProfessionalContactData email(String email) {
+    public ProfessionalContactData email(@jakarta.annotation.Nullable String email) {
 
         this.email = email;
         return this;
@@ -409,7 +422,7 @@ public class ProfessionalContactData implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EMAIL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setEmail(String email) {
+    public void setEmail(@jakarta.annotation.Nullable String email) {
         this.email = email;
     }
 

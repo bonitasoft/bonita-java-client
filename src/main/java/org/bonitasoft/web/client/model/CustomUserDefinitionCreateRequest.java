@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         CustomUserDefinitionCreateRequest.JSON_PROPERTY_NAME,
         CustomUserDefinitionCreateRequest.JSON_PROPERTY_DESCRIPTION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class CustomUserDefinitionCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public CustomUserDefinitionCreateRequest() {
     }
 
-    public CustomUserDefinitionCreateRequest name(String name) {
+    public CustomUserDefinitionCreateRequest name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -65,11 +67,11 @@ public class CustomUserDefinitionCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public CustomUserDefinitionCreateRequest description(String description) {
+    public CustomUserDefinitionCreateRequest description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -90,7 +92,7 @@ public class CustomUserDefinitionCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 

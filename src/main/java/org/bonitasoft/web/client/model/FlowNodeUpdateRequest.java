@@ -29,18 +29,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         FlowNodeUpdateRequest.JSON_PROPERTY_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class FlowNodeUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private String state;
 
     public FlowNodeUpdateRequest() {
     }
 
-    public FlowNodeUpdateRequest state(String state) {
+    public FlowNodeUpdateRequest state(@jakarta.annotation.Nullable String state) {
 
         this.state = state;
         return this;
@@ -61,7 +62,7 @@ public class FlowNodeUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(String state) {
+    public void setState(@jakarta.annotation.Nullable String state) {
         this.state = state;
     }
 

@@ -29,18 +29,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         BDMInstallRequest.JSON_PROPERTY_FILE_UPLOAD
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class BDMInstallRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_FILE_UPLOAD = "fileUpload";
+    @jakarta.annotation.Nullable
     private String fileUpload;
 
     public BDMInstallRequest() {
     }
 
-    public BDMInstallRequest fileUpload(String fileUpload) {
+    public BDMInstallRequest fileUpload(@jakarta.annotation.Nullable String fileUpload) {
 
         this.fileUpload = fileUpload;
         return this;
@@ -61,7 +62,7 @@ public class BDMInstallRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FILE_UPLOAD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFileUpload(String fileUpload) {
+    public void setFileUpload(@jakarta.annotation.Nullable String fileUpload) {
         this.fileUpload = fileUpload;
     }
 

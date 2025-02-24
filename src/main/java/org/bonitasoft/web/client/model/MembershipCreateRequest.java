@@ -31,24 +31,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         MembershipCreateRequest.JSON_PROPERTY_GROUP_ID,
         MembershipCreateRequest.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class MembershipCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ROLE_ID = "role_id";
+    @jakarta.annotation.Nonnull
     private String roleId;
 
     public static final String JSON_PROPERTY_GROUP_ID = "group_id";
+    @jakarta.annotation.Nonnull
     private String groupId;
 
     public static final String JSON_PROPERTY_USER_ID = "user_id";
+    @jakarta.annotation.Nonnull
     private String userId;
 
     public MembershipCreateRequest() {
     }
 
-    public MembershipCreateRequest roleId(String roleId) {
+    public MembershipCreateRequest roleId(@jakarta.annotation.Nonnull String roleId) {
 
         this.roleId = roleId;
         return this;
@@ -69,11 +72,11 @@ public class MembershipCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROLE_ID)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setRoleId(String roleId) {
+    public void setRoleId(@jakarta.annotation.Nonnull String roleId) {
         this.roleId = roleId;
     }
 
-    public MembershipCreateRequest groupId(String groupId) {
+    public MembershipCreateRequest groupId(@jakarta.annotation.Nonnull String groupId) {
 
         this.groupId = groupId;
         return this;
@@ -94,11 +97,11 @@ public class MembershipCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setGroupId(String groupId) {
+    public void setGroupId(@jakarta.annotation.Nonnull String groupId) {
         this.groupId = groupId;
     }
 
-    public MembershipCreateRequest userId(String userId) {
+    public MembershipCreateRequest userId(@jakarta.annotation.Nonnull String userId) {
 
         this.userId = userId;
         return this;
@@ -119,7 +122,7 @@ public class MembershipCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nonnull String userId) {
         this.userId = userId;
     }
 

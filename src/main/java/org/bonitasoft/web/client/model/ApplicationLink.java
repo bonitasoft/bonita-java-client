@@ -44,39 +44,49 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ApplicationLink.JSON_PROPERTY_EDITABLE,
         ApplicationLink.JSON_PROPERTY_LINK
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ApplicationLink implements Serializable, Application {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+    @jakarta.annotation.Nullable
     private String createdBy;
 
     public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+    @jakarta.annotation.Nullable
     private String creationDate;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
+    @jakarta.annotation.Nullable
     private String profileId;
 
     public static final String JSON_PROPERTY_TOKEN = "token";
+    @jakarta.annotation.Nullable
     private String token;
 
     public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
+    @jakarta.annotation.Nullable
     private String updatedBy;
 
     public static final String JSON_PROPERTY_VERSION = "version";
+    @jakarta.annotation.Nullable
     private String version;
 
     /**
@@ -84,9 +94,9 @@ public class ApplicationLink implements Serializable, Application {
      */
     public enum StateEnum {
 
-        ACTIVATED("ACTIVATED"),
+        ACTIVATED(String.valueOf("ACTIVATED")),
 
-        DEACTIVATED("DEACTIVATED");
+        DEACTIVATED(String.valueOf("DEACTIVATED"));
 
         private String value;
 
@@ -116,6 +126,7 @@ public class ApplicationLink implements Serializable, Application {
     }
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private StateEnum state;
 
     /**
@@ -124,11 +135,11 @@ public class ApplicationLink implements Serializable, Application {
      */
     public enum VisibilityEnum {
 
-        ALL("ALL"),
+        ALL(String.valueOf("ALL")),
 
-        TECHNICAL_USER("TECHNICAL_USER"),
+        TECHNICAL_USER(String.valueOf("TECHNICAL_USER")),
 
-        RESTRICTED("RESTRICTED");
+        RESTRICTED(String.valueOf("RESTRICTED"));
 
         private String value;
 
@@ -158,18 +169,21 @@ public class ApplicationLink implements Serializable, Application {
     }
 
     public static final String JSON_PROPERTY_VISIBILITY = "visibility";
+    @jakarta.annotation.Nullable
     private VisibilityEnum visibility;
 
     public static final String JSON_PROPERTY_EDITABLE = "editable";
+    @jakarta.annotation.Nullable
     private Boolean editable;
 
     public static final String JSON_PROPERTY_LINK = "link";
+    @jakarta.annotation.Nullable
     private Boolean link;
 
     public ApplicationLink() {
     }
 
-    public ApplicationLink createdBy(String createdBy) {
+    public ApplicationLink createdBy(@jakarta.annotation.Nullable String createdBy) {
 
         this.createdBy = createdBy;
         return this;
@@ -190,11 +204,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_CREATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(@jakarta.annotation.Nullable String createdBy) {
         this.createdBy = createdBy;
     }
 
-    public ApplicationLink creationDate(String creationDate) {
+    public ApplicationLink creationDate(@jakarta.annotation.Nullable String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -215,11 +229,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(@jakarta.annotation.Nullable String creationDate) {
         this.creationDate = creationDate;
     }
 
-    public ApplicationLink description(String description) {
+    public ApplicationLink description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -240,11 +254,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ApplicationLink displayName(String displayName) {
+    public ApplicationLink displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -265,11 +279,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public ApplicationLink id(String id) {
+    public ApplicationLink id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -290,11 +304,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ApplicationLink lastUpdateDate(String lastUpdateDate) {
+    public ApplicationLink lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -315,11 +329,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public ApplicationLink profileId(String profileId) {
+    public ApplicationLink profileId(@jakarta.annotation.Nullable String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -340,11 +354,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProfileId(String profileId) {
+    public void setProfileId(@jakarta.annotation.Nullable String profileId) {
         this.profileId = profileId;
     }
 
-    public ApplicationLink token(String token) {
+    public ApplicationLink token(@jakarta.annotation.Nullable String token) {
 
         this.token = token;
         return this;
@@ -365,11 +379,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setToken(String token) {
+    public void setToken(@jakarta.annotation.Nullable String token) {
         this.token = token;
     }
 
-    public ApplicationLink updatedBy(String updatedBy) {
+    public ApplicationLink updatedBy(@jakarta.annotation.Nullable String updatedBy) {
 
         this.updatedBy = updatedBy;
         return this;
@@ -390,11 +404,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_UPDATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(@jakarta.annotation.Nullable String updatedBy) {
         this.updatedBy = updatedBy;
     }
 
-    public ApplicationLink version(String version) {
+    public ApplicationLink version(@jakarta.annotation.Nullable String version) {
 
         this.version = version;
         return this;
@@ -415,11 +429,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVersion(String version) {
+    public void setVersion(@jakarta.annotation.Nullable String version) {
         this.version = version;
     }
 
-    public ApplicationLink state(StateEnum state) {
+    public ApplicationLink state(@jakarta.annotation.Nullable StateEnum state) {
 
         this.state = state;
         return this;
@@ -440,11 +454,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(StateEnum state) {
+    public void setState(@jakarta.annotation.Nullable StateEnum state) {
         this.state = state;
     }
 
-    public ApplicationLink visibility(VisibilityEnum visibility) {
+    public ApplicationLink visibility(@jakarta.annotation.Nullable VisibilityEnum visibility) {
 
         this.visibility = visibility;
         return this;
@@ -466,11 +480,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_VISIBILITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVisibility(VisibilityEnum visibility) {
+    public void setVisibility(@jakarta.annotation.Nullable VisibilityEnum visibility) {
         this.visibility = visibility;
     }
 
-    public ApplicationLink editable(Boolean editable) {
+    public ApplicationLink editable(@jakarta.annotation.Nullable Boolean editable) {
 
         this.editable = editable;
         return this;
@@ -491,11 +505,11 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_EDITABLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setEditable(Boolean editable) {
+    public void setEditable(@jakarta.annotation.Nullable Boolean editable) {
         this.editable = editable;
     }
 
-    public ApplicationLink link(Boolean link) {
+    public ApplicationLink link(@jakarta.annotation.Nullable Boolean link) {
 
         this.link = link;
         return this;
@@ -516,7 +530,7 @@ public class ApplicationLink implements Serializable, Application {
 
     @JsonProperty(JSON_PROPERTY_LINK)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLink(Boolean link) {
+    public void setLink(@jakarta.annotation.Nullable Boolean link) {
         this.link = link;
     }
 

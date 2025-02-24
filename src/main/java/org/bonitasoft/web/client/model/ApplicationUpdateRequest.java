@@ -35,36 +35,43 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationUpdateRequest.JSON_PROPERTY_THEME_ID,
         ApplicationUpdateRequest.JSON_PROPERTY_LAYOUT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ApplicationUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
+    @jakarta.annotation.Nullable
     private String profileId;
 
     public static final String JSON_PROPERTY_TOKEN = "token";
+    @jakarta.annotation.Nullable
     private String token;
 
     public static final String JSON_PROPERTY_VERSION = "version";
+    @jakarta.annotation.Nullable
     private String version;
 
     public static final String JSON_PROPERTY_THEME_ID = "themeId";
+    @jakarta.annotation.Nullable
     private String themeId;
 
     public static final String JSON_PROPERTY_LAYOUT_ID = "layoutId";
+    @jakarta.annotation.Nullable
     private String layoutId;
 
     public ApplicationUpdateRequest() {
     }
 
-    public ApplicationUpdateRequest description(String description) {
+    public ApplicationUpdateRequest description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -85,11 +92,11 @@ public class ApplicationUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ApplicationUpdateRequest displayName(String displayName) {
+    public ApplicationUpdateRequest displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -110,11 +117,11 @@ public class ApplicationUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public ApplicationUpdateRequest profileId(String profileId) {
+    public ApplicationUpdateRequest profileId(@jakarta.annotation.Nullable String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -135,11 +142,11 @@ public class ApplicationUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProfileId(String profileId) {
+    public void setProfileId(@jakarta.annotation.Nullable String profileId) {
         this.profileId = profileId;
     }
 
-    public ApplicationUpdateRequest token(String token) {
+    public ApplicationUpdateRequest token(@jakarta.annotation.Nullable String token) {
 
         this.token = token;
         return this;
@@ -160,11 +167,11 @@ public class ApplicationUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setToken(String token) {
+    public void setToken(@jakarta.annotation.Nullable String token) {
         this.token = token;
     }
 
-    public ApplicationUpdateRequest version(String version) {
+    public ApplicationUpdateRequest version(@jakarta.annotation.Nullable String version) {
 
         this.version = version;
         return this;
@@ -185,11 +192,11 @@ public class ApplicationUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVersion(String version) {
+    public void setVersion(@jakarta.annotation.Nullable String version) {
         this.version = version;
     }
 
-    public ApplicationUpdateRequest themeId(String themeId) {
+    public ApplicationUpdateRequest themeId(@jakarta.annotation.Nullable String themeId) {
 
         this.themeId = themeId;
         return this;
@@ -210,11 +217,11 @@ public class ApplicationUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_THEME_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setThemeId(String themeId) {
+    public void setThemeId(@jakarta.annotation.Nullable String themeId) {
         this.themeId = themeId;
     }
 
-    public ApplicationUpdateRequest layoutId(String layoutId) {
+    public ApplicationUpdateRequest layoutId(@jakarta.annotation.Nullable String layoutId) {
 
         this.layoutId = layoutId;
         return this;
@@ -235,7 +242,7 @@ public class ApplicationUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAYOUT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLayoutId(String layoutId) {
+    public void setLayoutId(@jakarta.annotation.Nullable String layoutId) {
         this.layoutId = layoutId;
     }
 

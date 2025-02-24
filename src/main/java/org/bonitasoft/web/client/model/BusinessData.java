@@ -40,22 +40,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         BusinessData.JSON_PROPERTY_PERSISTENCE_ID_STRING,
         BusinessData.JSON_PROPERTY_PERSISTENCE_VERSION_STRING
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class BusinessData extends HashMap<String, Object> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PERSISTENCE_ID_STRING = "persistenceId_string";
+    @jakarta.annotation.Nullable
     private String persistenceIdString;
 
     public static final String JSON_PROPERTY_PERSISTENCE_VERSION_STRING = "persistenceVersion_string";
+    @jakarta.annotation.Nullable
     private String persistenceVersionString;
 
     public BusinessData() {
 
     }
 
-    public BusinessData persistenceIdString(String persistenceIdString) {
+    public BusinessData persistenceIdString(@jakarta.annotation.Nullable String persistenceIdString) {
 
         this.persistenceIdString = persistenceIdString;
         return this;
@@ -76,11 +78,11 @@ public class BusinessData extends HashMap<String, Object> implements Serializabl
 
     @JsonProperty(JSON_PROPERTY_PERSISTENCE_ID_STRING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPersistenceIdString(String persistenceIdString) {
+    public void setPersistenceIdString(@jakarta.annotation.Nullable String persistenceIdString) {
         this.persistenceIdString = persistenceIdString;
     }
 
-    public BusinessData persistenceVersionString(String persistenceVersionString) {
+    public BusinessData persistenceVersionString(@jakarta.annotation.Nullable String persistenceVersionString) {
 
         this.persistenceVersionString = persistenceVersionString;
         return this;
@@ -101,7 +103,7 @@ public class BusinessData extends HashMap<String, Object> implements Serializabl
 
     @JsonProperty(JSON_PROPERTY_PERSISTENCE_VERSION_STRING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPersistenceVersionString(String persistenceVersionString) {
+    public void setPersistenceVersionString(@jakarta.annotation.Nullable String persistenceVersionString) {
         this.persistenceVersionString = persistenceVersionString;
     }
 

@@ -37,36 +37,43 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Expression.JSON_PROPERTY_INTERPRETER,
         Expression.JSON_PROPERTY_DEPENDENCIES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Expression implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_CONTENT = "content";
+    @jakarta.annotation.Nullable
     private String content;
 
     public static final String JSON_PROPERTY_EXPRESSION_TYPE = "expressionType";
+    @jakarta.annotation.Nullable
     private String expressionType;
 
     public static final String JSON_PROPERTY_RETURN_TYPE = "returnType";
+    @jakarta.annotation.Nullable
     private String returnType;
 
     public static final String JSON_PROPERTY_INTERPRETER = "interpreter";
+    @jakarta.annotation.Nullable
     private String interpreter;
 
     public static final String JSON_PROPERTY_DEPENDENCIES = "dependencies";
+    @jakarta.annotation.Nullable
     private List<Expression> dependencies = new ArrayList<>();
 
     public Expression() {
     }
 
-    public Expression id(String id) {
+    public Expression id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -87,11 +94,11 @@ public class Expression implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public Expression name(String name) {
+    public Expression name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -112,11 +119,11 @@ public class Expression implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public Expression content(String content) {
+    public Expression content(@jakarta.annotation.Nullable String content) {
 
         this.content = content;
         return this;
@@ -137,11 +144,11 @@ public class Expression implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContent(String content) {
+    public void setContent(@jakarta.annotation.Nullable String content) {
         this.content = content;
     }
 
-    public Expression expressionType(String expressionType) {
+    public Expression expressionType(@jakarta.annotation.Nullable String expressionType) {
 
         this.expressionType = expressionType;
         return this;
@@ -162,11 +169,11 @@ public class Expression implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXPRESSION_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExpressionType(String expressionType) {
+    public void setExpressionType(@jakarta.annotation.Nullable String expressionType) {
         this.expressionType = expressionType;
     }
 
-    public Expression returnType(String returnType) {
+    public Expression returnType(@jakarta.annotation.Nullable String returnType) {
 
         this.returnType = returnType;
         return this;
@@ -187,11 +194,11 @@ public class Expression implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_RETURN_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setReturnType(String returnType) {
+    public void setReturnType(@jakarta.annotation.Nullable String returnType) {
         this.returnType = returnType;
     }
 
-    public Expression interpreter(String interpreter) {
+    public Expression interpreter(@jakarta.annotation.Nullable String interpreter) {
 
         this.interpreter = interpreter;
         return this;
@@ -212,11 +219,11 @@ public class Expression implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INTERPRETER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setInterpreter(String interpreter) {
+    public void setInterpreter(@jakarta.annotation.Nullable String interpreter) {
         this.interpreter = interpreter;
     }
 
-    public Expression dependencies(List<Expression> dependencies) {
+    public Expression dependencies(@jakarta.annotation.Nullable List<Expression> dependencies) {
 
         this.dependencies = dependencies;
         return this;
@@ -245,7 +252,7 @@ public class Expression implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DEPENDENCIES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDependencies(List<Expression> dependencies) {
+    public void setDependencies(@jakarta.annotation.Nullable List<Expression> dependencies) {
         this.dependencies = dependencies;
     }
 
