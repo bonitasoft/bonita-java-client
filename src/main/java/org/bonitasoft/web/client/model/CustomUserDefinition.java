@@ -31,24 +31,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         CustomUserDefinition.JSON_PROPERTY_DESCRIPTION,
         CustomUserDefinition.JSON_PROPERTY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class CustomUserDefinition implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public CustomUserDefinition() {
     }
 
-    public CustomUserDefinition id(String id) {
+    public CustomUserDefinition id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -69,11 +72,11 @@ public class CustomUserDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public CustomUserDefinition description(String description) {
+    public CustomUserDefinition description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -94,11 +97,11 @@ public class CustomUserDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public CustomUserDefinition name(String name) {
+    public CustomUserDefinition name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -119,7 +122,7 @@ public class CustomUserDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 

@@ -31,24 +31,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ActorDefinition.JSON_PROPERTY_DESCRIPTION,
         ActorDefinition.JSON_PROPERTY_INITIATOR
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ActorDefinition implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_INITIATOR = "initiator";
+    @jakarta.annotation.Nullable
     private Boolean initiator;
 
     public ActorDefinition() {
     }
 
-    public ActorDefinition name(String name) {
+    public ActorDefinition name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -69,11 +72,11 @@ public class ActorDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ActorDefinition description(String description) {
+    public ActorDefinition description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -94,11 +97,11 @@ public class ActorDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ActorDefinition initiator(Boolean initiator) {
+    public ActorDefinition initiator(@jakarta.annotation.Nullable Boolean initiator) {
 
         this.initiator = initiator;
         return this;
@@ -119,7 +122,7 @@ public class ActorDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INITIATOR)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setInitiator(Boolean initiator) {
+    public void setInitiator(@jakarta.annotation.Nullable Boolean initiator) {
         this.initiator = initiator;
     }
 

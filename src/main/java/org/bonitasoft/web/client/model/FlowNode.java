@@ -50,81 +50,103 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         FlowNode.JSON_PROPERTY_LAST_UPDATE_DATE,
         FlowNode.JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class FlowNode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
+    @jakarta.annotation.Nullable
     private String displayDescription;
 
     public static final String JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE = "executedBySubstitute";
+    @jakarta.annotation.Nullable
     private String executedBySubstitute;
 
     public static final String JSON_PROPERTY_CASE_ID = "caseId";
+    @jakarta.annotation.Nullable
     private String caseId;
 
     public static final String JSON_PROPERTY_PARENT_CASE_ID = "parentCaseId";
+    @jakarta.annotation.Nullable
     private String parentCaseId;
 
     public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
+    @jakarta.annotation.Nullable
     private String rootCaseId;
 
     public static final String JSON_PROPERTY_PROCESS_ID = "processId";
+    @jakarta.annotation.Nullable
     private String processId;
 
     public static final String JSON_PROPERTY_ROOT_CONTAINER_ID = "rootContainerId";
+    @jakarta.annotation.Nullable
     private String rootContainerId;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private String state;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+    @jakarta.annotation.Nullable
     private String assignedId;
 
     public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
+    @jakarta.annotation.Nullable
     private String assignedDate;
 
     public static final String JSON_PROPERTY_EXECUTED_BY = "executedBy";
+    @jakarta.annotation.Nullable
     private String executedBy;
 
     public static final String JSON_PROPERTY_PRIORITY = "priority";
+    @jakarta.annotation.Nullable
     private String priority;
 
     public static final String JSON_PROPERTY_ACTOR_ID = "actorId";
+    @jakarta.annotation.Nullable
     private String actorId;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_REACHED_STATE_DATE = "reached_state_date";
+    @jakarta.annotation.Nullable
     private String reachedStateDate;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
+    @jakarta.annotation.Nullable
     private String dueDate;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public static final String JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE = "parentTaskId&quot;";
+    @jakarta.annotation.Nullable
     private String parentTaskIdDoubleQuote;
 
     public FlowNode() {
     }
 
-    public FlowNode id(String id) {
+    public FlowNode id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -145,11 +167,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public FlowNode displayDescription(String displayDescription) {
+    public FlowNode displayDescription(@jakarta.annotation.Nullable String displayDescription) {
 
         this.displayDescription = displayDescription;
         return this;
@@ -170,11 +192,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayDescription(String displayDescription) {
+    public void setDisplayDescription(@jakarta.annotation.Nullable String displayDescription) {
         this.displayDescription = displayDescription;
     }
 
-    public FlowNode executedBySubstitute(String executedBySubstitute) {
+    public FlowNode executedBySubstitute(@jakarta.annotation.Nullable String executedBySubstitute) {
 
         this.executedBySubstitute = executedBySubstitute;
         return this;
@@ -195,11 +217,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY_SUBSTITUTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExecutedBySubstitute(String executedBySubstitute) {
+    public void setExecutedBySubstitute(@jakarta.annotation.Nullable String executedBySubstitute) {
         this.executedBySubstitute = executedBySubstitute;
     }
 
-    public FlowNode caseId(String caseId) {
+    public FlowNode caseId(@jakarta.annotation.Nullable String caseId) {
 
         this.caseId = caseId;
         return this;
@@ -220,11 +242,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseId(String caseId) {
+    public void setCaseId(@jakarta.annotation.Nullable String caseId) {
         this.caseId = caseId;
     }
 
-    public FlowNode parentCaseId(String parentCaseId) {
+    public FlowNode parentCaseId(@jakarta.annotation.Nullable String parentCaseId) {
 
         this.parentCaseId = parentCaseId;
         return this;
@@ -245,11 +267,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentCaseId(String parentCaseId) {
+    public void setParentCaseId(@jakarta.annotation.Nullable String parentCaseId) {
         this.parentCaseId = parentCaseId;
     }
 
-    public FlowNode rootCaseId(String rootCaseId) {
+    public FlowNode rootCaseId(@jakarta.annotation.Nullable String rootCaseId) {
 
         this.rootCaseId = rootCaseId;
         return this;
@@ -270,11 +292,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRootCaseId(String rootCaseId) {
+    public void setRootCaseId(@jakarta.annotation.Nullable String rootCaseId) {
         this.rootCaseId = rootCaseId;
     }
 
-    public FlowNode processId(String processId) {
+    public FlowNode processId(@jakarta.annotation.Nullable String processId) {
 
         this.processId = processId;
         return this;
@@ -295,11 +317,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessId(String processId) {
+    public void setProcessId(@jakarta.annotation.Nullable String processId) {
         this.processId = processId;
     }
 
-    public FlowNode rootContainerId(String rootContainerId) {
+    public FlowNode rootContainerId(@jakarta.annotation.Nullable String rootContainerId) {
 
         this.rootContainerId = rootContainerId;
         return this;
@@ -320,11 +342,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROOT_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRootContainerId(String rootContainerId) {
+    public void setRootContainerId(@jakarta.annotation.Nullable String rootContainerId) {
         this.rootContainerId = rootContainerId;
     }
 
-    public FlowNode state(String state) {
+    public FlowNode state(@jakarta.annotation.Nullable String state) {
 
         this.state = state;
         return this;
@@ -345,11 +367,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(String state) {
+    public void setState(@jakarta.annotation.Nullable String state) {
         this.state = state;
     }
 
-    public FlowNode type(String type) {
+    public FlowNode type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -370,11 +392,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 
-    public FlowNode assignedId(String assignedId) {
+    public FlowNode assignedId(@jakarta.annotation.Nullable String assignedId) {
 
         this.assignedId = assignedId;
         return this;
@@ -395,11 +417,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedId(String assignedId) {
+    public void setAssignedId(@jakarta.annotation.Nullable String assignedId) {
         this.assignedId = assignedId;
     }
 
-    public FlowNode assignedDate(String assignedDate) {
+    public FlowNode assignedDate(@jakarta.annotation.Nullable String assignedDate) {
 
         this.assignedDate = assignedDate;
         return this;
@@ -420,11 +442,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedDate(String assignedDate) {
+    public void setAssignedDate(@jakarta.annotation.Nullable String assignedDate) {
         this.assignedDate = assignedDate;
     }
 
-    public FlowNode executedBy(String executedBy) {
+    public FlowNode executedBy(@jakarta.annotation.Nullable String executedBy) {
 
         this.executedBy = executedBy;
         return this;
@@ -445,11 +467,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXECUTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExecutedBy(String executedBy) {
+    public void setExecutedBy(@jakarta.annotation.Nullable String executedBy) {
         this.executedBy = executedBy;
     }
 
-    public FlowNode priority(String priority) {
+    public FlowNode priority(@jakarta.annotation.Nullable String priority) {
 
         this.priority = priority;
         return this;
@@ -470,11 +492,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PRIORITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPriority(String priority) {
+    public void setPriority(@jakarta.annotation.Nullable String priority) {
         this.priority = priority;
     }
 
-    public FlowNode actorId(String actorId) {
+    public FlowNode actorId(@jakarta.annotation.Nullable String actorId) {
 
         this.actorId = actorId;
         return this;
@@ -495,11 +517,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTOR_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActorId(String actorId) {
+    public void setActorId(@jakarta.annotation.Nullable String actorId) {
         this.actorId = actorId;
     }
 
-    public FlowNode description(String description) {
+    public FlowNode description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -520,11 +542,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public FlowNode name(String name) {
+    public FlowNode name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -545,11 +567,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public FlowNode reachedStateDate(String reachedStateDate) {
+    public FlowNode reachedStateDate(@jakarta.annotation.Nullable String reachedStateDate) {
 
         this.reachedStateDate = reachedStateDate;
         return this;
@@ -570,11 +592,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_REACHED_STATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setReachedStateDate(String reachedStateDate) {
+    public void setReachedStateDate(@jakarta.annotation.Nullable String reachedStateDate) {
         this.reachedStateDate = reachedStateDate;
     }
 
-    public FlowNode displayName(String displayName) {
+    public FlowNode displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -595,11 +617,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public FlowNode dueDate(String dueDate) {
+    public FlowNode dueDate(@jakarta.annotation.Nullable String dueDate) {
 
         this.dueDate = dueDate;
         return this;
@@ -620,11 +642,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DUE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDueDate(String dueDate) {
+    public void setDueDate(@jakarta.annotation.Nullable String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public FlowNode lastUpdateDate(String lastUpdateDate) {
+    public FlowNode lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -645,11 +667,11 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public FlowNode parentTaskIdDoubleQuote(String parentTaskIdDoubleQuote) {
+    public FlowNode parentTaskIdDoubleQuote(@jakarta.annotation.Nullable String parentTaskIdDoubleQuote) {
 
         this.parentTaskIdDoubleQuote = parentTaskIdDoubleQuote;
         return this;
@@ -670,7 +692,7 @@ public class FlowNode implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentTaskIdDoubleQuote(String parentTaskIdDoubleQuote) {
+    public void setParentTaskIdDoubleQuote(@jakarta.annotation.Nullable String parentTaskIdDoubleQuote) {
         this.parentTaskIdDoubleQuote = parentTaskIdDoubleQuote;
     }
 

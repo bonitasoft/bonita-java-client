@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ActivityUpdateRequest.JSON_PROPERTY_VARIABLES,
         ActivityUpdateRequest.JSON_PROPERTY_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ActivityUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_VARIABLES = "variables";
+    @jakarta.annotation.Nullable
     private String variables;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private String state;
 
     public ActivityUpdateRequest() {
     }
 
-    public ActivityUpdateRequest variables(String variables) {
+    public ActivityUpdateRequest variables(@jakarta.annotation.Nullable String variables) {
 
         this.variables = variables;
         return this;
@@ -67,11 +69,11 @@ public class ActivityUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VARIABLES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVariables(String variables) {
+    public void setVariables(@jakarta.annotation.Nullable String variables) {
         this.variables = variables;
     }
 
-    public ActivityUpdateRequest state(String state) {
+    public ActivityUpdateRequest state(@jakarta.annotation.Nullable String state) {
 
         this.state = state;
         return this;
@@ -93,7 +95,7 @@ public class ActivityUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(String state) {
+    public void setState(@jakarta.annotation.Nullable String state) {
         this.state = state;
     }
 

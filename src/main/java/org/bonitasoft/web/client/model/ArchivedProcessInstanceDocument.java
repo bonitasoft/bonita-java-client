@@ -44,63 +44,79 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedProcessInstanceDocument.JSON_PROPERTY_SOURCE_OBJECT_ID,
         ArchivedProcessInstanceDocument.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ArchivedProcessInstanceDocument implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+    @jakarta.annotation.Nullable
     private String creationDate;
 
     public static final String JSON_PROPERTY_AUTHOR = "author";
+    @jakarta.annotation.Nullable
     private String author;
 
     public static final String JSON_PROPERTY_INDEX = "index";
+    @jakarta.annotation.Nullable
     private String index;
 
     public static final String JSON_PROPERTY_CONTENT_MIMETYPE = "contentMimetype";
+    @jakarta.annotation.Nullable
     private String contentMimetype;
 
     public static final String JSON_PROPERTY_CASE_ID = "caseId";
+    @jakarta.annotation.Nullable
     private String caseId;
 
     public static final String JSON_PROPERTY_CONTENT_STORAGE_ID = "contentStorageId";
+    @jakarta.annotation.Nullable
     private String contentStorageId;
 
     public static final String JSON_PROPERTY_IS_INTERNAL = "isInternal";
+    @jakarta.annotation.Nullable
     private Boolean isInternal;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_FILE_NAME = "fileName";
+    @jakarta.annotation.Nullable
     private String fileName;
 
     public static final String JSON_PROPERTY_SUBMITTED_BY = "submittedBy";
+    @jakarta.annotation.Nullable
     private String submittedBy;
 
     public static final String JSON_PROPERTY_URL = "url";
+    @jakarta.annotation.Nullable
     private String url;
 
     public static final String JSON_PROPERTY_VERSION = "version";
+    @jakarta.annotation.Nullable
     private String version;
 
     public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
+    @jakarta.annotation.Nullable
     private String sourceObjectId;
 
     public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+    @jakarta.annotation.Nullable
     private String archivedDate;
 
     public ArchivedProcessInstanceDocument() {
     }
 
-    public ArchivedProcessInstanceDocument id(String id) {
+    public ArchivedProcessInstanceDocument id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -121,11 +137,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ArchivedProcessInstanceDocument creationDate(String creationDate) {
+    public ArchivedProcessInstanceDocument creationDate(@jakarta.annotation.Nullable String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -146,11 +162,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(@jakarta.annotation.Nullable String creationDate) {
         this.creationDate = creationDate;
     }
 
-    public ArchivedProcessInstanceDocument author(String author) {
+    public ArchivedProcessInstanceDocument author(@jakarta.annotation.Nullable String author) {
 
         this.author = author;
         return this;
@@ -173,11 +189,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_AUTHOR)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAuthor(String author) {
+    public void setAuthor(@jakarta.annotation.Nullable String author) {
         this.author = author;
     }
 
-    public ArchivedProcessInstanceDocument index(String index) {
+    public ArchivedProcessInstanceDocument index(@jakarta.annotation.Nullable String index) {
 
         this.index = index;
         return this;
@@ -198,11 +214,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INDEX)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIndex(String index) {
+    public void setIndex(@jakarta.annotation.Nullable String index) {
         this.index = index;
     }
 
-    public ArchivedProcessInstanceDocument contentMimetype(String contentMimetype) {
+    public ArchivedProcessInstanceDocument contentMimetype(@jakarta.annotation.Nullable String contentMimetype) {
 
         this.contentMimetype = contentMimetype;
         return this;
@@ -223,11 +239,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT_MIMETYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContentMimetype(String contentMimetype) {
+    public void setContentMimetype(@jakarta.annotation.Nullable String contentMimetype) {
         this.contentMimetype = contentMimetype;
     }
 
-    public ArchivedProcessInstanceDocument caseId(String caseId) {
+    public ArchivedProcessInstanceDocument caseId(@jakarta.annotation.Nullable String caseId) {
 
         this.caseId = caseId;
         return this;
@@ -248,11 +264,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseId(String caseId) {
+    public void setCaseId(@jakarta.annotation.Nullable String caseId) {
         this.caseId = caseId;
     }
 
-    public ArchivedProcessInstanceDocument contentStorageId(String contentStorageId) {
+    public ArchivedProcessInstanceDocument contentStorageId(@jakarta.annotation.Nullable String contentStorageId) {
 
         this.contentStorageId = contentStorageId;
         return this;
@@ -273,11 +289,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT_STORAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContentStorageId(String contentStorageId) {
+    public void setContentStorageId(@jakarta.annotation.Nullable String contentStorageId) {
         this.contentStorageId = contentStorageId;
     }
 
-    public ArchivedProcessInstanceDocument isInternal(Boolean isInternal) {
+    public ArchivedProcessInstanceDocument isInternal(@jakarta.annotation.Nullable Boolean isInternal) {
 
         this.isInternal = isInternal;
         return this;
@@ -299,11 +315,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IS_INTERNAL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIsInternal(Boolean isInternal) {
+    public void setIsInternal(@jakarta.annotation.Nullable Boolean isInternal) {
         this.isInternal = isInternal;
     }
 
-    public ArchivedProcessInstanceDocument description(String description) {
+    public ArchivedProcessInstanceDocument description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -324,11 +340,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ArchivedProcessInstanceDocument name(String name) {
+    public ArchivedProcessInstanceDocument name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -349,11 +365,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ArchivedProcessInstanceDocument fileName(String fileName) {
+    public ArchivedProcessInstanceDocument fileName(@jakarta.annotation.Nullable String fileName) {
 
         this.fileName = fileName;
         return this;
@@ -374,11 +390,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FILE_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFileName(String fileName) {
+    public void setFileName(@jakarta.annotation.Nullable String fileName) {
         this.fileName = fileName;
     }
 
-    public ArchivedProcessInstanceDocument submittedBy(String submittedBy) {
+    public ArchivedProcessInstanceDocument submittedBy(@jakarta.annotation.Nullable String submittedBy) {
 
         this.submittedBy = submittedBy;
         return this;
@@ -399,11 +415,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SUBMITTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSubmittedBy(String submittedBy) {
+    public void setSubmittedBy(@jakarta.annotation.Nullable String submittedBy) {
         this.submittedBy = submittedBy;
     }
 
-    public ArchivedProcessInstanceDocument url(String url) {
+    public ArchivedProcessInstanceDocument url(@jakarta.annotation.Nullable String url) {
 
         this.url = url;
         return this;
@@ -424,11 +440,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_URL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUrl(String url) {
+    public void setUrl(@jakarta.annotation.Nullable String url) {
         this.url = url;
     }
 
-    public ArchivedProcessInstanceDocument version(String version) {
+    public ArchivedProcessInstanceDocument version(@jakarta.annotation.Nullable String version) {
 
         this.version = version;
         return this;
@@ -449,11 +465,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVersion(String version) {
+    public void setVersion(@jakarta.annotation.Nullable String version) {
         this.version = version;
     }
 
-    public ArchivedProcessInstanceDocument sourceObjectId(String sourceObjectId) {
+    public ArchivedProcessInstanceDocument sourceObjectId(@jakarta.annotation.Nullable String sourceObjectId) {
 
         this.sourceObjectId = sourceObjectId;
         return this;
@@ -474,11 +490,11 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSourceObjectId(String sourceObjectId) {
+    public void setSourceObjectId(@jakarta.annotation.Nullable String sourceObjectId) {
         this.sourceObjectId = sourceObjectId;
     }
 
-    public ArchivedProcessInstanceDocument archivedDate(String archivedDate) {
+    public ArchivedProcessInstanceDocument archivedDate(@jakarta.annotation.Nullable String archivedDate) {
 
         this.archivedDate = archivedDate;
         return this;
@@ -499,7 +515,7 @@ public class ArchivedProcessInstanceDocument implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setArchivedDate(String archivedDate) {
+    public void setArchivedDate(@jakarta.annotation.Nullable String archivedDate) {
         this.archivedDate = archivedDate;
     }
 

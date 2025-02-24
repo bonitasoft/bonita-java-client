@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceVariableUpdateRequest.JSON_PROPERTY_TYPE,
         ProcessInstanceVariableUpdateRequest.JSON_PROPERTY_VALUE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceVariableUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public static final String JSON_PROPERTY_VALUE = "value";
+    @jakarta.annotation.Nullable
     private String value;
 
     public ProcessInstanceVariableUpdateRequest() {
     }
 
-    public ProcessInstanceVariableUpdateRequest type(String type) {
+    public ProcessInstanceVariableUpdateRequest type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -65,11 +67,11 @@ public class ProcessInstanceVariableUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 
-    public ProcessInstanceVariableUpdateRequest value(String value) {
+    public ProcessInstanceVariableUpdateRequest value(@jakarta.annotation.Nullable String value) {
 
         this.value = value;
         return this;
@@ -90,7 +92,7 @@ public class ProcessInstanceVariableUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setValue(String value) {
+    public void setValue(@jakarta.annotation.Nullable String value) {
         this.value = value;
     }
 

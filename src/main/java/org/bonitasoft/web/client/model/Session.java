@@ -36,39 +36,47 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Session.JSON_PROPERTY_VERSION,
         Session.JSON_PROPERTY_COPYRIGHT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Session implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_USER_ID = "user_id";
+    @jakarta.annotation.Nullable
     private String userId;
 
     public static final String JSON_PROPERTY_USER_NAME = "user_name";
+    @jakarta.annotation.Nullable
     private String userName;
 
     public static final String JSON_PROPERTY_SESSION_ID = "session_id";
+    @jakarta.annotation.Nullable
     private String sessionId;
 
     public static final String JSON_PROPERTY_CONF = "conf";
+    @jakarta.annotation.Nullable
     private String conf;
 
     public static final String JSON_PROPERTY_IS_TECHNICAL_USER = "is_technical_user";
+    @jakarta.annotation.Nullable
     private Boolean isTechnicalUser;
 
     public static final String JSON_PROPERTY_IS_GUEST_USER = "is_guest_user";
+    @jakarta.annotation.Nullable
     private Boolean isGuestUser;
 
     public static final String JSON_PROPERTY_VERSION = "version";
+    @jakarta.annotation.Nullable
     private String version;
 
     public static final String JSON_PROPERTY_COPYRIGHT = "copyright";
+    @jakarta.annotation.Nullable
     private String copyright;
 
     public Session() {
     }
 
-    public Session userId(String userId) {
+    public Session userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -89,11 +97,11 @@ public class Session implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 
-    public Session userName(String userName) {
+    public Session userName(@jakarta.annotation.Nullable String userName) {
 
         this.userName = userName;
         return this;
@@ -114,11 +122,11 @@ public class Session implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserName(String userName) {
+    public void setUserName(@jakarta.annotation.Nullable String userName) {
         this.userName = userName;
     }
 
-    public Session sessionId(String sessionId) {
+    public Session sessionId(@jakarta.annotation.Nullable String sessionId) {
 
         this.sessionId = sessionId;
         return this;
@@ -139,11 +147,11 @@ public class Session implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SESSION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSessionId(String sessionId) {
+    public void setSessionId(@jakarta.annotation.Nullable String sessionId) {
         this.sessionId = sessionId;
     }
 
-    public Session conf(String conf) {
+    public Session conf(@jakarta.annotation.Nullable String conf) {
 
         this.conf = conf;
         return this;
@@ -164,11 +172,11 @@ public class Session implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONF)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConf(String conf) {
+    public void setConf(@jakarta.annotation.Nullable String conf) {
         this.conf = conf;
     }
 
-    public Session isTechnicalUser(Boolean isTechnicalUser) {
+    public Session isTechnicalUser(@jakarta.annotation.Nullable Boolean isTechnicalUser) {
 
         this.isTechnicalUser = isTechnicalUser;
         return this;
@@ -189,11 +197,11 @@ public class Session implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IS_TECHNICAL_USER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIsTechnicalUser(Boolean isTechnicalUser) {
+    public void setIsTechnicalUser(@jakarta.annotation.Nullable Boolean isTechnicalUser) {
         this.isTechnicalUser = isTechnicalUser;
     }
 
-    public Session isGuestUser(Boolean isGuestUser) {
+    public Session isGuestUser(@jakarta.annotation.Nullable Boolean isGuestUser) {
 
         this.isGuestUser = isGuestUser;
         return this;
@@ -214,11 +222,11 @@ public class Session implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IS_GUEST_USER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIsGuestUser(Boolean isGuestUser) {
+    public void setIsGuestUser(@jakarta.annotation.Nullable Boolean isGuestUser) {
         this.isGuestUser = isGuestUser;
     }
 
-    public Session version(String version) {
+    public Session version(@jakarta.annotation.Nullable String version) {
 
         this.version = version;
         return this;
@@ -239,11 +247,11 @@ public class Session implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVersion(String version) {
+    public void setVersion(@jakarta.annotation.Nullable String version) {
         this.version = version;
     }
 
-    public Session copyright(String copyright) {
+    public Session copyright(@jakarta.annotation.Nullable String copyright) {
 
         this.copyright = copyright;
         return this;
@@ -264,7 +272,7 @@ public class Session implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_COPYRIGHT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCopyright(String copyright) {
+    public void setCopyright(@jakarta.annotation.Nullable String copyright) {
         this.copyright = copyright;
     }
 

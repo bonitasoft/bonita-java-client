@@ -32,27 +32,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         License.JSON_PROPERTY_NB_CPU_CORES,
         License.JSON_PROPERTY_EXPIRATION_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class License implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_OWNER = "owner";
+    @jakarta.annotation.Nullable
     private String owner;
 
     public static final String JSON_PROPERTY_EDITION = "edition";
+    @jakarta.annotation.Nullable
     private String edition;
 
     public static final String JSON_PROPERTY_NB_CPU_CORES = "nb_cpu_cores";
+    @jakarta.annotation.Nullable
     private String nbCpuCores;
 
     public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
+    @jakarta.annotation.Nullable
     private Long expirationDate;
 
     public License() {
     }
 
-    public License owner(String owner) {
+    public License owner(@jakarta.annotation.Nullable String owner) {
 
         this.owner = owner;
         return this;
@@ -73,11 +77,11 @@ public class License implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_OWNER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setOwner(String owner) {
+    public void setOwner(@jakarta.annotation.Nullable String owner) {
         this.owner = owner;
     }
 
-    public License edition(String edition) {
+    public License edition(@jakarta.annotation.Nullable String edition) {
 
         this.edition = edition;
         return this;
@@ -98,11 +102,11 @@ public class License implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EDITION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setEdition(String edition) {
+    public void setEdition(@jakarta.annotation.Nullable String edition) {
         this.edition = edition;
     }
 
-    public License nbCpuCores(String nbCpuCores) {
+    public License nbCpuCores(@jakarta.annotation.Nullable String nbCpuCores) {
 
         this.nbCpuCores = nbCpuCores;
         return this;
@@ -123,11 +127,11 @@ public class License implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NB_CPU_CORES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setNbCpuCores(String nbCpuCores) {
+    public void setNbCpuCores(@jakarta.annotation.Nullable String nbCpuCores) {
         this.nbCpuCores = nbCpuCores;
     }
 
-    public License expirationDate(Long expirationDate) {
+    public License expirationDate(@jakarta.annotation.Nullable Long expirationDate) {
 
         this.expirationDate = expirationDate;
         return this;
@@ -148,7 +152,7 @@ public class License implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExpirationDate(Long expirationDate) {
+    public void setExpirationDate(@jakarta.annotation.Nullable Long expirationDate) {
         this.expirationDate = expirationDate;
     }
 

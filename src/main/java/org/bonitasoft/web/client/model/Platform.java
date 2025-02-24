@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         Platform.JSON_PROPERTY_CREATED_BY,
         Platform.JSON_PROPERTY_CREATED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Platform implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,9 +46,9 @@ public class Platform implements Serializable {
      */
     public enum StateEnum {
 
-        STARTED("STARTED"),
+        STARTED(String.valueOf("STARTED")),
 
-        STOPPED("STOPPED");
+        STOPPED(String.valueOf("STOPPED"));
 
         private String value;
 
@@ -78,27 +78,33 @@ public class Platform implements Serializable {
     }
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private StateEnum state;
 
     public static final String JSON_PROPERTY_VERSION = "version";
+    @jakarta.annotation.Nullable
     private String version;
 
     public static final String JSON_PROPERTY_INITIAL_VERSION = "initialVersion";
+    @jakarta.annotation.Nullable
     private String initialVersion;
 
     public static final String JSON_PROPERTY_PREVIOUS_VERSION = "previousVersion";
+    @jakarta.annotation.Nullable
     private String previousVersion;
 
     public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+    @jakarta.annotation.Nullable
     private String createdBy;
 
     public static final String JSON_PROPERTY_CREATED = "created";
+    @jakarta.annotation.Nullable
     private String created;
 
     public Platform() {
     }
 
-    public Platform state(StateEnum state) {
+    public Platform state(@jakarta.annotation.Nullable StateEnum state) {
 
         this.state = state;
         return this;
@@ -119,11 +125,11 @@ public class Platform implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(StateEnum state) {
+    public void setState(@jakarta.annotation.Nullable StateEnum state) {
         this.state = state;
     }
 
-    public Platform version(String version) {
+    public Platform version(@jakarta.annotation.Nullable String version) {
 
         this.version = version;
         return this;
@@ -144,11 +150,11 @@ public class Platform implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVersion(String version) {
+    public void setVersion(@jakarta.annotation.Nullable String version) {
         this.version = version;
     }
 
-    public Platform initialVersion(String initialVersion) {
+    public Platform initialVersion(@jakarta.annotation.Nullable String initialVersion) {
 
         this.initialVersion = initialVersion;
         return this;
@@ -169,11 +175,11 @@ public class Platform implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INITIAL_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setInitialVersion(String initialVersion) {
+    public void setInitialVersion(@jakarta.annotation.Nullable String initialVersion) {
         this.initialVersion = initialVersion;
     }
 
-    public Platform previousVersion(String previousVersion) {
+    public Platform previousVersion(@jakarta.annotation.Nullable String previousVersion) {
 
         this.previousVersion = previousVersion;
         return this;
@@ -194,11 +200,11 @@ public class Platform implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PREVIOUS_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPreviousVersion(String previousVersion) {
+    public void setPreviousVersion(@jakarta.annotation.Nullable String previousVersion) {
         this.previousVersion = previousVersion;
     }
 
-    public Platform createdBy(String createdBy) {
+    public Platform createdBy(@jakarta.annotation.Nullable String createdBy) {
 
         this.createdBy = createdBy;
         return this;
@@ -219,11 +225,11 @@ public class Platform implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(@jakarta.annotation.Nullable String createdBy) {
         this.createdBy = createdBy;
     }
 
-    public Platform created(String created) {
+    public Platform created(@jakarta.annotation.Nullable String created) {
 
         this.created = created;
         return this;
@@ -244,7 +250,7 @@ public class Platform implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreated(String created) {
+    public void setCreated(@jakarta.annotation.Nullable String created) {
         this.created = created;
     }
 

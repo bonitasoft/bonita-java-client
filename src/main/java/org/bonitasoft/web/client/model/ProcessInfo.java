@@ -34,21 +34,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInfo.JSON_PROPERTY_PROCESS_DEFINITION_ID,
         ProcessInfo.JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
+    @jakarta.annotation.Nullable
     private String processDefinitionId;
 
     public static final String JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS = "flowNodeStatesCounters";
+    @jakarta.annotation.Nullable
     private Map<String, ProcessInfoFlowNodeStatesCountersValue> flowNodeStatesCounters = new HashMap<>();
 
     public ProcessInfo() {
     }
 
-    public ProcessInfo processDefinitionId(String processDefinitionId) {
+    public ProcessInfo processDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
 
         this.processDefinitionId = processDefinitionId;
         return this;
@@ -69,12 +71,12 @@ public class ProcessInfo implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessDefinitionId(String processDefinitionId) {
+    public void setProcessDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
         this.processDefinitionId = processDefinitionId;
     }
 
     public ProcessInfo flowNodeStatesCounters(
-            Map<String, ProcessInfoFlowNodeStatesCountersValue> flowNodeStatesCounters) {
+            @jakarta.annotation.Nullable Map<String, ProcessInfoFlowNodeStatesCountersValue> flowNodeStatesCounters) {
 
         this.flowNodeStatesCounters = flowNodeStatesCounters;
         return this;
@@ -104,7 +106,8 @@ public class ProcessInfo implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFlowNodeStatesCounters(Map<String, ProcessInfoFlowNodeStatesCountersValue> flowNodeStatesCounters) {
+    public void setFlowNodeStatesCounters(
+            @jakarta.annotation.Nullable Map<String, ProcessInfoFlowNodeStatesCountersValue> flowNodeStatesCounters) {
         this.flowNodeStatesCounters = flowNodeStatesCounters;
     }
 

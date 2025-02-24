@@ -33,30 +33,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceVariable.JSON_PROPERTY_CASE_ID,
         ProcessInstanceVariable.JSON_PROPERTY_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceVariable implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_VALUE = "value";
+    @jakarta.annotation.Nullable
     private String value;
 
     public static final String JSON_PROPERTY_CASE_ID = "case_id";
+    @jakarta.annotation.Nullable
     private String caseId;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public ProcessInstanceVariable() {
     }
 
-    public ProcessInstanceVariable description(String description) {
+    public ProcessInstanceVariable description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -77,11 +82,11 @@ public class ProcessInstanceVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ProcessInstanceVariable name(String name) {
+    public ProcessInstanceVariable name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -102,11 +107,11 @@ public class ProcessInstanceVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ProcessInstanceVariable value(String value) {
+    public ProcessInstanceVariable value(@jakarta.annotation.Nullable String value) {
 
         this.value = value;
         return this;
@@ -127,11 +132,11 @@ public class ProcessInstanceVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setValue(String value) {
+    public void setValue(@jakarta.annotation.Nullable String value) {
         this.value = value;
     }
 
-    public ProcessInstanceVariable caseId(String caseId) {
+    public ProcessInstanceVariable caseId(@jakarta.annotation.Nullable String caseId) {
 
         this.caseId = caseId;
         return this;
@@ -152,11 +157,11 @@ public class ProcessInstanceVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseId(String caseId) {
+    public void setCaseId(@jakarta.annotation.Nullable String caseId) {
         this.caseId = caseId;
     }
 
-    public ProcessInstanceVariable type(String type) {
+    public ProcessInstanceVariable type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -177,7 +182,7 @@ public class ProcessInstanceVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 

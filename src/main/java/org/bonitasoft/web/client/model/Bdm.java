@@ -34,33 +34,39 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Bdm.JSON_PROPERTY_LAST_UPDATED_BY,
         Bdm.JSON_PROPERTY_LAST_UPDATE_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Bdm implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private TenantResourceState state;
 
     public static final String JSON_PROPERTY_LAST_UPDATED_BY = "lastUpdatedBy";
+    @jakarta.annotation.Nullable
     private String lastUpdatedBy = "-1";
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public Bdm() {
     }
 
-    public Bdm id(String id) {
+    public Bdm id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -81,11 +87,11 @@ public class Bdm implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public Bdm name(String name) {
+    public Bdm name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -106,11 +112,11 @@ public class Bdm implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public Bdm type(String type) {
+    public Bdm type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -131,11 +137,11 @@ public class Bdm implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 
-    public Bdm state(TenantResourceState state) {
+    public Bdm state(@jakarta.annotation.Nullable TenantResourceState state) {
 
         this.state = state;
         return this;
@@ -156,11 +162,11 @@ public class Bdm implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(TenantResourceState state) {
+    public void setState(@jakarta.annotation.Nullable TenantResourceState state) {
         this.state = state;
     }
 
-    public Bdm lastUpdatedBy(String lastUpdatedBy) {
+    public Bdm lastUpdatedBy(@jakarta.annotation.Nullable String lastUpdatedBy) {
 
         this.lastUpdatedBy = lastUpdatedBy;
         return this;
@@ -181,11 +187,11 @@ public class Bdm implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdatedBy(String lastUpdatedBy) {
+    public void setLastUpdatedBy(@jakarta.annotation.Nullable String lastUpdatedBy) {
         this.lastUpdatedBy = lastUpdatedBy;
     }
 
-    public Bdm lastUpdateDate(String lastUpdateDate) {
+    public Bdm lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -206,7 +212,7 @@ public class Bdm implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 

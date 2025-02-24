@@ -36,39 +36,47 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Role.JSON_PROPERTY_CREATED_BY_USER_ID,
         Role.JSON_PROPERTY_LAST_UPDATE_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_ICON = "icon";
+    @jakarta.annotation.Nullable
     private String icon;
 
     public static final String JSON_PROPERTY_CREATION_DATE = "creation_date";
+    @jakarta.annotation.Nullable
     private String creationDate;
 
     public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
+    @jakarta.annotation.Nullable
     private String createdByUserId;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public Role() {
     }
 
-    public Role id(String id) {
+    public Role id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -89,11 +97,11 @@ public class Role implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public Role name(String name) {
+    public Role name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -114,11 +122,11 @@ public class Role implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public Role displayName(String displayName) {
+    public Role displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -139,11 +147,11 @@ public class Role implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public Role description(String description) {
+    public Role description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -164,11 +172,11 @@ public class Role implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public Role icon(String icon) {
+    public Role icon(@jakarta.annotation.Nullable String icon) {
 
         this.icon = icon;
         return this;
@@ -189,11 +197,11 @@ public class Role implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIcon(String icon) {
+    public void setIcon(@jakarta.annotation.Nullable String icon) {
         this.icon = icon;
     }
 
-    public Role creationDate(String creationDate) {
+    public Role creationDate(@jakarta.annotation.Nullable String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -214,11 +222,11 @@ public class Role implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(@jakarta.annotation.Nullable String creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Role createdByUserId(String createdByUserId) {
+    public Role createdByUserId(@jakarta.annotation.Nullable String createdByUserId) {
 
         this.createdByUserId = createdByUserId;
         return this;
@@ -239,11 +247,11 @@ public class Role implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedByUserId(String createdByUserId) {
+    public void setCreatedByUserId(@jakarta.annotation.Nullable String createdByUserId) {
         this.createdByUserId = createdByUserId;
     }
 
-    public Role lastUpdateDate(String lastUpdateDate) {
+    public Role lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -264,7 +272,7 @@ public class Role implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 

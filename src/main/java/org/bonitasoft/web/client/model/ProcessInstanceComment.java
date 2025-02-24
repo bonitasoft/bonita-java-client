@@ -33,30 +33,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceComment.JSON_PROPERTY_POST_DATE,
         ProcessInstanceComment.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceComment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_CONTENT = "content";
+    @jakarta.annotation.Nullable
     private String content;
 
     public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
+    @jakarta.annotation.Nullable
     private String processInstanceId;
 
     public static final String JSON_PROPERTY_POST_DATE = "postDate";
+    @jakarta.annotation.Nullable
     private String postDate;
 
     public static final String JSON_PROPERTY_USER_ID = "userId";
+    @jakarta.annotation.Nullable
     private String userId;
 
     public ProcessInstanceComment() {
     }
 
-    public ProcessInstanceComment id(String id) {
+    public ProcessInstanceComment id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -77,11 +82,11 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ProcessInstanceComment content(String content) {
+    public ProcessInstanceComment content(@jakarta.annotation.Nullable String content) {
 
         this.content = content;
         return this;
@@ -102,11 +107,11 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContent(String content) {
+    public void setContent(@jakarta.annotation.Nullable String content) {
         this.content = content;
     }
 
-    public ProcessInstanceComment processInstanceId(String processInstanceId) {
+    public ProcessInstanceComment processInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
 
         this.processInstanceId = processInstanceId;
         return this;
@@ -127,11 +132,11 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessInstanceId(String processInstanceId) {
+    public void setProcessInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
         this.processInstanceId = processInstanceId;
     }
 
-    public ProcessInstanceComment postDate(String postDate) {
+    public ProcessInstanceComment postDate(@jakarta.annotation.Nullable String postDate) {
 
         this.postDate = postDate;
         return this;
@@ -152,11 +157,11 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_POST_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPostDate(String postDate) {
+    public void setPostDate(@jakarta.annotation.Nullable String postDate) {
         this.postDate = postDate;
     }
 
-    public ProcessInstanceComment userId(String userId) {
+    public ProcessInstanceComment userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -177,7 +182,7 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 

@@ -39,48 +39,59 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Group.JSON_PROPERTY_LAST_UPDATE_DATE,
         Group.JSON_PROPERTY_ICON
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Group implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nonnull
     private String name;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_PARENT_PATH = "parent_path";
+    @jakarta.annotation.Nullable
     private String parentPath;
 
     public static final String JSON_PROPERTY_PARENT_GROUP_ID = "parent_group_id";
+    @jakarta.annotation.Nullable
     private String parentGroupId;
 
     public static final String JSON_PROPERTY_PATH = "path";
+    @jakarta.annotation.Nullable
     private String path;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_CREATION_DATE = "creation_date";
+    @jakarta.annotation.Nullable
     private String creationDate;
 
     public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
+    @jakarta.annotation.Nullable
     private String createdByUserId;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public static final String JSON_PROPERTY_ICON = "icon";
+    @jakarta.annotation.Nullable
     private String icon;
 
     public Group() {
     }
 
-    public Group id(String id) {
+    public Group id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -101,11 +112,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public Group name(String name) {
+    public Group name(@jakarta.annotation.Nonnull String name) {
 
         this.name = name;
         return this;
@@ -126,11 +137,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nonnull String name) {
         this.name = name;
     }
 
-    public Group displayName(String displayName) {
+    public Group displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -151,11 +162,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public Group parentPath(String parentPath) {
+    public Group parentPath(@jakarta.annotation.Nullable String parentPath) {
 
         this.parentPath = parentPath;
         return this;
@@ -176,11 +187,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_PATH)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentPath(String parentPath) {
+    public void setParentPath(@jakarta.annotation.Nullable String parentPath) {
         this.parentPath = parentPath;
     }
 
-    public Group parentGroupId(String parentGroupId) {
+    public Group parentGroupId(@jakarta.annotation.Nullable String parentGroupId) {
 
         this.parentGroupId = parentGroupId;
         return this;
@@ -201,11 +212,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentGroupId(String parentGroupId) {
+    public void setParentGroupId(@jakarta.annotation.Nullable String parentGroupId) {
         this.parentGroupId = parentGroupId;
     }
 
-    public Group path(String path) {
+    public Group path(@jakarta.annotation.Nullable String path) {
 
         this.path = path;
         return this;
@@ -226,11 +237,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PATH)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPath(String path) {
+    public void setPath(@jakarta.annotation.Nullable String path) {
         this.path = path;
     }
 
-    public Group description(String description) {
+    public Group description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -251,11 +262,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public Group creationDate(String creationDate) {
+    public Group creationDate(@jakarta.annotation.Nullable String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -276,11 +287,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(@jakarta.annotation.Nullable String creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Group createdByUserId(String createdByUserId) {
+    public Group createdByUserId(@jakarta.annotation.Nullable String createdByUserId) {
 
         this.createdByUserId = createdByUserId;
         return this;
@@ -301,11 +312,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedByUserId(String createdByUserId) {
+    public void setCreatedByUserId(@jakarta.annotation.Nullable String createdByUserId) {
         this.createdByUserId = createdByUserId;
     }
 
-    public Group lastUpdateDate(String lastUpdateDate) {
+    public Group lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -326,11 +337,11 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Group icon(String icon) {
+    public Group icon(@jakarta.annotation.Nullable String icon) {
 
         this.icon = icon;
         return this;
@@ -351,7 +362,7 @@ public class Group implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIcon(String icon) {
+    public void setIcon(@jakarta.annotation.Nullable String icon) {
         this.icon = icon;
     }
 

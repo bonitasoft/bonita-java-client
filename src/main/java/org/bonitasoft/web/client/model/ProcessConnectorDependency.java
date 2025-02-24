@@ -32,27 +32,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessConnectorDependency.JSON_PROPERTY_FILENAME,
         ProcessConnectorDependency.JSON_PROPERTY_CONNECTOR_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessConnectorDependency implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_CONNECTOR_VERSION = "connector_version";
+    @jakarta.annotation.Nullable
     private String connectorVersion;
 
     public static final String JSON_PROPERTY_CONNECTOR_PROCESS_ID = "connector_process_id";
+    @jakarta.annotation.Nullable
     private String connectorProcessId;
 
     public static final String JSON_PROPERTY_FILENAME = "filename";
+    @jakarta.annotation.Nullable
     private String filename;
 
     public static final String JSON_PROPERTY_CONNECTOR_NAME = "connector_name";
+    @jakarta.annotation.Nullable
     private String connectorName;
 
     public ProcessConnectorDependency() {
     }
 
-    public ProcessConnectorDependency connectorVersion(String connectorVersion) {
+    public ProcessConnectorDependency connectorVersion(@jakarta.annotation.Nullable String connectorVersion) {
 
         this.connectorVersion = connectorVersion;
         return this;
@@ -73,11 +77,11 @@ public class ProcessConnectorDependency implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONNECTOR_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConnectorVersion(String connectorVersion) {
+    public void setConnectorVersion(@jakarta.annotation.Nullable String connectorVersion) {
         this.connectorVersion = connectorVersion;
     }
 
-    public ProcessConnectorDependency connectorProcessId(String connectorProcessId) {
+    public ProcessConnectorDependency connectorProcessId(@jakarta.annotation.Nullable String connectorProcessId) {
 
         this.connectorProcessId = connectorProcessId;
         return this;
@@ -98,11 +102,11 @@ public class ProcessConnectorDependency implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONNECTOR_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConnectorProcessId(String connectorProcessId) {
+    public void setConnectorProcessId(@jakarta.annotation.Nullable String connectorProcessId) {
         this.connectorProcessId = connectorProcessId;
     }
 
-    public ProcessConnectorDependency filename(String filename) {
+    public ProcessConnectorDependency filename(@jakarta.annotation.Nullable String filename) {
 
         this.filename = filename;
         return this;
@@ -123,11 +127,11 @@ public class ProcessConnectorDependency implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FILENAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFilename(String filename) {
+    public void setFilename(@jakarta.annotation.Nullable String filename) {
         this.filename = filename;
     }
 
-    public ProcessConnectorDependency connectorName(String connectorName) {
+    public ProcessConnectorDependency connectorName(@jakarta.annotation.Nullable String connectorName) {
 
         this.connectorName = connectorName;
         return this;
@@ -148,7 +152,7 @@ public class ProcessConnectorDependency implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONNECTOR_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConnectorName(String connectorName) {
+    public void setConnectorName(@jakarta.annotation.Nullable String connectorName) {
         this.connectorName = connectorName;
     }
 

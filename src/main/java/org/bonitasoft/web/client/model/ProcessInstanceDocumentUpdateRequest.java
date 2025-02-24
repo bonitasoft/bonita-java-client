@@ -33,30 +33,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_FILE_NAME,
         ProcessInstanceDocumentUpdateRequest.JSON_PROPERTY_DESCRIPTION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceDocumentUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_FILE = "file";
+    @jakarta.annotation.Nullable
     private String file;
 
     public static final String JSON_PROPERTY_URL = "url";
+    @jakarta.annotation.Nullable
     private String url;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_FILE_NAME = "fileName";
+    @jakarta.annotation.Nullable
     private String fileName;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public ProcessInstanceDocumentUpdateRequest() {
     }
 
-    public ProcessInstanceDocumentUpdateRequest file(String file) {
+    public ProcessInstanceDocumentUpdateRequest file(@jakarta.annotation.Nullable String file) {
 
         this.file = file;
         return this;
@@ -77,11 +82,11 @@ public class ProcessInstanceDocumentUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FILE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFile(String file) {
+    public void setFile(@jakarta.annotation.Nullable String file) {
         this.file = file;
     }
 
-    public ProcessInstanceDocumentUpdateRequest url(String url) {
+    public ProcessInstanceDocumentUpdateRequest url(@jakarta.annotation.Nullable String url) {
 
         this.url = url;
         return this;
@@ -102,11 +107,11 @@ public class ProcessInstanceDocumentUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_URL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUrl(String url) {
+    public void setUrl(@jakarta.annotation.Nullable String url) {
         this.url = url;
     }
 
-    public ProcessInstanceDocumentUpdateRequest name(String name) {
+    public ProcessInstanceDocumentUpdateRequest name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -127,11 +132,11 @@ public class ProcessInstanceDocumentUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ProcessInstanceDocumentUpdateRequest fileName(String fileName) {
+    public ProcessInstanceDocumentUpdateRequest fileName(@jakarta.annotation.Nullable String fileName) {
 
         this.fileName = fileName;
         return this;
@@ -152,11 +157,11 @@ public class ProcessInstanceDocumentUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FILE_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFileName(String fileName) {
+    public void setFileName(@jakarta.annotation.Nullable String fileName) {
         this.fileName = fileName;
     }
 
-    public ProcessInstanceDocumentUpdateRequest description(String description) {
+    public ProcessInstanceDocumentUpdateRequest description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -177,7 +182,7 @@ public class ProcessInstanceDocumentUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 

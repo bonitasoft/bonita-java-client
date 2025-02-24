@@ -35,30 +35,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ContractInput.JSON_PROPERTY_TYPE,
         ContractInput.JSON_PROPERTY_INPUTS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ContractInput implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_MULTIPLE = "multiple";
+    @jakarta.annotation.Nullable
     private String multiple;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private ContractInputType type;
 
     public static final String JSON_PROPERTY_INPUTS = "inputs";
+    @jakarta.annotation.Nullable
     private List<ContractInput> inputs = new ArrayList<>();
 
     public ContractInput() {
     }
 
-    public ContractInput description(String description) {
+    public ContractInput description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -79,11 +84,11 @@ public class ContractInput implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ContractInput name(String name) {
+    public ContractInput name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -104,11 +109,11 @@ public class ContractInput implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ContractInput multiple(String multiple) {
+    public ContractInput multiple(@jakarta.annotation.Nullable String multiple) {
 
         this.multiple = multiple;
         return this;
@@ -129,11 +134,11 @@ public class ContractInput implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MULTIPLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMultiple(String multiple) {
+    public void setMultiple(@jakarta.annotation.Nullable String multiple) {
         this.multiple = multiple;
     }
 
-    public ContractInput type(ContractInputType type) {
+    public ContractInput type(@jakarta.annotation.Nullable ContractInputType type) {
 
         this.type = type;
         return this;
@@ -154,11 +159,11 @@ public class ContractInput implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(ContractInputType type) {
+    public void setType(@jakarta.annotation.Nullable ContractInputType type) {
         this.type = type;
     }
 
-    public ContractInput inputs(List<ContractInput> inputs) {
+    public ContractInput inputs(@jakarta.annotation.Nullable List<ContractInput> inputs) {
 
         this.inputs = inputs;
         return this;
@@ -187,7 +192,7 @@ public class ContractInput implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INPUTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setInputs(List<ContractInput> inputs) {
+    public void setInputs(@jakarta.annotation.Nullable List<ContractInput> inputs) {
         this.inputs = inputs;
     }
 

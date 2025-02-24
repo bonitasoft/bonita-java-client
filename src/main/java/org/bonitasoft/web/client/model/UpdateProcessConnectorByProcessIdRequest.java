@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         UpdateProcessConnectorByProcessIdRequest.JSON_PROPERTY_ID,
         UpdateProcessConnectorByProcessIdRequest.JSON_PROPERTY_IMPLEMENTATION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class UpdateProcessConnectorByProcessIdRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_IMPLEMENTATION = "implementation";
+    @jakarta.annotation.Nullable
     private String implementation;
 
     public UpdateProcessConnectorByProcessIdRequest() {
     }
 
-    public UpdateProcessConnectorByProcessIdRequest id(String id) {
+    public UpdateProcessConnectorByProcessIdRequest id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -65,11 +67,11 @@ public class UpdateProcessConnectorByProcessIdRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public UpdateProcessConnectorByProcessIdRequest implementation(String implementation) {
+    public UpdateProcessConnectorByProcessIdRequest implementation(@jakarta.annotation.Nullable String implementation) {
 
         this.implementation = implementation;
         return this;
@@ -90,7 +92,7 @@ public class UpdateProcessConnectorByProcessIdRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IMPLEMENTATION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setImplementation(String implementation) {
+    public void setImplementation(@jakarta.annotation.Nullable String implementation) {
         this.implementation = implementation;
     }
 

@@ -35,36 +35,43 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ManualTaskCreateRequest.JSON_PROPERTY_DUE_DATE,
         ManualTaskCreateRequest.JSON_PROPERTY_ASSIGNED_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ManualTaskCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
+    @jakarta.annotation.Nullable
     private String parentTaskId;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private String state;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_PRIORITY = "priority";
+    @jakarta.annotation.Nullable
     private String priority;
 
     public static final String JSON_PROPERTY_DUE_DATE = "dueDate";
+    @jakarta.annotation.Nullable
     private String dueDate;
 
     public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+    @jakarta.annotation.Nullable
     private String assignedId;
 
     public ManualTaskCreateRequest() {
     }
 
-    public ManualTaskCreateRequest parentTaskId(String parentTaskId) {
+    public ManualTaskCreateRequest parentTaskId(@jakarta.annotation.Nullable String parentTaskId) {
 
         this.parentTaskId = parentTaskId;
         return this;
@@ -85,11 +92,11 @@ public class ManualTaskCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentTaskId(String parentTaskId) {
+    public void setParentTaskId(@jakarta.annotation.Nullable String parentTaskId) {
         this.parentTaskId = parentTaskId;
     }
 
-    public ManualTaskCreateRequest state(String state) {
+    public ManualTaskCreateRequest state(@jakarta.annotation.Nullable String state) {
 
         this.state = state;
         return this;
@@ -110,11 +117,11 @@ public class ManualTaskCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(String state) {
+    public void setState(@jakarta.annotation.Nullable String state) {
         this.state = state;
     }
 
-    public ManualTaskCreateRequest name(String name) {
+    public ManualTaskCreateRequest name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -135,11 +142,11 @@ public class ManualTaskCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ManualTaskCreateRequest description(String description) {
+    public ManualTaskCreateRequest description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -160,11 +167,11 @@ public class ManualTaskCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ManualTaskCreateRequest priority(String priority) {
+    public ManualTaskCreateRequest priority(@jakarta.annotation.Nullable String priority) {
 
         this.priority = priority;
         return this;
@@ -185,11 +192,11 @@ public class ManualTaskCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PRIORITY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPriority(String priority) {
+    public void setPriority(@jakarta.annotation.Nullable String priority) {
         this.priority = priority;
     }
 
-    public ManualTaskCreateRequest dueDate(String dueDate) {
+    public ManualTaskCreateRequest dueDate(@jakarta.annotation.Nullable String dueDate) {
 
         this.dueDate = dueDate;
         return this;
@@ -210,11 +217,11 @@ public class ManualTaskCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DUE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDueDate(String dueDate) {
+    public void setDueDate(@jakarta.annotation.Nullable String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public ManualTaskCreateRequest assignedId(String assignedId) {
+    public ManualTaskCreateRequest assignedId(@jakarta.annotation.Nullable String assignedId) {
 
         this.assignedId = assignedId;
         return this;
@@ -235,7 +242,7 @@ public class ManualTaskCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedId(String assignedId) {
+    public void setAssignedId(@jakarta.annotation.Nullable String assignedId) {
         this.assignedId = assignedId;
     }
 

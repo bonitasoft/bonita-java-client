@@ -38,45 +38,55 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         BPMFailure.JSON_PROPERTY_SCOPE,
         BPMFailure.JSON_PROPERTY_STACK_TRACE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class BPMFailure implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_CASE_ID = "caseId";
+    @jakarta.annotation.Nullable
     private String caseId;
 
     public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
+    @jakarta.annotation.Nullable
     private String rootCaseId;
 
     public static final String JSON_PROPERTY_CONTEXT = "context";
+    @jakarta.annotation.Nullable
     private String context;
 
     public static final String JSON_PROPERTY_ERROR_MESSAGE = "errorMessage";
+    @jakarta.annotation.Nullable
     private String errorMessage;
 
     public static final String JSON_PROPERTY_FAILURE_DATE = "failureDate";
+    @jakarta.annotation.Nullable
     private String failureDate;
 
     public static final String JSON_PROPERTY_FLOW_NODE_INSTANCE_ID = "flowNodeInstanceId";
+    @jakarta.annotation.Nullable
     private String flowNodeInstanceId;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
+    @jakarta.annotation.Nullable
     private String processDefinitionId;
 
     public static final String JSON_PROPERTY_SCOPE = "scope";
+    @jakarta.annotation.Nullable
     private String scope;
 
     public static final String JSON_PROPERTY_STACK_TRACE = "stackTrace";
+    @jakarta.annotation.Nullable
     private String stackTrace;
 
     public BPMFailure() {
     }
 
-    public BPMFailure caseId(String caseId) {
+    public BPMFailure caseId(@jakarta.annotation.Nullable String caseId) {
 
         this.caseId = caseId;
         return this;
@@ -97,11 +107,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseId(String caseId) {
+    public void setCaseId(@jakarta.annotation.Nullable String caseId) {
         this.caseId = caseId;
     }
 
-    public BPMFailure rootCaseId(String rootCaseId) {
+    public BPMFailure rootCaseId(@jakarta.annotation.Nullable String rootCaseId) {
 
         this.rootCaseId = rootCaseId;
         return this;
@@ -122,11 +132,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRootCaseId(String rootCaseId) {
+    public void setRootCaseId(@jakarta.annotation.Nullable String rootCaseId) {
         this.rootCaseId = rootCaseId;
     }
 
-    public BPMFailure context(String context) {
+    public BPMFailure context(@jakarta.annotation.Nullable String context) {
 
         this.context = context;
         return this;
@@ -147,11 +157,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTEXT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContext(String context) {
+    public void setContext(@jakarta.annotation.Nullable String context) {
         this.context = context;
     }
 
-    public BPMFailure errorMessage(String errorMessage) {
+    public BPMFailure errorMessage(@jakarta.annotation.Nullable String errorMessage) {
 
         this.errorMessage = errorMessage;
         return this;
@@ -172,11 +182,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ERROR_MESSAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setErrorMessage(String errorMessage) {
+    public void setErrorMessage(@jakarta.annotation.Nullable String errorMessage) {
         this.errorMessage = errorMessage;
     }
 
-    public BPMFailure failureDate(String failureDate) {
+    public BPMFailure failureDate(@jakarta.annotation.Nullable String failureDate) {
 
         this.failureDate = failureDate;
         return this;
@@ -197,11 +207,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FAILURE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFailureDate(String failureDate) {
+    public void setFailureDate(@jakarta.annotation.Nullable String failureDate) {
         this.failureDate = failureDate;
     }
 
-    public BPMFailure flowNodeInstanceId(String flowNodeInstanceId) {
+    public BPMFailure flowNodeInstanceId(@jakarta.annotation.Nullable String flowNodeInstanceId) {
 
         this.flowNodeInstanceId = flowNodeInstanceId;
         return this;
@@ -222,11 +232,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FLOW_NODE_INSTANCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFlowNodeInstanceId(String flowNodeInstanceId) {
+    public void setFlowNodeInstanceId(@jakarta.annotation.Nullable String flowNodeInstanceId) {
         this.flowNodeInstanceId = flowNodeInstanceId;
     }
 
-    public BPMFailure id(String id) {
+    public BPMFailure id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -247,11 +257,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public BPMFailure processDefinitionId(String processDefinitionId) {
+    public BPMFailure processDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
 
         this.processDefinitionId = processDefinitionId;
         return this;
@@ -272,11 +282,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessDefinitionId(String processDefinitionId) {
+    public void setProcessDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
         this.processDefinitionId = processDefinitionId;
     }
 
-    public BPMFailure scope(String scope) {
+    public BPMFailure scope(@jakarta.annotation.Nullable String scope) {
 
         this.scope = scope;
         return this;
@@ -297,11 +307,11 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SCOPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setScope(String scope) {
+    public void setScope(@jakarta.annotation.Nullable String scope) {
         this.scope = scope;
     }
 
-    public BPMFailure stackTrace(String stackTrace) {
+    public BPMFailure stackTrace(@jakarta.annotation.Nullable String stackTrace) {
 
         this.stackTrace = stackTrace;
         return this;
@@ -322,7 +332,7 @@ public class BPMFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STACK_TRACE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setStackTrace(String stackTrace) {
+    public void setStackTrace(@jakarta.annotation.Nullable String stackTrace) {
         this.stackTrace = stackTrace;
     }
 

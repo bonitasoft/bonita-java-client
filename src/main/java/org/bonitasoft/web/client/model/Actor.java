@@ -33,30 +33,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Actor.JSON_PROPERTY_NAME,
         Actor.JSON_PROPERTY_DISPLAY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Actor implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private Long id;
 
     public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
+    @jakarta.annotation.Nullable
     private Long processId;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public Actor() {
     }
 
-    public Actor id(Long id) {
+    public Actor id(@jakarta.annotation.Nullable Long id) {
 
         this.id = id;
         return this;
@@ -77,11 +82,11 @@ public class Actor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(Long id) {
+    public void setId(@jakarta.annotation.Nullable Long id) {
         this.id = id;
     }
 
-    public Actor processId(Long processId) {
+    public Actor processId(@jakarta.annotation.Nullable Long processId) {
 
         this.processId = processId;
         return this;
@@ -102,11 +107,11 @@ public class Actor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessId(Long processId) {
+    public void setProcessId(@jakarta.annotation.Nullable Long processId) {
         this.processId = processId;
     }
 
-    public Actor description(String description) {
+    public Actor description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -127,11 +132,11 @@ public class Actor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public Actor name(String name) {
+    public Actor name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -152,11 +157,11 @@ public class Actor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public Actor displayName(String displayName) {
+    public Actor displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -177,7 +182,7 @@ public class Actor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 

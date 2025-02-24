@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         I18nlocale.JSON_PROPERTY_NAME,
         I18nlocale.JSON_PROPERTY_LOCALE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class I18nlocale implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_LOCALE = "locale";
+    @jakarta.annotation.Nullable
     private String locale;
 
     public I18nlocale() {
     }
 
-    public I18nlocale name(String name) {
+    public I18nlocale name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -65,11 +67,11 @@ public class I18nlocale implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public I18nlocale locale(String locale) {
+    public I18nlocale locale(@jakarta.annotation.Nullable String locale) {
 
         this.locale = locale;
         return this;
@@ -90,7 +92,7 @@ public class I18nlocale implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LOCALE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLocale(String locale) {
+    public void setLocale(@jakarta.annotation.Nullable String locale) {
         this.locale = locale;
     }
 

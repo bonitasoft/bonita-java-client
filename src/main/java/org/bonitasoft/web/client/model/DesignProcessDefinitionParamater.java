@@ -31,24 +31,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         DesignProcessDefinitionParamater.JSON_PROPERTY_DESCRIPTION,
         DesignProcessDefinitionParamater.JSON_PROPERTY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class DesignProcessDefinitionParamater implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public DesignProcessDefinitionParamater() {
     }
 
-    public DesignProcessDefinitionParamater type(String type) {
+    public DesignProcessDefinitionParamater type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -69,11 +72,11 @@ public class DesignProcessDefinitionParamater implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 
-    public DesignProcessDefinitionParamater description(String description) {
+    public DesignProcessDefinitionParamater description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -94,11 +97,11 @@ public class DesignProcessDefinitionParamater implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public DesignProcessDefinitionParamater name(String name) {
+    public DesignProcessDefinitionParamater name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -119,7 +122,7 @@ public class DesignProcessDefinitionParamater implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 

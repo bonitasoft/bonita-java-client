@@ -41,33 +41,41 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ActivityVariable.JSON_PROPERTY_CONTAINER_TYPE,
         ActivityVariable.JSON_PROPERTY_VALUE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ActivityVariable implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_ID_STRING = "id_string";
+    @jakarta.annotation.Nullable
     private String idString;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_TRANSIENT_DATA = "transientData";
+    @jakarta.annotation.Nullable
     private String transientData;
 
     public static final String JSON_PROPERTY_CLASS_NAME = "className";
+    @jakarta.annotation.Nullable
     private String className;
 
     public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
+    @jakarta.annotation.Nullable
     private String containerId;
 
     public static final String JSON_PROPERTY_CONTAINER_ID_STRING = "containerId_string";
+    @jakarta.annotation.Nullable
     private String containerIdString;
 
     /**
@@ -75,9 +83,9 @@ public class ActivityVariable implements Serializable {
      */
     public enum ContainerTypeEnum {
 
-        ACTIVITY_INSTANCE("ACTIVITY_INSTANCE"),
+        ACTIVITY_INSTANCE(String.valueOf("ACTIVITY_INSTANCE")),
 
-        PROCESS_INSTANCE("PROCESS_INSTANCE");
+        PROCESS_INSTANCE(String.valueOf("PROCESS_INSTANCE"));
 
         private String value;
 
@@ -107,15 +115,17 @@ public class ActivityVariable implements Serializable {
     }
 
     public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
+    @jakarta.annotation.Nullable
     private ContainerTypeEnum containerType;
 
     public static final String JSON_PROPERTY_VALUE = "value";
+    @jakarta.annotation.Nullable
     private String value;
 
     public ActivityVariable() {
     }
 
-    public ActivityVariable id(String id) {
+    public ActivityVariable id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -136,11 +146,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ActivityVariable idString(String idString) {
+    public ActivityVariable idString(@jakarta.annotation.Nullable String idString) {
 
         this.idString = idString;
         return this;
@@ -161,11 +171,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID_STRING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIdString(String idString) {
+    public void setIdString(@jakarta.annotation.Nullable String idString) {
         this.idString = idString;
     }
 
-    public ActivityVariable name(String name) {
+    public ActivityVariable name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -186,11 +196,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ActivityVariable description(String description) {
+    public ActivityVariable description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -211,11 +221,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ActivityVariable transientData(String transientData) {
+    public ActivityVariable transientData(@jakarta.annotation.Nullable String transientData) {
 
         this.transientData = transientData;
         return this;
@@ -236,11 +246,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TRANSIENT_DATA)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTransientData(String transientData) {
+    public void setTransientData(@jakarta.annotation.Nullable String transientData) {
         this.transientData = transientData;
     }
 
-    public ActivityVariable className(String className) {
+    public ActivityVariable className(@jakarta.annotation.Nullable String className) {
 
         this.className = className;
         return this;
@@ -261,11 +271,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CLASS_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setClassName(String className) {
+    public void setClassName(@jakarta.annotation.Nullable String className) {
         this.className = className;
     }
 
-    public ActivityVariable containerId(String containerId) {
+    public ActivityVariable containerId(@jakarta.annotation.Nullable String containerId) {
 
         this.containerId = containerId;
         return this;
@@ -287,11 +297,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContainerId(String containerId) {
+    public void setContainerId(@jakarta.annotation.Nullable String containerId) {
         this.containerId = containerId;
     }
 
-    public ActivityVariable containerIdString(String containerIdString) {
+    public ActivityVariable containerIdString(@jakarta.annotation.Nullable String containerIdString) {
 
         this.containerIdString = containerIdString;
         return this;
@@ -312,11 +322,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTAINER_ID_STRING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContainerIdString(String containerIdString) {
+    public void setContainerIdString(@jakarta.annotation.Nullable String containerIdString) {
         this.containerIdString = containerIdString;
     }
 
-    public ActivityVariable containerType(ContainerTypeEnum containerType) {
+    public ActivityVariable containerType(@jakarta.annotation.Nullable ContainerTypeEnum containerType) {
 
         this.containerType = containerType;
         return this;
@@ -337,11 +347,11 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContainerType(ContainerTypeEnum containerType) {
+    public void setContainerType(@jakarta.annotation.Nullable ContainerTypeEnum containerType) {
         this.containerType = containerType;
     }
 
-    public ActivityVariable value(String value) {
+    public ActivityVariable value(@jakarta.annotation.Nullable String value) {
 
         this.value = value;
         return this;
@@ -362,7 +372,7 @@ public class ActivityVariable implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setValue(String value) {
+    public void setValue(@jakarta.annotation.Nullable String value) {
         this.value = value;
     }
 
