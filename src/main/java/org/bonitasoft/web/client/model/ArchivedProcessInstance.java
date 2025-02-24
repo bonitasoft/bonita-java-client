@@ -50,30 +50,37 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX3_VALUE,
         ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX4_VALUE,
         ArchivedProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_VALUE,
+        ArchivedProcessInstance.JSON_PROPERTY_CALLER_ID,
         ArchivedProcessInstance.JSON_PROPERTY_SOURCE_OBJECT_ID,
         ArchivedProcessInstance.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ArchivedProcessInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_END_DATE = "end_date";
+    @jakarta.annotation.Nullable
     private String endDate;
 
     public static final String JSON_PROPERTY_FAILED_FLOW_NODES = "failedFlowNodes";
+    @jakarta.annotation.Nullable
     private String failedFlowNodes;
 
     public static final String JSON_PROPERTY_STARTED_BY_SUBSTITUTE = "startedBySubstitute";
+    @jakarta.annotation.Nullable
     private String startedBySubstitute;
 
     public static final String JSON_PROPERTY_START = "start";
+    @jakarta.annotation.Nullable
     private String start;
 
     public static final String JSON_PROPERTY_ACTIVE_FLOW_NODES = "activeFlowNodes";
+    @jakarta.annotation.Nullable
     private String activeFlowNodes;
 
     /**
@@ -81,23 +88,23 @@ public class ArchivedProcessInstance implements Serializable {
      */
     public enum StateEnum {
 
-        INITIALIZING("initializing"),
+        INITIALIZING(String.valueOf("initializing")),
 
-        STARTED("started"),
+        STARTED(String.valueOf("started")),
 
-        SUSPENDED("suspended"),
+        SUSPENDED(String.valueOf("suspended")),
 
-        CANCELLED("cancelled"),
+        CANCELLED(String.valueOf("cancelled")),
 
-        ABORTED("aborted"),
+        ABORTED(String.valueOf("aborted")),
 
-        COMPLETING("completing"),
+        COMPLETING(String.valueOf("completing")),
 
-        COMPLETED("completed"),
+        COMPLETED(String.valueOf("completed")),
 
-        ERROR("error"),
+        ERROR(String.valueOf("error")),
 
-        ABORTING("aborting");
+        ABORTING(String.valueOf("aborting"));
 
         private String value;
 
@@ -127,60 +134,81 @@ public class ArchivedProcessInstance implements Serializable {
     }
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private StateEnum state;
 
     public static final String JSON_PROPERTY_ROOT_CASE_ID = "rootCaseId";
+    @jakarta.annotation.Nullable
     private String rootCaseId;
 
     public static final String JSON_PROPERTY_STARTED_BY = "started_by";
+    @jakarta.annotation.Nullable
     private String startedBy;
 
     public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
+    @jakarta.annotation.Nullable
     private String processDefinitionId;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX1_LABEL = "searchIndex1Label";
+    @jakarta.annotation.Nullable
     private String searchIndex1Label;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX2_LABEL = "searchIndex2Label";
+    @jakarta.annotation.Nullable
     private String searchIndex2Label;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX3_LABEL = "searchIndex3Label";
+    @jakarta.annotation.Nullable
     private String searchIndex3Label;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX4_LABEL = "searchIndex4Label";
+    @jakarta.annotation.Nullable
     private String searchIndex4Label;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX5_LABEL = "searchIndex5Label";
+    @jakarta.annotation.Nullable
     private String searchIndex5Label;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX1_VALUE = "searchIndex1Value";
+    @jakarta.annotation.Nullable
     private String searchIndex1Value;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX2_VALUE = "searchIndex2Value";
+    @jakarta.annotation.Nullable
     private String searchIndex2Value;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX3_VALUE = "searchIndex3Value";
+    @jakarta.annotation.Nullable
     private String searchIndex3Value;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX4_VALUE = "searchIndex4Value";
+    @jakarta.annotation.Nullable
     private String searchIndex4Value;
 
     public static final String JSON_PROPERTY_SEARCH_INDEX5_VALUE = "searchIndex5Value";
+    @jakarta.annotation.Nullable
     private String searchIndex5Value;
 
+    public static final String JSON_PROPERTY_CALLER_ID = "callerId";
+    @jakarta.annotation.Nullable
+    private String callerId;
+
     public static final String JSON_PROPERTY_SOURCE_OBJECT_ID = "sourceObjectId";
+    @jakarta.annotation.Nullable
     private String sourceObjectId;
 
     public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+    @jakarta.annotation.Nullable
     private String archivedDate;
 
     public ArchivedProcessInstance() {
     }
 
-    public ArchivedProcessInstance id(String id) {
+    public ArchivedProcessInstance id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -201,11 +229,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ArchivedProcessInstance endDate(String endDate) {
+    public ArchivedProcessInstance endDate(@jakarta.annotation.Nullable String endDate) {
 
         this.endDate = endDate;
         return this;
@@ -226,11 +254,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_END_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setEndDate(String endDate) {
+    public void setEndDate(@jakarta.annotation.Nullable String endDate) {
         this.endDate = endDate;
     }
 
-    public ArchivedProcessInstance failedFlowNodes(String failedFlowNodes) {
+    public ArchivedProcessInstance failedFlowNodes(@jakarta.annotation.Nullable String failedFlowNodes) {
 
         this.failedFlowNodes = failedFlowNodes;
         return this;
@@ -251,11 +279,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FAILED_FLOW_NODES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFailedFlowNodes(String failedFlowNodes) {
+    public void setFailedFlowNodes(@jakarta.annotation.Nullable String failedFlowNodes) {
         this.failedFlowNodes = failedFlowNodes;
     }
 
-    public ArchivedProcessInstance startedBySubstitute(String startedBySubstitute) {
+    public ArchivedProcessInstance startedBySubstitute(@jakarta.annotation.Nullable String startedBySubstitute) {
 
         this.startedBySubstitute = startedBySubstitute;
         return this;
@@ -277,11 +305,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STARTED_BY_SUBSTITUTE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setStartedBySubstitute(String startedBySubstitute) {
+    public void setStartedBySubstitute(@jakarta.annotation.Nullable String startedBySubstitute) {
         this.startedBySubstitute = startedBySubstitute;
     }
 
-    public ArchivedProcessInstance start(String start) {
+    public ArchivedProcessInstance start(@jakarta.annotation.Nullable String start) {
 
         this.start = start;
         return this;
@@ -302,11 +330,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_START)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setStart(String start) {
+    public void setStart(@jakarta.annotation.Nullable String start) {
         this.start = start;
     }
 
-    public ArchivedProcessInstance activeFlowNodes(String activeFlowNodes) {
+    public ArchivedProcessInstance activeFlowNodes(@jakarta.annotation.Nullable String activeFlowNodes) {
 
         this.activeFlowNodes = activeFlowNodes;
         return this;
@@ -327,11 +355,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTIVE_FLOW_NODES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActiveFlowNodes(String activeFlowNodes) {
+    public void setActiveFlowNodes(@jakarta.annotation.Nullable String activeFlowNodes) {
         this.activeFlowNodes = activeFlowNodes;
     }
 
-    public ArchivedProcessInstance state(StateEnum state) {
+    public ArchivedProcessInstance state(@jakarta.annotation.Nullable StateEnum state) {
 
         this.state = state;
         return this;
@@ -352,11 +380,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(StateEnum state) {
+    public void setState(@jakarta.annotation.Nullable StateEnum state) {
         this.state = state;
     }
 
-    public ArchivedProcessInstance rootCaseId(String rootCaseId) {
+    public ArchivedProcessInstance rootCaseId(@jakarta.annotation.Nullable String rootCaseId) {
 
         this.rootCaseId = rootCaseId;
         return this;
@@ -377,11 +405,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROOT_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRootCaseId(String rootCaseId) {
+    public void setRootCaseId(@jakarta.annotation.Nullable String rootCaseId) {
         this.rootCaseId = rootCaseId;
     }
 
-    public ArchivedProcessInstance startedBy(String startedBy) {
+    public ArchivedProcessInstance startedBy(@jakarta.annotation.Nullable String startedBy) {
 
         this.startedBy = startedBy;
         return this;
@@ -402,11 +430,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STARTED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setStartedBy(String startedBy) {
+    public void setStartedBy(@jakarta.annotation.Nullable String startedBy) {
         this.startedBy = startedBy;
     }
 
-    public ArchivedProcessInstance processDefinitionId(String processDefinitionId) {
+    public ArchivedProcessInstance processDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
 
         this.processDefinitionId = processDefinitionId;
         return this;
@@ -427,11 +455,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessDefinitionId(String processDefinitionId) {
+    public void setProcessDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
         this.processDefinitionId = processDefinitionId;
     }
 
-    public ArchivedProcessInstance lastUpdateDate(String lastUpdateDate) {
+    public ArchivedProcessInstance lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -452,11 +480,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public ArchivedProcessInstance searchIndex1Label(String searchIndex1Label) {
+    public ArchivedProcessInstance searchIndex1Label(@jakarta.annotation.Nullable String searchIndex1Label) {
 
         this.searchIndex1Label = searchIndex1Label;
         return this;
@@ -477,11 +505,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex1Label(String searchIndex1Label) {
+    public void setSearchIndex1Label(@jakarta.annotation.Nullable String searchIndex1Label) {
         this.searchIndex1Label = searchIndex1Label;
     }
 
-    public ArchivedProcessInstance searchIndex2Label(String searchIndex2Label) {
+    public ArchivedProcessInstance searchIndex2Label(@jakarta.annotation.Nullable String searchIndex2Label) {
 
         this.searchIndex2Label = searchIndex2Label;
         return this;
@@ -502,11 +530,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex2Label(String searchIndex2Label) {
+    public void setSearchIndex2Label(@jakarta.annotation.Nullable String searchIndex2Label) {
         this.searchIndex2Label = searchIndex2Label;
     }
 
-    public ArchivedProcessInstance searchIndex3Label(String searchIndex3Label) {
+    public ArchivedProcessInstance searchIndex3Label(@jakarta.annotation.Nullable String searchIndex3Label) {
 
         this.searchIndex3Label = searchIndex3Label;
         return this;
@@ -527,11 +555,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex3Label(String searchIndex3Label) {
+    public void setSearchIndex3Label(@jakarta.annotation.Nullable String searchIndex3Label) {
         this.searchIndex3Label = searchIndex3Label;
     }
 
-    public ArchivedProcessInstance searchIndex4Label(String searchIndex4Label) {
+    public ArchivedProcessInstance searchIndex4Label(@jakarta.annotation.Nullable String searchIndex4Label) {
 
         this.searchIndex4Label = searchIndex4Label;
         return this;
@@ -552,11 +580,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex4Label(String searchIndex4Label) {
+    public void setSearchIndex4Label(@jakarta.annotation.Nullable String searchIndex4Label) {
         this.searchIndex4Label = searchIndex4Label;
     }
 
-    public ArchivedProcessInstance searchIndex5Label(String searchIndex5Label) {
+    public ArchivedProcessInstance searchIndex5Label(@jakarta.annotation.Nullable String searchIndex5Label) {
 
         this.searchIndex5Label = searchIndex5Label;
         return this;
@@ -577,11 +605,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_LABEL)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex5Label(String searchIndex5Label) {
+    public void setSearchIndex5Label(@jakarta.annotation.Nullable String searchIndex5Label) {
         this.searchIndex5Label = searchIndex5Label;
     }
 
-    public ArchivedProcessInstance searchIndex1Value(String searchIndex1Value) {
+    public ArchivedProcessInstance searchIndex1Value(@jakarta.annotation.Nullable String searchIndex1Value) {
 
         this.searchIndex1Value = searchIndex1Value;
         return this;
@@ -602,11 +630,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX1_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex1Value(String searchIndex1Value) {
+    public void setSearchIndex1Value(@jakarta.annotation.Nullable String searchIndex1Value) {
         this.searchIndex1Value = searchIndex1Value;
     }
 
-    public ArchivedProcessInstance searchIndex2Value(String searchIndex2Value) {
+    public ArchivedProcessInstance searchIndex2Value(@jakarta.annotation.Nullable String searchIndex2Value) {
 
         this.searchIndex2Value = searchIndex2Value;
         return this;
@@ -627,11 +655,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX2_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex2Value(String searchIndex2Value) {
+    public void setSearchIndex2Value(@jakarta.annotation.Nullable String searchIndex2Value) {
         this.searchIndex2Value = searchIndex2Value;
     }
 
-    public ArchivedProcessInstance searchIndex3Value(String searchIndex3Value) {
+    public ArchivedProcessInstance searchIndex3Value(@jakarta.annotation.Nullable String searchIndex3Value) {
 
         this.searchIndex3Value = searchIndex3Value;
         return this;
@@ -652,11 +680,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX3_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex3Value(String searchIndex3Value) {
+    public void setSearchIndex3Value(@jakarta.annotation.Nullable String searchIndex3Value) {
         this.searchIndex3Value = searchIndex3Value;
     }
 
-    public ArchivedProcessInstance searchIndex4Value(String searchIndex4Value) {
+    public ArchivedProcessInstance searchIndex4Value(@jakarta.annotation.Nullable String searchIndex4Value) {
 
         this.searchIndex4Value = searchIndex4Value;
         return this;
@@ -677,11 +705,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX4_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex4Value(String searchIndex4Value) {
+    public void setSearchIndex4Value(@jakarta.annotation.Nullable String searchIndex4Value) {
         this.searchIndex4Value = searchIndex4Value;
     }
 
-    public ArchivedProcessInstance searchIndex5Value(String searchIndex5Value) {
+    public ArchivedProcessInstance searchIndex5Value(@jakarta.annotation.Nullable String searchIndex5Value) {
 
         this.searchIndex5Value = searchIndex5Value;
         return this;
@@ -702,11 +730,37 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SEARCH_INDEX5_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSearchIndex5Value(String searchIndex5Value) {
+    public void setSearchIndex5Value(@jakarta.annotation.Nullable String searchIndex5Value) {
         this.searchIndex5Value = searchIndex5Value;
     }
 
-    public ArchivedProcessInstance sourceObjectId(String sourceObjectId) {
+    public ArchivedProcessInstance callerId(@jakarta.annotation.Nullable String callerId) {
+
+        this.callerId = callerId;
+        return this;
+    }
+
+    /**
+     * the identifier of the BPM entity who started the process. E.g. the call activity instance Id if it was started by a call activity or -1 if it was started by
+     * a user (since version 10.3 - 2025.1)
+     * 
+     * @return callerId
+     */
+    @jakarta.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CALLER_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCallerId() {
+        return callerId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CALLER_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCallerId(@jakarta.annotation.Nullable String callerId) {
+        this.callerId = callerId;
+    }
+
+    public ArchivedProcessInstance sourceObjectId(@jakarta.annotation.Nullable String sourceObjectId) {
 
         this.sourceObjectId = sourceObjectId;
         return this;
@@ -727,11 +781,11 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SOURCE_OBJECT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSourceObjectId(String sourceObjectId) {
+    public void setSourceObjectId(@jakarta.annotation.Nullable String sourceObjectId) {
         this.sourceObjectId = sourceObjectId;
     }
 
-    public ArchivedProcessInstance archivedDate(String archivedDate) {
+    public ArchivedProcessInstance archivedDate(@jakarta.annotation.Nullable String archivedDate) {
 
         this.archivedDate = archivedDate;
         return this;
@@ -752,7 +806,7 @@ public class ArchivedProcessInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setArchivedDate(String archivedDate) {
+    public void setArchivedDate(@jakarta.annotation.Nullable String archivedDate) {
         this.archivedDate = archivedDate;
     }
 
@@ -786,6 +840,7 @@ public class ArchivedProcessInstance implements Serializable {
                 Objects.equals(this.searchIndex3Value, archivedProcessInstance.searchIndex3Value) &&
                 Objects.equals(this.searchIndex4Value, archivedProcessInstance.searchIndex4Value) &&
                 Objects.equals(this.searchIndex5Value, archivedProcessInstance.searchIndex5Value) &&
+                Objects.equals(this.callerId, archivedProcessInstance.callerId) &&
                 Objects.equals(this.sourceObjectId, archivedProcessInstance.sourceObjectId) &&
                 Objects.equals(this.archivedDate, archivedProcessInstance.archivedDate);
     }
@@ -795,7 +850,7 @@ public class ArchivedProcessInstance implements Serializable {
         return Objects.hash(id, endDate, failedFlowNodes, startedBySubstitute, start, activeFlowNodes, state,
                 rootCaseId, startedBy, processDefinitionId, lastUpdateDate, searchIndex1Label, searchIndex2Label,
                 searchIndex3Label, searchIndex4Label, searchIndex5Label, searchIndex1Value, searchIndex2Value,
-                searchIndex3Value, searchIndex4Value, searchIndex5Value, sourceObjectId, archivedDate);
+                searchIndex3Value, searchIndex4Value, searchIndex5Value, callerId, sourceObjectId, archivedDate);
     }
 
     @Override
@@ -823,6 +878,7 @@ public class ArchivedProcessInstance implements Serializable {
         sb.append("    searchIndex3Value: ").append(toIndentedString(searchIndex3Value)).append("\n");
         sb.append("    searchIndex4Value: ").append(toIndentedString(searchIndex4Value)).append("\n");
         sb.append("    searchIndex5Value: ").append(toIndentedString(searchIndex5Value)).append("\n");
+        sb.append("    callerId: ").append(toIndentedString(callerId)).append("\n");
         sb.append("    sourceObjectId: ").append(toIndentedString(sourceObjectId)).append("\n");
         sb.append("    archivedDate: ").append(toIndentedString(archivedDate)).append("\n");
         sb.append("}");

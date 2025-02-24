@@ -31,24 +31,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationPageCreateRequest.JSON_PROPERTY_APPLICATION_ID,
         ApplicationPageCreateRequest.JSON_PROPERTY_PAGE_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ApplicationPageCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_TOKEN = "token";
+    @jakarta.annotation.Nullable
     private String token;
 
     public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
+    @jakarta.annotation.Nullable
     private String applicationId;
 
     public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+    @jakarta.annotation.Nullable
     private String pageId;
 
     public ApplicationPageCreateRequest() {
     }
 
-    public ApplicationPageCreateRequest token(String token) {
+    public ApplicationPageCreateRequest token(@jakarta.annotation.Nullable String token) {
 
         this.token = token;
         return this;
@@ -69,11 +72,11 @@ public class ApplicationPageCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setToken(String token) {
+    public void setToken(@jakarta.annotation.Nullable String token) {
         this.token = token;
     }
 
-    public ApplicationPageCreateRequest applicationId(String applicationId) {
+    public ApplicationPageCreateRequest applicationId(@jakarta.annotation.Nullable String applicationId) {
 
         this.applicationId = applicationId;
         return this;
@@ -94,11 +97,11 @@ public class ApplicationPageCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setApplicationId(String applicationId) {
+    public void setApplicationId(@jakarta.annotation.Nullable String applicationId) {
         this.applicationId = applicationId;
     }
 
-    public ApplicationPageCreateRequest pageId(String pageId) {
+    public ApplicationPageCreateRequest pageId(@jakarta.annotation.Nullable String pageId) {
 
         this.pageId = pageId;
         return this;
@@ -119,7 +122,7 @@ public class ApplicationPageCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPageId(String pageId) {
+    public void setPageId(@jakarta.annotation.Nullable String pageId) {
         this.pageId = pageId;
     }
 

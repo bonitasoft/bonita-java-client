@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         HumanTaskUpdateRequest.JSON_PROPERTY_ASSIGNED_ID,
         HumanTaskUpdateRequest.JSON_PROPERTY_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class HumanTaskUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+    @jakarta.annotation.Nullable
     private String assignedId;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private String state;
 
     public HumanTaskUpdateRequest() {
     }
 
-    public HumanTaskUpdateRequest assignedId(String assignedId) {
+    public HumanTaskUpdateRequest assignedId(@jakarta.annotation.Nullable String assignedId) {
 
         this.assignedId = assignedId;
         return this;
@@ -65,11 +67,11 @@ public class HumanTaskUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedId(String assignedId) {
+    public void setAssignedId(@jakarta.annotation.Nullable String assignedId) {
         this.assignedId = assignedId;
     }
 
-    public HumanTaskUpdateRequest state(String state) {
+    public HumanTaskUpdateRequest state(@jakarta.annotation.Nullable String state) {
 
         this.state = state;
         return this;
@@ -90,7 +92,7 @@ public class HumanTaskUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(String state) {
+    public void setState(@jakarta.annotation.Nullable String state) {
         this.state = state;
     }
 

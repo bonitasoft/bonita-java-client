@@ -11,6 +11,7 @@ src/main/java/org/bonitasoft/web/client/api/ApplicationPageApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedActivityApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedActivityVariableApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedConnectorInstanceApi.java
+src/main/java/org/bonitasoft/web/client/api/ArchivedFailureApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedFlowNodeApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedHumanTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedManualTaskApi.java
@@ -20,7 +21,6 @@ src/main/java/org/bonitasoft/web/client/api/ArchivedProcessInstanceDocumentApi.j
 src/main/java/org/bonitasoft/web/client/api/ArchivedProcessInstanceVariableApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedUserTaskApi.java
-src/main/java/org/bonitasoft/web/client/api/AuthenticationApi.java
 src/main/java/org/bonitasoft/web/client/api/BdmAccessControlApi.java
 src/main/java/org/bonitasoft/web/client/api/BdmApi.java
 src/main/java/org/bonitasoft/web/client/api/BusinessDataQueryApi.java
@@ -30,6 +30,7 @@ src/main/java/org/bonitasoft/web/client/api/CustomUserApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserDefinitionApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserValueApi.java
 src/main/java/org/bonitasoft/web/client/api/DiagramApi.java
+src/main/java/org/bonitasoft/web/client/api/FailureApi.java
 src/main/java/org/bonitasoft/web/client/api/FlowNodeApi.java
 src/main/java/org/bonitasoft/web/client/api/FormFileUploadApi.java
 src/main/java/org/bonitasoft/web/client/api/FormMappingApi.java
@@ -63,9 +64,7 @@ src/main/java/org/bonitasoft/web/client/api/ProfileEntryApi.java
 src/main/java/org/bonitasoft/web/client/api/ProfileMemberApi.java
 src/main/java/org/bonitasoft/web/client/api/RoleApi.java
 src/main/java/org/bonitasoft/web/client/api/SignalApi.java
-src/main/java/org/bonitasoft/web/client/api/SystemTenantApi.java
 src/main/java/org/bonitasoft/web/client/api/TaskApi.java
-src/main/java/org/bonitasoft/web/client/api/TenantApi.java
 src/main/java/org/bonitasoft/web/client/api/ThemeApi.java
 src/main/java/org/bonitasoft/web/client/api/TimerEventTriggerApi.java
 src/main/java/org/bonitasoft/web/client/api/UploadApi.java
@@ -103,6 +102,7 @@ src/main/java/org/bonitasoft/web/client/model/ApplicationPageCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ApplicationUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedActivity.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedActivityVariable.java
+src/main/java/org/bonitasoft/web/client/model/ArchivedBPMFailure.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedConnectorInstance.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedFlowNode.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedHumanTask.java
@@ -115,6 +115,7 @@ src/main/java/org/bonitasoft/web/client/model/ArchivedTask.java
 src/main/java/org/bonitasoft/web/client/model/ArchivedUserTask.java
 src/main/java/org/bonitasoft/web/client/model/BDMAccessControl.java
 src/main/java/org/bonitasoft/web/client/model/BDMInstallRequest.java
+src/main/java/org/bonitasoft/web/client/model/BPMFailure.java
 src/main/java/org/bonitasoft/web/client/model/Bdm.java
 src/main/java/org/bonitasoft/web/client/model/BusinessData.java
 src/main/java/org/bonitasoft/web/client/model/ConfigurationState.java
@@ -203,13 +204,8 @@ src/main/java/org/bonitasoft/web/client/model/RoleUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/Session.java
 src/main/java/org/bonitasoft/web/client/model/Signal.java
 src/main/java/org/bonitasoft/web/client/model/SystemInformation.java
-src/main/java/org/bonitasoft/web/client/model/SystemTenant.java
 src/main/java/org/bonitasoft/web/client/model/Task.java
-src/main/java/org/bonitasoft/web/client/model/Tenant.java
-src/main/java/org/bonitasoft/web/client/model/TenantCreateRequest.java
-src/main/java/org/bonitasoft/web/client/model/TenantPauseRequest.java
 src/main/java/org/bonitasoft/web/client/model/TenantResourceState.java
-src/main/java/org/bonitasoft/web/client/model/TenantUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ThemeCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ThemeRestoreRequest.java
 src/main/java/org/bonitasoft/web/client/model/TimerEventTrigger.java

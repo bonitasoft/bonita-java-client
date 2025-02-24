@@ -43,51 +43,64 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         FlowElementContainerDefinition.JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS,
         FlowElementContainerDefinition.JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class FlowElementContainerDefinition implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ACTIVITIES = "activities";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> activities = new ArrayList<>();
 
     public static final String JSON_PROPERTY_TRANSITIONS = "transitions";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> transitions = new ArrayList<>();
 
     public static final String JSON_PROPERTY_GATEWAYS_LIST = "gatewaysList";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> gatewaysList = new ArrayList<>();
 
     public static final String JSON_PROPERTY_START_EVENTS = "startEvents";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> startEvents = new ArrayList<>();
 
     public static final String JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS = "intermediateCatchEvents";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> intermediateCatchEvents = new ArrayList<>();
 
     public static final String JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS = "intermediateThrowEvents";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> intermediateThrowEvents = new ArrayList<>();
 
     public static final String JSON_PROPERTY_END_EVENTS = "endEvents";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> endEvents = new ArrayList<>();
 
     public static final String JSON_PROPERTY_DATA_DEFINITIONS = "dataDefinitions";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> dataDefinitions = new ArrayList<>();
 
     public static final String JSON_PROPERTY_DOCUMENT_DEFINITIONS = "documentDefinitions";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> documentDefinitions = new ArrayList<>();
 
     public static final String JSON_PROPERTY_CONNECTORS = "connectors";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> connectors = new ArrayList<>();
 
     public static final String JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS = "businessDataDefinitions";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> businessDataDefinitions = new ArrayList<>();
 
     public static final String JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS = "documentListDefinitions";
+    @jakarta.annotation.Nullable
     private List<Map<String, Object>> documentListDefinitions = new ArrayList<>();
 
     public FlowElementContainerDefinition() {
     }
 
-    public FlowElementContainerDefinition activities(List<Map<String, Object>> activities) {
+    public FlowElementContainerDefinition activities(
+            @jakarta.annotation.Nullable List<Map<String, Object>> activities) {
 
         this.activities = activities;
         return this;
@@ -116,11 +129,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTIVITIES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActivities(List<Map<String, Object>> activities) {
+    public void setActivities(@jakarta.annotation.Nullable List<Map<String, Object>> activities) {
         this.activities = activities;
     }
 
-    public FlowElementContainerDefinition transitions(List<Map<String, Object>> transitions) {
+    public FlowElementContainerDefinition transitions(
+            @jakarta.annotation.Nullable List<Map<String, Object>> transitions) {
 
         this.transitions = transitions;
         return this;
@@ -149,11 +163,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TRANSITIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTransitions(List<Map<String, Object>> transitions) {
+    public void setTransitions(@jakarta.annotation.Nullable List<Map<String, Object>> transitions) {
         this.transitions = transitions;
     }
 
-    public FlowElementContainerDefinition gatewaysList(List<Map<String, Object>> gatewaysList) {
+    public FlowElementContainerDefinition gatewaysList(
+            @jakarta.annotation.Nullable List<Map<String, Object>> gatewaysList) {
 
         this.gatewaysList = gatewaysList;
         return this;
@@ -182,11 +197,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_GATEWAYS_LIST)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setGatewaysList(List<Map<String, Object>> gatewaysList) {
+    public void setGatewaysList(@jakarta.annotation.Nullable List<Map<String, Object>> gatewaysList) {
         this.gatewaysList = gatewaysList;
     }
 
-    public FlowElementContainerDefinition startEvents(List<Map<String, Object>> startEvents) {
+    public FlowElementContainerDefinition startEvents(
+            @jakarta.annotation.Nullable List<Map<String, Object>> startEvents) {
 
         this.startEvents = startEvents;
         return this;
@@ -215,11 +231,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_START_EVENTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setStartEvents(List<Map<String, Object>> startEvents) {
+    public void setStartEvents(@jakarta.annotation.Nullable List<Map<String, Object>> startEvents) {
         this.startEvents = startEvents;
     }
 
-    public FlowElementContainerDefinition intermediateCatchEvents(List<Map<String, Object>> intermediateCatchEvents) {
+    public FlowElementContainerDefinition intermediateCatchEvents(
+            @jakarta.annotation.Nullable List<Map<String, Object>> intermediateCatchEvents) {
 
         this.intermediateCatchEvents = intermediateCatchEvents;
         return this;
@@ -249,11 +266,13 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INTERMEDIATE_CATCH_EVENTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIntermediateCatchEvents(List<Map<String, Object>> intermediateCatchEvents) {
+    public void setIntermediateCatchEvents(
+            @jakarta.annotation.Nullable List<Map<String, Object>> intermediateCatchEvents) {
         this.intermediateCatchEvents = intermediateCatchEvents;
     }
 
-    public FlowElementContainerDefinition intermediateThrowEvents(List<Map<String, Object>> intermediateThrowEvents) {
+    public FlowElementContainerDefinition intermediateThrowEvents(
+            @jakarta.annotation.Nullable List<Map<String, Object>> intermediateThrowEvents) {
 
         this.intermediateThrowEvents = intermediateThrowEvents;
         return this;
@@ -283,11 +302,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INTERMEDIATE_THROW_EVENTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIntermediateThrowEvents(List<Map<String, Object>> intermediateThrowEvents) {
+    public void setIntermediateThrowEvents(
+            @jakarta.annotation.Nullable List<Map<String, Object>> intermediateThrowEvents) {
         this.intermediateThrowEvents = intermediateThrowEvents;
     }
 
-    public FlowElementContainerDefinition endEvents(List<Map<String, Object>> endEvents) {
+    public FlowElementContainerDefinition endEvents(@jakarta.annotation.Nullable List<Map<String, Object>> endEvents) {
 
         this.endEvents = endEvents;
         return this;
@@ -316,11 +336,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_END_EVENTS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setEndEvents(List<Map<String, Object>> endEvents) {
+    public void setEndEvents(@jakarta.annotation.Nullable List<Map<String, Object>> endEvents) {
         this.endEvents = endEvents;
     }
 
-    public FlowElementContainerDefinition dataDefinitions(List<Map<String, Object>> dataDefinitions) {
+    public FlowElementContainerDefinition dataDefinitions(
+            @jakarta.annotation.Nullable List<Map<String, Object>> dataDefinitions) {
 
         this.dataDefinitions = dataDefinitions;
         return this;
@@ -349,11 +370,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DATA_DEFINITIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDataDefinitions(List<Map<String, Object>> dataDefinitions) {
+    public void setDataDefinitions(@jakarta.annotation.Nullable List<Map<String, Object>> dataDefinitions) {
         this.dataDefinitions = dataDefinitions;
     }
 
-    public FlowElementContainerDefinition documentDefinitions(List<Map<String, Object>> documentDefinitions) {
+    public FlowElementContainerDefinition documentDefinitions(
+            @jakarta.annotation.Nullable List<Map<String, Object>> documentDefinitions) {
 
         this.documentDefinitions = documentDefinitions;
         return this;
@@ -382,11 +404,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DOCUMENT_DEFINITIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDocumentDefinitions(List<Map<String, Object>> documentDefinitions) {
+    public void setDocumentDefinitions(@jakarta.annotation.Nullable List<Map<String, Object>> documentDefinitions) {
         this.documentDefinitions = documentDefinitions;
     }
 
-    public FlowElementContainerDefinition connectors(List<Map<String, Object>> connectors) {
+    public FlowElementContainerDefinition connectors(
+            @jakarta.annotation.Nullable List<Map<String, Object>> connectors) {
 
         this.connectors = connectors;
         return this;
@@ -415,11 +438,12 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONNECTORS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConnectors(List<Map<String, Object>> connectors) {
+    public void setConnectors(@jakarta.annotation.Nullable List<Map<String, Object>> connectors) {
         this.connectors = connectors;
     }
 
-    public FlowElementContainerDefinition businessDataDefinitions(List<Map<String, Object>> businessDataDefinitions) {
+    public FlowElementContainerDefinition businessDataDefinitions(
+            @jakarta.annotation.Nullable List<Map<String, Object>> businessDataDefinitions) {
 
         this.businessDataDefinitions = businessDataDefinitions;
         return this;
@@ -449,11 +473,13 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_BUSINESS_DATA_DEFINITIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setBusinessDataDefinitions(List<Map<String, Object>> businessDataDefinitions) {
+    public void setBusinessDataDefinitions(
+            @jakarta.annotation.Nullable List<Map<String, Object>> businessDataDefinitions) {
         this.businessDataDefinitions = businessDataDefinitions;
     }
 
-    public FlowElementContainerDefinition documentListDefinitions(List<Map<String, Object>> documentListDefinitions) {
+    public FlowElementContainerDefinition documentListDefinitions(
+            @jakarta.annotation.Nullable List<Map<String, Object>> documentListDefinitions) {
 
         this.documentListDefinitions = documentListDefinitions;
         return this;
@@ -483,7 +509,8 @@ public class FlowElementContainerDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DOCUMENT_LIST_DEFINITIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDocumentListDefinitions(List<Map<String, Object>> documentListDefinitions) {
+    public void setDocumentListDefinitions(
+            @jakarta.annotation.Nullable List<Map<String, Object>> documentListDefinitions) {
         this.documentListDefinitions = documentListDefinitions;
     }
 

@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2024 BonitaSoft S.A.
+ * Copyright (C) 2025 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import org.bonitasoft.web.client.model.ProcessInstanceCreateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public interface ProcessInstanceApi extends ApiClient.Api {
 
     /**
@@ -237,10 +237,12 @@ public interface ProcessInstanceApi extends ApiClient.Api {
 
     /**
      * Finds ProcessInstances
-     * Finds ProcessInstances with pagination params and filters You can filter on: * &#x60;processDefinitionId&#x60;: The process derfinition ID *
-     * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the
-     * process instances in which all users with this manager ID ar involved) * &#x60;supervisor_id&#x60;: allow the retrived the process instances of all processes
-     * the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
+     * Finds ProcessInstances with pagination params and filters You can filter on: * &#x60;processDefinitionId&#x60;: The process definition ID *
+     * &#x60;rootCaseId&#x60;: the root process instance ID (since version 10.3 - 2025.1) * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of
+     * the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the process instances in which all users with this manager ID ar involved)
+     * * &#x60;supervisor_id&#x60;: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use
+     * team_manager_id and supervisor_id at the same time * &#x60;searchIndex1Value&#x60;, &#x60;searchIndex2Value&#x60;, &#x60;searchIndex3Value&#x60;,
+     * &#x60;searchIndex4Value&#x60;, &#x60;searchIndex5Value&#x60;: the value of the corresponding search index (since version 10.3 - 2025.1)
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -258,10 +260,12 @@ public interface ProcessInstanceApi extends ApiClient.Api {
     /**
      * Finds ProcessInstances
      * Similar to <code>searchProcessInstances</code> but it also returns the http response headers .
-     * Finds ProcessInstances with pagination params and filters You can filter on: * &#x60;processDefinitionId&#x60;: The process derfinition ID *
-     * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the
-     * process instances in which all users with this manager ID ar involved) * &#x60;supervisor_id&#x60;: allow the retrived the process instances of all processes
-     * the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
+     * Finds ProcessInstances with pagination params and filters You can filter on: * &#x60;processDefinitionId&#x60;: The process definition ID *
+     * &#x60;rootCaseId&#x60;: the root process instance ID (since version 10.3 - 2025.1) * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of
+     * the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the process instances in which all users with this manager ID ar involved)
+     * * &#x60;supervisor_id&#x60;: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use
+     * team_manager_id and supervisor_id at the same time * &#x60;searchIndex1Value&#x60;, &#x60;searchIndex2Value&#x60;, &#x60;searchIndex3Value&#x60;,
+     * &#x60;searchIndex4Value&#x60;, &#x60;searchIndex5Value&#x60;: the value of the corresponding search index (since version 10.3 - 2025.1)
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -278,10 +282,12 @@ public interface ProcessInstanceApi extends ApiClient.Api {
 
     /**
      * Finds ProcessInstances
-     * Finds ProcessInstances with pagination params and filters You can filter on: * &#x60;processDefinitionId&#x60;: The process derfinition ID *
-     * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the
-     * process instances in which all users with this manager ID ar involved) * &#x60;supervisor_id&#x60;: allow the retrived the process instances of all processes
-     * the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
+     * Finds ProcessInstances with pagination params and filters You can filter on: * &#x60;processDefinitionId&#x60;: The process definition ID *
+     * &#x60;rootCaseId&#x60;: the root process instance ID (since version 10.3 - 2025.1) * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of
+     * the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the process instances in which all users with this manager ID ar involved)
+     * * &#x60;supervisor_id&#x60;: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use
+     * team_manager_id and supervisor_id at the same time * &#x60;searchIndex1Value&#x60;, &#x60;searchIndex2Value&#x60;, &#x60;searchIndex3Value&#x60;,
+     * &#x60;searchIndex4Value&#x60;, &#x60;searchIndex5Value&#x60;: the value of the corresponding search index (since version 10.3 - 2025.1)
      * Note, this is equivalent to the other <code>searchProcessInstances</code> method,
      * but with the query parameters collected into a single Map parameter. This
      * is convenient for services with optional query parameters, especially when
@@ -308,10 +314,12 @@ public interface ProcessInstanceApi extends ApiClient.Api {
 
     /**
      * Finds ProcessInstances
-     * Finds ProcessInstances with pagination params and filters You can filter on: * &#x60;processDefinitionId&#x60;: The process derfinition ID *
-     * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the
-     * process instances in which all users with this manager ID ar involved) * &#x60;supervisor_id&#x60;: allow the retrived the process instances of all processes
-     * the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
+     * Finds ProcessInstances with pagination params and filters You can filter on: * &#x60;processDefinitionId&#x60;: The process definition ID *
+     * &#x60;rootCaseId&#x60;: the root process instance ID (since version 10.3 - 2025.1) * &#x60;name&#x60;: the process name * &#x60;started_by&#x60;: the ID of
+     * the user who started the process * &#x60;team_manager_id&#x60;: allow to retrieve the process instances in which all users with this manager ID ar involved)
+     * * &#x60;supervisor_id&#x60;: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use
+     * team_manager_id and supervisor_id at the same time * &#x60;searchIndex1Value&#x60;, &#x60;searchIndex2Value&#x60;, &#x60;searchIndex3Value&#x60;,
+     * &#x60;searchIndex4Value&#x60;, &#x60;searchIndex5Value&#x60;: the value of the corresponding search index (since version 10.3 - 2025.1)
      * Note, this is equivalent to the other <code>searchProcessInstances</code> that receives the query parameters as a map,
      * but this one also exposes the Http response headers
      * 

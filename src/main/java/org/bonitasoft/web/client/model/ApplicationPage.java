@@ -32,27 +32,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ApplicationPage.JSON_PROPERTY_APPLICATION_ID,
         ApplicationPage.JSON_PROPERTY_PAGE_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ApplicationPage implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_TOKEN = "token";
+    @jakarta.annotation.Nullable
     private String token;
 
     public static final String JSON_PROPERTY_APPLICATION_ID = "applicationId";
+    @jakarta.annotation.Nullable
     private String applicationId;
 
     public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+    @jakarta.annotation.Nullable
     private String pageId;
 
     public ApplicationPage() {
     }
 
-    public ApplicationPage id(String id) {
+    public ApplicationPage id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -73,11 +77,11 @@ public class ApplicationPage implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ApplicationPage token(String token) {
+    public ApplicationPage token(@jakarta.annotation.Nullable String token) {
 
         this.token = token;
         return this;
@@ -98,11 +102,11 @@ public class ApplicationPage implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setToken(String token) {
+    public void setToken(@jakarta.annotation.Nullable String token) {
         this.token = token;
     }
 
-    public ApplicationPage applicationId(String applicationId) {
+    public ApplicationPage applicationId(@jakarta.annotation.Nullable String applicationId) {
 
         this.applicationId = applicationId;
         return this;
@@ -123,11 +127,11 @@ public class ApplicationPage implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_APPLICATION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setApplicationId(String applicationId) {
+    public void setApplicationId(@jakarta.annotation.Nullable String applicationId) {
         this.applicationId = applicationId;
     }
 
-    public ApplicationPage pageId(String pageId) {
+    public ApplicationPage pageId(@jakarta.annotation.Nullable String pageId) {
 
         this.pageId = pageId;
         return this;
@@ -148,7 +152,7 @@ public class ApplicationPage implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PAGE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPageId(String pageId) {
+    public void setPageId(@jakarta.annotation.Nullable String pageId) {
         this.pageId = pageId;
     }
 

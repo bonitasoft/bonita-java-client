@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         DesignProcessDefinitionContext.JSON_PROPERTY_KEY,
         DesignProcessDefinitionContext.JSON_PROPERTY_EXPRESSION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class DesignProcessDefinitionContext implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_KEY = "key";
+    @jakarta.annotation.Nullable
     private String key;
 
     public static final String JSON_PROPERTY_EXPRESSION = "expression";
+    @jakarta.annotation.Nullable
     private Expression expression;
 
     public DesignProcessDefinitionContext() {
     }
 
-    public DesignProcessDefinitionContext key(String key) {
+    public DesignProcessDefinitionContext key(@jakarta.annotation.Nullable String key) {
 
         this.key = key;
         return this;
@@ -65,11 +67,11 @@ public class DesignProcessDefinitionContext implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_KEY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setKey(String key) {
+    public void setKey(@jakarta.annotation.Nullable String key) {
         this.key = key;
     }
 
-    public DesignProcessDefinitionContext expression(Expression expression) {
+    public DesignProcessDefinitionContext expression(@jakarta.annotation.Nullable Expression expression) {
 
         this.expression = expression;
         return this;
@@ -90,7 +92,7 @@ public class DesignProcessDefinitionContext implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXPRESSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExpression(Expression expression) {
+    public void setExpression(@jakarta.annotation.Nullable Expression expression) {
         this.expression = expression;
     }
 

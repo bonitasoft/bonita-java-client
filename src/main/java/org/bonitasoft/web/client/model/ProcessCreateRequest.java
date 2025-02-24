@@ -29,18 +29,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ProcessCreateRequest.JSON_PROPERTY_FILEUPLOAD
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_FILEUPLOAD = "fileupload";
+    @jakarta.annotation.Nullable
     private String fileupload;
 
     public ProcessCreateRequest() {
     }
 
-    public ProcessCreateRequest fileupload(String fileupload) {
+    public ProcessCreateRequest fileupload(@jakarta.annotation.Nullable String fileupload) {
 
         this.fileupload = fileupload;
         return this;
@@ -61,7 +62,7 @@ public class ProcessCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FILEUPLOAD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFileupload(String fileupload) {
+    public void setFileupload(@jakarta.annotation.Nullable String fileupload) {
         this.fileupload = fileupload;
     }
 

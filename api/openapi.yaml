@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 0.0.21
+  version: 1.0.2
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -181,27 +181,27 @@ tags:
 - description: ArchivedUserTask
   name: ArchivedUserTask
   x-displayName: ArchivedUserTask
-- description: Portal Authentication
-  name: PortalAuthentication
-  x-displayName: Portal Authentication
+- description: Authentication
+  name: Authentication
+  x-displayName: Authentication
 - description: Platform Authentication
   name: PlatformAuthentication
   x-displayName: Platform Authentication
 - description: |
     Show status or install or update the Business Data Model.
 
-    Installing or updating a BDM on your tenant needs to be done in two successive steps:
+    Installing or updating a BDM needs to be done in two successive steps:
 
     1. Upload a BDM file
     2. Install/Update the previously uploaded file
 
-    **To do this, your tenant services need to be paused.**
+    **To do this, the maintenance mode needs to be enabled.**
 
-    **In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.**
+    **In Enterprise editions, if you have an access control file installed, you need to delete it before installing or updating your BDM.**
   name: BDM
   x-displayName: Business Data Model
-- description: "BDM Access control is available to protect the tenant BDM. You can\
-    \ use this API to get the access control status (lastUpdatedBy, lastUpdateDate...)."
+- description: "BDM Access control is available to protect the BDM. You can use this\
+    \ API to get the access control status (lastUpdatedBy, lastUpdateDate...)."
   name: BDMAccessControl
   x-displayName: BDMAccessControl
 - description: BDM Rest APIs allow to query Bonita Business Data.
@@ -253,6 +253,16 @@ tags:
 - description: FlowNode
   name: FlowNode
   x-displayName: FlowNode
+- description: |
+    Failure leading a BPM entity instance to a failed state
+    This Web REST API is available in **Enterprise editions only**, since version 10.3 (2025.1).
+  name: Failure
+  x-displayName: BPM Failure
+- description: |
+    Archived version of the Failure leading a BPM entity instance to a failed state.
+    This Web REST API is available in **Enterprise editions only**, since version 10.3 (2025.1).
+  name: ArchivedFailure
+  x-displayName: Archived BPM Failure
 - description: FormMappingBDM
   name: FormMappingBDM
   x-displayName: FormMappingBDM
@@ -297,9 +307,6 @@ tags:
     \ get one, log in as the platform administrator using the platform login service."
   name: Platform
   x-displayName: Platform
-- description: PlatformTenant
-  name: PlatformTenant
-  x-displayName: PlatformTenant
 - description: "Deploy and manage process definitions. In addition, you can instantiate\
     \ a process, which will create a new process instance (case)."
   name: Process
@@ -334,16 +341,9 @@ tags:
 - description: Session
   name: Session
   x-displayName: Session
-- description: SystemTenant
-  name: SystemTenant
-  x-displayName: SystemTenant
 - description: Task
   name: Task
   x-displayName: Task
-- description: Handle the tenants (**Enterprise editions only**). This requires a
-    platform session. Log in using the platform login service.
-  name: Tenant
-  x-displayName: Tenant
 - description: Theme
   name: Theme
   x-displayName: Theme
@@ -446,7 +446,6 @@ paths:
       summary: Login
       tags:
       - Authentication
-      - PortalAuthentication
       x-codeSamples:
       - lang: Shell
         label: Curl
@@ -519,7 +518,6 @@ paths:
       summary: Logout the current user
       tags:
       - Authentication
-      - PortalAuthentication
       x-codeSamples:
       - lang: Shell
         label: Curl
@@ -6842,11 +6840,13 @@ paths:
 
         You can filter on:
 
-        * `processDefinitionId`: The process derfinition ID
+        * `processDefinitionId`: The process definition ID
+        * `rootCaseId`: the root process instance ID (since version 10.3 - 2025.1)
         * `name`: the process name
         * `started_by`: the ID of the user who started the process
         * `team_manager_id`: allow to retrieve the process instances in which all users with this manager ID ar involved)
         * `supervisor_id`: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
+        * `searchIndex1Value`, `searchIndex2Value`, `searchIndex3Value`, `searchIndex4Value`, `searchIndex5Value`: the value of the corresponding search index (since version 10.3 - 2025.1)
       operationId: searchProcessInstances
       parameters:
       - description: index of the page to display
@@ -7283,11 +7283,13 @@ paths:
         You can filter on :
 
         * `sourceObjectId`: The original process instance ID before the process instance was archived
-        * `processDefinitionId`: The process derfinition ID
+        * `processDefinitionId`: The process definition ID
+        * `rootCaseId`: the root process instance ID (since version 10.3 - 2025.1)
         * `name`: the process name
         * `started_by`: the ID of the user who started the process
         * `team_manager_id`: allow to retrieve the process instances in which all users with this manager ID ar involved)
         * `supervisor_id`: allow the retrived the process instances of all processes the user with this ID is supervisor of) beware you cannot use team_manager_id and supervisor_id at the same time
+        * `searchIndex1Value`, `searchIndex2Value`, `searchIndex3Value`, `searchIndex4Value`, `searchIndex5Value`: the value of the corresponding search index (since version 10.3 - 2025.1)
       operationId: searchArchivedProcessInstances
       parameters:
       - description: index of the page to display
@@ -9807,8 +9809,17 @@ paths:
   /API/bpm/connectorInstance:
     get:
       description: |
-        Finds ConnectorInstances with pagination params and filters.
-        Retrieve a list of connector instances attached to a process or a flow node.
+        Finds ConnectorInstances attached to a process or a flow node with pagination params and filters.
+
+        You can filter on:
+
+        * `containerId`: the process instance or flow node instance ID
+        * `state`: the connector state `TO_BE_EXECUTED`, `EXECUTING`, `TO_RE_EXECUTE`, `DONE`, `FAILED`, `SKIPPED`
+        * `containerType`: the type of container: either `flowNode` or `process` (since version 10.3 - 2025.1)
+        * `name`: the connector name (since version 10.3 - 2025.1)
+        * `version`: the connector version (since version 10.3 - 2025.1)
+        * `connectorId`: the connector definition ID (since version 10.3 - 2025.1)
+        * `activationEvent`: the container event on which the connector is instanciated: either `ON_ENTER` or `ON_FINISH` (since version 10.3 - 2025.1)
       operationId: searchConnectorInstances
       parameters:
       - description: index of the page to display
@@ -10510,6 +10521,531 @@ paths:
       summary: Finds the ArchivedFlowNode by ID
       tags:
       - ArchivedFlowNode
+      x-accepts:
+      - application/json
+  /API/bpm/failure/flowNode/{flowNodeInstanceId}:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent failures for the given flownode ID
+      operationId: getBPMFailuresByFlowNodeInstanceId
+      parameters:
+      - description: The identifier of the flownode instance from which to retrieve
+          the failures
+        explode: false
+        in: path
+        name: flowNodeInstanceId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the failures of a flownode instance by it's ID
+      tags:
+      - Failure
+      x-accepts:
+      - application/json
+  /API/bpm/achivedFailure/flowNode/{flowNodeInstanceId}:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent failures for the given archived flownode sourceObjectID
+      operationId: getArchivedBPMFailuresByFlowNodeInstanceId
+      parameters:
+      - description: The original identifier (sourceObjectID) of the flownode instance
+          from which to retrieve the failures
+        explode: false
+        in: path
+        name: flowNodeInstanceId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArchivedBPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the archived failures of an archived flownode instance by
+        it's sourceObjectID
+      tags:
+      - ArchivedFailure
+      x-accepts:
+      - application/json
+  /API/bpm/failure/case/{caseId}:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent failures for the given case
+      operationId: getBPMFailuresByCaseId
+      parameters:
+      - description: The identifier of the case from which to retrieve the failures
+        explode: false
+        in: path
+        name: caseId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the failures of a case (process instance) by it's ID
+      tags:
+      - Failure
+      x-accepts:
+      - application/json
+  /API/bpm/achivedFailure/case/{caseId}:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent archived failures for the given archived case sourceObjectID
+      operationId: getArchivedBPMFailuresByCaseId
+      parameters:
+      - description: The original identifier (sourceObjectID) of the case from which
+          to retrieve the failures
+        explode: false
+        in: path
+        name: caseId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArchivedBPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the archived failures of an archived case (process instance)
+        by it's sourceObjectID
+      tags:
+      - Failure
+      x-accepts:
+      - application/json
+  /API/bpm/failure/case/{rootCaseId}/childCases:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent failures among all the child cases (started by call activities) of a case
+      operationId: getBPMFailuresByRootCaseId
+      parameters:
+      - description: The identifier of the root case from which to retrieve the failures
+          (its sourceObjectID if the root case is archived)
+        explode: false
+        in: path
+        name: rootCaseId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the failures of the child cases of a root case (process instance)
+        by it's ID
+      tags:
+      - Failure
+      x-accepts:
+      - application/json
+  /API/bpm/achivedFailure/case/{rootCaseId}/childCases:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the most recent archived failures among all the archived child cases (started by call activities) of a case
+      operationId: getArchivedBPMFailuresByRootCaseId
+      parameters:
+      - description: The identifier of the root case from which to retrieve the archived
+          failures (its sourceObjectID if the root case is archived)
+        explode: false
+        in: path
+        name: rootCaseId
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArchivedBPMFailure'
+                type: array
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Retrieve the archived failures of the archived child cases of a root
+        case (process instance) by it's ID
+      tags:
+      - Failure
       x-accepts:
       - application/json
   /API/bpm/timerEventTrigger:
@@ -13860,421 +14396,6 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
-  /API/platform/tenant:
-    get:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-        Finds Tenants with pagination params and filters
-
-        - can order on `id`
-        - can search on `displayName`
-        - can filter on `displayName`
-
-        Warning: Since Bonita 7.12, multi-tenancy is deprecated
-      operationId: searchTenants
-      parameters:
-      - description: index of the page to display
-        example: "0"
-        explode: true
-        in: query
-        name: p
-        required: true
-        schema:
-          default: 0
-          format: int32
-          minimum: 0
-          type: integer
-        style: form
-      - description: maximum number of elements to retrieve
-        example: "10"
-        explode: true
-        in: query
-        name: c
-        required: true
-        schema:
-          default: 20
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: "can filter on attributes with the format f={filter\\_name}={filter\\\
-          _value} with the name/value pair as url encoded string."
-        example: abc%3d123
-        explode: true
-        in: query
-        name: f
-        required: false
-        schema:
-          items:
-            maxLength: 250
-            pattern: "^[A-Za-z0-9%]{0,250}$"
-            type: string
-          type: array
-        style: form
-      - description: can order on attributes
-        example: myProp%20ASC
-        explode: true
-        in: query
-        name: o
-        required: false
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9%]{0,250}$"
-          type: string
-        style: form
-      - description: can search on attributes
-        explode: true
-        in: query
-        name: s
-        required: false
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9%]{0,250}$"
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Tenant'
-                type: array
-          description: 'Success '
-          headers:
-            Content-Range:
-              description: The total number of matching items
-              explode: false
-              schema:
-                format: int64
-                type: integer
-              style: simple
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Finds Tenants
-      tags:
-      - Tenant
-      x-accepts:
-      - application/json
-    post:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-        Create the Tenant.
-
-        Warning: Since Bonita 7.12, multi-tenancy is deprecated. Creating new tenants is strongly discouraged.
-      operationId: createTenant
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantCreateRequest'
-        description: Partial Tenant description
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Tenant'
-          description: 'Success '
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Create the Tenant
-      tags:
-      - Tenant
-      x-codegen-request-body-name: body
-      x-content-type: application/json
-      x-accepts:
-      - application/json
-  /API/platform/tenant/{id}:
-    delete:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-        Delete the single Tenant for the given ID
-      operationId: deleteTenantById
-      parameters:
-      - description: ID of the Tenant to delete
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Delete the Tenant by ID
-      tags:
-      - Tenant
-      x-accepts:
-      - application/json
-    get:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
-
-        Returns the single Tenant for the given ID
-        Warning: Since Bonita 7.12, multi-tenancy is deprecated
-      operationId: getTenantById
-      parameters:
-      - description: ID of the Tenant to return
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Tenant'
-          description: 'Success '
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Finds the Tenant by ID
-      tags:
-      - Tenant
-      x-accepts:
-      - application/json
-    put:
-      deprecated: true
-      description: |
-        ![edition](https://img.shields.io/badge/edition-entreprise-blue) ![edition](https://img.shields.io/badge/edition-community-brightgreen)
-
-        Update a Tenant
-
-        Warning: Since Bonita 7.12, multi-tenancy is deprecated
-      operationId: updateTenantById
-      parameters:
-      - description: "ID of the Tenant to update. In Subscription edition, it is mandatory;\
-          \ not in Community edition, as there is only one tenant"
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantUpdateRequest'
-        description: Partial Tenant description
-        required: true
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Update the Tenant by ID
-      tags:
-      - Tenant
-      x-content-type: application/json
-      x-accepts:
-      - application/json
   /API/platform/license:
     get:
       deprecated: true
@@ -14471,8 +14592,8 @@ paths:
       description: |
         Upload file.
 
-        **NOTE:** If this file is a BDM zip, to do this, your tenant services need to be paused.
-        In Enterprise editions, if you have an access control file installed on your tenant, you need to delete it before installing or updating your BDM.
+        **NOTE:** If this file is a BDM zip, to do this, Maintenance mode needs to be enabled.
+        In Enterprise editions, if you have an access control file installed, you need to delete it before installing or updating your BDM.
       operationId: uploadFile
       requestBody:
         content:
@@ -16384,155 +16505,6 @@ paths:
           curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/session/unusedId'
       x-accepts:
       - application/json
-  /API/system/tenant/{id}:
-    get:
-      deprecated: true
-      description: |
-        Pause and resume tenant services in order to do maintenance on a tenant.
-
-        Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to retrieve the maintenance state.
-      operationId: getSystemTenant
-      parameters:
-      - description: ID of the tenant
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SystemTenant'
-          description: 'Success '
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Get the current Tenant
-      tags:
-      - SystemTenant
-      x-accepts:
-      - application/json
-    put:
-      deprecated: true
-      description: |
-        Pause or resume the current tenant.
-
-        Warning: since Bonita 9.0.0, /API/system/tenant API resource is deprecated. Use /API/system/maintenance instead to enable the maintenance mode (same behavior as pausing the tenant).
-      operationId: updateSystemTenant
-      parameters:
-      - description: ID of the tenant
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TenantPauseRequest'
-        description: Partial SystemTenant description
-        required: true
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              example:
-                message: Bad request
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad request.
-        "401":
-          content:
-            application/json:
-              example:
-                message: Unauthorized
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Authorization information is missing or invalid.
-        "403":
-          content:
-            application/json:
-              example:
-                message: "Forbidden, The request contained valid data and was understood\
-                  \ by the server, but the server is refusing action."
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: "Forbidden, The request contained valid data and was understood\
-            \ by the server, but the server is refusing action."
-        "404":
-          content:
-            application/json:
-              example:
-                message: Resource not found.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The resource for the specified ID was not found.
-        "5XX":
-          content:
-            application/json:
-              example:
-                message: An unexpected error occured.
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unexpected error.
-      summary: Update the current Tenant
-      tags:
-      - SystemTenant
-      x-content-type: application/json
-      x-accepts:
-      - application/json
   /API/system/maintenance:
     get:
       description: |
@@ -16707,7 +16679,7 @@ paths:
   /API/system/license/unusedid:
     get:
       description: |
-        Returns license information for the current server. Requires to be logged in as a tenant technical administrator.
+        Returns license information for the current server. Requires to be logged in as a technical administrator.
         The same information can be retrieved as a user having simply the Admin profile through the API `GET /system/information`.
       operationId: getLicense
       responses:
@@ -17373,9 +17345,6 @@ components:
           description: the password
           format: password
           type: string
-        tenant:
-          description: the user tenant
-          type: string
         redirect:
           default: "false"
           description: '"true" or "false". "false" indicates that the service should
@@ -17842,7 +17811,7 @@ components:
           $ref: '#/components/schemas/TenantResourceState'
         lastUpdatedBy:
           description: "If `lastUpdatedBy: -1` it means that the access control were\
-            \ last installed or updated by tenant_technical_user."
+            \ last installed or updated by technical admin."
           type: string
         lastUpdateDate:
           description: Last date when the access control were installed or updated.
@@ -18865,8 +18834,6 @@ components:
         \ variable name for a specific process instance (or case). Only persistent\
         \ variables are concerned by this resource, not transient variables."
       example:
-        tenantId: 0
-        tenantId_string: 0
         id: 5010
         id_string: 5010
         name: RequestValidationData
@@ -18878,15 +18845,6 @@ components:
         containerType: ACTIVITY_INSTANCE
         value: Confirmed
       properties:
-        tenantId:
-          description: The ID of the tenant where the current user is logged in (technical
-            information)
-          maxLength: 250
-          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
-          type: string
-        tenantId_string:
-          description: number (since 7.0.1)
-          type: string
         id:
           description: The identifier of the variable
           maxLength: 250
@@ -19298,6 +19256,7 @@ components:
         activeFlowNodes": "9"
         state": started
         rootCaseId": "1"
+        callerId": "-1"
         started_by": 989
         processDefinitionId": "5777042023671752656"
         last_update_date": 2014-11-27 17:55:00.906
@@ -19399,6 +19358,11 @@ components:
           description: "the 5th search index value (from 6.5, in Subscription editions\
             \ only)"
           type: string
+        callerId:
+          description: the identifier of the BPM entity who started the process. E.g.
+            the call activity instance Id if it was started by a call activity or
+            -1 if it was started by a user (since version 10.3 - 2025.1)
+          type: string
       type: object
     ProcessVariable:
       additionalProperties:
@@ -19440,6 +19404,7 @@ components:
           start: 2014-10-22 10:56:53.415
           state: completed
           rootCaseId: "3"
+          callerId": "-1"
           started_by: "4"
           archivedDate: 2014-10-22 10:57:00.299
           processDefinitionId: "6054482369194211518"
@@ -19482,6 +19447,7 @@ components:
         id: id
         state: initializing
         searchIndex1Label: searchIndex1Label
+        callerId: callerId
         activeFlowNodes: activeFlowNodes
         started_by: started_by
         searchIndex4Label: searchIndex4Label
@@ -19517,7 +19483,6 @@ components:
       description: ""
       example:
         content: Need to review the last inputs of this case
-        tenantId: "1"
         id: "20005"
         processInstanceId: "1"
         postDate: 2016-06-16 14:51:33.053
@@ -19528,9 +19493,6 @@ components:
           type: string
         content:
           description: the comment content
-          type: string
-        tenantId:
-          description: the id of the tenant the comment is associated to
           type: string
         processInstanceId:
           description: the process instance (case) the comment is associated to
@@ -19573,7 +19535,6 @@ components:
       example:
         archivedDate: archivedDate
         processInstanceId: processInstanceId
-        tenantId: tenantId
         postDate: postDate
         id: id
         userId: userId
@@ -20436,6 +20397,114 @@ components:
         parentCaseId: parentCaseId
         assigned_id: assigned_id
         last_update_date: last_update_date
+    BPMFailure:
+      description: "A failure that happened during a BPM instance (flow node, process)\
+        \ execution that led to the instance being in a failed state."
+      example:
+        caseId: "2"
+        rootCaseId: "1"
+        context: expression::setvariable_decision
+        errorMessage: Error while executing operations
+        failureDate: "1732564534177"
+        flowNodeInstanceId: "70"
+        id: "456"
+        processDefinitionId: "45"
+        scope: Operation
+        stackTrace: Exception in thread 'main' org.bonitasoft.engine.core.process.instance.api.exceptions.SActivityStateExecutionException
+      properties:
+        caseId:
+          description: the id of the process instance in which that failure occurred
+          type: string
+        rootCaseId:
+          description: the id of the root process instance in which that failure occurred
+          type: string
+        context:
+          description: Context of the failure
+          type: string
+        errorMessage:
+          description: the message of the exception
+          type: string
+        failureDate:
+          description: the date when the failure occurred in milliseconds since epoch
+          type: string
+        flowNodeInstanceId:
+          description: the id of the flow node instance in which the failure occurred
+          type: string
+        id:
+          description: the failure id
+          type: string
+        processDefinitionId:
+          description: the process id that is associated with the flow node or case
+            instance of the failure
+          type: string
+        scope:
+          description: "the scope of the failure (General information, Operation,\
+            \ Event, Iteration, Connector, Data initialization, Actor mapping, Outgoing\
+            \ transition, or UNKNOWN)"
+          type: string
+        stackTrace:
+          description: the stack trace of the exception
+          type: string
+      type: object
+    ArchivedBPMFailure:
+      description: "The archived version of a failure that happened during a BPM instance\
+        \ (flow node, process) execution that led to the instance being in a failed\
+        \ state."
+      example:
+        archivedDate: "1732564904376"
+        caseId: "10"
+        rootCaseId: "9"
+        context: expression::setvariable_decision
+        errorMessage: Error while executing operations
+        failureDate: "1732564534177"
+        flowNodeInstanceId: "70"
+        id: "456"
+        processDefinitionId: "45"
+        scope: Operation
+        sourceObjectId: "23"
+        stackTrace: Exception in thread 'main' org.bonitasoft.engine.core.process.instance.api.exceptions.SActivityStateExecutionException
+      properties:
+        archivedDate:
+          description: "the date when this failure was archived, in milliseconds since\
+            \ epoch"
+          type: string
+        caseId:
+          description: the id of the process instance in which that failure occurred
+          type: string
+        rootCaseId:
+          description: the id of the root process instance in which that failure occurred
+          type: string
+        context:
+          description: Context of the failure
+          type: string
+        errorMessage:
+          description: the message of the exception
+          type: string
+        failureDate:
+          description: the date when the failure occurred in milliseconds since epoch
+          type: string
+        flowNodeInstanceId:
+          description: the id of the flow node instance in which the failure occurred
+          type: string
+        id:
+          description: the archived failure id
+          type: string
+        processDefinitionId:
+          description: the process id that is associated with the flow node or case
+            instance of the failure
+          type: string
+        scope:
+          description: "the scope of the failure (General information, Operation,\
+            \ Event, Iteration, Connector, Data initialization, Actor mapping, Outgoing\
+            \ transition, or UNKNOWN)"
+          type: string
+        sourceObjectId:
+          description: the original id of the failure before it was archived
+          type: string
+        stackTrace:
+          description: the stack trace of the exception
+          type: string
+      type: object
     TimerEventTrigger:
       description: BPM timer event triggers
       example:
@@ -20777,7 +20846,7 @@ components:
           type: string
         created_by_user_id:
           description: id of the user who created the group (-1 if the group was created
-            by the tenant admin or by an organisation import)
+            by the technical admin or by an organisation import)
           type: string
         last_update_date:
           description: "last update date (format: `2014-12-31 15:17:24.736`)"
@@ -20856,7 +20925,7 @@ components:
           type: integer
         assigned_by_user_id:
           description: id of the user who created the membership (-1 if the role was
-            created by the tenant admin or by an organisation import)
+            created by the technical admin or by an organisation import)
           type: string
         group_id:
           description: id of the group of this membership
@@ -20916,7 +20985,7 @@ components:
           type: string
         created_by_user_id:
           description: Id of the user who created the role (-1 if the role was created
-            by the tenant admin or by an organisation import)
+            by the technical admin or by an organisation import)
           type: string
         last_update_date:
           description: "last update date (format: `2014-12-31 15:17:24.736`)"
@@ -21163,105 +21232,6 @@ components:
           enum:
           - start
           - stop
-          type: string
-      type: object
-    Tenant:
-      deprecated: true
-      description: "Since Bonita 7.12, tenant management is deprecated"
-      example:
-        id: 1
-        creation: 2014-12-04 15:46:46.256
-        icon: /default.png
-        username: ""
-        description: Default tenant
-        name: default
-        state: ACTIVATED
-        password: ""
-      properties:
-        id:
-          description: id of the tenant
-          type: string
-        creation:
-          description: the creation date
-          type: string
-        icon:
-          description: the path of the icon
-          type: string
-        name:
-          description: the name of the tenant
-          type: string
-        description:
-          description: the description
-          type: string
-        username:
-          description: the username
-          type: string
-        password:
-          description: the password
-          format: password
-          type: string
-        state:
-          description: the tenant state
-          enum:
-          - ACTIVATED
-          - DEACTIVATED
-          type: string
-      type: object
-    TenantCreateRequest:
-      deprecated: true
-      description: "Since Bonita 7.12, tenant creation is deprecated"
-      example:
-        name: MyTenant
-        description: My tenant
-        username: john
-        password: bpm
-      properties:
-        name:
-          description: the name of the tenant
-          type: string
-        description:
-          description: the description
-          type: string
-        username:
-          description: the username
-          type: string
-        password:
-          description: the password
-          format: password
-          type: string
-      type: object
-    TenantUpdateRequest:
-      deprecated: true
-      description: "Since Bonita 7.12, tenant update is deprecated"
-      example:
-        name: MyTenant
-        description: My new tenant description
-        username: john
-        password: bpm
-        icon: /default.png
-        state: ACTIVATED
-      properties:
-        name:
-          description: the name of the tenant
-          type: string
-        description:
-          description: the description
-          type: string
-        username:
-          description: the username
-          type: string
-        password:
-          description: the password
-          format: password
-          type: string
-        icon:
-          description: the path of the icon
-          type: string
-        state:
-          description: the tenant state
-          enum:
-          - ACTIVATED
-          - DEACTIVATED
           type: string
       type: object
     PlatformLicense:
@@ -21700,27 +21670,6 @@ components:
           description: bonita copyright
           type: string
       type: object
-    SystemTenant:
-      description: ""
-      example:
-        id: 1
-        paused: false
-      properties:
-        id:
-          description: system tenant id
-          type: string
-        paused:
-          description: whether the system tenant is paused or not
-          type: boolean
-      type: object
-    TenantPauseRequest:
-      example:
-        paused: true
-      properties:
-        paused:
-          description: wether the system tenant should be paused or not
-          type: string
-      type: object
     MaintenanceDetails:
       example:
         maintenanceState: DISABLED
@@ -21881,8 +21830,8 @@ components:
           $ref: '#/components/schemas/TenantResourceState'
         lastUpdatedBy:
           default: "-1"
-          description: This value is always -1 because only the tenant_technical_user
-            can install BDM.
+          description: This value is always -1 because only the technical admin can
+            install BDM.
           type: string
         lastUpdateDate:
           description: Last date when the BDM was installed or updated.
@@ -22113,7 +22062,7 @@ components:
 x-tagGroups:
 - name: Authentication
   tags:
-  - PortalAuthentication
+  - Authentication
   - PlatformAuthentication
 - name: Application
   tags:
@@ -22163,6 +22112,8 @@ x-tagGroups:
   - ArchivedConnectorInstance
   - FlowNode
   - ArchivedFlowNode
+  - Failure
+  - ArchivedFailure
   - TimerEventTrigger
   - Message
   - Signal
@@ -22183,8 +22134,6 @@ x-tagGroups:
   tags:
   - PlatformAuthentication
   - Platform
-  - PlatformTenant
-  - Tenant
   - License
   - Information
 - name: Portal
@@ -22201,7 +22150,6 @@ x-tagGroups:
   - I18ntranslation
   - Session
   - Maintenance
-  - SystemTenant
 - name: Other
   tags:
   - RestAPIextensions

@@ -38,45 +38,55 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         UserCreateRequest.JSON_PROPERTY_MANAGER_ID,
         UserCreateRequest.JSON_PROPERTY_ENABLED
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class UserCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_USER_NAME = "userName";
+    @jakarta.annotation.Nonnull
     private String userName;
 
     public static final String JSON_PROPERTY_FIRSTNAME = "firstname";
+    @jakarta.annotation.Nonnull
     private String firstname;
 
     public static final String JSON_PROPERTY_LASTNAME = "lastname";
+    @jakarta.annotation.Nonnull
     private String lastname;
 
     public static final String JSON_PROPERTY_PASSWORD = "password";
+    @jakarta.annotation.Nonnull
     private String password;
 
     public static final String JSON_PROPERTY_PASSWORD_CONFIRM = "password_confirm";
+    @jakarta.annotation.Nonnull
     private String passwordConfirm;
 
     public static final String JSON_PROPERTY_ICON = "icon";
+    @jakarta.annotation.Nullable
     private String icon;
 
     public static final String JSON_PROPERTY_TITLE = "title";
+    @jakarta.annotation.Nullable
     private String title;
 
     public static final String JSON_PROPERTY_JOB_TITLE = "job_title";
+    @jakarta.annotation.Nullable
     private String jobTitle;
 
     public static final String JSON_PROPERTY_MANAGER_ID = "manager_id";
+    @jakarta.annotation.Nullable
     private String managerId;
 
     public static final String JSON_PROPERTY_ENABLED = "enabled";
+    @jakarta.annotation.Nonnull
     private String enabled;
 
     public UserCreateRequest() {
     }
 
-    public UserCreateRequest userName(String userName) {
+    public UserCreateRequest userName(@jakarta.annotation.Nonnull String userName) {
 
         this.userName = userName;
         return this;
@@ -97,11 +107,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_NAME)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setUserName(String userName) {
+    public void setUserName(@jakarta.annotation.Nonnull String userName) {
         this.userName = userName;
     }
 
-    public UserCreateRequest firstname(String firstname) {
+    public UserCreateRequest firstname(@jakarta.annotation.Nonnull String firstname) {
 
         this.firstname = firstname;
         return this;
@@ -122,11 +132,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FIRSTNAME)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setFirstname(String firstname) {
+    public void setFirstname(@jakarta.annotation.Nonnull String firstname) {
         this.firstname = firstname;
     }
 
-    public UserCreateRequest lastname(String lastname) {
+    public UserCreateRequest lastname(@jakarta.annotation.Nonnull String lastname) {
 
         this.lastname = lastname;
         return this;
@@ -147,11 +157,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LASTNAME)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setLastname(String lastname) {
+    public void setLastname(@jakarta.annotation.Nonnull String lastname) {
         this.lastname = lastname;
     }
 
-    public UserCreateRequest password(String password) {
+    public UserCreateRequest password(@jakarta.annotation.Nonnull String password) {
 
         this.password = password;
         return this;
@@ -172,11 +182,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PASSWORD)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setPassword(String password) {
+    public void setPassword(@jakarta.annotation.Nonnull String password) {
         this.password = password;
     }
 
-    public UserCreateRequest passwordConfirm(String passwordConfirm) {
+    public UserCreateRequest passwordConfirm(@jakarta.annotation.Nonnull String passwordConfirm) {
 
         this.passwordConfirm = passwordConfirm;
         return this;
@@ -197,11 +207,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PASSWORD_CONFIRM)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setPasswordConfirm(String passwordConfirm) {
+    public void setPasswordConfirm(@jakarta.annotation.Nonnull String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public UserCreateRequest icon(String icon) {
+    public UserCreateRequest icon(@jakarta.annotation.Nullable String icon) {
 
         this.icon = icon;
         return this;
@@ -222,11 +232,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIcon(String icon) {
+    public void setIcon(@jakarta.annotation.Nullable String icon) {
         this.icon = icon;
     }
 
-    public UserCreateRequest title(String title) {
+    public UserCreateRequest title(@jakarta.annotation.Nullable String title) {
 
         this.title = title;
         return this;
@@ -247,11 +257,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TITLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTitle(String title) {
+    public void setTitle(@jakarta.annotation.Nullable String title) {
         this.title = title;
     }
 
-    public UserCreateRequest jobTitle(String jobTitle) {
+    public UserCreateRequest jobTitle(@jakarta.annotation.Nullable String jobTitle) {
 
         this.jobTitle = jobTitle;
         return this;
@@ -272,11 +282,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_JOB_TITLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setJobTitle(String jobTitle) {
+    public void setJobTitle(@jakarta.annotation.Nullable String jobTitle) {
         this.jobTitle = jobTitle;
     }
 
-    public UserCreateRequest managerId(String managerId) {
+    public UserCreateRequest managerId(@jakarta.annotation.Nullable String managerId) {
 
         this.managerId = managerId;
         return this;
@@ -297,11 +307,11 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MANAGER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setManagerId(String managerId) {
+    public void setManagerId(@jakarta.annotation.Nullable String managerId) {
         this.managerId = managerId;
     }
 
-    public UserCreateRequest enabled(String enabled) {
+    public UserCreateRequest enabled(@jakarta.annotation.Nonnull String enabled) {
 
         this.enabled = enabled;
         return this;
@@ -322,7 +332,7 @@ public class UserCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ENABLED)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setEnabled(String enabled) {
+    public void setEnabled(@jakarta.annotation.Nonnull String enabled) {
         this.enabled = enabled;
     }
 

@@ -41,54 +41,67 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessDefinition.JSON_PROPERTY_CONFIGURATION_STATE,
         ProcessDefinition.JSON_PROPERTY_VERSION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessDefinition implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_ICON = "icon";
+    @jakarta.annotation.Nullable
     private String icon;
 
     public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
+    @jakarta.annotation.Nullable
     private String displayDescription;
 
     public static final String JSON_PROPERTY_DEPLOYMENT_DATE = "deploymentDate";
+    @jakarta.annotation.Nullable
     private String deploymentDate;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_ACTIVATION_STATE = "activationState";
+    @jakarta.annotation.Nullable
     private ActivationState activationState;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_DEPLOYED_BY = "deployedBy";
+    @jakarta.annotation.Nullable
     private String deployedBy;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_ACTORINITIATORID = "actorinitiatorid";
+    @jakarta.annotation.Nullable
     private String actorinitiatorid;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "last_update_date";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public static final String JSON_PROPERTY_CONFIGURATION_STATE = "configurationState";
+    @jakarta.annotation.Nullable
     private ConfigurationState configurationState;
 
     public static final String JSON_PROPERTY_VERSION = "version";
+    @jakarta.annotation.Nullable
     private String version;
 
     public ProcessDefinition() {
     }
 
-    public ProcessDefinition id(String id) {
+    public ProcessDefinition id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -109,11 +122,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ProcessDefinition icon(String icon) {
+    public ProcessDefinition icon(@jakarta.annotation.Nullable String icon) {
 
         this.icon = icon;
         return this;
@@ -134,11 +147,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIcon(String icon) {
+    public void setIcon(@jakarta.annotation.Nullable String icon) {
         this.icon = icon;
     }
 
-    public ProcessDefinition displayDescription(String displayDescription) {
+    public ProcessDefinition displayDescription(@jakarta.annotation.Nullable String displayDescription) {
 
         this.displayDescription = displayDescription;
         return this;
@@ -159,11 +172,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayDescription(String displayDescription) {
+    public void setDisplayDescription(@jakarta.annotation.Nullable String displayDescription) {
         this.displayDescription = displayDescription;
     }
 
-    public ProcessDefinition deploymentDate(String deploymentDate) {
+    public ProcessDefinition deploymentDate(@jakarta.annotation.Nullable String deploymentDate) {
 
         this.deploymentDate = deploymentDate;
         return this;
@@ -184,11 +197,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DEPLOYMENT_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDeploymentDate(String deploymentDate) {
+    public void setDeploymentDate(@jakarta.annotation.Nullable String deploymentDate) {
         this.deploymentDate = deploymentDate;
     }
 
-    public ProcessDefinition description(String description) {
+    public ProcessDefinition description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -209,11 +222,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ProcessDefinition activationState(ActivationState activationState) {
+    public ProcessDefinition activationState(@jakarta.annotation.Nullable ActivationState activationState) {
 
         this.activationState = activationState;
         return this;
@@ -234,11 +247,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTIVATION_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActivationState(ActivationState activationState) {
+    public void setActivationState(@jakarta.annotation.Nullable ActivationState activationState) {
         this.activationState = activationState;
     }
 
-    public ProcessDefinition name(String name) {
+    public ProcessDefinition name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -259,11 +272,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ProcessDefinition deployedBy(String deployedBy) {
+    public ProcessDefinition deployedBy(@jakarta.annotation.Nullable String deployedBy) {
 
         this.deployedBy = deployedBy;
         return this;
@@ -284,11 +297,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DEPLOYED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDeployedBy(String deployedBy) {
+    public void setDeployedBy(@jakarta.annotation.Nullable String deployedBy) {
         this.deployedBy = deployedBy;
     }
 
-    public ProcessDefinition displayName(String displayName) {
+    public ProcessDefinition displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -309,11 +322,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public ProcessDefinition actorinitiatorid(String actorinitiatorid) {
+    public ProcessDefinition actorinitiatorid(@jakarta.annotation.Nullable String actorinitiatorid) {
 
         this.actorinitiatorid = actorinitiatorid;
         return this;
@@ -334,11 +347,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTORINITIATORID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActorinitiatorid(String actorinitiatorid) {
+    public void setActorinitiatorid(@jakarta.annotation.Nullable String actorinitiatorid) {
         this.actorinitiatorid = actorinitiatorid;
     }
 
-    public ProcessDefinition lastUpdateDate(String lastUpdateDate) {
+    public ProcessDefinition lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -359,11 +372,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public ProcessDefinition configurationState(ConfigurationState configurationState) {
+    public ProcessDefinition configurationState(@jakarta.annotation.Nullable ConfigurationState configurationState) {
 
         this.configurationState = configurationState;
         return this;
@@ -384,11 +397,11 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONFIGURATION_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConfigurationState(ConfigurationState configurationState) {
+    public void setConfigurationState(@jakarta.annotation.Nullable ConfigurationState configurationState) {
         this.configurationState = configurationState;
     }
 
-    public ProcessDefinition version(String version) {
+    public ProcessDefinition version(@jakarta.annotation.Nullable String version) {
 
         this.version = version;
         return this;
@@ -409,7 +422,7 @@ public class ProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVersion(String version) {
+    public void setVersion(@jakarta.annotation.Nullable String version) {
         this.version = version;
     }
 

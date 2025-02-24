@@ -40,45 +40,55 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
         ProcessInstanceInfoFlowNodeStatesCountersValue.JSON_PROPERTY_COMPLETING
 })
 @JsonTypeName("ProcessInstanceInfo_flowNodeStatesCounters_value")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_COMPLETED = "completed";
+    @jakarta.annotation.Nullable
     private Long completed;
 
     public static final String JSON_PROPERTY_SKIPPED = "skipped";
+    @jakarta.annotation.Nullable
     private Long skipped;
 
     public static final String JSON_PROPERTY_CANCELLED = "cancelled";
+    @jakarta.annotation.Nullable
     private Long cancelled;
 
     public static final String JSON_PROPERTY_ABORTED = "aborted";
+    @jakarta.annotation.Nullable
     private Long aborted;
 
     public static final String JSON_PROPERTY_READY = "ready";
+    @jakarta.annotation.Nullable
     private Long ready;
 
     public static final String JSON_PROPERTY_FAILED = "failed";
+    @jakarta.annotation.Nullable
     private Long failed;
 
     public static final String JSON_PROPERTY_EXECUTING = "executing";
+    @jakarta.annotation.Nullable
     private Long executing;
 
     public static final String JSON_PROPERTY_WAITING = "waiting";
+    @jakarta.annotation.Nullable
     private Long waiting;
 
     public static final String JSON_PROPERTY_INITIALIZING = "initializing";
+    @jakarta.annotation.Nullable
     private Long initializing;
 
     public static final String JSON_PROPERTY_COMPLETING = "completing";
+    @jakarta.annotation.Nullable
     private Long completing;
 
     public ProcessInstanceInfoFlowNodeStatesCountersValue() {
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue completed(Long completed) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue completed(@jakarta.annotation.Nullable Long completed) {
 
         this.completed = completed;
         return this;
@@ -99,11 +109,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_COMPLETED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCompleted(Long completed) {
+    public void setCompleted(@jakarta.annotation.Nullable Long completed) {
         this.completed = completed;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue skipped(Long skipped) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue skipped(@jakarta.annotation.Nullable Long skipped) {
 
         this.skipped = skipped;
         return this;
@@ -124,11 +134,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_SKIPPED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSkipped(Long skipped) {
+    public void setSkipped(@jakarta.annotation.Nullable Long skipped) {
         this.skipped = skipped;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue cancelled(Long cancelled) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue cancelled(@jakarta.annotation.Nullable Long cancelled) {
 
         this.cancelled = cancelled;
         return this;
@@ -149,11 +159,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_CANCELLED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCancelled(Long cancelled) {
+    public void setCancelled(@jakarta.annotation.Nullable Long cancelled) {
         this.cancelled = cancelled;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue aborted(Long aborted) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue aborted(@jakarta.annotation.Nullable Long aborted) {
 
         this.aborted = aborted;
         return this;
@@ -174,11 +184,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_ABORTED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAborted(Long aborted) {
+    public void setAborted(@jakarta.annotation.Nullable Long aborted) {
         this.aborted = aborted;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue ready(Long ready) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue ready(@jakarta.annotation.Nullable Long ready) {
 
         this.ready = ready;
         return this;
@@ -199,11 +209,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_READY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setReady(Long ready) {
+    public void setReady(@jakarta.annotation.Nullable Long ready) {
         this.ready = ready;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue failed(Long failed) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue failed(@jakarta.annotation.Nullable Long failed) {
 
         this.failed = failed;
         return this;
@@ -224,11 +234,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_FAILED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFailed(Long failed) {
+    public void setFailed(@jakarta.annotation.Nullable Long failed) {
         this.failed = failed;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue executing(Long executing) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue executing(@jakarta.annotation.Nullable Long executing) {
 
         this.executing = executing;
         return this;
@@ -249,11 +259,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_EXECUTING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExecuting(Long executing) {
+    public void setExecuting(@jakarta.annotation.Nullable Long executing) {
         this.executing = executing;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue waiting(Long waiting) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue waiting(@jakarta.annotation.Nullable Long waiting) {
 
         this.waiting = waiting;
         return this;
@@ -274,11 +284,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_WAITING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setWaiting(Long waiting) {
+    public void setWaiting(@jakarta.annotation.Nullable Long waiting) {
         this.waiting = waiting;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue initializing(Long initializing) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue initializing(@jakarta.annotation.Nullable Long initializing) {
 
         this.initializing = initializing;
         return this;
@@ -299,11 +309,11 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_INITIALIZING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setInitializing(Long initializing) {
+    public void setInitializing(@jakarta.annotation.Nullable Long initializing) {
         this.initializing = initializing;
     }
 
-    public ProcessInstanceInfoFlowNodeStatesCountersValue completing(Long completing) {
+    public ProcessInstanceInfoFlowNodeStatesCountersValue completing(@jakarta.annotation.Nullable Long completing) {
 
         this.completing = completing;
         return this;
@@ -324,7 +334,7 @@ public class ProcessInstanceInfoFlowNodeStatesCountersValue implements Serializa
 
     @JsonProperty(JSON_PROPERTY_COMPLETING)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCompleting(Long completing) {
+    public void setCompleting(@jakarta.annotation.Nullable Long completing) {
         this.completing = completing;
     }
 

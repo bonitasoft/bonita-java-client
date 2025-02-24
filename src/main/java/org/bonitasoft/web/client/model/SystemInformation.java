@@ -45,66 +45,83 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         SystemInformation.JSON_PROPERTY_CASE_COUNTER_LIMIT,
         SystemInformation.JSON_PROPERTY_CASE_COUNTER
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class SystemInformation implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_LICENSE_START_DATE = "licenseStartDate";
+    @jakarta.annotation.Nullable
     private String licenseStartDate;
 
     public static final String JSON_PROPERTY_DURATION = "duration";
+    @jakarta.annotation.Nullable
     private String duration;
 
     public static final String JSON_PROPERTY_LICENSE_EXPIRATION_DATE = "licenseExpirationDate";
+    @jakarta.annotation.Nullable
     private String licenseExpirationDate;
 
     public static final String JSON_PROPERTY_NUMBER_OF_C_P_U_CORES = "numberOfCPUCores";
+    @jakarta.annotation.Nullable
     private String numberOfCPUCores;
 
     public static final String JSON_PROPERTY_EDITION = "edition";
+    @jakarta.annotation.Nullable
     private String edition;
 
     public static final String JSON_PROPERTY_SUBSCRIPTION_TYPE = "subscriptionType";
+    @jakarta.annotation.Nullable
     private String subscriptionType;
 
     public static final String JSON_PROPERTY_LICENSE_MODE = "licenseMode";
+    @jakarta.annotation.Nullable
     private String licenseMode;
 
     public static final String JSON_PROPERTY_MANAGED_APPS_LIMIT = "managedAppsLimit";
+    @jakarta.annotation.Nullable
     private Long managedAppsLimit;
 
     public static final String JSON_PROPERTY_LICENSEE = "licensee";
+    @jakarta.annotation.Nullable
     private String licensee;
 
     public static final String JSON_PROPERTY_CONTACT_INFO = "contactInfo";
+    @jakarta.annotation.Nullable
     private String contactInfo;
 
     public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
+    @jakarta.annotation.Nullable
     private Long expirationDate;
 
     public static final String JSON_PROPERTY_ACTIVE_FEATURES = "activeFeatures";
+    @jakarta.annotation.Nullable
     private String activeFeatures;
 
     public static final String JSON_PROPERTY_REQUEST_KEY = "requestKey";
+    @jakarta.annotation.Nullable
     private String requestKey;
 
     public static final String JSON_PROPERTY_SUBSCRIPTION_START_PERIOD = "subscriptionStartPeriod";
+    @jakarta.annotation.Nullable
     private String subscriptionStartPeriod;
 
     public static final String JSON_PROPERTY_SUBSCRIPTION_END_PERIOD = "subscriptionEndPeriod";
+    @jakarta.annotation.Nullable
     private String subscriptionEndPeriod;
 
     public static final String JSON_PROPERTY_CASE_COUNTER_LIMIT = "caseCounterLimit";
+    @jakarta.annotation.Nullable
     private Long caseCounterLimit;
 
     public static final String JSON_PROPERTY_CASE_COUNTER = "caseCounter";
+    @jakarta.annotation.Nullable
     private Long caseCounter;
 
     public SystemInformation() {
     }
 
-    public SystemInformation licenseStartDate(String licenseStartDate) {
+    public SystemInformation licenseStartDate(@jakarta.annotation.Nullable String licenseStartDate) {
 
         this.licenseStartDate = licenseStartDate;
         return this;
@@ -125,11 +142,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LICENSE_START_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLicenseStartDate(String licenseStartDate) {
+    public void setLicenseStartDate(@jakarta.annotation.Nullable String licenseStartDate) {
         this.licenseStartDate = licenseStartDate;
     }
 
-    public SystemInformation duration(String duration) {
+    public SystemInformation duration(@jakarta.annotation.Nullable String duration) {
 
         this.duration = duration;
         return this;
@@ -150,11 +167,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DURATION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDuration(String duration) {
+    public void setDuration(@jakarta.annotation.Nullable String duration) {
         this.duration = duration;
     }
 
-    public SystemInformation licenseExpirationDate(String licenseExpirationDate) {
+    public SystemInformation licenseExpirationDate(@jakarta.annotation.Nullable String licenseExpirationDate) {
 
         this.licenseExpirationDate = licenseExpirationDate;
         return this;
@@ -175,11 +192,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LICENSE_EXPIRATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLicenseExpirationDate(String licenseExpirationDate) {
+    public void setLicenseExpirationDate(@jakarta.annotation.Nullable String licenseExpirationDate) {
         this.licenseExpirationDate = licenseExpirationDate;
     }
 
-    public SystemInformation numberOfCPUCores(String numberOfCPUCores) {
+    public SystemInformation numberOfCPUCores(@jakarta.annotation.Nullable String numberOfCPUCores) {
 
         this.numberOfCPUCores = numberOfCPUCores;
         return this;
@@ -200,11 +217,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NUMBER_OF_C_P_U_CORES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setNumberOfCPUCores(String numberOfCPUCores) {
+    public void setNumberOfCPUCores(@jakarta.annotation.Nullable String numberOfCPUCores) {
         this.numberOfCPUCores = numberOfCPUCores;
     }
 
-    public SystemInformation edition(String edition) {
+    public SystemInformation edition(@jakarta.annotation.Nullable String edition) {
 
         this.edition = edition;
         return this;
@@ -225,11 +242,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EDITION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setEdition(String edition) {
+    public void setEdition(@jakarta.annotation.Nullable String edition) {
         this.edition = edition;
     }
 
-    public SystemInformation subscriptionType(String subscriptionType) {
+    public SystemInformation subscriptionType(@jakarta.annotation.Nullable String subscriptionType) {
 
         this.subscriptionType = subscriptionType;
         return this;
@@ -250,11 +267,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSubscriptionType(String subscriptionType) {
+    public void setSubscriptionType(@jakarta.annotation.Nullable String subscriptionType) {
         this.subscriptionType = subscriptionType;
     }
 
-    public SystemInformation licenseMode(String licenseMode) {
+    public SystemInformation licenseMode(@jakarta.annotation.Nullable String licenseMode) {
 
         this.licenseMode = licenseMode;
         return this;
@@ -275,11 +292,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LICENSE_MODE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLicenseMode(String licenseMode) {
+    public void setLicenseMode(@jakarta.annotation.Nullable String licenseMode) {
         this.licenseMode = licenseMode;
     }
 
-    public SystemInformation managedAppsLimit(Long managedAppsLimit) {
+    public SystemInformation managedAppsLimit(@jakarta.annotation.Nullable Long managedAppsLimit) {
 
         this.managedAppsLimit = managedAppsLimit;
         return this;
@@ -300,11 +317,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MANAGED_APPS_LIMIT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setManagedAppsLimit(Long managedAppsLimit) {
+    public void setManagedAppsLimit(@jakarta.annotation.Nullable Long managedAppsLimit) {
         this.managedAppsLimit = managedAppsLimit;
     }
 
-    public SystemInformation licensee(String licensee) {
+    public SystemInformation licensee(@jakarta.annotation.Nullable String licensee) {
 
         this.licensee = licensee;
         return this;
@@ -325,11 +342,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LICENSEE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLicensee(String licensee) {
+    public void setLicensee(@jakarta.annotation.Nullable String licensee) {
         this.licensee = licensee;
     }
 
-    public SystemInformation contactInfo(String contactInfo) {
+    public SystemInformation contactInfo(@jakarta.annotation.Nullable String contactInfo) {
 
         this.contactInfo = contactInfo;
         return this;
@@ -350,11 +367,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTACT_INFO)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContactInfo(String contactInfo) {
+    public void setContactInfo(@jakarta.annotation.Nullable String contactInfo) {
         this.contactInfo = contactInfo;
     }
 
-    public SystemInformation expirationDate(Long expirationDate) {
+    public SystemInformation expirationDate(@jakarta.annotation.Nullable Long expirationDate) {
 
         this.expirationDate = expirationDate;
         return this;
@@ -375,11 +392,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExpirationDate(Long expirationDate) {
+    public void setExpirationDate(@jakarta.annotation.Nullable Long expirationDate) {
         this.expirationDate = expirationDate;
     }
 
-    public SystemInformation activeFeatures(String activeFeatures) {
+    public SystemInformation activeFeatures(@jakarta.annotation.Nullable String activeFeatures) {
 
         this.activeFeatures = activeFeatures;
         return this;
@@ -400,11 +417,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTIVE_FEATURES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActiveFeatures(String activeFeatures) {
+    public void setActiveFeatures(@jakarta.annotation.Nullable String activeFeatures) {
         this.activeFeatures = activeFeatures;
     }
 
-    public SystemInformation requestKey(String requestKey) {
+    public SystemInformation requestKey(@jakarta.annotation.Nullable String requestKey) {
 
         this.requestKey = requestKey;
         return this;
@@ -426,11 +443,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_REQUEST_KEY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRequestKey(String requestKey) {
+    public void setRequestKey(@jakarta.annotation.Nullable String requestKey) {
         this.requestKey = requestKey;
     }
 
-    public SystemInformation subscriptionStartPeriod(String subscriptionStartPeriod) {
+    public SystemInformation subscriptionStartPeriod(@jakarta.annotation.Nullable String subscriptionStartPeriod) {
 
         this.subscriptionStartPeriod = subscriptionStartPeriod;
         return this;
@@ -451,11 +468,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_START_PERIOD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSubscriptionStartPeriod(String subscriptionStartPeriod) {
+    public void setSubscriptionStartPeriod(@jakarta.annotation.Nullable String subscriptionStartPeriod) {
         this.subscriptionStartPeriod = subscriptionStartPeriod;
     }
 
-    public SystemInformation subscriptionEndPeriod(String subscriptionEndPeriod) {
+    public SystemInformation subscriptionEndPeriod(@jakarta.annotation.Nullable String subscriptionEndPeriod) {
 
         this.subscriptionEndPeriod = subscriptionEndPeriod;
         return this;
@@ -476,11 +493,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_END_PERIOD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSubscriptionEndPeriod(String subscriptionEndPeriod) {
+    public void setSubscriptionEndPeriod(@jakarta.annotation.Nullable String subscriptionEndPeriod) {
         this.subscriptionEndPeriod = subscriptionEndPeriod;
     }
 
-    public SystemInformation caseCounterLimit(Long caseCounterLimit) {
+    public SystemInformation caseCounterLimit(@jakarta.annotation.Nullable Long caseCounterLimit) {
 
         this.caseCounterLimit = caseCounterLimit;
         return this;
@@ -501,11 +518,11 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_COUNTER_LIMIT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseCounterLimit(Long caseCounterLimit) {
+    public void setCaseCounterLimit(@jakarta.annotation.Nullable Long caseCounterLimit) {
         this.caseCounterLimit = caseCounterLimit;
     }
 
-    public SystemInformation caseCounter(Long caseCounter) {
+    public SystemInformation caseCounter(@jakarta.annotation.Nullable Long caseCounter) {
 
         this.caseCounter = caseCounter;
         return this;
@@ -526,7 +543,7 @@ public class SystemInformation implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_COUNTER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseCounter(Long caseCounter) {
+    public void setCaseCounter(@jakarta.annotation.Nullable Long caseCounter) {
         this.caseCounter = caseCounter;
     }
 

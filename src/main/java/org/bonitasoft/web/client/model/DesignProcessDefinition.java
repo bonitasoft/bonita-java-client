@@ -40,45 +40,55 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         DesignProcessDefinition.JSON_PROPERTY_CONTRACT,
         DesignProcessDefinition.JSON_PROPERTY_CONTEXT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class DesignProcessDefinition implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_DISPLAY_DESCRIPTION = "displayDescription";
+    @jakarta.annotation.Nullable
     private String displayDescription;
 
     public static final String JSON_PROPERTY_FLOW_ELEMENT_CONTAINER = "flowElementContainer";
+    @jakarta.annotation.Nullable
     private FlowElementContainerDefinition flowElementContainer;
 
     public static final String JSON_PROPERTY_PARAMETERS = "parameters";
+    @jakarta.annotation.Nullable
     private List<DesignProcessDefinitionParamater> parameters = new ArrayList<>();
 
     public static final String JSON_PROPERTY_ACTORS_LIST = "actorsList";
+    @jakarta.annotation.Nullable
     private List<ActorDefinition> actorsList = new ArrayList<>();
 
     public static final String JSON_PROPERTY_ACTOR_INITIATOR = "actorInitiator";
+    @jakarta.annotation.Nullable
     private ActorDefinition actorInitiator;
 
     public static final String JSON_PROPERTY_STRING_INDEX_LABELS = "stringIndexLabels";
+    @jakarta.annotation.Nullable
     private List<String> stringIndexLabels = new ArrayList<>();
 
     public static final String JSON_PROPERTY_STRING_INDEX_VALUES = "stringIndexValues";
+    @jakarta.annotation.Nullable
     private List<Expression> stringIndexValues = new ArrayList<>();
 
     public static final String JSON_PROPERTY_CONTRACT = "contract";
+    @jakarta.annotation.Nullable
     private Contract contract;
 
     public static final String JSON_PROPERTY_CONTEXT = "context";
+    @jakarta.annotation.Nullable
     private List<DesignProcessDefinitionContext> context = new ArrayList<>();
 
     public DesignProcessDefinition() {
     }
 
-    public DesignProcessDefinition displayName(String displayName) {
+    public DesignProcessDefinition displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -99,11 +109,11 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public DesignProcessDefinition displayDescription(String displayDescription) {
+    public DesignProcessDefinition displayDescription(@jakarta.annotation.Nullable String displayDescription) {
 
         this.displayDescription = displayDescription;
         return this;
@@ -124,11 +134,12 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayDescription(String displayDescription) {
+    public void setDisplayDescription(@jakarta.annotation.Nullable String displayDescription) {
         this.displayDescription = displayDescription;
     }
 
-    public DesignProcessDefinition flowElementContainer(FlowElementContainerDefinition flowElementContainer) {
+    public DesignProcessDefinition flowElementContainer(
+            @jakarta.annotation.Nullable FlowElementContainerDefinition flowElementContainer) {
 
         this.flowElementContainer = flowElementContainer;
         return this;
@@ -149,11 +160,13 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_FLOW_ELEMENT_CONTAINER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setFlowElementContainer(FlowElementContainerDefinition flowElementContainer) {
+    public void setFlowElementContainer(
+            @jakarta.annotation.Nullable FlowElementContainerDefinition flowElementContainer) {
         this.flowElementContainer = flowElementContainer;
     }
 
-    public DesignProcessDefinition parameters(List<DesignProcessDefinitionParamater> parameters) {
+    public DesignProcessDefinition parameters(
+            @jakarta.annotation.Nullable List<DesignProcessDefinitionParamater> parameters) {
 
         this.parameters = parameters;
         return this;
@@ -182,11 +195,11 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARAMETERS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParameters(List<DesignProcessDefinitionParamater> parameters) {
+    public void setParameters(@jakarta.annotation.Nullable List<DesignProcessDefinitionParamater> parameters) {
         this.parameters = parameters;
     }
 
-    public DesignProcessDefinition actorsList(List<ActorDefinition> actorsList) {
+    public DesignProcessDefinition actorsList(@jakarta.annotation.Nullable List<ActorDefinition> actorsList) {
 
         this.actorsList = actorsList;
         return this;
@@ -215,11 +228,11 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTORS_LIST)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActorsList(List<ActorDefinition> actorsList) {
+    public void setActorsList(@jakarta.annotation.Nullable List<ActorDefinition> actorsList) {
         this.actorsList = actorsList;
     }
 
-    public DesignProcessDefinition actorInitiator(ActorDefinition actorInitiator) {
+    public DesignProcessDefinition actorInitiator(@jakarta.annotation.Nullable ActorDefinition actorInitiator) {
 
         this.actorInitiator = actorInitiator;
         return this;
@@ -240,11 +253,11 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTOR_INITIATOR)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActorInitiator(ActorDefinition actorInitiator) {
+    public void setActorInitiator(@jakarta.annotation.Nullable ActorDefinition actorInitiator) {
         this.actorInitiator = actorInitiator;
     }
 
-    public DesignProcessDefinition stringIndexLabels(List<String> stringIndexLabels) {
+    public DesignProcessDefinition stringIndexLabels(@jakarta.annotation.Nullable List<String> stringIndexLabels) {
 
         this.stringIndexLabels = stringIndexLabels;
         return this;
@@ -273,11 +286,11 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STRING_INDEX_LABELS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setStringIndexLabels(List<String> stringIndexLabels) {
+    public void setStringIndexLabels(@jakarta.annotation.Nullable List<String> stringIndexLabels) {
         this.stringIndexLabels = stringIndexLabels;
     }
 
-    public DesignProcessDefinition stringIndexValues(List<Expression> stringIndexValues) {
+    public DesignProcessDefinition stringIndexValues(@jakarta.annotation.Nullable List<Expression> stringIndexValues) {
 
         this.stringIndexValues = stringIndexValues;
         return this;
@@ -306,11 +319,11 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STRING_INDEX_VALUES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setStringIndexValues(List<Expression> stringIndexValues) {
+    public void setStringIndexValues(@jakarta.annotation.Nullable List<Expression> stringIndexValues) {
         this.stringIndexValues = stringIndexValues;
     }
 
-    public DesignProcessDefinition contract(Contract contract) {
+    public DesignProcessDefinition contract(@jakarta.annotation.Nullable Contract contract) {
 
         this.contract = contract;
         return this;
@@ -331,11 +344,11 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTRACT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContract(Contract contract) {
+    public void setContract(@jakarta.annotation.Nullable Contract contract) {
         this.contract = contract;
     }
 
-    public DesignProcessDefinition context(List<DesignProcessDefinitionContext> context) {
+    public DesignProcessDefinition context(@jakarta.annotation.Nullable List<DesignProcessDefinitionContext> context) {
 
         this.context = context;
         return this;
@@ -364,7 +377,7 @@ public class DesignProcessDefinition implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTEXT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContext(List<DesignProcessDefinitionContext> context) {
+    public void setContext(@jakarta.annotation.Nullable List<DesignProcessDefinitionContext> context) {
         this.context = context;
     }
 

@@ -19,13 +19,11 @@ package org.bonitasoft.web.client.invoker.auth;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.bonitasoft.web.client.TestUtils.mockResponseBuilder;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.nio.charset.StandardCharsets;
 
-import org.bonitasoft.web.client.api.PortalAuthenticationApi;
+import org.bonitasoft.web.client.api.AuthenticationApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.Session;
@@ -50,14 +48,14 @@ class BonitaLoginServiceTest {
     @Mock
     private BonitaCookieAuth bonitaCookieAuth;
     @Mock
-    private PortalAuthenticationApi authenticationApi;
+    private AuthenticationApi authenticationApi;
     @Mock
     private SessionApi sessionApi;
 
     @BeforeEach
     void setUp() {
         loginService = new BonitaLoginService(apiProvider, objectMapper, bonitaCookieAuth);
-        lenient().when(apiProvider.get(PortalAuthenticationApi.class)).thenReturn(authenticationApi);
+        lenient().when(apiProvider.get(AuthenticationApi.class)).thenReturn(authenticationApi);
         lenient().when(apiProvider.get(SessionApi.class)).thenReturn(sessionApi);
     }
 
@@ -76,7 +74,7 @@ class BonitaLoginServiceTest {
         final String username = "someone";
 
         final Response loginResponse = mockResponseBuilder().status(204).build();
-        when(authenticationApi.login(anyString(), anyString(), anyString(), anyString(), anyString()))
+        when(authenticationApi.login(anyString(), anyString(), anyString(), anyString()))
                 .thenReturn(loginResponse);
 
         final Response sessionResponse = mockResponseBuilder()
@@ -86,30 +84,7 @@ class BonitaLoginServiceTest {
         when(sessionApi.getSession()).thenReturn(sessionResponse);
 
         // When
-        final Session session = loginService.login(username, "myPass", "1");
-
-        // Then
-        assertThat(session).isNotNull();
-        assertThat(session.getUserName()).isEqualTo(username);
-    }
-
-    @Test
-    void login_should_work_with_200_response() throws Exception {
-        // Given
-        final String username = "someone";
-
-        final Response loginResponse = mockResponseBuilder().status(200).build();
-        when(authenticationApi.login(anyString(), anyString(), anyString(), anyString(), anyString()))
-                .thenReturn(loginResponse);
-
-        final Response sessionResponse = mockResponseBuilder()
-                .status(200)
-                .body(objectMapper.writeValueAsBytes(new Session().userName(username)))
-                .build();
-        when(sessionApi.getSession()).thenReturn(sessionResponse);
-
-        // When
-        final Session session = loginService.login(username, "myPass", "1");
+        final Session session = loginService.login(username, "myPass");
 
         // Then
         assertThat(session).isNotNull();

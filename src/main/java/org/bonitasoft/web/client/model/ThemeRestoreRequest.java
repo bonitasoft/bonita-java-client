@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonPropertyOrder({
         ThemeRestoreRequest.JSON_PROPERTY_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ThemeRestoreRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,9 +44,9 @@ public class ThemeRestoreRequest implements Serializable {
      */
     public enum TypeEnum {
 
-        PORTAL("portal"),
+        PORTAL(String.valueOf("portal")),
 
-        MOBILE("mobile");
+        MOBILE(String.valueOf("mobile"));
 
         private String value;
 
@@ -76,12 +76,13 @@ public class ThemeRestoreRequest implements Serializable {
     }
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private TypeEnum type;
 
     public ThemeRestoreRequest() {
     }
 
-    public ThemeRestoreRequest type(TypeEnum type) {
+    public ThemeRestoreRequest type(@jakarta.annotation.Nullable TypeEnum type) {
 
         this.type = type;
         return this;
@@ -102,7 +103,7 @@ public class ThemeRestoreRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(TypeEnum type) {
+    public void setType(@jakarta.annotation.Nullable TypeEnum type) {
         this.type = type;
     }
 

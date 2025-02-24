@@ -34,12 +34,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
         MessageMessageContentValue.JSON_PROPERTY_TYPE
 })
 @JsonTypeName("Message_messageContent_value")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class MessageMessageContentValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_VALUE = "value";
+    @jakarta.annotation.Nonnull
     private String value;
 
     /**
@@ -48,25 +49,25 @@ public class MessageMessageContentValue implements Serializable {
      */
     public enum TypeEnum {
 
-        LANG_STRING("java.lang.String"),
+        JAVA_LANG_STRING(String.valueOf("java.lang.String")),
 
-        LANG_BOOLEAN("java.lang.Boolean"),
+        JAVA_LANG_BOOLEAN(String.valueOf("java.lang.Boolean")),
 
-        LANG_INTEGER("java.lang.Integer"),
+        JAVA_LANG_INTEGER(String.valueOf("java.lang.Integer")),
 
-        LANG_DOUBLE("java.lang.Double"),
+        JAVA_LANG_DOUBLE(String.valueOf("java.lang.Double")),
 
-        LANG_FLOAT("java.lang.Float"),
+        JAVA_LANG_FLOAT(String.valueOf("java.lang.Float")),
 
-        LANG_LONG("java.lang.Long"),
+        JAVA_LANG_LONG(String.valueOf("java.lang.Long")),
 
-        UTIL_DATE("java.util.Date"),
+        JAVA_UTIL_DATE(String.valueOf("java.util.Date")),
 
-        TIME_LOCAL_DATE("java.time.LocalDate"),
+        JAVA_TIME_LOCAL_DATE(String.valueOf("java.time.LocalDate")),
 
-        TIME_LOCAL_DATE_TIME("java.time.LocalDateTime"),
+        JAVA_TIME_LOCAL_DATE_TIME(String.valueOf("java.time.LocalDateTime")),
 
-        TIME_OFFSET_DATE_TIME("java.time.OffsetDateTime");
+        JAVA_TIME_OFFSET_DATE_TIME(String.valueOf("java.time.OffsetDateTime"));
 
         private String value;
 
@@ -96,12 +97,13 @@ public class MessageMessageContentValue implements Serializable {
     }
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private TypeEnum type;
 
     public MessageMessageContentValue() {
     }
 
-    public MessageMessageContentValue value(String value) {
+    public MessageMessageContentValue value(@jakarta.annotation.Nonnull String value) {
 
         this.value = value;
         return this;
@@ -120,11 +122,11 @@ public class MessageMessageContentValue implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setValue(String value) {
+    public void setValue(@jakarta.annotation.Nonnull String value) {
         this.value = value;
     }
 
-    public MessageMessageContentValue type(TypeEnum type) {
+    public MessageMessageContentValue type(@jakarta.annotation.Nullable TypeEnum type) {
 
         this.type = type;
         return this;
@@ -146,7 +148,7 @@ public class MessageMessageContentValue implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(TypeEnum type) {
+    public void setType(@jakarta.annotation.Nullable TypeEnum type) {
         this.type = type;
     }
 

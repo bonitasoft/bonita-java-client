@@ -39,48 +39,59 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         PlatformLicense.JSON_PROPERTY_CASE_COUNTER_LIMIT,
         PlatformLicense.JSON_PROPERTY_CASE_COUNTER
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class PlatformLicense implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_LICENSE_START_DATE = "licenseStartDate";
+    @jakarta.annotation.Nullable
     private String licenseStartDate;
 
     public static final String JSON_PROPERTY_DURATION = "duration";
+    @jakarta.annotation.Nullable
     private String duration;
 
     public static final String JSON_PROPERTY_LICENSE_EXPIRATION_DATE = "licenseExpirationDate";
+    @jakarta.annotation.Nullable
     private String licenseExpirationDate;
 
     public static final String JSON_PROPERTY_NUMBER_OF_C_P_U_CORES = "numberOfCPUCores";
+    @jakarta.annotation.Nullable
     private String numberOfCPUCores;
 
     public static final String JSON_PROPERTY_EDITION = "edition";
+    @jakarta.annotation.Nullable
     private String edition;
 
     public static final String JSON_PROPERTY_LICENSE_MODE = "licenseMode";
+    @jakarta.annotation.Nullable
     private String licenseMode;
 
     public static final String JSON_PROPERTY_REQUEST_KEY = "requestKey";
+    @jakarta.annotation.Nullable
     private String requestKey;
 
     public static final String JSON_PROPERTY_SUBSCRIPTION_START_PERIOD = "subscriptionStartPeriod";
+    @jakarta.annotation.Nullable
     private String subscriptionStartPeriod;
 
     public static final String JSON_PROPERTY_SUBSCRIPTION_END_PERIOD = "subscriptionEndPeriod";
+    @jakarta.annotation.Nullable
     private String subscriptionEndPeriod;
 
     public static final String JSON_PROPERTY_CASE_COUNTER_LIMIT = "caseCounterLimit";
+    @jakarta.annotation.Nullable
     private Long caseCounterLimit;
 
     public static final String JSON_PROPERTY_CASE_COUNTER = "caseCounter";
+    @jakarta.annotation.Nullable
     private Long caseCounter;
 
     public PlatformLicense() {
     }
 
-    public PlatformLicense licenseStartDate(String licenseStartDate) {
+    public PlatformLicense licenseStartDate(@jakarta.annotation.Nullable String licenseStartDate) {
 
         this.licenseStartDate = licenseStartDate;
         return this;
@@ -101,11 +112,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LICENSE_START_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLicenseStartDate(String licenseStartDate) {
+    public void setLicenseStartDate(@jakarta.annotation.Nullable String licenseStartDate) {
         this.licenseStartDate = licenseStartDate;
     }
 
-    public PlatformLicense duration(String duration) {
+    public PlatformLicense duration(@jakarta.annotation.Nullable String duration) {
 
         this.duration = duration;
         return this;
@@ -126,11 +137,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DURATION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDuration(String duration) {
+    public void setDuration(@jakarta.annotation.Nullable String duration) {
         this.duration = duration;
     }
 
-    public PlatformLicense licenseExpirationDate(String licenseExpirationDate) {
+    public PlatformLicense licenseExpirationDate(@jakarta.annotation.Nullable String licenseExpirationDate) {
 
         this.licenseExpirationDate = licenseExpirationDate;
         return this;
@@ -151,11 +162,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LICENSE_EXPIRATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLicenseExpirationDate(String licenseExpirationDate) {
+    public void setLicenseExpirationDate(@jakarta.annotation.Nullable String licenseExpirationDate) {
         this.licenseExpirationDate = licenseExpirationDate;
     }
 
-    public PlatformLicense numberOfCPUCores(String numberOfCPUCores) {
+    public PlatformLicense numberOfCPUCores(@jakarta.annotation.Nullable String numberOfCPUCores) {
 
         this.numberOfCPUCores = numberOfCPUCores;
         return this;
@@ -176,11 +187,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NUMBER_OF_C_P_U_CORES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setNumberOfCPUCores(String numberOfCPUCores) {
+    public void setNumberOfCPUCores(@jakarta.annotation.Nullable String numberOfCPUCores) {
         this.numberOfCPUCores = numberOfCPUCores;
     }
 
-    public PlatformLicense edition(String edition) {
+    public PlatformLicense edition(@jakarta.annotation.Nullable String edition) {
 
         this.edition = edition;
         return this;
@@ -201,11 +212,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EDITION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setEdition(String edition) {
+    public void setEdition(@jakarta.annotation.Nullable String edition) {
         this.edition = edition;
     }
 
-    public PlatformLicense licenseMode(String licenseMode) {
+    public PlatformLicense licenseMode(@jakarta.annotation.Nullable String licenseMode) {
 
         this.licenseMode = licenseMode;
         return this;
@@ -226,11 +237,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LICENSE_MODE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLicenseMode(String licenseMode) {
+    public void setLicenseMode(@jakarta.annotation.Nullable String licenseMode) {
         this.licenseMode = licenseMode;
     }
 
-    public PlatformLicense requestKey(String requestKey) {
+    public PlatformLicense requestKey(@jakarta.annotation.Nullable String requestKey) {
 
         this.requestKey = requestKey;
         return this;
@@ -252,11 +263,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_REQUEST_KEY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRequestKey(String requestKey) {
+    public void setRequestKey(@jakarta.annotation.Nullable String requestKey) {
         this.requestKey = requestKey;
     }
 
-    public PlatformLicense subscriptionStartPeriod(String subscriptionStartPeriod) {
+    public PlatformLicense subscriptionStartPeriod(@jakarta.annotation.Nullable String subscriptionStartPeriod) {
 
         this.subscriptionStartPeriod = subscriptionStartPeriod;
         return this;
@@ -277,11 +288,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_START_PERIOD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSubscriptionStartPeriod(String subscriptionStartPeriod) {
+    public void setSubscriptionStartPeriod(@jakarta.annotation.Nullable String subscriptionStartPeriod) {
         this.subscriptionStartPeriod = subscriptionStartPeriod;
     }
 
-    public PlatformLicense subscriptionEndPeriod(String subscriptionEndPeriod) {
+    public PlatformLicense subscriptionEndPeriod(@jakarta.annotation.Nullable String subscriptionEndPeriod) {
 
         this.subscriptionEndPeriod = subscriptionEndPeriod;
         return this;
@@ -302,11 +313,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_SUBSCRIPTION_END_PERIOD)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setSubscriptionEndPeriod(String subscriptionEndPeriod) {
+    public void setSubscriptionEndPeriod(@jakarta.annotation.Nullable String subscriptionEndPeriod) {
         this.subscriptionEndPeriod = subscriptionEndPeriod;
     }
 
-    public PlatformLicense caseCounterLimit(Long caseCounterLimit) {
+    public PlatformLicense caseCounterLimit(@jakarta.annotation.Nullable Long caseCounterLimit) {
 
         this.caseCounterLimit = caseCounterLimit;
         return this;
@@ -327,11 +338,11 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_COUNTER_LIMIT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseCounterLimit(Long caseCounterLimit) {
+    public void setCaseCounterLimit(@jakarta.annotation.Nullable Long caseCounterLimit) {
         this.caseCounterLimit = caseCounterLimit;
     }
 
-    public PlatformLicense caseCounter(Long caseCounter) {
+    public PlatformLicense caseCounter(@jakarta.annotation.Nullable Long caseCounter) {
 
         this.caseCounter = caseCounter;
         return this;
@@ -352,7 +363,7 @@ public class PlatformLicense implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_COUNTER)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseCounter(Long caseCounter) {
+    public void setCaseCounter(@jakarta.annotation.Nullable Long caseCounter) {
         this.caseCounter = caseCounter;
     }
 

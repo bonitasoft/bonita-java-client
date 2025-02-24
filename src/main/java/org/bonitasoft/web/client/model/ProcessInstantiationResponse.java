@@ -29,18 +29,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ProcessInstantiationResponse.JSON_PROPERTY_CASE_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstantiationResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_CASE_ID = "caseId";
+    @jakarta.annotation.Nullable
     private String caseId;
 
     public ProcessInstantiationResponse() {
     }
 
-    public ProcessInstantiationResponse caseId(String caseId) {
+    public ProcessInstantiationResponse caseId(@jakarta.annotation.Nullable String caseId) {
 
         this.caseId = caseId;
         return this;
@@ -61,7 +62,7 @@ public class ProcessInstantiationResponse implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CASE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCaseId(String caseId) {
+    public void setCaseId(@jakarta.annotation.Nullable String caseId) {
         this.caseId = caseId;
     }
 

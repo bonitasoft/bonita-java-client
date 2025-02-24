@@ -36,30 +36,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Message.JSON_PROPERTY_MESSAGE_CONTENT,
         Message.JSON_PROPERTY_CORRELATIONS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_MESSAGE_NAME = "messageName";
+    @jakarta.annotation.Nullable
     private String messageName;
 
     public static final String JSON_PROPERTY_TARGET_PROCESS = "targetProcess";
+    @jakarta.annotation.Nullable
     private String targetProcess;
 
     public static final String JSON_PROPERTY_TARGET_FLOW_NODE = "targetFlowNode";
+    @jakarta.annotation.Nullable
     private String targetFlowNode;
 
     public static final String JSON_PROPERTY_MESSAGE_CONTENT = "messageContent";
+    @jakarta.annotation.Nullable
     private Map<String, MessageMessageContentValue> messageContent = new HashMap<>();
 
     public static final String JSON_PROPERTY_CORRELATIONS = "correlations";
+    @jakarta.annotation.Nullable
     private Map<String, MessageMessageContentValue> correlations = new HashMap<>();
 
     public Message() {
     }
 
-    public Message messageName(String messageName) {
+    public Message messageName(@jakarta.annotation.Nullable String messageName) {
 
         this.messageName = messageName;
         return this;
@@ -80,11 +85,11 @@ public class Message implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MESSAGE_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMessageName(String messageName) {
+    public void setMessageName(@jakarta.annotation.Nullable String messageName) {
         this.messageName = messageName;
     }
 
-    public Message targetProcess(String targetProcess) {
+    public Message targetProcess(@jakarta.annotation.Nullable String targetProcess) {
 
         this.targetProcess = targetProcess;
         return this;
@@ -105,11 +110,11 @@ public class Message implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TARGET_PROCESS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTargetProcess(String targetProcess) {
+    public void setTargetProcess(@jakarta.annotation.Nullable String targetProcess) {
         this.targetProcess = targetProcess;
     }
 
-    public Message targetFlowNode(String targetFlowNode) {
+    public Message targetFlowNode(@jakarta.annotation.Nullable String targetFlowNode) {
 
         this.targetFlowNode = targetFlowNode;
         return this;
@@ -130,11 +135,11 @@ public class Message implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TARGET_FLOW_NODE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTargetFlowNode(String targetFlowNode) {
+    public void setTargetFlowNode(@jakarta.annotation.Nullable String targetFlowNode) {
         this.targetFlowNode = targetFlowNode;
     }
 
-    public Message messageContent(Map<String, MessageMessageContentValue> messageContent) {
+    public Message messageContent(@jakarta.annotation.Nullable Map<String, MessageMessageContentValue> messageContent) {
 
         this.messageContent = messageContent;
         return this;
@@ -163,11 +168,11 @@ public class Message implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MESSAGE_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMessageContent(Map<String, MessageMessageContentValue> messageContent) {
+    public void setMessageContent(@jakarta.annotation.Nullable Map<String, MessageMessageContentValue> messageContent) {
         this.messageContent = messageContent;
     }
 
-    public Message correlations(Map<String, MessageMessageContentValue> correlations) {
+    public Message correlations(@jakarta.annotation.Nullable Map<String, MessageMessageContentValue> correlations) {
 
         this.correlations = correlations;
         return this;
@@ -196,7 +201,7 @@ public class Message implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CORRELATIONS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCorrelations(Map<String, MessageMessageContentValue> correlations) {
+    public void setCorrelations(@jakarta.annotation.Nullable Map<String, MessageMessageContentValue> correlations) {
         this.correlations = correlations;
     }
 

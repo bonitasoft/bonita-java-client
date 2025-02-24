@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonPropertyOrder({
         PlatformUpdateRequest.JSON_PROPERTY_STATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class PlatformUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,9 +41,9 @@ public class PlatformUpdateRequest implements Serializable {
      */
     public enum StateEnum {
 
-        START("start"),
+        START(String.valueOf("start")),
 
-        STOP("stop");
+        STOP(String.valueOf("stop"));
 
         private String value;
 
@@ -73,12 +73,13 @@ public class PlatformUpdateRequest implements Serializable {
     }
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private StateEnum state;
 
     public PlatformUpdateRequest() {
     }
 
-    public PlatformUpdateRequest state(StateEnum state) {
+    public PlatformUpdateRequest state(@jakarta.annotation.Nullable StateEnum state) {
 
         this.state = state;
         return this;
@@ -99,7 +100,7 @@ public class PlatformUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(StateEnum state) {
+    public void setState(@jakarta.annotation.Nullable StateEnum state) {
         this.state = state;
     }
 

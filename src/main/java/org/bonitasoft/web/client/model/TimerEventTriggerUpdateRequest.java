@@ -29,18 +29,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         TimerEventTriggerUpdateRequest.JSON_PROPERTY_EXECUTION_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class TimerEventTriggerUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_EXECUTION_DATE = "executionDate";
+    @jakarta.annotation.Nullable
     private Long executionDate;
 
     public TimerEventTriggerUpdateRequest() {
     }
 
-    public TimerEventTriggerUpdateRequest executionDate(Long executionDate) {
+    public TimerEventTriggerUpdateRequest executionDate(@jakarta.annotation.Nullable Long executionDate) {
 
         this.executionDate = executionDate;
         return this;
@@ -61,7 +62,7 @@ public class TimerEventTriggerUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXECUTION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExecutionDate(Long executionDate) {
+    public void setExecutionDate(@jakarta.annotation.Nullable Long executionDate) {
         this.executionDate = executionDate;
     }
 

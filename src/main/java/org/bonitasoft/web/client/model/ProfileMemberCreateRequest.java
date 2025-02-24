@@ -35,21 +35,25 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ProfileMemberCreateRequest.JSON_PROPERTY_USER_ID,
         ProfileMemberCreateRequest.JSON_PROPERTY_MEMBER_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProfileMemberCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
+    @jakarta.annotation.Nullable
     private String profileId;
 
     public static final String JSON_PROPERTY_ROLE_ID = "role_id";
+    @jakarta.annotation.Nullable
     private String roleId;
 
     public static final String JSON_PROPERTY_GROUP_ID = "group_id";
+    @jakarta.annotation.Nullable
     private String groupId;
 
     public static final String JSON_PROPERTY_USER_ID = "user_id";
+    @jakarta.annotation.Nullable
     private String userId;
 
     /**
@@ -57,11 +61,11 @@ public class ProfileMemberCreateRequest implements Serializable {
      */
     public enum MemberTypeEnum {
 
-        USER("USER"),
+        USER(String.valueOf("USER")),
 
-        ROLE("ROLE"),
+        ROLE(String.valueOf("ROLE")),
 
-        GROUP("GROUP");
+        GROUP(String.valueOf("GROUP"));
 
         private String value;
 
@@ -91,12 +95,13 @@ public class ProfileMemberCreateRequest implements Serializable {
     }
 
     public static final String JSON_PROPERTY_MEMBER_TYPE = "member_type";
+    @jakarta.annotation.Nullable
     private MemberTypeEnum memberType;
 
     public ProfileMemberCreateRequest() {
     }
 
-    public ProfileMemberCreateRequest profileId(String profileId) {
+    public ProfileMemberCreateRequest profileId(@jakarta.annotation.Nullable String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -117,11 +122,11 @@ public class ProfileMemberCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProfileId(String profileId) {
+    public void setProfileId(@jakarta.annotation.Nullable String profileId) {
         this.profileId = profileId;
     }
 
-    public ProfileMemberCreateRequest roleId(String roleId) {
+    public ProfileMemberCreateRequest roleId(@jakarta.annotation.Nullable String roleId) {
 
         this.roleId = roleId;
         return this;
@@ -142,11 +147,11 @@ public class ProfileMemberCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROLE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRoleId(String roleId) {
+    public void setRoleId(@jakarta.annotation.Nullable String roleId) {
         this.roleId = roleId;
     }
 
-    public ProfileMemberCreateRequest groupId(String groupId) {
+    public ProfileMemberCreateRequest groupId(@jakarta.annotation.Nullable String groupId) {
 
         this.groupId = groupId;
         return this;
@@ -167,11 +172,11 @@ public class ProfileMemberCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setGroupId(String groupId) {
+    public void setGroupId(@jakarta.annotation.Nullable String groupId) {
         this.groupId = groupId;
     }
 
-    public ProfileMemberCreateRequest userId(String userId) {
+    public ProfileMemberCreateRequest userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -192,11 +197,11 @@ public class ProfileMemberCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 
-    public ProfileMemberCreateRequest memberType(MemberTypeEnum memberType) {
+    public ProfileMemberCreateRequest memberType(@jakarta.annotation.Nullable MemberTypeEnum memberType) {
 
         this.memberType = memberType;
         return this;
@@ -217,7 +222,7 @@ public class ProfileMemberCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MEMBER_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMemberType(MemberTypeEnum memberType) {
+    public void setMemberType(@jakarta.annotation.Nullable MemberTypeEnum memberType) {
         this.memberType = memberType;
     }
 

@@ -32,21 +32,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceCreateRequest.JSON_PROPERTY_PROCESS_DEFINITION_ID,
         ProcessInstanceCreateRequest.JSON_PROPERTY_VARIABLES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PROCESS_DEFINITION_ID = "processDefinitionId";
+    @jakarta.annotation.Nullable
     private String processDefinitionId;
 
     public static final String JSON_PROPERTY_VARIABLES = "variables";
+    @jakarta.annotation.Nullable
     private List<ProcessVariable> variables = new ArrayList<>();
 
     public ProcessInstanceCreateRequest() {
     }
 
-    public ProcessInstanceCreateRequest processDefinitionId(String processDefinitionId) {
+    public ProcessInstanceCreateRequest processDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
 
         this.processDefinitionId = processDefinitionId;
         return this;
@@ -67,11 +69,11 @@ public class ProcessInstanceCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_DEFINITION_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessDefinitionId(String processDefinitionId) {
+    public void setProcessDefinitionId(@jakarta.annotation.Nullable String processDefinitionId) {
         this.processDefinitionId = processDefinitionId;
     }
 
-    public ProcessInstanceCreateRequest variables(List<ProcessVariable> variables) {
+    public ProcessInstanceCreateRequest variables(@jakarta.annotation.Nullable List<ProcessVariable> variables) {
 
         this.variables = variables;
         return this;
@@ -100,7 +102,7 @@ public class ProcessInstanceCreateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VARIABLES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVariables(List<ProcessVariable> variables) {
+    public void setVariables(@jakarta.annotation.Nullable List<ProcessVariable> variables) {
         this.variables = variables;
     }
 

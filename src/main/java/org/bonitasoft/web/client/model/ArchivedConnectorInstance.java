@@ -39,21 +39,25 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ArchivedConnectorInstance.JSON_PROPERTY_VERSION,
         ArchivedConnectorInstance.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ArchivedConnectorInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_CONTAINER_TYPE = "containerType";
+    @jakarta.annotation.Nullable
     private String containerType;
 
     public static final String JSON_PROPERTY_CONNECTOR_ID = "connectorId";
+    @jakarta.annotation.Nullable
     private String connectorId;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private Long id;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     /**
@@ -61,9 +65,9 @@ public class ArchivedConnectorInstance implements Serializable {
      */
     public enum ActivationEventEnum {
 
-        ENTER("ON_ENTER"),
+        ON_ENTER(String.valueOf("ON_ENTER")),
 
-        FINISH("ON_FINISH");
+        ON_FINISH(String.valueOf("ON_FINISH"));
 
         private String value;
 
@@ -93,6 +97,7 @@ public class ArchivedConnectorInstance implements Serializable {
     }
 
     public static final String JSON_PROPERTY_ACTIVATION_EVENT = "activationEvent";
+    @jakarta.annotation.Nullable
     private ActivationEventEnum activationEvent;
 
     /**
@@ -100,17 +105,17 @@ public class ArchivedConnectorInstance implements Serializable {
      */
     public enum StateEnum {
 
-        TO_BE_EXECUTED("TO_BE_EXECUTED"),
+        TO_BE_EXECUTED(String.valueOf("TO_BE_EXECUTED")),
 
-        EXECUTING("EXECUTING"),
+        EXECUTING(String.valueOf("EXECUTING")),
 
-        TO_RE_EXECUTE("TO_RE_EXECUTE"),
+        TO_RE_EXECUTE(String.valueOf("TO_RE_EXECUTE")),
 
-        DONE("DONE"),
+        DONE(String.valueOf("DONE")),
 
-        FAILED("FAILED"),
+        FAILED(String.valueOf("FAILED")),
 
-        SKIPPED("SKIPPED");
+        SKIPPED(String.valueOf("SKIPPED"));
 
         private String value;
 
@@ -140,21 +145,25 @@ public class ArchivedConnectorInstance implements Serializable {
     }
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private StateEnum state;
 
     public static final String JSON_PROPERTY_CONTAINER_ID = "containerId";
+    @jakarta.annotation.Nullable
     private String containerId;
 
     public static final String JSON_PROPERTY_VERSION = "version";
+    @jakarta.annotation.Nullable
     private String version;
 
     public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+    @jakarta.annotation.Nullable
     private String archivedDate;
 
     public ArchivedConnectorInstance() {
     }
 
-    public ArchivedConnectorInstance containerType(String containerType) {
+    public ArchivedConnectorInstance containerType(@jakarta.annotation.Nullable String containerType) {
 
         this.containerType = containerType;
         return this;
@@ -175,11 +184,11 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTAINER_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContainerType(String containerType) {
+    public void setContainerType(@jakarta.annotation.Nullable String containerType) {
         this.containerType = containerType;
     }
 
-    public ArchivedConnectorInstance connectorId(String connectorId) {
+    public ArchivedConnectorInstance connectorId(@jakarta.annotation.Nullable String connectorId) {
 
         this.connectorId = connectorId;
         return this;
@@ -200,11 +209,11 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONNECTOR_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConnectorId(String connectorId) {
+    public void setConnectorId(@jakarta.annotation.Nullable String connectorId) {
         this.connectorId = connectorId;
     }
 
-    public ArchivedConnectorInstance id(Long id) {
+    public ArchivedConnectorInstance id(@jakarta.annotation.Nullable Long id) {
 
         this.id = id;
         return this;
@@ -225,11 +234,11 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(Long id) {
+    public void setId(@jakarta.annotation.Nullable Long id) {
         this.id = id;
     }
 
-    public ArchivedConnectorInstance name(String name) {
+    public ArchivedConnectorInstance name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -250,11 +259,11 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ArchivedConnectorInstance activationEvent(ActivationEventEnum activationEvent) {
+    public ArchivedConnectorInstance activationEvent(@jakarta.annotation.Nullable ActivationEventEnum activationEvent) {
 
         this.activationEvent = activationEvent;
         return this;
@@ -275,11 +284,11 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ACTIVATION_EVENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setActivationEvent(ActivationEventEnum activationEvent) {
+    public void setActivationEvent(@jakarta.annotation.Nullable ActivationEventEnum activationEvent) {
         this.activationEvent = activationEvent;
     }
 
-    public ArchivedConnectorInstance state(StateEnum state) {
+    public ArchivedConnectorInstance state(@jakarta.annotation.Nullable StateEnum state) {
 
         this.state = state;
         return this;
@@ -300,11 +309,11 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(StateEnum state) {
+    public void setState(@jakarta.annotation.Nullable StateEnum state) {
         this.state = state;
     }
 
-    public ArchivedConnectorInstance containerId(String containerId) {
+    public ArchivedConnectorInstance containerId(@jakarta.annotation.Nullable String containerId) {
 
         this.containerId = containerId;
         return this;
@@ -325,11 +334,11 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTAINER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContainerId(String containerId) {
+    public void setContainerId(@jakarta.annotation.Nullable String containerId) {
         this.containerId = containerId;
     }
 
-    public ArchivedConnectorInstance version(String version) {
+    public ArchivedConnectorInstance version(@jakarta.annotation.Nullable String version) {
 
         this.version = version;
         return this;
@@ -350,11 +359,11 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setVersion(String version) {
+    public void setVersion(@jakarta.annotation.Nullable String version) {
         this.version = version;
     }
 
-    public ArchivedConnectorInstance archivedDate(String archivedDate) {
+    public ArchivedConnectorInstance archivedDate(@jakarta.annotation.Nullable String archivedDate) {
 
         this.archivedDate = archivedDate;
         return this;
@@ -375,7 +384,7 @@ public class ArchivedConnectorInstance implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setArchivedDate(String archivedDate) {
+    public void setArchivedDate(@jakarta.annotation.Nullable String archivedDate) {
         this.archivedDate = archivedDate;
     }
 

@@ -31,24 +31,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ConnectorFailure.JSON_PROPERTY_CONNECTOR_INSTANCE_ID,
         ConnectorFailure.JSON_PROPERTY_ERROR_STACK_TRACE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ConnectorFailure implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ERROR_MESSAGE = "errorMessage";
+    @jakarta.annotation.Nullable
     private String errorMessage;
 
     public static final String JSON_PROPERTY_CONNECTOR_INSTANCE_ID = "connectorInstanceId";
+    @jakarta.annotation.Nullable
     private String connectorInstanceId;
 
     public static final String JSON_PROPERTY_ERROR_STACK_TRACE = "errorStackTrace";
+    @jakarta.annotation.Nullable
     private String errorStackTrace;
 
     public ConnectorFailure() {
     }
 
-    public ConnectorFailure errorMessage(String errorMessage) {
+    public ConnectorFailure errorMessage(@jakarta.annotation.Nullable String errorMessage) {
 
         this.errorMessage = errorMessage;
         return this;
@@ -69,11 +72,11 @@ public class ConnectorFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ERROR_MESSAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setErrorMessage(String errorMessage) {
+    public void setErrorMessage(@jakarta.annotation.Nullable String errorMessage) {
         this.errorMessage = errorMessage;
     }
 
-    public ConnectorFailure connectorInstanceId(String connectorInstanceId) {
+    public ConnectorFailure connectorInstanceId(@jakarta.annotation.Nullable String connectorInstanceId) {
 
         this.connectorInstanceId = connectorInstanceId;
         return this;
@@ -94,11 +97,11 @@ public class ConnectorFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONNECTOR_INSTANCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setConnectorInstanceId(String connectorInstanceId) {
+    public void setConnectorInstanceId(@jakarta.annotation.Nullable String connectorInstanceId) {
         this.connectorInstanceId = connectorInstanceId;
     }
 
-    public ConnectorFailure errorStackTrace(String errorStackTrace) {
+    public ConnectorFailure errorStackTrace(@jakarta.annotation.Nullable String errorStackTrace) {
 
         this.errorStackTrace = errorStackTrace;
         return this;
@@ -119,7 +122,7 @@ public class ConnectorFailure implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ERROR_STACK_TRACE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setErrorStackTrace(String errorStackTrace) {
+    public void setErrorStackTrace(@jakarta.annotation.Nullable String errorStackTrace) {
         this.errorStackTrace = errorStackTrace;
     }
 

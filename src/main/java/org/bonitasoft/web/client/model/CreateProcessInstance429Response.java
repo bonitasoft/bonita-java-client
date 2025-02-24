@@ -32,21 +32,23 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
         CreateProcessInstance429Response.JSON_PROPERTY_EXCEPTION
 })
 @JsonTypeName("createProcessInstance_429_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class CreateProcessInstance429Response implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_MESSAGE = "message";
+    @jakarta.annotation.Nullable
     private String message;
 
     public static final String JSON_PROPERTY_EXCEPTION = "exception";
+    @jakarta.annotation.Nullable
     private String exception;
 
     public CreateProcessInstance429Response() {
     }
 
-    public CreateProcessInstance429Response message(String message) {
+    public CreateProcessInstance429Response message(@jakarta.annotation.Nullable String message) {
 
         this.message = message;
         return this;
@@ -67,11 +69,11 @@ public class CreateProcessInstance429Response implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_MESSAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setMessage(String message) {
+    public void setMessage(@jakarta.annotation.Nullable String message) {
         this.message = message;
     }
 
-    public CreateProcessInstance429Response exception(String exception) {
+    public CreateProcessInstance429Response exception(@jakarta.annotation.Nullable String exception) {
 
         this.exception = exception;
         return this;
@@ -92,7 +94,7 @@ public class CreateProcessInstance429Response implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXCEPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setException(String exception) {
+    public void setException(@jakarta.annotation.Nullable String exception) {
         this.exception = exception;
     }
 

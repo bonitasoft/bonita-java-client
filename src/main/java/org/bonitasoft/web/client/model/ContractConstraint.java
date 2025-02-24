@@ -34,27 +34,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ContractConstraint.JSON_PROPERTY_EXPLANATION,
         ContractConstraint.JSON_PROPERTY_INPUT_NAMES
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ContractConstraint implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_EXPRESSION = "expression";
+    @jakarta.annotation.Nullable
     private String expression;
 
     public static final String JSON_PROPERTY_EXPLANATION = "explanation";
+    @jakarta.annotation.Nullable
     private String explanation;
 
     public static final String JSON_PROPERTY_INPUT_NAMES = "inputNames";
+    @jakarta.annotation.Nullable
     private List<String> inputNames = new ArrayList<>();
 
     public ContractConstraint() {
     }
 
-    public ContractConstraint name(String name) {
+    public ContractConstraint name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -75,11 +79,11 @@ public class ContractConstraint implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ContractConstraint expression(String expression) {
+    public ContractConstraint expression(@jakarta.annotation.Nullable String expression) {
 
         this.expression = expression;
         return this;
@@ -100,11 +104,11 @@ public class ContractConstraint implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXPRESSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExpression(String expression) {
+    public void setExpression(@jakarta.annotation.Nullable String expression) {
         this.expression = expression;
     }
 
-    public ContractConstraint explanation(String explanation) {
+    public ContractConstraint explanation(@jakarta.annotation.Nullable String explanation) {
 
         this.explanation = explanation;
         return this;
@@ -125,11 +129,11 @@ public class ContractConstraint implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_EXPLANATION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setExplanation(String explanation) {
+    public void setExplanation(@jakarta.annotation.Nullable String explanation) {
         this.explanation = explanation;
     }
 
-    public ContractConstraint inputNames(List<String> inputNames) {
+    public ContractConstraint inputNames(@jakarta.annotation.Nullable List<String> inputNames) {
 
         this.inputNames = inputNames;
         return this;
@@ -158,7 +162,7 @@ public class ContractConstraint implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INPUT_NAMES)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setInputNames(List<String> inputNames) {
+    public void setInputNames(@jakarta.annotation.Nullable List<String> inputNames) {
         this.inputNames = inputNames;
     }
 

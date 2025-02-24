@@ -34,21 +34,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceInfo.JSON_PROPERTY_ID,
         ProcessInstanceInfo.JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS = "flowNodeStatesCounters";
+    @jakarta.annotation.Nullable
     private Map<String, ProcessInstanceInfoFlowNodeStatesCountersValue> flowNodeStatesCounters = new HashMap<>();
 
     public ProcessInstanceInfo() {
     }
 
-    public ProcessInstanceInfo id(String id) {
+    public ProcessInstanceInfo id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -69,12 +71,12 @@ public class ProcessInstanceInfo implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
     public ProcessInstanceInfo flowNodeStatesCounters(
-            Map<String, ProcessInstanceInfoFlowNodeStatesCountersValue> flowNodeStatesCounters) {
+            @jakarta.annotation.Nullable Map<String, ProcessInstanceInfoFlowNodeStatesCountersValue> flowNodeStatesCounters) {
 
         this.flowNodeStatesCounters = flowNodeStatesCounters;
         return this;
@@ -105,7 +107,7 @@ public class ProcessInstanceInfo implements Serializable {
     @JsonProperty(JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setFlowNodeStatesCounters(
-            Map<String, ProcessInstanceInfoFlowNodeStatesCountersValue> flowNodeStatesCounters) {
+            @jakarta.annotation.Nullable Map<String, ProcessInstanceInfoFlowNodeStatesCountersValue> flowNodeStatesCounters) {
         this.flowNodeStatesCounters = flowNodeStatesCounters;
     }
 

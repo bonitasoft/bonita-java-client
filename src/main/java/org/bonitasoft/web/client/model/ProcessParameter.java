@@ -35,36 +35,43 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessParameter.JSON_PROPERTY_PROCESS_VERSION,
         ProcessParameter.JSON_PROPERTY_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessParameter implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
+    @jakarta.annotation.Nullable
     private String processId;
 
     public static final String JSON_PROPERTY_PROCESS_NAME = "process_name";
+    @jakarta.annotation.Nullable
     private String processName;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_VALUE = "value";
+    @jakarta.annotation.Nullable
     private String value;
 
     public static final String JSON_PROPERTY_PROCESS_VERSION = "process_version";
+    @jakarta.annotation.Nullable
     private String processVersion;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public ProcessParameter() {
     }
 
-    public ProcessParameter processId(String processId) {
+    public ProcessParameter processId(@jakarta.annotation.Nullable String processId) {
 
         this.processId = processId;
         return this;
@@ -85,11 +92,11 @@ public class ProcessParameter implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessId(String processId) {
+    public void setProcessId(@jakarta.annotation.Nullable String processId) {
         this.processId = processId;
     }
 
-    public ProcessParameter processName(String processName) {
+    public ProcessParameter processName(@jakarta.annotation.Nullable String processName) {
 
         this.processName = processName;
         return this;
@@ -110,11 +117,11 @@ public class ProcessParameter implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessName(String processName) {
+    public void setProcessName(@jakarta.annotation.Nullable String processName) {
         this.processName = processName;
     }
 
-    public ProcessParameter description(String description) {
+    public ProcessParameter description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -135,11 +142,11 @@ public class ProcessParameter implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ProcessParameter name(String name) {
+    public ProcessParameter name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -160,11 +167,11 @@ public class ProcessParameter implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ProcessParameter value(String value) {
+    public ProcessParameter value(@jakarta.annotation.Nullable String value) {
 
         this.value = value;
         return this;
@@ -185,11 +192,11 @@ public class ProcessParameter implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_VALUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setValue(String value) {
+    public void setValue(@jakarta.annotation.Nullable String value) {
         this.value = value;
     }
 
-    public ProcessParameter processVersion(String processVersion) {
+    public ProcessParameter processVersion(@jakarta.annotation.Nullable String processVersion) {
 
         this.processVersion = processVersion;
         return this;
@@ -210,11 +217,11 @@ public class ProcessParameter implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_VERSION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessVersion(String processVersion) {
+    public void setProcessVersion(@jakarta.annotation.Nullable String processVersion) {
         this.processVersion = processVersion;
     }
 
-    public ProcessParameter type(String type) {
+    public ProcessParameter type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -235,7 +242,7 @@ public class ProcessParameter implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 

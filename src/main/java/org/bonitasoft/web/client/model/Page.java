@@ -38,45 +38,55 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Page.JSON_PROPERTY_LAST_UPDATE_DATE,
         Page.JSON_PROPERTY_URL_TOKEN
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Page implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+    @jakarta.annotation.Nullable
     private String creationDate;
 
     public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+    @jakarta.annotation.Nullable
     private String createdBy;
 
     public static final String JSON_PROPERTY_IS_PROVIDED = "isProvided";
+    @jakarta.annotation.Nullable
     private Boolean isProvided;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_CONTENT_NAME = "contentName";
+    @jakarta.annotation.Nullable
     private String contentName;
 
     public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+    @jakarta.annotation.Nullable
     private String displayName;
 
     public static final String JSON_PROPERTY_UPDATED_BY = "updatedBy";
+    @jakarta.annotation.Nullable
     private String updatedBy;
 
     public static final String JSON_PROPERTY_LAST_UPDATE_DATE = "lastUpdateDate";
+    @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
     public static final String JSON_PROPERTY_URL_TOKEN = "urlToken";
+    @jakarta.annotation.Nullable
     private String urlToken;
 
     public Page() {
     }
 
-    public Page id(String id) {
+    public Page id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -97,11 +107,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public Page creationDate(String creationDate) {
+    public Page creationDate(@jakarta.annotation.Nullable String creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -122,11 +132,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATION_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(@jakarta.annotation.Nullable String creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Page createdBy(String createdBy) {
+    public Page createdBy(@jakarta.annotation.Nullable String createdBy) {
 
         this.createdBy = createdBy;
         return this;
@@ -147,11 +157,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CREATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(@jakarta.annotation.Nullable String createdBy) {
         this.createdBy = createdBy;
     }
 
-    public Page isProvided(Boolean isProvided) {
+    public Page isProvided(@jakarta.annotation.Nullable Boolean isProvided) {
 
         this.isProvided = isProvided;
         return this;
@@ -172,11 +182,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IS_PROVIDED)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIsProvided(Boolean isProvided) {
+    public void setIsProvided(@jakarta.annotation.Nullable Boolean isProvided) {
         this.isProvided = isProvided;
     }
 
-    public Page description(String description) {
+    public Page description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -197,11 +207,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public Page contentName(String contentName) {
+    public Page contentName(@jakarta.annotation.Nullable String contentName) {
 
         this.contentName = contentName;
         return this;
@@ -222,11 +232,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContentName(String contentName) {
+    public void setContentName(@jakarta.annotation.Nullable String contentName) {
         this.contentName = contentName;
     }
 
-    public Page displayName(String displayName) {
+    public Page displayName(@jakarta.annotation.Nullable String displayName) {
 
         this.displayName = displayName;
         return this;
@@ -247,11 +257,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
         this.displayName = displayName;
     }
 
-    public Page updatedBy(String updatedBy) {
+    public Page updatedBy(@jakarta.annotation.Nullable String updatedBy) {
 
         this.updatedBy = updatedBy;
         return this;
@@ -272,11 +282,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_UPDATED_BY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(@jakarta.annotation.Nullable String updatedBy) {
         this.updatedBy = updatedBy;
     }
 
-    public Page lastUpdateDate(String lastUpdateDate) {
+    public Page lastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
 
         this.lastUpdateDate = lastUpdateDate;
         return this;
@@ -297,11 +307,11 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_LAST_UPDATE_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(@jakarta.annotation.Nullable String lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Page urlToken(String urlToken) {
+    public Page urlToken(@jakarta.annotation.Nullable String urlToken) {
 
         this.urlToken = urlToken;
         return this;
@@ -322,7 +332,7 @@ public class Page implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_URL_TOKEN)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUrlToken(String urlToken) {
+    public void setUrlToken(@jakarta.annotation.Nullable String urlToken) {
         this.urlToken = urlToken;
     }
 

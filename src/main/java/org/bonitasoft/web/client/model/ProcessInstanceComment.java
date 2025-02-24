@@ -29,38 +29,39 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ProcessInstanceComment.JSON_PROPERTY_ID,
         ProcessInstanceComment.JSON_PROPERTY_CONTENT,
-        ProcessInstanceComment.JSON_PROPERTY_TENANT_ID,
         ProcessInstanceComment.JSON_PROPERTY_PROCESS_INSTANCE_ID,
         ProcessInstanceComment.JSON_PROPERTY_POST_DATE,
         ProcessInstanceComment.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessInstanceComment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_CONTENT = "content";
+    @jakarta.annotation.Nullable
     private String content;
 
-    public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-    private String tenantId;
-
     public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
+    @jakarta.annotation.Nullable
     private String processInstanceId;
 
     public static final String JSON_PROPERTY_POST_DATE = "postDate";
+    @jakarta.annotation.Nullable
     private String postDate;
 
     public static final String JSON_PROPERTY_USER_ID = "userId";
+    @jakarta.annotation.Nullable
     private String userId;
 
     public ProcessInstanceComment() {
     }
 
-    public ProcessInstanceComment id(String id) {
+    public ProcessInstanceComment id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -81,11 +82,11 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ProcessInstanceComment content(String content) {
+    public ProcessInstanceComment content(@jakarta.annotation.Nullable String content) {
 
         this.content = content;
         return this;
@@ -106,36 +107,11 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContent(String content) {
+    public void setContent(@jakarta.annotation.Nullable String content) {
         this.content = content;
     }
 
-    public ProcessInstanceComment tenantId(String tenantId) {
-
-        this.tenantId = tenantId;
-        return this;
-    }
-
-    /**
-     * the id of the tenant the comment is associated to
-     * 
-     * @return tenantId
-     */
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_TENANT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public String getTenantId() {
-        return tenantId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_TENANT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTenantId(String tenantId) {
-        this.tenantId = tenantId;
-    }
-
-    public ProcessInstanceComment processInstanceId(String processInstanceId) {
+    public ProcessInstanceComment processInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
 
         this.processInstanceId = processInstanceId;
         return this;
@@ -156,11 +132,11 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessInstanceId(String processInstanceId) {
+    public void setProcessInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
         this.processInstanceId = processInstanceId;
     }
 
-    public ProcessInstanceComment postDate(String postDate) {
+    public ProcessInstanceComment postDate(@jakarta.annotation.Nullable String postDate) {
 
         this.postDate = postDate;
         return this;
@@ -181,11 +157,11 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_POST_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPostDate(String postDate) {
+    public void setPostDate(@jakarta.annotation.Nullable String postDate) {
         this.postDate = postDate;
     }
 
-    public ProcessInstanceComment userId(String userId) {
+    public ProcessInstanceComment userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -206,7 +182,7 @@ public class ProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 
@@ -221,7 +197,6 @@ public class ProcessInstanceComment implements Serializable {
         ProcessInstanceComment processInstanceComment = (ProcessInstanceComment) o;
         return Objects.equals(this.id, processInstanceComment.id) &&
                 Objects.equals(this.content, processInstanceComment.content) &&
-                Objects.equals(this.tenantId, processInstanceComment.tenantId) &&
                 Objects.equals(this.processInstanceId, processInstanceComment.processInstanceId) &&
                 Objects.equals(this.postDate, processInstanceComment.postDate) &&
                 Objects.equals(this.userId, processInstanceComment.userId);
@@ -229,7 +204,7 @@ public class ProcessInstanceComment implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, tenantId, processInstanceId, postDate, userId);
+        return Objects.hash(id, content, processInstanceId, postDate, userId);
     }
 
     @Override
@@ -238,7 +213,6 @@ public class ProcessInstanceComment implements Serializable {
         sb.append("class ProcessInstanceComment {\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    content: ").append(toIndentedString(content)).append("\n");
-        sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
         sb.append("    processInstanceId: ").append(toIndentedString(processInstanceId)).append("\n");
         sb.append("    postDate: ").append(toIndentedString(postDate)).append("\n");
         sb.append("    userId: ").append(toIndentedString(userId)).append("\n");

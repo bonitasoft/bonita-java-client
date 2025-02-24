@@ -38,45 +38,55 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfileEntry.JSON_PROPERTY_IS_CUSTOM,
         ProfileEntry.JSON_PROPERTY_PARENT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProfileEntry implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_ICON = "icon";
+    @jakarta.annotation.Nullable
     private String icon;
 
     public static final String JSON_PROPERTY_INDEX = "index";
+    @jakarta.annotation.Nullable
     private String index;
 
     public static final String JSON_PROPERTY_PROFILE_ID = "profile_id";
+    @jakarta.annotation.Nullable
     private String profileId;
 
     public static final String JSON_PROPERTY_PAGE = "page";
+    @jakarta.annotation.Nullable
     private String page;
 
     public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    @jakarta.annotation.Nullable
     private String description;
 
     public static final String JSON_PROPERTY_NAME = "name";
+    @jakarta.annotation.Nullable
     private String name;
 
     public static final String JSON_PROPERTY_TYPE = "type";
+    @jakarta.annotation.Nullable
     private String type;
 
     public static final String JSON_PROPERTY_IS_CUSTOM = "isCustom";
+    @jakarta.annotation.Nullable
     private Boolean isCustom;
 
     public static final String JSON_PROPERTY_PARENT_ID = "parent_id";
+    @jakarta.annotation.Nullable
     private String parentId;
 
     public ProfileEntry() {
     }
 
-    public ProfileEntry id(String id) {
+    public ProfileEntry id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -97,11 +107,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ProfileEntry icon(String icon) {
+    public ProfileEntry icon(@jakarta.annotation.Nullable String icon) {
 
         this.icon = icon;
         return this;
@@ -122,11 +132,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ICON)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIcon(String icon) {
+    public void setIcon(@jakarta.annotation.Nullable String icon) {
         this.icon = icon;
     }
 
-    public ProfileEntry index(String index) {
+    public ProfileEntry index(@jakarta.annotation.Nullable String index) {
 
         this.index = index;
         return this;
@@ -147,11 +157,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_INDEX)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIndex(String index) {
+    public void setIndex(@jakarta.annotation.Nullable String index) {
         this.index = index;
     }
 
-    public ProfileEntry profileId(String profileId) {
+    public ProfileEntry profileId(@jakarta.annotation.Nullable String profileId) {
 
         this.profileId = profileId;
         return this;
@@ -172,11 +182,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROFILE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProfileId(String profileId) {
+    public void setProfileId(@jakarta.annotation.Nullable String profileId) {
         this.profileId = profileId;
     }
 
-    public ProfileEntry page(String page) {
+    public ProfileEntry page(@jakarta.annotation.Nullable String page) {
 
         this.page = page;
         return this;
@@ -197,11 +207,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PAGE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPage(String page) {
+    public void setPage(@jakarta.annotation.Nullable String page) {
         this.page = page;
     }
 
-    public ProfileEntry description(String description) {
+    public ProfileEntry description(@jakarta.annotation.Nullable String description) {
 
         this.description = description;
         return this;
@@ -222,11 +232,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_DESCRIPTION)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setDescription(String description) {
+    public void setDescription(@jakarta.annotation.Nullable String description) {
         this.description = description;
     }
 
-    public ProfileEntry name(String name) {
+    public ProfileEntry name(@jakarta.annotation.Nullable String name) {
 
         this.name = name;
         return this;
@@ -247,11 +257,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_NAME)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setName(String name) {
+    public void setName(@jakarta.annotation.Nullable String name) {
         this.name = name;
     }
 
-    public ProfileEntry type(String type) {
+    public ProfileEntry type(@jakarta.annotation.Nullable String type) {
 
         this.type = type;
         return this;
@@ -272,11 +282,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_TYPE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setType(String type) {
+    public void setType(@jakarta.annotation.Nullable String type) {
         this.type = type;
     }
 
-    public ProfileEntry isCustom(Boolean isCustom) {
+    public ProfileEntry isCustom(@jakarta.annotation.Nullable Boolean isCustom) {
 
         this.isCustom = isCustom;
         return this;
@@ -297,11 +307,11 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_IS_CUSTOM)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setIsCustom(Boolean isCustom) {
+    public void setIsCustom(@jakarta.annotation.Nullable Boolean isCustom) {
         this.isCustom = isCustom;
     }
 
-    public ProfileEntry parentId(String parentId) {
+    public ProfileEntry parentId(@jakarta.annotation.Nullable String parentId) {
 
         this.parentId = parentId;
         return this;
@@ -322,7 +332,7 @@ public class ProfileEntry implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PARENT_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentId(String parentId) {
+    public void setParentId(@jakarta.annotation.Nullable String parentId) {
         this.parentId = parentId;
     }
 

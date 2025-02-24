@@ -30,21 +30,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         UserTaskUpdateRequest.JSON_PROPERTY_STATE,
         UserTaskUpdateRequest.JSON_PROPERTY_ASSIGNED_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class UserTaskUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_STATE = "state";
+    @jakarta.annotation.Nullable
     private String state;
 
     public static final String JSON_PROPERTY_ASSIGNED_ID = "assigned_id";
+    @jakarta.annotation.Nullable
     private String assignedId;
 
     public UserTaskUpdateRequest() {
     }
 
-    public UserTaskUpdateRequest state(String state) {
+    public UserTaskUpdateRequest state(@jakarta.annotation.Nullable String state) {
 
         this.state = state;
         return this;
@@ -65,11 +67,11 @@ public class UserTaskUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_STATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setState(String state) {
+    public void setState(@jakarta.annotation.Nullable String state) {
         this.state = state;
     }
 
-    public UserTaskUpdateRequest assignedId(String assignedId) {
+    public UserTaskUpdateRequest assignedId(@jakarta.annotation.Nullable String assignedId) {
 
         this.assignedId = assignedId;
         return this;
@@ -90,7 +92,7 @@ public class UserTaskUpdateRequest implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedId(String assignedId) {
+    public void setAssignedId(@jakarta.annotation.Nullable String assignedId) {
         this.assignedId = assignedId;
     }
 

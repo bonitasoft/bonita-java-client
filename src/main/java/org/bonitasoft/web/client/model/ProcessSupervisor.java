@@ -34,27 +34,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessSupervisor.JSON_PROPERTY_GROUP_ID,
         ProcessSupervisor.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ProcessSupervisor implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_PROCESS_ID = "process_id";
+    @jakarta.annotation.Nullable
     private String processId;
 
     public static final String JSON_PROPERTY_ROLE_ID = "role_id";
+    @jakarta.annotation.Nullable
     private String roleId;
 
     public static final String JSON_PROPERTY_GROUP_ID = "group_id";
+    @jakarta.annotation.Nullable
     private String groupId;
 
     public static final String JSON_PROPERTY_USER_ID = "user_id";
+    @jakarta.annotation.Nullable
     private String userId;
 
     public ProcessSupervisor() {
     }
 
-    public ProcessSupervisor processId(String processId) {
+    public ProcessSupervisor processId(@jakarta.annotation.Nullable String processId) {
 
         this.processId = processId;
         return this;
@@ -75,11 +79,11 @@ public class ProcessSupervisor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessId(String processId) {
+    public void setProcessId(@jakarta.annotation.Nullable String processId) {
         this.processId = processId;
     }
 
-    public ProcessSupervisor roleId(String roleId) {
+    public ProcessSupervisor roleId(@jakarta.annotation.Nullable String roleId) {
 
         this.roleId = roleId;
         return this;
@@ -100,11 +104,11 @@ public class ProcessSupervisor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROLE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRoleId(String roleId) {
+    public void setRoleId(@jakarta.annotation.Nullable String roleId) {
         this.roleId = roleId;
     }
 
-    public ProcessSupervisor groupId(String groupId) {
+    public ProcessSupervisor groupId(@jakarta.annotation.Nullable String groupId) {
 
         this.groupId = groupId;
         return this;
@@ -125,11 +129,11 @@ public class ProcessSupervisor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setGroupId(String groupId) {
+    public void setGroupId(@jakarta.annotation.Nullable String groupId) {
         this.groupId = groupId;
     }
 
-    public ProcessSupervisor userId(String userId) {
+    public ProcessSupervisor userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -150,7 +154,7 @@ public class ProcessSupervisor implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 

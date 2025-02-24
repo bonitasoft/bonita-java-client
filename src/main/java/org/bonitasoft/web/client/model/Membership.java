@@ -33,30 +33,35 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Membership.JSON_PROPERTY_GROUP_ID,
         Membership.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Membership implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ASSIGNED_DATE = "assigned_date";
+    @jakarta.annotation.Nullable
     private String assignedDate;
 
     public static final String JSON_PROPERTY_ROLE_ID = "role_id";
+    @jakarta.annotation.Nullable
     private Long roleId;
 
     public static final String JSON_PROPERTY_ASSIGNED_BY_USER_ID = "assigned_by_user_id";
+    @jakarta.annotation.Nullable
     private String assignedByUserId;
 
     public static final String JSON_PROPERTY_GROUP_ID = "group_id";
+    @jakarta.annotation.Nullable
     private String groupId;
 
     public static final String JSON_PROPERTY_USER_ID = "user_id";
+    @jakarta.annotation.Nullable
     private String userId;
 
     public Membership() {
     }
 
-    public Membership assignedDate(String assignedDate) {
+    public Membership assignedDate(@jakarta.annotation.Nullable String assignedDate) {
 
         this.assignedDate = assignedDate;
         return this;
@@ -77,11 +82,11 @@ public class Membership implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedDate(String assignedDate) {
+    public void setAssignedDate(@jakarta.annotation.Nullable String assignedDate) {
         this.assignedDate = assignedDate;
     }
 
-    public Membership roleId(Long roleId) {
+    public Membership roleId(@jakarta.annotation.Nullable Long roleId) {
 
         this.roleId = roleId;
         return this;
@@ -102,18 +107,18 @@ public class Membership implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ROLE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setRoleId(Long roleId) {
+    public void setRoleId(@jakarta.annotation.Nullable Long roleId) {
         this.roleId = roleId;
     }
 
-    public Membership assignedByUserId(String assignedByUserId) {
+    public Membership assignedByUserId(@jakarta.annotation.Nullable String assignedByUserId) {
 
         this.assignedByUserId = assignedByUserId;
         return this;
     }
 
     /**
-     * id of the user who created the membership (-1 if the role was created by the tenant admin or by an organisation import)
+     * id of the user who created the membership (-1 if the role was created by the technical admin or by an organisation import)
      * 
      * @return assignedByUserId
      */
@@ -127,11 +132,11 @@ public class Membership implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ASSIGNED_BY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssignedByUserId(String assignedByUserId) {
+    public void setAssignedByUserId(@jakarta.annotation.Nullable String assignedByUserId) {
         this.assignedByUserId = assignedByUserId;
     }
 
-    public Membership groupId(String groupId) {
+    public Membership groupId(@jakarta.annotation.Nullable String groupId) {
 
         this.groupId = groupId;
         return this;
@@ -152,11 +157,11 @@ public class Membership implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_GROUP_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setGroupId(String groupId) {
+    public void setGroupId(@jakarta.annotation.Nullable String groupId) {
         this.groupId = groupId;
     }
 
-    public Membership userId(String userId) {
+    public Membership userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -177,7 +182,7 @@ public class Membership implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 

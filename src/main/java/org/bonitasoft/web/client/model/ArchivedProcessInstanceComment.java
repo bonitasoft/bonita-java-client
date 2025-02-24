@@ -29,42 +29,44 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ArchivedProcessInstanceComment.JSON_PROPERTY_ID,
         ArchivedProcessInstanceComment.JSON_PROPERTY_CONTENT,
-        ArchivedProcessInstanceComment.JSON_PROPERTY_TENANT_ID,
         ArchivedProcessInstanceComment.JSON_PROPERTY_PROCESS_INSTANCE_ID,
         ArchivedProcessInstanceComment.JSON_PROPERTY_POST_DATE,
         ArchivedProcessInstanceComment.JSON_PROPERTY_USER_ID,
         ArchivedProcessInstanceComment.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ArchivedProcessInstanceComment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String JSON_PROPERTY_ID = "id";
+    @jakarta.annotation.Nullable
     private String id;
 
     public static final String JSON_PROPERTY_CONTENT = "content";
+    @jakarta.annotation.Nullable
     private String content;
 
-    public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-    private String tenantId;
-
     public static final String JSON_PROPERTY_PROCESS_INSTANCE_ID = "processInstanceId";
+    @jakarta.annotation.Nullable
     private String processInstanceId;
 
     public static final String JSON_PROPERTY_POST_DATE = "postDate";
+    @jakarta.annotation.Nullable
     private String postDate;
 
     public static final String JSON_PROPERTY_USER_ID = "userId";
+    @jakarta.annotation.Nullable
     private String userId;
 
     public static final String JSON_PROPERTY_ARCHIVED_DATE = "archivedDate";
+    @jakarta.annotation.Nullable
     private String archivedDate;
 
     public ArchivedProcessInstanceComment() {
     }
 
-    public ArchivedProcessInstanceComment id(String id) {
+    public ArchivedProcessInstanceComment id(@jakarta.annotation.Nullable String id) {
 
         this.id = id;
         return this;
@@ -85,11 +87,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setId(String id) {
+    public void setId(@jakarta.annotation.Nullable String id) {
         this.id = id;
     }
 
-    public ArchivedProcessInstanceComment content(String content) {
+    public ArchivedProcessInstanceComment content(@jakarta.annotation.Nullable String content) {
 
         this.content = content;
         return this;
@@ -110,36 +112,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_CONTENT)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setContent(String content) {
+    public void setContent(@jakarta.annotation.Nullable String content) {
         this.content = content;
     }
 
-    public ArchivedProcessInstanceComment tenantId(String tenantId) {
-
-        this.tenantId = tenantId;
-        return this;
-    }
-
-    /**
-     * the id of the tenant the comment is associated to
-     * 
-     * @return tenantId
-     */
-    @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_TENANT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-    public String getTenantId() {
-        return tenantId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_TENANT_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setTenantId(String tenantId) {
-        this.tenantId = tenantId;
-    }
-
-    public ArchivedProcessInstanceComment processInstanceId(String processInstanceId) {
+    public ArchivedProcessInstanceComment processInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
 
         this.processInstanceId = processInstanceId;
         return this;
@@ -160,11 +137,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_PROCESS_INSTANCE_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setProcessInstanceId(String processInstanceId) {
+    public void setProcessInstanceId(@jakarta.annotation.Nullable String processInstanceId) {
         this.processInstanceId = processInstanceId;
     }
 
-    public ArchivedProcessInstanceComment postDate(String postDate) {
+    public ArchivedProcessInstanceComment postDate(@jakarta.annotation.Nullable String postDate) {
 
         this.postDate = postDate;
         return this;
@@ -185,11 +162,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_POST_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setPostDate(String postDate) {
+    public void setPostDate(@jakarta.annotation.Nullable String postDate) {
         this.postDate = postDate;
     }
 
-    public ArchivedProcessInstanceComment userId(String userId) {
+    public ArchivedProcessInstanceComment userId(@jakarta.annotation.Nullable String userId) {
 
         this.userId = userId;
         return this;
@@ -210,11 +187,11 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_USER_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUserId(String userId) {
+    public void setUserId(@jakarta.annotation.Nullable String userId) {
         this.userId = userId;
     }
 
-    public ArchivedProcessInstanceComment archivedDate(String archivedDate) {
+    public ArchivedProcessInstanceComment archivedDate(@jakarta.annotation.Nullable String archivedDate) {
 
         this.archivedDate = archivedDate;
         return this;
@@ -235,7 +212,7 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @JsonProperty(JSON_PROPERTY_ARCHIVED_DATE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setArchivedDate(String archivedDate) {
+    public void setArchivedDate(@jakarta.annotation.Nullable String archivedDate) {
         this.archivedDate = archivedDate;
     }
 
@@ -250,7 +227,6 @@ public class ArchivedProcessInstanceComment implements Serializable {
         ArchivedProcessInstanceComment archivedProcessInstanceComment = (ArchivedProcessInstanceComment) o;
         return Objects.equals(this.id, archivedProcessInstanceComment.id) &&
                 Objects.equals(this.content, archivedProcessInstanceComment.content) &&
-                Objects.equals(this.tenantId, archivedProcessInstanceComment.tenantId) &&
                 Objects.equals(this.processInstanceId, archivedProcessInstanceComment.processInstanceId) &&
                 Objects.equals(this.postDate, archivedProcessInstanceComment.postDate) &&
                 Objects.equals(this.userId, archivedProcessInstanceComment.userId) &&
@@ -259,7 +235,7 @@ public class ArchivedProcessInstanceComment implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, tenantId, processInstanceId, postDate, userId, archivedDate);
+        return Objects.hash(id, content, processInstanceId, postDate, userId, archivedDate);
     }
 
     @Override
@@ -268,7 +244,6 @@ public class ArchivedProcessInstanceComment implements Serializable {
         sb.append("class ArchivedProcessInstanceComment {\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    content: ").append(toIndentedString(content)).append("\n");
-        sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
         sb.append("    processInstanceId: ").append(toIndentedString(processInstanceId)).append("\n");
         sb.append("    postDate: ").append(toIndentedString(postDate)).append("\n");
         sb.append("    userId: ").append(toIndentedString(userId)).append("\n");

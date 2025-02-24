@@ -21,7 +21,7 @@ import static java.lang.String.format;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.bonitasoft.web.client.api.PortalAuthenticationApi;
+import org.bonitasoft.web.client.api.AuthenticationApi;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.exception.UnauthorizedException;
@@ -46,15 +46,15 @@ public class BonitaLoginService implements LoginService {
     private final BonitaCookieAuth bonitaCookieAuth;
 
     @Override
-    public Session login(String username, String password, String tenant) {
-        log.debug("Login with user '{}' on tenant '{}'...", username, tenant);
+    public Session login(String username, String password) {
+        log.debug("Login with user '{}'...", username);
 
         boolean loginSucceeded;
         int loginStatus;
         String loginReason = "";
 
-        final PortalAuthenticationApi portalAuthenticationApi = apiProvider.get(PortalAuthenticationApi.class);
-        try (Response loginResponse = portalAuthenticationApi.login(username, password, tenant, "false", "")) {
+        final AuthenticationApi portalAuthenticationApi = apiProvider.get(AuthenticationApi.class);
+        try (Response loginResponse = portalAuthenticationApi.login(username, password, "false", "")) {
             loginStatus = loginResponse.status();
             loginSucceeded = (loginStatus == 200 || loginStatus == 204);
             if (loginSucceeded) {
@@ -91,7 +91,7 @@ public class BonitaLoginService implements LoginService {
     @Override
     public void logout() {
         log.debug("Logout...");
-        apiProvider.get(PortalAuthenticationApi.class).logout("false");
+        apiProvider.get(AuthenticationApi.class).logout("false");
         bonitaCookieAuth.clearSessionCookie();
         log.debug("Logout completed.");
     }

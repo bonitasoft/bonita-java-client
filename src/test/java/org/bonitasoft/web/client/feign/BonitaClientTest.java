@@ -21,7 +21,6 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
-import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.services.ApplicationService;
 import org.bonitasoft.web.client.services.BdmService;
 import org.bonitasoft.web.client.services.LoginService;
@@ -63,7 +62,7 @@ class BonitaClientTest {
     }
 
     @Test
-    void when_no_tenant_provided_should_log_with_default_tenant() {
+    void should_log_in() {
         // Given
         client = spy(client);
         String username = "test";
@@ -73,8 +72,7 @@ class BonitaClientTest {
         client.login(username, password);
 
         // Then
-        verify(client).login(username, password, BonitaClient.DEFAULT_TENANT_ID);
-        verify(loginService).login(username, password, BonitaClient.DEFAULT_TENANT_ID);
+        verify(loginService).login(username, password);
     }
 
     @Test
