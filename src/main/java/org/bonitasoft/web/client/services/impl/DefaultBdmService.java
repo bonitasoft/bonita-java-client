@@ -16,11 +16,8 @@
  */
 package org.bonitasoft.web.client.services.impl;
 
-import static java.util.stream.Collectors.toList;
-
-import java.io.File;
-import java.util.List;
-
+import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.*;
 import org.bonitasoft.web.client.api.BusinessDataQueryApi.SearchBusinessDataQueryParams;
@@ -34,7 +31,10 @@ import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.impl.bdm.BdmResponseConverter;
 import org.jetbrains.annotations.Nullable;
 
-import lombok.extern.slf4j.Slf4j;
+import java.io.File;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Slf4j
 public class DefaultBdmService extends AbstractService implements BdmService {
@@ -98,8 +98,8 @@ public class DefaultBdmService extends AbstractService implements BdmService {
         try {
             maintenanceApi.getMaintenanceDetails();
             return true;
-        } catch (Exception e) {
-            log.debug("platform/maintenance API is not available, fallback to system/tenant", e);
+        } catch (FeignException e) {
+            log.info("platform/maintenance API is not available (Status: {}), fallback to system/tenant", e.status());
             return false;
         }
     }
