@@ -16,8 +16,11 @@
  */
 package org.bonitasoft.web.client.services.impl;
 
-import feign.FeignException;
-import lombok.extern.slf4j.Slf4j;
+import static java.util.stream.Collectors.toList;
+
+import java.io.File;
+import java.util.List;
+
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.*;
 import org.bonitasoft.web.client.api.BusinessDataQueryApi.SearchBusinessDataQueryParams;
@@ -31,10 +34,8 @@ import org.bonitasoft.web.client.services.impl.base.ClientContext;
 import org.bonitasoft.web.client.services.impl.bdm.BdmResponseConverter;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.util.List;
-
-import static java.util.stream.Collectors.toList;
+import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DefaultBdmService extends AbstractService implements BdmService {
