@@ -26,6 +26,7 @@ import java.io.File;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.*;
 import org.bonitasoft.web.client.exception.LicenseException;
+import org.bonitasoft.web.client.exception.NotFoundException;
 import org.bonitasoft.web.client.feign.ApiProvider;
 import org.bonitasoft.web.client.model.*;
 import org.bonitasoft.web.client.services.impl.base.CachingClientContext;
@@ -38,8 +39,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import feign.FeignException;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultBdmServiceTest {
@@ -74,9 +73,6 @@ class DefaultBdmServiceTest {
     @Mock
     private BdmAccessControlApi accessControlApi;
 
-    @Mock
-    private FeignException feignException;
-
     @BeforeEach
     void setUp() {
         clientContext.clear();
@@ -98,7 +94,7 @@ class DefaultBdmServiceTest {
     void should_import_bdm() throws Exception {
         // Given
         File bdmFile = getClasspathFile("/bdm.zip");
-        doThrow(feignException).when(maintenanceApi).getMaintenanceDetails();
+        doThrow(NotFoundException.class).when(maintenanceApi).getMaintenanceDetails();
 
         // When
         bdmService.importBDM(bdmFile);
