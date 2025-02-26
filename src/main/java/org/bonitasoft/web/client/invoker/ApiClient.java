@@ -71,6 +71,8 @@ public class ApiClient {
                 auth = new ApiKeyAuth("cookie", "JSESSIONID");
             } else if ("bonita_token".equals(authName)) {
                 auth = new ApiKeyAuth("header", "X-Bonita-API-Token");
+            } else if ("bearer_auth".equals(authName)) {
+                auth = new HttpBearerAuth("bearer");
             } else {
                 throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
             }

@@ -37,6 +37,7 @@ import org.bonitasoft.web.client.invoker.ApiClient;
 import org.bonitasoft.web.client.invoker.ApiResponseDecoder;
 import org.bonitasoft.web.client.invoker.auth.BonitaCookieAuth;
 import org.bonitasoft.web.client.invoker.auth.BonitaLoginService;
+import org.bonitasoft.web.client.invoker.auth.HttpBearerAuth;
 import org.bonitasoft.web.client.log.LogContentLevel;
 import org.bonitasoft.web.client.services.ApplicationService;
 import org.bonitasoft.web.client.services.BdmService;
@@ -146,6 +147,8 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
         ProcessService processService = new DefaultProcessService(clientContext, apiProvider, this.objectMapper);
         SystemService systemService = new DefaultSystemService(clientContext, apiProvider, this.objectMapper);
 
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) apiClient.getAuthorization("bearer_auth");
+
         return new BonitaFeignClient(
                 apiClient.getBasePath(),
                 apiProvider,
@@ -154,7 +157,8 @@ public class BonitaFeignClientBuilderImpl implements BonitaFeignClientBuilder {
                 bdmService,
                 userService,
                 processService,
-                systemService);
+                systemService,
+                bearerAuth);
     }
 
     Feign.Builder configureFeign(Feign.Builder feignBuilder) {
