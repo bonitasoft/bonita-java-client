@@ -6,6 +6,7 @@ on:
       - develop
       - release/*
       - support/*
+      - 2.0.x
     paths-ignore:
       - "README.adoc"
       - "CHANGELOG.adoc"

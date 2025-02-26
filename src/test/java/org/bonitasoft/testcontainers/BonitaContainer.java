@@ -46,7 +46,7 @@ public class BonitaContainer<SELF extends BonitaContainer<SELF>> extends Generic
     public static final String BONITA_CONTEXT_PATH = "bonita.context-path";
     public static final String BONITA_CONTEXT_PATH_DEFAULT = "/bonita";
     public static final String BONITA_VERSION = "bonita.version";
-    public static final String BONITA_VERSION_DEFAULT = "7.15";
+    public static final String BONITA_VERSION_DEFAULT = "8.0";
     public static final String BONITA_IMAGE_NAME = "bonita.image.name";
     public static final String BONITA_IMAGE_NAME_DEFAULT = "bonita";
     public static final String BONITA_IMAGE_PREFIX = "bonita.image.prefix";
