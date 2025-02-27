@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 1.0.2
+  version: 1.0.3
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -116,6 +116,7 @@ servers:
 security:
 - bonita_auth: []
   bonita_token: []
+- bearer_auth: []
 tags:
 - description: Activity
   name: Activity
@@ -22059,6 +22060,13 @@ components:
       in: header
       name: X-Bonita-API-Token
       type: apiKey
+    bearer_auth:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        When Bonita runtime is configured for SSO with openID Connect it is possible To call the REST API directly with a Bearer Authorization header containing the access token.
+      scheme: bearer
+      type: http
 x-tagGroups:
 - name: Authentication
   tags:

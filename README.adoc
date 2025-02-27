@@ -62,7 +62,7 @@ This means that this client includes all `Community` operations plus some that a
 == Features
 
 * Cover publicly available http endpoints of Bonita Platform {bonita-short-version} and onwards
-* Built-in Bonita authentication support (SSO not supported yet)
+* Built-in Bonita authentication support (SSO only supported through Bearer authentication with OpenID Connect SSO)
 * Higher level code than raw openapi client to ease developer journey
 
 == Getting started
@@ -99,6 +99,8 @@ List<BusinessProcess> businessProcesses = client.processes().searchProcesses(0, 
 // Logout when done
 client.logout();
 ----
+
+NOTE: When Bonita is configured for SSO with OpenID Connect, you can replace the `login` method call with a call to `setBearerToken` method and pass the access token value as parameter.
 
 == Configuration
 

@@ -19,6 +19,7 @@ package org.bonitasoft.web.client.feign;
 import org.bonitasoft.web.client.BonitaClient;
 import org.bonitasoft.web.client.api.SessionApi;
 import org.bonitasoft.web.client.invoker.ApiClient;
+import org.bonitasoft.web.client.invoker.auth.HttpBearerAuth;
 import org.bonitasoft.web.client.model.Session;
 import org.bonitasoft.web.client.services.ApplicationService;
 import org.bonitasoft.web.client.services.BdmService;
@@ -55,6 +56,8 @@ class BonitaFeignClient implements BonitaClient {
 
     private final SystemService systemService;
 
+    private final HttpBearerAuth bearerAuth;
+
     @Override
     public String getUrl() {
         return this.url;
@@ -66,6 +69,12 @@ class BonitaFeignClient implements BonitaClient {
         Session session = loginService.login(username, password);
         log.debug("User logged in: {}", session);
         return session;
+    }
+
+    @Override
+    public void setBearerToken(String token) {
+        log.info("Set bearer token");
+        bearerAuth.setBearerToken(token);
     }
 
     @Override

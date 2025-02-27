@@ -53,6 +53,14 @@ public interface BonitaClient extends ApiProvider {
      */
     Session login(String username, String password);
 
+    /**
+     * Set Bearer authorization header token
+     * Can be used to pass an Oauth2 access token when Bonita is configured for SSO with OpenID Connect
+     *
+     * @param token the bearer token (Oauth2 access token)
+     */
+    void setBearerToken(String token);
+
     /** Logout the current user */
     void logout();
 
