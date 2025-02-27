@@ -21,6 +21,7 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
+import org.bonitasoft.web.client.invoker.auth.HttpBearerAuth;
 import org.bonitasoft.web.client.services.ApplicationService;
 import org.bonitasoft.web.client.services.BdmService;
 import org.bonitasoft.web.client.services.LoginService;
@@ -51,6 +52,8 @@ class BonitaClientTest {
     private ProcessService processService;
     @Mock
     private SystemService systemService;
+    @Mock
+    private HttpBearerAuth bearerAuth;
 
     @Test
     void mocks_are_in_place() {
@@ -73,6 +76,19 @@ class BonitaClientTest {
 
         // Then
         verify(loginService).login(username, password);
+    }
+
+    @Test
+    void should_authenticate_with_bearer() {
+        // Given
+        client = spy(client);
+        String token = "header.body.footer";
+
+        // When
+        client.setBearerToken(token);
+
+        // Then
+        verify(bearerAuth).setBearerToken(token);
     }
 
     @Test
