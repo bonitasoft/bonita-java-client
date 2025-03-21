@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         PlatformLicense.JSON_PROPERTY_CASE_COUNTER_LIMIT,
         PlatformLicense.JSON_PROPERTY_CASE_COUNTER
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class PlatformLicense implements Serializable {
 
     private static final long serialVersionUID = 1L;

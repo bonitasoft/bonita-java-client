@@ -23,7 +23,7 @@ import org.bonitasoft.web.client.model.PlatformUpdateRequest;
 
 import feign.*;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public interface PlatformApi extends ApiClient.Api {
 
     /**
