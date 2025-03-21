@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
         CreateProcessInstance429Response.JSON_PROPERTY_EXCEPTION
 })
 @JsonTypeName("createProcessInstance_429_response")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class CreateProcessInstance429Response implements Serializable {
 
     private static final long serialVersionUID = 1L;

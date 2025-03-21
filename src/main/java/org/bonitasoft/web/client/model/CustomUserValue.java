@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         CustomUserValue.JSON_PROPERTY_VALUE,
         CustomUserValue.JSON_PROPERTY_DEFINITION_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class CustomUserValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
