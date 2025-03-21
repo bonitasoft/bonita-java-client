@@ -39,7 +39,7 @@ import feign.jackson.JacksonEncoder;
 import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ApiClient {
 
     private static final Logger log = Logger.getLogger(ApiClient.class.getName());
@@ -71,6 +71,8 @@ public class ApiClient {
                 auth = new ApiKeyAuth("cookie", "JSESSIONID");
             } else if ("bonita_token".equals(authName)) {
                 auth = new ApiKeyAuth("header", "X-Bonita-API-Token");
+            } else if ("bearer_auth".equals(authName)) {
+                auth = new HttpBearerAuth("bearer");
             } else {
                 throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
             }

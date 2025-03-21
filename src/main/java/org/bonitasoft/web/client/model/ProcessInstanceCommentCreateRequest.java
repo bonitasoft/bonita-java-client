@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInstanceCommentCreateRequest.JSON_PROPERTY_PROCESS_INSTANCE_ID,
         ProcessInstanceCommentCreateRequest.JSON_PROPERTY_CONTENT
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ProcessInstanceCommentCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

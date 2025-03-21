@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ThemeCreateRequest.JSON_PROPERTY_TYPE,
         ThemeCreateRequest.JSON_PROPERTY_ZIP_FILE_PATHPORTAL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ThemeCreateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProcessInfo.JSON_PROPERTY_PROCESS_DEFINITION_ID,
         ProcessInfo.JSON_PROPERTY_FLOW_NODE_STATES_COUNTERS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ProcessInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
