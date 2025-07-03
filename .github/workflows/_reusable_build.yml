@@ -17,17 +17,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure Maven Settings
-        uses: bonitasoft/maven-settings-action@v1
-        with:
-          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
           cache: maven
+
+      - name: Configure Maven Settings
+        uses: bonitasoft/maven-settings-action@v1
+        with:
+          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
 
       - uses: docker/login-action@v3
         with:
@@ -58,10 +58,6 @@ jobs:
           - '10.2.0'
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Maven Settings
-        uses: bonitasoft/maven-settings-action@v1
-        with:
-          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -69,6 +65,11 @@ jobs:
           java-version: 17
           distribution: temurin
           cache: maven
+
+      - name: Configure Maven Settings
+        uses: bonitasoft/maven-settings-action@v1
+        with:
+          keeper-secret-config: ${{ secrets.KSM_CONFIG }}
 
       - uses: docker/login-action@v3
         with:
