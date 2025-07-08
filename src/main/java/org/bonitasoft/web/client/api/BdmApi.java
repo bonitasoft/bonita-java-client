@@ -17,6 +17,7 @@
 package org.bonitasoft.web.client.api;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -135,7 +136,7 @@ public interface BdmApi extends ApiClient.Api {
             "Accept: application/json",
     })
     BusinessData searchBusinessDataById(@Param("businessDataType") String businessDataType,
-            @Param("persistenceId") String persistenceId);
+            @Param("persistenceId") BigDecimal persistenceId);
 
     /**
      * Finds business data by Id
@@ -151,7 +152,7 @@ public interface BdmApi extends ApiClient.Api {
             "Accept: application/json",
     })
     ApiResponse<BusinessData> searchBusinessDataByIdWithHttpInfo(@Param("businessDataType") String businessDataType,
-            @Param("persistenceId") String persistenceId);
+            @Param("persistenceId") BigDecimal persistenceId);
 
     /**
      * Finds business data By Ids
