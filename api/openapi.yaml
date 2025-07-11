@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 1.0.3
+  version: 1.0.5
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -205,6 +205,10 @@ tags:
     \ API to get the access control status (lastUpdatedBy, lastUpdateDate...)."
   name: BDMAccessControl
   x-displayName: BDMAccessControl
+- description: BDM Rest APIs allow to create / update / delete / import in bulk Bonita
+    Business Data.
+  name: Business Data Operations
+  x-displayName: Business Data Operations
 - description: BDM Rest APIs allow to query Bonita Business Data.
   name: BusinessDataQuery
   x-displayName: BusinessDataQuery
@@ -1963,6 +1967,189 @@ paths:
       - BusinessDataQuery
       x-accepts:
       - application/json
+    post:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Create (Insert) new Business Data.
+        Obviously, all mandatory fields of the given business data type must be provided in the request body, to ensure data integrity.
+        Any input fields that are NOT part of the business data type will be simply ignored, and returned in the response,
+        as an informative list.
+      operationId: insertBusinessData
+      parameters:
+      - description: The Business Data type to create
+        example: com.company.model.Employee
+        explode: false
+        in: path
+        name: businessDataType
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              firstName: John
+              lastName: Doe
+              age: 30
+              department: Engineering
+              notAValidField: some value that will be ignored
+            schema:
+              type: object
+        description: |
+          The flat JSON object representing the business data to create. The fields to provide depends on the business data type.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDataCreationResult'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Create new Business Data
+      tags:
+      - Business Data Operations
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/bdm/businessData/{businessDataType}/import:
+    post:
+      description: |2
+
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Allows to import business data in bulk by uploading a file containing the data, in CSV format.
+
+        Example CSV file content:
+        ```csv
+        firstName,lastName,department, dptReference
+        "John","Doe","Engineering", 14
+        "Jane","Smith", "Marketing", 17
+        ```
+
+        Field separator can be comma (`,`) or semicolon (`;`). Space characters around the separator will be ignored (trimmed).
+
+        The first line of the CSV file is considered as the header, and must contain the field names, with the exact same upper/lower case.
+
+        String Fields must be enclosed in double quotes (`"`), numeric / boolean fields must not.
+      operationId: importBusinessData
+      parameters:
+      - description: Business Data Type
+        example: com.company.model.Employee
+        explode: false
+        in: path
+        name: businessDataType
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/importBusinessData_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDataImportResult'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Import Business Data by bulk
+      tags:
+      - Business Data Operations
+      x-content-type: multipart/form-data
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}/findByIds:
     get:
       description: |
@@ -2040,6 +2227,83 @@ paths:
       x-accepts:
       - application/json
   /API/bdm/businessData/{businessDataType}/{persistenceId}:
+    delete:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Delete an existing Business Data.
+      operationId: deleteBusinessData
+      parameters:
+      - description: The Business Data type to delete
+        example: com.company.model.Employee
+        explode: false
+        in: path
+        name: businessDataType
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: Business data ID to delete
+        example: 1234
+        explode: false
+        in: path
+        name: persistenceId
+        required: true
+        schema:
+          type: number
+        style: simple
+      responses:
+        "204":
+          description: The Business Data was successfully deleted
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Delete an existing Business Data
+      tags:
+      - Business Data Operations
+      x-accepts:
+      - application/json
     get:
       description: |
         Finds business data specified by its identifier.
@@ -2109,6 +2373,104 @@ paths:
       summary: Finds business data by Id
       tags:
       - BDM
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Update an existing Business Data.
+        Any input fields that are NOT part of the business data type will be simply ignored, and returned in the response,
+        as an informative list.
+      operationId: updateBusinessData
+      parameters:
+      - description: The Business Data type to update
+        example: com.company.model.Employee
+        explode: false
+        in: path
+        name: businessDataType
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9_-.]{0,250}$"
+          type: string
+        style: simple
+      - description: Business data ID
+        example: 1234
+        explode: false
+        in: path
+        name: persistenceId
+        required: true
+        schema:
+          type: number
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              firstName: John
+              lastName: Wayne
+              activity: actor
+              notAValidField: some value that will be ignored
+            schema:
+              type: object
+        description: |
+          The flat JSON object representing the fields of the business data to update. The fields to provide depends on the business data type.
+          Any field not provided will be left unchanged.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDataUpdateResult'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update an existing Business Data
+      tags:
+      - Business Data Operations
+      x-content-type: application/json
       x-accepts:
       - application/json
   /API/bdm/businessData/{businessDataType}/{persistenceId}/{attributeName}:
@@ -2331,7 +2693,7 @@ paths:
               example: tmp_accessControlFileToUpload.xml
               schema:
                 maxLength: 250
-                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+                pattern: "^[A-Za-z0-9_\\-\\.]{0,250}$"
                 type: string
           description: 'Success '
         "400":
@@ -2924,7 +3286,7 @@ paths:
 
         - can order on `name`, `priority`, `dueDate`, `state`, `processDefinitionId`, `processInstanceId`, `parentActivityInstanceId`, `assigneeId`, `parentContainerId`, `displayName`, `reachedStateDate`
         - can search on any field that can be used to order results
-        - can filter on `assigned_id`, `user_id`, `show_assigned_to_others` (since 2022.2), `state`, `name`, `displayName`, `processDefinitionId`, `caseId`, `rootProcessInstanceId`, `parentProcessInstanceId`
+        - can filter on `assigned_id`, `user_id`, `show_assigned_to_others` (since 2022.2), `state`, `name`, `displayName`, `processDefinitionId`, `caseId`, `rootCaseId`, `parentCaseId`
       operationId: searchHumanTasks
       parameters:
       - description: index of the page to display
@@ -11859,7 +12221,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CustomUserValueUpdateRequest'
-        description: Custom user defition Value
+        description: Custom user definition Value
         required: true
       responses:
         "200":
@@ -17714,6 +18076,48 @@ components:
         \ null depending on your query."
       nullable: true
       type: object
+    BusinessDataCreationResult:
+      description: "An object containing: \n* the ID of the newly created Business\
+        \ Data, under the name of \"newBusinessDataId\"\n* any unknown fields, provided\
+        \ as an array of names, under the name of \"unknownFields\"\n"
+      example:
+        newBusinessDataId: 1988
+        unknownFields:
+        - notAValidField
+      properties:
+        newBusinessDataId:
+          description: ID of the newly created Business Data
+          type: number
+        unknownFields:
+          description: list of unknown input fields that are not declared in the Business
+            Data type
+          items:
+            type: string
+          type: array
+      type: object
+    BusinessDataImportResult:
+      description: "An object containing: \n* the list of IDs of all the newly created\
+        \ Business Data, under the name of \"createdIds\"\n* the list of unknown fields,\
+        \ provided as an array of names, under the name of \"unknownFields\"\n"
+      example:
+        createdIds:
+        - 198
+        - 199
+        unknownFields:
+        - department
+      properties:
+        createdIds:
+          description: List of IDs of the newly created Business Data
+          items:
+            type: number
+          type: array
+        unknownFields:
+          description: list of unknown input fields that are not declared in the Business
+            Data type
+          items:
+            type: string
+          type: array
+      type: object
     BusinessData:
       additionalProperties: true
       description: |
@@ -17786,6 +18190,20 @@ components:
         persistenceVersion_string:
           description: Version of the business data object instance
           type: string
+      type: object
+    BusinessDataUpdateResult:
+      description: "An object containing: \n* any unknown fields, provided as an array\
+        \ of names, under the name of \"unknownFields\"\n"
+      example:
+        unknownFields:
+        - notAValidField
+      properties:
+        unknownFields:
+          description: list of unknown input fields that are not declared in the Business
+            Data type
+          items:
+            type: string
+          type: array
       type: object
     TenantResourceState:
       description: "Tenant resource state (BDM, BDM access control, ...)"
@@ -20346,7 +20764,7 @@ components:
           description: "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node was\
             \ last updated, for example '2014-10-17 16:05:42.626)"
           type: string
-        parentTaskId":
+        parentTaskId:
           description: "in case of a subtask, the parent task id "
           type: string
       type: object
@@ -20379,8 +20797,8 @@ components:
         archivedDate: archivedDate
         rootContainerId: rootContainerId
         assigned_date: assigned_date
-        parentTaskId": parentTaskId"
         displayName: displayName
+        parentTaskId: parentTaskId
         executedBySubstitute: executedBySubstitute
         dueDate: dueDate
         description: description
@@ -21878,6 +22296,12 @@ components:
         importPolicy:
           description: Import policy
           type: string
+    importBusinessData_request:
+      properties:
+        dataset:
+          format: binary
+          type: string
+      type: object
     importBDMAccessControl_request:
       properties:
         bdmAccessControlUpload:
@@ -22082,6 +22506,7 @@ x-tagGroups:
   tags:
   - BDM
   - BusinessDataQuery
+  - Business Data Operations
   - BDMAccessControl
 - name: BPM
   tags:

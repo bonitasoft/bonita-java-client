@@ -63,7 +63,7 @@ public interface HumanTaskApi extends ApiClient.Api {
      * &#x60;processDefinitionId&#x60;, &#x60;processInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60;, &#x60;assigneeId&#x60;, &#x60;parentContainerId&#x60;,
      * &#x60;displayName&#x60;, &#x60;reachedStateDate&#x60; - can search on any field that can be used to order results - can filter on &#x60;assigned_id&#x60;,
      * &#x60;user_id&#x60;, &#x60;show_assigned_to_others&#x60; (since 2022.2), &#x60;state&#x60;, &#x60;name&#x60;, &#x60;displayName&#x60;,
-     * &#x60;processDefinitionId&#x60;, &#x60;caseId&#x60;, &#x60;rootProcessInstanceId&#x60;, &#x60;parentProcessInstanceId&#x60;
+     * &#x60;processDefinitionId&#x60;, &#x60;caseId&#x60;, &#x60;rootCaseId&#x60;, &#x60;parentCaseId&#x60;
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -86,7 +86,7 @@ public interface HumanTaskApi extends ApiClient.Api {
      * &#x60;processDefinitionId&#x60;, &#x60;processInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60;, &#x60;assigneeId&#x60;, &#x60;parentContainerId&#x60;,
      * &#x60;displayName&#x60;, &#x60;reachedStateDate&#x60; - can search on any field that can be used to order results - can filter on &#x60;assigned_id&#x60;,
      * &#x60;user_id&#x60;, &#x60;show_assigned_to_others&#x60; (since 2022.2), &#x60;state&#x60;, &#x60;name&#x60;, &#x60;displayName&#x60;,
-     * &#x60;processDefinitionId&#x60;, &#x60;caseId&#x60;, &#x60;rootProcessInstanceId&#x60;, &#x60;parentProcessInstanceId&#x60;
+     * &#x60;processDefinitionId&#x60;, &#x60;caseId&#x60;, &#x60;rootCaseId&#x60;, &#x60;parentCaseId&#x60;
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -108,7 +108,7 @@ public interface HumanTaskApi extends ApiClient.Api {
      * &#x60;processDefinitionId&#x60;, &#x60;processInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60;, &#x60;assigneeId&#x60;, &#x60;parentContainerId&#x60;,
      * &#x60;displayName&#x60;, &#x60;reachedStateDate&#x60; - can search on any field that can be used to order results - can filter on &#x60;assigned_id&#x60;,
      * &#x60;user_id&#x60;, &#x60;show_assigned_to_others&#x60; (since 2022.2), &#x60;state&#x60;, &#x60;name&#x60;, &#x60;displayName&#x60;,
-     * &#x60;processDefinitionId&#x60;, &#x60;caseId&#x60;, &#x60;rootProcessInstanceId&#x60;, &#x60;parentProcessInstanceId&#x60;
+     * &#x60;processDefinitionId&#x60;, &#x60;caseId&#x60;, &#x60;rootCaseId&#x60;, &#x60;parentCaseId&#x60;
      * Note, this is equivalent to the other <code>searchHumanTasks</code> method,
      * but with the query parameters collected into a single Map parameter. This
      * is convenient for services with optional query parameters, especially when
@@ -139,7 +139,7 @@ public interface HumanTaskApi extends ApiClient.Api {
      * &#x60;processDefinitionId&#x60;, &#x60;processInstanceId&#x60;, &#x60;parentActivityInstanceId&#x60;, &#x60;assigneeId&#x60;, &#x60;parentContainerId&#x60;,
      * &#x60;displayName&#x60;, &#x60;reachedStateDate&#x60; - can search on any field that can be used to order results - can filter on &#x60;assigned_id&#x60;,
      * &#x60;user_id&#x60;, &#x60;show_assigned_to_others&#x60; (since 2022.2), &#x60;state&#x60;, &#x60;name&#x60;, &#x60;displayName&#x60;,
-     * &#x60;processDefinitionId&#x60;, &#x60;caseId&#x60;, &#x60;rootProcessInstanceId&#x60;, &#x60;parentProcessInstanceId&#x60;
+     * &#x60;processDefinitionId&#x60;, &#x60;caseId&#x60;, &#x60;rootCaseId&#x60;, &#x60;parentCaseId&#x60;
      * Note, this is equivalent to the other <code>searchHumanTasks</code> that receives the query parameters as a map,
      * but this one also exposes the Http response headers
      * 

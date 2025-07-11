@@ -140,7 +140,7 @@ public interface CustomUserValueApi extends ApiClient.Api {
      * 
      * @param userId User ID (required)
      * @param definitionId definition ID (required)
-     * @param customUserValueUpdateRequest Custom user defition Value (required)
+     * @param customUserValueUpdateRequest Custom user definition Value (required)
      */
     @RequestLine("PUT /API/customuserinfo/value/{userId}/{definitionId}")
     @Headers({
@@ -157,7 +157,7 @@ public interface CustomUserValueApi extends ApiClient.Api {
      * 
      * @param userId User ID (required)
      * @param definitionId definition ID (required)
-     * @param customUserValueUpdateRequest Custom user defition Value (required)
+     * @param customUserValueUpdateRequest Custom user definition Value (required)
      */
     @RequestLine("PUT /API/customuserinfo/value/{userId}/{definitionId}")
     @Headers({
