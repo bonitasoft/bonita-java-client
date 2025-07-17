@@ -17,7 +17,9 @@
 package org.bonitasoft.web.client.services;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.bonitasoft.web.client.api.BusinessDataQueryApi.SearchBusinessDataQueryParams;
 import org.bonitasoft.web.client.model.BDMAccessControl;
@@ -76,4 +78,12 @@ public interface BdmService {
      * @return
      */
     <T> List<T> query(String businessDataType, SearchBusinessDataQueryParams queryParams, Class<T> queryResultType);
+
+    long createBusinessData(String businessDataType, Map<String, Serializable> fields);
+
+    void updateBusinessData(String businessDataType, long identifier, Map<String, Serializable> fields);
+
+    void deleteBusinessData(String businessDataType, long identifier);
+
+    List<Long> importBusinessDataFile(String businessDataType, File csvFile);
 }

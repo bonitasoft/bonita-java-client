@@ -23,6 +23,7 @@ src/main/java/org/bonitasoft/web/client/api/ArchivedTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/ArchivedUserTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/BdmAccessControlApi.java
 src/main/java/org/bonitasoft/web/client/api/BdmApi.java
+src/main/java/org/bonitasoft/web/client/api/BusinessDataOperationsApi.java
 src/main/java/org/bonitasoft/web/client/api/BusinessDataQueryApi.java
 src/main/java/org/bonitasoft/web/client/api/ConnectorFailureApi.java
 src/main/java/org/bonitasoft/web/client/api/ConnectorInstanceApi.java
@@ -118,6 +119,9 @@ src/main/java/org/bonitasoft/web/client/model/BDMInstallRequest.java
 src/main/java/org/bonitasoft/web/client/model/BPMFailure.java
 src/main/java/org/bonitasoft/web/client/model/Bdm.java
 src/main/java/org/bonitasoft/web/client/model/BusinessData.java
+src/main/java/org/bonitasoft/web/client/model/BusinessDataCreationResult.java
+src/main/java/org/bonitasoft/web/client/model/BusinessDataImportResult.java
+src/main/java/org/bonitasoft/web/client/model/BusinessDataUpdateResult.java
 src/main/java/org/bonitasoft/web/client/model/ConfigurationState.java
 src/main/java/org/bonitasoft/web/client/model/ConnectorFailure.java
 src/main/java/org/bonitasoft/web/client/model/ConnectorInstance.java
