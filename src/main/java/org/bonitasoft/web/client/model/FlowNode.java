@@ -48,7 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         FlowNode.JSON_PROPERTY_DISPLAY_NAME,
         FlowNode.JSON_PROPERTY_DUE_DATE,
         FlowNode.JSON_PROPERTY_LAST_UPDATE_DATE,
-        FlowNode.JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE
+        FlowNode.JSON_PROPERTY_PARENT_TASK_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class FlowNode implements Serializable {
@@ -139,9 +139,9 @@ public class FlowNode implements Serializable {
     @jakarta.annotation.Nullable
     private String lastUpdateDate;
 
-    public static final String JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE = "parentTaskId&quot;";
+    public static final String JSON_PROPERTY_PARENT_TASK_ID = "parentTaskId";
     @jakarta.annotation.Nullable
-    private String parentTaskIdDoubleQuote;
+    private String parentTaskId;
 
     public FlowNode() {
     }
@@ -671,29 +671,29 @@ public class FlowNode implements Serializable {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public FlowNode parentTaskIdDoubleQuote(@jakarta.annotation.Nullable String parentTaskIdDoubleQuote) {
+    public FlowNode parentTaskId(@jakarta.annotation.Nullable String parentTaskId) {
 
-        this.parentTaskIdDoubleQuote = parentTaskIdDoubleQuote;
+        this.parentTaskId = parentTaskId;
         return this;
     }
 
     /**
      * in case of a subtask, the parent task id
      * 
-     * @return parentTaskIdDoubleQuote
+     * @return parentTaskId
      */
     @jakarta.annotation.Nullable
-    @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE)
+    @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-    public String getParentTaskIdDoubleQuote() {
-        return parentTaskIdDoubleQuote;
+    public String getParentTaskId() {
+        return parentTaskId;
     }
 
-    @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID_DOUBLE_QUOTE)
+    @JsonProperty(JSON_PROPERTY_PARENT_TASK_ID)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setParentTaskIdDoubleQuote(@jakarta.annotation.Nullable String parentTaskIdDoubleQuote) {
-        this.parentTaskIdDoubleQuote = parentTaskIdDoubleQuote;
+    public void setParentTaskId(@jakarta.annotation.Nullable String parentTaskId) {
+        this.parentTaskId = parentTaskId;
     }
 
     @Override
@@ -726,14 +726,14 @@ public class FlowNode implements Serializable {
                 Objects.equals(this.displayName, flowNode.displayName) &&
                 Objects.equals(this.dueDate, flowNode.dueDate) &&
                 Objects.equals(this.lastUpdateDate, flowNode.lastUpdateDate) &&
-                Objects.equals(this.parentTaskIdDoubleQuote, flowNode.parentTaskIdDoubleQuote);
+                Objects.equals(this.parentTaskId, flowNode.parentTaskId);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, displayDescription, executedBySubstitute, caseId, parentCaseId, rootCaseId, processId,
                 rootContainerId, state, type, assignedId, assignedDate, executedBy, priority, actorId, description,
-                name, reachedStateDate, displayName, dueDate, lastUpdateDate, parentTaskIdDoubleQuote);
+                name, reachedStateDate, displayName, dueDate, lastUpdateDate, parentTaskId);
     }
 
     @Override
@@ -761,7 +761,7 @@ public class FlowNode implements Serializable {
         sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
         sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
         sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
-        sb.append("    parentTaskIdDoubleQuote: ").append(toIndentedString(parentTaskIdDoubleQuote)).append("\n");
+        sb.append("    parentTaskId: ").append(toIndentedString(parentTaskId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

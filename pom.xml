@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bonitasoft.web</groupId>
   <artifactId>bonita-java-client</artifactId>
-  <version>3.0.1</version>
+  <version>3.1.0</version>
   <packaging>jar</packaging>
   <name>bonita-java-client</name>
   <description>Java client for Bonita REST API</description>
@@ -29,17 +29,6 @@
     <tag>HEAD</tag>
     <url>https://github.com/bonitasoft/bonita-java-client</url>
   </scm>
-  <distributionManagement>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-    <!-- Central Repository -->
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
   <properties>
     <!-- Maven -->
     <!-- Compiled with Java 17, but use bytecode version 11 to ensure compatibility with older maintenance versions. -->
@@ -47,38 +36,38 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- Bonita -->
-    <bonita-openapi.version>1.0.3</bonita-openapi.version>
+    <bonita-openapi.version>1.0.5</bonita-openapi.version>
     <swagger-annotations.version>1.6.15</swagger-annotations.version>
     <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
     <jsr305.version>3.0.2</jsr305.version>
-    <feign.version>13.5</feign.version>
+    <feign.version>13.6</feign.version>
     <feign-form.version>3.8.0</feign-form.version>
     <okhttp.version>4.12.0</okhttp.version>
     <scribejava.version>8.3.3</scribejava.version>
     <jackson.version>2.18.3</jackson.version>
     <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
-    <lombok.version>1.18.36</lombok.version>
+    <lombok.version>1.18.38</lombok.version>
     <slf4j-api.version>2.0.17</slf4j-api.version>
     <!-- Tests -->
     <junit-jupiter-engine.version>5.12.1</junit-jupiter-engine.version>
     <assertj-core.version>3.27.3</assertj-core.version>
-    <mockito-core.version>5.16.0</mockito-core.version>
-    <logback-classic.version>1.5.17</logback-classic.version>
+    <mockito-core.version>5.18.0</mockito-core.version>
+    <logback-classic.version>1.5.18</logback-classic.version>
     <testcontainers.version>1.20.4</testcontainers.version>
     <awaitility.version>4.3.0</awaitility.version>
     <semver4j.version>3.1.0</semver4j.version>
     <!-- Maven plugins -->
     <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
-    <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
-    <maven-failsafe-plugin.version>3.5.2</maven-failsafe-plugin.version>
+    <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
+    <maven-failsafe-plugin.version>3.5.3</maven-failsafe-plugin.version>
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     <sonar-maven-plugin.version>4.0.0.4121</sonar-maven-plugin.version>
-    <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
+    <central-maven-plugin.version>0.8.0</central-maven-plugin.version>
     <gitflow-maven-plugin.version>1.21.0</gitflow-maven-plugin.version>
     <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
     <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
-    <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
+    <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
     <git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
     <openapi-generator-maven-plugin.version>7.12.0</openapi-generator-maven-plugin.version>
     <spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
@@ -386,14 +375,12 @@
           <version>${sonar-maven-plugin.version}</version>
         </plugin>
         <plugin>
-          <groupId>org.sonatype.plugins</groupId>
-          <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>${nexus-staging-maven-plugin.version}</version>
+          <groupId>org.sonatype.central</groupId>
+          <artifactId>central-publishing-maven-plugin</artifactId>
+          <version>${central-maven-plugin.version}</version>
           <extensions>true</extensions>
           <configuration>
-            <serverId>ossrh</serverId>
-            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            <autoPublish>true</autoPublish>
           </configuration>
         </plugin>
         <plugin>
@@ -576,8 +563,8 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
