@@ -62,7 +62,7 @@
     <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
     <maven-failsafe-plugin.version>3.5.3</maven-failsafe-plugin.version>
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
-    <sonar-maven-plugin.version>4.0.0.4121</sonar-maven-plugin.version>
+    <sonar-maven-plugin.version>5.2.0.4988</sonar-maven-plugin.version>
     <central-maven-plugin.version>0.8.0</central-maven-plugin.version>
     <gitflow-maven-plugin.version>1.21.0</gitflow-maven-plugin.version>
     <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
