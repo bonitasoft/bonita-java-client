@@ -184,6 +184,7 @@ src/main/java/org/bonitasoft/web/client/model/ProcessInstanceDocumentCreateReque
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceDocumentUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceInfo.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceInfoFlowNodeStatesCountersValue.java
+src/main/java/org/bonitasoft/web/client/model/ProcessInstanceUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceVariable.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstanceVariableUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProcessInstantiationResponse.java

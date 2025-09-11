@@ -62,11 +62,14 @@ public interface BusinessDataOperationsApi extends ApiClient.Api {
     /**
      * Import Business Data by bulk
      * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Allows to import business data in bulk by uploading a file containing the data, in CSV
-     * format. Example CSV file content: &#x60;&#x60;&#x60;csv firstName,lastName,department, dptReference
-     * \&quot;John\&quot;,\&quot;Doe\&quot;,\&quot;Engineering\&quot;, 14 \&quot;Jane\&quot;,\&quot;Smith\&quot;, \&quot;Marketing\&quot;, 17 &#x60;&#x60;&#x60;
-     * Field separator can be comma (&#x60;,&#x60;) or semicolon (&#x60;;&#x60;). Space characters around the separator will be ignored (trimmed). The first line of
-     * the CSV file is considered as the header, and must contain the field names, with the exact same upper/lower case. String Fields must be enclosed in double
-     * quotes (&#x60;\&quot;&#x60;), numeric / boolean fields must not.
+     * format. Example CSV file content: &#x60;&#x60;&#x60;csv firstName,lastName,department, dptReference, dateOfBirth, dateOfBirthWithTime,
+     * meetingDateAndTimeWithTimezone, otherDateAndTimeWithTimezone \&quot;John\&quot;,\&quot;Doe\&quot;,\&quot;Engineering\&quot;, 14, \&quot;1907-05-26\&quot;,
+     * \&quot;1907-05-26T01:59:42\&quot;, \&quot;2025-11-29T10:15:00+01:00\&quot;, \&quot;2025-11-29T10:15:00Z\&quot; \&quot;Jane\&quot;,\&quot;Smith\&quot;,
+     * \&quot;Marketing\&quot;, 17, \&quot;1977-03-24\&quot;, \&quot;1977-03-24T17:40:00\&quot;, \&quot;2025-07-19T09:00:00+01:00\&quot;,
+     * \&quot;2025-07-19T09:00:00Z\&quot; &#x60;&#x60;&#x60; Field separator can be comma (&#x60;,&#x60;) or semicolon (&#x60;;&#x60;). Space characters around the
+     * separator will be ignored (trimmed). The first line of the CSV file is considered as the header, and must contain the field names, with the exact same
+     * upper/lower case. String fields must be enclosed in double quotes (&#x60;\&quot;&#x60;), numeric / boolean fields must not. Date fields must be strings in
+     * ISO 8601 format (e.g., &#x60;2023-10-01T12:00:00Z&#x60;).
      * 
      * @param businessDataType Business Data Type (required)
      * @param dataset (optional)
@@ -84,11 +87,14 @@ public interface BusinessDataOperationsApi extends ApiClient.Api {
      * Import Business Data by bulk
      * Similar to <code>importBusinessData</code> but it also returns the http response headers .
      * ![edition](https://img.shields.io/badge/edition-entreprise-blue) Allows to import business data in bulk by uploading a file containing the data, in CSV
-     * format. Example CSV file content: &#x60;&#x60;&#x60;csv firstName,lastName,department, dptReference
-     * \&quot;John\&quot;,\&quot;Doe\&quot;,\&quot;Engineering\&quot;, 14 \&quot;Jane\&quot;,\&quot;Smith\&quot;, \&quot;Marketing\&quot;, 17 &#x60;&#x60;&#x60;
-     * Field separator can be comma (&#x60;,&#x60;) or semicolon (&#x60;;&#x60;). Space characters around the separator will be ignored (trimmed). The first line of
-     * the CSV file is considered as the header, and must contain the field names, with the exact same upper/lower case. String Fields must be enclosed in double
-     * quotes (&#x60;\&quot;&#x60;), numeric / boolean fields must not.
+     * format. Example CSV file content: &#x60;&#x60;&#x60;csv firstName,lastName,department, dptReference, dateOfBirth, dateOfBirthWithTime,
+     * meetingDateAndTimeWithTimezone, otherDateAndTimeWithTimezone \&quot;John\&quot;,\&quot;Doe\&quot;,\&quot;Engineering\&quot;, 14, \&quot;1907-05-26\&quot;,
+     * \&quot;1907-05-26T01:59:42\&quot;, \&quot;2025-11-29T10:15:00+01:00\&quot;, \&quot;2025-11-29T10:15:00Z\&quot; \&quot;Jane\&quot;,\&quot;Smith\&quot;,
+     * \&quot;Marketing\&quot;, 17, \&quot;1977-03-24\&quot;, \&quot;1977-03-24T17:40:00\&quot;, \&quot;2025-07-19T09:00:00+01:00\&quot;,
+     * \&quot;2025-07-19T09:00:00Z\&quot; &#x60;&#x60;&#x60; Field separator can be comma (&#x60;,&#x60;) or semicolon (&#x60;;&#x60;). Space characters around the
+     * separator will be ignored (trimmed). The first line of the CSV file is considered as the header, and must contain the field names, with the exact same
+     * upper/lower case. String fields must be enclosed in double quotes (&#x60;\&quot;&#x60;), numeric / boolean fields must not. Date fields must be strings in
+     * ISO 8601 format (e.g., &#x60;2023-10-01T12:00:00Z&#x60;).
      * 
      * @param businessDataType Business Data Type (required)
      * @param dataset (optional)
@@ -109,7 +115,10 @@ public interface BusinessDataOperationsApi extends ApiClient.Api {
      * ignored, and returned in the response, as an informative list.
      * 
      * @param businessDataType The Business Data type to create (required)
-     * @param body The flat JSON object representing the business data to create. The fields to provide depends on the business data type. (required)
+     * @param body The flat JSON object representing the fields of the business data to create. The fields to provide depend on the business data type. Any nullable
+     *        field not provided will be left blank. Any unknown field will be ignored and return in the response, under the name \&quot;unknownFields\&quot;.
+     *        String fields must be enclosed in double quotes (&#x60;\&quot;&#x60;), numeric / boolean fields must not. Date fields must be strings in ISO 8601
+     *        format (e.g., &#x60;2023-10-01T12:00:00Z&#x60;). (required)
      * @return BusinessDataCreationResult
      */
     @RequestLine("POST /API/bdm/businessData/{businessDataType}")
@@ -127,7 +136,10 @@ public interface BusinessDataOperationsApi extends ApiClient.Api {
      * ignored, and returned in the response, as an informative list.
      * 
      * @param businessDataType The Business Data type to create (required)
-     * @param body The flat JSON object representing the business data to create. The fields to provide depends on the business data type. (required)
+     * @param body The flat JSON object representing the fields of the business data to create. The fields to provide depend on the business data type. Any nullable
+     *        field not provided will be left blank. Any unknown field will be ignored and return in the response, under the name \&quot;unknownFields\&quot;.
+     *        String fields must be enclosed in double quotes (&#x60;\&quot;&#x60;), numeric / boolean fields must not. Date fields must be strings in ISO 8601
+     *        format (e.g., &#x60;2023-10-01T12:00:00Z&#x60;). (required)
      * @return A ApiResponse that wraps the response boyd and the http headers.
      */
     @RequestLine("POST /API/bdm/businessData/{businessDataType}")
@@ -145,8 +157,10 @@ public interface BusinessDataOperationsApi extends ApiClient.Api {
      * 
      * @param businessDataType The Business Data type to update (required)
      * @param persistenceId Business data ID (required)
-     * @param body The flat JSON object representing the fields of the business data to update. The fields to provide depends on the business data type. Any field
-     *        not provided will be left unchanged. (required)
+     * @param body The flat JSON object representing the fields of the business data to update. The fields to provide depend on the business data type. Any field
+     *        not provided will be left unchanged. Any unknown field will be ignored and return in the response, under the name \&quot;unknownFields\&quot;. String
+     *        fields must be enclosed in double quotes (&#x60;\&quot;&#x60;), numeric / boolean fields must not. Date fields must be strings in ISO 8601 format
+     *        (e.g., &#x60;2023-10-01T12:00:00Z&#x60;). (required)
      * @return BusinessDataUpdateResult
      */
     @RequestLine("PUT /API/bdm/businessData/{businessDataType}/{persistenceId}")
@@ -165,8 +179,10 @@ public interface BusinessDataOperationsApi extends ApiClient.Api {
      * 
      * @param businessDataType The Business Data type to update (required)
      * @param persistenceId Business data ID (required)
-     * @param body The flat JSON object representing the fields of the business data to update. The fields to provide depends on the business data type. Any field
-     *        not provided will be left unchanged. (required)
+     * @param body The flat JSON object representing the fields of the business data to update. The fields to provide depend on the business data type. Any field
+     *        not provided will be left unchanged. Any unknown field will be ignored and return in the response, under the name \&quot;unknownFields\&quot;. String
+     *        fields must be enclosed in double quotes (&#x60;\&quot;&#x60;), numeric / boolean fields must not. Date fields must be strings in ISO 8601 format
+     *        (e.g., &#x60;2023-10-01T12:00:00Z&#x60;). (required)
      * @return A ApiResponse that wraps the response boyd and the http headers.
      */
     @RequestLine("PUT /API/bdm/businessData/{businessDataType}/{persistenceId}")
