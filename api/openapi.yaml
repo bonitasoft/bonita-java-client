@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 1.0.5
+  version: 1.0.6
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -1996,11 +1996,24 @@ paths:
               lastName: Doe
               age: 30
               department: Engineering
+              activity: developer
+              dateOfBirth: 1977-05-26
+              dateOfBirthWithTime: 1977-05-26T01:59:42
+              meetingDateAndTimeWithTimezone: 2025-11-29T10:15:30+01:00
+              otherDateAndTimeWithTimezone: 2025-11-29T10:15:30Z
               notAValidField: some value that will be ignored
             schema:
               type: object
         description: |
-          The flat JSON object representing the business data to create. The fields to provide depends on the business data type.
+          The flat JSON object representing the fields of the business data to create.
+
+          The fields to provide depend on the business data type.
+
+          Any nullable field not provided will be left blank.
+
+          Any unknown field will be ignored and return in the response, under the name "unknownFields".
+
+          String fields must be enclosed in double quotes (`"`), numeric / boolean fields must not. Date fields must be strings in ISO 8601 format (e.g., `2023-10-01T12:00:00Z`).
         required: true
       responses:
         "200":
@@ -2067,16 +2080,16 @@ paths:
 
         Example CSV file content:
         ```csv
-        firstName,lastName,department, dptReference
-        "John","Doe","Engineering", 14
-        "Jane","Smith", "Marketing", 17
+        firstName,lastName,department, dptReference, dateOfBirth, dateOfBirthWithTime, meetingDateAndTimeWithTimezone, otherDateAndTimeWithTimezone
+        "John","Doe","Engineering", 14, "1907-05-26", "1907-05-26T01:59:42", "2025-11-29T10:15:00+01:00", "2025-11-29T10:15:00Z"
+        "Jane","Smith", "Marketing", 17, "1977-03-24", "1977-03-24T17:40:00", "2025-07-19T09:00:00+01:00", "2025-07-19T09:00:00Z"
         ```
 
         Field separator can be comma (`,`) or semicolon (`;`). Space characters around the separator will be ignored (trimmed).
 
         The first line of the CSV file is considered as the header, and must contain the field names, with the exact same upper/lower case.
 
-        String Fields must be enclosed in double quotes (`"`), numeric / boolean fields must not.
+        String fields must be enclosed in double quotes (`"`), numeric / boolean fields must not. Date fields must be strings in ISO 8601 format (e.g., `2023-10-01T12:00:00Z`).
       operationId: importBusinessData
       parameters:
       - description: Business Data Type
@@ -2396,7 +2409,7 @@ paths:
           type: string
         style: simple
       - description: Business data ID
-        example: 1234
+        example: "1234"
         explode: false
         in: path
         name: persistenceId
@@ -2411,12 +2424,23 @@ paths:
               firstName: John
               lastName: Wayne
               activity: actor
+              dateOfBirth: 1907-05-26
+              dateOfBirthWithTime: 1907-05-26T01:59:42
+              meetingDateAndTimeWithTimezone: 2025-11-29T10:15:30+01:00
+              otherDateAndTimeWithTimezone: 2025-11-29T10:15:30Z
               notAValidField: some value that will be ignored
             schema:
               type: object
         description: |
-          The flat JSON object representing the fields of the business data to update. The fields to provide depends on the business data type.
+          The flat JSON object representing the fields of the business data to update.
+
+          The fields to provide depend on the business data type.
+
           Any field not provided will be left unchanged.
+
+          Any unknown field will be ignored and return in the response, under the name "unknownFields".
+
+          String fields must be enclosed in double quotes (`"`), numeric / boolean fields must not. Date fields must be strings in ISO 8601 format (e.g., `2023-10-01T12:00:00Z`).
         required: true
       responses:
         "200":
@@ -7542,6 +7566,79 @@ paths:
       summary: Finds the ProcessInstance by ID
       tags:
       - ProcessInstance
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        Only the state of a ProcessInstance (with the given ID) can be updated in order to cancel it (since version 10.3 - 2025.1).
+      operationId: updateProcessInstanceById
+      parameters:
+      - description: ID of the ProcessInstance to update
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessInstanceUpdateRequest'
+        description: Cancel the ProcessInstance.
+        required: true
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update the ProcessInstance by ID
+      tags:
+      - ProcessInstance
+      x-content-type: application/json
       x-accepts:
       - application/json
   /API/bpm/case/{id}/context:
@@ -19810,6 +19907,15 @@ components:
           items:
             $ref: '#/components/schemas/ProcessVariable'
           type: array
+      type: object
+    ProcessInstanceUpdateRequest:
+      example:
+        state: cancelled
+      properties:
+        state:
+          description: "state of the ProcessInstance (the only supported value is:\
+            \ cancelled)"
+          type: string
       type: object
     ArchivedProcessInstance:
       allOf:

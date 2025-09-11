@@ -25,6 +25,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApiResponse;
 import org.bonitasoft.web.client.model.ProcessInstance;
 import org.bonitasoft.web.client.model.ProcessInstanceCreateRequest;
+import org.bonitasoft.web.client.model.ProcessInstanceUpdateRequest;
 
 import feign.*;
 
@@ -367,4 +368,35 @@ public interface ProcessInstanceApi extends ApiClient.Api {
             return this;
         }
     }
+
+    /**
+     * Update the ProcessInstance by ID
+     * Only the state of a ProcessInstance (with the given ID) can be updated in order to cancel it (since version 10.3 - 2025.1).
+     * 
+     * @param id ID of the ProcessInstance to update (required)
+     * @param processInstanceUpdateRequest Cancel the ProcessInstance. (required)
+     */
+    @RequestLine("PUT /API/bpm/case/{id}")
+    @Headers({
+            "Content-Type: application/json",
+            "Accept: application/json",
+    })
+    void updateProcessInstanceById(@Param("id") String id, ProcessInstanceUpdateRequest processInstanceUpdateRequest);
+
+    /**
+     * Update the ProcessInstance by ID
+     * Similar to <code>updateProcessInstanceById</code> but it also returns the http response headers .
+     * Only the state of a ProcessInstance (with the given ID) can be updated in order to cancel it (since version 10.3 - 2025.1).
+     * 
+     * @param id ID of the ProcessInstance to update (required)
+     * @param processInstanceUpdateRequest Cancel the ProcessInstance. (required)
+     */
+    @RequestLine("PUT /API/bpm/case/{id}")
+    @Headers({
+            "Content-Type: application/json",
+            "Accept: application/json",
+    })
+    ApiResponse<Void> updateProcessInstanceByIdWithHttpInfo(@Param("id") String id,
+            ProcessInstanceUpdateRequest processInstanceUpdateRequest);
+
 }
