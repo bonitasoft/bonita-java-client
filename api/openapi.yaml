@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 1.0.6
+  version: 1.0.7
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -343,6 +343,11 @@ tags:
 - description: Role
   name: Role
   x-displayName: Role
+- description: |
+    Access log entries recorded by the Bonita Engine during execution. Logs capture actions performed on the platform such as process deployments, task executions, or configuration changes.
+    This Web REST API is available in **Enterprise editions only**.
+  name: Log
+  x-displayName: Log
 - description: Session
   name: Session
   x-displayName: Session
@@ -16719,6 +16724,213 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /API/system/log:
+    get:
+      description: |
+        Finds Logs with pagination params and filters. The search returns an array of log entries.
+        This Web REST API is available in **Enterprise editions only**.
+
+        - can filter on `action_scope`, `action_type`, `createdBy`, `message`, `severity` value
+        - can search by text on `action_scope`, `action_type`, `createdBy`, `message`, `severity`
+        - can order on `action_scope`, `action_type`, `creation_date`, `createdBy`, `message`, `severity`
+      operationId: searchLogs
+      parameters:
+      - description: index of the page to display
+        example: "0"
+        explode: true
+        in: query
+        name: p
+        required: true
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: "can filter on attributes with the format f={filter\\_name}={filter\\\
+          _value} with the name/value pair as url encoded string."
+        example: abc%3d123
+        explode: true
+        in: query
+        name: f
+        required: false
+        schema:
+          items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
+            type: string
+          type: array
+        style: form
+      - description: can order on attributes
+        example: myProp%20ASC
+        explode: true
+        in: query
+        name: o
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      - description: can search on attributes
+        explode: true
+        in: query
+        name: s
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Log'
+                type: array
+          description: 'Success '
+          headers:
+            Content-Range:
+              description: The total number of matching items
+              explode: false
+              schema:
+                format: int64
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Finds Logs
+      tags:
+      - Log
+      x-codeSamples:
+      - lang: Shell
+        label: Curl
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/log?p=0&c=10&o=creation_date+DESC'
+      x-accepts:
+      - application/json
+  /API/system/log/{id}:
+    get:
+      description: |
+        Returns the single Log for the given ID.
+        This Web REST API is available in **Enterprise editions only**.
+      operationId: getLogById
+      parameters:
+      - description: ID of the Log to return
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Log'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Finds the Log by ID
+      tags:
+      - Log
+      x-codeSamples:
+      - lang: Shell
+        label: Curl
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/log/1024'
+      x-accepts:
+      - application/json
   /API/system/i18nlocale:
     get:
       description: |
@@ -22134,6 +22346,51 @@ components:
           - mobile
           type: string
       type: object
+    LogSeverityLevel:
+      description: the severity level of the log
+      enum:
+      - BUSINESS
+      - INTERNAL
+      type: string
+    Log:
+      description: |
+        A log entry recorded by the Bonita Engine during execution. Logs capture actions performed on the platform such as process deployments, task executions, or configuration changes.
+        This Web REST API is available in **Enterprise editions only**.
+      example:
+        id: "1024"
+        creation_date: 2024-10-17T16:05:42.626Z
+        createdBy: walter.bates
+        severity: INTERNAL
+        message: Creating a new Process definition
+        action_scope: "7714320429509736190"
+        action_type: PROCESS_DEFINITION_CREATED
+        icon: /default/log.png
+      properties:
+        id:
+          description: the log id
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        creation_date:
+          description: "the UTC date and time in ISO-8601 format ('yyyy-MM-ddTHH:mm:ss.SSSZ')\
+            \ when this log was created, for example '2024-10-17T16:05:42.626Z'"
+          format: date-time
+          type: string
+        createdBy:
+          description: the name of the user who triggered the logged action
+          type: string
+        severity:
+          $ref: '#/components/schemas/LogSeverityLevel'
+        message:
+          description: the log message describing the action
+          type: string
+        action_scope:
+          description: the scope of the logged action
+          type: string
+        icon:
+          description: the icon path for this log entry
+          type: string
+      type: object
     I18nlocale:
       description: ""
       example:
@@ -22687,6 +22944,7 @@ x-tagGroups:
   tags:
   - I18nlocale
   - I18ntranslation
+  - Log
   - Session
   - Maintenance
 - name: Other
