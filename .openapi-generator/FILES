@@ -40,6 +40,7 @@ src/main/java/org/bonitasoft/web/client/api/HumanTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/I18nlocaleApi.java
 src/main/java/org/bonitasoft/web/client/api/I18ntranslationApi.java
 src/main/java/org/bonitasoft/web/client/api/InformationApi.java
+src/main/java/org/bonitasoft/web/client/api/LogApi.java
 src/main/java/org/bonitasoft/web/client/api/MaintenanceApi.java
 src/main/java/org/bonitasoft/web/client/api/ManualTaskApi.java
 src/main/java/org/bonitasoft/web/client/api/MembershipApi.java
@@ -156,6 +157,8 @@ src/main/java/org/bonitasoft/web/client/model/I18nlocale.java
 src/main/java/org/bonitasoft/web/client/model/InstanciateProcess429Response.java
 src/main/java/org/bonitasoft/web/client/model/LegacyApplication.java
 src/main/java/org/bonitasoft/web/client/model/License.java
+src/main/java/org/bonitasoft/web/client/model/Log.java
+src/main/java/org/bonitasoft/web/client/model/LogSeverityLevel.java
 src/main/java/org/bonitasoft/web/client/model/MaintenanceDetails.java
 src/main/java/org/bonitasoft/web/client/model/ManualTask.java
 src/main/java/org/bonitasoft/web/client/model/ManualTaskCreateRequest.java
