@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 1.0.7
+  version: 1.0.8
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -249,6 +249,12 @@ tags:
 - description: CustomUserValue
   name: CustomUserValue
   x-displayName: CustomUserValue
+- description: |
+    Configure how Bonita automatically deletes obsolete business data. A retention rule applies to a specific business object type and defines when its instances become eligible for deletion based on a reference date (creation or last update) and a retention period in days. The data retention service runs on a configurable cron schedule.
+
+    This Web REST API is available in **Enterprise editions only**, since version 11.0.
+  name: DataRetention
+  x-displayName: Data Retention
 - description: Diagram
   name: Diagram
   x-displayName: Diagram
@@ -2833,6 +2839,335 @@ paths:
       tags:
       - BDMAccessControl
       x-content-type: application/x-www-form-urlencoded
+      x-accepts:
+      - application/json
+  /API/retention/object:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the list of all business object types defined in the deployed Business Data Model (BDM),
+        each enriched with its composition tree and the retention rule that may apply to it.
+
+        The full list is returned in a single response. Pagination is not applied because the
+        BDM is a bounded set defined at deployment time.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: findObjectsWithRetentionRules
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BusinessObjectWithRetentionRule'
+                type: array
+          description: |
+            Successful operation. The full list of business object types is returned in a single
+            response. No pagination is applied and no `Content-Range` header is set.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: List business object types with their retention rules
+      tags:
+      - DataRetention
+      x-accepts:
+      - application/json
+  /API/retention/schedule:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the cron expression that triggers the data retention job. The expression is configured
+        via the `bonita.runtime.retention.schedule.cron` platform property and is read-only at runtime.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: getRetentionSchedule
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetentionSchedule'
+          description: Successful operation
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Get the data retention schedule
+      tags:
+      - DataRetention
+      x-accepts:
+      - application/json
+  /API/retention/rule:
+    post:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Creates a data retention rule for a business object type. Once created, the data retention
+        service will automatically delete business data of `dataClassName` whose `referenceDate` is
+        older than `retentionDays` days.
+
+        Only one retention rule can exist per BDM class name. Posting a second rule for a
+        `dataClassName` that already has one returns `409 Conflict`.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: createRetentionRule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetentionRuleCreateRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRetentionConfig'
+          description: Retention rule created
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "409":
+          content:
+            application/json:
+              example:
+                message: Conflict
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Conflict, the request could not be completed because it conflicts\
+            \ with the current state of the target resource."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Create a retention rule
+      tags:
+      - DataRetention
+      x-codegen-request-body-name: body
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/retention/rule/{ruleId}:
+    delete:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Deletes the retention rule with the given ID. Existing BDM object instances of the underlying
+        type are not deleted by this operation; only the retention rule itself is removed.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: deleteRetentionRuleById
+      parameters:
+      - description: Numeric ID of the retention rule to delete (the `id` field returned
+          by `DataRetentionConfig`).
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          pattern: "^[0-9]+$"
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: OK (no content).
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Delete a retention rule by ID
+      tags:
+      - DataRetention
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Updates the `referenceDate` and `retentionDays` of an existing retention rule.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: updateRetentionRuleById
+      parameters:
+      - description: Numeric ID of the retention rule to update (the `id` field returned
+          by `DataRetentionConfig`).
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          pattern: "^[0-9]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetentionRuleUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRetentionConfig'
+          description: Retention rule updated
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update a retention rule by ID
+      tags:
+      - DataRetention
+      x-codegen-request-body-name: body
+      x-content-type: application/json
       x-accepts:
       - application/json
   /API/bpm/activity:
@@ -18002,6 +18337,15 @@ components:
       description: OK
     NoContent:
       description: OK (no content).
+    Conflict:
+      content:
+        application/json:
+          example:
+            message: Conflict
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: "Conflict, the request could not be completed because it conflicts\
+        \ with the current state of the target resource."
   schemas:
     LoginRequest:
       example:
@@ -18544,6 +18888,191 @@ components:
         lastUpdateDate:
           description: Last date when the access control were installed or updated.
           type: string
+      type: object
+    CompositionNode:
+      description: |
+        A node in the recursive composition tree of a business object type. Each node holds the
+        qualified name of a composed business object type and the list of its own composed children,
+        allowing arbitrarily deep composition hierarchies to be expressed.
+      example:
+        qualifiedName: com.company.model.Address
+        compositions: []
+      properties:
+        qualifiedName:
+          description: Fully qualified Java class name of the composed business object
+            type.
+          type: string
+        compositions:
+          description: "Direct composition children of this object, or an empty list\
+            \ if none."
+          items:
+            $ref: '#/components/schemas/CompositionNode'
+          type: array
+      required:
+      - compositions
+      - qualifiedName
+      type: object
+    ReferenceDate:
+      description: |
+        Date field on a BDM object instance used as the starting point of the retention period calculation.
+
+        - `CREATION`: retention is calculated from the creation date of the BDM object instance. The clock never resets.
+        - `LAST_UPDATE`: retention is calculated from the last modification date of the BDM object instance. The clock resets on every modification.
+      enum:
+      - CREATION
+      - LAST_UPDATE
+      type: string
+    DataRetentionConfig:
+      description: |
+        A data retention rule configured for a specific business object type. It defines when and how
+        business data of that type are automatically deleted by the data retention service.
+      example:
+        id: "1"
+        dataClassname: com.company.model.Request
+        referenceDate: CREATION
+        retentionDays: 365
+        createdAt: "1777473415401"
+        updatedAt: "1777473415401"
+      properties:
+        id:
+          description: Identifier of the retention rule. Serialized as a string to
+            avoid JavaScript precision loss on large `long` values.
+          type: string
+        dataClassname:
+          description: Fully qualified Java class name of the business object type
+            this rule applies to. Note the lowercase `n` (the create-rule request
+            body uses `dataClassName` instead).
+          type: string
+        referenceDate:
+          $ref: '#/components/schemas/ReferenceDate'
+        retentionDays:
+          description: "Duration of the retention period, in days. Always strictly\
+            \ positive — enforced by the engine on create and update."
+          format: int32
+          minimum: 1
+          type: integer
+        createdAt:
+          description: "Creation timestamp of this retention rule, in epoch milliseconds.\
+            \ Serialized as a string to avoid JavaScript precision loss."
+          type: string
+        updatedAt:
+          description: "Last update timestamp of this retention rule, in epoch milliseconds.\
+            \ Serialized as a string to avoid JavaScript precision loss."
+          type: string
+      required:
+      - createdAt
+      - dataClassname
+      - id
+      - referenceDate
+      - retentionDays
+      - updatedAt
+      type: object
+    BusinessObjectWithRetentionRule:
+      description: |
+        A business object type defined in the Business Data Model (BDM) along with its optional data
+        retention rule and composition tree.
+
+        The `dataRetentionRule` field is `null` when no retention rule has been configured for this
+        business object type.
+      example:
+        qualifiedName: com.company.model.Order
+        compositions:
+        - qualifiedName: com.company.model.OrderLine
+          compositions:
+          - qualifiedName: com.company.model.Product
+            compositions: []
+        - qualifiedName: com.company.model.Address
+          compositions: []
+        dataRetentionRule:
+          id: "1"
+          dataClassname: com.company.model.Order
+          referenceDate: CREATION
+          retentionDays: 365
+          createdAt: "1777473415401"
+          updatedAt: "1777473415401"
+      properties:
+        qualifiedName:
+          description: Fully qualified Java class name of the business object type.
+          type: string
+        compositions:
+          description: Direct composition children of this business object type as
+            a recursive tree.
+          items:
+            $ref: '#/components/schemas/CompositionNode'
+          type: array
+        dataRetentionRule:
+          allOf:
+          - $ref: '#/components/schemas/DataRetentionConfig'
+          nullable: true
+          type: object
+      required:
+      - compositions
+      - dataRetentionRule
+      - qualifiedName
+      type: object
+    RetentionSchedule:
+      description: |
+        Schedule on which the data retention service runs. The cron expression is configured via the
+        `bonita.runtime.retention.schedule.cron` platform property.
+      example:
+        cronExpression: 0 0 2 * * 6
+      properties:
+        cronExpression:
+          description: Cron expression that defines when the data retention job is
+            triggered.
+          type: string
+      required:
+      - cronExpression
+      type: object
+    RetentionRuleCreateRequest:
+      description: |
+        Body of `POST /API/retention/rule`. Defines a new data retention rule for the business object
+        type identified by `dataClassName`. All three fields are required.
+      example:
+        dataClassName: com.company.model.ContratClient
+        referenceDate: LAST_UPDATE
+        retentionDays: 365
+      properties:
+        dataClassName:
+          description: |
+            Fully qualified Java class name of the business object type this rule applies to. Note the uppercase `N`.
+
+            The corresponding field returned in the `DataRetentionConfig` response of this endpoint and of `PUT /API/retention/rule/{ruleId}`, `GET /API/retention/object` is named `dataClassname` (lowercase `n`).
+          type: string
+        referenceDate:
+          $ref: '#/components/schemas/ReferenceDate'
+        retentionDays:
+          description: "Duration of the retention period, in days. Must be strictly\
+            \ positive."
+          format: int32
+          minimum: 1
+          type: integer
+      required:
+      - dataClassName
+      - referenceDate
+      - retentionDays
+      type: object
+    RetentionRuleUpdateRequest:
+      description: |
+        Body of `PUT /API/retention/rule/{ruleId}`. Replaces the mutable fields of an existing
+        retention rule. This is a full replacement of `referenceDate` and `retentionDays`, not a
+        partial update — both fields must be provided on every call. The `dataClassName` of an
+        existing rule cannot be changed.
+      example:
+        referenceDate: CREATION
+        retentionDays: 730
+      properties:
+        referenceDate:
+          $ref: '#/components/schemas/ReferenceDate'
+        retentionDays:
+          description: "Duration of the retention period, in days. Must be strictly\
+            \ positive."
+          format: int32
+          minimum: 1
+          type: integer
+      required:
+      - referenceDate
+      - retentionDays
       type: object
     ActivityType:
       description: the activity type (string)
@@ -22871,6 +23400,7 @@ x-tagGroups:
   - BusinessDataQuery
   - Business Data Operations
   - BDMAccessControl
+  - DataRetention
 - name: BPM
   tags:
   - Activity
