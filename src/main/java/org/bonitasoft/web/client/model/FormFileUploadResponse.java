@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         FormFileUploadResponse.JSON_PROPERTY_TEMP_PATH,
         FormFileUploadResponse.JSON_PROPERTY_CONTENT_TYPE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class FormFileUploadResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;

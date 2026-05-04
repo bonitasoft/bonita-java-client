@@ -33,8 +33,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         ProcessVariable.JSON_PROPERTY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
-public class ProcessVariable extends HashMap<String, Object> implements Serializable {
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+public class ProcessVariable implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,6 @@ public class ProcessVariable extends HashMap<String, Object> implements Serializ
     private String name;
 
     public ProcessVariable() {
-
     }
 
     public ProcessVariable name(@jakarta.annotation.Nullable String name) {
@@ -128,20 +127,20 @@ public class ProcessVariable extends HashMap<String, Object> implements Serializ
         }
         ProcessVariable processVariable = (ProcessVariable) o;
         return Objects.equals(this.name, processVariable.name) &&
-                super.equals(o);
+                Objects.equals(this.additionalProperties, processVariable.additionalProperties);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, super.hashCode());
+        return Objects.hash(name, additionalProperties);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ProcessVariable {\n");
-        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -37,8 +37,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         Error.JSON_PROPERTY_EXCEPTION,
         Error.JSON_PROPERTY_EXPLANATIONS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
-public class Error extends HashMap<String, Object> implements Serializable {
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+public class Error implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,6 @@ public class Error extends HashMap<String, Object> implements Serializable {
     private List<String> explanations = new ArrayList<>();
 
     public Error() {
-
     }
 
     public Error message(@jakarta.annotation.Nullable String message) {
@@ -200,22 +199,22 @@ public class Error extends HashMap<String, Object> implements Serializable {
         return Objects.equals(this.message, error.message) &&
                 Objects.equals(this.exception, error.exception) &&
                 Objects.equals(this.explanations, error.explanations) &&
-                super.equals(o);
+                Objects.equals(this.additionalProperties, error.additionalProperties);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(message, exception, explanations, super.hashCode());
+        return Objects.hash(message, exception, explanations, additionalProperties);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class Error {\n");
-        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
         sb.append("    message: ").append(toIndentedString(message)).append("\n");
         sb.append("    exception: ").append(toIndentedString(exception)).append("\n");
         sb.append("    explanations: ").append(toIndentedString(explanations)).append("\n");
+        sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
         sb.append("}");
         return sb.toString();
     }

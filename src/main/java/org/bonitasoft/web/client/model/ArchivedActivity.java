@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ArchivedActivity.JSON_PROPERTY_SOURCE_OBJECT_ID,
         ArchivedActivity.JSON_PROPERTY_ARCHIVED_DATE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ArchivedActivity implements Serializable {
 
     private static final long serialVersionUID = 1L;

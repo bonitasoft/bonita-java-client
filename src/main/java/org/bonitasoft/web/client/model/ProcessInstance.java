@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         ProcessInstance.JSON_PROPERTY_SEARCH_INDEX5_VALUE,
         ProcessInstance.JSON_PROPERTY_CALLER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ProcessInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;

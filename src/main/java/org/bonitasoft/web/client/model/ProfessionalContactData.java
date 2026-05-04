@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfessionalContactData.JSON_PROPERTY_ROOM,
         ProfessionalContactData.JSON_PROPERTY_EMAIL
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ProfessionalContactData implements Serializable {
 
     private static final long serialVersionUID = 1L;

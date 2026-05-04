@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfileEntryUpdateRequest.JSON_PROPERTY_IS_CUSTOM,
         ProfileEntryUpdateRequest.JSON_PROPERTY_PARENT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ProfileEntryUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -40,8 +40,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         BusinessData.JSON_PROPERTY_PERSISTENCE_ID_STRING,
         BusinessData.JSON_PROPERTY_PERSISTENCE_VERSION_STRING
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
-public class BusinessData extends HashMap<String, Object> implements Serializable {
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+public class BusinessData implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,6 @@ public class BusinessData extends HashMap<String, Object> implements Serializabl
     private String persistenceVersionString;
 
     public BusinessData() {
-
     }
 
     public BusinessData persistenceIdString(@jakarta.annotation.Nullable String persistenceIdString) {
@@ -165,21 +164,21 @@ public class BusinessData extends HashMap<String, Object> implements Serializabl
         BusinessData businessData = (BusinessData) o;
         return Objects.equals(this.persistenceIdString, businessData.persistenceIdString) &&
                 Objects.equals(this.persistenceVersionString, businessData.persistenceVersionString) &&
-                super.equals(o);
+                Objects.equals(this.additionalProperties, businessData.additionalProperties);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(persistenceIdString, persistenceVersionString, super.hashCode());
+        return Objects.hash(persistenceIdString, persistenceVersionString, additionalProperties);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class BusinessData {\n");
-        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
         sb.append("    persistenceIdString: ").append(toIndentedString(persistenceIdString)).append("\n");
         sb.append("    persistenceVersionString: ").append(toIndentedString(persistenceVersionString)).append("\n");
+        sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
         sb.append("}");
         return sb.toString();
     }

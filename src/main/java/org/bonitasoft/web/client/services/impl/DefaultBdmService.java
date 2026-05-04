@@ -19,14 +19,27 @@ package org.bonitasoft.web.client.services.impl;
 import static java.util.stream.Collectors.toList;
 
 import java.io.File;
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
-import org.bonitasoft.web.client.api.*;
+import org.bonitasoft.web.client.api.BdmAccessControlApi;
+import org.bonitasoft.web.client.api.BdmApi;
+import org.bonitasoft.web.client.api.BusinessDataOperationsApi;
+import org.bonitasoft.web.client.api.BusinessDataQueryApi;
 import org.bonitasoft.web.client.api.BusinessDataQueryApi.SearchBusinessDataQueryParams;
+import org.bonitasoft.web.client.api.MaintenanceApi;
+import org.bonitasoft.web.client.api.UploadApi;
 import org.bonitasoft.web.client.exception.ClientException;
 import org.bonitasoft.web.client.exception.LicenseException;
 import org.bonitasoft.web.client.feign.ApiProvider;
-import org.bonitasoft.web.client.model.*;
+import org.bonitasoft.web.client.model.BDMAccessControl;
+import org.bonitasoft.web.client.model.BDMInstallRequest;
+import org.bonitasoft.web.client.model.Bdm;
+import org.bonitasoft.web.client.model.BusinessData;
+import org.bonitasoft.web.client.model.MaintenanceDetails;
+import org.bonitasoft.web.client.model.TenantResourceState;
 import org.bonitasoft.web.client.services.BdmService;
 import org.bonitasoft.web.client.services.impl.base.AbstractService;
 import org.bonitasoft.web.client.services.impl.base.ClientContext;
@@ -110,14 +123,14 @@ public class DefaultBdmService extends AbstractService implements BdmService {
 
     @Override
     public BDMAccessControl getBdmAccessControlStatus() {
-        log.debug("Get BDM AccessControl status");
+        log.debug("Get BDM Access Control status");
         if (isCommunity()) {
             String message = "BDM AccessControl management skipped: your current Bonita license is 'Community' and this feature is only supported in 'Subscription' editions.";
             throw new LicenseException(message);
         }
         BdmAccessControlApi accessControlApi = apiProvider.get(BdmAccessControlApi.class);
         BDMAccessControl bdmAccessControlStatus = accessControlApi.getBDMAccessControlStatus();
-        log.debug("BDM status: {}", bdmAccessControlStatus);
+        log.debug("BDM Access Control status: {}", bdmAccessControlStatus);
         return bdmAccessControlStatus;
     }
 
@@ -168,6 +181,35 @@ public class DefaultBdmService extends AbstractService implements BdmService {
                     .map(o -> bdmResponseConverter.convert(o, queryResultType))
                     .collect(toList());
         }
+    }
+
+    @Override
+    public long createBusinessData(String businessDataType, Map<String, Serializable> fields) {
+        log.info("Creating new Business Data of type {}", businessDataType);
+        BusinessDataOperationsApi api = apiProvider.get(BusinessDataOperationsApi.class);
+        return api.insertBusinessData(businessDataType, fields).getNewBusinessDataId().longValue();
+    }
+
+    @Override
+    public void updateBusinessData(String businessDataType, long identifier, Map<String, Serializable> fields) {
+        log.info("Updating Business Data of type {} with id {}", businessDataType, identifier);
+        BusinessDataOperationsApi api = apiProvider.get(BusinessDataOperationsApi.class);
+        api.updateBusinessData(businessDataType, BigDecimal.valueOf(identifier), fields);
+    }
+
+    @Override
+    public void deleteBusinessData(String businessDataType, long identifier) {
+        log.info("Deleting Business Data of type {} with id {}", businessDataType, identifier);
+        BusinessDataOperationsApi api = apiProvider.get(BusinessDataOperationsApi.class);
+        api.deleteBusinessData(businessDataType, BigDecimal.valueOf(identifier));
+    }
+
+    @Override
+    public List<Long> importBusinessDataFile(String businessDataType, File csvFile) {
+        log.info("Import Business Data file for type {}", businessDataType);
+        BusinessDataOperationsApi api = apiProvider.get(BusinessDataOperationsApi.class);
+        return api.importBusinessData(businessDataType, csvFile).getCreatedIds().stream().map(BigDecimal::longValue)
+                .collect(toList());
     }
 
 }

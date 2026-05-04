@@ -686,7 +686,7 @@ class BonitaClientIT {
         // Trigger lazy http get
         assertThat(post.getComments()).hasSize(comments.size()).hasSize(commentBOs.size());
         assertThat(post.getComments().get(1).getUserId()).isEqualTo(1);
-        assertThat(commentBOs.get(1).get("userId")).isEqualTo(1);
+        assertThat(commentBOs.get(1).getAdditionalProperty("userId")).isEqualTo(1);
 
     }
 

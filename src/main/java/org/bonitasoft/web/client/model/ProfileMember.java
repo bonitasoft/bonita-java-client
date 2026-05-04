@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         ProfileMember.JSON_PROPERTY_GROUP_ID,
         ProfileMember.JSON_PROPERTY_USER_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ProfileMember implements Serializable {
 
     private static final long serialVersionUID = 1L;

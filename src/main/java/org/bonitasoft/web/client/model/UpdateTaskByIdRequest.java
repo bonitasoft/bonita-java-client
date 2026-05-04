@@ -34,8 +34,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         UpdateTaskByIdRequest.JSON_PROPERTY_STATE,
         UpdateTaskByIdRequest.JSON_PROPERTY_DISPLAY_NAME
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
-public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Serializable {
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+public class UpdateTaskByIdRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -48,7 +48,6 @@ public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Se
     private String displayName;
 
     public UpdateTaskByIdRequest() {
-
     }
 
     public UpdateTaskByIdRequest state(@jakarta.annotation.Nullable String state) {
@@ -159,21 +158,21 @@ public class UpdateTaskByIdRequest extends HashMap<String, Object> implements Se
         UpdateTaskByIdRequest updateTaskByIdRequest = (UpdateTaskByIdRequest) o;
         return Objects.equals(this.state, updateTaskByIdRequest.state) &&
                 Objects.equals(this.displayName, updateTaskByIdRequest.displayName) &&
-                super.equals(o);
+                Objects.equals(this.additionalProperties, updateTaskByIdRequest.additionalProperties);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(state, displayName, super.hashCode());
+        return Objects.hash(state, displayName, additionalProperties);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UpdateTaskByIdRequest {\n");
-        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
         sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+        sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         MaintenanceDetails.JSON_PROPERTY_MAINTENANCE_MESSAGE,
         MaintenanceDetails.JSON_PROPERTY_MAINTENANCE_MESSAGE_ACTIVE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class MaintenanceDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;

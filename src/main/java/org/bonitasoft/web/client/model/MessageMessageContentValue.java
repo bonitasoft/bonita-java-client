@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
         MessageMessageContentValue.JSON_PROPERTY_TYPE
 })
 @JsonTypeName("Message_messageContent_value")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class MessageMessageContentValue implements Serializable {
 
     private static final long serialVersionUID = 1L;

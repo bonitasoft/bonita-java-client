@@ -17,5 +17,5 @@ jobs:
   build:
     uses: ./.github/workflows/_reusable_build.yml
     with:
-      ossrh-publication: true
+      maven-central-publication: true
     secrets: inherit

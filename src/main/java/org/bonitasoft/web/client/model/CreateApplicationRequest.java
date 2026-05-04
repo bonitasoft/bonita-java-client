@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         CreateApplicationRequest.JSON_PROPERTY_TOKEN,
         CreateApplicationRequest.JSON_PROPERTY_VERSION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class CreateApplicationRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

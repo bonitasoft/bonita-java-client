@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         BPMFailure.JSON_PROPERTY_SCOPE,
         BPMFailure.JSON_PROPERTY_STACK_TRACE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class BPMFailure implements Serializable {
 
     private static final long serialVersionUID = 1L;

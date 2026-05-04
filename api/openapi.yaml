@@ -104,7 +104,7 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 1.0.3
+  version: 1.0.8
   x-logo:
     url: images/bonitasoft-logo.svg
     backgroundColor: '#19465f'
@@ -205,6 +205,10 @@ tags:
     \ API to get the access control status (lastUpdatedBy, lastUpdateDate...)."
   name: BDMAccessControl
   x-displayName: BDMAccessControl
+- description: BDM Rest APIs allow to create / update / delete / import in bulk Bonita
+    Business Data.
+  name: Business Data Operations
+  x-displayName: Business Data Operations
 - description: BDM Rest APIs allow to query Bonita Business Data.
   name: BusinessDataQuery
   x-displayName: BusinessDataQuery
@@ -245,6 +249,12 @@ tags:
 - description: CustomUserValue
   name: CustomUserValue
   x-displayName: CustomUserValue
+- description: |
+    Configure how Bonita automatically deletes obsolete business data. A retention rule applies to a specific business object type and defines when its instances become eligible for deletion based on a reference date (creation or last update) and a retention period in days. The data retention service runs on a configurable cron schedule.
+
+    This Web REST API is available in **Enterprise editions only**, since version 11.0.
+  name: DataRetention
+  x-displayName: Data Retention
 - description: Diagram
   name: Diagram
   x-displayName: Diagram
@@ -339,6 +349,11 @@ tags:
 - description: Role
   name: Role
   x-displayName: Role
+- description: |
+    Access log entries recorded by the Bonita Engine during execution. Logs capture actions performed on the platform such as process deployments, task executions, or configuration changes.
+    This Web REST API is available in **Enterprise editions only**.
+  name: Log
+  x-displayName: Log
 - description: Session
   name: Session
   x-displayName: Session
@@ -1963,6 +1978,202 @@ paths:
       - BusinessDataQuery
       x-accepts:
       - application/json
+    post:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Create (Insert) new Business Data.
+        Obviously, all mandatory fields of the given business data type must be provided in the request body, to ensure data integrity.
+        Any input fields that are NOT part of the business data type will be simply ignored, and returned in the response,
+        as an informative list.
+      operationId: insertBusinessData
+      parameters:
+      - description: The Business Data type to create
+        example: com.company.model.Employee
+        explode: false
+        in: path
+        name: businessDataType
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              firstName: John
+              lastName: Doe
+              age: 30
+              department: Engineering
+              activity: developer
+              dateOfBirth: 1977-05-26
+              dateOfBirthWithTime: 1977-05-26T01:59:42
+              meetingDateAndTimeWithTimezone: 2025-11-29T10:15:30+01:00
+              otherDateAndTimeWithTimezone: 2025-11-29T10:15:30Z
+              notAValidField: some value that will be ignored
+            schema:
+              type: object
+        description: |
+          The flat JSON object representing the fields of the business data to create.
+
+          The fields to provide depend on the business data type.
+
+          Any nullable field not provided will be left blank.
+
+          Any unknown field will be ignored and return in the response, under the name "unknownFields".
+
+          String fields must be enclosed in double quotes (`"`), numeric / boolean fields must not. Date fields must be strings in ISO 8601 format (e.g., `2023-10-01T12:00:00Z`).
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDataCreationResult'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Create new Business Data
+      tags:
+      - Business Data Operations
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/bdm/businessData/{businessDataType}/import:
+    post:
+      description: |2
+
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Allows to import business data in bulk by uploading a file containing the data, in CSV format.
+
+        Example CSV file content:
+        ```csv
+        firstName,lastName,department, dptReference, dateOfBirth, dateOfBirthWithTime, meetingDateAndTimeWithTimezone, otherDateAndTimeWithTimezone
+        "John","Doe","Engineering", 14, "1907-05-26", "1907-05-26T01:59:42", "2025-11-29T10:15:00+01:00", "2025-11-29T10:15:00Z"
+        "Jane","Smith", "Marketing", 17, "1977-03-24", "1977-03-24T17:40:00", "2025-07-19T09:00:00+01:00", "2025-07-19T09:00:00Z"
+        ```
+
+        Field separator can be comma (`,`) or semicolon (`;`). Space characters around the separator will be ignored (trimmed).
+
+        The first line of the CSV file is considered as the header, and must contain the field names, with the exact same upper/lower case.
+
+        String fields must be enclosed in double quotes (`"`), numeric / boolean fields must not. Date fields must be strings in ISO 8601 format (e.g., `2023-10-01T12:00:00Z`).
+      operationId: importBusinessData
+      parameters:
+      - description: Business Data Type
+        example: com.company.model.Employee
+        explode: false
+        in: path
+        name: businessDataType
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/importBusinessData_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDataImportResult'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Import Business Data by bulk
+      tags:
+      - Business Data Operations
+      x-content-type: multipart/form-data
+      x-accepts:
+      - application/json
   /API/bdm/businessData/{businessDataType}/findByIds:
     get:
       description: |
@@ -2040,6 +2251,83 @@ paths:
       x-accepts:
       - application/json
   /API/bdm/businessData/{businessDataType}/{persistenceId}:
+    delete:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Delete an existing Business Data.
+      operationId: deleteBusinessData
+      parameters:
+      - description: The Business Data type to delete
+        example: com.company.model.Employee
+        explode: false
+        in: path
+        name: businessDataType
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      - description: Business data ID to delete
+        example: 1234
+        explode: false
+        in: path
+        name: persistenceId
+        required: true
+        schema:
+          type: number
+        style: simple
+      responses:
+        "204":
+          description: The Business Data was successfully deleted
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Delete an existing Business Data
+      tags:
+      - Business Data Operations
+      x-accepts:
+      - application/json
     get:
       description: |
         Finds business data specified by its identifier.
@@ -2109,6 +2397,115 @@ paths:
       summary: Finds business data by Id
       tags:
       - BDM
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Update an existing Business Data.
+        Any input fields that are NOT part of the business data type will be simply ignored, and returned in the response,
+        as an informative list.
+      operationId: updateBusinessData
+      parameters:
+      - description: The Business Data type to update
+        example: com.company.model.Employee
+        explode: false
+        in: path
+        name: businessDataType
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9_-.]{0,250}$"
+          type: string
+        style: simple
+      - description: Business data ID
+        example: "1234"
+        explode: false
+        in: path
+        name: persistenceId
+        required: true
+        schema:
+          type: number
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              firstName: John
+              lastName: Wayne
+              activity: actor
+              dateOfBirth: 1907-05-26
+              dateOfBirthWithTime: 1907-05-26T01:59:42
+              meetingDateAndTimeWithTimezone: 2025-11-29T10:15:30+01:00
+              otherDateAndTimeWithTimezone: 2025-11-29T10:15:30Z
+              notAValidField: some value that will be ignored
+            schema:
+              type: object
+        description: |
+          The flat JSON object representing the fields of the business data to update.
+
+          The fields to provide depend on the business data type.
+
+          Any field not provided will be left unchanged.
+
+          Any unknown field will be ignored and return in the response, under the name "unknownFields".
+
+          String fields must be enclosed in double quotes (`"`), numeric / boolean fields must not. Date fields must be strings in ISO 8601 format (e.g., `2023-10-01T12:00:00Z`).
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessDataUpdateResult'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update an existing Business Data
+      tags:
+      - Business Data Operations
+      x-content-type: application/json
       x-accepts:
       - application/json
   /API/bdm/businessData/{businessDataType}/{persistenceId}/{attributeName}:
@@ -2331,7 +2728,7 @@ paths:
               example: tmp_accessControlFileToUpload.xml
               schema:
                 maxLength: 250
-                pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+                pattern: "^[A-Za-z0-9_\\-\\.]{0,250}$"
                 type: string
           description: 'Success '
         "400":
@@ -2442,6 +2839,335 @@ paths:
       tags:
       - BDMAccessControl
       x-content-type: application/x-www-form-urlencoded
+      x-accepts:
+      - application/json
+  /API/retention/object:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the list of all business object types defined in the deployed Business Data Model (BDM),
+        each enriched with its composition tree and the retention rule that may apply to it.
+
+        The full list is returned in a single response. Pagination is not applied because the
+        BDM is a bounded set defined at deployment time.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: findObjectsWithRetentionRules
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BusinessObjectWithRetentionRule'
+                type: array
+          description: |
+            Successful operation. The full list of business object types is returned in a single
+            response. No pagination is applied and no `Content-Range` header is set.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: List business object types with their retention rules
+      tags:
+      - DataRetention
+      x-accepts:
+      - application/json
+  /API/retention/schedule:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Returns the cron expression that triggers the data retention job. The expression is configured
+        via the `bonita.runtime.retention.schedule.cron` platform property and is read-only at runtime.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: getRetentionSchedule
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetentionSchedule'
+          description: Successful operation
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Get the data retention schedule
+      tags:
+      - DataRetention
+      x-accepts:
+      - application/json
+  /API/retention/rule:
+    post:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Creates a data retention rule for a business object type. Once created, the data retention
+        service will automatically delete business data of `dataClassName` whose `referenceDate` is
+        older than `retentionDays` days.
+
+        Only one retention rule can exist per BDM class name. Posting a second rule for a
+        `dataClassName` that already has one returns `409 Conflict`.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: createRetentionRule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetentionRuleCreateRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRetentionConfig'
+          description: Retention rule created
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "409":
+          content:
+            application/json:
+              example:
+                message: Conflict
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Conflict, the request could not be completed because it conflicts\
+            \ with the current state of the target resource."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Create a retention rule
+      tags:
+      - DataRetention
+      x-codegen-request-body-name: body
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/retention/rule/{ruleId}:
+    delete:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Deletes the retention rule with the given ID. Existing BDM object instances of the underlying
+        type are not deleted by this operation; only the retention rule itself is removed.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: deleteRetentionRuleById
+      parameters:
+      - description: Numeric ID of the retention rule to delete (the `id` field returned
+          by `DataRetentionConfig`).
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          pattern: "^[0-9]+$"
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: OK (no content).
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Delete a retention rule by ID
+      tags:
+      - DataRetention
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Updates the `referenceDate` and `retentionDays` of an existing retention rule.
+
+        Requires the `DATA_RETENTION` feature to be active in the platform license.
+        Available since Bonita 11.0.
+      operationId: updateRetentionRuleById
+      parameters:
+      - description: Numeric ID of the retention rule to update (the `id` field returned
+          by `DataRetentionConfig`).
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          pattern: "^[0-9]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetentionRuleUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRetentionConfig'
+          description: Retention rule updated
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update a retention rule by ID
+      tags:
+      - DataRetention
+      x-codegen-request-body-name: body
+      x-content-type: application/json
       x-accepts:
       - application/json
   /API/bpm/activity:
@@ -2924,7 +3650,7 @@ paths:
 
         - can order on `name`, `priority`, `dueDate`, `state`, `processDefinitionId`, `processInstanceId`, `parentActivityInstanceId`, `assigneeId`, `parentContainerId`, `displayName`, `reachedStateDate`
         - can search on any field that can be used to order results
-        - can filter on `assigned_id`, `user_id`, `show_assigned_to_others` (since 2022.2), `state`, `name`, `displayName`, `processDefinitionId`, `caseId`, `rootProcessInstanceId`, `parentProcessInstanceId`
+        - can filter on `assigned_id`, `user_id`, `show_assigned_to_others` (since 2022.2), `state`, `name`, `displayName`, `processDefinitionId`, `caseId`, `rootCaseId`, `parentCaseId`
       operationId: searchHumanTasks
       parameters:
       - description: index of the page to display
@@ -7180,6 +7906,79 @@ paths:
       summary: Finds the ProcessInstance by ID
       tags:
       - ProcessInstance
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        Only the state of a ProcessInstance (with the given ID) can be updated in order to cancel it (since version 10.3 - 2025.1).
+      operationId: updateProcessInstanceById
+      parameters:
+      - description: ID of the ProcessInstance to update
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessInstanceUpdateRequest'
+        description: Cancel the ProcessInstance.
+        required: true
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update the ProcessInstance by ID
+      tags:
+      - ProcessInstance
+      x-content-type: application/json
       x-accepts:
       - application/json
   /API/bpm/case/{id}/context:
@@ -11859,7 +12658,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CustomUserValueUpdateRequest'
-        description: Custom user defition Value
+        description: Custom user definition Value
         required: true
       responses:
         "200":
@@ -16260,6 +17059,213 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /API/system/log:
+    get:
+      description: |
+        Finds Logs with pagination params and filters. The search returns an array of log entries.
+        This Web REST API is available in **Enterprise editions only**.
+
+        - can filter on `action_scope`, `action_type`, `createdBy`, `message`, `severity` value
+        - can search by text on `action_scope`, `action_type`, `createdBy`, `message`, `severity`
+        - can order on `action_scope`, `action_type`, `creation_date`, `createdBy`, `message`, `severity`
+      operationId: searchLogs
+      parameters:
+      - description: index of the page to display
+        example: "0"
+        explode: true
+        in: query
+        name: p
+        required: true
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: "can filter on attributes with the format f={filter\\_name}={filter\\\
+          _value} with the name/value pair as url encoded string."
+        example: abc%3d123
+        explode: true
+        in: query
+        name: f
+        required: false
+        schema:
+          items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
+            type: string
+          type: array
+        style: form
+      - description: can order on attributes
+        example: myProp%20ASC
+        explode: true
+        in: query
+        name: o
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      - description: can search on attributes
+        explode: true
+        in: query
+        name: s
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Log'
+                type: array
+          description: 'Success '
+          headers:
+            Content-Range:
+              description: The total number of matching items
+              explode: false
+              schema:
+                format: int64
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Finds Logs
+      tags:
+      - Log
+      x-codeSamples:
+      - lang: Shell
+        label: Curl
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/log?p=0&c=10&o=creation_date+DESC'
+      x-accepts:
+      - application/json
+  /API/system/log/{id}:
+    get:
+      description: |
+        Returns the single Log for the given ID.
+        This Web REST API is available in **Enterprise editions only**.
+      operationId: getLogById
+      parameters:
+      - description: ID of the Log to return
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Log'
+          description: 'Success '
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Finds the Log by ID
+      tags:
+      - Log
+      x-codeSamples:
+      - lang: Shell
+        label: Curl
+        source: |
+          curl -b saved_cookies.txt -X GET --url 'http://localhost:8080/bonita/API/system/log/1024'
+      x-accepts:
+      - application/json
   /API/system/i18nlocale:
     get:
       description: |
@@ -17331,6 +18337,15 @@ components:
       description: OK
     NoContent:
       description: OK (no content).
+    Conflict:
+      content:
+        application/json:
+          example:
+            message: Conflict
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: "Conflict, the request could not be completed because it conflicts\
+        \ with the current state of the target resource."
   schemas:
     LoginRequest:
       example:
@@ -17714,6 +18729,48 @@ components:
         \ null depending on your query."
       nullable: true
       type: object
+    BusinessDataCreationResult:
+      description: "An object containing: \n* the ID of the newly created Business\
+        \ Data, under the name of \"newBusinessDataId\"\n* any unknown fields, provided\
+        \ as an array of names, under the name of \"unknownFields\"\n"
+      example:
+        newBusinessDataId: 1988
+        unknownFields:
+        - notAValidField
+      properties:
+        newBusinessDataId:
+          description: ID of the newly created Business Data
+          type: number
+        unknownFields:
+          description: list of unknown input fields that are not declared in the Business
+            Data type
+          items:
+            type: string
+          type: array
+      type: object
+    BusinessDataImportResult:
+      description: "An object containing: \n* the list of IDs of all the newly created\
+        \ Business Data, under the name of \"createdIds\"\n* the list of unknown fields,\
+        \ provided as an array of names, under the name of \"unknownFields\"\n"
+      example:
+        createdIds:
+        - 198
+        - 199
+        unknownFields:
+        - department
+      properties:
+        createdIds:
+          description: List of IDs of the newly created Business Data
+          items:
+            type: number
+          type: array
+        unknownFields:
+          description: list of unknown input fields that are not declared in the Business
+            Data type
+          items:
+            type: string
+          type: array
+      type: object
     BusinessData:
       additionalProperties: true
       description: |
@@ -17787,6 +18844,20 @@ components:
           description: Version of the business data object instance
           type: string
       type: object
+    BusinessDataUpdateResult:
+      description: "An object containing: \n* any unknown fields, provided as an array\
+        \ of names, under the name of \"unknownFields\"\n"
+      example:
+        unknownFields:
+        - notAValidField
+      properties:
+        unknownFields:
+          description: list of unknown input fields that are not declared in the Business
+            Data type
+          items:
+            type: string
+          type: array
+      type: object
     TenantResourceState:
       description: "Tenant resource state (BDM, BDM access control, ...)"
       enum:
@@ -17817,6 +18888,191 @@ components:
         lastUpdateDate:
           description: Last date when the access control were installed or updated.
           type: string
+      type: object
+    CompositionNode:
+      description: |
+        A node in the recursive composition tree of a business object type. Each node holds the
+        qualified name of a composed business object type and the list of its own composed children,
+        allowing arbitrarily deep composition hierarchies to be expressed.
+      example:
+        qualifiedName: com.company.model.Address
+        compositions: []
+      properties:
+        qualifiedName:
+          description: Fully qualified Java class name of the composed business object
+            type.
+          type: string
+        compositions:
+          description: "Direct composition children of this object, or an empty list\
+            \ if none."
+          items:
+            $ref: '#/components/schemas/CompositionNode'
+          type: array
+      required:
+      - compositions
+      - qualifiedName
+      type: object
+    ReferenceDate:
+      description: |
+        Date field on a BDM object instance used as the starting point of the retention period calculation.
+
+        - `CREATION`: retention is calculated from the creation date of the BDM object instance. The clock never resets.
+        - `LAST_UPDATE`: retention is calculated from the last modification date of the BDM object instance. The clock resets on every modification.
+      enum:
+      - CREATION
+      - LAST_UPDATE
+      type: string
+    DataRetentionConfig:
+      description: |
+        A data retention rule configured for a specific business object type. It defines when and how
+        business data of that type are automatically deleted by the data retention service.
+      example:
+        id: "1"
+        dataClassname: com.company.model.Request
+        referenceDate: CREATION
+        retentionDays: 365
+        createdAt: "1777473415401"
+        updatedAt: "1777473415401"
+      properties:
+        id:
+          description: Identifier of the retention rule. Serialized as a string to
+            avoid JavaScript precision loss on large `long` values.
+          type: string
+        dataClassname:
+          description: Fully qualified Java class name of the business object type
+            this rule applies to. Note the lowercase `n` (the create-rule request
+            body uses `dataClassName` instead).
+          type: string
+        referenceDate:
+          $ref: '#/components/schemas/ReferenceDate'
+        retentionDays:
+          description: "Duration of the retention period, in days. Always strictly\
+            \ positive — enforced by the engine on create and update."
+          format: int32
+          minimum: 1
+          type: integer
+        createdAt:
+          description: "Creation timestamp of this retention rule, in epoch milliseconds.\
+            \ Serialized as a string to avoid JavaScript precision loss."
+          type: string
+        updatedAt:
+          description: "Last update timestamp of this retention rule, in epoch milliseconds.\
+            \ Serialized as a string to avoid JavaScript precision loss."
+          type: string
+      required:
+      - createdAt
+      - dataClassname
+      - id
+      - referenceDate
+      - retentionDays
+      - updatedAt
+      type: object
+    BusinessObjectWithRetentionRule:
+      description: |
+        A business object type defined in the Business Data Model (BDM) along with its optional data
+        retention rule and composition tree.
+
+        The `dataRetentionRule` field is `null` when no retention rule has been configured for this
+        business object type.
+      example:
+        qualifiedName: com.company.model.Order
+        compositions:
+        - qualifiedName: com.company.model.OrderLine
+          compositions:
+          - qualifiedName: com.company.model.Product
+            compositions: []
+        - qualifiedName: com.company.model.Address
+          compositions: []
+        dataRetentionRule:
+          id: "1"
+          dataClassname: com.company.model.Order
+          referenceDate: CREATION
+          retentionDays: 365
+          createdAt: "1777473415401"
+          updatedAt: "1777473415401"
+      properties:
+        qualifiedName:
+          description: Fully qualified Java class name of the business object type.
+          type: string
+        compositions:
+          description: Direct composition children of this business object type as
+            a recursive tree.
+          items:
+            $ref: '#/components/schemas/CompositionNode'
+          type: array
+        dataRetentionRule:
+          allOf:
+          - $ref: '#/components/schemas/DataRetentionConfig'
+          nullable: true
+          type: object
+      required:
+      - compositions
+      - dataRetentionRule
+      - qualifiedName
+      type: object
+    RetentionSchedule:
+      description: |
+        Schedule on which the data retention service runs. The cron expression is configured via the
+        `bonita.runtime.retention.schedule.cron` platform property.
+      example:
+        cronExpression: 0 0 2 * * 6
+      properties:
+        cronExpression:
+          description: Cron expression that defines when the data retention job is
+            triggered.
+          type: string
+      required:
+      - cronExpression
+      type: object
+    RetentionRuleCreateRequest:
+      description: |
+        Body of `POST /API/retention/rule`. Defines a new data retention rule for the business object
+        type identified by `dataClassName`. All three fields are required.
+      example:
+        dataClassName: com.company.model.ContratClient
+        referenceDate: LAST_UPDATE
+        retentionDays: 365
+      properties:
+        dataClassName:
+          description: |
+            Fully qualified Java class name of the business object type this rule applies to. Note the uppercase `N`.
+
+            The corresponding field returned in the `DataRetentionConfig` response of this endpoint and of `PUT /API/retention/rule/{ruleId}`, `GET /API/retention/object` is named `dataClassname` (lowercase `n`).
+          type: string
+        referenceDate:
+          $ref: '#/components/schemas/ReferenceDate'
+        retentionDays:
+          description: "Duration of the retention period, in days. Must be strictly\
+            \ positive."
+          format: int32
+          minimum: 1
+          type: integer
+      required:
+      - dataClassName
+      - referenceDate
+      - retentionDays
+      type: object
+    RetentionRuleUpdateRequest:
+      description: |
+        Body of `PUT /API/retention/rule/{ruleId}`. Replaces the mutable fields of an existing
+        retention rule. This is a full replacement of `referenceDate` and `retentionDays`, not a
+        partial update — both fields must be provided on every call. The `dataClassName` of an
+        existing rule cannot be changed.
+      example:
+        referenceDate: CREATION
+        retentionDays: 730
+      properties:
+        referenceDate:
+          $ref: '#/components/schemas/ReferenceDate'
+        retentionDays:
+          description: "Duration of the retention period, in days. Must be strictly\
+            \ positive."
+          format: int32
+          minimum: 1
+          type: integer
+      required:
+      - referenceDate
+      - retentionDays
       type: object
     ActivityType:
       description: the activity type (string)
@@ -19393,6 +20649,15 @@ components:
             $ref: '#/components/schemas/ProcessVariable'
           type: array
       type: object
+    ProcessInstanceUpdateRequest:
+      example:
+        state: cancelled
+      properties:
+        state:
+          description: "state of the ProcessInstance (the only supported value is:\
+            \ cancelled)"
+          type: string
+      type: object
     ArchivedProcessInstance:
       allOf:
       - $ref: '#/components/schemas/ProcessInstance'
@@ -20346,7 +21611,7 @@ components:
           description: "the date ('yyyy-MM-dd HH:mm:ss.SSS') when this flow node was\
             \ last updated, for example '2014-10-17 16:05:42.626)"
           type: string
-        parentTaskId":
+        parentTaskId:
           description: "in case of a subtask, the parent task id "
           type: string
       type: object
@@ -20379,8 +21644,8 @@ components:
         archivedDate: archivedDate
         rootContainerId: rootContainerId
         assigned_date: assigned_date
-        parentTaskId": parentTaskId"
         displayName: displayName
+        parentTaskId: parentTaskId
         executedBySubstitute: executedBySubstitute
         dueDate: dueDate
         description: description
@@ -21610,6 +22875,51 @@ components:
           - mobile
           type: string
       type: object
+    LogSeverityLevel:
+      description: the severity level of the log
+      enum:
+      - BUSINESS
+      - INTERNAL
+      type: string
+    Log:
+      description: |
+        A log entry recorded by the Bonita Engine during execution. Logs capture actions performed on the platform such as process deployments, task executions, or configuration changes.
+        This Web REST API is available in **Enterprise editions only**.
+      example:
+        id: "1024"
+        creation_date: 2024-10-17T16:05:42.626Z
+        createdBy: walter.bates
+        severity: INTERNAL
+        message: Creating a new Process definition
+        action_scope: "7714320429509736190"
+        action_type: PROCESS_DEFINITION_CREATED
+        icon: /default/log.png
+      properties:
+        id:
+          description: the log id
+          maxLength: 250
+          pattern: "^[A-Za-z0-9\\_\\-\\.]{0,250}$"
+          type: string
+        creation_date:
+          description: "the UTC date and time in ISO-8601 format ('yyyy-MM-ddTHH:mm:ss.SSSZ')\
+            \ when this log was created, for example '2024-10-17T16:05:42.626Z'"
+          format: date-time
+          type: string
+        createdBy:
+          description: the name of the user who triggered the logged action
+          type: string
+        severity:
+          $ref: '#/components/schemas/LogSeverityLevel'
+        message:
+          description: the log message describing the action
+          type: string
+        action_scope:
+          description: the scope of the logged action
+          type: string
+        icon:
+          description: the icon path for this log entry
+          type: string
+      type: object
     I18nlocale:
       description: ""
       example:
@@ -21878,6 +23188,12 @@ components:
         importPolicy:
           description: Import policy
           type: string
+    importBusinessData_request:
+      properties:
+        dataset:
+          format: binary
+          type: string
+      type: object
     importBDMAccessControl_request:
       properties:
         bdmAccessControlUpload:
@@ -22082,7 +23398,9 @@ x-tagGroups:
   tags:
   - BDM
   - BusinessDataQuery
+  - Business Data Operations
   - BDMAccessControl
+  - DataRetention
 - name: BPM
   tags:
   - Activity
@@ -22156,6 +23474,7 @@ x-tagGroups:
   tags:
   - I18nlocale
   - I18ntranslation
+  - Log
   - Session
   - Maintenance
 - name: Other
