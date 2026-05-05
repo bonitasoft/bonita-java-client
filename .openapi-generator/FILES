@@ -30,6 +30,7 @@ src/main/java/org/bonitasoft/web/client/api/ConnectorInstanceApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserDefinitionApi.java
 src/main/java/org/bonitasoft/web/client/api/CustomUserValueApi.java
+src/main/java/org/bonitasoft/web/client/api/DataRetentionApi.java
 src/main/java/org/bonitasoft/web/client/api/DiagramApi.java
 src/main/java/org/bonitasoft/web/client/api/FailureApi.java
 src/main/java/org/bonitasoft/web/client/api/FlowNodeApi.java
@@ -123,6 +124,8 @@ src/main/java/org/bonitasoft/web/client/model/BusinessData.java
 src/main/java/org/bonitasoft/web/client/model/BusinessDataCreationResult.java
 src/main/java/org/bonitasoft/web/client/model/BusinessDataImportResult.java
 src/main/java/org/bonitasoft/web/client/model/BusinessDataUpdateResult.java
+src/main/java/org/bonitasoft/web/client/model/BusinessObjectWithRetentionRule.java
+src/main/java/org/bonitasoft/web/client/model/CompositionNode.java
 src/main/java/org/bonitasoft/web/client/model/ConfigurationState.java
 src/main/java/org/bonitasoft/web/client/model/ConnectorFailure.java
 src/main/java/org/bonitasoft/web/client/model/ConnectorInstance.java
@@ -137,6 +140,7 @@ src/main/java/org/bonitasoft/web/client/model/CustomUserDefinition.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserDefinitionCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserValue.java
 src/main/java/org/bonitasoft/web/client/model/CustomUserValueUpdateRequest.java
+src/main/java/org/bonitasoft/web/client/model/DataRetentionConfig.java
 src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinition.java
 src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinitionContext.java
 src/main/java/org/bonitasoft/web/client/model/DesignProcessDefinitionParamater.java
@@ -206,6 +210,10 @@ src/main/java/org/bonitasoft/web/client/model/ProfileEntryUpdateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProfileMember.java
 src/main/java/org/bonitasoft/web/client/model/ProfileMemberCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/ProfileUpdateRequest.java
+src/main/java/org/bonitasoft/web/client/model/ReferenceDate.java
+src/main/java/org/bonitasoft/web/client/model/RetentionRuleCreateRequest.java
+src/main/java/org/bonitasoft/web/client/model/RetentionRuleUpdateRequest.java
+src/main/java/org/bonitasoft/web/client/model/RetentionSchedule.java
 src/main/java/org/bonitasoft/web/client/model/Role.java
 src/main/java/org/bonitasoft/web/client/model/RoleCreateRequest.java
 src/main/java/org/bonitasoft/web/client/model/RoleUpdateRequest.java
