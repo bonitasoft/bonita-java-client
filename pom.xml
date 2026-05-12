@@ -51,25 +51,25 @@
     <!-- Tests -->
     <junit-jupiter-engine.version>5.12.1</junit-jupiter-engine.version>
     <assertj-core.version>3.27.7</assertj-core.version>
-    <mockito-core.version>5.18.0</mockito-core.version>
-    <logback-classic.version>1.5.18</logback-classic.version>
+    <mockito-core.version>5.23.0</mockito-core.version>
+    <logback-classic.version>1.5.32</logback-classic.version>
     <testcontainers.version>1.21.3</testcontainers.version>
     <awaitility.version>4.3.0</awaitility.version>
     <semver4j.version>3.1.0</semver4j.version>
     <!-- Maven plugins -->
-    <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+    <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
-    <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
+    <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
     <maven-failsafe-plugin.version>3.5.3</maven-failsafe-plugin.version>
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
-    <sonar-maven-plugin.version>4.0.0.4121</sonar-maven-plugin.version>
+    <sonar-maven-plugin.version>5.6.0.6792</sonar-maven-plugin.version>
     <central-maven-plugin.version>0.8.0</central-maven-plugin.version>
     <gitflow-maven-plugin.version>1.21.0</gitflow-maven-plugin.version>
     <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
     <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
     <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
     <git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
-    <openapi-generator-maven-plugin.version>7.12.0</openapi-generator-maven-plugin.version>
+    <openapi-generator-maven-plugin.version>7.22.0</openapi-generator-maven-plugin.version>
     <spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
     <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
     <groovy.version>3.0.24</groovy.version>
