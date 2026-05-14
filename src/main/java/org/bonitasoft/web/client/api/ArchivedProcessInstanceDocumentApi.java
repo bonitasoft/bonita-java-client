@@ -62,10 +62,10 @@ public interface ArchivedProcessInstanceDocumentApi extends ApiClient.Api {
      * &#x60;archivedCaseId&#x3D;\&quot;id\&quot;&#x60;: search for documents with the specified archived process instance id. *
      * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier. *
      * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
      * at the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
      * contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
      * at the start of the description or the start of a word in the description.
      * 
      * @param p index of the page to display (required)
@@ -90,10 +90,10 @@ public interface ArchivedProcessInstanceDocumentApi extends ApiClient.Api {
      * &#x60;archivedCaseId&#x3D;\&quot;id\&quot;&#x60;: search for documents with the specified archived process instance id. *
      * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier. *
      * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
      * at the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
      * contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
      * at the start of the description or the start of a word in the description.
      * 
      * @param p index of the page to display (required)
@@ -117,10 +117,10 @@ public interface ArchivedProcessInstanceDocumentApi extends ApiClient.Api {
      * &#x60;archivedCaseId&#x3D;\&quot;id\&quot;&#x60;: search for documents with the specified archived process instance id. *
      * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier. *
      * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
      * at the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
      * contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
      * at the start of the description or the start of a word in the description.
      * Note, this is equivalent to the other <code>searchArchivedProcessInstanceDocuments</code> method,
      * but with the query parameters collected into a single Map parameter. This
@@ -154,10 +154,10 @@ public interface ArchivedProcessInstanceDocumentApi extends ApiClient.Api {
      * &#x60;archivedCaseId&#x3D;\&quot;id\&quot;&#x60;: search for documents with the specified archived process instance id. *
      * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier. *
      * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
      * at the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
      * contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
      * at the start of the description or the start of a word in the description.
      * Note, this is equivalent to the other <code>searchArchivedProcessInstanceDocuments</code> that receives the query parameters as a map,
      * but this one also exposes the Http response headers
