@@ -42,7 +42,7 @@ endif::[]
 :uri-contribute: {uri-rel-file-base}CONTRIBUTING.adoc
 :uri-license: {uri-rel-file-base}LICENSE.md
 
-image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.bonitasoft.com",width=450px]
+image::Bonitasoft_Community_RGB.png[Bonitasoft,link="https://www.ofelia.com",width=450px]
 
 ifdef::status[]
 image:{uri-repo}/workflows/workflow-build/badge.svg[Build,link="{uri-repo}/actions?query=workflow%3Aworkflow-build"]
@@ -363,7 +363,7 @@ endif::[]
 - Repository: https://github.com/bonitasoft/{project-artifact-id}/
 - Issue tracker: https://github.com/bonitasoft/{project-artifact-id}/issues. +
   In case of sensitive bugs like security vulnerabilities, please contact rd@bonitasoft.com directly instead of using issue tracker. We value your effort to improve the security and privacy of this project!
-- Current Bonita REST API documentation: https://documentation.bonitasoft.com/bonita/{bonita-short-version}/rest-api-overview
+- Current Bonita REST API documentation: https://documentation.ofelia.com/bonita/{bonita-short-version}/rest-api-overview
 - OpenAPI specification: https://swagger.io/specification/
 - OpenAPI generator: https://github.com/OpenAPITools/openapi-generator
 - OpenFeign: https://github.com/OpenFeign/feign
