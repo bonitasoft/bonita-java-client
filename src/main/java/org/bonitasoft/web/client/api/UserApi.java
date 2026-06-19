@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2025 BonitaSoft S.A.
+ * Copyright (C) 2026 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@ import org.bonitasoft.web.client.invoker.EncodingUtils;
 import org.bonitasoft.web.client.model.ApiResponse;
 import org.bonitasoft.web.client.model.User;
 import org.bonitasoft.web.client.model.UserCreateRequest;
+import org.bonitasoft.web.client.model.UserSummary;
 import org.bonitasoft.web.client.model.UserUpdateRequest;
 
 import feign.*;
@@ -115,6 +116,155 @@ public interface UserApi extends ApiClient.Api {
             "Accept: application/json",
     })
     ApiResponse<User> getUserByIdWithHttpInfo(@Param("id") String id);
+
+    /**
+     * Finds User summaries
+     * Finds a paginated, lightweight projection of users (&#x60;id&#x60;, &#x60;userName&#x60;, &#x60;firstname&#x60;, &#x60;lastname&#x60;,
+     * &#x60;job_title&#x60;), intended for user pickers and similar listings without exposing the full &#x60;identity/user&#x60; payload. - &#x60;p&#x60; /
+     * &#x60;c&#x60;: pagination params (page index and page size) - can search (&#x60;s&#x60;) on a free-text term matched by the engine across user attributes -
+     * can order (&#x60;o&#x60;) on &#x60;username&#x60; (default &#x60;username ASC&#x60;), &#x60;firstname&#x60; or &#x60;lastname&#x60;. One or more
+     * comma-separated sort clauses are applied in order (e.g. &#x60;lastname,firstname&#x60;). An optional &#x60;ASC&#x60; or &#x60;DESC&#x60; direction may follow
+     * each field. Unknown fields or malformed clauses return &#x60;400&#x60;. - can filter (&#x60;f&#x60;) only on &#x60;enabled&#x60; with a boolean value (e.g.
+     * &#x60;enabled&#x3D;true&#x60;). Any other filter key or a non-boolean value returns &#x60;400&#x60;. &#x60;enabled&#x60; is filter-only and is not part of
+     * the returned projection.
+     * 
+     * @param p index of the page to display (required)
+     * @param c maximum number of elements to retrieve (required)
+     * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
+     * @param o can order on attributes (optional)
+     * @param s can search on attributes (optional)
+     * @return List&lt;UserSummary&gt;
+     */
+    @RequestLine("GET /API/identity/userSummary?p={p}&c={c}&f={f}&o={o}&s={s}")
+    @Headers({
+            "Accept: application/json",
+    })
+    List<UserSummary> searchUserSummaries(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f,
+            @Param("o") String o, @Param("s") String s);
+
+    /**
+     * Finds User summaries
+     * Similar to <code>searchUserSummaries</code> but it also returns the http response headers .
+     * Finds a paginated, lightweight projection of users (&#x60;id&#x60;, &#x60;userName&#x60;, &#x60;firstname&#x60;, &#x60;lastname&#x60;,
+     * &#x60;job_title&#x60;), intended for user pickers and similar listings without exposing the full &#x60;identity/user&#x60; payload. - &#x60;p&#x60; /
+     * &#x60;c&#x60;: pagination params (page index and page size) - can search (&#x60;s&#x60;) on a free-text term matched by the engine across user attributes -
+     * can order (&#x60;o&#x60;) on &#x60;username&#x60; (default &#x60;username ASC&#x60;), &#x60;firstname&#x60; or &#x60;lastname&#x60;. One or more
+     * comma-separated sort clauses are applied in order (e.g. &#x60;lastname,firstname&#x60;). An optional &#x60;ASC&#x60; or &#x60;DESC&#x60; direction may follow
+     * each field. Unknown fields or malformed clauses return &#x60;400&#x60;. - can filter (&#x60;f&#x60;) only on &#x60;enabled&#x60; with a boolean value (e.g.
+     * &#x60;enabled&#x3D;true&#x60;). Any other filter key or a non-boolean value returns &#x60;400&#x60;. &#x60;enabled&#x60; is filter-only and is not part of
+     * the returned projection.
+     * 
+     * @param p index of the page to display (required)
+     * @param c maximum number of elements to retrieve (required)
+     * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
+     * @param o can order on attributes (optional)
+     * @param s can search on attributes (optional)
+     * @return A ApiResponse that wraps the response boyd and the http headers.
+     */
+    @RequestLine("GET /API/identity/userSummary?p={p}&c={c}&f={f}&o={o}&s={s}")
+    @Headers({
+            "Accept: application/json",
+    })
+    ApiResponse<List<UserSummary>> searchUserSummariesWithHttpInfo(@Param("p") Integer p, @Param("c") Integer c,
+            @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
+
+    /**
+     * Finds User summaries
+     * Finds a paginated, lightweight projection of users (&#x60;id&#x60;, &#x60;userName&#x60;, &#x60;firstname&#x60;, &#x60;lastname&#x60;,
+     * &#x60;job_title&#x60;), intended for user pickers and similar listings without exposing the full &#x60;identity/user&#x60; payload. - &#x60;p&#x60; /
+     * &#x60;c&#x60;: pagination params (page index and page size) - can search (&#x60;s&#x60;) on a free-text term matched by the engine across user attributes -
+     * can order (&#x60;o&#x60;) on &#x60;username&#x60; (default &#x60;username ASC&#x60;), &#x60;firstname&#x60; or &#x60;lastname&#x60;. One or more
+     * comma-separated sort clauses are applied in order (e.g. &#x60;lastname,firstname&#x60;). An optional &#x60;ASC&#x60; or &#x60;DESC&#x60; direction may follow
+     * each field. Unknown fields or malformed clauses return &#x60;400&#x60;. - can filter (&#x60;f&#x60;) only on &#x60;enabled&#x60; with a boolean value (e.g.
+     * &#x60;enabled&#x3D;true&#x60;). Any other filter key or a non-boolean value returns &#x60;400&#x60;. &#x60;enabled&#x60; is filter-only and is not part of
+     * the returned projection.
+     * Note, this is equivalent to the other <code>searchUserSummaries</code> method,
+     * but with the query parameters collected into a single Map parameter. This
+     * is convenient for services with optional query parameters, especially when
+     * used with the {@link SearchUserSummariesQueryParams} class that allows for
+     * building up this map in a fluent style.
+     * 
+     * @param queryParams Map of query parameters as name-value pairs
+     *        <p>The following elements may be specified in the query map:</p>
+     *        <ul>
+     *        <li>p - index of the page to display (required)</li>
+     *        <li>c - maximum number of elements to retrieve (required)</li>
+     *        <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string.
+     *        (optional)</li>
+     *        <li>o - can order on attributes (optional)</li>
+     *        <li>s - can search on attributes (optional)</li>
+     *        </ul>
+     * @return List&lt;UserSummary&gt;
+     */
+    @RequestLine("GET /API/identity/userSummary?p={p}&c={c}&f={f}&o={o}&s={s}")
+    @Headers({
+            "Accept: application/json",
+    })
+    List<UserSummary> searchUserSummaries(@QueryMap(encoded = true) SearchUserSummariesQueryParams queryParams);
+
+    /**
+     * Finds User summaries
+     * Finds a paginated, lightweight projection of users (&#x60;id&#x60;, &#x60;userName&#x60;, &#x60;firstname&#x60;, &#x60;lastname&#x60;,
+     * &#x60;job_title&#x60;), intended for user pickers and similar listings without exposing the full &#x60;identity/user&#x60; payload. - &#x60;p&#x60; /
+     * &#x60;c&#x60;: pagination params (page index and page size) - can search (&#x60;s&#x60;) on a free-text term matched by the engine across user attributes -
+     * can order (&#x60;o&#x60;) on &#x60;username&#x60; (default &#x60;username ASC&#x60;), &#x60;firstname&#x60; or &#x60;lastname&#x60;. One or more
+     * comma-separated sort clauses are applied in order (e.g. &#x60;lastname,firstname&#x60;). An optional &#x60;ASC&#x60; or &#x60;DESC&#x60; direction may follow
+     * each field. Unknown fields or malformed clauses return &#x60;400&#x60;. - can filter (&#x60;f&#x60;) only on &#x60;enabled&#x60; with a boolean value (e.g.
+     * &#x60;enabled&#x3D;true&#x60;). Any other filter key or a non-boolean value returns &#x60;400&#x60;. &#x60;enabled&#x60; is filter-only and is not part of
+     * the returned projection.
+     * Note, this is equivalent to the other <code>searchUserSummaries</code> that receives the query parameters as a map,
+     * but this one also exposes the Http response headers
+     * 
+     * @param queryParams Map of query parameters as name-value pairs
+     *        <p>The following elements may be specified in the query map:</p>
+     *        <ul>
+     *        <li>p - index of the page to display (required)</li>
+     *        <li>c - maximum number of elements to retrieve (required)</li>
+     *        <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string.
+     *        (optional)</li>
+     *        <li>o - can order on attributes (optional)</li>
+     *        <li>s - can search on attributes (optional)</li>
+     *        </ul>
+     * @return List&lt;UserSummary&gt;
+     */
+    @RequestLine("GET /API/identity/userSummary?p={p}&c={c}&f={f}&o={o}&s={s}")
+    @Headers({
+            "Accept: application/json",
+    })
+    ApiResponse<List<UserSummary>> searchUserSummariesWithHttpInfo(
+            @QueryMap(encoded = true) SearchUserSummariesQueryParams queryParams);
+
+    /**
+     * A convenience class for generating query parameters for the
+     * <code>searchUserSummaries</code> method in a fluent style.
+     */
+    public static class SearchUserSummariesQueryParams extends HashMap<String, Object> {
+
+        public SearchUserSummariesQueryParams p(final Integer value) {
+            put("p", EncodingUtils.encode(value));
+            return this;
+        }
+
+        public SearchUserSummariesQueryParams c(final Integer value) {
+            put("c", EncodingUtils.encode(value));
+            return this;
+        }
+
+        public SearchUserSummariesQueryParams f(final List<String> value) {
+            put("f", EncodingUtils.encodeCollection(value, "multi"));
+            return this;
+        }
+
+        public SearchUserSummariesQueryParams o(final String value) {
+            put("o", EncodingUtils.encode(value));
+            return this;
+        }
+
+        public SearchUserSummariesQueryParams s(final String value) {
+            put("s", EncodingUtils.encode(value));
+            return this;
+        }
+    }
 
     /**
      * Finds Users
