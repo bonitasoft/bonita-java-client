@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2025 BonitaSoft S.A.
+ * Copyright (C) 2026 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +29,7 @@ import org.bonitasoft.web.client.model.DesignProcessDefinition;
 import org.bonitasoft.web.client.model.ProcessCreateRequest;
 import org.bonitasoft.web.client.model.ProcessDefinition;
 import org.bonitasoft.web.client.model.ProcessInstantiationResponse;
+import org.bonitasoft.web.client.model.ProcessName;
 import org.bonitasoft.web.client.model.ProcessUpdateRequest;
 import org.bonitasoft.web.client.model.UpdateProcessConnectorByProcessIdRequest;
 
@@ -244,6 +245,151 @@ public interface ProcessApi extends ApiClient.Api {
     })
     ApiResponse<ProcessInstantiationResponse> instanciateProcessWithHttpInfo(@Param("id") String id,
             Map<String, Object> body);
+
+    /**
+     * Search process names
+     * Searches process deployment information grouped by &#x60;(name, displayName)&#x60;, returning one entry per distinct name and display name, each carrying the
+     * list of its deployed versions. - can order on &#x60;displayName&#x60; or &#x60;name&#x60; (default is &#x60;displayName ASC&#x60;). A single sort clause is
+     * applied: a compound order such as &#x60;displayName ASC, name DESC&#x60; is rejected with a &#x60;400&#x60;. - can search (&#x60;s&#x60;) on &#x60;name&#x60;
+     * or &#x60;displayName&#x60;. The term selects which groups are returned; a returned group always lists all of its versions allowed by the
+     * &#x60;activationState&#x60; filter. - can filter on &#x60;activationState&#x60; with the value &#x60;ENABLED&#x60; or &#x60;DISABLED&#x60;. An unknown value
+     * is rejected with a &#x60;400&#x60;; other filter keys are ignored. The &#x60;Content-Range&#x60; header reports the total number of groups, not the number of
+     * versions.
+     * 
+     * @param p index of the page to display (required)
+     * @param c maximum number of elements to retrieve (required)
+     * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
+     * @param o can order on attributes (optional)
+     * @param s can search on attributes (optional)
+     * @return List&lt;ProcessName&gt;
+     */
+    @RequestLine("GET /API/bpm/processName?p={p}&c={c}&f={f}&o={o}&s={s}")
+    @Headers({
+            "Accept: application/json",
+    })
+    List<ProcessName> searchProcessNames(@Param("p") Integer p, @Param("c") Integer c, @Param("f") List<String> f,
+            @Param("o") String o, @Param("s") String s);
+
+    /**
+     * Search process names
+     * Similar to <code>searchProcessNames</code> but it also returns the http response headers .
+     * Searches process deployment information grouped by &#x60;(name, displayName)&#x60;, returning one entry per distinct name and display name, each carrying the
+     * list of its deployed versions. - can order on &#x60;displayName&#x60; or &#x60;name&#x60; (default is &#x60;displayName ASC&#x60;). A single sort clause is
+     * applied: a compound order such as &#x60;displayName ASC, name DESC&#x60; is rejected with a &#x60;400&#x60;. - can search (&#x60;s&#x60;) on &#x60;name&#x60;
+     * or &#x60;displayName&#x60;. The term selects which groups are returned; a returned group always lists all of its versions allowed by the
+     * &#x60;activationState&#x60; filter. - can filter on &#x60;activationState&#x60; with the value &#x60;ENABLED&#x60; or &#x60;DISABLED&#x60;. An unknown value
+     * is rejected with a &#x60;400&#x60;; other filter keys are ignored. The &#x60;Content-Range&#x60; header reports the total number of groups, not the number of
+     * versions.
+     * 
+     * @param p index of the page to display (required)
+     * @param c maximum number of elements to retrieve (required)
+     * @param f can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string. (optional)
+     * @param o can order on attributes (optional)
+     * @param s can search on attributes (optional)
+     * @return A ApiResponse that wraps the response boyd and the http headers.
+     */
+    @RequestLine("GET /API/bpm/processName?p={p}&c={c}&f={f}&o={o}&s={s}")
+    @Headers({
+            "Accept: application/json",
+    })
+    ApiResponse<List<ProcessName>> searchProcessNamesWithHttpInfo(@Param("p") Integer p, @Param("c") Integer c,
+            @Param("f") List<String> f, @Param("o") String o, @Param("s") String s);
+
+    /**
+     * Search process names
+     * Searches process deployment information grouped by &#x60;(name, displayName)&#x60;, returning one entry per distinct name and display name, each carrying the
+     * list of its deployed versions. - can order on &#x60;displayName&#x60; or &#x60;name&#x60; (default is &#x60;displayName ASC&#x60;). A single sort clause is
+     * applied: a compound order such as &#x60;displayName ASC, name DESC&#x60; is rejected with a &#x60;400&#x60;. - can search (&#x60;s&#x60;) on &#x60;name&#x60;
+     * or &#x60;displayName&#x60;. The term selects which groups are returned; a returned group always lists all of its versions allowed by the
+     * &#x60;activationState&#x60; filter. - can filter on &#x60;activationState&#x60; with the value &#x60;ENABLED&#x60; or &#x60;DISABLED&#x60;. An unknown value
+     * is rejected with a &#x60;400&#x60;; other filter keys are ignored. The &#x60;Content-Range&#x60; header reports the total number of groups, not the number of
+     * versions.
+     * Note, this is equivalent to the other <code>searchProcessNames</code> method,
+     * but with the query parameters collected into a single Map parameter. This
+     * is convenient for services with optional query parameters, especially when
+     * used with the {@link SearchProcessNamesQueryParams} class that allows for
+     * building up this map in a fluent style.
+     * 
+     * @param queryParams Map of query parameters as name-value pairs
+     *        <p>The following elements may be specified in the query map:</p>
+     *        <ul>
+     *        <li>p - index of the page to display (required)</li>
+     *        <li>c - maximum number of elements to retrieve (required)</li>
+     *        <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string.
+     *        (optional)</li>
+     *        <li>o - can order on attributes (optional)</li>
+     *        <li>s - can search on attributes (optional)</li>
+     *        </ul>
+     * @return List&lt;ProcessName&gt;
+     */
+    @RequestLine("GET /API/bpm/processName?p={p}&c={c}&f={f}&o={o}&s={s}")
+    @Headers({
+            "Accept: application/json",
+    })
+    List<ProcessName> searchProcessNames(@QueryMap(encoded = true) SearchProcessNamesQueryParams queryParams);
+
+    /**
+     * Search process names
+     * Searches process deployment information grouped by &#x60;(name, displayName)&#x60;, returning one entry per distinct name and display name, each carrying the
+     * list of its deployed versions. - can order on &#x60;displayName&#x60; or &#x60;name&#x60; (default is &#x60;displayName ASC&#x60;). A single sort clause is
+     * applied: a compound order such as &#x60;displayName ASC, name DESC&#x60; is rejected with a &#x60;400&#x60;. - can search (&#x60;s&#x60;) on &#x60;name&#x60;
+     * or &#x60;displayName&#x60;. The term selects which groups are returned; a returned group always lists all of its versions allowed by the
+     * &#x60;activationState&#x60; filter. - can filter on &#x60;activationState&#x60; with the value &#x60;ENABLED&#x60; or &#x60;DISABLED&#x60;. An unknown value
+     * is rejected with a &#x60;400&#x60;; other filter keys are ignored. The &#x60;Content-Range&#x60; header reports the total number of groups, not the number of
+     * versions.
+     * Note, this is equivalent to the other <code>searchProcessNames</code> that receives the query parameters as a map,
+     * but this one also exposes the Http response headers
+     * 
+     * @param queryParams Map of query parameters as name-value pairs
+     *        <p>The following elements may be specified in the query map:</p>
+     *        <ul>
+     *        <li>p - index of the page to display (required)</li>
+     *        <li>c - maximum number of elements to retrieve (required)</li>
+     *        <li>f - can filter on attributes with the format f&#x3D;{filter\\_name}&#x3D;{filter\\_value} with the name/value pair as url encoded string.
+     *        (optional)</li>
+     *        <li>o - can order on attributes (optional)</li>
+     *        <li>s - can search on attributes (optional)</li>
+     *        </ul>
+     * @return List&lt;ProcessName&gt;
+     */
+    @RequestLine("GET /API/bpm/processName?p={p}&c={c}&f={f}&o={o}&s={s}")
+    @Headers({
+            "Accept: application/json",
+    })
+    ApiResponse<List<ProcessName>> searchProcessNamesWithHttpInfo(
+            @QueryMap(encoded = true) SearchProcessNamesQueryParams queryParams);
+
+    /**
+     * A convenience class for generating query parameters for the
+     * <code>searchProcessNames</code> method in a fluent style.
+     */
+    public static class SearchProcessNamesQueryParams extends HashMap<String, Object> {
+
+        public SearchProcessNamesQueryParams p(final Integer value) {
+            put("p", EncodingUtils.encode(value));
+            return this;
+        }
+
+        public SearchProcessNamesQueryParams c(final Integer value) {
+            put("c", EncodingUtils.encode(value));
+            return this;
+        }
+
+        public SearchProcessNamesQueryParams f(final List<String> value) {
+            put("f", EncodingUtils.encodeCollection(value, "multi"));
+            return this;
+        }
+
+        public SearchProcessNamesQueryParams o(final String value) {
+            put("o", EncodingUtils.encode(value));
+            return this;
+        }
+
+        public SearchProcessNamesQueryParams s(final String value) {
+            put("s", EncodingUtils.encode(value));
+            return this;
+        }
+    }
 
     /**
      * Finds Processes

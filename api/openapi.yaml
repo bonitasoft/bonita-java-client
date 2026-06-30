@@ -15,7 +15,7 @@ info:
     \ Bonita Engine remains responsible for executing\nthe workflow logic (connectors,\
     \ gateways with conditions, messages, timers etc.) while your application gives\
     \ access to the workflow.\nUsers can manage processes and tasks, and perform administrative\
-    \ activities.\n\n### API Extensions\n\nYou can create [Rest API Extensions](https://documentation.bonitasoft.com/bonita/latest/api/rest-api-extensions)\
+    \ activities.\n\n### API Extensions\n\nYou can create [Rest API Extensions](https://documentation.ofelia.com/bonita/latest/api/rest-api-extensions)\
     \ to extend the Rest API by adding missing resources (not provided by the Rest\
     \ API).\nIt is possible for an extension to interact with the engine (via the\
     \ API) or with any other external service (for example a database, a directory,\
@@ -62,7 +62,7 @@ info:
     \ zero), and the number of results per page (count), additionally you can define\
     \ a sort key (order). You can see the total number of matching results in the\
     \ HTTP response header Content-Range.\nIf you are searching for business data\
-    \ using a custom query, there must be a [count query in the BDM](https://documentation.bonitasoft.com/bonita/latest/data/define-and-deploy-the-bdm).\
+    \ using a custom query, there must be a [count query in the BDM](https://documentation.ofelia.com/bonita/latest/data/define-and-deploy-the-bdm).\
     \ If there is no count query, results from a custom query on business data cannot\
     \ be paged properly (the header Content-Range will be absent).\nFor business data\
     \ default queries, the count query is defined automatically.\n\nThe available\
@@ -80,7 +80,7 @@ info:
     \ filter parameter value must be URL encoded.\n  The attributes you can filter\
     \ on are specific to the resource.\n* s: search on name or search indexes. Before\
     \ Bonita 2024.1, the matching policy depended on the configuration of [word-based\
-    \ search](https://documentation.bonitasoft.com/bonita/2023.2/api/using-list-and-search-methods#word_based_search).\n\
+    \ search](https://documentation.ofelia.com/bonita/2023.2/api/using-list-and-search-methods#word_based_search).\n\
     \  For example, if word-based search was enabled, `s=Valid` returned matches containing\
     \ the string \"valid\" at the start of any word in the attribute value word,\n\
     \  such as \"Valid address\", \"Not a valid address\", and \"Validated request\"\
@@ -104,9 +104,9 @@ info:
     name: GPL-v2.0
     url: http://www.gnu.org/licenses/gpl-2.0.txt
   title: Bonita API
-  version: 1.0.8
+  version: 1.0.9
   x-logo:
-    url: images/bonitasoft-logo.svg
+    url: images/ofelia-logo.svg
     backgroundColor: '#19465f'
     altText: Bonita API
     href: /
@@ -255,6 +255,16 @@ tags:
     This Web REST API is available in **Enterprise editions only**, since version 11.0.
   name: DataRetention
   x-displayName: Data Retention
+- description: |
+    Delegate human tasks from one user (the delegator) to another (the delegate) for a bounded period and a whitelist of processes. Delegation grants the delegate visibility and execution rights on the delegator's tasks without reassigning them: ownership and the audit trail are preserved. A user can hold at most one delegation rule at a time, and a rule's status (scheduled, active, expired) is derived from its date range.
+
+    Id fields are sent as numeric `int64` in request bodies but returned as strings in responses, to avoid JavaScript precision loss on large `long` values; this is intentional and documented per field.
+
+    There is no `GET /API/delegation/rule/{ruleId}`: the engine does not expose a single-rule read, so fetch a rule through the search endpoint (`GET /API/delegation/rule`) filtered by `id`. This is a known API gap, not a spec omission.
+
+    This Web REST API is available in **Enterprise editions only**, since version 2026.2.
+  name: Delegation
+  x-displayName: Delegation
 - description: Diagram
   name: Diagram
   x-displayName: Diagram
@@ -377,7 +387,7 @@ tags:
 
     REST API extensions can be used to query business data, Bonita Engine APIs, or an external information system (such as a database, web service, LDAP directory...). They also help to keep a clean separation between the front-end (forms, pages, and interfaces visible to users) and the back-end (processes).
   externalDocs:
-    url: https://documentation.bonitasoft.com/bonita/latest/rest-api-extensions
+    url: https://documentation.ofelia.com/bonita/latest/rest-api-extensions
   name: RestAPIextensions
   x-displayName: API extensions
 - description: "Supports any type of files, used to upload a file before submitting\
@@ -3168,6 +3178,465 @@ paths:
       - DataRetention
       x-codegen-request-body-name: body
       x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/delegation/rule:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Searches delegation rules with pagination and filters. The same endpoint serves regular users
+        (who see their own rule) and administrators (who see rules across users); authorization is
+        enforced by the engine.
+
+        - can order on `id`, `delegatorId`, `delegateId`, `startDate`, `endDate`, `lastUpdatedBy`, `lastUpdatedAt`
+        - can filter on `id`, `delegatorId`, `delegateId`, `startDate`, `endDate`, `lastUpdatedBy`, `lastUpdatedAt` and on `status` (a virtual filter accepting `scheduled`, `active` or `expired`)
+        - the free-text search term (`s`) is matched by the engine against the delegator and delegate user name, first name and last name
+
+        Available in Enterprise editions only, since Bonita 2026.2.
+      operationId: searchDelegationRules
+      parameters:
+      - description: index of the page to display
+        example: "0"
+        explode: true
+        in: query
+        name: p
+        required: true
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: "can filter on attributes with the format f={filter\\_name}={filter\\\
+          _value} with the name/value pair as url encoded string."
+        example: abc%3d123
+        explode: true
+        in: query
+        name: f
+        required: false
+        schema:
+          items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
+            type: string
+          type: array
+        style: form
+      - description: can order on attributes
+        example: myProp%20ASC
+        explode: true
+        in: query
+        name: o
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      - description: can search on attributes
+        explode: true
+        in: query
+        name: s
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DelegationRule'
+                type: array
+          description: Successful operation
+          headers:
+            Content-Range:
+              description: The total number of matching items
+              explode: false
+              schema:
+                format: int64
+                type: integer
+              style: simple
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Search delegation rules
+      tags:
+      - Delegation
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Creates a delegation rule. `delegatorId` is optional and resolved from the session when
+        omitted (self-service); administrators may set it to create a rule on behalf of another user.
+
+        A user can hold at most one delegation rule: posting a rule for a delegator who already has
+        one replaces the existing rule (upsert).
+
+        Available in Enterprise editions only, since Bonita 2026.2.
+      operationId: createDelegationRule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DelegationRuleCreateRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DelegationRule'
+          description: Delegation rule created
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Create or replace a delegation rule
+      tags:
+      - Delegation
+      x-codegen-request-body-name: body
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/delegation/rule/{ruleId}:
+    delete:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Deletes the delegation rule with the given ID. This is the only deactivation mechanism: there
+        is no soft delete or activation flag. Deleting a rule does not affect the underlying tasks,
+        which remain assigned to the delegator.
+
+        Available in Enterprise editions only, since Bonita 2026.2.
+      operationId: deleteDelegationRuleById
+      parameters:
+      - description: Numeric ID of the delegation rule to delete (the `id` field returned
+          by `DelegationRule`).
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          pattern: "^[0-9]+$"
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: OK (no content).
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Delete a delegation rule by ID
+      tags:
+      - Delegation
+      x-accepts:
+      - application/json
+    put:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Replaces the `delegateId`, `startDate`, `endDate` and `processes` of an existing delegation
+        rule. The delegator of the rule cannot be changed.
+
+        Available in Enterprise editions only, since Bonita 2026.2.
+      operationId: updateDelegationRuleById
+      parameters:
+      - description: Numeric ID of the delegation rule to update (the `id` field returned
+          by `DelegationRule`).
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          pattern: "^[0-9]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DelegationRuleUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DelegationRule'
+          description: Delegation rule updated
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "404":
+          content:
+            application/json:
+              example:
+                message: Resource not found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The resource for the specified ID was not found.
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Update a delegation rule by ID
+      tags:
+      - Delegation
+      x-codegen-request-body-name: body
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/delegation/task:
+    get:
+      description: |
+        ![edition](https://img.shields.io/badge/edition-entreprise-blue)
+
+        Searches the human tasks a user can act on through an active delegation rule. Only
+        tasks covered by an `active` rule are returned: scheduled and expired rules yield nothing.
+        Tasks should be assigned to the delegator and remain assigned to them; the delegate gains visibility and execution rights
+        without reassignment.
+
+        - can order on `dueDate`, `priority`, `reachedStateDate`
+        - can search (`s`) on the task name and display name
+        - can filter on `delegateId` (must be numeric; scopes results to a delegate, enforced against the session user by (dynamic) authorization rules unless the caller is an administrator) and on `rootProcessName` (narrows results to a specific root process)
+
+        Available in Enterprise editions only, since Bonita 2026.2.
+      operationId: searchDelegatedTasks
+      parameters:
+      - description: index of the page to display
+        example: "0"
+        explode: true
+        in: query
+        name: p
+        required: true
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: "can filter on attributes with the format f={filter\\_name}={filter\\\
+          _value} with the name/value pair as url encoded string."
+        example: abc%3d123
+        explode: true
+        in: query
+        name: f
+        required: false
+        schema:
+          items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
+            type: string
+          type: array
+        style: form
+      - description: can order on attributes
+        example: myProp%20ASC
+        explode: true
+        in: query
+        name: o
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      - description: can search on attributes
+        explode: true
+        in: query
+        name: s
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DelegatedTask'
+                type: array
+          description: Successful operation
+          headers:
+            Content-Range:
+              description: The total number of matching items
+              explode: false
+              schema:
+                format: int64
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Search delegated tasks
+      tags:
+      - Delegation
       x-accepts:
       - application/json
   /API/bpm/activity:
@@ -6402,9 +6871,9 @@ paths:
 
          * `submittedBy="id"`: search for documents that were submitted by the user with the specified identifier.
          * `name="string"`: search for documents with names that contain _string_.
-           Depending on the setting for [word-based search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the name or the start of a word in the name.
+           Depending on the setting for [word-based search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the name or the start of a word in the name.
          * `description="string"`: search for documents with descriptions that contain _string_.
-           Depending on the setting for [word-based search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the description or the start of a word in the description.
+           Depending on the setting for [word-based search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the description or the start of a word in the description.
       operationId: searchProcessInstanceDocuments
       parameters:
       - description: index of the page to display
@@ -6805,9 +7274,9 @@ paths:
         * `archivedCaseId="id"`: search for documents with the specified archived process instance id.
         * `submittedBy="id"`: search for documents that were submitted by the user with the specified identifier.
         * `name="string"`: search for documents with names that contain _string_.
-          Depending on the setting for [word-based search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the name or the start of a word in the name.
+          Depending on the setting for [word-based search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the name or the start of a word in the name.
         * `description="string"`: search for documents with descriptions that contain _string_.
-          Depending on the setting for [word-based search](https://documentation.bonitasoft.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the description or the start of a word in the description.
+          Depending on the setting for [word-based search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at the start of the description or the start of a word in the description.
       operationId: searchArchivedProcessInstanceDocuments
       parameters:
       - description: index of the page to display
@@ -9503,6 +9972,137 @@ paths:
       - Process
       x-codegen-request-body-name: body
       x-content-type: application/json
+      x-accepts:
+      - application/json
+  /API/bpm/processName:
+    get:
+      description: |
+        Searches process deployment information grouped by `(name, displayName)`, returning one entry per
+        distinct name and display name, each carrying the list of its deployed versions.
+
+        - can order on `displayName` or `name` (default is `displayName ASC`). A single sort clause is
+          applied: a compound order such as `displayName ASC, name DESC` is rejected with a `400`.
+        - can search (`s`) on `name` or `displayName`. The term selects which groups are returned; a
+          returned group always lists all of its versions allowed by the `activationState` filter.
+        - can filter on `activationState` with the value `ENABLED` or `DISABLED`. An unknown value is
+          rejected with a `400`; other filter keys are ignored.
+
+        The `Content-Range` header reports the total number of groups, not the number of versions.
+      operationId: searchProcessNames
+      parameters:
+      - description: index of the page to display
+        example: "0"
+        explode: true
+        in: query
+        name: p
+        required: true
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: "can filter on attributes with the format f={filter\\_name}={filter\\\
+          _value} with the name/value pair as url encoded string."
+        example: abc%3d123
+        explode: true
+        in: query
+        name: f
+        required: false
+        schema:
+          items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
+            type: string
+          type: array
+        style: form
+      - description: can order on attributes
+        example: myProp%20ASC
+        explode: true
+        in: query
+        name: o
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      - description: can search on attributes
+        explode: true
+        in: query
+        name: s
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ProcessName'
+                type: array
+          description: Successful operation
+          headers:
+            Content-Range:
+              description: The total number of matching groups
+              explode: false
+              schema:
+                format: int64
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Search process names
+      tags:
+      - Process
       x-accepts:
       - application/json
   /API/bpm/processInfo/{id}:
@@ -14950,6 +15550,136 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /API/identity/userSummary:
+    get:
+      description: |
+        Finds a paginated, lightweight projection of users (`id`, `userName`, `firstname`, `lastname`, `job_title`),
+        intended for user pickers and similar listings without exposing the full `identity/user` payload.
+
+        - `p` / `c`: pagination params (page index and page size)
+        - can search (`s`) on a free-text term matched by the engine across user attributes
+        - can order (`o`) on `username` (default `username ASC`), `firstname` or `lastname`. One or more
+          comma-separated sort clauses are applied in order (e.g. `lastname,firstname`). An optional `ASC` or
+          `DESC` direction may follow each field. Unknown fields or malformed clauses return `400`.
+        - can filter (`f`) only on `enabled` with a boolean value (e.g. `enabled=true`). Any other filter key
+          or a non-boolean value returns `400`. `enabled` is filter-only and is not part of the returned projection.
+      operationId: searchUserSummaries
+      parameters:
+      - description: index of the page to display
+        example: "0"
+        explode: true
+        in: query
+        name: p
+        required: true
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: maximum number of elements to retrieve
+        example: "10"
+        explode: true
+        in: query
+        name: c
+        required: true
+        schema:
+          default: 20
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: "can filter on attributes with the format f={filter\\_name}={filter\\\
+          _value} with the name/value pair as url encoded string."
+        example: abc%3d123
+        explode: true
+        in: query
+        name: f
+        required: false
+        schema:
+          items:
+            maxLength: 250
+            pattern: "^[A-Za-z0-9%]{0,250}$"
+            type: string
+          type: array
+        style: form
+      - description: can order on attributes
+        example: myProp%20ASC
+        explode: true
+        in: query
+        name: o
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      - description: can search on attributes
+        explode: true
+        in: query
+        name: s
+        required: false
+        schema:
+          maxLength: 250
+          pattern: "^[A-Za-z0-9%]{0,250}$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserSummary'
+                type: array
+          description: 'Success '
+          headers:
+            Content-Range:
+              description: The total number of matching items
+              explode: false
+              schema:
+                format: int64
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              example:
+                message: Bad request
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              example:
+                message: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Authorization information is missing or invalid.
+        "403":
+          content:
+            application/json:
+              example:
+                message: "Forbidden, The request contained valid data and was understood\
+                  \ by the server, but the server is refusing action."
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: "Forbidden, The request contained valid data and was understood\
+            \ by the server, but the server is refusing action."
+        "5XX":
+          content:
+            application/json:
+              example:
+                message: An unexpected error occured.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unexpected error.
+      summary: Finds User summaries
+      tags:
+      - User
+      x-accepts:
+      - application/json
   /platformloginservice:
     post:
       description: |
@@ -19074,6 +19804,587 @@ components:
       - referenceDate
       - retentionDays
       type: object
+    DelegationUser:
+      description: |
+        User embedded in a delegation rule or a delegated task (delegator, delegate or last updater).
+
+        This is the engine `User` model serialized directly, so its field names (`userName`,
+        `managerUserId`, `creationDate`, ...) differ from the legacy snake_case `User` schema returned
+        by the `/API/identity/user` endpoints. The long id fields (`id`, `createdBy`, `managerUserId`)
+        are serialized as strings to avoid JavaScript precision loss, while the date fields
+        (`creationDate`, `lastUpdate`, `lastConnection`) are serialized as numeric epoch milliseconds.
+      example:
+        id: "2"
+        firstName: Michael
+        lastName: Scott
+        userName: michael.scott
+        iconId: null
+        title: null
+        jobTitle: null
+        creationDate: 1780477806557
+        createdBy: "-1"
+        lastUpdate: 1780477806557
+        lastConnection: null
+        managerUserId: "0"
+        enabled: true
+      properties:
+        id:
+          description: User id. Serialized as a string to avoid JavaScript precision
+            loss on large `long` values.
+          type: string
+        userName:
+          description: Login name of the user.
+          type: string
+        firstName:
+          description: First name of the user.
+          nullable: true
+          type: string
+        lastName:
+          description: Last name of the user.
+          nullable: true
+          type: string
+        title:
+          description: Civility title of the user.
+          nullable: true
+          type: string
+        jobTitle:
+          description: Job title of the user.
+          nullable: true
+          type: string
+        iconId:
+          description: "Id of the icon row used as avatar, or `null` when no icon\
+            \ is set. Serialized as a string when present."
+          nullable: true
+          type: string
+        managerUserId:
+          description: "Id of this user's manager, or `0` when none. Serialized as\
+            \ a string."
+          type: string
+        createdBy:
+          description: Id of the user who created this account (`-1` for system-created
+            accounts). Serialized as a string.
+          type: string
+        creationDate:
+          description: "Creation timestamp of the user account, in epoch milliseconds."
+          format: int64
+          type: integer
+        lastUpdate:
+          description: "Last update timestamp of the user account, in epoch milliseconds."
+          format: int64
+          type: integer
+        lastConnection:
+          description: "Last connection timestamp, in epoch milliseconds, or `null`\
+            \ if the user never logged in."
+          format: int64
+          nullable: true
+          type: integer
+        enabled:
+          description: Whether the user account is enabled.
+          type: boolean
+      required:
+      - enabled
+      - firstName
+      - id
+      - lastName
+      - userName
+      type: object
+    DelegationStatus:
+      description: |
+        Lifecycle status of a delegation rule, derived at query time from the rule's `startDate` /
+        `endDate` compared against the current time. There is no stored activation flag.
+
+        - `scheduled`: `startDate` is in the future. The delegate does not yet have access.
+        - `active`: the current time is within `[startDate, endDate]`. The delegate has access.
+        - `expired`: `endDate` is in the past. The delegate no longer has access.
+
+        Serialized in lowercase.
+      enum:
+      - scheduled
+      - active
+      - expired
+      type: string
+    DelegationRule:
+      description: |
+        A task delegation rule: a user (the delegator) grants another user (the delegate) the ability
+        to see and execute the delegator's human tasks during a bounded period, for a whitelist of
+        processes.
+
+        Delegation is not reassignment: tasks stay assigned to the delegator, and the delegate only
+        gains visibility and execution rights through dedicated views. A user can hold at most one
+        delegation rule at a time.
+      example:
+        id: "1"
+        delegator:
+          id: "1"
+          firstName: Walter
+          lastName: Bates
+          userName: walter.bates
+          iconId: null
+          title: null
+          jobTitle: null
+          creationDate: 1780477756657
+          createdBy: "-1"
+          lastUpdate: 1780477756657
+          lastConnection: 1780576504806
+          managerUserId: "0"
+          enabled: true
+        delegate:
+          id: "2"
+          firstName: Michael
+          lastName: Scott
+          userName: michael.scott
+          iconId: null
+          title: null
+          jobTitle: null
+          creationDate: 1780477806557
+          createdBy: "-1"
+          lastUpdate: 1780477806557
+          lastConnection: null
+          managerUserId: "0"
+          enabled: true
+        startDate: 1780524000000
+        endDate: 1780696799999
+        processes:
+        - Vacation request
+        status: active
+        lastUpdatedBy:
+          id: "1"
+          firstName: Walter
+          lastName: Bates
+          userName: walter.bates
+          iconId: null
+          title: null
+          jobTitle: null
+          creationDate: 1780477756657
+          createdBy: "-1"
+          lastUpdate: 1780477756657
+          lastConnection: 1780576504806
+          managerUserId: "0"
+          enabled: true
+        lastUpdatedAt: 1780576300586
+      properties:
+        id:
+          description: Identifier of the delegation rule. Serialized as a string to
+            avoid JavaScript precision loss on large `long` values.
+          type: string
+        delegator:
+          $ref: '#/components/schemas/DelegationUser'
+        delegate:
+          $ref: '#/components/schemas/DelegationUser'
+        startDate:
+          description: "Start of the delegation period, inclusive, in milliseconds\
+            \ since epoch."
+          format: int64
+          type: integer
+        endDate:
+          description: "End of the delegation period, inclusive, in milliseconds since\
+            \ epoch."
+          format: int64
+          type: integer
+        processes:
+          description: |
+            Process whitelist for this rule. Each entry is a process name; a name covers every deployed
+            version of that process. Always contains at least one entry.
+          items:
+            type: string
+          minItems: 1
+          type: array
+        status:
+          $ref: '#/components/schemas/DelegationStatus'
+        lastUpdatedBy:
+          $ref: '#/components/schemas/DelegationUser'
+        lastUpdatedAt:
+          description: "Timestamp of the last modification, in milliseconds since\
+            \ epoch."
+          format: int64
+          type: integer
+      required:
+      - delegate
+      - delegator
+      - endDate
+      - id
+      - lastUpdatedAt
+      - lastUpdatedBy
+      - processes
+      - startDate
+      - status
+      type: object
+    DelegationRuleCreateRequest:
+      description: |
+        Body of `POST /API/delegation/rule`. Defines a new delegation rule.
+
+        `delegatorId` is optional: when omitted it is resolved from the current session
+        (self-service creation). An administrator creating a rule on behalf of another user provides
+        `delegatorId` explicitly.
+
+        The values must satisfy: `endDate` strictly after `startDate`, `delegateId` different from the
+        delegator, and a non-empty `processes` list. A violation is reported as `400`.
+
+        A user can hold at most one delegation rule: posting a rule for a delegator who already has one
+        replaces the existing rule (upsert).
+      example:
+        delegatorId: 1
+        delegateId: 2
+        startDate: 1780524000000
+        endDate: 1780696799999
+        processes:
+        - Vacation request
+      properties:
+        delegatorId:
+          description: Id of the user whose tasks are delegated. Optional; resolved
+            from the session when omitted.
+          format: int64
+          type: integer
+        delegateId:
+          description: Id of the user receiving access. Must differ from the delegator.
+          format: int64
+          type: integer
+        startDate:
+          description: "Start of the delegation period, inclusive, in epoch milliseconds."
+          format: int64
+          type: integer
+        endDate:
+          description: "End of the delegation period, inclusive, in epoch milliseconds.\
+            \ Must be strictly after `startDate`."
+          format: int64
+          type: integer
+        processes:
+          description: Process whitelist. Each entry is a process name covering every
+            deployed version. Must contain at least one entry.
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - delegateId
+      - endDate
+      - processes
+      - startDate
+      type: object
+    DelegationRuleUpdateRequest:
+      description: |
+        Body of `PUT /API/delegation/rule/{ruleId}`. Replaces the mutable fields of an existing
+        delegation rule. This is a full replacement, not a partial update: every field must be
+        provided on each call. The delegator of an existing rule cannot be changed.
+
+        The values must satisfy: `endDate` strictly after `startDate`, `delegateId` different from the
+        delegator, and a non-empty `processes` list. A violation is reported as `400`.
+      example:
+        delegateId: 2
+        startDate: 1780524000000
+        endDate: 1780696799999
+        processes:
+        - Vacation request
+      properties:
+        delegateId:
+          description: Id of the user receiving access. Must differ from the delegator.
+          format: int64
+          type: integer
+        startDate:
+          description: "Start of the delegation period, inclusive, in epoch milliseconds."
+          format: int64
+          type: integer
+        endDate:
+          description: "End of the delegation period, inclusive, in epoch milliseconds.\
+            \ Must be strictly after `startDate`."
+          format: int64
+          type: integer
+        processes:
+          description: Process whitelist. Each entry is a process name covering every
+            deployed version. Must contain at least one entry.
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - delegateId
+      - endDate
+      - processes
+      - startDate
+      type: object
+    ActivationState:
+      description: the state of the process definition (ENABLED or DISABLED)
+      enum:
+      - ENABLED
+      - DISABLED
+      type: string
+    ConfigurationState:
+      description: the configuration state of the process (UNRESOLVED or RESOLVED)
+      enum:
+      - RESOLVED
+      - UNRESOLVED
+      type: string
+    ProcessDeploymentInfo:
+      description: |
+        Deployment information of a process: its name, version, activation and configuration state,
+        and deployment metadata. This is a general-purpose embedding shape, not delegation-specific;
+        it currently appears under the `rootProcessInfo` field of a delegated task.
+
+        The internal deployment-info row id is intentionally not exposed; callers identify the process
+        through `processId`. The `processId` and `deployedBy` long ids are serialized as strings to
+        avoid JavaScript precision loss, while date fields are serialized as numeric epoch milliseconds.
+      example:
+        name: Vacation request
+        version: "1.0"
+        displayDescription: ""
+        deploymentDate: 1780576273140
+        deployedBy: "1"
+        configurationState: RESOLVED
+        activationState: ENABLED
+        processId: "5270206374128493046"
+        displayName: Vacation request
+        lastUpdateDate: 1780576574182
+        iconPath: null
+        description: ""
+      properties:
+        processId:
+          description: Identifier of the process definition. Serialized as a string
+            to avoid JavaScript precision loss.
+          type: string
+        name:
+          description: Technical name of the process.
+          type: string
+        version:
+          description: Version of the process.
+          type: string
+        displayName:
+          description: Human-readable name of the process.
+          nullable: true
+          type: string
+        description:
+          description: Description of the process.
+          nullable: true
+          type: string
+        displayDescription:
+          description: Human-readable description of the process.
+          nullable: true
+          type: string
+        deploymentDate:
+          description: "Deployment timestamp of the process, in epoch milliseconds."
+          format: int64
+          type: integer
+        deployedBy:
+          description: Id of the user who deployed the process. Serialized as a string.
+          type: string
+        lastUpdateDate:
+          description: "Timestamp of the last update of the deployment information,\
+            \ in epoch milliseconds."
+          format: int64
+          type: integer
+        activationState:
+          $ref: '#/components/schemas/ActivationState'
+        configurationState:
+          $ref: '#/components/schemas/ConfigurationState'
+        iconPath:
+          description: "Path to the process icon, or `null` when none is set."
+          nullable: true
+          type: string
+      required:
+      - activationState
+      - configurationState
+      - name
+      - processId
+      - version
+      type: object
+    DelegatedTask:
+      description: |
+        A human task that a user is allowed to act on through an active delegation rule,
+        returned by `GET /API/delegation/task`.
+
+        The task is still assigned to the delegator; delegation grants the delegate visibility and
+        execution rights but does not reassign ownership. The shape aligns with the legacy human-task
+        REST format (modernised to camelCase): `processDefinitionId` is exposed as `processId`,
+        `parentProcessInstanceId` as `parentCaseId`, `rootContainerId` as `rootCaseId`,
+        `expectedEndDate` as `dueDate` and `claimedDate` as `assignedDate`. The delegator, delegate
+        and delegation window are added on top so the front-end can render the delegation context
+        without a second round-trip.
+
+        All long id fields are serialized as strings to avoid JavaScript precision loss. Date fields
+        (`dueDate`, `assignedDate`, `reachedStateDate`, `lastUpdateDate`, `delegationStart`,
+        `delegationEnd`) are numeric, in milliseconds since epoch; some (such as `dueDate` and
+        `assignedDate`) may be `null`.
+      example:
+        id: "2"
+        name: Validate request
+        displayName: Validate request
+        description: null
+        displayDescription: null
+        state: ready
+        type: USER_TASK
+        priority: NORMAL
+        dueDate: null
+        assignedDate: 1780576627723
+        reachedStateDate: 1780576595140
+        lastUpdateDate: 1780576627723
+        processId: "5270206374128493046"
+        parentCaseId: "1"
+        rootCaseId: "1"
+        actorId: "1"
+        assigneeId: "1"
+        executedBy: "0"
+        executedBySubstitute: "0"
+        flownodeDefinitionId: "7537946595085140972"
+        delegationStart: 1780524000000
+        delegationEnd: 1780696799999
+        delegator:
+          id: "1"
+          firstName: Walter
+          lastName: Bates
+          userName: walter.bates
+          iconId: null
+          title: null
+          jobTitle: null
+          creationDate: 1780477756657
+          createdBy: "-1"
+          lastUpdate: 1780477756657
+          lastConnection: 1780576504806
+          managerUserId: "0"
+          enabled: true
+        delegate:
+          id: "2"
+          firstName: Michael
+          lastName: Scott
+          userName: michael.scott
+          iconId: null
+          title: null
+          jobTitle: null
+          creationDate: 1780477806557
+          createdBy: "-1"
+          lastUpdate: 1780477806557
+          lastConnection: null
+          managerUserId: "0"
+          enabled: true
+        rootProcessInfo:
+          name: Vacation request
+          version: "1.0"
+          displayDescription: ""
+          deploymentDate: 1780576273140
+          deployedBy: "1"
+          configurationState: RESOLVED
+          activationState: ENABLED
+          processId: "5270206374128493046"
+          displayName: Vacation request
+          lastUpdateDate: 1780576574182
+          iconPath: null
+          description: ""
+      properties:
+        id:
+          description: Identifier of the task instance. Serialized as a string to
+            avoid JavaScript precision loss.
+          type: string
+        name:
+          description: Technical name of the task.
+          type: string
+        displayName:
+          description: Human-readable name of the task.
+          nullable: true
+          type: string
+        description:
+          description: Description of the task.
+          nullable: true
+          type: string
+        displayDescription:
+          description: Human-readable description of the task.
+          nullable: true
+          type: string
+        state:
+          description: Current state of the task (e.g. `ready`).
+          type: string
+        type:
+          description: Flow node type (e.g. `USER_TASK`).
+          type: string
+        priority:
+          description: Priority of the task (e.g. `NORMAL`).
+          nullable: true
+          type: string
+        dueDate:
+          description: "Expected end date of the task, in epoch milliseconds, or `null`\
+            \ when none is set. (Maps to the engine `expectedEndDate`.)"
+          format: int64
+          nullable: true
+          type: integer
+        assignedDate:
+          description: "Date the task was claimed by its assignee, in epoch milliseconds,\
+            \ or `null` when unassigned. (Maps to the engine `claimedDate`.)"
+          format: int64
+          nullable: true
+          type: integer
+        reachedStateDate:
+          description: "Date the task reached its current state, in epoch milliseconds."
+          format: int64
+          type: integer
+        lastUpdateDate:
+          description: "Date the task was last updated, in epoch milliseconds."
+          format: int64
+          type: integer
+        processId:
+          description: Identifier of the process definition. Serialized as a string.
+            (Maps to the engine `processDefinitionId`.)
+          type: string
+        parentCaseId:
+          description: Identifier of the immediate containing process instance. Serialized
+            as a string. (Maps to the engine `parentProcessInstanceId`.)
+          type: string
+        rootCaseId:
+          description: Identifier of the root process instance. Serialized as a string.
+            (Maps to the engine `rootContainerId`.)
+          type: string
+        actorId:
+          description: Id of the actor that can execute this task. Serialized as a
+            string.
+          type: string
+        assigneeId:
+          description: "Id of the user this task is assigned to, or `0` if unassigned.\
+            \ Serialized as a string."
+          type: string
+        executedBy:
+          description: "Id of the user who performed the task, or `0` if not yet executed.\
+            \ Serialized as a string."
+          type: string
+        executedBySubstitute:
+          description: "Id of the user who performed the task on behalf of someone\
+            \ else, or `0` otherwise. Serialized as a string."
+          type: string
+        flownodeDefinitionId:
+          description: Identifier of the flow node definition. Serialized as a string.
+          type: string
+        delegator:
+          $ref: '#/components/schemas/DelegationUser'
+        delegate:
+          $ref: '#/components/schemas/DelegationUser'
+        delegationStart:
+          description: "Start of the delegation period, inclusive, in milliseconds\
+            \ since epoch. Same value as the delegation rule's `startDate`."
+          format: int64
+          type: integer
+        delegationEnd:
+          description: "End of the delegation period, inclusive, in milliseconds since\
+            \ epoch. Same value as the delegation rule's `endDate`."
+          format: int64
+          type: integer
+        rootProcessInfo:
+          $ref: '#/components/schemas/ProcessDeploymentInfo'
+      required:
+      - actorId
+      - assigneeId
+      - delegate
+      - delegationEnd
+      - delegationStart
+      - delegator
+      - displayName
+      - executedBy
+      - executedBySubstitute
+      - flownodeDefinitionId
+      - id
+      - name
+      - parentCaseId
+      - priority
+      - processId
+      - rootCaseId
+      - rootProcessInfo
+      - state
+      - type
+      type: object
     ActivityType:
       description: the activity type (string)
       enum:
@@ -20805,18 +22116,6 @@ components:
         id: id
         userId: userId
         content: content
-    ActivationState:
-      description: the state of the process definition (ENABLED or DISABLED)
-      enum:
-      - ENABLED
-      - DISABLED
-      type: string
-    ConfigurationState:
-      description: the configuration state of the process (UNRESOLVED or RESOLVED)
-      enum:
-      - RESOLVED
-      - UNRESOLVED
-      type: string
     ProcessDefinition:
       description: ""
       example:
@@ -21265,6 +22564,40 @@ components:
       properties:
         caseId:
           type: string
+      type: object
+    ProcessName:
+      description: |
+        A group of deployed processes that share the same `(name, displayName)` pair, with the list of
+        their deployed versions. Returned by `GET /API/bpm/processName`, which collapses the process
+        deployment information into one entry per distinct name and display name.
+      example:
+        name: InvoiceApproval
+        displayName: Invoice Approval
+        versions:
+        - "1.0"
+        - "1.1"
+        - "2.0"
+      properties:
+        name:
+          description: Technical name shared by every version in this group.
+          type: string
+        displayName:
+          description: Human-readable name shared by every version in this group.
+            Defaults to the process technical name when no display name was set at
+            deployment.
+          type: string
+        versions:
+          description: |
+            Deployed versions of the process sharing this name and display name. When an `activationState`
+            filter is supplied, only the versions in that state are listed. Always contains at least one entry.
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - displayName
+      - name
+      - versions
       type: object
     ProcessInfo:
       description: "Retrieves the execution data of all open cases of a process. It\
@@ -22456,6 +23789,41 @@ components:
           description: user manager id
           type: string
       type: object
+    UserSummary:
+      description: |
+        Lightweight projection of a User returned by the `identity/userSummary` resource:
+        only the id, user name, first name, last name and job title.
+
+        Attribute names are kept consistent with the `identity/user` resource.
+      example:
+        firstname: firstname
+        id: id
+        userName: userName
+        job_title: job_title
+        lastname: lastname
+      properties:
+        id:
+          description: user id
+          type: string
+        userName:
+          description: user name
+          type: string
+        firstname:
+          description: user first name
+          type: string
+        lastname:
+          description: user last name
+          type: string
+        job_title:
+          description: "user job title. Optional on a user, `null` when unset."
+          nullable: true
+          type: string
+      required:
+      - firstname
+      - id
+      - lastname
+      - userName
+      type: object
     Platform:
       description: The bonita platform
       example:
@@ -22954,7 +24322,7 @@ components:
         is_technical_user: true
         is_guest_user: false
         version: 7.11.1
-        copyright: Bonitasoft © 2020
+        copyright: Ofelia © 2020
       properties:
         user_id:
           description: user id
@@ -23042,7 +24410,7 @@ components:
             & Subscription editions
           type: string
         subscriptionType:
-          description: type of the Subscription the customer has purchased with Bonitasoft
+          description: type of the Subscription the customer has purchased with Ofelia
             - Subscription editions only
           type: string
         licenseMode:
@@ -23443,6 +24811,7 @@ x-tagGroups:
   - TimerEventTrigger
   - Message
   - Signal
+  - Delegation
 - name: Custom user info
   tags:
   - CustomUserDefinition

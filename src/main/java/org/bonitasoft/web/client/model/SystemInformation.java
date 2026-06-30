@@ -253,7 +253,7 @@ public class SystemInformation implements Serializable {
     }
 
     /**
-     * type of the Subscription the customer has purchased with Bonitasoft - Subscription editions only
+     * type of the Subscription the customer has purchased with Ofelia - Subscription editions only
      * 
      * @return subscriptionType
      */

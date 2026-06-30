@@ -1,5 +1,5 @@
 /** 
- * Copyright (C) 2025 BonitaSoft S.A.
+ * Copyright (C) 2026 BonitaSoft S.A.
  * BonitaSoft, 32 rue Gustave Eiffel - 38000 Grenoble
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -128,11 +128,11 @@ public interface ProcessInstanceDocumentApi extends ApiClient.Api {
      * Finds ProcessInstanceDocuments with pagination params and filters It is possible to filter on three parameters: &#x60;submittedBy&#x60;, &#x60;name&#x60; and
      * &#x60;description&#x60;. * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier.
      * * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
-     * at the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at
+     * the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
      * contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
-     * at the start of the description or the start of a word in the description.
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at
+     * the start of the description or the start of a word in the description.
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -153,11 +153,11 @@ public interface ProcessInstanceDocumentApi extends ApiClient.Api {
      * Finds ProcessInstanceDocuments with pagination params and filters It is possible to filter on three parameters: &#x60;submittedBy&#x60;, &#x60;name&#x60; and
      * &#x60;description&#x60;. * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier.
      * * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
-     * at the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at
+     * the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
      * contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
-     * at the start of the description or the start of a word in the description.
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at
+     * the start of the description or the start of a word in the description.
      * 
      * @param p index of the page to display (required)
      * @param c maximum number of elements to retrieve (required)
@@ -177,11 +177,11 @@ public interface ProcessInstanceDocumentApi extends ApiClient.Api {
      * Finds ProcessInstanceDocuments with pagination params and filters It is possible to filter on three parameters: &#x60;submittedBy&#x60;, &#x60;name&#x60; and
      * &#x60;description&#x60;. * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier.
      * * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
-     * at the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at
+     * the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
      * contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
-     * at the start of the description or the start of a word in the description.
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at
+     * the start of the description or the start of a word in the description.
      * Note, this is equivalent to the other <code>searchProcessInstanceDocuments</code> method,
      * but with the query parameters collected into a single Map parameter. This
      * is convenient for services with optional query parameters, especially when
@@ -211,11 +211,11 @@ public interface ProcessInstanceDocumentApi extends ApiClient.Api {
      * Finds ProcessInstanceDocuments with pagination params and filters It is possible to filter on three parameters: &#x60;submittedBy&#x60;, &#x60;name&#x60; and
      * &#x60;description&#x60;. * &#x60;submittedBy&#x3D;\&quot;id\&quot;&#x60;: search for documents that were submitted by the user with the specified identifier.
      * * &#x60;name&#x3D;\&quot;string\&quot;&#x60;: search for documents with names that contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
-     * at the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at
+     * the start of the name or the start of a word in the name. * &#x60;description&#x3D;\&quot;string\&quot;&#x60;: search for documents with descriptions that
      * contain _string_. Depending on the setting for [word-based
-     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_
-     * at the start of the description or the start of a word in the description.
+     * search](https://documentation.ofelia.com/bonita/latest/api/using-list-and-search-methods#word_based_search), the search returns documents with _string_ at
+     * the start of the description or the start of a word in the description.
      * Note, this is equivalent to the other <code>searchProcessInstanceDocuments</code> that receives the query parameters as a map,
      * but this one also exposes the Http response headers
      * 
