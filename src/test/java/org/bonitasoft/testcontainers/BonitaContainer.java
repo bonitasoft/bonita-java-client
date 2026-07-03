@@ -81,7 +81,11 @@ public class BonitaContainer<SELF extends BonitaContainer<SELF>> extends Generic
             String repository = dockerImage.getRepository();
             this.imageName = repository.substring(repository.lastIndexOf("/") + 1);
             this.imageVersion = dockerImage.getVersionPart();
-            this.imagePrefix = repository.substring(0, repository.indexOf("/" + this.imageName));
+            if (repository.indexOf("/" + this.imageName) > 0) {
+                this.imagePrefix = repository.substring(0, repository.indexOf("/" + this.imageName));
+            } else {
+                this.imagePrefix = "";
+            }
         }
         // Call to getDockerImageName trigger a remote fetch ! use local var instead.
         log.info("Using image: {}", tmpDockerImageName);

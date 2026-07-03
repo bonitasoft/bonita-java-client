@@ -10,6 +10,9 @@ on:
       KSM_CONFIG:
         required: true
 
+env:
+  BONITA_LATEST_SNAPSHOT_VERSION: "11.2-SNAPSHOT"
+
 jobs:
 
   build:
@@ -39,7 +42,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        run: ./mvnw -B -ntp clean verify sonar:sonar -Dsonar.scanner.force-deprecated-java-version=true -Dbonita.image=${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.DOCKER_SNAPSHOTS_REPOSITORY }}/bonita-community:10.3-SNAPSHOT
+        run: >
+          ./mvnw -B -ntp verify sonar:sonar
+          -Dsonar.scanner.force-deprecated-java-version=true
+          -Dbonita.image=${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.DOCKER_SNAPSHOTS_REPOSITORY }}/bonita-community:${{ env.BONITA_LATEST_SNAPSHOT_VERSION }}
 
        # Build and Push snapshots to maven central
       - name: Deploy snapshots to Maven central
@@ -50,15 +56,18 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        bonita-version:
-          - '9.0.0'
-          - '10.0.0'
-          - '10.1.0'
-          - '10.2.0'
-          - '10.3.0'
-          - '10.4.0'
-          - '11.0.0'
-          - '11.1.0'
+        # Use Bonita public images when possible to test the supported versions
+        bonita-image:
+          - 'bonita:9.0.0'
+          # 10.0.0 and 10.1.0 are not available publicly
+          - '${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.DOCKER_RELEASES_REPOSITORY }}/bonita-community:10.0.0'
+          - '${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.DOCKER_RELEASES_REPOSITORY }}/bonita-community:10.1.0'
+          - 'bonita:10.2.0'
+          # Public 10.3.0 contains a bug that prevents the tests from running successfully, switching to internal 10.3.3
+          - '${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.DOCKER_RELEASES_REPOSITORY }}/bonita-community:10.3.3'
+          - 'bonita:10.4.5'
+          - 'bonita:11.0.0'
+          - 'bonita:11.1.0'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -74,11 +83,13 @@ jobs:
         with:
           keeper-secret-config: ${{ secrets.KSM_CONFIG }}
 
-      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
+      - name: Login to Bonita Docker registry
+        if: startsWith(matrix.bonita-image, vars.BONITASOFT_DOCKER_REGISTRY)
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
           registry: ${{ vars.BONITASOFT_DOCKER_REGISTRY }}
           username: ${{ env.JFROG_USER }}
           password: ${{ env.JFROG_TOKEN }}
 
       - name: ${{ matrix.bonita-version }} Integration tests
-        run: ./mvnw -B -ntp verify -Dbonita.image=${{ vars.BONITASOFT_DOCKER_REGISTRY }}/${{ vars.INTERNAL_DOCKER_REPOSITORY_RELEASE }}/bonita-community:${{ matrix.bonita-version }}
+        run: ./mvnw -B -ntp verify -Dbonita.image=${{ matrix.bonita-image }}
