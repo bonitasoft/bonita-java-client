@@ -17,13 +17,9 @@
 package org.bonitasoft.web.client;
 
 import static java.util.Arrays.asList;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.api.Assertions.*;
 import static org.awaitility.Awaitility.await;
-import static org.awaitility.Durations.ONE_HUNDRED_MILLISECONDS;
-import static org.awaitility.Durations.ONE_SECOND;
-import static org.awaitility.Durations.TEN_SECONDS;
+import static org.awaitility.Durations.*;
 import static org.bonitasoft.web.client.TestUtils.getClasspathFile;
 
 import java.io.File;
@@ -102,8 +98,17 @@ class BonitaClientIT {
     private static final String BONITA_DOCKER_IMAGE = System.getProperty(BONITA_DOCKER_IMAGE_PROPERTY, "");
 
     @Container
-    private static final BonitaContainer<? extends BonitaContainer<?>> BONITA_CONTAINER = new BonitaContainer<>(
-            BONITA_DOCKER_IMAGE);
+    private static final BonitaContainer<? extends BonitaContainer<?>> BONITA_CONTAINER = createBonitaContainer();
+
+    private static BonitaContainer<? extends BonitaContainer<?>> createBonitaContainer() {
+        BonitaContainer<? extends BonitaContainer<?>> container = new BonitaContainer<>(BONITA_DOCKER_IMAGE);
+        // Bonita 11.0.0 changed the default shape of BDM query results: scalar/count and single-entity queries
+        // are now serialized as JSON objects instead of arrays. Until the client supports this new "standard"
+        // shape, force the legacy array shape. Unknown/no-op on versions before 11.0.0.
+        container.withEnv("CATALINA_OPTS",
+                "-Dbonita.runtime.business-data.serialization.standard-shape.enabled=false");
+        return container;
+    }
 
     private static final Semver _10_2 = new Semver("10.2.0", SemverType.LOOSE);
 
