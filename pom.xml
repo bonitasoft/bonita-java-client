@@ -40,7 +40,7 @@
     <swagger-annotations.version>1.6.15</swagger-annotations.version>
     <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
     <jsr305.version>3.0.2</jsr305.version>
-    <feign.version>13.12</feign.version>
+    <feign.version>13.13</feign.version>
     <feign-form.version>3.8.0</feign-form.version>
     <okhttp.version>5.3.2</okhttp.version>
     <scribejava.version>8.3.3</scribejava.version>
