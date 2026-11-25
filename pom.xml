@@ -72,7 +72,7 @@
     <openapi-generator-maven-plugin.version>7.23.0</openapi-generator-maven-plugin.version>
     <spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
     <groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
-    <groovy.version>3.0.24</groovy.version>
+    <groovy.version>4.0.32</groovy.version>
     <!-- Configuration properties -->
     <codegen.skip>true</codegen.skip>
     <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -439,7 +439,7 @@
           <version>${groovy-maven-plugin.version}</version>
           <dependencies>
             <dependency>
-              <groupId>org.codehaus.groovy</groupId>
+              <groupId>org.apache.groovy</groupId>
               <artifactId>groovy</artifactId>
               <version>${groovy.version}</version>
             </dependency>

@@ -62,6 +62,7 @@ This means that this client includes all `Community` operations plus some that a
 == Features
 
 * Cover publicly available http endpoints of Bonita Platform {bonita-short-version} and onwards
+* HTTP-only client: works with both `javax` (Bonita 11.x and earlier) and Jakarta EE (Bonita 12.0+) runtimes, and runs on Java 11+
 * Built-in Bonita authentication support (SSO only supported through Bearer authentication with OpenID Connect SSO)
 * Higher level code than raw openapi client to ease developer journey
 
@@ -262,9 +263,9 @@ String content = comments.get(0).get("content")
 === Prerequisite
 
 - a git client
-- a java (jdk8 or higher)
+- a JDK 17 (the CI JDK; recent JDKs such as 25 are not supported by the Lombok version in use)
 - maven (optional if you chose to use https://github.com/takari/maven-wrapper[maven wrapper script])
-- Docker for integration tests
+- Docker for integration tests (with Docker Engine 29+, pass `-Dapi.version=1.44`: Testcontainers 1.x defaults to an API version Docker 29 rejects)
 
 === Building
 
