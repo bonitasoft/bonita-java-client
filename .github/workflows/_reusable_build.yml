@@ -11,7 +11,8 @@ on:
         required: true
 
 env:
-  BONITA_LATEST_SNAPSHOT_VERSION: "11.2-SNAPSHOT"
+  # TODO Bonita 12.0 GA (BPA-809): add bonita:12.0.0 to the supported-versions matrix
+  BONITA_LATEST_SNAPSHOT_VERSION: "12.0-SNAPSHOT"
 
 jobs:
 
